@@ -1,0 +1,24 @@
+import {AtomicRule, Rule, Variable} from "../Rule";
+
+
+export class PatternRule extends AtomicRule {
+    constructor(negated: boolean, variable: Variable, path: string[], argument: any) {
+        super(negated, variable, "pattern", path, argument);
+    }
+
+    toRego(): string {
+        return "";
+    }
+
+    toString(): string {
+        let negation = ""
+        if (this.negated) {
+            negation = "¬"
+        }
+        return `${negation}Pattern(${this.variable.name},'${this.path.join("/")}','${this.argument}')`
+    }
+
+    negation(): Rule {
+        return new PatternRule(!this.negated, this.variable, this.path, this.argument);
+    }
+}
