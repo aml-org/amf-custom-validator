@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha -r ts-node/register src/test/**/*.test.ts",
-    "run": "ts-node src/main/CLI.ts",
+    "validate": "ts-node src/main/CLI.ts",
     "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
   },
   "keywords": [],
