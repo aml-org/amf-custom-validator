@@ -1,9 +1,7 @@
 import {AndRule} from "../model/rules/AndRule";
 import {AtomicRule, Rule} from "../model/Rule";
-import {ClassTarget} from "../model/constraints/ClassTarget";
-import {BaseRegoRuleGenerator, RegoRuleResult} from "./BaseRegoRuleGenerator";
+import {BaseRegoComplexRuleGenerator, BaseRegoRuleGenerator, RegoRuleResult} from "./BaseRegoRuleGenerator";
 import {Expression} from "../model/Expression";
-import {ClassTargetRuleGenerator} from "./ClassTargetRuleGenerator";
 import {InRule} from "../model/constraints/InRule";
 import {MinCountRule} from "../model/constraints/MinCountRule";
 import {PatternRule} from "../model/constraints/PatternRule";
@@ -11,11 +9,9 @@ import {InRuleGenerator} from "./constraints/InRuleGenerator";
 import {PatternRuleGenerator} from "./constraints/PatternRuleGenerator";
 import {MinCountRuleGenerator} from "./constraints/MinCountRuleGenerator";
 
-export class AndRuleGenerator extends BaseRegoRuleGenerator {
+export class AndRuleGenerator extends BaseRegoComplexRuleGenerator {
     private rule: AndRule;
     private ruleGroups: {[variable: string]: Rule[]} = {};
-    private classTargetVariable: string|undefined;
-    private regoText: string[] = [];
     private expression: Expression;
 
     constructor(expression: Expression, rule: AndRule) {
@@ -25,10 +21,9 @@ export class AndRuleGenerator extends BaseRegoRuleGenerator {
         this.validRule();
     }
 
-    generate(): string {
+    generateResult(): RegoRuleResult[] {
         this.groupRules();
-        this.generateFromGroups();
-        return this.regoText.join("\n\n");
+        return this.generateFromGroups();
     }
 
     private validRule() {
@@ -40,9 +35,6 @@ export class AndRuleGenerator extends BaseRegoRuleGenerator {
     private groupRules() {
         this.rule.body.forEach((r) => {
             const atomicRule = <AtomicRule> r;
-            if (atomicRule instanceof ClassTarget) {
-                this.classTargetVariable = atomicRule.variable.name
-            }
             const group = this.ruleGroups[atomicRule.variable.name] || [];
             group.push(atomicRule);
             this.ruleGroups[atomicRule.variable.name] = group;
@@ -50,31 +42,26 @@ export class AndRuleGenerator extends BaseRegoRuleGenerator {
     }
 
     private generateFromGroups() {
-        this.generateTargetNodeSet().forEach((line) => this.regoText.push(line));
-        if (Object.keys(this.ruleGroups).length > 0) {
+        if (Object.keys(this.ruleGroups).length > 1) {
             throw new Error("More than one rule group per AND condition not supported yet");
         }
+        const results: RegoRuleResult[] = [];
+        Object.keys(this.ruleGroups).map((variable) => {
+            const group = this.ruleGroups[variable];
+            this.generateNodeSet(group).forEach((result) => results.push(result));
+        });
+        return results;
     }
 
-    private generateTargetNodeSet(): string[] {
-        if (this.classTargetVariable) {
-            const rego = [];
-            const classTargetGroup = this.ruleGroups[this.classTargetVariable];
-            delete this.ruleGroups[this.classTargetVariable];
-            const classTargetRule = <ClassTarget>classTargetGroup.find((r) => r instanceof ClassTarget)!;
-            const remainingRules = classTargetGroup.filter((r) => !(r instanceof ClassTarget));
-            const classTargetLine = new ClassTargetRuleGenerator(classTargetRule).generate();
-            remainingRules.forEach((rule) => {
-                rego.push(this.wrapRegoResult(classTargetLine, this.dispatchRule(rule)));
-            });
-
-            return rego;
-        } else {
-            return [];
-        }
+    private generateNodeSet(group: Rule[]): RegoRuleResult[] {
+        const rego: RegoRuleResult[] = [];
+        group.forEach((rule) => {
+            rego.push(this.dispatchRule(rule));
+        });
+        return rego;
     }
 
-    private dispatchRule(rule: Rule) {
+    private dispatchRule(rule: Rule): RegoRuleResult {
         if (rule instanceof InRule) {
             return new InRuleGenerator(rule).generateResult();
         } else if (rule instanceof MinCountRule) {
@@ -86,19 +73,5 @@ export class AndRuleGenerator extends BaseRegoRuleGenerator {
         }
     }
 
-    private wrapRegoResult(classTargetLine: string, regoRuleResult: RegoRuleResult) {
-        const level = this.expression.level;
-        const firstLine = `${level.toLowerCase()}[matches] {`
-        const targetLine = "  " + classTargetLine;
-        const matchesLine = `  matches := error("${this.expression.name}","${regoRuleResult.constraintId}",${this.classTargetVariable}, ${regoRuleResult.value}, "${regoRuleResult.traceMessage || ''}", "${this.expression.message}")`
-        const lastLine = `}`
 
-        const acc = [];
-        acc.push(firstLine);
-        acc.push(targetLine);
-        regoRuleResult.rego.forEach((l) => acc.push("  " + l));
-        acc.push(matchesLine);
-        acc.push(lastLine);
-        return acc.join("\n");
-    }
 }

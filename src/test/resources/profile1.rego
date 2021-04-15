@@ -46,35 +46,45 @@ target_class_negated[result] {
   result := node
 }
 
+# Traces one evaluation of a constraint
+trace(component, value, traceMessage) = t {
+  t := {
+    "component": component,
+    "value": value,
+    "message": traceMessage
+  }
+}
+
 # Builds an error message that can be returned to the calling client software
-error(shapeId, constraintId, target, value, message, traceMessage) = e {
+error(shapeId, target, message, traceLog) = e {
   id := target["@id"]
   e := {
     "shapeId": shapeId,
-    "constraintId": constraintId,
     "target": id,
-    "value": value,
     "message": message,
-    "traceMessage": traceMessage
+    "trace": traceLog
   }
 }
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Operation"
+ target_class[x] with data.class as "apiContract:Operation"
   x_0_b87947f49ae3eed9ba2e63e2c81fd029 = x["apiContract:method"]
   gen_invalues_1 = {"publish","subscribe"}
   not gen_invalues_1[x_0_b87947f49ae3eed9ba2e63e2c81fd029]
-  matches := error("validation1","in",x, x_0_b87947f49ae3eed9ba2e63e2c81fd029, "Value no in set {'publish','subscribe'}", "This is the message")
+  _result_0 := trace("in", x_0_b87947f49ae3eed9ba2e63e2c81fd029, "Value no in set {'publish','subscribe'}")
+  matches := error("validation1", x, "This is the message", [_result_0])
 }
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Operation"
+ target_class[x] with data.class as "apiContract:Operation"
   x_0_b87947f49ae3eed9ba2e63e2c81fd029 = object.get(x,"apiContract:method",[])
   gen_propValues_2 = nodes_array with data.nodes as x_0_b87947f49ae3eed9ba2e63e2c81fd029
   not count(gen_propValues_2) >= 1
-  matches := error("validation1","minCount",x, count(gen_propValues_2), "Value not matching minCount 1", "This is the message")
+  _result_0 := trace("minCount", count(gen_propValues_2), "Value not matching minCount 1")
+  matches := error("validation1", x, "This is the message", [_result_0])
 }
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Operation"
+ target_class[x] with data.class as "apiContract:Operation"
   x_0_a82db48390e82e6cd3d806595c67bd32 = x["shacl:name"]
   not regex.match(x_0_a82db48390e82e6cd3d806595c67bd32, "^put|post$")
-  matches := error("validation1","match",x, x_0_a82db48390e82e6cd3d806595c67bd32, "Value does not match regular expression {'^put|post$'}", "This is the message")
+  _result_0 := trace("match", x_0_a82db48390e82e6cd3d806595c67bd32, "Value does not match regular expression {'^put|post$'}")
+  matches := error("validation1", x, "This is the message", [_result_0])
 }

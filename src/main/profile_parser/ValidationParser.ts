@@ -1,61 +1,58 @@
-import {Quantification, Rule} from "../model/Rule";
+import {Rule, Variable} from "../model/Rule";
 import {ConstraintParser} from "./ConstraintParser";
 import {AndRule} from "../model/rules/AndRule";
 import {Expression} from "../model/Expression";
-import {Implication} from "../model/Implication";
-import {ClassTarget} from "../model/constraints/ClassTarget";
+import {OrRule} from "../model/rules/OrRule";
 
 export class ValidationParser {
 
     private data: any;
-    private message: string;
-    private targetClass: string;
-    private name: string|null;
-    private level: string;
+    private expression: Expression;
+    private variable: Variable;
 
-    constructor(name: string|null, data: any, level: string) {
-        this.name = name;
+    constructor(expression: Expression, variable: Variable, data: any) {
         this.data = data;
-        this.level = level;
+        this.variable = variable;
+        this.expression = expression;
     }
 
 
-    parse(): Expression {
-        this.targetClass = this.data.targetClass;
-        this.message = this.data.message || "Validation error"
+    parse(): Rule {
         switch (this.parseType()) {
             case "implicitAnd":
                 return this.parseImplicitAnd();
+            case "or":
+                return this.parseOr();
             default:
-                throw new Error("Unknown validation type");
+                throw new Error(`Unknown validation type ${JSON.stringify(this.data)}`);
         }
     }
 
     private parseType() {
         if (this.data.propertyConstraints != null) {
             return "implicitAnd";
+        } else if (this.data.or != null) {
+            return "or"
         } else {
             return null;
         }
     }
 
     private parseImplicitAnd() {
-        const expression = new Expression(false, this.name, this.message, this.level);
-        const v = expression.genVar(Quantification.ForAll);
 
         const body: Rule[] = [];
         Object.keys(this.data.propertyConstraints).map((path) => {
             const value = this.data.propertyConstraints[path];
-            new ConstraintParser(expression, v, path, value).parse().forEach(r => body.push(r));
+            new ConstraintParser(this.expression, this.variable, path, value).parse().forEach(r => body.push(r));
         });
-        const implicitAnd = new AndRule(false).withBody(body);
+        return new AndRule(false).withBody(body);
+    }
 
-        const headTarget = new ClassTarget(false, v, this.targetClass);
-
-        const implication = new Implication(false, v, headTarget, implicitAnd)
-
-        expression.rule = implication;
-
-        return expression;
+    private parseOr() {
+        const variables:{[name: string]: Variable} = {};
+        const nestedRules = this.data.or.map((nestedConstraint) => {
+            return new ValidationParser(this.expression, this.variable, nestedConstraint).parse();
+        });
+        return new OrRule(false).withBody(nestedRules);
     }
 }

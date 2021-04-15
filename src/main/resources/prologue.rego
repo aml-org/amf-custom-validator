@@ -45,15 +45,22 @@ target_class_negated[result] {
   result := node
 }
 
+# Traces one evaluation of a constraint
+trace(component, value, traceMessage) = t {
+  t := {
+    "component": component,
+    "value": value,
+    "message": traceMessage
+  }
+}
+
 # Builds an error message that can be returned to the calling client software
-error(shapeId, constraintId, target, value, message, traceMessage) = e {
+error(shapeId, target, message, traceLog) = e {
   id := target["@id"]
   e := {
     "shapeId": shapeId,
-    "constraintId": constraintId,
     "target": id,
-    "value": value,
     "message": message,
-    "traceMessage": traceMessage
+    "trace": traceLog
   }
 }

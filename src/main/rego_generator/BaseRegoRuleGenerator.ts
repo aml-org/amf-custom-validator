@@ -15,3 +15,10 @@ export abstract class BaseRegoAtomicRuleGenerator extends  BaseRegoRuleGenerator
     }
     abstract generateResult(): RegoRuleResult
 }
+
+export abstract class BaseRegoComplexRuleGenerator extends  BaseRegoRuleGenerator {
+    generate(): string {
+        return this.generateResult().map((r) => r.rego).join("\n");
+    }
+    abstract generateResult(): RegoRuleResult[]
+}

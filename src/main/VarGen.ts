@@ -5,3 +5,5 @@ export const genvar = (hint: string) => {
     return `gen_${hint}_${counter}`;
 }
 
+export const reset = () => counter = 0;
+

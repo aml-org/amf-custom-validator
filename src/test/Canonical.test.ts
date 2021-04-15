@@ -7,6 +7,7 @@ import {Quantification, Variable} from "../main/model/Rule";
 import {OrRule} from "../main/model/rules/OrRule";
 import {ProfileParser} from "../main/ProfileParser";
 import {Canonical} from "../main/model/CanonicalCheck";
+import * as fs from "fs";
 
 describe("Canonical check", () => {
     it ("Should check if a formula is canonical", () => {
@@ -58,15 +59,23 @@ describe("Canonical check", () => {
 
     });
 })
+
+const canonicalTest = async (path: string, violationName: string) => {
+    const parser = new ProfileParser(path);
+    const profile = await parser.parse();
+    const validations = profile.validations
+    const expected = await fs.promises.readFile(path.replace(".yaml", ".canonical"))
+    const validation1 = validations.find((violation) => violation.name == violationName);
+    const canonical = <Expression>validation1.toCanonicalForm();
+    return assert.equal(canonical.toString(), expected);
+}
 describe("Canonical form", () => {
     it("Should transform simple validations into canonical form", async () => {
-        const parser = new ProfileParser("src/test/resources/profile1.yaml");
-        const profile = await parser.parse();
-        const validations = profile.validations
+        return await canonicalTest("src/test/resources/profile1.yaml", "validation1");
+    });
 
-        const validation1 = validations.find((violation) => violation.name == "validation1");
-        const canonical = <Expression>validation1.toCanonicalForm();
-        assert.equal(canonical.toString(), "validation1[VIOLATION] := ¬ ∃x : ( ( ¬In(x,'apiContract:method',[publish,subscribe]) ∧ Class(x,'apiContract:Operation') ) ∨ ( ¬MinCount(x,'apiContract:method',1) ∧ Class(x,'apiContract:Operation') ) ∨ ( ¬Pattern(x,'shacl:name','^put|post$') ∧ Class(x,'apiContract:Operation') ) )");
+    it("Should transform simple validations with an OR rule into canonical form", async () => {
+        return await canonicalTest("src/test/resources/profile2.yaml", "validation1");
     });
 
     it("Should transform simple formulas 1", async () => {

@@ -3,6 +3,7 @@ import * as fs from "fs";
 import {Profile} from "./model/Profile";
 import {ValidationParser} from "./profile_parser/ValidationParser";
 import {Level} from "./model/Rule";
+import {ExpressionParser} from "./profile_parser/ExpressionParser";
 
 export class ProfileParser {
     private path: string;
@@ -26,7 +27,7 @@ export class ProfileParser {
         const violations = this.data.violation || [];
         const validations = violations.map(violation => {
             const validation = this.findValidation(violation)
-            return new ValidationParser(violation, validation, Level.Violation).parse();
+            return new ExpressionParser(violation, validation, Level.Violation).parse();
         });
 
         return validations;

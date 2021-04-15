@@ -61,7 +61,6 @@ export abstract class Rule extends Statement {
         super(negated);
     }
 
-    abstract toRego(): string;
     abstract toString(): string;
 }
 

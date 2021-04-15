@@ -11,10 +11,6 @@ export class ClassTarget extends AtomicRule {
         return new ClassTarget(!this.negated, this.variable, this.argument);
     }
 
-    toRego(): string {
-        return "";
-    }
-
     toString(): string {
         let negation = ""
         if (this.negated) {

@@ -1,0 +1,1 @@
+validation1[VIOLATION] := ¬ ∃x : ( ( ¬In(x,'apiContract:method',[publish,subscribe]) ∧ Class(x,'apiContract:Operation') ) ∨ ( ¬MinCount(x,'apiContract:method',1) ∧ Class(x,'apiContract:Operation') ) ∨ ( ¬Pattern(x,'shacl:name','^put|post$') ∧ Class(x,'apiContract:Operation') ) )
