@@ -1,5 +1,4 @@
 import {ComplexRule, Rule, Statement, Variable} from "./Rule";
-import {Expression} from "./Expression";
 import {AndRule} from "./rules/AndRule";
 import {OrRule} from "./rules/OrRule";
 
@@ -15,10 +14,14 @@ export class Implication extends ComplexRule {
     }
 
     negation(): Rule {
-        const andRule = new AndRule(false);
-        const negatedBody = <Rule>this.body[0].negation();
-        andRule.withBody([this.head, negatedBody]);
-        return andRule;
+        if (this.negated) {
+            return new Implication(false, this.variable, this.head, this.body[0])
+        } else {
+            const andRule = new AndRule(false);
+            const negatedBody = <Rule>this.body[0].negation();
+            andRule.withBody([this.head, negatedBody]);
+            return andRule;
+        }
     }
 
     toRego(): string {

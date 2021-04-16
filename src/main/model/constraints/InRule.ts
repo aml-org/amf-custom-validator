@@ -6,10 +6,6 @@ export class InRule extends AtomicRule {
         super(negated, variable, "pattern", path, argument);
     }
 
-    toRego(): string {
-        return "";
-    }
-
     toString(): string {
         let negation = ""
         if (this.negated) {

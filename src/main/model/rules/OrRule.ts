@@ -1,4 +1,4 @@
-import {AtomicRule, ComplexRule, Rule} from "../Rule";
+import {ComplexRule, Rule} from "../Rule";
 import {AndRule} from "./AndRule";
 import {Canonical} from "../CanonicalCheck";
 
@@ -8,14 +8,18 @@ export class OrRule extends ComplexRule {
     }
 
     negation(): Rule {
-        const body = <Rule[]>this.body.map((rule) => rule.negation());
-        const newRule = new AndRule(this.negated);
-        newRule.withBody(body);
-        return newRule;
+        return new OrRule(!this.negated).withBody(this.body)
+        /*
+        if (this.negated) {
+            return new OrRule(false).withBody(this.body);
+        } else {
+            return this.deMorgan();
+        }
+         */
     }
 
-    toRego(): string {
-        return "";
+    deMorgan(): Rule {
+        return new AndRule(!this.negated).withBody(<Rule[]>this.body.map((e) => e.negation()));
     }
 
     toString(): string {
@@ -29,19 +33,35 @@ export class OrRule extends ComplexRule {
 
     toCanonicalForm(): Rule {
         if (this.negated) {
-            return <Rule>this.negation().toCanonicalForm();
+            return <Rule>this.deMorgan().toCanonicalForm();
         } else {
+            // flatten nested ORs
+            let flattenedBody = []
+            this.body.map((e) => {
+                if (e instanceof OrRule && !e.negated) {
+                    flattenedBody = flattenedBody.concat(e.body);
+                } else {
+                    flattenedBody.push(e);
+                }
+            });
+            this.body = flattenedBody;
+
             if (this.body.length === 1) {
-                return <Rule>this.body[0];
+                return <Rule>this.body[0].toCanonicalForm();
             } else if (Canonical.check(this)) {
                 return this;
             } else {
                 const tmp = this.body.map((r) => <Rule>r.toCanonicalForm());
-                let acc: Rule = <Rule>tmp.shift();
-                tmp.forEach((e) => {
-                    acc = this.distributeOr(acc, e);
-                });
-                return acc;
+                const tmpOr = new OrRule(this.negated).withBody(tmp);
+                if (Canonical.check(tmpOr)) {
+                    return tmpOr
+                } else {
+                    let acc: Rule = <Rule>tmp.shift();
+                    tmp.forEach((e) => {
+                        acc = this.distributeOr(acc, e);
+                    });
+                    return acc;
+                }
             }
         }
     }

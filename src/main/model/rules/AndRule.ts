@@ -1,4 +1,4 @@
-import {AtomicRule, ComplexRule, Rule, Statement} from "../Rule";
+import {ComplexRule, Rule, Statement} from "../Rule";
 import {OrRule} from "./OrRule";
 import {Canonical} from "../CanonicalCheck";
 
@@ -8,14 +8,11 @@ export class AndRule extends ComplexRule {
     }
 
     negation(): Rule {
-        const body = <Rule[]>this.body.map((rule) => rule.negation());
-        const newRule = new OrRule(this.negated);
-        newRule.withBody(body);
-        return newRule;
+        return new AndRule(!this.negated).withBody(this.body)
     }
 
-    toRego(): string {
-        return "";
+    deMorgan(): Rule {
+        return new OrRule(!this.negated).withBody(<Rule[]>this.body.map((rule) => rule.negation()))
     }
 
     toString(): string {
@@ -29,19 +26,35 @@ export class AndRule extends ComplexRule {
 
     toCanonicalForm(): Rule {
         if (this.negated) {
-            return <Rule>this.negation().toCanonicalForm();
+            return <Rule>this.deMorgan().toCanonicalForm();
         } else {
             if (this.body.length === 1) {
-                return <Rule>this.body[0];
+                return <Rule>this.body[0].toCanonicalForm();
             } else if (Canonical.check(this)) {
                 return this;
             } else {
-                const tmp = this.body.map((r) => <Rule>r.toCanonicalForm());
-                let acc: Rule = <Rule>tmp.shift();
-                tmp.forEach((e) => {
-                    acc = this.distributeAnd(acc, e);
+                // flatten nested ANDs
+                let flattenedBody = []
+                this.body.map((e) => {
+                    if (e instanceof AndRule && !e.negated) {
+                        flattenedBody = flattenedBody.concat(e.body);
+                    } else {
+                        flattenedBody.push(e);
+                    }
                 });
-                return acc;
+                this.body = flattenedBody;
+
+                const tmp = this.body.map((r) => <Rule>r.toCanonicalForm());
+                const tmpAnd = new AndRule(this.negated).withBody(tmp);
+                if (Canonical.check(tmpAnd)) {
+                    return tmpAnd
+                } else {
+                    let acc: Rule = <Rule>tmp.shift();
+                    tmp.forEach((e) => {
+                        acc = this.distributeAnd(acc, e);
+                    });
+                    return acc;
+                }
             }
         }
     }
