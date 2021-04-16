@@ -136,5 +136,24 @@ describe("Canonical synthetic", () => {
         ])
         const canonical = <Expression>cond.toCanonicalForm();
         assert.equal(canonical.toString(), "( ( ¬A ∧ ¬D ∧ ¬E ) ∨ ( ¬B ∧ ¬D ∧ ¬E ) )");
+    });
+
+    it ("Should normalize complex negations 2", async () => {
+        //const cond = new OrRule(true).withBody([
+
+        //]);
+        const cond = new OrRule(true).withBody([
+            new AndRule(false).withBody([
+                PB.pred("A"),
+                PB.pred("B"),
+            ]),
+            new OrRule(false).withBody([
+                PB.pred("D"),
+                PB.pred("E")
+            ]),
+            PB.pred("M")
+        ]);
+        const canonical = <Expression>cond.toCanonicalForm();
+        assert.equal(canonical.toString(), "( ( ¬A ∧ ¬D ∧ ¬E ∧ ¬M ) ∨ ( ¬B ∧ ¬D ∧ ¬E ∧ ¬M ) )");
     })
 });

@@ -1,9 +1,12 @@
 import {PathParser} from "./PathParser";
-import {Rule, Variable} from "../model/Rule";
+import {Quantification, Rule, Variable} from "../model/Rule";
 import {MinCountRule} from "../model/constraints/MinCountRule";
 import {PatternRule} from "../model/constraints/PatternRule";
 import {InRule} from "../model/constraints/InRule";
 import {Expression} from "../model/Expression";
+import {ValidationParser} from "./ValidationParser";
+import {AndRule} from "../model/rules/AndRule";
+import {NestedRule} from "../model/rules/NestedRule";
 
 
 export class ConstraintParser {
@@ -27,6 +30,8 @@ export class ConstraintParser {
                     return this.parsePattern(this.constraints[constraint]);
                 case "in":
                     return this.parseIn(this.constraints[constraint]);
+                case "nested":
+                    return this.parseNested(this.constraints[constraint]);
                 default:
                     throw new Error(`Constraint ${constraint} not supported yet`);
             }
@@ -46,4 +51,12 @@ export class ConstraintParser {
     private parseIn(constraint: any): Rule {
         return new InRule(false, this.variable, this.path, constraint);
     }
+
+    private parseNested(constraint: any) {
+        const nextVar = this.expression.genVar(Quantification.ForAll);
+        const nested = new ValidationParser(this.expression, nextVar, constraint).parse()
+        const nestedRule = new NestedRule(false, this.variable, nextVar, this.path);
+        return new AndRule(false).withBody([nestedRule,nested]);
+    }
+
 }
