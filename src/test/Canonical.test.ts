@@ -78,6 +78,10 @@ describe("Canonical form", () => {
         return await canonicalTest("src/test/resources/profile2.yaml", "validation1");
     });
 
+    it("Should transform simple validations with a simmple OR rule into canonical form", async () => {
+        return await canonicalTest("src/test/resources/profile3.yaml", "validation1");
+    });
+
     it("Should transform simple formulas 1", async () => {
         const v = new Variable("x", Quantification.ForAll);
 

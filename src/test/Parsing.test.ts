@@ -18,4 +18,8 @@ describe("Profile parsing", () => {
     it("Should parse an or validation profile", async () => {
         return await testParsing("src/test/resources/profile2.yaml")
     });
+
+    it("Should parse a simple or validation profile", async () => {
+        return await testParsing("src/test/resources/profile3.yaml")
+    });
 });

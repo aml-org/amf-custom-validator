@@ -22,4 +22,8 @@ describe("Expression negation", () => {
     it("Should negate correctly an OR rule expression", async () => {
         return await testNegation("src/test/resources/profile2.yaml", "validation1");
     });
+
+    it("Should negate correctly a simple OR rule expression", async () => {
+        return await testNegation("src/test/resources/profile3.yaml", "validation1");
+    });
 });
