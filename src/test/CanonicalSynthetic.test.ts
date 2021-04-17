@@ -5,6 +5,7 @@ import {AndRule} from "../main/model/rules/AndRule";
 import {InRule} from "../main/model/constraints/InRule";
 import {AtomicRule, Quantification, Rule, Variable} from "../main/model/Rule";
 import {OrRule} from "../main/model/rules/OrRule";
+import {Implication} from "../main/model/Implication";
 
 /**
  * Test Rule to geenrate statements
@@ -139,9 +140,6 @@ describe("Canonical synthetic", () => {
     });
 
     it ("Should normalize complex negations 2", async () => {
-        //const cond = new OrRule(true).withBody([
-
-        //]);
         const cond = new OrRule(true).withBody([
             new AndRule(false).withBody([
                 PB.pred("A"),
@@ -155,5 +153,20 @@ describe("Canonical synthetic", () => {
         ]);
         const canonical = <Expression>cond.toCanonicalForm();
         assert.equal(canonical.toString(), "( ( ¬A ∧ ¬D ∧ ¬E ∧ ¬M ) ∨ ( ¬B ∧ ¬D ∧ ¬E ∧ ¬M ) )");
+    });
+
+    it("Should normalize conditionals with nested ANDs", () => {
+        const cond = new Implication(false, new Variable("x", Quantification.ForAll),
+            PB.pred("A"),
+            new AndRule(false).withBody([
+                PB.pred("B"),
+                new AndRule(false).withBody([
+                    PB.pred("C"),
+                    PB.pred("D")
+                ])
+            ]));
+        console.log(cond.toString());
+        const canonical = <Expression>cond.toCanonicalForm();
+        assert.equal(canonical.toString(), "( ¬A ∨ ( B ∧ C ∧ D ) )");
     })
 });

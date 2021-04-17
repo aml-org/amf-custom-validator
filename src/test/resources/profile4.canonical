@@ -1,0 +1,1 @@
+validation1[VIOLATION] := ¬ ∃x,¬ ∃y : ( ( ¬MinCount(x,'raml-shapes:schema',1) ∧ Class(x,'apiContract:Parameter') ) ∨ ( Nested(x,y,'raml-shapes:schema') ∧ ¬MinCount(y,'shacl:minLength',1) ∧ Class(x,'apiContract:Parameter') ) )

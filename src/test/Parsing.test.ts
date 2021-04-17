@@ -8,7 +8,7 @@ const testParsing = async (profilePath: string) => {
     const parser = new ProfileParser(profilePath);
     const profile = await parser.parse();
     const expressions = profile.toString();
-    return assert.equal(expressions, expected);
+    return assert.equal(expressions, expected.toString());
 }
 describe("Profile parsing", () => {
     it("Should parse a simple validation profile", async () => {

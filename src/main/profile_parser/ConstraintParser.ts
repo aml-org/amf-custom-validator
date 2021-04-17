@@ -6,7 +6,8 @@ import {InRule} from "../model/constraints/InRule";
 import {Expression} from "../model/Expression";
 import {ValidationParser} from "./ValidationParser";
 import {AndRule} from "../model/rules/AndRule";
-import {NestedRule} from "../model/rules/NestedRule";
+import {NestedRule} from "../model/constraints/NestedRule";
+import {Implication} from "../model/Implication";
 
 
 export class ConstraintParser {
@@ -56,7 +57,7 @@ export class ConstraintParser {
         const nextVar = this.expression.genVar(Quantification.ForAll);
         const nested = new ValidationParser(this.expression, nextVar, constraint).parse()
         const nestedRule = new NestedRule(false, this.variable, nextVar, this.path);
-        return new AndRule(false).withBody([nestedRule,nested]);
+        return new Implication(false, this.variable, nestedRule,nested);
     }
 
 }

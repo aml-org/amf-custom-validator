@@ -50,7 +50,7 @@ export class Expression extends Statement {
         }
         let varsText = [];
         this.variables.forEach((v) => varsText.push(v.toString()));
-        return `${this.name}[${this.level}] := ${negation} ${varsText.join(",")} : ${this.rule.toString()}`
+        return `${this.name}[${this.level}] := ${varsText.map((v) => `${negation} ${v}`).join(",")} : ${this.rule.toString()}`
     }
 
     toCanonicalForm(): Expression {

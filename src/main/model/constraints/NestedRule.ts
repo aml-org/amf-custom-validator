@@ -1,8 +1,8 @@
 import {AtomicRule, Rule, Variable} from "../Rule";
 
 export class NestedRule extends AtomicRule {
-    private parent: Variable;
-    private child: Variable;
+    public readonly parent: Variable;
+    public readonly child: Variable;
 
     constructor(negated, parent: Variable, child: Variable, path: string[]) {
         super(negated, parent, "nested", path, child);

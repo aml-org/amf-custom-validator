@@ -8,10 +8,11 @@ import {PatternRule} from "../model/constraints/PatternRule";
 import {InRuleGenerator} from "./constraints/InRuleGenerator";
 import {PatternRuleGenerator} from "./constraints/PatternRuleGenerator";
 import {MinCountRuleGenerator} from "./constraints/MinCountRuleGenerator";
+import {NestedRule} from "../model/constraints/NestedRule";
+import {NestedRuleGenerator} from "./constraints/NestedRuleGenerator";
 
 export class AndRuleGenerator extends BaseRegoComplexRuleGenerator {
     private rule: AndRule;
-    private ruleGroups: {[variable: string]: Rule[]} = {};
     private expression: Expression;
 
     constructor(expression: Expression, rule: AndRule) {
@@ -22,8 +23,7 @@ export class AndRuleGenerator extends BaseRegoComplexRuleGenerator {
     }
 
     generateResult(): RegoRuleResult[] {
-        this.groupRules();
-        return this.generateFromGroups();
+        return this.generateNodeSet();
     }
 
     private validRule() {
@@ -32,30 +32,10 @@ export class AndRuleGenerator extends BaseRegoComplexRuleGenerator {
         }
     }
 
-    private groupRules() {
-        this.rule.body.forEach((r) => {
-            const atomicRule = <AtomicRule> r;
-            const group = this.ruleGroups[atomicRule.variable.name] || [];
-            group.push(atomicRule);
-            this.ruleGroups[atomicRule.variable.name] = group;
-        });
-    }
 
-    private generateFromGroups() {
-        if (Object.keys(this.ruleGroups).length > 1) {
-            throw new Error("More than one rule group per AND condition not supported yet");
-        }
-        const results: RegoRuleResult[] = [];
-        Object.keys(this.ruleGroups).map((variable) => {
-            const group = this.ruleGroups[variable];
-            this.generateNodeSet(group).forEach((result) => results.push(result));
-        });
-        return results;
-    }
-
-    private generateNodeSet(group: Rule[]): RegoRuleResult[] {
+    private generateNodeSet(): RegoRuleResult[] {
         const rego: RegoRuleResult[] = [];
-        group.forEach((rule) => {
+        this.rule.body.forEach((rule) => {
             rego.push(this.dispatchRule(rule));
         });
         return rego;
@@ -68,6 +48,8 @@ export class AndRuleGenerator extends BaseRegoComplexRuleGenerator {
             return new MinCountRuleGenerator(rule).generateResult();
         } else if (rule instanceof PatternRule) {
             return new PatternRuleGenerator(rule).generateResult();
+        } else if (rule instanceof NestedRule) {
+            return new NestedRuleGenerator(rule).generateResult();
         } else {
             throw new Error(`Unsupported rule ${rule}`);
         }

@@ -25,4 +25,8 @@ describe("Canonical form", () => {
     it("Should transform simple validations with a simple OR rule into canonical form", async () => {
         return await canonicalTest("src/test/resources/profile3.yaml", "validation1");
     });
+
+    it("Should transform simple validations with a simple NESTED rule into canonical form", async () => {
+        return await canonicalTest("src/test/resources/profile4.yaml", "validation1");
+    });
 });

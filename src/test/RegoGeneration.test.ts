@@ -16,7 +16,6 @@ const testProfile = async (path: string) => {
     const parser = new ProfileParser(path);
     const profile = await parser.parse();
     const rego = new RegoGenerator(profile).generate();
-
     await RegoParser.check(rego); // let's check that this is valid Rego
     //await fs.promises.writeFile(path.replace(".yaml", ".rego"), rego);
     assert.equal(rego, loadGoldenFile(path));
@@ -34,6 +33,10 @@ describe("Rego generation", () => {
 
     it("Should generate Rego code from an AMF profile with a simple OR rule", async () => {
         return await testProfile("src/test/resources/profile3.yaml");
+    });
+
+    it("Should generate Rego code from an AMF profile with a simple NESTED rule", async () => {
+        return await testProfile("src/test/resources/profile4.yaml");
     });
 
 });
