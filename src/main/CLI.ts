@@ -22,7 +22,6 @@ if (cmd.opts().customProfile == null && cmd.opts().customProfileWasm == null) {
 
 const validator = new Validator(cmd.args[0], cmd.opts().formatIn, cmd.opts().mediaTypeIn, cmd.opts().customProfile, cmd.opts().customProfileWasm);
 validator.validate().then((result) => {
-    console.log("Result:");
     console.log(JSON.stringify(result.toJSON(), null,2));
     process.exit(0)
 }).catch((e) => {

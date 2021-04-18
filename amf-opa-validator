@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if docker images | grep amf-opa-validator 1>/dev/null; then
+  docker run --rm amf-opa-validator "$@"
+else
+  docker build . -t amf-opa-validator
+  docker run --rm amf-opa-validator "$@"
+fi
