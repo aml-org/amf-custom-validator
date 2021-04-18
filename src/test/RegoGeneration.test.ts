@@ -3,7 +3,7 @@ import { assert } from 'chai';
 import {ProfileParser} from "../main/ProfileParser";
 import {RegoGenerator} from "../main/RegoGenerator";
 import * as fs from "fs";
-import {RegoParser} from "../main/RegoParser";
+import {OPAWrapper} from "../main/OPAWrapper";
 import {reset} from "../main/VarGen";
 
 const loadGoldenFile = (path: string) => {
@@ -16,7 +16,7 @@ const testProfile = async (path: string) => {
     const parser = new ProfileParser(path);
     const profile = await parser.parse();
     const rego = new RegoGenerator(profile).generate();
-    await RegoParser.check(rego); // let's check that this is valid Rego
+    await OPAWrapper.check(rego); // let's check that this is valid Rego
     //await fs.promises.writeFile(path.replace(".yaml", ".rego"), rego);
     assert.equal(rego, loadGoldenFile(path));
 }

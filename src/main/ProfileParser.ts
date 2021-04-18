@@ -18,16 +18,16 @@ export class ProfileParser {
 
     async parse() {
         this.data = await this.parseYaml();
-        let expressions = [];
-        expressions = expressions.concat(this.parseViolations());
-        return new Profile(this.data.profile, expressions);
+        const violations = this.parseValidations(this.data.violation || [], Level.Violation);
+        const warnings = this.parseValidations(this.data.warning || [], Level.Warning);
+        const infos = this.parseValidations(this.data.info || [], Level.Info);
+        return new Profile(this.data.profile, violations, warnings,infos);
     }
 
-    private parseViolations() {
-        const violations = this.data.violation || [];
-        const validations = violations.map(violation => {
-            const validation = this.findValidation(violation)
-            return new ExpressionParser(violation, validation, Level.Violation).parse();
+    private parseValidations(validationNames: string[], level: string) {
+        const validations = validationNames.map( validationName => {
+            const validation = this.findValidation(validationName)
+            return new ExpressionParser(validationName, validation, Level.Violation).parse();
         });
 
         return validations;

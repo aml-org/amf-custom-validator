@@ -3,7 +3,7 @@ import * as os from 'os'
 import * as uuid from 'uuid';
 import * as fs from "fs";
 
-export class RegoParser {
+export class OPAWrapper {
 
     private path: string;
     private entrypoint: string;
@@ -40,7 +40,7 @@ export class RegoParser {
         const tmpFile = `${os.tmpdir()}/rego${uuid.v4().replace(/-/g, "")}`;
         fs.writeFileSync(tmpFile, text);
         try {
-            const parsed = await  new RegoParser(tmpFile, entrypoint).parse();
+            const parsed = await  new OPAWrapper(tmpFile, entrypoint).parse();
             fs.unlinkSync(tmpFile);
             return parsed;
         } catch (e) {
@@ -64,7 +64,6 @@ export class RegoParser {
                 if (stderr) {
                     reject(new Error(stderr))
                 }
-                console.log(`stdout: ${stdout}`);
                 resolve(stdout);
             });
         })

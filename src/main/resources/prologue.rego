@@ -64,3 +64,27 @@ error(shapeId, target, message, traceLog) = e {
     "trace": traceLog
   }
 }
+
+# generate the report for violation level
+# default value must be added dynamically
+report[level] = matches {
+  vs = violation
+  level := "violation"
+  matches := vs
+}
+
+# generate the report for the info level
+# default value must be added dynamically
+report[level] = matches {
+  vs = info
+  level := "info"
+  matches := vs
+}
+
+# generate the report for the info level
+# default value must be added dynamically
+report[level] = matches {
+  vs = warning
+  level := "warning"
+  matches := vs
+}

@@ -1,9 +1,10 @@
 import {AmfParser} from "./model/AmfParser";
 import {ProfileParser} from "./ProfileParser";
-import {RegoParser} from "./RegoParser";
+import {OPAWrapper} from "./OPAWrapper";
 import {RegoGenerator} from "./RegoGenerator";
 import {loadPolicy} from "@open-policy-agent/opa-wasm";
 import * as fs from "fs";
+import {Report} from "./validator/Report";
 
 export class Validator {
     private format: string;
@@ -20,18 +21,19 @@ export class Validator {
         this.customProfileWasm = customProfileWasm;
     }
 
-    async validate() {
+    async validate(): Promise<Report> {
         const parsedJSONLD = await new AmfParser(this.file, this.format, this.mediaType).parse();
         //console.log("=============")
         //console.log("DATA");
-        //console.log(parsedJSONLD);
+        //console.log(JSON.stringify(parsedJSONLD,null,2));
         const parsedProfile = await new ProfileParser(this.customProfile).parse();
         const rego = new RegoGenerator(parsedProfile).generate();
         //console.log("=============")
         //console.log("PROFILE");
         //console.log(rego);
-        const wasmFile = await RegoParser.fromText(rego, parsedProfile.entrypoint());
-        return await this.evalute(wasmFile, parsedJSONLD)
+        const wasmFile = await OPAWrapper.fromText(rego, parsedProfile.entrypoint());
+        const evaluationReport = await this.evalute(wasmFile, parsedJSONLD)
+        return new Report(evaluationReport);
     }
 
     async evalute(wasmFile: string, parsedJSONLD: any) {
@@ -47,4 +49,6 @@ export class Validator {
             throw e;
         }
     }
+
+
 }

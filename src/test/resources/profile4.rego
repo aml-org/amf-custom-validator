@@ -65,6 +65,34 @@ error(shapeId, target, message, traceLog) = e {
     "trace": traceLog
   }
 }
+
+# generate the report for violation level
+# default value must be added dynamically
+report[level] = matches {
+  vs = violation
+  level := "violation"
+  matches := vs
+}
+
+# generate the report for the info level
+# default value must be added dynamically
+report[level] = matches {
+  vs = info
+  level := "info"
+  matches := vs
+}
+
+# generate the report for the info level
+# default value must be added dynamically
+report[level] = matches {
+  vs = warning
+  level := "warning"
+  matches := vs
+}
+
+default warning = []
+
+default info = []
 violation[matches] {
  target_class[x] with data.class as "apiContract:Parameter"
   x_0_3ed56a339985dc6c4996fc7dd095b8dc = object.get(x,"raml-shapes:schema",[])
@@ -76,7 +104,7 @@ violation[matches] {
 violation[matches] {
  target_class[x] with data.class as "apiContract:Parameter"
   x_0_3ed56a339985dc6c4996fc7dd095b8dc = x["raml-shapes:schema"]
-  y = x_0_3ed56a339985dc6c4996fc7dd095b8dc
+  y = find with data.link as x_0_3ed56a339985dc6c4996fc7dd095b8dc
   _result_0 := trace("nested", y, "Not nested matching constraints for parent ∀x and child ∀y under raml-shapes:schema")
   y_0_08eac10d8cc13f13d197f0a5ede2e5e1 = object.get(y,"shacl:minLength",[])
   gen_propValues_2 = nodes_array with data.nodes as y_0_08eac10d8cc13f13d197f0a5ede2e5e1

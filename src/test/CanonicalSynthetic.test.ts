@@ -165,7 +165,6 @@ describe("Canonical synthetic", () => {
                     PB.pred("D")
                 ])
             ]));
-        console.log(cond.toString());
         const canonical = <Expression>cond.toCanonicalForm();
         assert.equal(canonical.toString(), "( ¬A ∨ ( B ∧ C ∧ D ) )");
     })

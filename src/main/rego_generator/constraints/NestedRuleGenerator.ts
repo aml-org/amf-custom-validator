@@ -16,9 +16,9 @@ export class NestedRuleGenerator extends BaseRegoAtomicRuleGenerator {
         const rego = pathResult.rego;
 
         if (this.rule.negated) {
-            rego.push(`not ${this.rule.child.name} = ${pathResult.variable}`);
+            rego.push(`not ${this.rule.child.name} = find with data.link as${pathResult.variable}`);
         } else {
-            rego.push(`${this.rule.child.name} = ${pathResult.variable}`);
+            rego.push(`${this.rule.child.name} = find with data.link as ${pathResult.variable}`);
         }
         return {
             constraintId: "nested",

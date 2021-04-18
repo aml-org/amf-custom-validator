@@ -65,6 +65,34 @@ error(shapeId, target, message, traceLog) = e {
     "trace": traceLog
   }
 }
+
+# generate the report for violation level
+# default value must be added dynamically
+report[level] = matches {
+  vs = violation
+  level := "violation"
+  matches := vs
+}
+
+# generate the report for the info level
+# default value must be added dynamically
+report[level] = matches {
+  vs = info
+  level := "info"
+  matches := vs
+}
+
+# generate the report for the info level
+# default value must be added dynamically
+report[level] = matches {
+  vs = warning
+  level := "warning"
+  matches := vs
+}
+
+default warning = []
+
+default info = []
 violation[matches] {
  target_class[x] with data.class as "apiContract:Operation"
   x_0_b87947f49ae3eed9ba2e63e2c81fd029 = x["apiContract:method"]

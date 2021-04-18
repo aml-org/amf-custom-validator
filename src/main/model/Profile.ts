@@ -3,10 +3,16 @@ import {Expression} from "./Expression";
 export class Profile {
     public readonly validations: Expression[];
     public readonly name: string;
+    public readonly violations: Expression[];
+    public readonly warnings: Expression[];
+    public readonly infos: Expression[];
 
-    constructor(name: string, validations: Expression[]) {
+    constructor(name: string, violations: Expression[], warnings: Expression[], infos: Expression[]) {
         this.name = name;
-        this.validations = validations;
+        this.violations = violations;
+        this.warnings = warnings
+        this.infos = infos;
+        this.validations = this.violations.concat(this.warnings).concat(this.infos);
     }
 
     /**
@@ -30,6 +36,7 @@ export class Profile {
     }
 
     entrypoint() {
-        return this.packageName() + "/violation";
+        return this.packageName() + "/report";
     }
+
 }
