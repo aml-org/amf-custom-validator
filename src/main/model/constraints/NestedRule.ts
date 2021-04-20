@@ -15,10 +15,18 @@ export class NestedRule extends AtomicRule {
             negation = "¬"
         }
 
-        return `${negation}Nested(${this.parent.name},${this.child.name},'${this.path.join("/")}')`;
+        if (this.child.cardinality != null) {
+            return `${negation}Nested(${this.parent.name},${this.child.name},'${this.path.join("/")}')`;
+        } else {
+            return `${negation}Nested(${this.parent.name},${this.child.name},'${this.path.join("/")}')`;
+        }
     }
 
     negation(): Rule {
-        return new NestedRule(!this.negated, this.parent, this.child, this.path)
+        if (this.child.cardinality != null) {
+            return new NestedRule(!this.negated, this.parent, this.child.negation(), this.path)
+        } else {
+            return new NestedRule(!this.negated, this.parent, this.child, this.path)
+        }
     }
 }

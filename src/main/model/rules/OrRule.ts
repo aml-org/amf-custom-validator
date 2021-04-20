@@ -1,6 +1,7 @@
 import {ComplexRule, Rule} from "../Rule";
 import {AndRule} from "./AndRule";
 import {Canonical} from "../CanonicalCheck";
+import {Expression} from "../Expression";
 
 export class OrRule extends ComplexRule {
     constructor(negated: boolean) {
@@ -9,13 +10,6 @@ export class OrRule extends ComplexRule {
 
     negation(): Rule {
         return new OrRule(!this.negated).withBody(this.body)
-        /*
-        if (this.negated) {
-            return new OrRule(false).withBody(this.body);
-        } else {
-            return this.deMorgan();
-        }
-         */
     }
 
     deMorgan(): Rule {
@@ -67,6 +61,23 @@ export class OrRule extends ComplexRule {
     }
 
     distributeOr(exp1: Rule, exp2: Rule): Rule {
+        // accumulate expressions
+        if (exp1 instanceof Expression && exp2 instanceof Expression) {
+            exp2.variables.forEach((v) => exp1.variables.push(v));
+            const body = this.distributeOr(exp1.rule, exp2.rule);
+            exp1.rule = body;
+            return exp1;
+        } else if (exp1 instanceof Expression) {
+            const body = this.distributeOr(exp1.rule, exp2);
+            exp1.rule = body;
+            return exp1;
+        } else if (exp2 instanceof Expression) {
+            const body = this.distributeOr(exp1, exp2.rule);
+            exp2.rule = body;
+            return exp2;
+        }
+
+        // distribute
         if (exp1 instanceof AndRule && exp2 instanceof AndRule) {
             return new OrRule(false).withBody([exp1, exp2]);
         } else if (exp2 instanceof AndRule) {

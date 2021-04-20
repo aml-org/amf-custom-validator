@@ -26,4 +26,8 @@ describe("Profile parsing", () => {
     it("Should parse a simple nested rule in a profile", async () => {
         return await testParsing("src/test/resources/profile4.yaml")
     });
+
+    it("Should parse a simple qualified rule in a profile", async () => {
+        return await testParsing("src/test/resources/profile5.yaml")
+    });
 });

@@ -1,11 +1,10 @@
 import {PathParser} from "./PathParser";
-import {Quantification, Rule, Variable} from "../model/Rule";
+import {CardinalityOperation, Quantification, Rule, Variable, VariableCardinality} from "../model/Rule";
 import {MinCountRule} from "../model/constraints/MinCountRule";
 import {PatternRule} from "../model/constraints/PatternRule";
 import {InRule} from "../model/constraints/InRule";
 import {Expression} from "../model/Expression";
 import {ValidationParser} from "./ValidationParser";
-import {AndRule} from "../model/rules/AndRule";
 import {NestedRule} from "../model/constraints/NestedRule";
 import {Implication} from "../model/Implication";
 
@@ -33,6 +32,10 @@ export class ConstraintParser {
                     return this.parseIn(this.constraints[constraint]);
                 case "nested":
                     return this.parseNested(this.constraints[constraint]);
+                case "atLeast":
+                    return this.parseQualifiedNested(this.constraints[constraint], CardinalityOperation.GTEQ);
+                case "atMost":
+                    return this.parseQualifiedNested(this.constraints[constraint], CardinalityOperation.LTEQ);
                 default:
                     throw new Error(`Constraint ${constraint} not supported yet`);
             }
@@ -54,10 +57,46 @@ export class ConstraintParser {
     }
 
     private parseNested(constraint: any) {
-        const nextVar = this.expression.genVar(Quantification.ForAll);
-        const nested = new ValidationParser(this.expression, nextVar, constraint).parse()
+        const nestedExpression = this.expression.subExpression(false);
+        const nextVar = nestedExpression.genVar(Quantification.ForAll);
+
+        const nested = new ValidationParser(nestedExpression, nextVar, constraint).parse()
         const nestedRule = new NestedRule(false, this.variable, nextVar, this.path);
-        return new Implication(false, this.variable, nestedRule,nested);
+        nestedExpression.rule = new Implication(false, this.variable, nestedRule,nested);
+        return nestedExpression;
     }
 
+    private parseQualifiedNested(constraint: any, cardinality: string) {
+        const count = <number>constraint.count;
+        let variableCardinality: VariableCardinality;
+        switch (cardinality) {
+            case CardinalityOperation.GTEQ:
+                variableCardinality = VariableCardinality.greaterThanOrEqual(count);
+                break;
+            case CardinalityOperation.GT:
+                variableCardinality = VariableCardinality.greaterThan(count);
+                break;
+            case CardinalityOperation.EQ:
+                variableCardinality = VariableCardinality.equal(count);
+                break;
+            case CardinalityOperation.NEQ:
+                variableCardinality = VariableCardinality.notEqual(count);
+                break;
+            case CardinalityOperation.LT:
+                variableCardinality = VariableCardinality.lessThan(count);
+                break;
+            case CardinalityOperation.LTEQ:
+                variableCardinality = VariableCardinality.lessThanOrEqual(count);
+                break;
+            default:
+                throw new Error("Unknown cardinality "+ cardinality);
+        }
+
+        const nestedExpression = this.expression.subExpression(false);
+        const nextVar = nestedExpression.genVar(Quantification.Exist, variableCardinality);
+        const nested = new ValidationParser(nestedExpression, nextVar, constraint.validation).parse()
+        const nestedRule = new NestedRule(false, this.variable, nextVar, this.path);
+        nestedExpression.rule = new Implication(false, this.variable, nestedRule,nested);
+        return nestedExpression;
+    }
 }

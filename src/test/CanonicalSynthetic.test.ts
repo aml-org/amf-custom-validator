@@ -168,4 +168,18 @@ describe("Canonical synthetic", () => {
         const canonical = <Expression>cond.toCanonicalForm();
         assert.equal(canonical.toString(), "( ¬A ∨ ( B ∧ C ∧ D ) )");
     })
+
+    it("Should normalize nested conditions with nested ANDs", () => {
+        const cond = new Implication(true, new Variable("x", Quantification.ForAll),
+            PB.pred("CX"),
+            new AndRule(false).withBody([
+                PB.pred("MX"),
+                new Implication(false , new Variable("y", Quantification.ForAll),
+                    PB.pred("NXY"),
+                    PB.pred("MY")
+                )
+            ]));
+        const canonical = <Expression>cond.toCanonicalForm();
+        assert.equal(canonical.toString(), "");
+    })
 });

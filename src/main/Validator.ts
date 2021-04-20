@@ -25,6 +25,10 @@ export class Validator {
 
     async validate(): Promise<Report> {
         const parsedJSONLD = await new AmfParser(this.file, this.format, this.mediaType).parse();
+        if (this.debug) {
+            console.log("\n\n** Data:\n")
+            console.log(JSON.stringify(parsedJSONLD, null, 2));
+        }
         const parsedProfile = await new ProfileParser(this.customProfile).parse();
         if (this.debug) {
             console.log("\n\n** Parsed rules:\n")

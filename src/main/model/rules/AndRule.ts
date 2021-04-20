@@ -1,6 +1,7 @@
 import {ComplexRule, Rule, Statement} from "../Rule";
 import {OrRule} from "./OrRule";
 import {Canonical} from "../CanonicalCheck";
+import {Expression} from "../Expression";
 
 export class AndRule extends ComplexRule {
     constructor(negated: boolean) {
@@ -35,7 +36,7 @@ export class AndRule extends ComplexRule {
             } else {
                 // flatten nested ANDs
                 let flattenedBody = []
-                this.body.map((e) => {
+                this.body.forEach((e) => {
                     if (e instanceof AndRule && !e.negated) {
                         flattenedBody = flattenedBody.concat(e.body);
                     } else {
@@ -60,6 +61,23 @@ export class AndRule extends ComplexRule {
     }
 
     distributeAnd(exp1: Rule, exp2: Rule): Rule {
+        // accumulate expressions
+        if (exp1 instanceof Expression && exp2 instanceof Expression) {
+            exp2.variables.forEach((v) => exp1.variables.push(v));
+            const body = this.distributeAnd(exp1.rule, exp2.rule);
+            exp1.rule = body;
+            return exp1;
+        } else if (exp1 instanceof Expression) {
+            const body = this.distributeAnd(exp1.rule, exp2);
+            exp1.rule = body;
+            return exp1;
+        } else if (exp2 instanceof Expression) {
+            const body = this.distributeAnd(exp1, exp2.rule);
+            exp2.rule = body;
+            return exp2;
+        }
+
+        // distribute
         if (exp2 instanceof OrRule) {
             const orBodyWithAnds = exp2.body.map((orBody) => {
                 return new AndRule(false).withBody([orBody, exp1]).toCanonicalForm();
