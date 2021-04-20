@@ -12,25 +12,35 @@ export class Validator {
     private customProfile: string;
     private customProfileWasm: string;
     private file: string;
+    private debug: string;
 
-    constructor(file: string, format: string, mediaType: string, customProfile: string, customProfileWasm?: string) {
+    constructor(file: string, format: string, mediaType: string, customProfile: string, customProfileWasm?: string, debug?: string) {
         this.file = file;
         this.format = format;
         this.mediaType = mediaType;
         this.customProfile = customProfile;
         this.customProfileWasm = customProfileWasm;
+        this.debug = debug;
     }
 
     async validate(): Promise<Report> {
         const parsedJSONLD = await new AmfParser(this.file, this.format, this.mediaType).parse();
-        //console.log("=============")
-        //console.log("DATA");
-        //console.log(JSON.stringify(parsedJSONLD,null,2));
         const parsedProfile = await new ProfileParser(this.customProfile).parse();
+        if (this.debug) {
+            console.log("\n\n** Parsed rules:\n")
+            console.log(parsedProfile.toString());
+        }
+
+        if (this.debug) {
+            console.log("\n\n** Canonical Form:\n")
+            parsedProfile.toRuleSet().forEach((r) => console.log(r.toString()));
+        }
         const rego = new RegoGenerator(parsedProfile).generate();
-        //console.log("=============")
-        //console.log("PROFILE");
-        //console.log(rego);
+        if (this.debug) {
+            console.log("\n\n** Rego file:\n")
+            console.log(rego);
+            console.log("\n\n** Report:\n")
+        }
         const wasmFile = await OPAWrapper.fromText(rego, parsedProfile.entrypoint());
         const evaluationReport = await this.evalute(wasmFile, parsedJSONLD)
         return new Report(evaluationReport);

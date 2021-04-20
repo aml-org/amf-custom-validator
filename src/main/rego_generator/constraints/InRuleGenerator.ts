@@ -27,6 +27,7 @@ export class InRuleGenerator extends BaseRegoAtomicRuleGenerator {
         return {
             constraintId: "in",
             rego: rego,
+            path: this.rule.path[this.rule.path.length-1],
             value: pathResult.variable,
             traceMessage: `Value no in set {${this.argumentValue().replace(/"/g, "'")}}`
         }

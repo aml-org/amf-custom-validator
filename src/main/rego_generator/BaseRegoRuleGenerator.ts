@@ -1,6 +1,7 @@
 export interface RegoRuleResult {
     constraintId: string
     rego: string[]
+    path: string
     value: string
     traceMessage?: string
 }

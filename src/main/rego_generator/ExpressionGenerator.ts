@@ -72,7 +72,7 @@ export class ExpressionGenerator {
             const bindingResult = `_result_${i++}`
             resultBindings.push(bindingResult)
 
-            const matchesLine = `  ${bindingResult} := trace("${regoResult.constraintId}", ${regoResult.value}, "${regoResult.traceMessage || ''}")`
+            const matchesLine = `  ${bindingResult} := trace("${regoResult.constraintId}", "${regoResult.path}", ${regoResult.value}, "${regoResult.traceMessage || ''}")`
 
             regoResult.rego.forEach((line) => acc.push("  " + line));
             acc.push(matchesLine);

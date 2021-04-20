@@ -25,6 +25,7 @@ export class MinCountRuleGenerator extends BaseRegoAtomicRuleGenerator {
         return {
             constraintId: "minCount",
             rego: rego,
+            path: this.rule.path[this.rule.path.length-1],
             value: `count(${inValuesVariable})`,
             traceMessage: `Value not matching minCount ${this.rule.argument}`
         }

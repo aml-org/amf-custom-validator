@@ -23,6 +23,7 @@ export class NestedRuleGenerator extends BaseRegoAtomicRuleGenerator {
         return {
             constraintId: "nested",
             rego: rego,
+            path: this.rule.path[this.rule.path.length-1],
             value: this.rule.child.name,
             traceMessage: `Not nested matching constraints for parent ${this.rule.parent} and child ${this.rule.child} under ${this.rule.path.join("/")}`
         }

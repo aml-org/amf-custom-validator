@@ -47,9 +47,10 @@ target_class_negated[result] {
 }
 
 # Traces one evaluation of a constraint
-trace(component, value, traceMessage) = t {
+trace(component, path, value, traceMessage) = t {
   t := {
     "component": component,
+    "path": path,
     "value": value,
     "message": traceMessage
   }
@@ -98,11 +99,11 @@ violation[matches] {
   x_0_b87947f49ae3eed9ba2e63e2c81fd029 = x["apiContract:method"]
   gen_invalues_1 = {"subscribe"}
   not gen_invalues_1[x_0_b87947f49ae3eed9ba2e63e2c81fd029]
-  _result_0 := trace("in", x_0_b87947f49ae3eed9ba2e63e2c81fd029, "Value no in set {'subscribe'}")
+  _result_0 := trace("in", "apiContract:method", x_0_b87947f49ae3eed9ba2e63e2c81fd029, "Value no in set {'subscribe'}")
   x_0_b87947f49ae3eed9ba2e63e2c81fd029 = x["apiContract:method"]
   gen_invalues_2 = {"get"}
   not gen_invalues_2[x_0_b87947f49ae3eed9ba2e63e2c81fd029]
-  _result_1 := trace("in", x_0_b87947f49ae3eed9ba2e63e2c81fd029, "Value no in set {'get'}")
+  _result_1 := trace("in", "apiContract:method", x_0_b87947f49ae3eed9ba2e63e2c81fd029, "Value no in set {'get'}")
   matches := error("validation1", x, "This is the message", [_result_0,_result_1])
 }
 violation[matches] {
@@ -110,11 +111,11 @@ violation[matches] {
   x_0_b87947f49ae3eed9ba2e63e2c81fd029 = object.get(x,"apiContract:method",[])
   gen_propValues_3 = nodes_array with data.nodes as x_0_b87947f49ae3eed9ba2e63e2c81fd029
   not count(gen_propValues_3) >= 1
-  _result_0 := trace("minCount", count(gen_propValues_3), "Value not matching minCount 1")
+  _result_0 := trace("minCount", "apiContract:method", count(gen_propValues_3), "Value not matching minCount 1")
   x_0_b87947f49ae3eed9ba2e63e2c81fd029 = x["apiContract:method"]
   gen_invalues_4 = {"get"}
   not gen_invalues_4[x_0_b87947f49ae3eed9ba2e63e2c81fd029]
-  _result_1 := trace("in", x_0_b87947f49ae3eed9ba2e63e2c81fd029, "Value no in set {'get'}")
+  _result_1 := trace("in", "apiContract:method", x_0_b87947f49ae3eed9ba2e63e2c81fd029, "Value no in set {'get'}")
   matches := error("validation1", x, "This is the message", [_result_0,_result_1])
 }
 violation[matches] {
@@ -122,11 +123,11 @@ violation[matches] {
   x_0_b87947f49ae3eed9ba2e63e2c81fd029 = x["apiContract:method"]
   gen_invalues_5 = {"subscribe"}
   not gen_invalues_5[x_0_b87947f49ae3eed9ba2e63e2c81fd029]
-  _result_0 := trace("in", x_0_b87947f49ae3eed9ba2e63e2c81fd029, "Value no in set {'subscribe'}")
+  _result_0 := trace("in", "apiContract:method", x_0_b87947f49ae3eed9ba2e63e2c81fd029, "Value no in set {'subscribe'}")
   x_0_b87947f49ae3eed9ba2e63e2c81fd029 = object.get(x,"apiContract:method",[])
   gen_propValues_6 = nodes_array with data.nodes as x_0_b87947f49ae3eed9ba2e63e2c81fd029
   not count(gen_propValues_6) >= 1
-  _result_1 := trace("minCount", count(gen_propValues_6), "Value not matching minCount 1")
+  _result_1 := trace("minCount", "apiContract:method", count(gen_propValues_6), "Value not matching minCount 1")
   matches := error("validation1", x, "This is the message", [_result_0,_result_1])
 }
 violation[matches] {
@@ -134,10 +135,10 @@ violation[matches] {
   x_0_b87947f49ae3eed9ba2e63e2c81fd029 = object.get(x,"apiContract:method",[])
   gen_propValues_7 = nodes_array with data.nodes as x_0_b87947f49ae3eed9ba2e63e2c81fd029
   not count(gen_propValues_7) >= 1
-  _result_0 := trace("minCount", count(gen_propValues_7), "Value not matching minCount 1")
+  _result_0 := trace("minCount", "apiContract:method", count(gen_propValues_7), "Value not matching minCount 1")
   x_0_b87947f49ae3eed9ba2e63e2c81fd029 = object.get(x,"apiContract:method",[])
   gen_propValues_8 = nodes_array with data.nodes as x_0_b87947f49ae3eed9ba2e63e2c81fd029
   not count(gen_propValues_8) >= 1
-  _result_1 := trace("minCount", count(gen_propValues_8), "Value not matching minCount 1")
+  _result_1 := trace("minCount", "apiContract:method", count(gen_propValues_8), "Value not matching minCount 1")
   matches := error("validation1", x, "This is the message", [_result_0,_result_1])
 }

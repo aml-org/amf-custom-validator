@@ -12,13 +12,15 @@ export class ClassTargetRuleGenerator extends BaseRegoAtomicRuleGenerator {
     generateResult(): RegoRuleResult {
         if (this.rule.negated) {
             return {
-                constraintId: "clasTarget",
+                constraintId: "classTarget",
+                path: "",
                 rego: [`target_class_negated[${this.rule.variable.name}] with data.class as "${this.rule.argument}"`],
                 value: this.rule.variable.name,
             }
         } else {
             return {
-                constraintId: "clasTarget",
+                constraintId: "classTarget",
+                path: "",
                 rego: [`target_class[${this.rule.variable.name}] with data.class as "${this.rule.argument}"`],
                 value: this.rule.variable.name
             }

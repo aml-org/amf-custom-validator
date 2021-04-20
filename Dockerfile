@@ -9,8 +9,8 @@ RUN npm install
 
 # OPA
 COPY opa_capabilities.json /code/opa_capabilities.json
-RUN wget https://github.com/open-policy-agent/opa/releases/download/v0.27.1/opa_darwin_amd64
-RUN cp opa_darwin_amd64 /code/opa
+RUN wget https://github.com/open-policy-agent/opa/releases/download/v0.27.1/opa_linux_amd64
+RUN cp opa_linux_amd64 /code/opa
 RUN chmod a+x /code/opa
 
 COPY . /code

@@ -42,6 +42,9 @@ export class Report {
             return {
                 "http://a.ml/vocabularies/validation#component": traceElement.component,
                 "http://www.w3.org/ns/shacl#resultMessage": traceElement.message,
+                "http://www.w3.org/ns/shacl#resultPath": {
+                    "@id": traceElement.path
+                },
                 "http://www.w3.org/ns/shacl#focusNode": value
             }
         });
@@ -54,11 +57,6 @@ export class Report {
                 "@id": result.target
             },
             "http://a.ml/vocabularies/validation#trace": trace,
-            /*
-            "http://www.w3.org/ns/shacl#resultPath": {
-                "@id": "http://a.ml/vocabularies/core#version"
-            },
-             */
             "http://www.w3.org/ns/shacl#resultMessage": result.message,
             "http://www.w3.org/ns/shacl#sourceShape": {
                 "@id": result.shapeId

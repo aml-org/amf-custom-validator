@@ -12,6 +12,7 @@ cmd.requiredOption("-in, --format-in <format>",  "Format of the input fileRAML 1
     .requiredOption("-mime-in, --media-type-in <mediaType>",  "Media type of the input file 'application/yaml', 'application/ld+json', 'application/json'")
     .option("-cp, --custom-profile [profile]", "Validation profile in AML language")
     .option("-cpw, --custom-profile-wasm [profile]", "Validation profile parsed as OPA web assembly bundle")
+    .option("-d, --debug", "Traces transformations")
     .arguments("<file>");
 
 cmd.parse(process.argv);
@@ -20,7 +21,7 @@ if (cmd.opts().customProfile == null && cmd.opts().customProfileWasm == null) {
     throw new Error("Missing profile or WASM profile\n" + cmd.usage());
 }
 
-const validator = new Validator(cmd.args[0], cmd.opts().formatIn, cmd.opts().mediaTypeIn, cmd.opts().customProfile, cmd.opts().customProfileWasm);
+const validator = new Validator(cmd.args[0], cmd.opts().formatIn, cmd.opts().mediaTypeIn, cmd.opts().customProfile, cmd.opts().customProfileWasm, cmd.opts().debug);
 validator.validate().then((result) => {
     console.log(JSON.stringify(result.toJSON(), null,2));
     process.exit(0)

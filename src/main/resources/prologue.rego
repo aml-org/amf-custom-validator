@@ -46,9 +46,10 @@ target_class_negated[result] {
 }
 
 # Traces one evaluation of a constraint
-trace(component, value, traceMessage) = t {
+trace(component, path, value, traceMessage) = t {
   t := {
     "component": component,
+    "path": path,
     "value": value,
     "message": traceMessage
   }

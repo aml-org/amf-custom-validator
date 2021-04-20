@@ -23,6 +23,7 @@ export class PatternRuleGenerator extends  BaseRegoAtomicRuleGenerator {
         return {
             constraintId: "match",
             rego: rego,
+            path: this.rule.path[this.rule.path.length-1],
             value: pathResult.variable,
             traceMessage: `Value does not match regular expression {${JSON.stringify(this.rule.argument).replace(/"/g,"'")}}`
         }
