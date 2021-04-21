@@ -19,9 +19,7 @@ export class Profile {
      * From applies deMorgan
      */
     toRuleSet() {
-        return this.validations.map((validation) => {
-           return validation.toCanonicalForm();
-        });
+        return this.validations;
     }
 
     toString() {

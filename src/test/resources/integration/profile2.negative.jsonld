@@ -13,6 +13,16 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#resultMessage": "Not nested matching constraints for parent ∀x and child ∀y under apiContract:parameter",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:parameter"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@id": "file://src/test/resources/integration/profile2.negative.yaml#/web-api/end-points/%2Fendpoint1/get/request/parameter/a"
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "nested",
           "http://www.w3.org/ns/shacl#resultMessage": "Not nested matching constraints for parent ∀y and child ∀z under shapes:schema",
           "http://www.w3.org/ns/shacl#resultPath": {
             "@id": "shapes:schema"
@@ -29,16 +39,6 @@
           },
           "http://www.w3.org/ns/shacl#focusNode": {
             "@value": 0
-          }
-        },
-        {
-          "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#resultMessage": "Not nested matching constraints for parent ∀x and child ∀y under apiContract:parameter",
-          "http://www.w3.org/ns/shacl#resultPath": {
-            "@id": "apiContract:parameter"
-          },
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "@id": "file://src/test/resources/integration/profile2.negative.yaml#/web-api/end-points/%2Fendpoint1/get/request/parameter/a"
           }
         }
       ],

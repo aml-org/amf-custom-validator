@@ -1,4 +1,4 @@
-import {AtomicRule, Rule, Variable} from "../Rule";
+import {AtomicRule, Variable} from "../Rule";
 
 export class NestedRule extends AtomicRule {
     public readonly parent: Variable;
@@ -19,14 +19,6 @@ export class NestedRule extends AtomicRule {
             return `${negation}Nested(${this.parent.name},${this.child.name},'${this.path.join("/")}')`;
         } else {
             return `${negation}Nested(${this.parent.name},${this.child.name},'${this.path.join("/")}')`;
-        }
-    }
-
-    negation(): Rule {
-        if (this.child.cardinality != null) {
-            return new NestedRule(!this.negated, this.parent, this.child.negation(), this.path)
-        } else {
-            return new NestedRule(!this.negated, this.parent, this.child, this.path)
         }
     }
 }

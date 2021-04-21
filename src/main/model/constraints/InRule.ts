@@ -1,4 +1,4 @@
-import {AtomicRule, Rule, Variable} from "../Rule";
+import {AtomicRule, Variable} from "../Rule";
 
 export class InRule extends AtomicRule {
 
@@ -13,10 +13,6 @@ export class InRule extends AtomicRule {
         }
         const vs = this.argument.map((v) => v.toString())
         return `${negation}In(${this.variable.name},'${this.path.join("/")}',[${vs}])`
-    }
-
-    negation(): Rule {
-        return new InRule(!this.negated, this.variable, this.path, this.argument);
     }
 
 }

@@ -1,4 +1,4 @@
-import {Expression} from "./Expression";
+import * as md5 from "md5";
 
 export const Quantification = {
     ForAll: "ForAll",
@@ -119,9 +119,13 @@ export abstract class Statement {
         this.negated = negated;
     }
 
-    public readonly negated: boolean
-    abstract negation(): Statement;
-    abstract toCanonicalForm(): Statement;
+    public negated: boolean
+
+    negation(): Statement {
+        this.negated = !this.negated;
+        return this;
+    }
+
 }
 
 export class Variable {
@@ -191,6 +195,10 @@ export abstract class Rule extends Statement {
     }
 
     abstract toString(): string;
+
+    negation(): Rule {
+        return <Rule>super.negation();
+    }
 }
 
 
@@ -217,8 +225,9 @@ export abstract class AtomicRule extends Rule {
         this.constraint = constraint
     }
 
-    toCanonicalForm(): Statement {
-        return this;
+    valueMD5() {
+        return md5(JSON.stringify(this.argument)).toString();
     }
+
 }
 

@@ -14,8 +14,8 @@ export class RegoGenerator {
 
     generate() {
         const regoRules: string[] = [];
-        this.ruleSet.forEach((canonicalExpression) => {
-            new ExpressionGenerator(canonicalExpression).generate().forEach((l) => regoRules.push(l));
+        this.ruleSet.forEach((expression) => {
+            regoRules.push(new ExpressionGenerator(expression).generate());
         });
 
         return [this.package(), this.prologue()].concat(regoRules).join("\n")

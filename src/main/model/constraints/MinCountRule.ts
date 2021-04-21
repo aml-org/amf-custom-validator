@@ -5,10 +5,6 @@ export class MinCountRule extends AtomicRule {
         super(negated, variable, "minCount", path, argument);
     }
 
-    toRego(): string {
-        return "";
-    }
-
     toString(): string {
         let negation = ""
         if (this.negated) {
@@ -17,7 +13,4 @@ export class MinCountRule extends AtomicRule {
         return `${negation}MinCount(${this.variable.name},'${this.path.join("/")}',${this.argument})`
     }
 
-    negation(): Rule {
-        return new MinCountRule(!this.negated, this.variable, this.path, this.argument);
-    }
 }

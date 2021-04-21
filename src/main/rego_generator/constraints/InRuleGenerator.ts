@@ -1,10 +1,9 @@
 import {InRule} from "../../model/constraints/InRule";
-import {RegoRuleResult} from "../BaseRegoRuleGenerator";
+import {BaseRegoRuleGenerator, RegoRuleResult, SimpleRuleResult} from "../BaseRegoRuleGenerator";
 import {RegoPathGenerator} from "../RegoPathGenerator";
 import {genvar} from "../../VarGen";
-import {BaseRegoAtomicRuleGenerator} from "../BaseRegoRuleGenerator";
 
-export class InRuleGenerator extends BaseRegoAtomicRuleGenerator {
+export class InRuleGenerator extends BaseRegoRuleGenerator {
     private rule: InRule;
 
     constructor(rule: InRule) {
@@ -12,25 +11,27 @@ export class InRuleGenerator extends BaseRegoAtomicRuleGenerator {
         this.rule = rule;
     }
 
-    generateResult(): RegoRuleResult {
+    generateResult(): SimpleRuleResult[] {
         const path = this.rule.path;
-        const pathResult = new RegoPathGenerator(path, this.rule.variable.name).generatePropertyValues();
+        const pathResult = new RegoPathGenerator(path, this.rule.variable.name, "in_" + this.rule.valueMD5()).generatePropertyValues();
         const rego = pathResult.rego;
 
         const inValuesVariable = genvar("invalues");
         rego.push(`${inValuesVariable} = {${this.argumentValue()}}`)
         if (this.rule.negated) {
-            rego.push(`not ${inValuesVariable}[${pathResult.variable}]`)
-        } else {
             rego.push(`${inValuesVariable}[${pathResult.variable}]`)
+        } else {
+            rego.push(`not ${inValuesVariable}[${pathResult.variable}]`)
         }
-        return {
-            constraintId: "in",
-            rego: rego,
-            path: this.rule.path[this.rule.path.length-1],
-            value: pathResult.variable,
-            traceMessage: `Value no in set {${this.argumentValue().replace(/"/g, "'")}}`
-        }
+        return [
+            new SimpleRuleResult(
+                "id",
+                rego,
+                this.rule.path[this.rule.path.length-1],
+                pathResult.variable,pathResult.variable,
+                `Value no in set {${this.argumentValue().replace(/"/g, "'")}}`
+            )
+        ];
     }
 
     protected argumentValue(): string {

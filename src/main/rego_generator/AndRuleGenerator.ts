@@ -1,59 +1,56 @@
 import {AndRule} from "../model/rules/AndRule";
-import {AtomicRule, Rule} from "../model/Rule";
-import {BaseRegoComplexRuleGenerator, BaseRegoRuleGenerator, RegoRuleResult} from "./BaseRegoRuleGenerator";
+import {Rule} from "../model/Rule";
+import {BaseRegoRuleGenerator, BranchRuleResult, RegoRuleResult, SimpleRuleResult} from "./BaseRegoRuleGenerator";
+import {OrRuleGenerator} from "./OrRuleGenerator";
+import {OrRule} from "../model/rules/OrRule";
+import {ExpressionGenerator} from "./ExpressionGenerator";
 import {Expression} from "../model/Expression";
-import {InRule} from "../model/constraints/InRule";
-import {MinCountRule} from "../model/constraints/MinCountRule";
-import {PatternRule} from "../model/constraints/PatternRule";
-import {InRuleGenerator} from "./constraints/InRuleGenerator";
 import {PatternRuleGenerator} from "./constraints/PatternRuleGenerator";
+import {PatternRule} from "../model/constraints/PatternRule";
 import {MinCountRuleGenerator} from "./constraints/MinCountRuleGenerator";
-import {NestedRule} from "../model/constraints/NestedRule";
-import {NestedRuleGenerator} from "./constraints/NestedRuleGenerator";
+import {MinCountRule} from "../model/constraints/MinCountRule";
+import {InRuleGenerator} from "./constraints/InRuleGenerator";
+import {InRule} from "../model/constraints/InRule";
 
-export class AndRuleGenerator extends BaseRegoComplexRuleGenerator {
+
+export class AndRuleGenerator extends BaseRegoRuleGenerator {
     private rule: AndRule;
-    private expression: Expression;
 
-    constructor(expression: Expression, rule: AndRule) {
+    constructor(rule: AndRule) {
         super();
         this.rule = rule;
-        this.expression = expression;
-        this.validRule();
     }
 
-    generateResult(): RegoRuleResult[] {
-        return this.generateNodeSet();
-    }
-
-    private validRule() {
-        if (this.rule.body.find((r) => !(r instanceof AtomicRule)) != null) {
-            throw new Error("All rules in the AND rule must be atomic, canonical form is required");
-        }
-    }
-
-
-    private generateNodeSet(): RegoRuleResult[] {
-        const rego: RegoRuleResult[] = [];
+    generateResult(): BranchRuleResult[] {
+        let branches: BranchRuleResult[] = [];
         this.rule.body.forEach((rule) => {
-            rego.push(this.dispatchRule(rule));
-        });
-        return rego;
+            this.dispatchRule(rule).forEach((result) => {
+                if (result instanceof SimpleRuleResult) {
+                    branches.push(new BranchRuleResult(result.constraintId, [result]));
+                } else {
+                    branches.push(<BranchRuleResult>result)
+                }
+            })
+        })
+        return branches;
     }
 
-    private dispatchRule(rule: Rule): RegoRuleResult {
+    dispatchRule(rule: Rule): RegoRuleResult[] {
         if (rule instanceof InRule) {
             return new InRuleGenerator(rule).generateResult();
         } else if (rule instanceof MinCountRule) {
             return new MinCountRuleGenerator(rule).generateResult();
         } else if (rule instanceof PatternRule) {
             return new PatternRuleGenerator(rule).generateResult();
-        } else if (rule instanceof NestedRule) {
-            return new NestedRuleGenerator(rule).generateResult();
+        } else if (rule instanceof Expression) {
+            return new ExpressionGenerator(rule).generateResult();
+        } else if (rule instanceof AndRule) {
+            return new AndRuleGenerator(rule).generateResult();
+        } else if (rule instanceof OrRule) {
+            return new OrRuleGenerator(rule).generateResult();
         } else {
             throw new Error(`Unsupported rule ${rule}`);
         }
     }
-
 
 }

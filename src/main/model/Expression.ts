@@ -1,7 +1,7 @@
 import {Level, Rule, Statement, Variable, VariableCardinality} from "./Rule";
 import {VarGenerator} from "../VarGen";
 
-export class Expression extends Statement {
+export class Expression extends Rule {
 
     public variables: Variable[] = [];
     public rule: Rule;
@@ -28,14 +28,6 @@ export class Expression extends Statement {
         return variable;
     }
 
-    negation(): Expression {
-        const acc = this.variables.map((variable) => variable.negation())
-        const negatedExpression = new Expression(!this.negated, this.name, this.message, this.level);
-        negatedExpression.variables = acc;
-        negatedExpression.rule = <Rule>this.rule.negation()
-        return negatedExpression;
-    }
-
     toString(): string {
         let negation = ""
         if (this.negated) {
@@ -49,25 +41,6 @@ export class Expression extends Statement {
             return `${varsText.map((v) => `${negation} ${v}`).join(",")} : ${this.rule.toString()}`
         }
 
-    }
-
-    toCanonicalForm(): Expression {
-        let canonical: Expression;
-        if (this.negated == false) {
-            canonical = this.negation();
-        } else {
-            canonical = new Expression(this.negated, this.name, this.message, this.level);
-            canonical.variables = this.variables;
-            canonical.rule = this.rule;
-        }
-
-        canonical.rule = <Rule>canonical.rule.toCanonicalForm();
-
-        if (canonical.rule instanceof Expression) {
-            canonical.rule.variables.forEach((v) => canonical.variables.push(v));
-            canonical.rule = canonical.rule.rule;
-        }
-        return canonical;
     }
 
     subExpression(negated: boolean): Expression {

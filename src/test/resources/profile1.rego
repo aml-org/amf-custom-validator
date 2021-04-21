@@ -96,12 +96,13 @@ default warning = []
 default info = []
 violation[matches] {
  target_class[x] with data.class as "apiContract:Operation"
-  x_0_b87947f49ae3eed9ba2e63e2c81fd029 = x["apiContract:method"]
+  x_0_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2 = x["apiContract:method"]
   gen_invalues_1 = {"publish","subscribe"}
-  not gen_invalues_1[x_0_b87947f49ae3eed9ba2e63e2c81fd029]
-  _result_0 := trace("in", "apiContract:method", x_0_b87947f49ae3eed9ba2e63e2c81fd029, "Value no in set {'publish','subscribe'}")
+  not gen_invalues_1[x_0_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2]
+  _result_0 := trace("id", "apiContract:method", x_0_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2, "Value no in set {'publish','subscribe'}")
   matches := error("validation1", x, "This is the message", [_result_0])
 }
+
 violation[matches] {
  target_class[x] with data.class as "apiContract:Operation"
   x_0_b87947f49ae3eed9ba2e63e2c81fd029 = object.get(x,"apiContract:method",[])
@@ -110,10 +111,11 @@ violation[matches] {
   _result_0 := trace("minCount", "apiContract:method", count(gen_propValues_2), "Value not matching minCount 1")
   matches := error("validation1", x, "This is the message", [_result_0])
 }
+
 violation[matches] {
  target_class[x] with data.class as "apiContract:Operation"
-  x_0_a82db48390e82e6cd3d806595c67bd32 = x["shacl:name"]
-  not regex.match(x_0_a82db48390e82e6cd3d806595c67bd32, "^put|post$")
-  _result_0 := trace("match", "shacl:name", x_0_a82db48390e82e6cd3d806595c67bd32, "Value does not match regular expression {'^put|post$'}")
+  x_0_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304 = x["shacl:name"]
+  not regex.match(x_0_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304, "^put|post$")
+  _result_0 := trace("pattern", "shacl:name", x_0_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304, "Value does not match regular expression {'^put|post$'}")
   matches := error("validation1", x, "This is the message", [_result_0])
 }

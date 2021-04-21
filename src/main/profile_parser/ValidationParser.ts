@@ -71,6 +71,6 @@ export class ValidationParser {
 
     private parseNot() {
         const nested = new ValidationParser(this.expression, this.variable, this.data.not).parse();
-        return <Rule>nested.negation();
+        return nested.negation();
     }
 }

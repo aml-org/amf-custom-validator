@@ -1,4 +1,4 @@
-import {AtomicRule, Statement, Variable} from "../Rule";
+import {AtomicRule, Variable} from "../Rule";
 
 export class ClassTarget extends AtomicRule {
 
@@ -6,10 +6,6 @@ export class ClassTarget extends AtomicRule {
         super(negated, variable, "classTarget", [], argument.replace(".", ":"));
     }
 
-
-    negation(): Statement {
-        return new ClassTarget(!this.negated, this.variable, this.argument);
-    }
 
     toString(): string {
         let negation = ""

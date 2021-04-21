@@ -1,7 +1,7 @@
-import {BaseRegoAtomicRuleGenerator, BaseRegoRuleGenerator, RegoRuleResult} from "./BaseRegoRuleGenerator";
+import {BaseRegoRuleGenerator, RegoRuleResult, SimpleRuleResult} from "./BaseRegoRuleGenerator";
 import {ClassTarget} from "../model/constraints/ClassTarget";
 
-export class ClassTargetRuleGenerator extends BaseRegoAtomicRuleGenerator {
+export class ClassTargetRuleGenerator extends BaseRegoRuleGenerator {
     private rule: ClassTarget;
 
     constructor(classTargetRule: ClassTarget) {
@@ -9,21 +9,23 @@ export class ClassTargetRuleGenerator extends BaseRegoAtomicRuleGenerator {
         this.rule = classTargetRule;
     }
 
-    generateResult(): RegoRuleResult {
+    generateResult(): RegoRuleResult[] {
         if (this.rule.negated) {
-            return {
-                constraintId: "classTarget",
-                path: "",
-                rego: [`target_class_negated[${this.rule.variable.name}] with data.class as "${this.rule.argument}"`],
-                value: this.rule.variable.name,
-            }
+            return [new SimpleRuleResult(
+                "classTarget",
+                [`target_class_negated[${this.rule.variable.name}] with data.class as "${this.rule.argument}"`],
+                "",
+                this.rule.variable.name,
+                this.rule.variable.name
+            )];
         } else {
-            return {
-                constraintId: "classTarget",
-                path: "",
-                rego: [`target_class[${this.rule.variable.name}] with data.class as "${this.rule.argument}"`],
-                value: this.rule.variable.name
-            }
+            return [new SimpleRuleResult(
+                "classTarget",
+                [`target_class[${this.rule.variable.name}] with data.class as "${this.rule.argument}"`],
+                "",
+                this.rule.variable.name,
+                this.rule.variable.name
+            )];
         }
     }
 
