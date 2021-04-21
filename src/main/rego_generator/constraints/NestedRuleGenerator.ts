@@ -25,12 +25,13 @@ export class NestedRuleGenerator extends BaseRegoRuleGenerator {
         const rego = pathResult.rego;
 
         if (this.rule.negated) {
-            // rego.push(`${this.rule.child.name} = find with data.link as${pathResult.variable}`);
-            throw new Error("Not supported yet")
+            rego.push(`${this.rule.child.name} = find with data.link as ${pathResult.variable}`);
+            rego.push(this.rule.child.toQuantifiedRego());
         } else {
             rego.push(`${this.rule.child.name} = find with data.link as ${pathResult.variable}`);
+            rego.push(this.rule.child.negation().toQuantifiedRego());
         }
-        rego.push(this.rule.child.toQuantifiedRego());
+
         return [
           new SimpleRuleResult(
               this.rule.child.cardinality!.operator,

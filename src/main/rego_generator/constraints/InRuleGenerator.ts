@@ -25,7 +25,7 @@ export class InRuleGenerator extends BaseRegoRuleGenerator {
         }
         return [
             new SimpleRuleResult(
-                "id",
+                "in",
                 rego,
                 this.rule.path[this.rule.path.length-1],
                 pathResult.variable,pathResult.variable,

@@ -1,4 +1,41 @@
 {
   "@type": "http://www.w3.org/ns/shacl#ValidationReport",
-  "http://www.w3.org/ns/shacl#conforms": true
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": "http://www.w3.org/ns/shacl#ValidationResult",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://src/test/resources/integration/profile3.negative.yaml#/web-api/end-points/%2Fendpoint3"
+      },
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "http://a.ml/vocabularies/validation#component": "greaterThanOrEqual",
+          "http://www.w3.org/ns/shacl#resultMessage": "violated quantified constraint >= 2 ",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:supportedOperation"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": 4
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#resultMessage": "Value no in set {'put','patch'}",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:method"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": "get"
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#resultMessage": "Endpoints must have a POST method",
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "validation1"
+      }
+    }
+  ]
 }

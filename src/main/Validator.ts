@@ -35,10 +35,6 @@ export class Validator {
             console.log(parsedProfile.toString());
         }
 
-        if (this.debug) {
-            console.log("\n\n** Canonical Form:\n")
-            parsedProfile.toRuleSet().forEach((r) => console.log(r.toString()));
-        }
         const rego = new RegoGenerator(parsedProfile).generate();
         if (this.debug) {
             console.log("\n\n** Rego file:\n")

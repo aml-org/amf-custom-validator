@@ -99,7 +99,7 @@ violation[matches] {
   x_0_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2 = x["apiContract:method"]
   gen_invalues_1 = {"publish","subscribe"}
   not gen_invalues_1[x_0_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2]
-  _result_0 := trace("id", "apiContract:method", x_0_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2, "Value no in set {'publish','subscribe'}")
+  _result_0 := trace("in", "apiContract:method", x_0_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2, "Value no in set {'publish','subscribe'}")
   matches := error("validation1", x, "This is the message", [_result_0])
 }
 

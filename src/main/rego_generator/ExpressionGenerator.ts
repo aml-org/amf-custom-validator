@@ -54,7 +54,7 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
                 return this.generatedNested();
             }
         } else {
-            throw new Error("Existential not supported yet");
+            return this.generateNestedQualified()
         }
     }
 
@@ -88,6 +88,18 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
         return bodyResult.map((result) => {
             if (result instanceof SimpleRuleResult) {
                 return new BranchRuleResult("nested exp", [headResult, result]);
+            } else {
+                return new BranchRuleResult(result.constraintId, [headResult].concat((<BranchRuleResult>result).branch))
+            }
+        })
+    }
+
+    private generateNestedQualified() {
+        const bodyResult = this.generateBody();
+        const headResult: SimpleRuleResult = new NestedRuleGenerator(<NestedRule>this.implication().head).generateQuantifiedNestedResult()[0];
+        return bodyResult.map((result) => {
+            if (result instanceof SimpleRuleResult) {
+                return new BranchRuleResult("nested exp qualified", [headResult, result]);
             } else {
                 return new BranchRuleResult(result.constraintId, [headResult].concat((<BranchRuleResult>result).branch))
             }
