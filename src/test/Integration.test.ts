@@ -17,7 +17,6 @@ const runTest= async (name: string) => {
     const negativeFilePath = directory + name + ".negative.yaml"
     const negativeJSONLDFilePath = directory + name + ".negative.jsonld"
 
-
     const positiveResult = await runValidation(positiveFilePath, profilePath);
     //await fs.promises.writeFile(positiveJSONLDFilePath, JSON.stringify(positiveResult, null, 2))
     assert(positiveResult.conforms())
@@ -35,7 +34,7 @@ const runTest= async (name: string) => {
 
     const files = fs.readdirSync("./src/test/resources/integration");
     const profiles: {[name: string]: true} = {};
-    files.map((f) => f.split(".")[0]).filter((p) => p == "profile3").forEach((p) => profiles[p] = true);
+    files.map((f) => f.split(".")[0])/*.filter((p) => p == "profile4")*/.forEach((p) => profiles[p] = true);
     Object.keys(profiles).forEach((profile) => {
         describe("IntegrationTests", () => {
             it("Integration test " + profile, async () => {

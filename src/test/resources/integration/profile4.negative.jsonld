@@ -8,7 +8,7 @@
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
       "http://www.w3.org/ns/shacl#focusNode": {
-        "@id": "file://src/test/resources/integration/profile1.negative.yaml#/web-api/end-points/%2Fendpoint1/get/request/parameter/a"
+        "@id": "file://src/test/resources/integration/profile4.negative.yaml#/web-api/end-points/%2Fendpoint2"
       },
       "http://a.ml/vocabularies/validation#trace": [
         {
@@ -16,15 +16,15 @@
           "http://www.w3.org/ns/shacl#resultMessage": [
             [
               {
-                "path": "shacl:minLength",
-                "message": "Value not matching minCount 1",
-                "value": 0,
-                "component": "minCount"
+                "path": "apiContract:method",
+                "message": "Value no in set {'put','patch'}",
+                "value": "get",
+                "component": "in"
               }
             ]
           ],
           "http://www.w3.org/ns/shacl#resultPath": {
-            "@id": "shapes:schema"
+            "@id": "apiContract:supportedOperation"
           },
           "http://www.w3.org/ns/shacl#focusNode": {
             "@value": {
@@ -34,9 +34,9 @@
           }
         }
       ],
-      "http://www.w3.org/ns/shacl#resultMessage": "Scalars in parameters must have minLength defined",
+      "http://www.w3.org/ns/shacl#resultMessage": "Endpoints must have a POST method",
       "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "scalar-parameters"
+        "@id": "validation1"
       }
     }
   ]

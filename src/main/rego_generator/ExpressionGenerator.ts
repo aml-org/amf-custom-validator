@@ -112,7 +112,7 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
     }
 
     private wrapNestedRegoResult(nestedVariable: string, headResult: SimpleRuleResult, bodyResult: BranchRuleResult) {
-        const rego = headResult.rego;
+        const rego = [].concat(headResult.rego);
         const variable = headResult.variable
         rego.push(`${variable}_errors = [ ${variable}_error |`) // we generated a comprehension to look for errors in the collection
         rego.push(`  ${nestedVariable} = ${variable}[_]`) // the underlying rules expect the quantified variable that was passed on profile parsing
@@ -137,7 +137,7 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
     }
 
     private wrapNestedQualifiedRegoResult(nestedVariable: string, cardinality: VariableCardinality, headResult: SimpleRuleResult, bodyResult: BranchRuleResult) {
-        const rego = headResult.rego;
+        const rego = [].concat(headResult.rego);
         const variable = headResult.variable
         rego.push(`${variable}_errors = [ ${variable}_error |`) // we generated a comprehension to look for errors in the collection
         rego.push(`  ${nestedVariable} = ${variable}[_]`) // the underlying rules expect the quantified variable that was passed on profile parsing
