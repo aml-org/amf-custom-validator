@@ -14,7 +14,7 @@ export class SimpleRuleResult extends RegoRuleResult {
     public readonly variable: string;
     public readonly traceMessage: string;
 
-    constructor(constraintId: string, rego: string[], path: string, value: string, variable: string, traceMessage?: string) {
+    constructor(constraintId: string, rego: string[], path: string, value: string, variable: string, traceMessage?: string|any) {
         super(constraintId);
         this.rego = rego;
         this.path = path;

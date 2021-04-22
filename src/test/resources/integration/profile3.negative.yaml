@@ -46,3 +46,11 @@ title: Test API
       application/json:
         properties:
           b:
+  post:
+    queryParameters:
+      a:
+        minLength: 10
+    body:
+      application/json:
+        properties:
+          b:

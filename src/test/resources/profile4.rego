@@ -105,12 +105,17 @@ violation[matches] {
 
 violation[matches] {
  target_class[x] with data.class as "apiContract:Parameter"
-  x_0_3ed56a339985dc6c4996fc7dd095b8dc_nested_352b24659a1bb5f05d3639be998a2957 = x["raml-shapes:schema"]
-  y = find with data.link as x_0_3ed56a339985dc6c4996fc7dd095b8dc_nested_352b24659a1bb5f05d3639be998a2957
-  _result_0 := trace("nested", "raml-shapes:schema", y, "Not nested matching constraints for parent ∀x and child ∀y under raml-shapes:schema")
-  y_0_08eac10d8cc13f13d197f0a5ede2e5e1 = object.get(y,"shacl:minLength",[])
-  gen_propValues_2 = nodes_array with data.nodes as y_0_08eac10d8cc13f13d197f0a5ede2e5e1
-  not count(gen_propValues_2) >= 1
-  _result_1 := trace("minCount", "shacl:minLength", count(gen_propValues_2), "Value not matching minCount 1")
-  matches := error("validation1", x, "Scalars in parameters must have minLength defined", [_result_0,_result_1])
+  nested_nodes[x_0_3ed56a339985dc6c4996fc7dd095b8dc] with data.nodes as x["raml-shapes:schema"]
+  ys = x_0_3ed56a339985dc6c4996fc7dd095b8dc
+  ys_errors = [ ys_error |
+    y = ys[_]
+    y_0_08eac10d8cc13f13d197f0a5ede2e5e1 = object.get(y,"shacl:minLength",[])
+    gen_propValues_2 = nodes_array with data.nodes as y_0_08eac10d8cc13f13d197f0a5ede2e5e1
+    not count(gen_propValues_2) >= 1
+    _result_0 := trace("minCount", "shacl:minLength", count(gen_propValues_2), "Value not matching minCount 1")
+    ys_error := error("null", y, "null", [_result_0])
+  ]
+  count(ys_errors) > 0
+  _result_0 := trace("nested", "raml-shapes:schema", {"failed": count(ys_errors), "success":(count(ys) - count(ys_errors))}, [e | e := ys_errors[_].trace])
+  matches := error("validation1", x, "Scalars in parameters must have minLength defined", [_result_0])
 }

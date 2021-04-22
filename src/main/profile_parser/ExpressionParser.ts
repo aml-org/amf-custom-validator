@@ -1,8 +1,8 @@
 import {Expression} from "../model/Expression";
 import {ValidationParser} from "./ValidationParser";
-import {ClassTarget} from "../model/constraints/ClassTarget";
 import {Quantification} from "../model/Rule";
 import {Implication} from "../model/Implication";
+import {ClassTarget} from "../model/mappers/ClassTarget";
 
 export class ExpressionParser {
 

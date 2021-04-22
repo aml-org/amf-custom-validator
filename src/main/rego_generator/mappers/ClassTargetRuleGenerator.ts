@@ -1,5 +1,6 @@
-import {BaseRegoRuleGenerator, RegoRuleResult, SimpleRuleResult} from "./BaseRegoRuleGenerator";
-import {ClassTarget} from "../model/constraints/ClassTarget";
+import {ClassTarget} from "../../model/mappers/ClassTarget";
+import {BaseRegoRuleGenerator, RegoRuleResult, SimpleRuleResult} from "../BaseRegoRuleGenerator";
+
 
 export class ClassTargetRuleGenerator extends BaseRegoRuleGenerator {
     private rule: ClassTarget;

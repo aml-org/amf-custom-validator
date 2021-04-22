@@ -1,16 +1,12 @@
-import {Quantification, Rule} from "../model/Rule";
+import {Quantification, Rule, VariableCardinality} from "../model/Rule";
 import {Expression} from "../model/Expression";
-import {ClassTarget} from "../model/constraints/ClassTarget";
 import {
     BaseRegoRuleGenerator,
     BranchRuleResult,
     RegoRuleResult,
     SimpleRuleResult
 } from "./BaseRegoRuleGenerator";
-import {ClassTargetRuleGenerator} from "./ClassTargetRuleGenerator";
 import {Implication} from "../model/Implication";
-import {NestedRule} from "../model/constraints/NestedRule";
-import {NestedRuleGenerator} from "./constraints/NestedRuleGenerator";
 import {InRuleGenerator} from "./constraints/InRuleGenerator";
 import {MinCountRule} from "../model/constraints/MinCountRule";
 import {MinCountRuleGenerator} from "./constraints/MinCountRuleGenerator";
@@ -18,9 +14,14 @@ import {PatternRule} from "../model/constraints/PatternRule";
 import {PatternRuleGenerator} from "./constraints/PatternRuleGenerator";
 import {AndRule} from "../model/rules/AndRule";
 import {OrRule} from "../model/rules/OrRule";
-import {OrRuleGenerator} from "./OrRuleGenerator";
-import {AndRuleGenerator} from "./AndRuleGenerator";
 import {InRule} from "../model/constraints/InRule";
+import {ClassTarget} from "../model/mappers/ClassTarget";
+import {NestedRule} from "../model/mappers/NestedRule";
+import {NestedRuleGenerator} from "./mappers/NestedRuleGenerator";
+import {ClassTargetRuleGenerator} from "./mappers/ClassTargetRuleGenerator";
+import {AndRuleGenerator} from "./rules/AndRuleGenerator";
+import {OrRuleGenerator} from "./rules/OrRuleGenerator";
+import {match} from "assert";
 
 export class ExpressionGenerator extends BaseRegoRuleGenerator {
 
@@ -84,26 +85,81 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
 
     private generatedNested() {
         const bodyResult = this.generateBody();
-        const headResult: SimpleRuleResult = new NestedRuleGenerator(<NestedRule>this.implication().head).generatedNestedResult()[0];
+        const nestedRule = <NestedRule>this.implication().head
+        const headResult: SimpleRuleResult = new NestedRuleGenerator(nestedRule).generateResult()[0];
         return bodyResult.map((result) => {
             if (result instanceof SimpleRuleResult) {
-                return new BranchRuleResult("nested exp", [headResult, result]);
+                return this.wrapNestedRegoResult(nestedRule.child.name, headResult, new BranchRuleResult("nested exp", [result]));
             } else {
-                return new BranchRuleResult(result.constraintId, [headResult].concat((<BranchRuleResult>result).branch))
+                return this.wrapNestedRegoResult(nestedRule.child.name, headResult, <BranchRuleResult>result);
+
             }
         })
     }
 
     private generateNestedQualified() {
         const bodyResult = this.generateBody();
-        const headResult: SimpleRuleResult = new NestedRuleGenerator(<NestedRule>this.implication().head).generateQuantifiedNestedResult()[0];
+        const nestedRule = <NestedRule>this.implication().head
+        const headResult: SimpleRuleResult = new NestedRuleGenerator(nestedRule).generateResult()[0];
         return bodyResult.map((result) => {
             if (result instanceof SimpleRuleResult) {
-                return new BranchRuleResult("nested exp qualified", [headResult, result]);
+                return this.wrapNestedQualifiedRegoResult(nestedRule.child.name, nestedRule.child.cardinality, headResult, new BranchRuleResult("nested exp", [result]));
             } else {
-                return new BranchRuleResult(result.constraintId, [headResult].concat((<BranchRuleResult>result).branch))
+                return this.wrapNestedQualifiedRegoResult(nestedRule.child.name, nestedRule.child.cardinality, headResult, <BranchRuleResult>result);
+
             }
         })
+    }
+
+    private wrapNestedRegoResult(nestedVariable: string, headResult: SimpleRuleResult, bodyResult: BranchRuleResult) {
+        const rego = headResult.rego;
+        const variable = headResult.variable
+        rego.push(`${variable}_errors = [ ${variable}_error |`) // we generated a comprehension to look for errors in the collection
+        rego.push(`  ${nestedVariable} = ${variable}[_]`) // the underlying rules expect the quantified variable that was passed on profile parsing
+        this.wrapBranch(bodyResult, `${variable}_error`, nestedVariable, rego)
+        rego.push(']');
+        if (this.expression.negated) {
+            rego.push(`count(${variable}_errors) == 0`)
+        } else {
+            rego.push(`count(${variable}_errors) > 0`)
+
+        }
+        const nestedSimpleResult = new SimpleRuleResult(
+            "nested",
+            rego,
+            headResult.path,
+            `{"failed": count(${variable}_errors), "success":(count(${variable}) - count(${variable}_errors))}`,
+            nestedVariable,
+            {"code" :`[e | e := ${variable}_errors[_].trace]`}
+        );
+
+        return new BranchRuleResult("nested", [nestedSimpleResult]);
+    }
+
+    private wrapNestedQualifiedRegoResult(nestedVariable: string, cardinality: VariableCardinality, headResult: SimpleRuleResult, bodyResult: BranchRuleResult) {
+        const rego = headResult.rego;
+        const variable = headResult.variable
+        rego.push(`${variable}_errors = [ ${variable}_error |`) // we generated a comprehension to look for errors in the collection
+        rego.push(`  ${nestedVariable} = ${variable}[_]`) // the underlying rules expect the quantified variable that was passed on profile parsing
+        this.wrapBranch(bodyResult, `${variable}_error`, nestedVariable, rego)
+        rego.push(']');
+        if (this.expression.negated) {
+            rego.push(cardinality.toRego(variable, `${variable}_errors`, false));
+        } else {
+            rego.push(cardinality.toRego(variable, `${variable}_errors`, true));
+
+        }
+
+        const nestedSimpleResult = new SimpleRuleResult(
+            "nested",
+            rego,
+            headResult.path,
+            `{"failed": count(${variable}_errors), "success":(count(${variable}) - count(${variable}_errors))}`,
+            nestedVariable,
+            {"code" :`[e | e := ${variable}_errors[_].trace]`}
+        );
+
+        return new BranchRuleResult("nested", [nestedSimpleResult]);
     }
 
     private generateBody() {
@@ -131,25 +187,34 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
             const acc = [];
             acc.push(`${level.toLowerCase()}[matches] {`);
             classTargetResult.rego.forEach((l)=> acc.push(" " + l));
-            let i = 0;
-            const resultBindings: string[] = [];
-
-            branch.branch.forEach((regoResult) => {
-                const bindingResult = `_result_${i++}`
-                resultBindings.push(bindingResult)
-
-                const matchesLine = `  ${bindingResult} := trace("${regoResult.constraintId}", "${regoResult.path}", ${regoResult.value}, "${regoResult.traceMessage || ''}")`
-
-                regoResult.rego.forEach((line) => acc.push("  " + line));
-                acc.push(matchesLine);
-            });
-
-            acc.push(`  matches := error("${this.expression.name}", ${classTargetVariable}, "${this.expression.message}", [${resultBindings.join(",")}])`);
+            this.wrapBranch(branch, 'matches', classTargetVariable, acc);
             acc.push('}');
             return acc.join("\n");
         });
 
         return validations.join("\n\n");
+    }
+
+    wrapBranch(branch: BranchRuleResult, matchesVariable: string, mappingVariable: string, acc: string[]) {
+        let i = 0;
+        const resultBindings: string[] = [];
+        branch.branch.forEach((regoResult) => {
+            const bindingResult = `_result_${i++}`
+            resultBindings.push(bindingResult)
+
+            let traceMessage = regoResult.traceMessage || '';
+            if (traceMessage["code"]) {
+                traceMessage = traceMessage["code"]
+            } else {
+                traceMessage = `"${traceMessage}"`
+            }
+
+            const matchesLine = `  ${bindingResult} := trace("${regoResult.constraintId}", "${regoResult.path}", ${regoResult.value}, ${traceMessage})`
+
+            regoResult.rego.forEach((line) => acc.push("  " + line));
+            acc.push(matchesLine);
+        });
+        acc.push(`  ${matchesVariable} := error("${this.expression.name}", ${mappingVariable}, "${this.expression.message}", [${resultBindings.join(",")}])`);
     }
 
     dispatchRule(rule: Rule): RegoRuleResult[] {

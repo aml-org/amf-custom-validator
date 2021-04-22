@@ -12,23 +12,107 @@
       },
       "http://a.ml/vocabularies/validation#trace": [
         {
-          "http://a.ml/vocabularies/validation#component": "greaterThanOrEqual",
-          "http://www.w3.org/ns/shacl#resultMessage": "violated quantified constraint >= 2 ",
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#resultMessage": [
+            [
+              {
+                "path": "apiContract:method",
+                "message": "Value no in set {'put','patch'}",
+                "value": "get",
+                "component": "in"
+              }
+            ],
+            [
+              {
+                "path": "apiContract:method",
+                "message": "Value no in set {'put','patch'}",
+                "value": "post",
+                "component": "in"
+              }
+            ]
+          ],
           "http://www.w3.org/ns/shacl#resultPath": {
             "@id": "apiContract:supportedOperation"
           },
           "http://www.w3.org/ns/shacl#focusNode": {
-            "@value": 4
+            "@value": {
+              "failed": 2,
+              "success": 0
+            }
           }
-        },
+        }
+      ],
+      "http://www.w3.org/ns/shacl#resultMessage": "Endpoints must have a POST method",
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "validation1"
+      }
+    },
+    {
+      "@type": "http://www.w3.org/ns/shacl#ValidationResult",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://src/test/resources/integration/profile3.negative.yaml#/web-api/end-points/%2Fendpoint1"
+      },
+      "http://a.ml/vocabularies/validation#trace": [
         {
-          "http://a.ml/vocabularies/validation#component": "in",
-          "http://www.w3.org/ns/shacl#resultMessage": "Value no in set {'put','patch'}",
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#resultMessage": [
+            [
+              {
+                "path": "apiContract:method",
+                "message": "Value no in set {'put','patch'}",
+                "value": "get",
+                "component": "in"
+              }
+            ]
+          ],
           "http://www.w3.org/ns/shacl#resultPath": {
-            "@id": "apiContract:method"
+            "@id": "apiContract:supportedOperation"
           },
           "http://www.w3.org/ns/shacl#focusNode": {
-            "@value": "get"
+            "@value": {
+              "failed": 1,
+              "success": 1
+            }
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#resultMessage": "Endpoints must have a POST method",
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "validation1"
+      }
+    },
+    {
+      "@type": "http://www.w3.org/ns/shacl#ValidationResult",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://src/test/resources/integration/profile3.negative.yaml#/web-api/end-points/%2Fendpoint2"
+      },
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#resultMessage": [
+            [
+              {
+                "path": "apiContract:method",
+                "message": "Value no in set {'put','patch'}",
+                "value": "get",
+                "component": "in"
+              }
+            ]
+          ],
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:supportedOperation"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": {
+              "failed": 1,
+              "success": 1
+            }
           }
         }
       ],

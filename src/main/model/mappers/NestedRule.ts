@@ -1,4 +1,5 @@
 import {AtomicRule, Variable} from "../Rule";
+import * as md5 from "md5";
 
 export class NestedRule extends AtomicRule {
     public readonly parent: Variable;
@@ -20,5 +21,9 @@ export class NestedRule extends AtomicRule {
         } else {
             return `${negation}Nested(${this.parent.name},${this.child.name},'${this.path.join("/")}')`;
         }
+    }
+
+    valueMD5(): any {
+        return md5(`${this.parent.name}_nested_${this.child.name}`)
     }
 }

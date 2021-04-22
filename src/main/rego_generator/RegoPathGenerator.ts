@@ -40,6 +40,27 @@ export class RegoPathGenerator {
         }
     }
 
+    public generateNodeArray(): RegoPathResult {
+        const lines = [];
+        let previous_binding = this.variable;
+        let binding = this.variable + "_0_" + this.id;
+        for (let i=0; i<this.path.length; i++) {
+            const nextPath = this.path[i];
+            if (i == this.path.length-1) {
+                lines.push(`nested_nodes[${binding}] with data.nodes as ${previous_binding}["${nextPath}"]`);
+            } else {
+                lines.push(`nested[${binding}] with data.nodes as ${previous_binding}[${nextPath}]`)
+            }
+            previous_binding = binding;
+            binding = this.variable + "_" + (i+1) + "_" + this.id
+        }
+
+        return {
+            rego: lines,
+            variable: previous_binding
+        }
+    }
+
     public generatePropertyArray(): RegoPathResult {
         const lines = [];
         let previous_binding = this.variable;

@@ -5,8 +5,8 @@ import {PatternRule} from "../model/constraints/PatternRule";
 import {InRule} from "../model/constraints/InRule";
 import {Expression} from "../model/Expression";
 import {ValidationParser} from "./ValidationParser";
-import {NestedRule} from "../model/constraints/NestedRule";
 import {Implication} from "../model/Implication";
+import {NestedRule} from "../model/mappers/NestedRule";
 
 
 export class ConstraintParser {

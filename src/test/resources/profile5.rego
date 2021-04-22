@@ -96,13 +96,17 @@ default warning = []
 default info = []
 violation[matches] {
  target_class[x] with data.class as "apiContract:EndPoint"
-  x_0_4d6e6b7923f1e16651ec6583344220eb_nested_b46f5f28457bbf67b51f4f081182136e = x["apiContract:supportedOperation"]
-  y = find with data.link as x_0_4d6e6b7923f1e16651ec6583344220eb_nested_b46f5f28457bbf67b51f4f081182136e
-  count([y]) > -1
-  _result_0 := trace("greaterThanOrEqual", "apiContract:supportedOperation", count(y), "violated quantified constraint >= 1 ")
-  y_0_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0 = y["apiContract:method"]
-  gen_invalues_1 = {"post"}
-  not gen_invalues_1[y_0_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0]
-  _result_1 := trace("in", "apiContract:method", y_0_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0, "Value no in set {'post'}")
-  matches := error("validation1", x, "Endpoints must have a POST method", [_result_0,_result_1])
+  nested_nodes[x_0_4d6e6b7923f1e16651ec6583344220eb] with data.nodes as x["apiContract:supportedOperation"]
+  ys = x_0_4d6e6b7923f1e16651ec6583344220eb
+  ys_errors = [ ys_error |
+    y = ys[_]
+    y_0_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0 = y["apiContract:method"]
+    gen_invalues_1 = {"post"}
+    not gen_invalues_1[y_0_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0]
+    _result_0 := trace("in", "apiContract:method", y_0_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0, "Value no in set {'post'}")
+    ys_error := error("null", y, "null", [_result_0])
+  ]
+  count(ys) - count(ys_errors) < 1
+  _result_0 := trace("nested", "apiContract:supportedOperation", {"failed": count(ys_errors), "success":(count(ys) - count(ys_errors))}, [e | e := ys_errors[_].trace])
+  matches := error("validation1", x, "Endpoints must have a POST method", [_result_0])
 }
