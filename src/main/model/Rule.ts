@@ -237,6 +237,10 @@ export abstract class AtomicRule extends Rule {
         this.constraint = constraint
     }
 
+    argumentAsProperty() {
+        return this.argument.replace(".", ":");
+    }
+
     valueMD5() {
         return md5(JSON.stringify(this.argument)).toString();
     }

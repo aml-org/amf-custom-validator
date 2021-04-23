@@ -30,4 +30,8 @@ describe("Profile parsing", () => {
     it("Should parse a simple qualified rule in a profile", async () => {
         return await testParsing("src/test/resources/profile5.yaml")
     });
+
+    it("Should parse a simple lessThan rule in a profile", async () => {
+        return await testParsing("src/test/resources/profile6.yaml")
+    });
 });

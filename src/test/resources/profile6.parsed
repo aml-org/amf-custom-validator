@@ -1,0 +1,1 @@
+test-min-length[VIOLATION] :=  ∀x : ( Class(x,'raml-shapes:ScalarShape') → ( (Property(x,'shacl:minLength') < Property(x,'shacl.maxLength')) ) )

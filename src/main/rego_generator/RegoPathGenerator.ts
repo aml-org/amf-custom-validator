@@ -2,6 +2,7 @@ import * as md5 from "md5";
 
 export interface RegoPathResult {
     rego: string[],
+    pathVariables: string[],
     variable: string
 }
 
@@ -21,6 +22,7 @@ export class RegoPathGenerator {
 
     public generatePropertyValues(): RegoPathResult {
         const lines = [];
+        const pathVariables = [this.variable];
         let previous_binding = this.variable;
         let binding = this.variable + "_0_" + this.id + "_" + this.hint;
         for (let i=0; i<this.path.length; i++) {
@@ -30,18 +32,21 @@ export class RegoPathGenerator {
             } else {
                 lines.push(`nested[${binding}] with data.nodes as ${previous_binding}[${nextPath}]`)
             }
+            pathVariables.push(binding);
             previous_binding = binding;
             binding = this.variable + "_" + (i+1) + "_" + this.id + "_" + this.hint
         }
 
         return {
             rego: lines,
-            variable: previous_binding
+            variable: previous_binding,
+            pathVariables: pathVariables
         }
     }
 
     public generateNodeArray(): RegoPathResult {
         const lines = [];
+        const pathVariables = [this.variable];
         let previous_binding = this.variable;
         let binding = this.variable + "_0_" + this.id;
         for (let i=0; i<this.path.length; i++) {
@@ -51,34 +56,42 @@ export class RegoPathGenerator {
             } else {
                 lines.push(`nested[${binding}] with data.nodes as ${previous_binding}[${nextPath}]`)
             }
+            pathVariables.push(binding);
             previous_binding = binding;
             binding = this.variable + "_" + (i+1) + "_" + this.id
         }
 
         return {
             rego: lines,
-            variable: previous_binding
+            variable: previous_binding,
+            pathVariables: pathVariables
         }
     }
 
     public generatePropertyArray(): RegoPathResult {
         const lines = [];
+        const pathVariables = [this.variable];
         let previous_binding = this.variable;
         let binding = this.variable + "_0_" + this.id;
+        let bindingMinus1;
         for (let i=0; i<this.path.length; i++) {
             const nextPath = this.path[i];
             if (i == this.path.length-1) {
                 lines.push(`${binding} = object.get(${previous_binding},"${nextPath}",[])`)
+                bindingMinus1 = previous_binding;
             } else {
                 lines.push(`nested[${binding}] with data.nodes as ${previous_binding}[${nextPath}]`)
             }
+            pathVariables.push(binding);
             previous_binding = binding;
             binding = this.variable + "_" + (i+1) + "_" + this.id
         }
 
         return {
             rego: lines,
+            pathVariables: pathVariables,
             variable: previous_binding
         }
     }
+
 }

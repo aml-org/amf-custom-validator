@@ -1,1 +1,0 @@
-validation1[VIOLATION] := ¬ ∃x,¬ ∃y:> -1 : ( Nested(x,y,'apiContract:supportedOperation') ∧ ¬In(y,'apiContract:method',[post]) ∧ Class(x,'apiContract:EndPoint') )

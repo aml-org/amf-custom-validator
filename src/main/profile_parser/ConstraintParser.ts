@@ -7,6 +7,7 @@ import {Expression} from "../model/Expression";
 import {ValidationParser} from "./ValidationParser";
 import {Implication} from "../model/Implication";
 import {NestedRule} from "../model/mappers/NestedRule";
+import {LessThanPropertyRule} from "../model/constraints/LessThanPropertyRule";
 
 
 export class ConstraintParser {
@@ -30,6 +31,8 @@ export class ConstraintParser {
                     return this.parsePattern(this.constraints[constraint]);
                 case "in":
                     return this.parseIn(this.constraints[constraint]);
+                case "lessThanProperty":
+                    return this.parseLessThanProperty(this.constraints[constraint])
                 case "nested":
                     return this.parseNested(this.constraints[constraint]);
                 case "atLeast":
@@ -54,6 +57,10 @@ export class ConstraintParser {
 
     private parseIn(constraint: any): Rule {
         return new InRule(false, this.variable, this.path, constraint);
+    }
+
+    private parseLessThanProperty(constraint: any) {
+        return new LessThanPropertyRule(false, this.variable, this.path, constraint);
     }
 
     private parseNested(constraint: any) {

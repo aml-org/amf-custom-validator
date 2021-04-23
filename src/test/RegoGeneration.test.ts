@@ -43,4 +43,8 @@ describe("Rego generation", () => {
         return await testProfile("src/test/resources/profile5.yaml");
     });
 
+    it("Should generate Rego code from an AMF profile with a simple LESS_THAN_PROPERTY rule", async () => {
+        return await testProfile("src/test/resources/profile6.yaml");
+    });
+
 });
