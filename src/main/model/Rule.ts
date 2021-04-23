@@ -28,40 +28,34 @@ export class VariableCardinality {
     }
 
     toRego(total: string, error_count: string, negated: boolean) {
+        let condition: string;
+        switch(this.operator) {
+            case CardinalityOperation.GTEQ:
+                condition = `count(${total}) - count(${error_count}) >= ${this.value}`
+                break;
+            case CardinalityOperation.GT:
+                condition =`count(${total}) - count(${error_count}) > ${this.value}`
+                break;
+            case CardinalityOperation.EQ:
+                condition = `count(${total}) - count(${error_count}) == ${this.value}`
+                break;
+            case CardinalityOperation.NEQ:
+                condition = `count(${total}) - count(${error_count}) != ${this.value}`
+                break;
+            case CardinalityOperation.LT:
+                condition = `count(${total}) - count(${error_count}) < ${this.value}`
+                break;
+            case CardinalityOperation.LTEQ:
+                condition = `count(${total}) - count(${error_count}) <= ${this.value}`
+                break;
+            default:
+                throw new Error("Cannot negate unknown cardinality: " + this.operator); // should never happen;
+        }
+
         if (negated) {
-            switch(this.operator) {
-                case CardinalityOperation.GTEQ:
-                    return `count(${total}) - count(${error_count}) < ${this.value}`
-                case CardinalityOperation.GT:
-                    return `count(${total}) - count(${error_count}) <= ${this.value}`
-                case CardinalityOperation.EQ:
-                    return `count(${total}) - count(${error_count}) != ${this.value}`
-                case CardinalityOperation.NEQ:
-                    return `count(${total}) - count(${error_count}) == ${this.value}`
-                case CardinalityOperation.LT:
-                    return `count(${total}) - count(${error_count}) >= ${this.value}`
-                case CardinalityOperation.LTEQ:
-                    return `count(${total}) - count(${error_count}) > ${this.value}`
-                default:
-                    throw new Error("Cannot negate unknown cardinallity: " + this.operator); // should never happen;
-            }
+            return condition;
         } else {
-            switch(this.operator) {
-                case CardinalityOperation.GTEQ:
-                    return `count(${total}) - count(${error_count}) >= ${this.value}`
-                case CardinalityOperation.GT:
-                    return `count(${total}) - count(${error_count}) > ${this.value}`
-                case CardinalityOperation.EQ:
-                    return `count(${total}) - count(${error_count}) == ${this.value}`
-                case CardinalityOperation.NEQ:
-                    return `count(${total}) - count(${error_count}) != ${this.value}`
-                case CardinalityOperation.LT:
-                    return `count(${total}) - count(${error_count}) < ${this.value}`
-                case CardinalityOperation.LTEQ:
-                    return `count(${total}) - count(${error_count}) <= ${this.value}`
-                default:
-                    throw new Error("Cannot negate unknown cardinality: " + this.operator); // should never happen;
-            }
+            return `not(${condition})`
         }
     }
 

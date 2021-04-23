@@ -106,7 +106,7 @@ violation[matches] {
     _result_0 := trace("in", "apiContract:method", y_0_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0, "Value no in set {'post'}")
     ys_error := error("null", y, "null", [_result_0])
   ]
-  count(ys) - count(ys_errors) < 1
+  not(count(ys) - count(ys_errors) >= 1)
   _result_0 := trace("nested", "apiContract:supportedOperation", {"failed": count(ys_errors), "success":(count(ys) - count(ys_errors))}, [e | e := ys_errors[_].trace])
   matches := error("validation1", x, "Endpoints must have a POST method", [_result_0])
 }

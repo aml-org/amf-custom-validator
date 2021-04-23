@@ -47,4 +47,8 @@ describe("Rego generation", () => {
         return await testProfile("src/test/resources/profile6.yaml");
     });
 
+    it("Should generate Rego code from an AMF profile with complex NOT rules", async () => {
+        return await testProfile("src/test/resources/profile7.yaml");
+    });
+
 });

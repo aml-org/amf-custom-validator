@@ -15,9 +15,9 @@ export class PatternRuleGenerator extends  BaseRegoRuleGenerator {
         const pathResult = new RegoPathGenerator(path, this.rule.variable.name, "pattern_" + this.rule.valueMD5()).generatePropertyValues();
         const rego = pathResult.rego;
         if (this.rule.negated) {
-            rego.push(`regex.match(${pathResult.variable}, ${JSON.stringify(this.rule.argument)})`)
+            rego.push(`regex.match(${JSON.stringify(this.rule.argument)},${pathResult.variable})`)
         } else {
-            rego.push(`not regex.match(${pathResult.variable}, ${JSON.stringify(this.rule.argument)})`)
+            rego.push(`not regex.match(${JSON.stringify(this.rule.argument)},${pathResult.variable})`)
         }
         return [
           new SimpleRuleResult(

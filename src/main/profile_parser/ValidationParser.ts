@@ -9,11 +9,13 @@ export class ValidationParser {
     private data: any;
     private expression: Expression;
     private variable: Variable;
+    private negated: boolean;
 
-    constructor(expression: Expression, variable: Variable, data: any) {
+    constructor(expression: Expression, variable: Variable, data: any, negated: boolean) {
         this.data = data;
         this.variable = variable;
         this.expression = expression;
+        this.negated = negated;
     }
 
 
@@ -52,25 +54,24 @@ export class ValidationParser {
             const value = this.data.propertyConstraints[path];
             new ConstraintParser(this.expression, this.variable, path, value).parse().forEach(r => body.push(r));
         });
-        return new AndRule(false).withBody(body);
+        return new AndRule(this.negated).withBody(body);
     }
 
     private parseAnd() {
         const nestedRules = this.data.and.map((nestedConstraint) => {
-            return new ValidationParser(this.expression, this.variable, nestedConstraint).parse();
+            return new ValidationParser(this.expression, this.variable, nestedConstraint, false).parse();
         });
-        return new AndRule(false).withBody(nestedRules);
+        return new AndRule(this.negated).withBody(nestedRules);
     }
 
     private parseOr() {
         const nestedRules = this.data.or.map((nestedConstraint) => {
-            return new ValidationParser(this.expression, this.variable, nestedConstraint).parse();
+            return new ValidationParser(this.expression, this.variable, nestedConstraint, false).parse();
         });
-        return new OrRule(false).withBody(nestedRules);
+        return new OrRule(this.negated).withBody(nestedRules);
     }
 
     private parseNot() {
-        const nested = new ValidationParser(this.expression, this.variable, this.data.not).parse();
-        return nested.negation();
+        return new ValidationParser(this.expression, this.variable, this.data.not, true).parse();
     }
 }

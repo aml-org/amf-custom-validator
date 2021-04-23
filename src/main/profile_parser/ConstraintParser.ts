@@ -67,7 +67,7 @@ export class ConstraintParser {
         const nestedExpression = this.expression.subExpression(false);
         const nextVar = nestedExpression.genVar(Quantification.ForAll);
 
-        const nested = new ValidationParser(nestedExpression, nextVar, constraint).parse()
+        const nested = new ValidationParser(nestedExpression, nextVar, constraint, false).parse()
         const nestedRule = new NestedRule(false, this.variable, nextVar, this.path);
         nestedExpression.rule = new Implication(false, this.variable, nestedRule,nested);
         return nestedExpression;
@@ -101,7 +101,7 @@ export class ConstraintParser {
 
         const nestedExpression = this.expression.subExpression(false);
         const nextVar = nestedExpression.genVar(Quantification.Exist, variableCardinality);
-        const nested = new ValidationParser(nestedExpression, nextVar, constraint.validation).parse()
+        const nested = new ValidationParser(nestedExpression, nextVar, constraint.validation, false).parse()
         const nestedRule = new NestedRule(false, this.variable, nextVar, this.path);
         nestedExpression.rule = new Implication(false, this.variable, nestedRule,nested);
         return nestedExpression;

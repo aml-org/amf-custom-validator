@@ -115,7 +115,7 @@ violation[matches] {
 violation[matches] {
  target_class[x] with data.class as "apiContract:Operation"
   x_0_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304 = x["shacl:name"]
-  not regex.match(x_0_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304, "^put|post$")
+  not regex.match("^put|post$",x_0_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304)
   _result_0 := trace("pattern", "shacl:name", x_0_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304, "Value does not match regular expression {'^put|post$'}")
   matches := error("validation1", x, "This is the message", [_result_0])
 }

@@ -1,0 +1,398 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": "http://www.w3.org/ns/shacl#ValidationResult",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://src/test/resources/integration/profile6.negative.yaml#/web-api/end-points/%2Fendpoint2/get"
+      },
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#resultMessage": "Value no in set {'get'}",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:method"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": "get"
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "or",
+          "http://www.w3.org/ns/shacl#resultMessage": "Failed or constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": "get"
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#resultMessage": [
+            [
+              {
+                "path": "apiContract:statusCode",
+                "message": "Value does not match regular expression {'^4[0-9]{2}$'}",
+                "value": "200",
+                "component": "pattern"
+              }
+            ]
+          ],
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:returns"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": {
+              "failed": 1,
+              "success": 0
+            }
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "or",
+          "http://www.w3.org/ns/shacl#resultMessage": "Failed or constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": [
+              {
+                "message": "null",
+                "trace": [
+                  {
+                    "path": "apiContract:statusCode",
+                    "message": "Value does not match regular expression {'^4[0-9]{2}$'}",
+                    "value": "200",
+                    "component": "pattern"
+                  }
+                ],
+                "target": "file://src/test/resources/integration/profile6.negative.yaml#/web-api/end-points/%2Fendpoint2/get/200",
+                "shapeId": "null"
+              }
+            ]
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "and-or-not-rule"
+      }
+    },
+    {
+      "@type": "http://www.w3.org/ns/shacl#ValidationResult",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://src/test/resources/integration/profile6.negative.yaml#/web-api/end-points/%2Fendpoint2/get"
+      },
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#resultMessage": "Value no in set {'get'}",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:method"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": "get"
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "or",
+          "http://www.w3.org/ns/shacl#resultMessage": "Failed or constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": "get"
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#resultMessage": [
+            [
+              {
+                "path": "apiContract:statusCode",
+                "message": "Value does not match regular expression {'^5[0-9]{2}$'}",
+                "value": "200",
+                "component": "pattern"
+              }
+            ]
+          ],
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:returns"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": {
+              "failed": 1,
+              "success": 0
+            }
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "or",
+          "http://www.w3.org/ns/shacl#resultMessage": "Failed or constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": [
+              {
+                "message": "null",
+                "trace": [
+                  {
+                    "path": "apiContract:statusCode",
+                    "message": "Value does not match regular expression {'^5[0-9]{2}$'}",
+                    "value": "200",
+                    "component": "pattern"
+                  }
+                ],
+                "target": "file://src/test/resources/integration/profile6.negative.yaml#/web-api/end-points/%2Fendpoint2/get/200",
+                "shapeId": "null"
+              }
+            ]
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "and-or-not-rule"
+      }
+    },
+    {
+      "@type": "http://www.w3.org/ns/shacl#ValidationResult",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://src/test/resources/integration/profile6.negative.yaml#/web-api/end-points/%2Fendpoint1/get"
+      },
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#resultMessage": "Value no in set {'get'}",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:method"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": "get"
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "or",
+          "http://www.w3.org/ns/shacl#resultMessage": "Failed or constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": "get"
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#resultMessage": [
+            [
+              {
+                "path": "apiContract:statusCode",
+                "message": "Value does not match regular expression {'^4[0-9]{2}$'}",
+                "value": "201",
+                "component": "pattern"
+              }
+            ]
+          ],
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:returns"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": {
+              "failed": 1,
+              "success": 0
+            }
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "or",
+          "http://www.w3.org/ns/shacl#resultMessage": "Failed or constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": [
+              {
+                "message": "null",
+                "trace": [
+                  {
+                    "path": "apiContract:statusCode",
+                    "message": "Value does not match regular expression {'^4[0-9]{2}$'}",
+                    "value": "201",
+                    "component": "pattern"
+                  }
+                ],
+                "target": "file://src/test/resources/integration/profile6.negative.yaml#/web-api/end-points/%2Fendpoint1/get/201",
+                "shapeId": "null"
+              }
+            ]
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "and-or-not-rule"
+      }
+    },
+    {
+      "@type": "http://www.w3.org/ns/shacl#ValidationResult",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://src/test/resources/integration/profile6.negative.yaml#/web-api/end-points/%2Fendpoint1/get"
+      },
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#resultMessage": "Value no in set {'get'}",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:method"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": "get"
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "or",
+          "http://www.w3.org/ns/shacl#resultMessage": "Failed or constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": "get"
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#resultMessage": [],
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:returns"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": {
+              "failed": 0,
+              "success": 1
+            }
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "or",
+          "http://www.w3.org/ns/shacl#resultMessage": "Failed or constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": []
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "or",
+          "http://www.w3.org/ns/shacl#resultMessage": "Failed or constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": []
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "and-or-not-rule"
+      }
+    },
+    {
+      "@type": "http://www.w3.org/ns/shacl#ValidationResult",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://src/test/resources/integration/profile6.negative.yaml#/web-api/end-points/%2Fendpoint1/get"
+      },
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#resultMessage": "Value no in set {'get'}",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:method"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": "get"
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "or",
+          "http://www.w3.org/ns/shacl#resultMessage": "Failed or constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": "get"
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#resultMessage": [
+            [
+              {
+                "path": "apiContract:statusCode",
+                "message": "Value does not match regular expression {'^5[0-9]{2}$'}",
+                "value": "201",
+                "component": "pattern"
+              }
+            ]
+          ],
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": "apiContract:returns"
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": {
+              "failed": 1,
+              "success": 0
+            }
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "or",
+          "http://www.w3.org/ns/shacl#resultMessage": "Failed or constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@value": [
+              {
+                "message": "null",
+                "trace": [
+                  {
+                    "path": "apiContract:statusCode",
+                    "message": "Value does not match regular expression {'^5[0-9]{2}$'}",
+                    "value": "201",
+                    "component": "pattern"
+                  }
+                ],
+                "target": "file://src/test/resources/integration/profile6.negative.yaml#/web-api/end-points/%2Fendpoint1/get/201",
+                "shapeId": "null"
+              }
+            ]
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "and-or-not-rule"
+      }
+    }
+  ]
+}

@@ -25,7 +25,7 @@ export class ExpressionParser {
         const expression = new Expression(false, this.name, this.message, this.level);
         const v = expression.genVar(Quantification.ForAll);
 
-        const validation = new ValidationParser(expression, v, this.data).parse();
+        const validation = new ValidationParser(expression, v, this.data, false).parse();
         const headTarget = new ClassTarget(false, v, this.targetClass);
         const implication = new Implication(false, v, headTarget, validation)
 

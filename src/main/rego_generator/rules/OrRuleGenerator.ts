@@ -67,9 +67,11 @@ export class OrRuleGenerator extends BaseRegoRuleGenerator {
                     }
                 });
                 let unificationString: string[] = []
+                /*
                 for (let i=0; i<variables.length-1; i++) {
                     unificationString.push(`${variables[i]} == ${variables[i+1]}`);
                 }
+                 */
                 simpleResults.push({
                     constraintId: "or",
                     rego: unificationString,

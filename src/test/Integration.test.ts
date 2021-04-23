@@ -35,7 +35,7 @@ const runTest= async (name: string) => {
 
     const files = fs.readdirSync("./src/test/resources/integration");
     const profiles: {[name: string]: true} = {};
-    files.map((f) => f.split(".")[0])/*.filter((p) => p == "profile5_oas")*/.forEach((p) => profiles[p] = true);
+    files.map((f) => f.split(".")[0])/*.filter((p) => p == "profile6")*/.forEach((p) => profiles[p] = true);
     Object.keys(profiles).forEach((profile) => {
         describe("IntegrationTests", () => {
             it("Integration test " + profile, async () => {

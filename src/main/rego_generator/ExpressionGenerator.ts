@@ -21,7 +21,6 @@ import {NestedRuleGenerator} from "./mappers/NestedRuleGenerator";
 import {ClassTargetRuleGenerator} from "./mappers/ClassTargetRuleGenerator";
 import {AndRuleGenerator} from "./rules/AndRuleGenerator";
 import {OrRuleGenerator} from "./rules/OrRuleGenerator";
-import {match} from "assert";
 import {LessThanPropertyRule} from "../model/constraints/LessThanPropertyRule";
 import {LessThanPropertyGenerator} from "./constraints/LessThanPropertyGenerator";
 
@@ -81,7 +80,12 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
 
 
     private generateTopLevel() {
-        const bodyResult = this.generateBody();
+        let bodyResult;
+        if (this.expression.negated) {
+            bodyResult = this.generatedBodyNegated();
+        } else {
+            bodyResult = this.generateBody();
+        }
         return this.wrapRegoResult(<ClassTarget>this.implication().head, bodyResult)
     }
 
@@ -131,7 +135,7 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
             rego,
             headResult.path,
             `{"failed": count(${variable}_errors), "success":(count(${variable}) - count(${variable}_errors))}`,
-            nestedVariable,
+            `${variable}_errors`,
             {"code" :`[e | e := ${variable}_errors[_].trace]`}
         );
 
@@ -146,9 +150,9 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
         this.wrapBranch(bodyResult, `${variable}_error`, nestedVariable, rego)
         rego.push(']');
         if (this.expression.negated) {
-            rego.push(cardinality.toRego(variable, `${variable}_errors`, false));
-        } else {
             rego.push(cardinality.toRego(variable, `${variable}_errors`, true));
+        } else {
+            rego.push(cardinality.toRego(variable, `${variable}_errors`, false));
 
         }
 
@@ -157,7 +161,7 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
             rego,
             headResult.path,
             `{"failed": count(${variable}_errors), "success":(count(${variable}) - count(${variable}_errors))}`,
-            nestedVariable,
+            `${variable}_errors`,
             {"code" :`[e | e := ${variable}_errors[_].trace]`}
         );
 
@@ -168,6 +172,19 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
         const body = this.implication().body;
         const acc: RegoRuleResult[] = [];
         body.forEach((r) => this.dispatchRule(r).forEach((result) => acc.push(result)))
+        return acc;
+    }
+
+    private generatedBodyNegated() {
+        const body = this.implication().body;
+        let negatedRule: Rule;
+        if (body.length == 1) {
+            negatedRule = body[0].negation();
+        } else {
+            negatedRule = new AndRule(false).withBody(body).negation();
+        }
+        const acc: RegoRuleResult[] = [];
+        this.dispatchRule(negatedRule).forEach((result) => acc.push(result))
         return acc;
     }
 

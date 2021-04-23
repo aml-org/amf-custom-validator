@@ -34,4 +34,8 @@ describe("Profile parsing", () => {
     it("Should parse a simple lessThan rule in a profile", async () => {
         return await testParsing("src/test/resources/profile6.yaml")
     });
+
+    it("Should parse complex negation rules in a profile", async () => {
+        return await testParsing("src/test/resources/profile7.yaml")
+    });
 });
