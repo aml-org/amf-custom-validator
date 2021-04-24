@@ -96,14 +96,14 @@ default warning = []
 default info = []
 violation[matches] {
  target_class[x] with data.class as "apiContract:EndPoint"
-  nested_nodes[x_0_4d6e6b7923f1e16651ec6583344220eb] with data.nodes as x["apiContract:supportedOperation"]
-  ys = x_0_4d6e6b7923f1e16651ec6583344220eb
+  nested_nodes[x_1_4d6e6b7923f1e16651ec6583344220eb_nested_2e7759a5cf0749f5fca54d528134e199] with data.nodes as x["apiContract:supportedOperation"]
+  ys = x_1_4d6e6b7923f1e16651ec6583344220eb_nested_2e7759a5cf0749f5fca54d528134e199
   ys_errors = [ ys_error |
     y = ys[_]
-    y_0_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0 = y["apiContract:method"]
+    y_1_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0 = y["apiContract:method"]
     gen_invalues_1 = {"post"}
-    not gen_invalues_1[y_0_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0]
-    _result_0 := trace("in", "apiContract:method", y_0_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0, "Value no in set {'post'}")
+    not gen_invalues_1[y_1_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0]
+    _result_0 := trace("in", "apiContract:method", y_1_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0, "Value no in set {'post'}")
     ys_error := error("null", y, "null", [_result_0])
   ]
   not(count(ys) - count(ys_errors) >= 1)

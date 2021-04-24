@@ -96,8 +96,8 @@ default warning = []
 default info = []
 violation[matches] {
  target_class[x] with data.class as "apiContract:Parameter"
-  x_0_3ed56a339985dc6c4996fc7dd095b8dc = object.get(x,"raml-shapes:schema",[])
-  gen_propValues_1 = nodes_array with data.nodes as x_0_3ed56a339985dc6c4996fc7dd095b8dc
+  x_1_3ed56a339985dc6c4996fc7dd095b8dc_minCount_c4ca4238a0b923820dcc509a6f75849b = object.get(x,"raml-shapes:schema",[])
+  gen_propValues_1 = nodes_array with data.nodes as x_1_3ed56a339985dc6c4996fc7dd095b8dc_minCount_c4ca4238a0b923820dcc509a6f75849b
   not count(gen_propValues_1) >= 1
   _result_0 := trace("minCount", "raml-shapes:schema", count(gen_propValues_1), "Value not matching minCount 1")
   matches := error("validation1", x, "Scalars in parameters must have minLength defined", [_result_0])
@@ -105,12 +105,12 @@ violation[matches] {
 
 violation[matches] {
  target_class[x] with data.class as "apiContract:Parameter"
-  nested_nodes[x_0_3ed56a339985dc6c4996fc7dd095b8dc] with data.nodes as x["raml-shapes:schema"]
-  ys = x_0_3ed56a339985dc6c4996fc7dd095b8dc
+  nested_nodes[x_1_3ed56a339985dc6c4996fc7dd095b8dc_nested_2e7759a5cf0749f5fca54d528134e199] with data.nodes as x["raml-shapes:schema"]
+  ys = x_1_3ed56a339985dc6c4996fc7dd095b8dc_nested_2e7759a5cf0749f5fca54d528134e199
   ys_errors = [ ys_error |
     y = ys[_]
-    y_0_08eac10d8cc13f13d197f0a5ede2e5e1 = object.get(y,"shacl:minLength",[])
-    gen_propValues_2 = nodes_array with data.nodes as y_0_08eac10d8cc13f13d197f0a5ede2e5e1
+    y_1_08eac10d8cc13f13d197f0a5ede2e5e1_minCount_c4ca4238a0b923820dcc509a6f75849b = object.get(y,"shacl:minLength",[])
+    gen_propValues_2 = nodes_array with data.nodes as y_1_08eac10d8cc13f13d197f0a5ede2e5e1_minCount_c4ca4238a0b923820dcc509a6f75849b
     not count(gen_propValues_2) >= 1
     _result_0 := trace("minCount", "shacl:minLength", count(gen_propValues_2), "Value not matching minCount 1")
     ys_error := error("null", y, "null", [_result_0])

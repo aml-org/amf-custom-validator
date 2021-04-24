@@ -27,7 +27,7 @@ export class InRuleGenerator extends BaseRegoRuleGenerator {
             new SimpleRuleResult(
                 "in",
                 rego,
-                this.rule.path[this.rule.path.length-1],
+                path.source,
                 pathResult.variable,pathResult.variable,
                 `Value no in set {${this.argumentValue().replace(/"/g, "'")}}`
             )

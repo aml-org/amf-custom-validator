@@ -1,4 +1,5 @@
 import * as md5 from "md5";
+import {PropertyPath} from "../profile_parser/PathParser";
 
 export const Quantification = {
     ForAll: "ForAll",
@@ -219,11 +220,11 @@ export abstract class ComplexRule extends Rule {
 
 export abstract class AtomicRule extends Rule {
     public readonly argument: any;
-    public readonly path: string[];
+    public readonly path: PropertyPath;
     private constraint: string;
     public readonly variable: Variable;
 
-    constructor(negated: boolean, variable: Variable, constraint: string, path: string[], argument: any) {
+    constructor(negated: boolean, variable: Variable, constraint: string, path: PropertyPath, argument: any) {
         super(negated);
         this.variable = variable;
         this.path = path;

@@ -3,7 +3,7 @@ import {AtomicRule, Variable} from "../Rule";
 export class ClassTarget extends AtomicRule {
 
     constructor(negated: boolean, variable: Variable, argument: any) {
-        super(negated, variable, "classTarget", [], argument.replace(".", ":"));
+        super(negated, variable, "classTarget", {and:[]}, argument.replace(".", ":"));
     }
 
 

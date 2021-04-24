@@ -19,7 +19,7 @@ export class NestedRuleGenerator extends BaseRegoRuleGenerator {
         return [new SimpleRuleResult(
             "nested",
             rego,
-            this.rule.path[this.rule.path.length-1],
+            this.rule.path.source,
             pluralName,
             pluralName,
             ""

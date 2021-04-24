@@ -1,4 +1,4 @@
-import {PathParser} from "./PathParser";
+import {PathParser, PropertyPath} from "./PathParser";
 import {CardinalityOperation, Quantification, Rule, Variable, VariableCardinality} from "../model/Rule";
 import {MinCountRule} from "../model/constraints/MinCountRule";
 import {PatternRule} from "../model/constraints/PatternRule";
@@ -11,7 +11,7 @@ import {LessThanPropertyRule} from "../model/constraints/LessThanPropertyRule";
 
 
 export class ConstraintParser {
-    private path: string[];
+    private path: PropertyPath;
     private constraints: any;
     private expression: Expression;
     private variable: Variable;

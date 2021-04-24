@@ -96,17 +96,17 @@ default warning = []
 default info = []
 violation[matches] {
  target_class[x] with data.class as "apiContract:Operation"
-  x_0_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2 = x["apiContract:method"]
+  x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2 = x["apiContract:method"]
   gen_invalues_1 = {"publish","subscribe"}
-  not gen_invalues_1[x_0_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2]
-  _result_0 := trace("in", "apiContract:method", x_0_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2, "Value no in set {'publish','subscribe'}")
+  not gen_invalues_1[x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2]
+  _result_0 := trace("in", "apiContract:method", x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_1cd7c4508d18dac74835e4fe9b3f92a2, "Value no in set {'publish','subscribe'}")
   matches := error("validation1", x, "This is the message", [_result_0])
 }
 
 violation[matches] {
  target_class[x] with data.class as "apiContract:Operation"
-  x_0_b87947f49ae3eed9ba2e63e2c81fd029 = object.get(x,"apiContract:method",[])
-  gen_propValues_2 = nodes_array with data.nodes as x_0_b87947f49ae3eed9ba2e63e2c81fd029
+  x_1_b87947f49ae3eed9ba2e63e2c81fd029_minCount_c4ca4238a0b923820dcc509a6f75849b = object.get(x,"apiContract:method",[])
+  gen_propValues_2 = nodes_array with data.nodes as x_1_b87947f49ae3eed9ba2e63e2c81fd029_minCount_c4ca4238a0b923820dcc509a6f75849b
   not count(gen_propValues_2) >= 1
   _result_0 := trace("minCount", "apiContract:method", count(gen_propValues_2), "Value not matching minCount 1")
   matches := error("validation1", x, "This is the message", [_result_0])
@@ -114,8 +114,8 @@ violation[matches] {
 
 violation[matches] {
  target_class[x] with data.class as "apiContract:Operation"
-  x_0_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304 = x["shacl:name"]
-  not regex.match("^put|post$",x_0_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304)
-  _result_0 := trace("pattern", "shacl:name", x_0_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304, "Value does not match regular expression {'^put|post$'}")
+  x_1_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304 = x["shacl:name"]
+  not regex.match("^put|post$",x_1_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304)
+  _result_0 := trace("pattern", "shacl:name", x_1_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304, "Value does not match regular expression {'^put|post$'}")
   matches := error("validation1", x, "This is the message", [_result_0])
 }

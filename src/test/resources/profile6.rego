@@ -96,9 +96,9 @@ default warning = []
 default info = []
 violation[matches] {
  target_class[x] with data.class as "raml-shapes:ScalarShape"
-  x_0_08eac10d8cc13f13d197f0a5ede2e5e1 = object.get(x,"shacl:minLength",[])
+  x_1_08eac10d8cc13f13d197f0a5ede2e5e1_lessThanProperty_23d4a85c4808331b6bced8d07469f839 = object.get(x,"shacl:minLength",[])
   gen_lessThanPropertyValue_1 = x["shacl:maxLength"]
-  x_0_08eac10d8cc13f13d197f0a5ede2e5e1 >= gen_lessThanPropertyValue_1
-  _result_0 := trace("lessThanProperty", "shacl:minLength", [x_0_08eac10d8cc13f13d197f0a5ede2e5e1,gen_lessThanPropertyValue_1], "Value for property 'shacl:minLength' not less than value for property shacl.maxLength")
+  x_1_08eac10d8cc13f13d197f0a5ede2e5e1_lessThanProperty_23d4a85c4808331b6bced8d07469f839 >= gen_lessThanPropertyValue_1
+  _result_0 := trace("lessThanProperty", "shacl:minLength", [x_1_08eac10d8cc13f13d197f0a5ede2e5e1_lessThanProperty_23d4a85c4808331b6bced8d07469f839,gen_lessThanPropertyValue_1], "Value for property 'shacl:minLength' not less than value for property shacl.maxLength")
   matches := error("test-min-length", x, "Min length must be less than max length must match in scalar", [_result_0])
 }

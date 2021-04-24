@@ -1,7 +1,8 @@
-import {AtomicRule, Rule, Variable} from "../Rule";
+import {AtomicRule, Variable} from "../Rule";
+import {PropertyPath} from "../../profile_parser/PathParser";
 
 export class MinCountRule extends AtomicRule {
-    constructor(negated: boolean, variable: Variable, path: string[], argument: any) {
+    constructor(negated: boolean, variable: Variable, path: PropertyPath, argument: any) {
         super(negated, variable, "minCount", path, argument);
     }
 
@@ -10,7 +11,7 @@ export class MinCountRule extends AtomicRule {
         if (this.negated) {
             negation = "¬"
         }
-        return `${negation}MinCount(${this.variable.name},'${this.path.join("/")}',${this.argument})`
+        return `${negation}MinCount(${this.variable.name},'${this.path.source.replace(/\./g, ":")}',${this.argument})`
     }
 
 }

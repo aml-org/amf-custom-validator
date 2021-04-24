@@ -1,8 +1,9 @@
 import {AtomicRule, Variable} from "../Rule";
+import {PropertyPath} from "../../profile_parser/PathParser";
 
 
 export class PatternRule extends AtomicRule {
-    constructor(negated: boolean, variable: Variable, path: string[], argument: any) {
+    constructor(negated: boolean, variable: Variable, path: PropertyPath, argument: any) {
         super(negated, variable, "pattern", path, argument);
     }
 
@@ -11,6 +12,6 @@ export class PatternRule extends AtomicRule {
         if (this.negated) {
             negation = "¬"
         }
-        return `${negation}Pattern(${this.variable.name},'${this.path.join("/")}','${this.argument}')`
+        return `${negation}Pattern(${this.variable.name},'${this.path.source.replace(/\./g, ":")}','${this.argument}')`
     }
 }

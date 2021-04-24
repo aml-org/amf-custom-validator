@@ -1,8 +1,9 @@
 import {AtomicRule, Variable} from "../Rule";
+import {PropertyPath} from "../../profile_parser/PathParser";
 
 export class LessThanPropertyRule extends AtomicRule {
 
-    constructor(negated: boolean, variable: Variable, path: string[], argument: any) {
+    constructor(negated: boolean, variable: Variable, path: PropertyPath, argument: any) {
         super(negated, variable, "lessThanProperty", path, argument);
     }
 
@@ -11,7 +12,7 @@ export class LessThanPropertyRule extends AtomicRule {
         if (this.negated) {
             negation = "¬"
         }
-        return `${negation}(Property(${this.variable.name},'${this.path.join("/")}') < Property(${this.variable.name},'${this.argument}'))`
+        return `${negation}(Property(${this.variable.name},'${this.path.source.replace(/\./g, ":")}') < Property(${this.variable.name},'${this.argument}'))`
     }
 
 }

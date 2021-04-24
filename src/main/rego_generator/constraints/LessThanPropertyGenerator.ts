@@ -28,10 +28,10 @@ export class LessThanPropertyGenerator extends BaseRegoRuleGenerator {
             new SimpleRuleResult(
                 "lessThanProperty",
                 rego,
-                this.rule.path[this.rule.path.length-1],
+                path.source,
                 `[${propAVariable},${propBVariable}]`,
                 pathResult.variable,
-                `Value for property '${path.join("/")}' not less than value for property ${this.rule.argument}`
+                `Value for property '${path.source.replace(/\\./g, ":")}' not less than value for property ${this.rule.argument.replace(/\\./g, ":")}`
             )
         ];
     }

@@ -26,7 +26,7 @@ export class MinCountRuleGenerator extends BaseRegoRuleGenerator {
           new SimpleRuleResult(
               "minCount",
               rego,
-              this.rule.path[this.rule.path.length-1],
+              this.rule.path.source,
               `count(${inValuesVariable})`,
               pathResult.variable,
               `Value not matching minCount ${this.rule.argument}`

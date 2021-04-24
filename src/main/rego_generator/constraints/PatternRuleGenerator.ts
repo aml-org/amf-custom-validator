@@ -23,7 +23,7 @@ export class PatternRuleGenerator extends  BaseRegoRuleGenerator {
           new SimpleRuleResult(
               "pattern",
               rego,
-              this.rule.path[this.rule.path.length-1],
+              this.rule.path.source,
               pathResult.variable,
               pathResult.variable,
               `Value does not match regular expression {${JSON.stringify(this.rule.argument).replace(/"/g,"'")}}`
