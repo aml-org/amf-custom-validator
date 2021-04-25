@@ -1,0 +1,3 @@
+validation1[VIOLATION] :=  ∀x : ( Class(x,'apiContract:EndPoint') → ( In(x,'apiContract:supportedOperation / apiContract:method',[publish,subscribe]) ∧ MinCount(x,'apiContract:supportedOperation / apiContract:method',1) ∧ Pattern(x,'shacl:name','^put|post$') ) )
+
+validation2[VIOLATION] :=  ∀x : ( Class(x,'apiContract:EndPoint') → ( MinCount(x,'apiContract:expects / (apiContract:parameter / shapes:schema) | (apiContract:payload / shapes:schema) / shacl:name',1) ) )

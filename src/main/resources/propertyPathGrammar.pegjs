@@ -22,7 +22,7 @@ primary "primary"
 
 
 ws "whitespace"
-  = [" "\s\n\t] * {
+  = [" "\n\t] * {
   return ""
 }
 

@@ -51,4 +51,8 @@ describe("Rego generation", () => {
         return await testProfile("src/test/resources/profile7.yaml");
     });
 
+    it("Should generate Rego code from an AMF profile with complex PATH PROPERTIES in rules", async () => {
+        return await testProfile("src/test/resources/profile8.yaml");
+    });
+
 });

@@ -4,10 +4,11 @@ import {ProfileParser} from "../main/ProfileParser";
 import * as fs from "fs";
 
 const testParsing = async (profilePath: string) => {
-    const expected = await fs.promises.readFile(profilePath.replace(".yaml", ".parsed"));
     const parser = new ProfileParser(profilePath);
     const profile = await parser.parse();
     const expressions = profile.toString();
+    //fs.writeFileSync(profilePath.replace(".yaml",".parsed"), expressions);
+    const expected = await fs.promises.readFile(profilePath.replace(".yaml", ".parsed"));
     return assert.equal(expressions, expected.toString());
 }
 describe("Profile parsing", () => {
@@ -37,5 +38,9 @@ describe("Profile parsing", () => {
 
     it("Should parse complex negation rules in a profile", async () => {
         return await testParsing("src/test/resources/profile7.yaml")
+    });
+
+    it("Should parse complex property paths in a profile", async () => {
+        return await testParsing("src/test/resources/profile8.yaml")
     });
 });

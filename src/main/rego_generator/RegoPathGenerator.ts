@@ -42,11 +42,11 @@ export class RegoPathGenerator {
     private traverse(path: PropertyPath, counter: number, rego: string[], pathVariables: string[], paths: string[]): RegoPathResultInternal[] {
         //@ts-ignore
         if (path.and != null) {
-            // AND we traverse each component and merge the results one after the other and generating a single result
+            // AND we traverse each component and merge the results one after the other to generate a single result
             return this.traverseAnd(<AndPath>path, counter, rego, pathVariables, paths);
         //@ts-ignore
         } else if (path.or != null) {
-            // OR, we need to branch the lookup in the path and generate two results for each branch, duplicating the accumulator
+            // OR, we need to branch the path traversal and generate two results for each branch, duplicating the accumulator
             return this.traverseOr(<OrPath>path, counter, rego, pathVariables, paths);
         } else {
             // SIMPLE property, we just add it to the current path
@@ -60,14 +60,8 @@ export class RegoPathGenerator {
         const firstParsed = this.traverse(first, counter, rego, pathVariables, paths);
         const acc: RegoPathResultInternal[] = [];
         firstParsed.forEach((pathResult) => {
-            this.traverse(last, pathResult.counter, pathResult.rego, paths,pathResult.pathVariables).forEach((secondPathResult) => {
-                acc.push({
-                    rego: pathResult.rego.concat(secondPathResult.rego),
-                    pathVariables: pathResult.pathVariables.concat(secondPathResult.pathVariables),
-                    paths: pathResult.paths.concat(secondPathResult.paths),
-                    counter: secondPathResult.counter,
-                    variable: secondPathResult.variable
-                });
+            this.traverse(last, pathResult.counter, pathResult.rego, pathResult.pathVariables, pathResult.paths).forEach((secondPathResult) => {
+                acc.push(secondPathResult);
             });
         });
         return acc;
@@ -76,13 +70,11 @@ export class RegoPathGenerator {
     private traverseOr(path: OrPath, counter: number, rego: string[], pathVariables: string[], paths: string[]): RegoPathResultInternal[] {
         const first = path.or[0];
         const last = path.or[1];
-        const firstParsed = this.traverse(first, counter, rego, pathVariables, paths);
-        const acc: RegoPathResultInternal[] = [];
-        firstParsed.forEach((pathResult) => {
-            const newCounter = this.branchingCounter++ // We are generating a newly unique counter for the properties in this path
-            this.traverse(last, newCounter, pathResult.rego, pathResult.pathVariables, pathResult.paths).forEach((pr) => acc.push(pr));
-        });
-        return acc;
+        const newCounterFirst = this.branchingCounter++ // We are generating a newly unique counter for the properties in this path
+        const newCounterLast = this.branchingCounter++ // We are generating a newly unique counter for the properties in this path
+        const firstParsed = this.traverse(first, newCounterFirst, rego.concat([]), pathVariables.concat([]), paths.concat([]));
+        const LastParsed = this.traverse(last, newCounterLast, rego.concat([]), pathVariables.concat([]), paths.concat([]));
+        return firstParsed.concat(LastParsed);
     }
 
     private traverseProperty(path: Property, counter: number, rego: string[], pathVariables: string[], paths: string[]): RegoPathResultInternal[] {
@@ -170,9 +162,9 @@ export class RegoPathGenerator {
             if (i === 0) {
                 rego.push(`${variable}_${i} = array.concat(${v},[])`);
             } else if (i === variables.length-1) {
-                rego.push(`${variable} = array.concat(${v},${variables[i-1]})`);
+                rego.push(`${variable} = array.concat(${v},${variable}_${i-1})`);
             } else {
-                rego.push(`${variable}_${i} = array.concat(${v},${variables[i-1]})`);
+                rego.push(`${variable}_${i} = array.concat(${v},${variable}_${i-1})`);
             }
         }
         variables.push(variable);
