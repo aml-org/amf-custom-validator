@@ -94,58 +94,112 @@ report[level] = matches {
 default warning = []
 
 default info = []
-violation[matches] {
- target_class[x] with data.class as "apiContract:Operation"
-  x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_fb871f1de93ad812876a897b218c4cf4 = x["apiContract:method"]
-  gen_invalues_1 = {"subscribe"}
-  not gen_invalues_1[x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_fb871f1de93ad812876a897b218c4cf4]
-  _result_0 := trace("in", "apiContract:method", x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_fb871f1de93ad812876a897b218c4cf4, "Value no in set {'subscribe'}")
-  x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_e1cc170ad25ef04281c98e035046e65b = x["apiContract:method"]
-  gen_invalues_3 = {"get"}
-  not gen_invalues_3[x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_e1cc170ad25ef04281c98e035046e65b]
-  _result_1 := trace("in", "apiContract:method", x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_e1cc170ad25ef04281c98e035046e65b, "Value no in set {'get'}")
-  _result_2 := trace("or", "", x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_e1cc170ad25ef04281c98e035046e65b, "Failed or constraint")
-  matches := error("validation1", x, "This is the message", [_result_0,_result_1,_result_2])
+# Path rules
+
+gen_path_rule_1[nodes] {
+  x = data.sourceNode
+  nodes_tmp = x["apiContract:method"]
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+gen_path_rule_5[nodes] {
+  x = data.sourceNode
+  nodes_tmp = x["apiContract:method"]
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
 }
 
-violation[matches] {
- target_class[x] with data.class as "apiContract:Operation"
-  x_1_b87947f49ae3eed9ba2e63e2c81fd029_minCount_c4ca4238a0b923820dcc509a6f75849b = object.get(x,"apiContract:method",[])
-  gen_propValues_2 = nodes_array with data.nodes as x_1_b87947f49ae3eed9ba2e63e2c81fd029_minCount_c4ca4238a0b923820dcc509a6f75849b
-  not count(gen_propValues_2) >= 1
-  _result_0 := trace("minCount", "apiContract:method", count(gen_propValues_2), "Value not matching minCount 1")
-  x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_e1cc170ad25ef04281c98e035046e65b = x["apiContract:method"]
-  gen_invalues_3 = {"get"}
-  not gen_invalues_3[x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_e1cc170ad25ef04281c98e035046e65b]
-  _result_1 := trace("in", "apiContract:method", x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_e1cc170ad25ef04281c98e035046e65b, "Value no in set {'get'}")
-  _result_2 := trace("or", "", x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_e1cc170ad25ef04281c98e035046e65b, "Failed or constraint")
-  matches := error("validation1", x, "This is the message", [_result_0,_result_1,_result_2])
+gen_path_rule_3[nodes] {
+  x = data.sourceNode
+  nodes_tmp = object.get(x,"apiContract:method",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+gen_path_rule_5[nodes] {
+  x = data.sourceNode
+  nodes_tmp = x["apiContract:method"]
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
 }
 
+gen_path_rule_1[nodes] {
+  x = data.sourceNode
+  nodes_tmp = x["apiContract:method"]
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+gen_path_rule_7[nodes] {
+  x = data.sourceNode
+  nodes_tmp = object.get(x,"apiContract:method",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+
+gen_path_rule_3[nodes] {
+  x = data.sourceNode
+  nodes_tmp = object.get(x,"apiContract:method",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+gen_path_rule_7[nodes] {
+  x = data.sourceNode
+  nodes_tmp = object.get(x,"apiContract:method",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+
+
+#Constraint rules
+
 violation[matches] {
- target_class[x] with data.class as "apiContract:Operation"
-  x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_fb871f1de93ad812876a897b218c4cf4 = x["apiContract:method"]
-  gen_invalues_1 = {"subscribe"}
-  not gen_invalues_1[x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_fb871f1de93ad812876a897b218c4cf4]
-  _result_0 := trace("in", "apiContract:method", x_1_b87947f49ae3eed9ba2e63e2c81fd029_in_fb871f1de93ad812876a897b218c4cf4, "Value no in set {'subscribe'}")
-  x_1_b87947f49ae3eed9ba2e63e2c81fd029_minCount_c4ca4238a0b923820dcc509a6f75849b = object.get(x,"apiContract:method",[])
-  gen_propValues_4 = nodes_array with data.nodes as x_1_b87947f49ae3eed9ba2e63e2c81fd029_minCount_c4ca4238a0b923820dcc509a6f75849b
+  target_class[x] with data.class as "apiContract:Operation"
+  x_check_array = gen_path_rule_1 with data.sourceNode as x
+  x_check = x_check_array[_]
+  gen_invalues_2 = {"subscribe"}
+  not gen_invalues_2[x_check]
+  _result_0 := trace("in", "apiContract:method", x_check, "Value no in set {'subscribe'}")
+  x_check_array = gen_path_rule_5 with data.sourceNode as x
+  x_check = x_check_array[_]
+  gen_invalues_6 = {"get"}
+  not gen_invalues_6[x_check]
+  _result_1 := trace("in", "apiContract:method", x_check, "Value no in set {'get'}")
+  _result_2 := trace("or", "", x_check, "Failed or constraint")
+  matches := error("validation1", x, "This is the message", [_result_0,_result_1,_result_2])
+}
+violation[matches] {
+  target_class[x] with data.class as "apiContract:Operation"
+  gen_propValues_4 = gen_path_rule_3 with data.sourceNode as x
   not count(gen_propValues_4) >= 1
-  _result_1 := trace("minCount", "apiContract:method", count(gen_propValues_4), "Value not matching minCount 1")
-  _result_2 := trace("or", "", x_1_b87947f49ae3eed9ba2e63e2c81fd029_minCount_c4ca4238a0b923820dcc509a6f75849b, "Failed or constraint")
+  _result_0 := trace("minCount", "apiContract:method", count(gen_propValues_4), "Value not matching minCount 1")
+  x_check_array = gen_path_rule_5 with data.sourceNode as x
+  x_check = x_check_array[_]
+  gen_invalues_6 = {"get"}
+  not gen_invalues_6[x_check]
+  _result_1 := trace("in", "apiContract:method", x_check, "Value no in set {'get'}")
+  _result_2 := trace("or", "", x_check, "Failed or constraint")
   matches := error("validation1", x, "This is the message", [_result_0,_result_1,_result_2])
 }
-
 violation[matches] {
- target_class[x] with data.class as "apiContract:Operation"
-  x_1_b87947f49ae3eed9ba2e63e2c81fd029_minCount_c4ca4238a0b923820dcc509a6f75849b = object.get(x,"apiContract:method",[])
-  gen_propValues_2 = nodes_array with data.nodes as x_1_b87947f49ae3eed9ba2e63e2c81fd029_minCount_c4ca4238a0b923820dcc509a6f75849b
-  not count(gen_propValues_2) >= 1
-  _result_0 := trace("minCount", "apiContract:method", count(gen_propValues_2), "Value not matching minCount 1")
-  x_1_b87947f49ae3eed9ba2e63e2c81fd029_minCount_c4ca4238a0b923820dcc509a6f75849b = object.get(x,"apiContract:method",[])
-  gen_propValues_4 = nodes_array with data.nodes as x_1_b87947f49ae3eed9ba2e63e2c81fd029_minCount_c4ca4238a0b923820dcc509a6f75849b
+  target_class[x] with data.class as "apiContract:Operation"
+  x_check_array = gen_path_rule_1 with data.sourceNode as x
+  x_check = x_check_array[_]
+  gen_invalues_2 = {"subscribe"}
+  not gen_invalues_2[x_check]
+  _result_0 := trace("in", "apiContract:method", x_check, "Value no in set {'subscribe'}")
+  gen_propValues_8 = gen_path_rule_7 with data.sourceNode as x
+  not count(gen_propValues_8) >= 1
+  _result_1 := trace("minCount", "apiContract:method", count(gen_propValues_8), "Value not matching minCount 1")
+  _result_2 := trace("or", "", gen_propValues_8, "Failed or constraint")
+  matches := error("validation1", x, "This is the message", [_result_0,_result_1,_result_2])
+}
+violation[matches] {
+  target_class[x] with data.class as "apiContract:Operation"
+  gen_propValues_4 = gen_path_rule_3 with data.sourceNode as x
   not count(gen_propValues_4) >= 1
-  _result_1 := trace("minCount", "apiContract:method", count(gen_propValues_4), "Value not matching minCount 1")
-  _result_2 := trace("or", "", x_1_b87947f49ae3eed9ba2e63e2c81fd029_minCount_c4ca4238a0b923820dcc509a6f75849b, "Failed or constraint")
+  _result_0 := trace("minCount", "apiContract:method", count(gen_propValues_4), "Value not matching minCount 1")
+  gen_propValues_8 = gen_path_rule_7 with data.sourceNode as x
+  not count(gen_propValues_8) >= 1
+  _result_1 := trace("minCount", "apiContract:method", count(gen_propValues_8), "Value not matching minCount 1")
+  _result_2 := trace("or", "", gen_propValues_8, "Failed or constraint")
   matches := error("validation1", x, "This is the message", [_result_0,_result_1,_result_2])
 }

@@ -75,6 +75,7 @@ export class OrRuleGenerator extends BaseRegoRuleGenerator {
                 simpleResults.push({
                     constraintId: "or",
                     rego: unificationString,
+                    pathRules: [],
                     path: "",
                     variable: variables[variables.length-1],
                     value: variables[variables.length-1],

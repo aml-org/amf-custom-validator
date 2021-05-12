@@ -130,9 +130,11 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
             rego.push(`count(${variable}_errors) > 0`)
 
         }
+        const pathRules = this.accumulatePathRules(headResult, bodyResult);
         const nestedSimpleResult = new SimpleRuleResult(
             "nested",
             rego,
+            pathRules,
             headResult.path,
             `{"failed": count(${variable}_errors), "success":(count(${variable}) - count(${variable}_errors))}`,
             `${variable}_errors`,
@@ -155,10 +157,11 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
             rego.push(cardinality.toRego(variable, `${variable}_errors`, false));
 
         }
-
+        const pathRules = this.accumulatePathRules(headResult, bodyResult);
         const nestedSimpleResult = new SimpleRuleResult(
             "nested",
             rego,
+            pathRules,
             headResult.path,
             `{"failed": count(${variable}_errors), "success":(count(${variable}) - count(${variable}_errors))}`,
             `${variable}_errors`,
@@ -166,6 +169,13 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
         );
 
         return new BranchRuleResult("nested", [nestedSimpleResult]);
+    }
+
+    private accumulatePathRules(headResult: SimpleRuleResult, bodyResult: BranchRuleResult) {
+        const pathRules = [];
+        headResult.pathRules.forEach((pathRule) => pathRules.push(pathRule));
+        bodyResult.branch.forEach((branchResult) => branchResult.pathRules.forEach((pathRule) => pathRules.push(pathRule)));
+        return pathRules
     }
 
     private generateBody() {
@@ -202,16 +212,25 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
             }
         });
 
-        const validations = branches.map((branch) => {
-            const acc = [];
+
+        const pathValidations = branches.map((branch) => {
+            return branch.branch.map((result) => {
+                return result.pathRules.map((pathResult) => {
+                    return pathResult.rego.join("\n");
+                }).join("\n\n");
+            }).join("\n");
+        }).join("\n");
+
+        const constraintValidations = branches.map((branch) => {
+            const acc = []
             acc.push(`${level.toLowerCase()}[matches] {`);
-            classTargetResult.rego.forEach((l)=> acc.push(" " + l));
+            classTargetResult.rego.forEach((l) => acc.push(`  ${l}`))
             this.wrapBranch(branch, 'matches', classTargetVariable, acc);
             acc.push('}');
             return acc.join("\n");
-        });
+        }).join("\n");
 
-        return validations.join("\n\n");
+        return ["# Path rules", pathValidations, "#Constraint rules", constraintValidations].join("\n\n");
     }
 
     wrapBranch(branch: BranchRuleResult, matchesVariable: string, mappingVariable: string, acc: string[]) {

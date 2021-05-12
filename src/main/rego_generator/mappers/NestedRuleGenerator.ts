@@ -13,12 +13,13 @@ export class NestedRuleGenerator extends BaseRegoRuleGenerator {
     generateResult() {
         const path = this.rule.path;
         const pathResult = new RegoPathGenerator(path, this.rule.parent.name, "nested_" + this.rule.valueMD5()).generateNodeArray();
-        const rego = pathResult.rego;
+        const rego = [];
         const pluralName = `${this.rule.child.name}s`
-        rego.push(`${pluralName} = ${pathResult.variable}`)
+        rego.push(`${pluralName} = ${pathResult.rule} with data.sourceNode as ${this.rule.variable.name}`)
         return [new SimpleRuleResult(
             "nested",
             rego,
+            [pathResult],
             this.rule.path.source,
             pluralName,
             pluralName,

@@ -94,11 +94,31 @@ report[level] = matches {
 default warning = []
 
 default info = []
+# Path rules
+
+gen_path_rule_1[nodes] {
+  x = data.sourceNode
+  nodes_tmp = object.get(x,"shacl:minLength",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+
+gen_path_rule_2[nodes] {
+  x = data.sourceNode
+  nodes_tmp = object.get(x,"shacl:maxLength",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+
+#Constraint rules
+
 violation[matches] {
- target_class[x] with data.class as "raml-shapes:ScalarShape"
-  x_1_08eac10d8cc13f13d197f0a5ede2e5e1_lessThanProperty_23d4a85c4808331b6bced8d07469f839 = object.get(x,"shacl:minLength",[])
-  gen_lessThanPropertyValue_1 = x["shacl:maxLength"]
-  x_1_08eac10d8cc13f13d197f0a5ede2e5e1_lessThanProperty_23d4a85c4808331b6bced8d07469f839 >= gen_lessThanPropertyValue_1
-  _result_0 := trace("lessThanProperty", "shacl:minLength", [x_1_08eac10d8cc13f13d197f0a5ede2e5e1_lessThanProperty_23d4a85c4808331b6bced8d07469f839,gen_lessThanPropertyValue_1], "Value for property 'shacl:minLength' not less than value for property shacl.maxLength")
+  target_class[x] with data.class as "raml-shapes:ScalarShape"
+  gen_path_rule_1_propAs = gen_path_rule_1 with data.sourceNode as x
+  gen_path_rule_2_propBs = gen_path_rule_2 with data.sourceNode as x
+  gen_path_rule_1_propA = gen_path_rule_1_propAs[_]
+  gen_path_rule_2_propB = gen_path_rule_2_propBs[_]
+  gen_path_rule_1_propA >= gen_path_rule_2_propB
+  _result_0 := trace("lessThanProperty", "shacl:minLength", [gen_path_rule_1_propA,gen_path_rule_2_propB], "Value for property 'shacl:minLength' not less than value for property shacl.maxLength")
   matches := error("test-min-length", x, "Min length must be less than max length must match in scalar", [_result_0])
 }

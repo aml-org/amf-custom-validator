@@ -8,7 +8,7 @@
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
       "http://www.w3.org/ns/shacl#focusNode": {
-        "@id": "file://src/test/resources/integration/profile1.negative.yaml#/web-api/end-points/%2Fendpoint1/get/request/parameter/a"
+        "@id": "file://src/test/resources/integration/profile7.negative.yaml#/web-api/end-points/%2Fendpoint1/put/request"
       },
       "http://a.ml/vocabularies/validation#trace": [
         {
@@ -24,19 +24,19 @@
             ]
           ],
           "http://www.w3.org/ns/shacl#resultPath": {
-            "@id": "shapes:schema"
+            "@id": "apiContract:parameter / shapes:schema"
           },
           "http://www.w3.org/ns/shacl#focusNode": {
             "@value": {
               "failed": 1,
-              "success": 0
+              "success": 2
             }
           }
         }
       ],
       "http://www.w3.org/ns/shacl#resultMessage": "Scalars in parameters must have minLength defined",
       "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "scalar-parameters"
+        "@id": "validation1"
       }
     },
     {
@@ -45,7 +45,7 @@
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
       "http://www.w3.org/ns/shacl#focusNode": {
-        "@id": "file://src/test/resources/integration/profile1.negative.yaml#/web-api/end-points/%2Fendpoint2/get/request/parameter/d"
+        "@id": "file://src/test/resources/integration/profile7.negative.yaml#/web-api/end-points/%2Fendpoint1/get/request"
       },
       "http://a.ml/vocabularies/validation#trace": [
         {
@@ -61,19 +61,19 @@
             ]
           ],
           "http://www.w3.org/ns/shacl#resultPath": {
-            "@id": "shapes:schema"
+            "@id": "apiContract:parameter / shapes:schema"
           },
           "http://www.w3.org/ns/shacl#focusNode": {
             "@value": {
               "failed": 1,
-              "success": 0
+              "success": 2
             }
           }
         }
       ],
       "http://www.w3.org/ns/shacl#resultMessage": "Scalars in parameters must have minLength defined",
       "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "scalar-parameters"
+        "@id": "validation1"
       }
     }
   ]

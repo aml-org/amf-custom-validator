@@ -1,33 +1,33 @@
-start = path
+Expression
+  = head:Term tail:(_ "/" _ Term)* {
+      const xs = tail.reduce(function(acc, element) {
+        return acc.concat([element[3]]);
+      }, [head]);
+      if (xs.length === 1) {
+        return xs[0]
+      } else {
+        return {and: xs}
+      }
+    }
 
+Term
+  = head:Factor tail:(_ "|" _ Factor)* {
+      const xs = tail.reduce(function(acc, element) {
+        return acc.concat([element[3]]);
+      }, [head]);
+      if (xs.length === 1) {
+        return xs[0];
+      } else {
+        return {or: xs}
+      }
+    }
 
-path "path"
-  = primary:primary ws "/" ws path:path {
-    return {"and": [primary,path] }
-  }
-  / primary:primary ws "|" ws path:path {
-    return {"or": [primary,path] }
-  }
-  / primary:primary {
-    return primary;
-  }
+Factor
+  = "(" _ expr:Expression _ ")" { return expr; }
+  / Iri
 
-primary "primary"
-  = iri:iri {
-    return iri;
-  }
-  / "(" ws p:path ws ")" {
-    return p;
-  }
-
-
-ws "whitespace"
-  = [" "\n\t] * {
-  return ""
-}
-
-iri "iri"
-  = ns:[a-zA-Z0-9\-_]+ "." prop:[a-zA-Z0-9\-_]+ ws mod:["^","*"]? {
+Iri "iri"
+  = ns:[a-zA-Z0-9\-_]+ "." prop:[a-zA-Z0-9\-_]+ _ mod:["^","*"]? {
    var iri = {"iri": ns.join("") + ":" + prop.join(""), "inverse": false, "transitive": false};
    if (mod && mod === "^") {
      iri.inverse = true;
@@ -36,3 +36,6 @@ iri "iri"
    }
    return iri;
  }
+
+_ "whitespace"
+  = [ \t\n\r]*

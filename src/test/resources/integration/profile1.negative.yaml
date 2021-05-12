@@ -10,3 +10,9 @@ title: Test API
       application/json:
         properties:
           b:
+/endpoint2:
+  get:
+    queryParameters:
+      c:
+        minLength: 10
+      d:

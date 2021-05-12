@@ -13,10 +13,10 @@ export class MinCountRuleGenerator extends BaseRegoRuleGenerator {
     generateResult(): SimpleRuleResult[] {
         const path = this.rule.path;
         const pathResult = new RegoPathGenerator(path, this.rule.variable.name, "minCount_" + this.rule.valueMD5()).generatePropertyArray();
-        const rego = pathResult.rego;
+        const rego: string[] = []
 
         const inValuesVariable = genvar("propValues");
-        rego.push(`${inValuesVariable} = nodes_array with data.nodes as ${pathResult.variable}`)
+        rego.push(`${inValuesVariable} = ${pathResult.rule} with data.sourceNode as ${this.rule.variable.name}`)
         if (this.rule.negated) {
             rego.push(`count(${inValuesVariable}) >= ${this.rule.argument}`)
         } else {
@@ -26,9 +26,10 @@ export class MinCountRuleGenerator extends BaseRegoRuleGenerator {
           new SimpleRuleResult(
               "minCount",
               rego,
+              [pathResult],
               this.rule.path.source,
               `count(${inValuesVariable})`,
-              pathResult.variable,
+              inValuesVariable,
               `Value not matching minCount ${this.rule.argument}`
           )
         ];

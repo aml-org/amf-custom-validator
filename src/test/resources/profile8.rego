@@ -94,46 +94,87 @@ report[level] = matches {
 default warning = []
 
 default info = []
-violation[matches] {
- target_class[x] with data.class as "apiContract:EndPoint"
-  x_1_ea71737c8613215db5bdb23e4ee21161_in_1cd7c4508d18dac74835e4fe9b3f92a2 = x["apiContract:supportedOperation"]
-  x_2_ea71737c8613215db5bdb23e4ee21161_in_1cd7c4508d18dac74835e4fe9b3f92a2 = x_1_ea71737c8613215db5bdb23e4ee21161_in_1cd7c4508d18dac74835e4fe9b3f92a2["apiContract:method"]
-  gen_invalues_1 = {"publish","subscribe"}
-  not gen_invalues_1[x_2_ea71737c8613215db5bdb23e4ee21161_in_1cd7c4508d18dac74835e4fe9b3f92a2]
-  _result_0 := trace("in", "apiContract:supportedOperation / apiContract:method", x_2_ea71737c8613215db5bdb23e4ee21161_in_1cd7c4508d18dac74835e4fe9b3f92a2, "Value no in set {'publish','subscribe'}")
-  matches := error("validation1", x, "This is the message", [_result_0])
+# Path rules
+
+gen_path_rule_1[nodes] {
+  x = data.sourceNode
+  tmp_x_0_ea71737c8613215db5bdb23e4ee21161_in_1cd7c4508d18dac74835e4fe9b3f92a2 = nested_nodes with data.nodes as x["apiContract:supportedOperation"]
+  x_0_ea71737c8613215db5bdb23e4ee21161_in_1cd7c4508d18dac74835e4fe9b3f92a2 = tmp_x_0_ea71737c8613215db5bdb23e4ee21161_in_1cd7c4508d18dac74835e4fe9b3f92a2[_][_]
+  nodes_tmp = x_0_ea71737c8613215db5bdb23e4ee21161_in_1cd7c4508d18dac74835e4fe9b3f92a2["apiContract:method"]
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+gen_path_rule_3[nodes] {
+  x = data.sourceNode
+  nodes_tmp = object.get(x,"apiContract:method",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+gen_path_rule_5[nodes] {
+  x = data.sourceNode
+  nodes_tmp = x["shacl:name"]
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
 }
 
-violation[matches] {
- target_class[x] with data.class as "apiContract:EndPoint"
-  x_1_ea71737c8613215db5bdb23e4ee21161_minCount_c4ca4238a0b923820dcc509a6f75849b = x["apiContract:supportedOperation"]
-  x_2_ea71737c8613215db5bdb23e4ee21161_minCount_c4ca4238a0b923820dcc509a6f75849b = object.get(x_1_ea71737c8613215db5bdb23e4ee21161_minCount_c4ca4238a0b923820dcc509a6f75849b,"apiContract:method",[])
-  gen_propValues_2 = nodes_array with data.nodes as x_2_ea71737c8613215db5bdb23e4ee21161_minCount_c4ca4238a0b923820dcc509a6f75849b
-  not count(gen_propValues_2) >= 1
-  _result_0 := trace("minCount", "apiContract:supportedOperation / apiContract:method", count(gen_propValues_2), "Value not matching minCount 1")
-  matches := error("validation1", x, "This is the message", [_result_0])
-}
+#Constraint rules
 
 violation[matches] {
- target_class[x] with data.class as "apiContract:EndPoint"
-  x_1_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304 = x["shacl:name"]
-  not regex.match("^put|post$",x_1_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304)
-  _result_0 := trace("pattern", "shacl:name", x_1_a82db48390e82e6cd3d806595c67bd32_pattern_201c067558f8b4f7ce705935d9f8c304, "Value does not match regular expression {'^put|post$'}")
+  target_class[x] with data.class as "apiContract:EndPoint"
+  x_check_array = gen_path_rule_1 with data.sourceNode as x
+  x_check = x_check_array[_]
+  gen_invalues_2 = {"publish","subscribe"}
+  not gen_invalues_2[x_check]
+  _result_0 := trace("in", "apiContract:supportedOperation / apiContract:method", x_check, "Value no in set {'publish','subscribe'}")
   matches := error("validation1", x, "This is the message", [_result_0])
 }
 violation[matches] {
- target_class[x] with data.class as "apiContract:EndPoint"
-  x_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = x["apiContract:expects"]
-  x_2_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = x_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b["apiContract:parameter"]
-  x_3_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = object.get(x_2_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b,"shapes:schema",[])
-  x_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = x["apiContract:expects"]
-  x_2_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = x_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b["apiContract:payload"]
-  x_3_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = x_2_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b["shapes:schema"]
-  x_4_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = object.get(x_3_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b,"shacl:name",[])
-  x_final_3_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b_0 = array.concat(x_3_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b,[])
-  x_final_3_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = array.concat(x_4_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b,x_final_3_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b_0)
-  gen_propValues_3 = nodes_array with data.nodes as x_final_3_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b
-  not count(gen_propValues_3) >= 1
-  _result_0 := trace("minCount", "apiContract:expects / (apiContract:parameter / shapes:schema) | (apiContract:payload / shapes:schema) / shacl:name", count(gen_propValues_3), "Value not matching minCount 1")
+  target_class[x] with data.class as "apiContract:EndPoint"
+  gen_propValues_4 = gen_path_rule_3 with data.sourceNode as x
+  not count(gen_propValues_4) >= 1
+  _result_0 := trace("minCount", "apiContract:supportedOperation / apiContract:method", count(gen_propValues_4), "Value not matching minCount 1")
+  matches := error("validation1", x, "This is the message", [_result_0])
+}
+violation[matches] {
+  target_class[x] with data.class as "apiContract:EndPoint"
+  gen_path_rule_5_node_array = gen_path_rule_5 with data.sourceNode as x
+  gen_path_rule_5_node = gen_path_rule_5_node_array[_]
+  not regex.match("^put|post$",gen_path_rule_5_node)
+  _result_0 := trace("pattern", "shacl:name", gen_path_rule_5_node, "Value does not match regular expression {'^put|post$'}")
+  matches := error("validation1", x, "This is the message", [_result_0])
+}
+# Path rules
+
+gen_path_rule_6[nodes] {
+  x = data.sourceNode
+  tmp_x_0_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = nested_nodes with data.nodes as x["apiContract:expects"]
+  x_0_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = tmp_x_0_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b[_][_]
+  tmp_x_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = nested_nodes with data.nodes as x_0_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b["apiContract:parameter"]
+  x_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = tmp_x_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b[_][_]
+  tmp_x_2_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = nested_nodes with data.nodes as x_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b["shapes:schema"]
+  x_2_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = tmp_x_2_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b[_][_]
+  nodes_tmp = object.get(x_2_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b,"shacl:name",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+} {
+  x = data.sourceNode
+  tmp_x_0_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = nested_nodes with data.nodes as x["apiContract:expects"]
+  x_0_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = tmp_x_0_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b[_][_]
+  tmp_x_1_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = nested_nodes with data.nodes as x_0_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b["apiContract:payload"]
+  x_1_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = tmp_x_1_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b[_][_]
+  tmp_x_2_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = nested_nodes with data.nodes as x_1_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b["shapes:schema"]
+  x_2_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b = tmp_x_2_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b[_][_]
+  nodes_tmp = object.get(x_2_1_1d7082cb5325d77ade9a7b4bc4637f09_minCount_c4ca4238a0b923820dcc509a6f75849b,"shacl:name",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+
+#Constraint rules
+
+violation[matches] {
+  target_class[x] with data.class as "apiContract:EndPoint"
+  gen_propValues_7 = gen_path_rule_6 with data.sourceNode as x
+  not count(gen_propValues_7) >= 1
+  _result_0 := trace("minCount", "apiContract:expects / (apiContract:parameter / shapes:schema) | (apiContract:payload / shapes:schema) / shacl:name", count(gen_propValues_7), "Value not matching minCount 1")
   matches := error("validation2", x, "orPath test", [_result_0])
 }

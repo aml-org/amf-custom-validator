@@ -1,3 +1,5 @@
+import {RegoPathResult} from "./RegoPathGenerator";
+
 export abstract class RegoRuleResult {
     public readonly constraintId: string
 
@@ -13,14 +15,16 @@ export class SimpleRuleResult extends RegoRuleResult {
     public readonly value: string;
     public readonly variable: string;
     public readonly traceMessage: string;
+    public readonly pathRules: RegoPathResult[];
 
-    constructor(constraintId: string, rego: string[], path: string, value: string, variable: string, traceMessage?: string|any) {
+    constructor(constraintId: string, rego: string[], pathRules: RegoPathResult[], path: string, value: string, variable: string,traceMessage?: string|any) {
         super(constraintId);
         this.rego = rego;
         this.path = path;
         this.value = value;
         this.variable = variable;
         this.traceMessage = traceMessage
+        this.pathRules = pathRules;
     }
 }
 

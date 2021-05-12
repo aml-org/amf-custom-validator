@@ -1,10 +1,11 @@
 import * as md5 from "md5";
 import {AndPath, OrPath, Property, PropertyPath} from "../profile_parser/PathParser";
+import {genvar} from "../VarGen";
 
 export interface RegoPathResult {
     rego: string[],
-    pathVariables: string[],
-    variable: string,
+    rule: string,
+    variable: string
 }
 
 interface RegoPathResultInternal {
@@ -55,33 +56,47 @@ export class RegoPathGenerator {
     }
 
     private traverseAnd(path: AndPath, counter: number, rego: string[], pathVariables: string[], paths: string[]): RegoPathResultInternal[] {
-        const first = path.and[0];
-        const last = path.and[1];
+        const first = path.and.shift();
         const firstParsed = this.traverse(first, counter, rego, pathVariables, paths);
-        const acc: RegoPathResultInternal[] = [];
-        firstParsed.forEach((pathResult) => {
-            this.traverse(last, pathResult.counter, pathResult.rego, pathResult.pathVariables, pathResult.paths).forEach((secondPathResult) => {
-                acc.push(secondPathResult);
+
+        if (path.and.length > 0) {
+            const acc: RegoPathResultInternal[] = [];
+            firstParsed.forEach((pathResult) => {
+                const next = {and: path.and.concat([])} // clone the path
+                this.traverse(next, pathResult.counter, pathResult.rego, pathResult.pathVariables, pathResult.paths).forEach((secondPathResult) => {
+                    acc.push(secondPathResult);
+                });
             });
-        });
-        return acc;
+
+            return acc;
+        } else {
+            return firstParsed;
+        }
     }
 
     private traverseOr(path: OrPath, counter: number, rego: string[], pathVariables: string[], paths: string[]): RegoPathResultInternal[] {
-        const first = path.or[0];
-        const last = path.or[1];
-        const newCounterFirst = this.branchingCounter++ // We are generating a newly unique counter for the properties in this path
-        const newCounterLast = this.branchingCounter++ // We are generating a newly unique counter for the properties in this path
-        const firstParsed = this.traverse(first, newCounterFirst, rego.concat([]), pathVariables.concat([]), paths.concat([]));
-        const LastParsed = this.traverse(last, newCounterLast, rego.concat([]), pathVariables.concat([]), paths.concat([]));
-        return firstParsed.concat(LastParsed);
+        let acc = [];
+        path.or.forEach((pathElement) => {
+            let counter = this.branchingCounter++;  // We are generating a newly unique counter for the properties in this path
+            const parsed = this.traverse(pathElement, counter, rego.concat([]), pathVariables.concat([]), paths.concat([]));
+            acc = acc.concat(parsed)
+        });
+
+        return acc;
     }
 
     private traverseProperty(path: Property, counter: number, rego: string[], pathVariables: string[], paths: string[]): RegoPathResultInternal[] {
         const idx = counter === 0 ? pathVariables.length : `${pathVariables.length}_${counter}`
         let binding = this.variable + "_" + idx + "_" + this.id + "_" + this.hint;
         const previousBinding = pathVariables[pathVariables.length-1];
-        rego.push(`${binding} = ${previousBinding}["${path.iri}"]`)
+        if (pathVariables.length === 0) {
+            rego.push(`${this.variable} = data.sourceNode`)
+            rego.push(`tmp_${binding} = nested_nodes with data.nodes as ${this.variable}["${path.iri}"]`)
+            rego.push(`${binding} = tmp_${binding}[_][_]`)
+        } else {
+            rego.push(`tmp_${binding} = nested_nodes with data.nodes as ${previousBinding}["${path.iri}"]`)
+            rego.push(`${binding} = tmp_${binding}[_][_]`)
+        }
         return [{
             rego: rego,
             pathVariables: pathVariables.concat([binding]),
@@ -92,56 +107,54 @@ export class RegoPathGenerator {
     }
 
     public generatePropertyValues(): RegoPathResult {
-        const paths = this.traverse(this.path, this.branchingCounter, [], [this.variable], []).map((result) => {
-            result.rego.pop();
-            const binding = result.variable;
+        const paths = this.traverse(this.path, this.branchingCounter, [], [], []).map((result) => {
+            // remove the last comprehension
+            if (result.rego.length > 2) {
+                result.rego.pop();
+                result.rego.pop();
+            }
             const previous_binding = result.pathVariables[result.pathVariables.length-2] || this.variable;
             const nextPath = result.paths[result.paths.length-1];
-            result.rego.push(`${binding} = ${previous_binding}["${nextPath}"]`)
+            result.rego.push(`nodes_tmp = ${previous_binding}["${nextPath}"]`); // return value or array of values
+            result.rego.push(`nodes_tmp2 = nodes_array with data.nodes as nodes_tmp`) // we make sure we got an array
+            result.rego.push(`nodes = nodes_tmp2[_]`) // iterate through each element of the array to return int wrapped in the result
             return result;
         });
 
-        if (paths.length === 1) {
-            return paths[0];
-        }  else {
-            return this.accumulatePaths(paths);
-        }
+        return this.accumulatePaths(paths);
     }
 
     public generateNodeArray(): RegoPathResult {
-        const paths = this.traverse(this.path, this.branchingCounter, [], [this.variable], []).map((result) => {
+        const paths = this.traverse(this.path, this.branchingCounter, [], [], []).map((result) => {
+            result.rego.pop();
             result.rego.pop();
             const binding = result.variable;
             const previous_binding = result.pathVariables[result.pathVariables.length-2] || this.variable;
             const nextPath = result.paths[result.paths.length-1];
-            result.rego.push(`nested_nodes[${binding}] with data.nodes as ${previous_binding}["${nextPath}"]`)
+            result.rego.push(`tmp_${binding} = nested_nodes with data.nodes as ${previous_binding}["${nextPath}"]`)
+            result.rego.push(`${binding} = tmp_${binding}[_][_]`) // iterate up to the individual level so I can return each individual element in the rule array
+            result.rego.push(`nodes = ${binding}`)
             return result;
         });
 
-        if (paths.length === 1) {
-            return paths[0];
-        }  else {
-            return this.accumulatePaths(paths)
-        }
+        return this.accumulatePaths(paths)
     }
 
 
     public generatePropertyArray(): RegoPathResult {
 
-        const paths = this.traverse(this.path, this.branchingCounter, [], [this.variable], []).map((result) => {
+        const paths = this.traverse(this.path, this.branchingCounter, [], [], []).map((result) => {
             result.rego.pop();
-            const binding = result.variable;
+            result.rego.pop();
             const previous_binding = result.pathVariables[result.pathVariables.length-2] || this.variable;
             const nextPath = result.paths[result.paths.length-1];
-            result.rego.push(`${binding} = object.get(${previous_binding},"${nextPath}",[])`)
+            result.rego.push(`nodes_tmp = object.get(${previous_binding},"${nextPath}",[])`)
+            result.rego.push(`nodes_tmp2 = nodes_array with data.nodes as nodes_tmp`) // this returns and array
+            result.rego.push(`nodes = nodes_tmp2[_]`) // I need to iterate to each element in the array so it can be wrapped in the rule result
             return result;
         });
 
-        if (paths.length === 1) {
-            return paths[0];
-        }  else {
-            return this.accumulatePaths(paths);
-        }
+        return this.accumulatePaths(paths);
     }
 
 
@@ -151,29 +164,29 @@ export class RegoPathGenerator {
      * @param paths
      * @private
      */
-    private accumulatePaths(paths: RegoPathResultInternal[]) {
+    private accumulatePaths(paths: RegoPathResultInternal[]): RegoPathResult {
         const variables = paths.map((result) => result.variable);
+        // Let's generate a rule that will return the flat list of nodes in the path
+        // If there are more than one paths (because of ORs) a rule with multiple clauses
+        // will be generated and the final list of nodes will be the UNION of all the clauses
         const rego = [];
-        paths.map((p) => p.rego.forEach((line) => rego.push(line)))
-        this.branchingCounter++;
-        const variable =  this.variable + "_final_" + this.branchingCounter + "_" + this.id + "_" + this.hint;
-        for (let i=0; i<variables.length; i++) {
-            const v = variables[i];
-            if (i === 0) {
-                rego.push(`${variable}_${i} = array.concat(${v},[])`);
-            } else if (i === variables.length-1) {
-                rego.push(`${variable} = array.concat(${v},${variable}_${i-1})`);
+        const ruleName = genvar("path_rule");
+        paths.map((p, i) => {
+            if (i === 0 ) {
+                rego.push(`${ruleName}[nodes] {`);
             } else {
-                rego.push(`${variable}_${i} = array.concat(${v},${variable}_${i-1})`);
+                rego.push("} {")
             }
-        }
-        variables.push(variable);
+            p.rego.forEach((line) => {
+                rego.push("  " + line);
+            })
+        });
+        rego.push("}")
+
         return {
             rego: rego,
-            pathVariables: variables,
-            paths: paths[paths.length-1].paths,
-            counter: this.branchingCounter,
-            variable: variable
+            rule: ruleName,
+            variable: this.variable
         };
     }
 

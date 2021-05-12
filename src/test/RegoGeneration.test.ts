@@ -16,6 +16,7 @@ const testProfile = async (path: string) => {
     const parser = new ProfileParser(path);
     const profile = await parser.parse();
     const rego = new RegoGenerator(profile).generate();
+    //console.log(rego)
     await OPAWrapper.check(rego); // let's check that this is valid Rego
     //await fs.promises.writeFile(path.replace(".yaml", ".rego"), rego);
     assert.equal(rego, loadGoldenFile(path));

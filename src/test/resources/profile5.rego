@@ -94,16 +94,34 @@ report[level] = matches {
 default warning = []
 
 default info = []
+# Path rules
+
+gen_path_rule_3[nodes] {
+  x = data.sourceNode
+  tmp_x_0_4d6e6b7923f1e16651ec6583344220eb_nested_2e7759a5cf0749f5fca54d528134e199 = nested_nodes with data.nodes as x["apiContract:supportedOperation"]
+  x_0_4d6e6b7923f1e16651ec6583344220eb_nested_2e7759a5cf0749f5fca54d528134e199 = tmp_x_0_4d6e6b7923f1e16651ec6583344220eb_nested_2e7759a5cf0749f5fca54d528134e199[_][_]
+  nodes = x_0_4d6e6b7923f1e16651ec6583344220eb_nested_2e7759a5cf0749f5fca54d528134e199
+}
+
+gen_path_rule_1[nodes] {
+  y = data.sourceNode
+  nodes_tmp = y["apiContract:method"]
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+
+#Constraint rules
+
 violation[matches] {
- target_class[x] with data.class as "apiContract:EndPoint"
-  nested_nodes[x_1_4d6e6b7923f1e16651ec6583344220eb_nested_2e7759a5cf0749f5fca54d528134e199] with data.nodes as x["apiContract:supportedOperation"]
-  ys = x_1_4d6e6b7923f1e16651ec6583344220eb_nested_2e7759a5cf0749f5fca54d528134e199
+  target_class[x] with data.class as "apiContract:EndPoint"
+  ys = gen_path_rule_3 with data.sourceNode as x
   ys_errors = [ ys_error |
     y = ys[_]
-    y_1_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0 = y["apiContract:method"]
-    gen_invalues_1 = {"post"}
-    not gen_invalues_1[y_1_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0]
-    _result_0 := trace("in", "apiContract:method", y_1_b87947f49ae3eed9ba2e63e2c81fd029_in_f9333456ffbea053fef5a20ad9deb8c0, "Value no in set {'post'}")
+    y_check_array = gen_path_rule_1 with data.sourceNode as y
+    y_check = y_check_array[_]
+    gen_invalues_2 = {"post"}
+    not gen_invalues_2[y_check]
+    _result_0 := trace("in", "apiContract:method", y_check, "Value no in set {'post'}")
     ys_error := error("null", y, "null", [_result_0])
   ]
   not(count(ys) - count(ys_errors) >= 1)

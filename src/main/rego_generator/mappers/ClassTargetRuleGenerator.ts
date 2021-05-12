@@ -15,6 +15,7 @@ export class ClassTargetRuleGenerator extends BaseRegoRuleGenerator {
             return [new SimpleRuleResult(
                 "classTarget",
                 [`target_class_negated[${this.rule.variable.name}] with data.class as "${this.rule.argument}"`],
+                [],
                 "",
                 this.rule.variable.name,
                 this.rule.variable.name
@@ -23,6 +24,7 @@ export class ClassTargetRuleGenerator extends BaseRegoRuleGenerator {
             return [new SimpleRuleResult(
                 "classTarget",
                 [`target_class[${this.rule.variable.name}] with data.class as "${this.rule.argument}"`],
+                [],
                 "",
                 this.rule.variable.name,
                 this.rule.variable.name
