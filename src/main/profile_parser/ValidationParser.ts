@@ -23,6 +23,8 @@ export class ValidationParser {
         switch (this.parseType()) {
             case "implicitAnd":
                 return this.parseImplicitAnd();
+            case "implicitRego":
+                return this.parseImplicitRego();
             case "or":
                 return this.parseOr();
             case "not":
@@ -43,6 +45,8 @@ export class ValidationParser {
             return "not";
         } else if (this.data.and != null) {
             return "and";
+        } else if (this.data.rego) {
+            return "implicitRego";
         } else {
             return null;
         }
@@ -55,6 +59,14 @@ export class ValidationParser {
             new ConstraintParser(this.expression, this.variable, path, value).parse().forEach(r => body.push(r));
         });
         return new AndRule(this.negated).withBody(body);
+    }
+
+    private parseImplicitRego() {
+        const data = {
+            rego: this.data.rego
+        };
+        const parsed = new ConstraintParser(this.expression, this.variable, "", data).parse();
+        return new AndRule(this.negated).withBody(parsed);
     }
 
     private parseAnd() {

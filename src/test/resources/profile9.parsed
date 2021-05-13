@@ -1,0 +1,5 @@
+simple-rego[VIOLATION] :=  ∀x : ( Class(x,'apiContract:WebAPI') → ¬( Rego(x,'', 'Viola...') ) )
+
+simple-rego2[VIOLATION] :=  ∀x : ( Class(x,'apiContract:WebAPI') → ( Rego(x,'', 'api w...') ) )
+
+simple-rego3[VIOLATION] :=  ∀x : ( Class(x,'apiContract:WebAPI') → ( Rego(x,'apiContract:version', 'Viola...') ) )

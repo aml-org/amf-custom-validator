@@ -43,4 +43,8 @@ describe("Profile parsing", () => {
     it("Should parse complex property paths in a profile", async () => {
         return await testParsing("src/test/resources/profile8.yaml")
     });
+
+    it("Should parse rego native constraints", async () => {
+        return await testParsing("src/test/resources/profile9.yaml")
+    });
 });

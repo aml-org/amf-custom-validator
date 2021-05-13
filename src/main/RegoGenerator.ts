@@ -18,26 +18,26 @@ export class RegoGenerator {
             regoRules.push(new ExpressionGenerator(expression).generate());
         });
 
-        return [this.package(), this.prologue()].concat(regoRules).join("\n")
+        return [this.package(), this.preamble()].concat(regoRules).join("\n")
     }
 
     private package() {
         return "package " + this.profile.packageName() + "\n".trim();
     }
 
-    private prologue() {
-        const prologue = [];
-        prologue.push(fs.readFileSync("./src/main/resources/prologue.rego").toString().trim());
+    private preamble() {
+        const preamble = [];
+        preamble.push(fs.readFileSync("./src/main/resources/preamble.rego").toString().trim());
         if (this.profile.violations.length == 0) {
-            prologue.push("default violation = []");
+            preamble.push("default violation = []");
         }
         if (this.profile.warnings.length == 0) {
-            prologue.push("default warning = []");
+            preamble.push("default warning = []");
         }
         if (this.profile.infos.length == 0) {
-            prologue.push("default info = []");
+            preamble.push("default info = []");
         }
 
-        return prologue.join("\n\n");
+        return preamble.join("\n\n");
     }
 }

@@ -1,0 +1,66 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": "http://www.w3.org/ns/shacl#ValidationResult",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://src/test/resources/integration/profile8.negative.yaml#/web-api"
+      },
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "http://a.ml/vocabularies/validation#component": "rego",
+          "http://www.w3.org/ns/shacl#resultMessage": "api without version",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@id": "file://src/test/resources/integration/profile8.negative.yaml#/web-api"
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "simple-rego2"
+      }
+    },
+    {
+      "@type": "http://www.w3.org/ns/shacl#ValidationResult",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://src/test/resources/integration/profile8.negative.yaml#/web-api"
+      },
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "http://a.ml/vocabularies/validation#component": "rego",
+          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@id": "file://src/test/resources/integration/profile8.negative.yaml#/web-api"
+          }
+        },
+        {
+          "http://a.ml/vocabularies/validation#component": "or",
+          "http://www.w3.org/ns/shacl#resultMessage": "Failed or constraint",
+          "http://www.w3.org/ns/shacl#resultPath": {
+            "@id": ""
+          },
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@id": "file://src/test/resources/integration/profile8.negative.yaml#/web-api"
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "simple-rego"
+      }
+    }
+  ]
+}

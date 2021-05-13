@@ -23,6 +23,8 @@ import {AndRuleGenerator} from "./rules/AndRuleGenerator";
 import {OrRuleGenerator} from "./rules/OrRuleGenerator";
 import {LessThanPropertyRule} from "../model/constraints/LessThanPropertyRule";
 import {LessThanPropertyGenerator} from "./constraints/LessThanPropertyGenerator";
+import {RegoRuleGenerator} from "./constraints/RegoRuleGenerator";
+import {RegoRule} from "../model/constraints/RegoRule";
 
 export class ExpressionGenerator extends BaseRegoRuleGenerator {
 
@@ -262,6 +264,8 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
             return new MinCountRuleGenerator(rule).generateResult();
         } else if (rule instanceof PatternRule) {
             return new PatternRuleGenerator(rule).generateResult();
+        } else if (rule instanceof RegoRule) {
+            return new RegoRuleGenerator(rule).generateResult();
         } else if (rule instanceof LessThanPropertyRule) {
             return new LessThanPropertyGenerator(rule).generateResult();
         } else if (rule instanceof Expression) {

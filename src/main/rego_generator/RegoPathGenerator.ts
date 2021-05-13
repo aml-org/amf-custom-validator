@@ -49,9 +49,12 @@ export class RegoPathGenerator {
         } else if (path.or != null) {
             // OR, we need to branch the path traversal and generate two results for each branch, duplicating the accumulator
             return this.traverseOr(<OrPath>path, counter, rego, pathVariables, paths);
-        } else {
+        //@ts-ignore
+        } else if (path.iri != null) {
             // SIMPLE property, we just add it to the current path
             return this.traverseProperty(<Property>path, counter, rego, pathVariables, paths);
+        } else {
+            return [];
         }
     }
 
@@ -181,7 +184,9 @@ export class RegoPathGenerator {
                 rego.push("  " + line);
             })
         });
-        rego.push("}")
+        if (rego.length > 0) {
+            rego.push("}")
+        }
 
         return {
             rego: rego,

@@ -8,6 +8,7 @@ import {ValidationParser} from "./ValidationParser";
 import {Implication} from "../model/Implication";
 import {NestedRule} from "../model/mappers/NestedRule";
 import {LessThanPropertyRule} from "../model/constraints/LessThanPropertyRule";
+import {RegoRule, RegoRuleArgument} from "../model/constraints/RegoRule";
 
 
 export class ConstraintParser {
@@ -39,6 +40,8 @@ export class ConstraintParser {
                     return this.parseQualifiedNested(this.constraints[constraint], CardinalityOperation.GTEQ);
                 case "atMost":
                     return this.parseQualifiedNested(this.constraints[constraint], CardinalityOperation.LTEQ);
+                case "rego":
+                    return this.parseRego(this.constraints[constraint])
                 default:
                     throw new Error(`Constraint ${constraint} not supported yet`);
             }
@@ -57,6 +60,24 @@ export class ConstraintParser {
 
     private parseIn(constraint: any): Rule {
         return new InRule(false, this.variable, this.path, constraint);
+    }
+
+    private parseRego(constraint: any) {
+        let argument: RegoRuleArgument;
+        if (typeof(constraint) === "string") {
+            argument = {
+                code: constraint,
+                message: "Violation in native Rego constraint"
+            };
+        } else if (constraint.code == null) {
+            throw new Error("Rego native constraint must have a 'code' property")
+        } else {
+            argument = {
+                code: constraint.code,
+                message: (constraint.message || "Violation in native Rego constraint")
+            }
+        }
+        return new RegoRule(false, this.variable, this.path, argument);
     }
 
     private parseLessThanProperty(constraint: any) {

@@ -19,7 +19,12 @@ export interface OrPath {
     or:(AndPath|OrPath|Property)[],
     source?: string
 }
-export type PropertyPath = Property | AndPath | OrPath;
+
+export interface NullPath {
+    source?: string
+}
+
+export type PropertyPath = Property | AndPath | OrPath | NullPath;
 
 export class PathParser {
     private path: string;
@@ -28,8 +33,14 @@ export class PathParser {
     }
 
     parse(): PropertyPath {
-        const parsed = <PropertyPath>parser.parse(this.path);
-        parsed.source = this.path.replace(/\./g,":");
-        return parsed;
+        if (this.path == "") {
+            return {
+                source: ""
+            };
+        } else {
+            const parsed = <PropertyPath>parser.parse(this.path);
+            parsed.source = this.path.replace(/\./g,":");
+            return parsed;
+        }
     }
 }

@@ -29,14 +29,13 @@ const runTest= async (name: string) => {
     assert(!negativeResult.conforms())
     const expectedNegative = await fs.promises.readFile(negativeJSONLDFilePath);
     assert.equal(JSON.stringify(negativeResult, null, 2), expectedNegative.toString())
-
 };
 
 
 
     const files = fs.readdirSync("./src/test/resources/integration");
     const profiles: {[name: string]: true} = {};
-    files.map((f) => f.split(".")[0]).filter((p) => p == "profile7").forEach((p) => profiles[p] = true);
+    files.map((f) => f.split(".")[0])/*.filter((p) => p == "profile8")*/.forEach((p) => profiles[p] = true);
     Object.keys(profiles).forEach((profile) => {
         describe("IntegrationTests", () => {
             it("Integration test " + profile, async () => {
