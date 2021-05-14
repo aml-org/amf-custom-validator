@@ -15,6 +15,7 @@ import {LessThanPropertyRule} from "../../model/constraints/LessThanPropertyRule
 import {LessThanPropertyGenerator} from "../constraints/LessThanPropertyGenerator";
 import {RegoRule} from "../../model/constraints/RegoRule";
 import {RegoRuleGenerator} from "../constraints/RegoRuleGenerator";
+import {RuleDispatcher} from "../RuleDispatcher";
 
 
 export class OrRuleGenerator extends BaseRegoRuleGenerator {
@@ -32,7 +33,7 @@ export class OrRuleGenerator extends BaseRegoRuleGenerator {
         } else {
             const rego: RegoRuleResult[][] = [];
             this.rule.body.forEach((rule) => {
-                rego.push(this.dispatchRule(rule));
+                rego.push(RuleDispatcher.dispatchRule(rule));
             });
 
             const regoBranches: RegoRuleResult[][] = [];
@@ -87,27 +88,4 @@ export class OrRuleGenerator extends BaseRegoRuleGenerator {
             });
         }
     }
-
-    dispatchRule(rule: Rule): RegoRuleResult[] {
-        if (rule instanceof InRule) {
-            return new InRuleGenerator(rule).generateResult();
-        } else if (rule instanceof MinCountRule) {
-            return new MinCountRuleGenerator(rule).generateResult();
-        } else if (rule instanceof PatternRule) {
-            return new PatternRuleGenerator(rule).generateResult();
-        } else if (rule instanceof RegoRule) {
-            return new RegoRuleGenerator(rule).generateResult();
-        } else if (rule instanceof LessThanPropertyRule) {
-            return new LessThanPropertyGenerator(rule).generateResult();
-        } else if (rule instanceof Expression) {
-            return new ExpressionGenerator(rule).generateResult();
-        } else if (rule instanceof AndRule) {
-            return new AndRuleGenerator(rule).generateResult();
-        } else if (rule instanceof OrRule) {
-            return new OrRuleGenerator(rule).generateResult();
-        } else {
-            throw new Error(`Unsupported rule ${rule}`);
-        }
-    }
-
 }

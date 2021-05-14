@@ -6,7 +6,7 @@ import * as fs from "fs";
 
 const runValidation = async (example: string, profile: string) => {
     const format = profile.indexOf("oas") > -1 ? "OAS 3.0" : "RAML 1.0";
-    const validator = new Validator(example, format, "application/yaml", profile, null);
+    const validator = new Validator(example, format, "application/yaml", profile, null/*, "true"*/);
     return await validator.validate();
 };
 
@@ -35,7 +35,7 @@ const runTest= async (name: string) => {
 
     const files = fs.readdirSync("./src/test/resources/integration");
     const profiles: {[name: string]: true} = {};
-    files.map((f) => f.split(".")[0])/*.filter((p) => p == "profile8")*/.forEach((p) => profiles[p] = true);
+    files.map((f) => f.split(".")[0])/*.filter((p) => p == "profile9")*/.forEach((p) => profiles[p] = true);
     Object.keys(profiles).forEach((profile) => {
         describe("IntegrationTests", () => {
             it("Integration test " + profile, async () => {

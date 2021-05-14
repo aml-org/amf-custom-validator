@@ -9,6 +9,7 @@ import {Implication} from "../model/Implication";
 import {NestedRule} from "../model/mappers/NestedRule";
 import {LessThanPropertyRule} from "../model/constraints/LessThanPropertyRule";
 import {RegoRule, RegoRuleArgument} from "../model/constraints/RegoRule";
+import {MaxCountRule} from "../model/constraints/MaxCountRule";
 
 
 export class ConstraintParser {
@@ -28,6 +29,8 @@ export class ConstraintParser {
             switch (constraint) {
                 case "minCount":
                     return this.parseMinCount(this.constraints[constraint]);
+                case "maxCount":
+                    return this.parseMaxCount(this.constraints[constraint]);
                 case "pattern":
                     return this.parsePattern(this.constraints[constraint]);
                 case "in":
@@ -52,6 +55,10 @@ export class ConstraintParser {
 
     private parseMinCount(constraint: any): MinCountRule {
         return new MinCountRule(false, this.variable, this.path, constraint);
+    }
+
+    private parseMaxCount(constraint: any): MaxCountRule {
+        return new MaxCountRule(false, this.variable, this.path, constraint);
     }
 
     private parsePattern(constraint: any): Rule {

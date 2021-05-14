@@ -25,6 +25,7 @@ import {LessThanPropertyRule} from "../model/constraints/LessThanPropertyRule";
 import {LessThanPropertyGenerator} from "./constraints/LessThanPropertyGenerator";
 import {RegoRuleGenerator} from "./constraints/RegoRuleGenerator";
 import {RegoRule} from "../model/constraints/RegoRule";
+import {RuleDispatcher} from "./RuleDispatcher";
 
 export class ExpressionGenerator extends BaseRegoRuleGenerator {
 
@@ -183,7 +184,7 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
     private generateBody() {
         const body = this.implication().body;
         const acc: RegoRuleResult[] = [];
-        body.forEach((r) => this.dispatchRule(r).forEach((result) => acc.push(result)))
+        body.forEach((r) => RuleDispatcher.dispatchRule(r).forEach((result) => acc.push(result)))
         return acc;
     }
 
@@ -196,7 +197,7 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
             negatedRule = new AndRule(false).withBody(body).negation();
         }
         const acc: RegoRuleResult[] = [];
-        this.dispatchRule(negatedRule).forEach((result) => acc.push(result))
+        RuleDispatcher.dispatchRule(negatedRule).forEach((result) => acc.push(result))
         return acc;
     }
 
@@ -255,27 +256,5 @@ export class ExpressionGenerator extends BaseRegoRuleGenerator {
             acc.push(matchesLine);
         });
         acc.push(`  ${matchesVariable} := error("${this.expression.name}", ${mappingVariable}, "${this.expression.message}", [${resultBindings.join(",")}])`);
-    }
-
-    dispatchRule(rule: Rule): RegoRuleResult[] {
-        if (rule instanceof InRule) {
-            return new InRuleGenerator(rule).generateResult();
-        } else if (rule instanceof MinCountRule) {
-            return new MinCountRuleGenerator(rule).generateResult();
-        } else if (rule instanceof PatternRule) {
-            return new PatternRuleGenerator(rule).generateResult();
-        } else if (rule instanceof RegoRule) {
-            return new RegoRuleGenerator(rule).generateResult();
-        } else if (rule instanceof LessThanPropertyRule) {
-            return new LessThanPropertyGenerator(rule).generateResult();
-        } else if (rule instanceof Expression) {
-            return new ExpressionGenerator(rule).generateResult();
-        } else if (rule instanceof AndRule) {
-            return new AndRuleGenerator(rule).generateResult();
-        } else if (rule instanceof OrRule) {
-            return new OrRuleGenerator(rule).generateResult();
-        } else {
-            throw new Error(`Unsupported rule ${rule}`);
-        }
     }
 }

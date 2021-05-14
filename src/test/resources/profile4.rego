@@ -115,6 +115,12 @@ gen_path_rule_3[nodes] {
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
+gen_path_rule_6[nodes] {
+  x = data.sourceNode
+  nodes_tmp = object.get(x,"raml-shapes:schema",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
 
 #Constraint rules
 
@@ -137,5 +143,12 @@ violation[matches] {
   ]
   count(ys_errors) > 0
   _result_0 := trace("nested", "raml-shapes:schema", {"failed": count(ys_errors), "success":(count(ys) - count(ys_errors))}, [e | e := ys_errors[_].trace])
+  matches := error("validation1", x, "Scalars in parameters must have minLength defined", [_result_0])
+}
+violation[matches] {
+  target_class[x] with data.class as "apiContract:Parameter"
+  gen_propValues_7 = gen_path_rule_6 with data.sourceNode as x
+  not count(gen_propValues_7) <= 3
+  _result_0 := trace("maxCount", "raml-shapes:schema", count(gen_propValues_7), "Value not matching maxCount 3")
   matches := error("validation1", x, "Scalars in parameters must have minLength defined", [_result_0])
 }

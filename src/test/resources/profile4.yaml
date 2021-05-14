@@ -16,3 +16,4 @@ validations:
           propertyConstraints:
             shacl.minLength:
               minCount: 1
+        maxCount: 3
