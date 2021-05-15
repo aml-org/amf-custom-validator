@@ -9,15 +9,15 @@ import (
 )
 
 func Parse(path path.PropertyPath, variable statements.Variable, constraint y.Map) (statements.Rule, error) {
-	min,error := yaml.GetInt(constraint,"minCount")
-	if error == nil {
+	min,err := yaml.GetInt(constraint,"minCount")
+	if err == nil {
 		return newMinCount(false, variable, path, min), nil
 	}
 
-	max,error := yaml.GetInt(constraint,"maxCount")
-	if error == nil {
+	max,err := yaml.GetInt(constraint,"maxCount")
+	if err == nil {
 		return newMaxCount(false, variable, path, max), nil
 	}
 
-	return nil, errors.New("Unknown constraint")
+	return nil, errors.New("unknown constraint")
 }

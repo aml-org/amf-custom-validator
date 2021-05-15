@@ -10,28 +10,28 @@ type AndRule statements.ComplexStatement
 
 type OrRule statements.ComplexStatement
 
-func (a AndRule) String() string {
+func (r AndRule) String() string {
 	negation := ""
-	if a.Negated {
+	if r.Negated {
 		negation = "¬"
 	}
 
-	body := make([]string, len(a.Body))
-	for i,v := range a.Body {
+	body := make([]string, len(r.Body))
+	for i,v := range r.Body {
 		body[i] = v.String()
 	}
 
 	return fmt.Sprintf("%s(%s)",negation,strings.Join(body, " ∧ "))
 }
 
-func (a OrRule) String() string {
+func (r OrRule) String() string {
 	negation := ""
-	if a.Negated {
+	if r.Negated {
 		negation = "¬"
 	}
 
-	body := make([]string, len(a.Body))
-	for i,v := range a.Body {
+	body := make([]string, len(r.Body))
+	for i,v := range r.Body {
 		body[i] = v.String()
 	}
 
@@ -39,12 +39,12 @@ func (a OrRule) String() string {
 
 }
 
-func (a AndRule) Clone() statements.Rule {
-	return NewAnd(a.Negated, a.Body)
+func (r AndRule) Clone() statements.Rule {
+	return NewAnd(r.Negated, r.Body)
 }
 
-func (a OrRule) Clone() statements.Rule {
-	return NewOr(a.Negated, a.Body)
+func (r OrRule) Clone() statements.Rule {
+	return NewOr(r.Negated, r.Body)
 }
 
 

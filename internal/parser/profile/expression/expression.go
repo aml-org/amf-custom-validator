@@ -46,7 +46,7 @@ func (exp Expression) Negate() statements.Rule {
 
 func (exp Expression) String() string {
 	var negation = ""
-	if (exp.Negated) {
+	if exp.Negated {
 		negation = "¬"
 	}
 	varsText := make([]string, len(exp.Variables))

@@ -36,7 +36,7 @@ func readURL(path string) (yaml.Node, error) {
 	}()
 
 	if response.StatusCode != 200 {
-		return nil, errors.New("Received non 200 response code")
+		return nil, errors.New("received non 200 response code")
 	}
 
 	return yaml.Parse(response.Body)

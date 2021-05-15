@@ -18,12 +18,12 @@ func NewVarGenerator() VarGenerator {
 var globalGenerator = NewVarGenerator()
 
 func Genvar(hint string) string {
-	globalGenerator.counter++;
+	globalGenerator.counter++
 	return fmt.Sprintf("gen_%s_%d", hint, globalGenerator.counter)
 }
 
 func GenReset() {
-	globalGenerator.counter = 0;
+	globalGenerator.counter = 0
 }
 
 func (g VarGenerator) GenExpressionVar(quantification Quantification, cardinality *VariableCardinality) Variable {

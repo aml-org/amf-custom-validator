@@ -25,7 +25,7 @@ func newTopLevelExpression(negated bool, name string, message string, level stri
 
 func (exp TopLevelExpression) SubExpression(negated bool) Expression {
 	subExp := newExpression(negated,exp.Name + "_sub")
-	subExp.varGenerator = exp.varGenerator;
+	subExp.varGenerator = exp.varGenerator
 	return subExp
 }
 
@@ -59,8 +59,8 @@ func (exp TopLevelExpression) Negate() statements.Rule {
 }
 
 func (exp TopLevelExpression) String() string {
-	var negation string = ""
-	if (exp.Negated) {
+	negation := ""
+	if exp.Negated {
 		negation = "¬"
 	}
 	varsText := make([]string, len(exp.Variables))
