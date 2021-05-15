@@ -52,7 +52,7 @@ func (p NullPath) Source() string {
 }
 
 
-func Parse(path string) (PropertyPath, error) {
+func ParsePath(path string) (PropertyPath, error) {
 	parsed := Property{
 		BasePath: BasePath{
 			source: path,

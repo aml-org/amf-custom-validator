@@ -66,7 +66,7 @@ func parseAnd(and y.List, variable statements.Variable) (statements.Rule, error)
 func parseImplicitAnd(propertyConstraints y.Map, variable statements.Variable) (statements.Rule, error) {
 	values := make([]statements.Rule, 0)
 	for pathString,constraint := range propertyConstraints {
-		propertyPath, error := path.Parse(pathString)
+		propertyPath, error := path.ParsePath(pathString)
 		if error != nil {
 			return nil, error
 		}

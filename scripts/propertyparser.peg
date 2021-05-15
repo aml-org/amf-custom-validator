@@ -1,0 +1,108 @@
+{
+package path
+
+import "errors"
+import "unicode/utf8"
+
+type IRI struct {
+   Value string
+   Inverse bool
+   Transitive bool
+}
+
+type OR struct {
+  body []interface{}
+}
+
+type AND struct {
+  body []interface{}
+}
+
+func eval(ns interface{}) string {
+  a := ns.([]interface{})
+  acc := make([]byte,0)
+  for _,bai := range a {
+    nb := bai.([]byte)
+	for _, b := range nb {
+		acc = append(acc, b)
+	}
+  }
+  return string(acc)
+}
+
+func evalSimple(ns interface{}) string {
+	a := ns.([]byte)
+	acc := make([]byte, 0)
+	for _, bai := range a {
+		acc = append(acc, bai)
+	}
+	return string(acc)
+}
+
+}
+
+Expression
+  <- head:Term tail:(_ "/" _ Term)* {
+
+      acc := make([]interface{},0)
+            acc = append(acc,head)
+            tails := tail.([]interface{})
+            for _,es := range tails {
+              e := es.([]interface{})
+              acc = append(acc, e[3])
+            }
+
+            if len(acc) == 1 {
+              return acc[0],nil
+            } else {
+                return AND{
+                  body: acc,
+                }, nil
+            }
+    }
+
+Term
+  <- head:Factor tail:(_ "|" _ Factor)* {
+      acc := make([]interface{},0)
+      acc = append(acc,head)
+      tails := tail.([]interface{})
+      for _,es := range tails {
+        e := es.([]interface{})
+        acc = append(acc, e[3])
+      }
+
+      if len(acc) == 1 {
+        return acc[0],nil
+      } else {
+          return OR{
+            body: acc,
+          }, nil
+      }
+  }
+
+Factor
+  <- "(" _ expr:Expression _ ")" { return expr,nil }
+  / Iri
+
+Iri "iri" <- ns:[a-zA-Z0-9\\-_]+ "." prop:[a-zA-Z0-9\\-_]+ _ mod:["^","*"]? {
+
+   iri := eval(ns) + ":" + eval(prop)
+   res := IRI{
+     Value: iri,
+     Inverse: false,
+     Transitive: false,
+   }
+   if (mod != nil && evalSimple(mod) == "^") || strings.Index(res.Value,"^") > -1 {
+   		res.Inverse = true
+   	}
+   	if (mod != nil && evalSimple(mod) == "*") || strings.Index(res.Value,"*") > -1 {
+   		res.Transitive = true
+   	}
+
+   	res.Value = strings.ReplaceAll(res.Value,"^", "")
+   	res.Value = strings.ReplaceAll(res.Value,"*", "")
+
+   return res,nil
+ }
+
+_ "whitespace" <- [ \n\t\r]*
