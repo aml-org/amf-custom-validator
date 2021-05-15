@@ -1,0 +1,7 @@
+package amfopa;
+
+func Config() {
+
+}
+
+

@@ -1,0 +1,23 @@
+#%Validation Profile 1.0
+
+profile: Test 1
+
+description: test profile
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: apiContract.Operation
+    message: This is the message
+    propertyConstraints:
+      apiContract.method:
+#        in:
+#          - publish
+#          - subscribe
+        minCount: 1
+      shacl.name:
+        maxCount: 1
+#        pattern: "^put|post$"
