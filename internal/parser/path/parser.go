@@ -1,6 +1,6 @@
 package path
 
-import "strings"
+import "errors"
 
 type PropertyPath interface {
 	Source() string
@@ -16,8 +16,8 @@ func (p BasePath) Source() string {
 
 type Property struct {
 	BasePath
-	Iri string
-	Inverse bool
+	Iri        string
+	Inverse    bool
 	Transitive bool
 }
 
@@ -51,16 +51,59 @@ func (p NullPath) Source() string {
 	return p.source
 }
 
+func build(source string, parsed interface{}) PropertyPath {
+	switch v := parsed.(type) {
+	case IRI:
+		return Property{
+			BasePath: BasePath{
+				source: source,
+			},
+			Iri:        v.Value,
+			Inverse:    v.Inverse,
+			Transitive: v.Transitive,
+		}
+	case AND:
+		acc := make([]PropertyPath, 0)
+		for _, a := range v.body {
+			r := build(source, a)
+			acc = append(acc, r)
+		}
+		return AndPath{
+			BasePath: BasePath{
+				source: source,
+			},
+			And: acc,
+		}
+	case OR:
+		acc := make([]PropertyPath, 0)
+		for _, o := range v.body {
+			r := build(source, o)
+			acc = append(acc, r)
+		}
+		return OrPath{
+			BasePath: BasePath{
+				source: source,
+			},
+			Or: acc,
+		}
+	default:
+		panic(errors.New("unknown patch component returned by low-level parser"))
+	}
+}
 
 func ParsePath(path string) (PropertyPath, error) {
-	parsed := Property{
-		BasePath: BasePath{
-			source: path,
-		},
-		Iri: strings.ReplaceAll(path, ".", ":"),
-		Inverse: false,
-		Transitive: false,
+	if path == "" {
+		return NullPath{
+			BasePath{
+				source: path,
+			},
+		}, nil
 	}
+	parsed, err := Parse("", []byte(path))
+	if err != nil {
+		panic(err)
+	}
+	propertyPath := build(path, parsed)
 
-	return parsed, nil
+	return propertyPath, nil
 }
