@@ -10,18 +10,22 @@ import (
 type Fixture struct {
 	Profile string
 	Parsed string
+	Generated string
 }
 
-const root string = "./data/"
-
-func Fixtures() []Fixture {
+func Fixtures(root string) []Fixture {
 	fixtures := make([]Fixture, 0)
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			panic("error reading data directory")
+		}
 		if strings.Index(path, ".yaml") > -1 {
 			parsed := strings.ReplaceAll(path, ".yaml",".parsed")
+			generated := strings.ReplaceAll(path, ".yaml",".rego")
 			fixture := Fixture{
 				Profile: path,
 				Parsed: parsed,
+				Generated: generated,
 			}
 			fixtures = append(fixtures, fixture)
 		}
@@ -39,4 +43,16 @@ func (f Fixture) ReadParsed() string {
 		panic(err)
 	}
 	return string(bytes)
+}
+
+func (f Fixture) ReadGenerated() string {
+	bytes, err := ioutil.ReadFile(f.Generated)
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
+func ForceWrite(f string, data string) {
+	ioutil.WriteFile(f, []byte(data),0644)
 }

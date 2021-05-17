@@ -8,7 +8,7 @@ import (
 
 func TestParsed(t *testing.T) {
 
-	for _,fix := range test.Fixtures() {
+	for _,fix := range test.Fixtures("../../test/data") {
 		profile, err := Parse(fix.Profile)
 		if err != nil {
 			panic(err)

@@ -50,8 +50,8 @@ func (r OrRule) Clone() statements.Rule {
 
 func (r AndRule) Negate() statements.Rule {
 	negatedBody := make([]statements.Rule, len(r.Body))
-	for _,br := range r.Body {
-		negatedBody = append(negatedBody, br.Negate())
+	for i,br := range r.Body {
+		negatedBody[i] = br.Negate()
 	}
 
 	return NewOr(!r.Negated, negatedBody)
@@ -59,8 +59,8 @@ func (r AndRule) Negate() statements.Rule {
 
 func (r OrRule) Negate() statements.Rule {
 	negatedBody := make([]statements.Rule, len(r.Body))
-	for _,br := range r.Body {
-		negatedBody = append(negatedBody, br.Negate())
+	for i,br := range r.Body {
+		negatedBody[i] = br.Negate()
 	}
 
 	return NewAnd(!r.Negated, negatedBody)
@@ -76,8 +76,8 @@ func NewAnd(negated bool, body []statements.Rule) AndRule {
 	}
 }
 
-func NewOr(negated bool, body []statements.Rule) AndRule {
-	return AndRule{
+func NewOr(negated bool, body []statements.Rule) OrRule {
+	return OrRule{
 		BaseStatement: statements.BaseStatement{
 			Negated: negated,
 			Name: "or",

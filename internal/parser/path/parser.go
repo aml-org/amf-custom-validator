@@ -10,10 +10,6 @@ type BasePath struct {
 	source string
 }
 
-func (p BasePath) Source() string {
-	return p.source
-}
-
 type Property struct {
 	BasePath
 	Iri        string
@@ -103,6 +99,7 @@ func ParsePath(path string) (PropertyPath, error) {
 	if err != nil {
 		panic(err)
 	}
+
 	propertyPath := build(path, parsed)
 
 	return propertyPath, nil

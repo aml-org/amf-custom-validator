@@ -1,6 +1,7 @@
 package constraints
 
 import (
+	"crypto"
 	"fmt"
 	"github.com/aml-org/amfopa/internal/parser/path"
 	"github.com/aml-org/amfopa/internal/parser/profile/statements"
@@ -40,6 +41,11 @@ func (r CountRule) Negate() statements.Rule {
 		c.Negated = !r.Negated
 	}
 	return cloned
+}
+
+func (r CountRule) ValueMD5() string {
+	v := fmt.Sprintf("%d",r.Argument)
+	return fmt.Sprintf("%x",crypto.MD5.New().Sum([]byte(v)))
 }
 
 func (r CountRule) String() string {

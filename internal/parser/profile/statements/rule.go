@@ -29,6 +29,10 @@ type AtomicStatement struct {
 
 }
 
+type Hashable interface {
+	ValueMD5() string
+}
+
 type Profile struct {
 	Name string
 	Description *string
