@@ -116,7 +116,7 @@ gen_path_rule_4[nodes] {
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract.Operation"
+  target_class[x] with data.class as "apiContract:Operation"
   #  storing path in gen_propValues_1 : apiContract.method
   gen_propValues_1 = gen_path_rule_2 with data.sourceNode as x
   not count(gen_propValues_1) >= 1
@@ -125,7 +125,7 @@ violation[matches] {
 }
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract.Operation"
+  target_class[x] with data.class as "apiContract:Operation"
   #  storing path in gen_propValues_3 : shacl.name
   gen_propValues_3 = gen_path_rule_4 with data.sourceNode as x
   not count(gen_propValues_3) <= 1

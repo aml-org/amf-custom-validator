@@ -51,7 +51,7 @@ func packageName(profile statements.Profile) string {
 }
 
 func entrypoint(profile statements.Profile) string {
-	return packageName(profile) + "/report"
+	return "report"
 }
 
 
