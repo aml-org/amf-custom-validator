@@ -5,7 +5,6 @@ import (
 	"strings"
 )
 
-
 type Rule interface {
 	Negate() Rule
 	String() string
@@ -14,7 +13,7 @@ type Rule interface {
 
 type BaseStatement struct {
 	Negated bool
-	Name string
+	Name    string
 }
 
 type ComplexStatement struct {
@@ -26,42 +25,41 @@ type AtomicStatement struct {
 	BaseStatement
 	Variable Variable
 	Path     path.PropertyPath
-
 }
 
 type Hashable interface {
-	ValueMD5() string
+	ValueHash() string
 }
 
 type Profile struct {
-	Name string
+	Name        string
 	Description *string
-	Violation []Rule
-	Warning []Rule
-	Info []Rule
+	Violation   []Rule
+	Warning     []Rule
+	Info        []Rule
 }
 
 func NewProfile() Profile {
 	return Profile{
-		Name: "",
+		Name:        "",
 		Description: nil,
-		Violation: make([]Rule,0),
-		Warning: make([]Rule,0),
-		Info: make([]Rule,0),
+		Violation:   make([]Rule, 0),
+		Warning:     make([]Rule, 0),
+		Info:        make([]Rule, 0),
 	}
 }
 
 func (p Profile) String() string {
-	lines := make([]string, len(p.Warning) + len(p.Info) + len(p.Violation))
-	for _,v := range p.Violation {
+	lines := make([]string, len(p.Warning)+len(p.Info)+len(p.Violation))
+	for _, v := range p.Violation {
 		lines = append(lines, v.String())
 	}
 
-	for _,v := range p.Warning {
+	for _, v := range p.Warning {
 		lines = append(lines, v.String())
 	}
 
-	for _,v := range p.Info {
+	for _, v := range p.Info {
 		lines = append(lines, v.String())
 	}
 

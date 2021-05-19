@@ -40,10 +40,10 @@ func TestGenerateAndPropertyArray(t *testing.T) {
 
 	expected := `gen_path_rule_1[nodes] {
   x = data.sourceNode
-  tmp_x_0_782e61202f20782e62202f20782e63d41d8cd98f00b204e9800998ecf8427e_test = nested_nodes with data.nodes as x["x:a"]
-  x_0_782e61202f20782e62202f20782e63d41d8cd98f00b204e9800998ecf8427e_test = tmp_x_0_782e61202f20782e62202f20782e63d41d8cd98f00b204e9800998ecf8427e_test[][]
-  tmp_x_1_782e61202f20782e62202f20782e63d41d8cd98f00b204e9800998ecf8427e_test = nested_nodes with data.nodes as x_0_782e61202f20782e62202f20782e63d41d8cd98f00b204e9800998ecf8427e_test["x:b"]
-  x_1_782e61202f20782e62202f20782e63d41d8cd98f00b204e9800998ecf8427e_test = tmp_x_1_782e61202f20782e62202f20782e63d41d8cd98f00b204e9800998ecf8427e_test[][]
+  tmp_x_0_xaxbxc_test = nested_nodes with data.nodes as x["x:a"]
+  x_0_xaxbxc_test = tmp_x_0_xaxbxc_test[][]
+  tmp_x_1_xaxbxc_test = nested_nodes with data.nodes as x_0_xaxbxc_test["x:b"]
+  x_1_xaxbxc_test = tmp_x_1_xaxbxc_test[][]
   nodes_tmp = object.get(x,"x:c",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
@@ -66,19 +66,19 @@ func TestGenerateOrPropertyArray(t *testing.T) {
 
 	expected := `gen_path_rule_1[nodes] {
   x = data.sourceNode
-  tmp_x_0_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test = nested_nodes with data.nodes as x["x:a"]
-  x_0_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test = tmp_x_0_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test[][]
-  tmp_x_1_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test = nested_nodes with data.nodes as x_0_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test["x:b"]
-  x_1_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test = tmp_x_1_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test[][]
+  tmp_x_0_xaxbxcxd_test = nested_nodes with data.nodes as x["x:a"]
+  x_0_xaxbxcxd_test = tmp_x_0_xaxbxcxd_test[][]
+  tmp_x_1_xaxbxcxd_test = nested_nodes with data.nodes as x_0_xaxbxcxd_test["x:b"]
+  x_1_xaxbxcxd_test = tmp_x_1_xaxbxcxd_test[][]
   nodes_tmp = object.get(x,"x:d",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 } {
   x = data.sourceNode
-  tmp_x_0_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test = nested_nodes with data.nodes as x["x:a"]
-  x_0_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test = tmp_x_0_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test[][]
-  tmp_x_1_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test = nested_nodes with data.nodes as x_0_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test["x:c"]
-  x_1_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test = tmp_x_1_782e61202f20782e62207c20782e63202f20782e64d41d8cd98f00b204e9800998ecf8427e_test[][]
+  tmp_x_0_xaxbxcxd_test = nested_nodes with data.nodes as x["x:a"]
+  x_0_xaxbxcxd_test = tmp_x_0_xaxbxcxd_test[][]
+  tmp_x_1_xaxbxcxd_test = nested_nodes with data.nodes as x_0_xaxbxcxd_test["x:c"]
+  x_1_xaxbxcxd_test = tmp_x_1_xaxbxcxd_test[][]
   nodes_tmp = object.get(x,"x:d",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]

@@ -1,6 +1,5 @@
 package generator
 
-
 import (
 	"github.com/aml-org/amfopa/internal/parser"
 	"github.com/aml-org/amfopa/test"
@@ -10,8 +9,8 @@ import (
 
 func TestGenerated(t *testing.T) {
 
-	for _,fix := range test.Fixtures("../../test/data") {
-		profile, err := parser.Parse(fix.Profile)
+	for _, fix := range test.Fixtures("../../test/data") {
+		profile, err := parser.Parse(fix.ReadProfile())
 		if err != nil {
 			panic(err)
 		}

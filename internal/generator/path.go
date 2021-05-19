@@ -1,10 +1,11 @@
 package generator
 
 import (
-	"crypto"
 	"fmt"
+	"github.com/aml-org/amfopa/internal"
 	"github.com/aml-org/amfopa/internal/parser/path"
 	"github.com/aml-org/amfopa/internal/parser/profile/statements"
+	"strings"
 )
 
 type RegoPathResult struct {
@@ -34,7 +35,7 @@ type traversal struct {
 
 func newTraversal(source string, variable string, hint string) traversal {
 	return traversal{
-		id:            fmt.Sprintf("%x", crypto.MD5.New().Sum([]byte(source))),
+		id:            valueHash(source),
 		variable:      variable,
 		hint:          hint,
 		counter:       0,
@@ -42,6 +43,11 @@ func newTraversal(source string, variable string, hint string) traversal {
 		pathVariables: make([]string, 0),
 		paths:         make([]string, 0),
 	}
+}
+
+func valueHash(source string) string {
+	s := strings.ToLower(source)
+	return internal.HashString(s)
 }
 
 func internalResultToTraversal(p traversal, r regoPathResultInternal) traversal {

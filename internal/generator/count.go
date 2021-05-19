@@ -18,19 +18,19 @@ func GenerateCount(count constraints.CountRule) []SimpleRegoResult {
 // Generates the rule using the 'count'  property from Rego
 func generateRule(count constraints.CountRule, rule string, condition string) []SimpleRegoResult {
 	path := count.Path
-	rego := make([]string,0)
+	rego := make([]string, 0)
 
 	// Let's get the path computed and stored in the inValuesVariable
 	inValuesVariable := statements.Genvar("propValues")
-	rego = append(rego, "#  storing path in " + inValuesVariable + " : " + path.Source())
-	pathResult := GeneratePropertyArray(path, count.Variable.Name, rule + "_" + count.ValueMD5())
+	rego = append(rego, "#  storing path in "+inValuesVariable+" : "+path.Source())
+	pathResult := GeneratePropertyArray(path, count.Variable.Name, rule+"_"+count.ValueHash())
 	rego = append(rego, fmt.Sprintf("%s = %s with data.sourceNode as %s", inValuesVariable, pathResult.rule, count.Variable.Name))
 
 	// Add the validation
 	if count.Negated {
-		rego = append(rego, fmt.Sprintf("count(%s) %s %d", inValuesVariable,condition,count.Argument))
+		rego = append(rego, fmt.Sprintf("count(%s) %s %d", inValuesVariable, condition, count.Argument))
 	} else {
-		rego = append(rego, fmt.Sprintf("not count(%s) %s %d", inValuesVariable,condition,count.Argument))
+		rego = append(rego, fmt.Sprintf("not count(%s) %s %d", inValuesVariable, condition, count.Argument))
 	}
 
 	r := SimpleRegoResult{

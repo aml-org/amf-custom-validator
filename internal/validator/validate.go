@@ -1,18 +1,16 @@
 package validator
 
-import(
+import (
 	"bytes"
 	"context"
 	"encoding/json"
 	"github.com/aml-org/amfopa/internal/generator"
 	"github.com/aml-org/amfopa/internal/parser"
 	"github.com/open-policy-agent/opa/rego"
-	"io/ioutil"
 )
 
-
-func Validate(profilePath string, jsonldPath string, debug bool) (string, error) {
-	parsed,err := parser.Parse(profilePath)
+func Validate(profileText string, jsonldText string, debug bool) (string, error) {
+	parsed, err := parser.Parse(profileText)
 	if err != nil {
 		panic(err)
 	}
@@ -24,12 +22,7 @@ func Validate(profilePath string, jsonldPath string, debug bool) (string, error)
 		println(module.Code)
 	}
 
-	dataBytes, err := ioutil.ReadFile(jsonldPath)
-	if err != nil {
-		panic(err)
-	}
-
-	decoder := json.NewDecoder(bytes.NewBuffer(dataBytes))
+	decoder := json.NewDecoder(bytes.NewBuffer([]byte(jsonldText)))
 	decoder.UseNumber()
 
 	var input interface{}
@@ -45,12 +38,15 @@ func Validate(profilePath string, jsonldPath string, debug bool) (string, error)
 		var b bytes.Buffer
 		enc := json.NewEncoder(&b)
 		enc.SetIndent("", "  ")
-		enc.Encode(normalizedInput)
+		err := enc.Encode(normalizedInput)
+		if err != nil {
+			panic(err)
+		}
 		println(b.String())
 	}
 	validator := rego.New(
-		rego.Query("data." + module.Name + "." + module.Entrypoint),
-		rego.Module(module.Name + ".rego", module.Code),
+		rego.Query("data."+module.Name+"."+module.Entrypoint),
+		rego.Module(module.Name+".rego", module.Code),
 		rego.Input(normalizedInput),
 	)
 

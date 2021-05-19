@@ -8,8 +8,8 @@ import (
 )
 
 type Fixture struct {
-	Profile string
-	Parsed string
+	Profile   string
+	Parsed    string
 	Generated string
 }
 
@@ -20,11 +20,11 @@ func Fixtures(root string) []Fixture {
 			panic("error reading data directory")
 		}
 		if strings.Index(path, ".yaml") > -1 && strings.Index(path, "integration") == -1 {
-			parsed := strings.ReplaceAll(path, ".yaml",".parsed")
-			generated := strings.ReplaceAll(path, ".yaml",".rego")
+			parsed := strings.ReplaceAll(path, ".yaml", ".parsed")
+			generated := strings.ReplaceAll(path, ".yaml", ".rego")
 			fixture := Fixture{
-				Profile: path,
-				Parsed: parsed,
+				Profile:   path,
+				Parsed:    parsed,
 				Generated: generated,
 			}
 			fixtures = append(fixtures, fixture)
@@ -35,6 +35,14 @@ func Fixtures(root string) []Fixture {
 		panic(err)
 	}
 	return fixtures
+}
+
+func (f Fixture) ReadProfile() string {
+	bytes, err := ioutil.ReadFile(f.Profile)
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
 }
 
 func (f Fixture) ReadParsed() string {
@@ -53,6 +61,9 @@ func (f Fixture) ReadGenerated() string {
 	return string(bytes)
 }
 
+// Just for fixing tests
+/*
 func ForceWrite(f string, data string) {
 	ioutil.WriteFile(f, []byte(data),0644)
 }
+*/

@@ -6,14 +6,14 @@ import (
 	yamlparser "github.com/aml-org/amfopa/internal/parser/yaml"
 )
 
-func Parse(path string) (*statements.Profile, error) {
+func Parse(profileText string) (*statements.Profile, error) {
 
-	node,err := yamlparser.Parse(path)
+	node, err := yamlparser.Parse(profileText)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
 
-	prof,err := profile.Parse(node)
+	prof, err := profile.Parse(node)
 	if err != nil {
 		return nil, err
 	}

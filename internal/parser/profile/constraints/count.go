@@ -1,13 +1,14 @@
 package constraints
 
 import (
-	"crypto"
 	"fmt"
+	"github.com/aml-org/amfopa/internal"
 	"github.com/aml-org/amfopa/internal/parser/path"
 	"github.com/aml-org/amfopa/internal/parser/profile/statements"
 )
 
 type CountQualifier int
+
 const (
 	Min CountQualifier = iota
 	Max
@@ -24,13 +25,13 @@ func (r CountRule) Clone() statements.Rule {
 		AtomicStatement: statements.AtomicStatement{
 			BaseStatement: statements.BaseStatement{
 				Negated: r.Negated,
-				Name: r.Name,
+				Name:    r.Name,
 			},
 			Variable: r.Variable,
-			Path: r.Path,
+			Path:     r.Path,
 		},
 		Qualifier: r.Qualifier,
-		Argument: r.Argument,
+		Argument:  r.Argument,
 	}
 }
 
@@ -43,9 +44,9 @@ func (r CountRule) Negate() statements.Rule {
 	return cloned
 }
 
-func (r CountRule) ValueMD5() string {
-	v := fmt.Sprintf("%d",r.Argument)
-	return fmt.Sprintf("%x",crypto.MD5.New().Sum([]byte(v)))
+func (r CountRule) ValueHash() string {
+	v := fmt.Sprintf("%s%d", r.Name, r.Argument)
+	return internal.HashString(v)
 }
 
 func (r CountRule) String() string {
@@ -54,7 +55,7 @@ func (r CountRule) String() string {
 		negation = "¬"
 	}
 
-	return fmt.Sprintf("%s%s(%s,'%s',%d)", negation, r.Name, r.Variable.Name, r.Path.Source(),r.Argument)
+	return fmt.Sprintf("%s%s(%s,'%s',%d)", negation, r.Name, r.Variable.Name, r.Path.Source(), r.Argument)
 }
 
 func newCount(negated bool, qualifier CountQualifier, variable statements.Variable, path path.PropertyPath, argument int) CountRule {
@@ -64,7 +65,7 @@ func newCount(negated bool, qualifier CountQualifier, variable statements.Variab
 				Negated: negated,
 			},
 			Variable: variable,
-			Path: path,
+			Path:     path,
 		},
 		Qualifier: qualifier,
 		Argument:  argument,
@@ -72,13 +73,13 @@ func newCount(negated bool, qualifier CountQualifier, variable statements.Variab
 }
 
 func newMinCount(negated bool, variable statements.Variable, path path.PropertyPath, argument int) CountRule {
-	c := newCount(negated, Min, variable,path,argument)
+	c := newCount(negated, Min, variable, path, argument)
 	c.Name = "minCount"
 	return c
 }
 
 func newMaxCount(negated bool, variable statements.Variable, path path.PropertyPath, argument int) CountRule {
-	c := newCount(negated, Max, variable,path,argument)
+	c := newCount(negated, Max, variable, path, argument)
 	c.Name = "maxCount"
 	return c
 }
