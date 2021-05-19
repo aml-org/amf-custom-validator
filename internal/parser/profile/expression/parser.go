@@ -73,11 +73,11 @@ func parseImplicitAnd(propertyConstraints y.Map, variable statements.Variable) (
 
 		switch p := constraint.(type) {
 		case y.Map:
-			c, err := constraints.Parse(propertyPath, variable, p)
+			cs, err := constraints.Parse(propertyPath, variable, p)
 			if err != nil {
 				return nil, err
 			}
-			values = append(values, c)
+			values = append(values, cs...)
 		default:
 			return nil, errors.New("PropertyConstraint must be a map")
 		}

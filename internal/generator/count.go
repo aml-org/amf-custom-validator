@@ -22,7 +22,7 @@ func generateRule(count constraints.CountRule, rule string, condition string) []
 
 	// Let's get the path computed and stored in the inValuesVariable
 	inValuesVariable := statements.Genvar("propValues")
-	rego = append(rego, "#  storing path in "+inValuesVariable+" : "+path.Source())
+	rego = append(rego, "#  querying path: "+path.Source())
 	pathResult := GeneratePropertyArray(path, count.Variable.Name, rule+"_"+count.ValueHash())
 	rego = append(rego, fmt.Sprintf("%s = %s with data.sourceNode as %s", inValuesVariable, pathResult.rule, count.Variable.Name))
 

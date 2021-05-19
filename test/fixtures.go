@@ -13,6 +13,8 @@ type Fixture struct {
 	Generated string
 }
 
+type IntegrationFixture string
+
 func Fixtures(root string) []Fixture {
 	fixtures := make([]Fixture, 0)
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
@@ -35,6 +37,60 @@ func Fixtures(root string) []Fixture {
 		panic(err)
 	}
 	return fixtures
+}
+
+func IntegrationFixtures(root string) []IntegrationFixture {
+	var fixtures []IntegrationFixture
+	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		if info.IsDir() && strings.Index(path,"profile") > -1 {
+			fixtures = append(fixtures, IntegrationFixture(path))
+		}
+		return nil
+	})
+	if err !=  nil {
+		panic(err)
+	}
+	return fixtures
+}
+
+func (f IntegrationFixture) ReadProfile() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/profile.yaml")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
+func (f IntegrationFixture) ReadFixturePositiveData() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/positive.data.jsonld")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
+func (f IntegrationFixture) ReadFixtureNegativeData() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/negative.data.jsonld")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
+func (f IntegrationFixture) ReadFixturePositiveReport() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/positive.report.jsonld")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
+func (f IntegrationFixture) ReadFixtureNegativeReport() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/negative.report.jsonld")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
 }
 
 func (f Fixture) ReadProfile() string {
@@ -61,9 +117,7 @@ func (f Fixture) ReadGenerated() string {
 	return string(bytes)
 }
 
-// Just for fixing tests
-/*
+// Only for fixing tests
 func ForceWrite(f string, data string) {
 	ioutil.WriteFile(f, []byte(data),0644)
 }
-*/

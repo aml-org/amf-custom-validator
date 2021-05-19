@@ -14,6 +14,8 @@ func Dispatch(r statements.Rule) []GeneratedRegoResult {
 	//	return GenerateExpression(e)
 	case constraints.CountRule:
 		return simpleAsGeneratedRegoResult(GenerateCount(e))
+	case constraints.InRule:
+		return simpleAsGeneratedRegoResult(GenerateIn(e))
 	case expression.AndRule:
 		return branchAsGeneratedRegoResult(GenerateAnd(e))
 	case expression.OrRule:

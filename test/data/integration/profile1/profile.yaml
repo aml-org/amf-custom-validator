@@ -1,6 +1,6 @@
 #%Validation Profile 1.0
 
-profile: Test8
+profile: Test1
 
 violation:
   - scalar-parameters
@@ -10,9 +10,5 @@ validations:
     targetClass: apiContract.Parameter
     message: Scalars in parameters must have minLength defined
     propertyConstraints:
-      shapes.schema:
-        minCount: 10
-        nested:
-          propertyConstraints:
-            shacl.minLength:
-              minCount: 10
+      shapes.schema / shacl.minLength:
+        minCount: 1

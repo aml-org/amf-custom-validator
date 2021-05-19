@@ -121,6 +121,16 @@ target_class_negated[result] {
   result := node
 }
 
+# Transform scalars to string, useful for 'in' constraints
+as_string(x) = x {
+  is_string(x)
+}
+
+as_string(x) = json.marshal(x) {
+  not is_string(x)
+}
+
+
 # Traces one evaluation of a constraint
 trace(component, path, value, traceMessage) = t {
   t := {

@@ -69,7 +69,7 @@ func GeneratePropertyArray(path path.PropertyPath, variable string, hint string)
 	for _, tr := range traverse(path, t) {
 		effectiveRego := tr.rego[0 : len(tr.rego)-2] // we remove the last element so we can get the array of values instead
 		previousBinding := variable
-		if len(t.pathVariables) >= 2 {
+		if len(tr.pathVariables) >= 2 {
 			previousBinding = tr.pathVariables[len(tr.pathVariables)-2]
 		}
 		nextPath := tr.paths[len(tr.paths)-1]
@@ -180,12 +180,12 @@ func traverseProperty(property path.Property, t traversal) []regoPathResultInter
 		// to the path generator, usually a classTarget.
 		t.rego = append(t.rego, fmt.Sprintf("%s = data.sourceNode", t.variable)) // this is the connection to the variable past to the generator
 		t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as %s[\"%s\"]", binding, t.variable, property.Iri))
-		t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[][]", binding, binding))
+		t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))
 	} else {
 		// Internal path element, we generate the next set of values from the previous bound property
 		previousBinding := t.pathVariables[len(t.pathVariables)-1]
 		t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as %s[\"%s\"]", binding, previousBinding, property.Iri))
-		t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[][]", binding, binding))
+		t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))
 	}
 
 	r := regoPathResultInternal{

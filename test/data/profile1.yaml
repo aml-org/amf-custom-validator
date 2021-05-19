@@ -14,9 +14,11 @@ validations:
     message: This is the message
     propertyConstraints:
       apiContract.method:
-#        in:
-#          - publish
-#          - subscribe
+        in:
+          - publish
+          - subscribe
+          - 1
+          - 2
         minCount: 1
       shacl.name:
         maxCount: 1

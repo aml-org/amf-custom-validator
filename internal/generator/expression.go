@@ -103,7 +103,7 @@ func wrapBranch(e expression.TopLevelExpression, branch BranchRegoResult, matche
 	for i,r := range branch.Branch {
 		bindingResult := fmt.Sprintf("_result_%d",i)
 		resultBindings = append(resultBindings, bindingResult)
-		matchesLine := fmt.Sprintf("  %s := trace(\"%s\",\"%s\",\"%s\",\"%s\")",bindingResult,r.ConstraintId(),r.Path, r.Value,r.Trace)
+		matchesLine := fmt.Sprintf("  %s := trace(\"%s\",\"%s\",%s,\"%s\")",bindingResult,r.ConstraintId(),r.Path, r.Value,r.Trace)
 		for _,l := range r.Rego {
 			acc = append(acc, "  " + l)
 		}
