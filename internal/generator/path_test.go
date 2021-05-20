@@ -2,13 +2,13 @@ package generator
 
 import (
 	"github.com/aml-org/amfopa/internal/parser/path"
-	"github.com/aml-org/amfopa/internal/parser/profile/statements"
+	"github.com/aml-org/amfopa/internal/parser/profile"
 	"strings"
 	"testing"
 )
 
 func TestGeneratePathPropertyArray(t *testing.T) {
-	statements.GenReset()
+	profile.GenReset()
 	p, err := path.ParsePath("core.name")
 	if err != nil {
 		t.Errorf("error parsing path %v", err)
@@ -30,7 +30,7 @@ func TestGeneratePathPropertyArray(t *testing.T) {
 }
 
 func TestGenerateAndPropertyArray(t *testing.T) {
-	statements.GenReset()
+	profile.GenReset()
 	p, err := path.ParsePath("x.a / x.b / x.c")
 	if err != nil {
 		t.Errorf("error parsing path %v", err)
@@ -56,7 +56,7 @@ func TestGenerateAndPropertyArray(t *testing.T) {
 }
 
 func TestGenerateOrPropertyArray(t *testing.T) {
-	statements.GenReset()
+	profile.GenReset()
 	p, err := path.ParsePath("x.a / x.b | x.c / x.d")
 	if err != nil {
 		t.Errorf("error parsing path %v", err)

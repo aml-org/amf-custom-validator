@@ -6,12 +6,12 @@ type GeneratedRegoResult interface {
 
 type SimpleRegoResult struct {
 	Constraint string
-	Rego []string
-	Path string
-	Value string
-	Variable string
-	Trace string
-	PathRules []RegoPathResult
+	Rego       []string
+	Path       string
+	Value      string
+	Variable   string
+	Trace      string
+	PathRules  []RegoPathResult
 }
 
 func (r SimpleRegoResult) ConstraintId() string {
@@ -20,7 +20,7 @@ func (r SimpleRegoResult) ConstraintId() string {
 
 type BranchRegoResult struct {
 	Constraint string
-	Branch []SimpleRegoResult
+	Branch     []SimpleRegoResult
 }
 
 func (r BranchRegoResult) ConstraintId() string {

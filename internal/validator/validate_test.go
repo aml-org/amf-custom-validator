@@ -20,7 +20,7 @@ func TestValidate(t *testing.T) {
 		//test.ForceWrite(string(fixture) + "/negative.report.jsonld", strings.TrimSpace(report))
 		expected := strings.TrimSpace(fixture.ReadFixturePositiveReport())
 		if strings.TrimSpace(report) != expected {
-			t.Errorf(fmt.Sprintf("failed positive report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n",fixture, expected, report))
+			t.Errorf(fmt.Sprintf("failed positive report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", fixture, expected, report))
 		}
 
 		report, err = Validate(profile, fixture.ReadFixtureNegativeData(), debug)
@@ -30,7 +30,7 @@ func TestValidate(t *testing.T) {
 		expected = strings.TrimSpace(fixture.ReadFixtureNegativeReport())
 		//test.ForceWrite(string(fixture) + "/negative.report.jsonld", strings.TrimSpace(report))
 		if strings.TrimSpace(report) != expected {
-			t.Errorf(fmt.Sprintf("failed positive report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n",fixture, expected, report))
+			t.Errorf(fmt.Sprintf("failed positive report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", fixture, expected, report))
 		}
 	}
 }

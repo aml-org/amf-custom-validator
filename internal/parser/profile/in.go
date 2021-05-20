@@ -1,33 +1,32 @@
-package constraints
+package profile
 
 import (
 	"fmt"
 	"github.com/aml-org/amfopa/internal"
 	"github.com/aml-org/amfopa/internal/parser/path"
-	"github.com/aml-org/amfopa/internal/parser/profile/statements"
 	"strings"
 )
 
 type InRule struct {
-	statements.AtomicStatement
+	AtomicStatement
 	Argument []string
 }
 
-func (r InRule) Clone() statements.Rule {
+func (r InRule) Clone() Rule {
 	return InRule{
-		AtomicStatement: statements.AtomicStatement{
-			BaseStatement: statements.BaseStatement{
+		AtomicStatement: AtomicStatement{
+			BaseStatement: BaseStatement{
 				Negated: r.Negated,
-				Name: r.Name,
+				Name:    r.Name,
 			},
 			Variable: r.Variable,
-			Path: r.Path,
+			Path:     r.Path,
 		},
 		Argument: r.Argument,
 	}
 }
 
-func (r InRule) Negate() statements.Rule {
+func (r InRule) Negate() Rule {
 	cloned := r.Clone()
 	switch c := cloned.(type) {
 	case InRule:
@@ -47,21 +46,21 @@ func (r InRule) String() string {
 		negation = "¬"
 	}
 	var acc []string
-	for _,a := range r.Argument {
+	for _, a := range r.Argument {
 		acc = append(acc, fmt.Sprintf("%v", a))
 	}
-	return fmt.Sprintf("%s%s(%s,'%s',%s)", negation, r.Name, r.Variable.Name, r.Path.Source(), strings.Join(acc,","))
+	return fmt.Sprintf("%s%s(%s,'%s',%s)", negation, r.Name, r.Variable.Name, r.Path.Source(), strings.Join(acc, ","))
 }
 
-func newIn(negated bool, variable statements.Variable, path path.PropertyPath, argument []string) InRule {
+func newIn(negated bool, variable Variable, path path.PropertyPath, argument []string) InRule {
 	return InRule{
-		AtomicStatement: statements.AtomicStatement{
-			BaseStatement: statements.BaseStatement{
+		AtomicStatement: AtomicStatement{
+			BaseStatement: BaseStatement{
 				Negated: negated,
-				Name: "in",
+				Name:    "in",
 			},
 			Variable: variable,
-			Path: path,
+			Path:     path,
 		},
 		Argument: argument,
 	}

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/aml-org/amfopa/internal"
 	"github.com/aml-org/amfopa/internal/parser/path"
-	"github.com/aml-org/amfopa/internal/parser/profile/statements"
+	"github.com/aml-org/amfopa/internal/parser/profile"
 	"strings"
 )
 
@@ -94,7 +94,7 @@ func accumulatePaths(paths []regoPathResultInternal) RegoPathResult {
 	// If there are more than one path (because of ORs) a rule with multiple clauses
 	// will be generated and the final list of nodes will be the UNION of all the clauses
 	rego := make([]string, 0)
-	ruleName := statements.Genvar("path_rule")
+	ruleName := profile.Genvar("path_rule")
 	for i, p := range paths {
 		if i == 0 {
 			rego = append(rego, fmt.Sprintf("%s[nodes] {", ruleName)) // header of the rule

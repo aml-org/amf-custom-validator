@@ -1,7 +1,5 @@
-package amfopa;
+package amfopa
 
 func Config() {
 
 }
-
-

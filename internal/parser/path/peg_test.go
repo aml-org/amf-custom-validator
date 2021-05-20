@@ -11,7 +11,7 @@ func TestPEGProperty(t *testing.T) {
 	}
 	switch v := parsed.(type) {
 	case IRI:
-		if v.Value != "core:name"{
+		if v.Value != "core:name" {
 			t.Errorf("expected IRI 'core:name' got %s", v.Value)
 		}
 		if v.Transitive {
@@ -32,7 +32,7 @@ func TestPEGPropertyInverse(t *testing.T) {
 	}
 	switch v := parsed.(type) {
 	case IRI:
-		if v.Value != "core:name"{
+		if v.Value != "core:name" {
 			t.Errorf("expected IRI 'core:name' got %s", v.Value)
 		}
 		if v.Transitive {
@@ -53,7 +53,7 @@ func TestPEGPropertyInverse2(t *testing.T) {
 	}
 	switch v := parsed.(type) {
 	case IRI:
-		if v.Value != "core:name"{
+		if v.Value != "core:name" {
 			t.Errorf("expected IRI 'core:name' got %s", v.Value)
 		}
 		if v.Transitive {
@@ -74,8 +74,8 @@ func TestPEGPropertyAND(t *testing.T) {
 	}
 	switch v := parsed.(type) {
 	case AND:
-		if (len(v.body) != 2) {
-			t.Errorf("expected 2 arguments in AND, got %d",len(v.body));
+		if len(v.body) != 2 {
+			t.Errorf("expected 2 arguments in AND, got %d", len(v.body))
 		}
 		if v.body[0].(IRI).Value != "shacl:schema" {
 			t.Errorf("first AND component must be shacl:schema")
@@ -95,8 +95,8 @@ func TestPEGPropertyOR(t *testing.T) {
 	}
 	switch v := parsed.(type) {
 	case OR:
-		if (len(v.body) != 2) {
-			t.Errorf("expected 2 arguments in OR, got %d",len(v.body));
+		if len(v.body) != 2 {
+			t.Errorf("expected 2 arguments in OR, got %d", len(v.body))
 		}
 		if v.body[0].(IRI).Value != "shacl:schema" {
 			t.Errorf("first OR component must be shacl:schema")

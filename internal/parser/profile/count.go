@@ -1,10 +1,9 @@
-package constraints
+package profile
 
 import (
 	"fmt"
 	"github.com/aml-org/amfopa/internal"
 	"github.com/aml-org/amfopa/internal/parser/path"
-	"github.com/aml-org/amfopa/internal/parser/profile/statements"
 )
 
 type CountQualifier int
@@ -15,15 +14,15 @@ const (
 )
 
 type CountRule struct {
-	statements.AtomicStatement
+	AtomicStatement
 	Qualifier CountQualifier
 	Argument  int
 }
 
-func (r CountRule) Clone() statements.Rule {
+func (r CountRule) Clone() Rule {
 	return CountRule{
-		AtomicStatement: statements.AtomicStatement{
-			BaseStatement: statements.BaseStatement{
+		AtomicStatement: AtomicStatement{
+			BaseStatement: BaseStatement{
 				Negated: r.Negated,
 				Name:    r.Name,
 			},
@@ -35,7 +34,7 @@ func (r CountRule) Clone() statements.Rule {
 	}
 }
 
-func (r CountRule) Negate() statements.Rule {
+func (r CountRule) Negate() Rule {
 	cloned := r.Clone()
 	switch c := cloned.(type) {
 	case CountRule:
@@ -58,10 +57,10 @@ func (r CountRule) String() string {
 	return fmt.Sprintf("%s%s(%s,'%s',%d)", negation, r.Name, r.Variable.Name, r.Path.Source(), r.Argument)
 }
 
-func newCount(negated bool, qualifier CountQualifier, variable statements.Variable, path path.PropertyPath, argument int) CountRule {
+func newCount(negated bool, qualifier CountQualifier, variable Variable, path path.PropertyPath, argument int) CountRule {
 	return CountRule{
-		AtomicStatement: statements.AtomicStatement{
-			BaseStatement: statements.BaseStatement{
+		AtomicStatement: AtomicStatement{
+			BaseStatement: BaseStatement{
 				Negated: negated,
 			},
 			Variable: variable,
@@ -72,13 +71,13 @@ func newCount(negated bool, qualifier CountQualifier, variable statements.Variab
 	}
 }
 
-func newMinCount(negated bool, variable statements.Variable, path path.PropertyPath, argument int) CountRule {
+func newMinCount(negated bool, variable Variable, path path.PropertyPath, argument int) CountRule {
 	c := newCount(negated, Min, variable, path, argument)
 	c.Name = "minCount"
 	return c
 }
 
-func newMaxCount(negated bool, variable statements.Variable, path path.PropertyPath, argument int) CountRule {
+func newMaxCount(negated bool, variable Variable, path path.PropertyPath, argument int) CountRule {
 	c := newCount(negated, Max, variable, path, argument)
 	c.Name = "maxCount"
 	return c

@@ -22,27 +22,27 @@ func BuildReport(result rego.ResultSet) (string, error) {
 
 	if (len(violations) + len(warnings) + len(infos)) == 0 {
 		res := map[string]interface{}{
-			"@type": "http://www.w3.org/ns/shacl#ValidationReport",
+			"@type":                               "http://www.w3.org/ns/shacl#ValidationReport",
 			"http://www.w3.org/ns/shacl#conforms": true,
 		}
 
 		return encode(res), nil
 	} else {
 		var results []interface{}
-		for _,r := range violations {
+		for _, r := range violations {
 			results = append(results, buildViolation("violation", r))
 		}
-		for _,r := range warnings {
+		for _, r := range warnings {
 			results = append(results, buildViolation("warning", r))
 		}
-		for _,r := range infos {
+		for _, r := range infos {
 			results = append(results, buildViolation("info", r))
 		}
 
 		res := map[string]interface{}{
-			"@type": "http://www.w3.org/ns/shacl#ValidationReport",
+			"@type":                               "http://www.w3.org/ns/shacl#ValidationReport",
 			"http://www.w3.org/ns/shacl#conforms": false,
-			"http://www.w3.org/ns/shacl#result": results,
+			"http://www.w3.org/ns/shacl#result":   results,
 		}
 		return encode(res), nil
 	}
@@ -63,12 +63,12 @@ func buildViolation(level string, raw interface{}) map[string]interface{} {
 	target := violation["target"].(string)
 	traces := violation["trace"].([]interface{})
 
-	acc := make([]interface{},0)
-	for _,t := range traces {
+	acc := make([]interface{}, 0)
+	for _, t := range traces {
 		acc = append(acc, buildTrace(t))
 	}
 
-	res := map[string]interface{} {
+	res := map[string]interface{}{
 		"@type": []string{"http://www.w3.org/ns/shacl#ValidationResult"},
 		"http://www.w3.org/ns/shacl#resultSeverity": map[string]string{
 			"@id": "http://www.w3.org/ns/shacl#" + strings.Title(level),
@@ -76,8 +76,8 @@ func buildViolation(level string, raw interface{}) map[string]interface{} {
 		"http://www.w3.org/ns/shacl#focusNode": map[string]string{
 			"@id": target,
 		},
-		"http://a.ml/vocabularies/validation#trace":acc,
-		"http://www.w3.org/ns/shacl#resultMessage": msg,
+		"http://a.ml/vocabularies/validation#trace": acc,
+		"http://www.w3.org/ns/shacl#resultMessage":  msg,
 		"http://www.w3.org/ns/shacl#sourceShape": map[string]string{
 			"@id": shapeId,
 		},
@@ -97,9 +97,9 @@ func buildTrace(raw interface{}) interface{} {
 	res := map[string]interface{}{
 		"@type": []string{"http://a.ml/vocabularies/validation#Trace"},
 		"http://a.ml/vocabularies/validation#component": component,
-		"http://www.w3.org/ns/shacl#resultMessage": message,
-		"http://www.w3.org/ns/shacl#resultPath": path,
-		"http://www.w3.org/ns/shacl#focusNode": value,
+		"http://www.w3.org/ns/shacl#resultMessage":      message,
+		"http://www.w3.org/ns/shacl#resultPath":         path,
+		"http://www.w3.org/ns/shacl#focusNode":          value,
 	}
 
 	return res

@@ -42,12 +42,12 @@ func Fixtures(root string) []Fixture {
 func IntegrationFixtures(root string) []IntegrationFixture {
 	var fixtures []IntegrationFixture
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
-		if info.IsDir() && strings.Index(path,"profile") > -1 {
+		if info.IsDir() && strings.Index(path, "profile") > -1 {
 			fixtures = append(fixtures, IntegrationFixture(path))
 		}
 		return nil
 	})
-	if err !=  nil {
+	if err != nil {
 		panic(err)
 	}
 	return fixtures
@@ -119,5 +119,5 @@ func (f Fixture) ReadGenerated() string {
 
 // Only for fixing tests
 func ForceWrite(f string, data string) {
-	ioutil.WriteFile(f, []byte(data),0644)
+	ioutil.WriteFile(f, []byte(data), 0644)
 }

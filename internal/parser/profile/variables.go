@@ -1,4 +1,4 @@
-package statements
+package profile
 
 import "fmt"
 
@@ -11,7 +11,7 @@ const (
 
 type CardinalityOperation int
 
-const(
+const (
 	LTEQ CardinalityOperation = iota
 	LT
 	EQ
@@ -59,4 +59,3 @@ func (v Variable) String() string {
 		return "∃" + v.Name
 	}
 }
-

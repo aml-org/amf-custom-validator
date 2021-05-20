@@ -2,61 +2,60 @@ package generator
 
 import (
 	"fmt"
-	"github.com/aml-org/amfopa/internal/parser/profile/statements"
+	"github.com/aml-org/amfopa/internal/parser/profile"
 	"strings"
 )
 
 type RegoUnit struct {
-	Name string
+	Name       string
 	Entrypoint string
-	Code string
+	Code       string
 }
 
 // Main entry point generating a valid Rego unit from a parsed profile.
 // It uses the encoded Rego preamble code to provide all the library
 // code to execute the profile.
-func Generate(profile statements.Profile) RegoUnit {
-	acc := []string{ pkg(profile), preamble(profile) }
-	for _,r := range ruleSet(profile) {
+func Generate(profile profile.Profile) RegoUnit {
+	acc := []string{pkg(profile), preamble(profile)}
+	for _, r := range ruleSet(profile) {
 		acc = append(acc, GenerateTopLevelExpression(r))
 	}
 	return RegoUnit{
-		Name: packageName(profile),
+		Name:       packageName(profile),
 		Entrypoint: entrypoint(profile),
-		Code: strings.Join(acc,"\n"),
+		Code:       strings.Join(acc, "\n"),
 	}
 }
 
-func ruleSet(profile statements.Profile) []statements.Rule {
-	acc := make([]statements.Rule,0)
-	for _,r := range profile.Violation {
+func ruleSet(prof profile.Profile) []profile.Rule {
+	acc := make([]profile.Rule, 0)
+	for _, r := range prof.Violation {
 		acc = append(acc, r)
 	}
-	for _,r := range profile.Warning {
+	for _, r := range prof.Warning {
 		acc = append(acc, r)
 	}
-	for _,r := range profile.Info {
+	for _, r := range prof.Info {
 		acc = append(acc, r)
 	}
 
 	return acc
 }
 
-func pkg(profile statements.Profile) string {
-	return fmt.Sprintf("package %s\n",packageName(profile))
+func pkg(profile profile.Profile) string {
+	return fmt.Sprintf("package %s\n", packageName(profile))
 }
 
-func packageName(profile statements.Profile) string {
+func packageName(profile profile.Profile) string {
 	return strings.ReplaceAll(strings.ToLower(profile.Name), " ", "")
 }
 
-func entrypoint(profile statements.Profile) string {
+func entrypoint(profile profile.Profile) string {
 	return "report"
 }
 
-
-func preamble(profile statements.Profile) string {
-	acc := make([]string,0)
+func preamble(profile profile.Profile) string {
+	acc := make([]string, 0)
 	acc = append(acc, preambleRaw)
 	// If empty, we provide a default implementation so we can always generate a value report.
 	// Same for other levels
@@ -70,7 +69,7 @@ func preamble(profile statements.Profile) string {
 		acc = append(acc, "default info = []")
 	}
 
-	return strings.Join(acc,"\n\n")
+	return strings.Join(acc, "\n\n")
 }
 
 const preambleRaw = `

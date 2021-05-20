@@ -11,10 +11,20 @@ func Parse(profile string) (yaml.Node, error) {
 	return yaml.Parse(strings.NewReader(profile))
 }
 
+func CleanYamlString(s string) string {
+	if strings.Index(s, "\"") == 0 {
+		s = s[1:len(s)]
+	}
+	if strings.Index(s, "\"") == len(s)-1 {
+		s = s[0 : len(s)-1]
+	}
+	return s
+}
 func GetString(m yaml.Map, k string) (string, error) {
 	switch v := m.Key(k); tc := v.(type) {
 	case yaml.Scalar:
-		return tc.String(), nil
+		s := CleanYamlString(tc.String())
+		return s, nil
 	default:
 		return "", errors.New("Missing " + k + " property")
 	}

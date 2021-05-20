@@ -3,22 +3,22 @@ package generator
 import (
 	"errors"
 	"fmt"
-	"github.com/aml-org/amfopa/internal/parser/profile/constraints"
-	"github.com/aml-org/amfopa/internal/parser/profile/expression"
-	"github.com/aml-org/amfopa/internal/parser/profile/statements"
+	"github.com/aml-org/amfopa/internal/parser/profile"
 )
 
-func Dispatch(r statements.Rule) []GeneratedRegoResult {
+func Dispatch(r profile.Rule) []GeneratedRegoResult {
 	switch e := r.(type) {
 	//case expression.Expression:
 	//	return GenerateExpression(e)
-	case constraints.CountRule:
+	case profile.CountRule:
 		return simpleAsGeneratedRegoResult(GenerateCount(e))
-	case constraints.InRule:
+	case profile.InRule:
 		return simpleAsGeneratedRegoResult(GenerateIn(e))
-	case expression.AndRule:
+	case profile.PatternRule:
+		return simpleAsGeneratedRegoResult(GeneratePattern(e))
+	case profile.AndRule:
 		return branchAsGeneratedRegoResult(GenerateAnd(e))
-	case expression.OrRule:
+	case profile.OrRule:
 		return branchAsGeneratedRegoResult(GenerateOr(e))
 	default:
 		panic(errors.New(fmt.Sprintf("unknown rule type %v", r)))
@@ -26,16 +26,16 @@ func Dispatch(r statements.Rule) []GeneratedRegoResult {
 }
 
 func simpleAsGeneratedRegoResult(simple []SimpleRegoResult) []GeneratedRegoResult {
-	acc := make([]GeneratedRegoResult,len(simple))
-	for i,s := range simple {
+	acc := make([]GeneratedRegoResult, len(simple))
+	for i, s := range simple {
 		acc[i] = GeneratedRegoResult(s)
 	}
 	return acc
 }
 
 func branchAsGeneratedRegoResult(simple []BranchRegoResult) []GeneratedRegoResult {
-	acc := make([]GeneratedRegoResult,len(simple))
-	for i,s := range simple {
+	acc := make([]GeneratedRegoResult, len(simple))
+	for i, s := range simple {
 		acc[i] = GeneratedRegoResult(s)
 	}
 	return acc

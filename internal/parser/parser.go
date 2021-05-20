@@ -2,11 +2,10 @@ package parser
 
 import (
 	"github.com/aml-org/amfopa/internal/parser/profile"
-	"github.com/aml-org/amfopa/internal/parser/profile/statements"
 	yamlparser "github.com/aml-org/amfopa/internal/parser/yaml"
 )
 
-func Parse(profileText string) (*statements.Profile, error) {
+func Parse(profileText string) (*profile.Profile, error) {
 
 	node, err := yamlparser.Parse(profileText)
 	if err != nil {

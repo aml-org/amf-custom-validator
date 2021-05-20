@@ -2,13 +2,12 @@ package generator
 
 import (
 	"fmt"
-	"github.com/aml-org/amfopa/internal/parser/profile/constraints"
-	"github.com/aml-org/amfopa/internal/parser/profile/statements"
+	"github.com/aml-org/amfopa/internal/parser/profile"
 )
 
 // Generates the Rego code snippet for the rule, supports minCount and maxCount
-func GenerateCount(count constraints.CountRule) []SimpleRegoResult {
-	if count.Qualifier == constraints.Min {
+func GenerateCount(count profile.CountRule) []SimpleRegoResult {
+	if count.Qualifier == profile.Min {
 		return generateRule(count, "minCount", ">=")
 	} else {
 		return generateRule(count, "maxCount", "<=")
@@ -16,12 +15,12 @@ func GenerateCount(count constraints.CountRule) []SimpleRegoResult {
 }
 
 // Generates the rule using the 'count'  property from Rego
-func generateRule(count constraints.CountRule, rule string, condition string) []SimpleRegoResult {
+func generateRule(count profile.CountRule, rule string, condition string) []SimpleRegoResult {
 	path := count.Path
 	rego := make([]string, 0)
 
 	// Let's get the path computed and stored in the inValuesVariable
-	inValuesVariable := statements.Genvar("propValues")
+	inValuesVariable := profile.Genvar("propValues")
 	rego = append(rego, "#  querying path: "+path.Source())
 	pathResult := GeneratePropertyArray(path, count.Variable.Name, rule+"_"+count.ValueHash())
 	rego = append(rego, fmt.Sprintf("%s = %s with data.sourceNode as %s", inValuesVariable, pathResult.rule, count.Variable.Name))

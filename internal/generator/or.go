@@ -2,19 +2,18 @@ package generator
 
 import (
 	"fmt"
-	"github.com/aml-org/amfopa/internal/parser/profile/expression"
+	"github.com/aml-org/amfopa/internal/parser/profile"
 )
 
-func GenerateOr(or expression.OrRule) []BranchRegoResult {
+func GenerateOr(or profile.OrRule) []BranchRegoResult {
 	if or.Negated {
 		negated := or.Negate()
 		switch andRule := negated.(type) {
-		case expression.AndRule:
+		case profile.AndRule:
 			return GenerateAnd(andRule)
 		default:
 			panic(fmt.Sprintf("ony AND can be the result of a naged OR, got %v", andRule))
 		}
-
 
 	} else {
 		rego := collectAllResults(or)
@@ -34,15 +33,15 @@ func expandBranches(regoResults []SimpleRegoResult, regoBranches [][]BranchRegoR
 	acc := [][]SimpleRegoResult{regoResults}
 
 	// now let's expand the branches
-	for _,branches := range regoBranches {
+	for _, branches := range regoBranches {
 		// we merge the branch and variables in the branch
 		// with each of the previous computed branches
 		// Now there should be n(acc) * m(branch) branches
-		for _,branch := range branches {
-			newAcc := make([][]SimpleRegoResult,0)
-			for _,source := range acc {
-				for _,r := range branch.Branch {
-					source = append(source,r)
+		for _, branch := range branches {
+			newAcc := make([][]SimpleRegoResult, 0)
+			for _, source := range acc {
+				for _, r := range branch.Branch {
+					source = append(source, r)
 				}
 				newAcc = append(newAcc, source)
 			}
@@ -51,19 +50,19 @@ func expandBranches(regoResults []SimpleRegoResult, regoBranches [][]BranchRegoR
 	}
 
 	orAcc := make([]BranchRegoResult, len(acc))
-	for i,rs := range acc {
+	for i, rs := range acc {
 		orAcc[i] = BranchRegoResult{
 			Constraint: "or",
-			Branch: rs,
+			Branch:     rs,
 		}
 	}
 	return orAcc
 }
 
 func filterSimpleResults(rego [][]GeneratedRegoResult) []SimpleRegoResult {
-	acc := make([]SimpleRegoResult,0)
-	for _,r := range rego {
-		for _,rr := range r {
+	acc := make([]SimpleRegoResult, 0)
+	for _, r := range rego {
+		for _, rr := range r {
 			switch simple := rr.(type) {
 			case SimpleRegoResult:
 				acc = append(acc, simple)
@@ -76,10 +75,10 @@ func filterSimpleResults(rego [][]GeneratedRegoResult) []SimpleRegoResult {
 }
 
 func filterBranchesResult(rego [][]GeneratedRegoResult) [][]BranchRegoResult {
-	acc := make([][]BranchRegoResult,0)
-	for _,r := range rego {
-		branches := make([]BranchRegoResult,0)
-		for i,rr := range r {
+	acc := make([][]BranchRegoResult, 0)
+	for _, r := range rego {
+		branches := make([]BranchRegoResult, 0)
+		for i, rr := range r {
 			switch branch := rr.(type) {
 			case BranchRegoResult:
 				branches[i] = branch
@@ -94,11 +93,10 @@ func filterBranchesResult(rego [][]GeneratedRegoResult) [][]BranchRegoResult {
 	return acc
 }
 
-func collectAllResults(or expression.OrRule) [][]GeneratedRegoResult {
-	acc := make([][]GeneratedRegoResult,len(or.Body))
-	for i,r := range or.Body {
+func collectAllResults(or profile.OrRule) [][]GeneratedRegoResult {
+	acc := make([][]GeneratedRegoResult, len(or.Body))
+	for i, r := range or.Body {
 		acc[i] = Dispatch(r)
 	}
 	return acc
 }
-

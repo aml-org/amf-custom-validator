@@ -1,16 +1,16 @@
-package statements
+package profile
 
 import "fmt"
 
 type VarGenerator struct {
-	vars []string
+	vars    []string
 	counter int
 }
 
 func NewVarGenerator() VarGenerator {
-	vs :=  []string{"x", "y", "z", "p", "q", "r", "s", "t", "u", "v", "w", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o"}
+	vs := []string{"x", "y", "z", "p", "q", "r", "s", "t", "u", "v", "w", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o"}
 	return VarGenerator{
-		vars: vs,
+		vars:    vs,
 		counter: 0,
 	}
 }
@@ -45,5 +45,3 @@ func (g VarGenerator) GenExpressionVar(quantification Quantification, cardinalit
 
 	return v
 }
-
-

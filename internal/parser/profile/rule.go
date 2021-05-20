@@ -1,4 +1,4 @@
-package statements
+package profile
 
 import (
 	"github.com/aml-org/amfopa/internal/parser/path"
@@ -50,7 +50,7 @@ func NewProfile() Profile {
 }
 
 func (p Profile) String() string {
-	lines := make([]string, len(p.Warning)+len(p.Info)+len(p.Violation))
+	var lines []string
 	for _, v := range p.Violation {
 		lines = append(lines, v.String())
 	}

@@ -22,4 +22,4 @@ validations:
         minCount: 1
       shacl.name:
         maxCount: 1
-#        pattern: "^put|post$"
+        pattern: "^put|post$"
