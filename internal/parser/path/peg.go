@@ -224,44 +224,46 @@ var g = &grammar{
 								pos: position{line: 87, col: 17, offset: 1536},
 								expr: &charClassMatcher{
 									pos:        position{line: 87, col: 17, offset: 1536},
-									val:        "[a-zA-Z0-9\\\\-_]",
-									ranges:     []rune{'a', 'z', 'A', 'Z', '0', '9', '\\', '_'},
+									val:        "[a-zA-Z0-9_-]",
+									chars:      []rune{'_', '-'},
+									ranges:     []rune{'a', 'z', 'A', 'Z', '0', '9'},
 									ignoreCase: false,
 									inverted:   false,
 								},
 							},
 						},
 						&litMatcher{
-							pos:        position{line: 87, col: 34, offset: 1553},
+							pos:        position{line: 87, col: 32, offset: 1551},
 							val:        ".",
 							ignoreCase: false,
 							want:       "\".\"",
 						},
 						&labeledExpr{
-							pos:   position{line: 87, col: 38, offset: 1557},
+							pos:   position{line: 87, col: 36, offset: 1555},
 							label: "prop",
 							expr: &oneOrMoreExpr{
-								pos: position{line: 87, col: 43, offset: 1562},
+								pos: position{line: 87, col: 41, offset: 1560},
 								expr: &charClassMatcher{
-									pos:        position{line: 87, col: 43, offset: 1562},
-									val:        "[a-zA-Z0-9\\\\-_]",
-									ranges:     []rune{'a', 'z', 'A', 'Z', '0', '9', '\\', '_'},
+									pos:        position{line: 87, col: 41, offset: 1560},
+									val:        "[a-zA-Z0-9_-]",
+									chars:      []rune{'_', '-'},
+									ranges:     []rune{'a', 'z', 'A', 'Z', '0', '9'},
 									ignoreCase: false,
 									inverted:   false,
 								},
 							},
 						},
 						&ruleRefExpr{
-							pos:  position{line: 87, col: 60, offset: 1579},
+							pos:  position{line: 87, col: 56, offset: 1575},
 							name: "_",
 						},
 						&labeledExpr{
-							pos:   position{line: 87, col: 62, offset: 1581},
+							pos:   position{line: 87, col: 58, offset: 1577},
 							label: "mod",
 							expr: &zeroOrOneExpr{
-								pos: position{line: 87, col: 66, offset: 1585},
+								pos: position{line: 87, col: 62, offset: 1581},
 								expr: &charClassMatcher{
-									pos:        position{line: 87, col: 66, offset: 1585},
+									pos:        position{line: 87, col: 62, offset: 1581},
 									val:        "[\"^\",\"*\"]",
 									chars:      []rune{'"', '^', '"', ',', '"', '*', '"'},
 									ignoreCase: false,
@@ -276,11 +278,11 @@ var g = &grammar{
 		{
 			name:        "_",
 			displayName: "\"whitespace\"",
-			pos:         position{line: 108, col: 1, offset: 2083},
+			pos:         position{line: 108, col: 1, offset: 2079},
 			expr: &zeroOrMoreExpr{
-				pos: position{line: 108, col: 19, offset: 2101},
+				pos: position{line: 108, col: 19, offset: 2097},
 				expr: &charClassMatcher{
-					pos:        position{line: 108, col: 19, offset: 2101},
+					pos:        position{line: 108, col: 19, offset: 2097},
 					val:        "[ \\n\\t\\r]",
 					chars:      []rune{' ', '\n', '\t', '\r'},
 					ignoreCase: false,

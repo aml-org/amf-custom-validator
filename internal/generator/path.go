@@ -20,25 +20,26 @@ type regoPathResultInternal struct {
 	pathVariables []string
 	paths         []string
 	variable      string
-	counter       int
+	counter       *int
 }
 
 type traversal struct {
 	id            string
 	variable      string
 	hint          string
-	counter       int
+	counter       *int
 	rego          []string
 	pathVariables []string
 	paths         []string
 }
 
 func newTraversal(source string, variable string, hint string) traversal {
+	c := 0
 	return traversal{
 		id:            valueHash(source),
 		variable:      variable,
 		hint:          hint,
-		counter:       0,
+		counter:       &c,
 		rego:          make([]string, 0),
 		pathVariables: make([]string, 0),
 		paths:         make([]string, 0),
@@ -65,7 +66,7 @@ func internalResultToTraversal(p traversal, r regoPathResultInternal) traversal 
 // Traversed the path path, starting at the provided variable and returns an array of reached values
 func GeneratePropertyArray(path path.PropertyPath, variable string, hint string) RegoPathResult {
 	t := newTraversal(path.Source(), variable, hint)
-	acc := make([]regoPathResultInternal, 0)
+	var acc []regoPathResultInternal
 	for _, tr := range traverse(path, t) {
 		effectiveRego := tr.rego[0 : len(tr.rego)-2] // we remove the last element so we can get the array of values instead
 		previousBinding := variable
@@ -76,6 +77,33 @@ func GeneratePropertyArray(path path.PropertyPath, variable string, hint string)
 		effectiveRego = append(effectiveRego, fmt.Sprintf("nodes_tmp = object.get(%s,\"%s\",[])", previousBinding, nextPath))
 		effectiveRego = append(effectiveRego, "nodes_tmp2 = nodes_array with data.nodes as nodes_tmp") // this returns and array
 		effectiveRego = append(effectiveRego, "nodes = nodes_tmp2[_]")                                 // I need to iterate to each element in the array so it can be wrapped in the rule result
+		tr.rego = effectiveRego
+		acc = append(acc, tr)
+	}
+
+	regoResult := accumulatePaths(acc)
+	regoResult.source = path.Source()
+	regoResult.variable = variable
+
+	return regoResult
+}
+
+// Traverses the path but just returns a generator of nodes instead of a set of values
+func GenerateNodeArray(path path.PropertyPath, variable string, hint string) RegoPathResult {
+	t := newTraversal(path.Source(), variable, hint)
+	var acc []regoPathResultInternal
+	for _, tr := range traverse(path, t) {
+		effectiveRego := tr.rego[0 : len(tr.rego)-2] // we remove the last element so we can get the array of values instead
+		previousBinding := variable
+		if len(tr.pathVariables) >= 2 {
+			previousBinding = tr.pathVariables[len(tr.pathVariables)-2]
+		}
+		nextPath := tr.paths[len(tr.paths)-1]
+		// we just get the nested nodes and return a comprehension over them
+		effectiveRego = append(effectiveRego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as %s[\"%s\"]", variable, previousBinding, nextPath))
+		effectiveRego = append(effectiveRego, fmt.Sprintf("%s = tmp_%s[_][_]", variable, variable))
+		effectiveRego = append(effectiveRego, fmt.Sprintf("nodes = %s", variable))
+
 		tr.rego = effectiveRego
 		acc = append(acc, tr)
 	}
@@ -170,7 +198,7 @@ func traverseProperty(property path.Property, t traversal) []regoPathResultInter
 
 	// We use IDX go generate a unique property for the Rego computation
 	idx := fmt.Sprintf("%d", len(t.pathVariables))
-	if t.counter > 0 {
+	if *t.counter > 0 {
 		idx = fmt.Sprintf("%s_%d", idx, t.counter)
 	}
 	binding := fmt.Sprintf("%s_%s_%s_%s", t.variable, idx, t.id, t.hint)

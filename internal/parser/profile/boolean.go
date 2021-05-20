@@ -21,7 +21,11 @@ func (r AndRule) String() string {
 		body[i] = v.String()
 	}
 	sort.Strings(body)
-	return fmt.Sprintf("%s(%s)", negation, strings.Join(body, " ∧ "))
+	if len(body) > 1 {
+		return fmt.Sprintf("%s(%s)", negation, strings.Join(body, " ∧ "))
+	} else {
+		return fmt.Sprintf("%s%s", negation, body[0])
+	}
 }
 
 func (r OrRule) String() string {
@@ -35,7 +39,11 @@ func (r OrRule) String() string {
 		body[i] = v.String()
 	}
 	sort.Strings(body)
-	return fmt.Sprintf("%s(%s)", negation, strings.Join(body, " ∨ "))
+	if len(r.Body) > 1 {
+		return fmt.Sprintf("%s(%s)", negation, strings.Join(body, " ∨ "))
+	} else {
+		return fmt.Sprintf("%s%s", negation, body[0])
+	}
 
 }
 

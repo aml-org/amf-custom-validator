@@ -28,7 +28,7 @@ func Parse(doc y.Node) (Profile, error) {
 			return profile, err
 		}
 
-		violations, err := parseValidationLevel("violation", m, validations, varGenerator)
+		violations, err := parseValidationLevel("violation", m, validations, &varGenerator)
 		if err != nil {
 			return profile, err
 		}
@@ -36,7 +36,7 @@ func Parse(doc y.Node) (Profile, error) {
 			profile.Violation = append(profile.Violation, rule)
 		}
 
-		warnings, err := parseValidationLevel("warning", m, validations, varGenerator)
+		warnings, err := parseValidationLevel("warning", m, validations, &varGenerator)
 		if err != nil {
 			return profile, err
 		}
@@ -44,7 +44,7 @@ func Parse(doc y.Node) (Profile, error) {
 			profile.Warning = append(profile.Violation, rule)
 		}
 
-		infos, err := parseValidationLevel("info", m, validations, varGenerator)
+		infos, err := parseValidationLevel("info", m, validations, &varGenerator)
 		if err != nil {
 			return profile, err
 		}
@@ -57,7 +57,7 @@ func Parse(doc y.Node) (Profile, error) {
 	}
 }
 
-func parseValidationLevel(level string, profile y.Map, validations y.Map, varGenerator VarGenerator) ([]Rule, error) {
+func parseValidationLevel(level string, profile y.Map, validations y.Map, varGenerator *VarGenerator) ([]Rule, error) {
 	validationsLevel := profile.Key(level)
 	if validationsLevel != nil {
 		switch names := validationsLevel.(type) {

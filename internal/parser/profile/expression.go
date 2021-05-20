@@ -10,7 +10,7 @@ type Expression struct {
 	Value    Rule
 }
 
-func newExpression(negated bool, name string, varGenerator VarGenerator) Expression {
+func newExpression(negated bool, name string, varGenerator *VarGenerator) Expression {
 	newVar := varGenerator.GenExpressionVar(ForAll, nil)
 	return Expression{
 		BaseStatement: BaseStatement{

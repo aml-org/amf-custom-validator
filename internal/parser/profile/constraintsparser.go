@@ -8,7 +8,7 @@ import (
 	y "github.com/kylelemons/go-gypsy/yaml"
 )
 
-func ParseConstraint(path path.PropertyPath, variable Variable, constraint y.Map, varGenerator VarGenerator) ([]Rule, error) {
+func ParseConstraint(path path.PropertyPath, variable Variable, constraint y.Map, varGenerator *VarGenerator) ([]Rule, error) {
 	var acc []Rule
 
 	min, err := yaml.GetInt(constraint, "minCount")

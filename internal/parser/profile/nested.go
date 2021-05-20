@@ -7,21 +7,21 @@ import (
 
 type NestedExpression struct {
 	BaseStatement
-	path   path.PropertyPath
-	parent Variable
-	child  Variable
-	value  Rule
+	Path   path.PropertyPath
+	Parent Variable
+	Child  Variable
+	Value  Rule
 }
 
-func newNestedExpression(negated bool, parent Variable, path path.PropertyPath, varGenerator VarGenerator) NestedExpression {
+func newNestedExpression(negated bool, parent Variable, path path.PropertyPath, varGenerator *VarGenerator) NestedExpression {
 	nested := NestedExpression{
 		BaseStatement: BaseStatement{
 			Negated: negated,
 			Name:    "nested",
 		},
-		parent: parent,
-		child:  varGenerator.GenExpressionVar(ForAll, nil),
-		path:   path,
+		Parent: parent,
+		Child:  varGenerator.GenExpressionVar(ForAll, nil),
+		Path:   path,
 	}
 	return nested
 }
@@ -32,9 +32,9 @@ func (exp NestedExpression) Clone() Rule {
 			Negated: exp.Negated,
 			Name:    exp.Name,
 		},
-		path:   exp.path,
-		parent: exp.parent,
-		child:  exp.child,
+		Path:   exp.Path,
+		Parent: exp.Parent,
+		Child:  exp.Child,
 	}
 }
 
@@ -53,5 +53,5 @@ func (exp NestedExpression) String() string {
 		negation = "¬"
 	}
 
-	return fmt.Sprintf("%sNested(%s,%s,'%s')", negation, exp.parent, exp.child, exp.path.Source())
+	return fmt.Sprintf("%s[Nested(%s,%s)] : %s(%s)", exp.Child.String(), exp.Parent.Name, exp.Path.Source(), negation, exp.Value.String())
 }

@@ -11,7 +11,7 @@ type TopLevelExpression struct {
 	ClassGenerator string
 }
 
-func newTopLevelExpression(negated bool, name string, message string, level string, targetClass string, varGenerator VarGenerator) TopLevelExpression {
+func newTopLevelExpression(negated bool, name string, message string, level string, targetClass string, varGenerator *VarGenerator) TopLevelExpression {
 	exp := TopLevelExpression{
 		Expression:     newExpression(negated, name, varGenerator),
 		Message:        message,
@@ -47,5 +47,5 @@ func (exp TopLevelExpression) Negate() Rule {
 }
 
 func (exp TopLevelExpression) String() string {
-	return fmt.Sprintf("%s[%s] :=  %s : %s", exp.Name, exp.Level, exp.Variable.String(), exp.Value.String())
+	return fmt.Sprintf("%s[%s] :=  %s[Class(%s)] : %s", exp.Name, exp.Level, exp.Variable.String(), exp.ClassGenerator, exp.Value.String())
 }

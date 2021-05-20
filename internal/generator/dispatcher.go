@@ -8,8 +8,8 @@ import (
 
 func Dispatch(r profile.Rule) []GeneratedRegoResult {
 	switch e := r.(type) {
-	//case expression.Expression:
-	//	return GenerateExpression(e)
+	case profile.NestedExpression:
+		return GenerateNestedExpression(e)
 	case profile.CountRule:
 		return simpleAsGeneratedRegoResult(GenerateCount(e))
 	case profile.InRule:

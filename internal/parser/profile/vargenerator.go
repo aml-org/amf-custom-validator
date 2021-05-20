@@ -26,7 +26,7 @@ func GenReset() {
 	globalGenerator.counter = 0
 }
 
-func (g VarGenerator) GenExpressionVar(quantification Quantification, cardinality *VariableCardinality) Variable {
+func (g *VarGenerator) GenExpressionVar(quantification Quantification, cardinality *VariableCardinality) Variable {
 	var name string
 
 	if g.counter < len(g.vars) {

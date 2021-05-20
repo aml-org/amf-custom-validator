@@ -7,7 +7,7 @@ import (
 	y "github.com/kylelemons/go-gypsy/yaml"
 )
 
-func ParseExpression(name string, data y.Map, level string, varGenerator VarGenerator) (Rule, error) {
+func ParseExpression(name string, data y.Map, level string, varGenerator *VarGenerator) (Rule, error) {
 	targetClass, err := yaml.GetString(data, "targetClass")
 	if err != nil {
 		return nil, err
@@ -28,18 +28,18 @@ func ParseExpression(name string, data y.Map, level string, varGenerator VarGene
 	return exp, nil
 }
 
-func parseNestedExpression(data y.Map, negated bool, variable Variable, path path.PropertyPath, varGenerator VarGenerator) (Rule, error) {
+func parseNestedExpression(data y.Map, negated bool, variable Variable, path path.PropertyPath, varGenerator *VarGenerator) (Rule, error) {
 	nested := newNestedExpression(negated, variable, path, varGenerator)
-	value, err := parseExpressionValue(nested.child, data, varGenerator)
+	value, err := parseExpressionValue(nested.Child, data, varGenerator)
 	if err != nil {
 		return nil, err
 	}
-	nested.value = value
+	nested.Value = value
 
 	return nested, nil
 }
 
-func parseExpressionValue(variable Variable, data y.Map, varGenerator VarGenerator) (Rule, error) {
+func parseExpressionValue(variable Variable, data y.Map, varGenerator *VarGenerator) (Rule, error) {
 	v, err := yaml.GetMap(data, "propertyConstraints")
 	if err == nil {
 		return parseImplicitAnd(v, variable, varGenerator)
@@ -53,7 +53,7 @@ func parseExpressionValue(variable Variable, data y.Map, varGenerator VarGenerat
 
 }
 
-func parseAnd(and y.List, variable Variable, varGenerator VarGenerator) (Rule, error) {
+func parseAnd(and y.List, variable Variable, varGenerator *VarGenerator) (Rule, error) {
 	values := make([]Rule, len(and))
 	for _, n := range and {
 		switch p := n.(type) {
@@ -70,7 +70,7 @@ func parseAnd(and y.List, variable Variable, varGenerator VarGenerator) (Rule, e
 	return NewAnd(false, values), nil
 }
 
-func parseImplicitAnd(propertyConstraints y.Map, variable Variable, varGenerator VarGenerator) (Rule, error) {
+func parseImplicitAnd(propertyConstraints y.Map, variable Variable, varGenerator *VarGenerator) (Rule, error) {
 	var values []Rule
 	for pathString, constraint := range propertyConstraints {
 		propertyPath, err := path.ParsePath(pathString)

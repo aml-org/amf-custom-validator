@@ -11,6 +11,7 @@ type SimpleRegoResult struct {
 	Value      string
 	Variable   string
 	Trace      string
+	TraceCode  *string
 	PathRules  []RegoPathResult
 }
 

@@ -84,7 +84,7 @@ Factor
   <- "(" _ expr:Expression _ ")" { return expr,nil }
   / Iri
 
-Iri "iri" <- ns:[a-zA-Z0-9\\-_]+ "." prop:[a-zA-Z0-9\\-_]+ _ mod:["^","*"]? {
+Iri "iri" <- ns:[a-zA-Z0-9_-]+ "." prop:[a-zA-Z0-9_-]+ _ mod:["^","*"]? {
 
    iri := eval(ns) + ":" + eval(prop)
    res := IRI{
