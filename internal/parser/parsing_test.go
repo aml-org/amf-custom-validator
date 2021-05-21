@@ -16,7 +16,7 @@ func TestParsed(t *testing.T) {
 		actual := strings.TrimSpace(profile.String())
 		expected := strings.TrimSpace(fix.ReadParsed())
 
-		// test.ForceWrite(fix.Parsed, actual)
+		//test.ForceWrite(fix.Parsed, actual)
 
 		if actual != expected {
 			t.Errorf("Error in expected profile %s\n\nActual:\n%s\n----\nExpected:\n%s", fix.Profile, actual, expected)

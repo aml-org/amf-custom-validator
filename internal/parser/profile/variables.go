@@ -25,6 +25,25 @@ type VariableCardinality struct {
 	Value    int
 }
 
+func (op CardinalityOperation) String() string {
+	switch op {
+	case GTEQ:
+		return fmt.Sprintf(">=")
+	case GT:
+		return fmt.Sprintf(">")
+	case EQ:
+		return fmt.Sprintf("=")
+	case NEQ:
+		return fmt.Sprintf("<>")
+	case LT:
+		return fmt.Sprintf("<")
+	case LTEQ:
+		return fmt.Sprintf("<=")
+	default:
+		panic("Unknown Cardinality ")
+	}
+}
+
 func (c VariableCardinality) String() string {
 	switch c.Operator {
 	case GTEQ:

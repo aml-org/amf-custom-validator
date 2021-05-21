@@ -3,12 +3,12 @@ package profile
 import (
 	"errors"
 	"fmt"
-	"github.com/aml-org/amfopa/internal/parser/path"
+	pathParser "github.com/aml-org/amfopa/internal/parser/path"
 	y "github.com/smallfish/simpleyaml"
 	"strconv"
 )
 
-func ParseConstraint(path path.PropertyPath, variable Variable, constraint *y.Yaml, varGenerator *VarGenerator) ([]Rule, error) {
+func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint *y.Yaml, varGenerator *VarGenerator) ([]Rule, error) {
 	var acc []Rule
 
 	min, err := constraint.Get("minCount").Int()
@@ -33,6 +33,60 @@ func ParseConstraint(path path.PropertyPath, variable Variable, constraint *y.Ya
 			return nil, err
 		}
 		acc = append(acc, newIn(false, variable, path, l))
+	}
+
+	otherProp, err := constraint.Get("lessThanProperty").String()
+	if err == nil {
+		compPath, err := pathParser.ParsePath(otherProp)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, newLessThan(false, variable, path, compPath))
+	}
+
+	otherProp, err = constraint.Get("lessThanOrEqualsToProperty").String()
+	if err == nil {
+		compPath, err := pathParser.ParsePath(otherProp)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, newLessThanOrEquals(false, variable, path, compPath))
+	}
+
+	otherProp, err = constraint.Get("equalsToProperty").String()
+	if err == nil {
+		compPath, err := pathParser.ParsePath(otherProp)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, newEquals(false, variable, path, compPath))
+	}
+
+	otherProp, err = constraint.Get("disjointWithProperty").String()
+	if err == nil {
+		compPath, err := pathParser.ParsePath(otherProp)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, newDisjoint(false, variable, path, compPath))
+	}
+
+	otherProp, err = constraint.Get("moreThanProperty").String()
+	if err == nil {
+		compPath, err := pathParser.ParsePath(otherProp)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, newMoreThan(false, variable, path, compPath))
+	}
+
+	otherProp, err = constraint.Get("moreThanOrEqualsToProperty").String()
+	if err == nil {
+		compPath, err := pathParser.ParsePath(otherProp)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, newMoreThanOrEquals(false, variable, path, compPath))
 	}
 
 	atLeast := constraint.Get("atLeast")
@@ -65,7 +119,7 @@ func ParseConstraint(path path.PropertyPath, variable Variable, constraint *y.Ya
 	return acc, nil
 }
 
-func parseQualifiedNestedExpression(qNested *y.Yaml, negated bool, variable Variable, propertyPath path.PropertyPath, generator *VarGenerator, op CardinalityOperation) (Rule, error) {
+func parseQualifiedNestedExpression(qNested *y.Yaml, negated bool, variable Variable, propertyPath pathParser.PropertyPath, generator *VarGenerator, op CardinalityOperation) (Rule, error) {
 	count, err := qNested.Get("count").Int()
 	if err != nil {
 		return nil, err
@@ -95,6 +149,7 @@ func parseQualifiedNestedExpression(qNested *y.Yaml, negated bool, variable Vari
 	return nil, errors.New(fmt.Sprint("expected nested expression to build quantified nested expression but got %v", nested))
 }
 
+// We are always stringifying the value to be able to compare it easily in Rego
 func scalarList(in []interface{}) ([]string, error) {
 	var acc []string
 	for _, e := range in {

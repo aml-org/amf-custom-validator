@@ -17,7 +17,7 @@ func GenerateCount(count profile.CountRule) []SimpleRegoResult {
 // Generates the rule using the 'count'  property from Rego
 func generateRule(count profile.CountRule, rule string, condition string) []SimpleRegoResult {
 	path := count.Path
-	rego := make([]string, 0)
+	var rego []string
 
 	// Let's get the path computed and stored in the inValuesVariable
 	inValuesVariable := profile.Genvar("propValues")
