@@ -22,7 +22,7 @@ func (r AndRule) String() string {
 	}
 	sort.Strings(body)
 	if len(body) > 1 {
-		return fmt.Sprintf("%s(%s)", negation, strings.Join(body, " ∧ "))
+		return fmt.Sprintf("%s(\n%s\n)", negation, strings.Join(IndentArray(body), "\n∧\n"))
 	} else {
 		return fmt.Sprintf("%s%s", negation, body[0])
 	}
@@ -40,7 +40,7 @@ func (r OrRule) String() string {
 	}
 	sort.Strings(body)
 	if len(r.Body) > 1 {
-		return fmt.Sprintf("%s(%s)", negation, strings.Join(body, " ∨ "))
+		return fmt.Sprintf("%s(\n%s\n)", negation, strings.Join(IndentArray(body), "\n∨\n"))
 	} else {
 		return fmt.Sprintf("%s%s", negation, body[0])
 	}

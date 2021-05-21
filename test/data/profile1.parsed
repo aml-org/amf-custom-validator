@@ -1,1 +1,10 @@
-validation1[violation] :=  ∀x[Class(apiContract.Operation)] : (in(x,'apiContract.method',publish,subscribe,1,2) ∧ maxCount(x,'shacl.name',1) ∧ minCount(x,'apiContract.method',1) ∧ pattern(x,'shacl.name','^put|post$'))
+validation1[violation] :=  ∀x[Class(apiContract.Operation)] : 
+  (
+    in(x,'apiContract.method',publish,subscribe,1,2)
+  ∧
+    maxCount(x,'shacl.name',1)
+  ∧
+    minCount(x,'apiContract.method',1)
+  ∧
+    pattern(x,'shacl.name','^put|post$')
+  )

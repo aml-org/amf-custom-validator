@@ -47,5 +47,5 @@ func (exp TopLevelExpression) Negate() Rule {
 }
 
 func (exp TopLevelExpression) String() string {
-	return fmt.Sprintf("%s[%s] :=  %s[Class(%s)] : %s", exp.Name, exp.Level, exp.Variable.String(), exp.ClassGenerator, exp.Value.String())
+	return fmt.Sprintf("%s[%s] :=  %s[Class(%s)] : \n%s", exp.Name, exp.Level, exp.Variable.String(), exp.ClassGenerator, Indent(exp.Value.String()))
 }

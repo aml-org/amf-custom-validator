@@ -1,1 +1,14 @@
-validation1[violation] :=  ∀x[Class(apiContract.Operation)] : ((in(x,'apiContract.method',get) ∧ minCount(x,'apiContract.method',1)) ∨ (in(x,'apiContract.method',subscribe) ∧ minCount(x,'apiContract.method',1)))
+validation1[violation] :=  ∀x[Class(apiContract.Operation)] : 
+  (
+    (
+      in(x,'apiContract.method',get)
+    ∧
+      minCount(x,'apiContract.method',1)
+    )
+  ∨
+    (
+      in(x,'apiContract.method',subscribe)
+    ∧
+      minCount(x,'apiContract.method',1)
+    )
+  )

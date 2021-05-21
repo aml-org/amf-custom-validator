@@ -50,5 +50,5 @@ func (exp Expression) String() string {
 		varsText = negation + exp.Variable.String()
 	}
 
-	return fmt.Sprintf("%s :%s", varsText, exp.Value.String())
+	return fmt.Sprintf("%s :\n%s", varsText, Indent(exp.Value.String()))
 }

@@ -35,6 +35,7 @@ func (exp NestedExpression) Clone() Rule {
 		Path:   exp.Path,
 		Parent: exp.Parent,
 		Child:  exp.Child,
+		Value:  exp.Value,
 	}
 }
 
@@ -53,5 +54,5 @@ func (exp NestedExpression) String() string {
 		negation = "¬"
 	}
 
-	return fmt.Sprintf("%s[Nested(%s,%s)] : %s(%s)", exp.Child.String(), exp.Parent.Name, exp.Path.Source(), negation, exp.Value.String())
+	return fmt.Sprintf("%s[Nested(%s,%s,%s)] : %s\n  (\n  %s\n  )", exp.Child.String(), exp.Parent.Name, exp.Child.String(), exp.Path.Source(), negation, Indent(exp.Value.String()))
 }

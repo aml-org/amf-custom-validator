@@ -1,1 +1,5 @@
-validation1[violation] :=  ∀x[Class(apiContract.EndPoint)] : ∃y;>= 1[Nested(x,apiContract.supportedOperation)] : (in(y,'apiContract.method',post))
+validation1[violation] :=  ∀x[Class(apiContract.EndPoint)] : 
+  ∃y;>= 1[Nested(x,∃y;>= 1,apiContract.supportedOperation)] : 
+    (
+      in(y,'apiContract.method',post)
+    )

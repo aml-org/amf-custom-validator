@@ -63,8 +63,26 @@ func parseExpressionValue(variable Variable, data *y.Yaml, varGenerator *VarGene
 
 	}
 
+	not := data.Get("not")
+	if not.IsFound() {
+		if not.IsMap() {
+			return parseNot(not, variable, varGenerator)
+		} else {
+			return nil, errors.New("not constraint must be a mpa")
+		}
+	}
+
 	return nil, errors.New("unknown expression node, cannot find properties to parse")
 
+}
+
+func parseNot(not *y.Yaml, variable Variable, varGenerator *VarGenerator) (Rule, error) {
+	parsed, err := parseExpressionValue(variable, not, varGenerator)
+	if err != nil {
+		return nil, err
+	}
+
+	return parsed.Negate(), nil
 }
 
 func parseAnd(and *y.Yaml, variable Variable, varGenerator *VarGenerator) (Rule, error) {
