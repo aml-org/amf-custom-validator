@@ -31,6 +31,7 @@ func (r InRule) Negate() Rule {
 	switch c := cloned.(type) {
 	case InRule:
 		c.Negated = !r.Negated
+		return c
 	}
 	return cloned
 }

@@ -42,6 +42,7 @@ func (exp TopLevelExpression) Negate() Rule {
 	switch tl := cloned.(type) {
 	case TopLevelExpression:
 		tl.Negated = !exp.Negated
+		return tl
 	}
 	return cloned
 }

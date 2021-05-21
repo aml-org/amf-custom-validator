@@ -36,6 +36,7 @@ func (exp Expression) Negate() Rule {
 	switch expr := cloned.(type) {
 	case Expression:
 		expr.Negated = !exp.Negated
+		return expr
 	}
 	return cloned
 }

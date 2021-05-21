@@ -1,0 +1,8 @@
+simple-rego[violation] :=  ∀x[Class(apiContract.WebAPI)] : 
+  ¬rego(x,'','Violation in native Rego constraint')
+
+simple-rego2[violation] :=  ∀x[Class(apiContract.WebAPI)] : 
+  rego(x,'','api without version')
+
+simple-rego3[violation] :=  ∀x[Class(apiContract.WebAPI)] : 
+  rego(x,'apiContract.version','Violation in native Rego constraint')

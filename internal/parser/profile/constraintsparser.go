@@ -116,7 +116,40 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, rule)
 	}
 
+	code := constraint.Get("rego")
+	if code.IsFound() {
+		rule, err := ParseRego(code, false, variable, path)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, rule)
+	}
 	return acc, nil
+}
+
+func ParseRego(code *y.Yaml, negated bool, variable Variable, path pathParser.PropertyPath) (Rule, error) {
+	var regoCode string
+	message := "Violation in native Rego constraint"
+	s, err := code.String()
+	if err == nil {
+		// code fragment directly embedded in the constraint
+		regoCode = s
+	}
+
+	if code.IsMap() {
+		// message and code version
+		s, err := code.Get("code").String()
+		if err != nil {
+			return nil, err
+		}
+		regoCode = s
+		m, err := code.Get("message").String()
+		if err == nil {
+			message = m
+		}
+	}
+
+	return newRego(negated, variable, path, regoCode, message), nil
 }
 
 func parseQualifiedNestedExpression(qNested *y.Yaml, negated bool, variable Variable, propertyPath pathParser.PropertyPath, generator *VarGenerator, op CardinalityOperation) (Rule, error) {

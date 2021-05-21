@@ -43,6 +43,11 @@ func parseExpressionValue(variable Variable, data *y.Yaml, varGenerator *VarGene
 		return parseImplicitAnd(v, variable, varGenerator)
 	}
 
+	code := data.Get("rego")
+	if code.IsFound() {
+		return parseImplicitRego(code, variable)
+	}
+
 	and := data.Get("and")
 	if and.IsFound() {
 		if and.IsArray() {
@@ -74,6 +79,10 @@ func parseExpressionValue(variable Variable, data *y.Yaml, varGenerator *VarGene
 
 	return nil, errors.New("unknown expression node, cannot find properties to parse")
 
+}
+
+func parseImplicitRego(code *y.Yaml, variable Variable) (Rule, error) {
+	return ParseRego(code, false, variable, path.NullPath{})
 }
 
 func parseNot(not *y.Yaml, variable Variable, varGenerator *VarGenerator) (Rule, error) {

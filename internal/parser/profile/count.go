@@ -39,6 +39,7 @@ func (r CountRule) Negate() Rule {
 	switch c := cloned.(type) {
 	case CountRule:
 		c.Negated = !r.Negated
+		return c
 	}
 	return cloned
 }

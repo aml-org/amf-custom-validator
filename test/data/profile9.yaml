@@ -1,0 +1,36 @@
+#%Validation Profile 1.0
+
+profile: Test9
+
+violation:
+  - simple-rego
+  - simple-rego2
+  - simple-rego3
+
+validations:
+
+  simple-rego:
+    message: GET operations must have 2xx, 4xx and 5xx status codes but no 201
+    targetClass: apiContract.WebAPI
+    not:
+      rego: |
+        # custom1
+        version = object.get($node, "apiContract:version", null)
+        $result = (version != null)
+
+  simple-rego2:
+    message: GET operations must have 2xx, 4xx and 5xx status codes but no 201
+    targetClass: apiContract.WebAPI
+    rego:
+      message: api without version
+      code: |
+        # custom2
+        version = object.get($node, "apiContract:version", null)
+        $result = (version != null)
+
+  simple-rego3:
+    message: GET operations must have 2xx, 4xx and 5xx status codes but no 201
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiContract.version:
+        rego: "$result = ($node != null) # custom 3"

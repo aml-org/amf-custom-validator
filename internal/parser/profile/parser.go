@@ -6,7 +6,6 @@ import (
 )
 
 func Parse(doc *y.Yaml) (Profile, error) {
-	varGenerator := NewVarGenerator()
 	profile := NewProfile()
 	if doc.IsMap() {
 		name, err := doc.Get("profile").String()
@@ -25,7 +24,7 @@ func Parse(doc *y.Yaml) (Profile, error) {
 			return profile, errors.New("validations must be a list of validations")
 		}
 
-		violations, err := parseValidationLevel("violation", doc, validations, &varGenerator)
+		violations, err := parseValidationLevel("violation", doc, validations)
 		if err != nil {
 			return profile, err
 		}
@@ -33,7 +32,7 @@ func Parse(doc *y.Yaml) (Profile, error) {
 			profile.Violation = append(profile.Violation, rule)
 		}
 
-		warnings, err := parseValidationLevel("warning", doc, validations, &varGenerator)
+		warnings, err := parseValidationLevel("warning", doc, validations)
 		if err != nil {
 			return profile, err
 		}
@@ -41,7 +40,7 @@ func Parse(doc *y.Yaml) (Profile, error) {
 			profile.Warning = append(profile.Violation, rule)
 		}
 
-		infos, err := parseValidationLevel("info", doc, validations, &varGenerator)
+		infos, err := parseValidationLevel("info", doc, validations)
 		if err != nil {
 			return profile, err
 		}
@@ -54,7 +53,7 @@ func Parse(doc *y.Yaml) (Profile, error) {
 	return profile, errors.New("expected map at profile YAML document")
 }
 
-func parseValidationLevel(level string, profile *y.Yaml, validations *y.Yaml, varGenerator *VarGenerator) ([]Rule, error) {
+func parseValidationLevel(level string, profile *y.Yaml, validations *y.Yaml) ([]Rule, error) {
 	var rules []Rule
 
 	names := profile.Get(level)
@@ -70,7 +69,8 @@ func parseValidationLevel(level string, profile *y.Yaml, validations *y.Yaml, va
 		if err == nil {
 			v := validations.Get(name)
 			if v.IsFound() {
-				r, err := ParseExpression(name, v, level, varGenerator)
+				varGenerator := NewVarGenerator()
+				r, err := ParseExpression(name, v, level, &varGenerator)
 				if err != nil {
 					return nil, err
 				}

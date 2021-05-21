@@ -32,6 +32,7 @@ func (r PropertyComparisonRule) Negate() Rule {
 	switch c := cloned.(type) {
 	case PropertyComparisonRule:
 		c.Negated = !r.Negated
+		return c
 	}
 	return cloned
 }

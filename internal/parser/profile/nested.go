@@ -44,6 +44,7 @@ func (exp NestedExpression) Negate() Rule {
 	switch expr := cloned.(type) {
 	case NestedExpression:
 		expr.Negated = !exp.Negated
+		return expr
 	}
 	return cloned
 }

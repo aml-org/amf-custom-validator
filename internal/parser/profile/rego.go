@@ -6,13 +6,14 @@ import (
 	"github.com/aml-org/amfopa/internal/parser/path"
 )
 
-type PatternRule struct {
+type RegoRule struct {
 	AtomicStatement
+	Message  string
 	Argument string
 }
 
-func (r PatternRule) Clone() Rule {
-	return PatternRule{
+func (r RegoRule) Clone() Rule {
+	return RegoRule{
 		AtomicStatement: AtomicStatement{
 			BaseStatement: BaseStatement{
 				Negated: r.Negated,
@@ -21,44 +22,46 @@ func (r PatternRule) Clone() Rule {
 			Variable: r.Variable,
 			Path:     r.Path,
 		},
+		Message:  r.Message,
 		Argument: r.Argument,
 	}
 }
 
-func (r PatternRule) Negate() Rule {
+func (r RegoRule) Negate() Rule {
 	cloned := r.Clone()
 	switch c := cloned.(type) {
-	case PatternRule:
+	case RegoRule:
 		c.Negated = !r.Negated
 		return c
 	}
 	return cloned
 }
 
-func (r PatternRule) ValueHash() string {
-	v := fmt.Sprintf("%s%s", r.Name, r.Argument)
+func (r RegoRule) ValueHash() string {
+	v := fmt.Sprintf("%s", r.Name)
 	return internal.HashString(v)
 }
 
-func (r PatternRule) String() string {
+func (r RegoRule) String() string {
 	var negation = ""
 	if r.Negated {
 		negation = "¬"
 	}
 
-	return fmt.Sprintf("%s%s(%s,'%s','%s')", negation, r.Name, r.Variable.Name, r.Path.Source(), r.Argument)
+	return fmt.Sprintf("%s%s(%s,'%s','%s')", negation, r.Name, r.Variable.Name, r.Path.Source(), r.Message)
 }
 
-func newPattern(negated bool, variable Variable, path path.PropertyPath, argument string) PatternRule {
-	return PatternRule{
+func newRego(negated bool, variable Variable, path path.PropertyPath, code string, message string) RegoRule {
+	return RegoRule{
 		AtomicStatement: AtomicStatement{
 			BaseStatement: BaseStatement{
-				Name:    "pattern",
+				Name:    "rego",
 				Negated: negated,
 			},
 			Variable: variable,
 			Path:     path,
 		},
-		Argument: argument,
+		Message:  message,
+		Argument: code,
 	}
 }

@@ -1,0 +1,30 @@
+#%Validation Profile 1.0
+
+profile: Test 1
+
+description: test profile
+
+violation:
+  - validation1
+  - validation2
+
+validations:
+
+  validation1:
+    targetClass: apiContract.EndPoint
+    message: This is the message
+    propertyConstraints:
+      apiContract.supportedOperation / apiContract.method:
+        in:
+          - publish
+          - subscribe
+        minCount: 1
+      shacl.name:
+        pattern: "^put|post$"
+
+  validation2:
+    targetClass: apiContract.EndPoint
+    message: orPath test
+    propertyConstraints:
+      apiContract.expects / (apiContract.parameter / shapes.schema) | (apiContract.payload / shapes.schema) / shacl.name:
+        minCount: 1
