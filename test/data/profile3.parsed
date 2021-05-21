@@ -1,0 +1,1 @@
+validation1[violation] :=  ∀x[Class(apiContract.Operation)] : (in(x,'apiContract.method',get) ∨ in(x,'apiContract.method',subscribe))

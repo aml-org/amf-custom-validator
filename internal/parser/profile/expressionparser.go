@@ -48,7 +48,17 @@ func parseExpressionValue(variable Variable, data *y.Yaml, varGenerator *VarGene
 		if and.IsArray() {
 			return parseAnd(and, variable, varGenerator)
 		} else {
-			return nil, errors.New("and constrait must be a list")
+			return nil, errors.New("and constraint must be a list")
+		}
+
+	}
+
+	or := data.Get("or")
+	if or.IsFound() {
+		if or.IsArray() {
+			return parseOr(or, variable, varGenerator)
+		} else {
+			return nil, errors.New("or constraint must be a list")
 		}
 
 	}
@@ -72,6 +82,23 @@ func parseAnd(and *y.Yaml, variable Variable, varGenerator *VarGenerator) (Rule,
 		values = append(values, c)
 	}
 	return NewAnd(false, values), nil
+}
+
+func parseOr(or *y.Yaml, variable Variable, varGenerator *VarGenerator) (Rule, error) {
+	var values []Rule
+	size, _ := or.GetArraySize()
+	for i := 0; i < size; i++ {
+		n := or.GetIndex(i)
+		if !n.IsMap() {
+			return nil, errors.New("not found expected map for or constraint element")
+		}
+		c, err := parseExpressionValue(variable, n, varGenerator)
+		if err != nil {
+			return nil, err
+		}
+		values = append(values, c)
+	}
+	return NewOr(false, values), nil
 }
 
 func parseImplicitAnd(data *y.Yaml, variable Variable, varGenerator *VarGenerator) (Rule, error) {

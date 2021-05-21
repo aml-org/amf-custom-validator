@@ -1,4 +1,4 @@
-package test4
+package test3
 
 
 # Finds a node in the graph, following a link in the flatten JSON-LD node
@@ -109,30 +109,16 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_21[nodes] {
+gen_path_rule_17[nodes] {
   x = data.sourceNode
-  nodes_tmp = object.get(x,"raml-shapes:schema",[])
+  nodes_tmp = object.get(x,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
 
-gen_path_rule_23[nodes] {
+gen_path_rule_19[nodes] {
   x = data.sourceNode
-  nodes_tmp = object.get(x,"raml-shapes:schema",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
-}
-
-gen_path_rule_24[nodes] {
-  x = data.sourceNode
-  tmp_x = nested_nodes with data.nodes as x["raml-shapes:schema"]
-  x = tmp_x[_][_]
-  nodes = x
-}
-
-gen_path_rule_26[nodes] {
-  y = data.sourceNode
-  nodes_tmp = object.get(y,"shacl:minLength",[])
+  nodes_tmp = object.get(x,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
@@ -140,36 +126,20 @@ gen_path_rule_26[nodes] {
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Parameter"
-  #  querying path: raml-shapes.schema
-  gen_propValues_20 = gen_path_rule_21 with data.sourceNode as x
-  not count(gen_propValues_20) >= 1
-  _result_0 := trace("minCount","raml-shapes.schema",count(gen_propValues_20),"value not matching rule 1")
-  matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
-}
-
-violation[matches] {
-  target_class[x] with data.class as "apiContract:Parameter"
-  #  querying path: raml-shapes.schema
-  gen_propValues_22 = gen_path_rule_23 with data.sourceNode as x
-  not count(gen_propValues_22) <= 3
-  _result_0 := trace("maxCount","raml-shapes.schema",count(gen_propValues_22),"value not matching rule 3")
-  matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
-}
-
-violation[matches] {
-  target_class[x] with data.class as "apiContract:Parameter"
-  #  querying path: raml-shapes.schema
-  ys = gen_path_rule_24 with data.sourceNode as x
-  ys_errors = [ ys_error|
-    y = ys[_]
-    #  querying path: shacl.minLength
-    gen_propValues_25 = gen_path_rule_26 with data.sourceNode as y
-    not count(gen_propValues_25) >= 1
-    _result_0 := trace("minCount","shacl.minLength",count(gen_propValues_25),"value not matching rule 1")
-    ys_error := error("nested",y,"error in nested nodes under raml-shapes.schema",[_result_0])
-  ]
-  not count(ys_errors) > 0
-  _result_0 := trace("nested","raml-shapes.schema",{"failed": count(ys_errors), "success":(count(ys) - count(ys_errors))},"")
-  matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
+  target_class[x] with data.class as "apiContract:Operation"
+  #  querying path: apiContract.method
+  x_check_array = gen_path_rule_17 with data.sourceNode as x
+  x_check_scalar = x_check_array[_]
+  x_check = as_string(x_check_scalar)
+  gen_inValues_16 = { "subscribe"}
+  not gen_inValues_16[x_check]
+  _result_0 := trace("in","apiContract.method",x_check,"Error with value gen_inValues_16 and enumeration ['subscribe']")
+  #  querying path: apiContract.method
+  x_check_array = gen_path_rule_19 with data.sourceNode as x
+  x_check_scalar = x_check_array[_]
+  x_check = as_string(x_check_scalar)
+  gen_inValues_18 = { "get"}
+  not gen_inValues_18[x_check]
+  _result_1 := trace("in","apiContract.method",x_check,"Error with value gen_inValues_18 and enumeration ['get']")
+  matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }

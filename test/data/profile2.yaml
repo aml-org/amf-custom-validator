@@ -1,0 +1,25 @@
+#%Validation Profile 1.0
+
+profile: Test 2
+
+description: test profile
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: apiContract.Operation
+    message: This is the message
+    or:
+      - propertyConstraints:
+          apiContract.method:
+            in:
+              - subscribe
+            minCount: 1
+      - propertyConstraints:
+          apiContract.method:
+            in:
+              - get
+            minCount: 1

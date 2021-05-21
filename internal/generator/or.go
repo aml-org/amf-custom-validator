@@ -26,27 +26,28 @@ func GenerateOr(or profile.OrRule) []BranchRegoResult {
 // Flatten all the branches as a list of branches containing only simple rego results.
 // Starts with th set of simple results in the OR and multiples it for each additional nested
 // branch obtaining I * B1 * B2 * ... * Bn branches.
-func expandBranches(regoResults []SimpleRegoResult, regoBranches [][]BranchRegoResult) []BranchRegoResult {
-	// we start with a single branch holding only
-	// the simple rego in the or if there was simple statements
-	// in the OR, otherwise this is an array with an empty array inside
+func expandBranches(regoResults []SimpleRegoResult, branchsets [][]BranchRegoResult) []BranchRegoResult {
+	// we start with a single branch-set holding only one branch for the single results of the OR
+	// otherwise this is an branch-set with an empty 0 branches inside
 	acc := [][]SimpleRegoResult{regoResults}
 
-	// now let's expand the branches
-	for _, branches := range regoBranches {
-		// we merge the branch and variables in the branch
-		// with each of the previous computed branches
-		// Now there should be n(acc) * m(branch) branches
+	// now let's expand the branch-sets
+	for _, branches := range branchsets {
+		// we merge the branches in this branch-set
+		// with each of the previous computed branch-sets
+		// Now there should be n-branches(acc) * m-branches(this-branch-set) branch-sets
+		var newAcc [][]SimpleRegoResult
 		for _, branch := range branches {
-			newAcc := make([][]SimpleRegoResult, 0)
-			for _, source := range acc {
+			for _, sourceBranchArray := range acc {
+				var sourceExpanded []SimpleRegoResult
+				sourceExpanded = append(sourceExpanded, sourceBranchArray...)
 				for _, r := range branch.Branch {
-					source = append(source, r)
+					sourceExpanded = append(sourceBranchArray, r)
 				}
-				newAcc = append(newAcc, source)
+				newAcc = append(newAcc, sourceExpanded)
 			}
-			acc = newAcc
 		}
+		acc = newAcc
 	}
 
 	orAcc := make([]BranchRegoResult, len(acc))
@@ -75,13 +76,13 @@ func filterSimpleResults(rego [][]GeneratedRegoResult) []SimpleRegoResult {
 }
 
 func filterBranchesResult(rego [][]GeneratedRegoResult) [][]BranchRegoResult {
-	acc := make([][]BranchRegoResult, 0)
+	var acc [][]BranchRegoResult
 	for _, r := range rego {
-		branches := make([]BranchRegoResult, 0)
-		for i, rr := range r {
+		var branches []BranchRegoResult
+		for _, rr := range r {
 			switch branch := rr.(type) {
 			case BranchRegoResult:
-				branches[i] = branch
+				branches = append(branches, branch)
 			default:
 				continue
 			}

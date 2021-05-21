@@ -120,7 +120,7 @@ func wrapTopLevelRegoResult(e profile.TopLevelExpression, results []GeneratedReg
 	classTargetResult := GenerateClassTarget(e.Variable.Name, e.ClassGenerator)
 	classTargetVariable := classTargetResult.Variable
 
-	branches := make([]BranchRegoResult, 0)
+	var branches []BranchRegoResult
 	for _, r := range results {
 		switch rr := r.(type) {
 		case SimpleRegoResult:
@@ -144,7 +144,7 @@ func wrapTopLevelRegoResult(e profile.TopLevelExpression, results []GeneratedReg
 
 	branchesAcc := make([]string, 0)
 	for _, branch := range branches {
-		acc := make([]string, 0)
+		var acc []string
 		acc = append(acc, fmt.Sprintf("%s[matches] {", strings.ToLower(e.Level)))
 		for _, r := range classTargetResult.Rego {
 			acc = append(acc, "  "+r)
@@ -162,7 +162,7 @@ func wrapTopLevelRegoResult(e profile.TopLevelExpression, results []GeneratedReg
 }
 
 func wrapBranch(name string, message string, branch BranchRegoResult, matchesVariable string, mappingVariable string) []string {
-	acc := make([]string, 0)
+	var acc []string
 	resultBindings := make([]string, 0)
 
 	for i, r := range branch.Branch {
