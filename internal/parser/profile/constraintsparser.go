@@ -4,29 +4,29 @@ import (
 	"errors"
 	"fmt"
 	"github.com/aml-org/amfopa/internal/parser/path"
-	"github.com/aml-org/amfopa/internal/parser/yaml"
-	y "github.com/kylelemons/go-gypsy/yaml"
+	y "github.com/smallfish/simpleyaml"
+	"strconv"
 )
 
-func ParseConstraint(path path.PropertyPath, variable Variable, constraint y.Map, varGenerator *VarGenerator) ([]Rule, error) {
+func ParseConstraint(path path.PropertyPath, variable Variable, constraint *y.Yaml, varGenerator *VarGenerator) ([]Rule, error) {
 	var acc []Rule
 
-	min, err := yaml.GetInt(constraint, "minCount")
+	min, err := constraint.Get("minCount").Int()
 	if err == nil {
 		acc = append(acc, newMinCount(false, variable, path, min))
 	}
 
-	max, err := yaml.GetInt(constraint, "maxCount")
+	max, err := constraint.Get("maxCount").Int()
 	if err == nil {
 		acc = append(acc, newMaxCount(false, variable, path, max))
 	}
 
-	pattern, err := yaml.GetString(constraint, "pattern")
+	pattern, err := constraint.Get("pattern").String()
 	if err == nil {
 		acc = append(acc, newPattern(false, variable, path, pattern))
 	}
 
-	in, err := yaml.GetList(constraint, "in")
+	in, err := constraint.Get("in").Array()
 	if err == nil {
 		l, err := scalarList(in)
 		if err != nil {
@@ -35,8 +35,26 @@ func ParseConstraint(path path.PropertyPath, variable Variable, constraint y.Map
 		acc = append(acc, newIn(false, variable, path, l))
 	}
 
-	nested, err := yaml.GetMap(constraint, "nested")
-	if err == nil {
+	atLeast := constraint.Get("atLeast")
+	if atLeast.IsFound() {
+		rule, err := parseQualifiedNestedExpression(atLeast, false, variable, path, varGenerator, GTEQ)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, rule)
+	}
+
+	atMost := constraint.Get("atMost")
+	if atMost.IsFound() {
+		rule, err := parseQualifiedNestedExpression(atMost, false, variable, path, varGenerator, LTEQ)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, rule)
+	}
+
+	nested := constraint.Get("nested")
+	if nested.IsFound() && nested.IsMap() {
 		rule, err := parseNestedExpression(nested, false, variable, path, varGenerator)
 		if err != nil {
 			return nil, err
@@ -47,12 +65,50 @@ func ParseConstraint(path path.PropertyPath, variable Variable, constraint y.Map
 	return acc, nil
 }
 
-func scalarList(in y.List) ([]string, error) {
+func parseQualifiedNestedExpression(qNested *y.Yaml, negated bool, variable Variable, propertyPath path.PropertyPath, generator *VarGenerator, op CardinalityOperation) (Rule, error) {
+	count, err := qNested.Get("count").Int()
+	if err != nil {
+		return nil, err
+	}
+	cardinality := VariableCardinality{
+		Operator: op,
+		Value:    count,
+	}
+
+	data := qNested.Get("validation")
+	if !data.IsFound() || (data.IsFound() && !data.IsMap()) {
+		return nil, errors.New("map containing a validation is required in qualified atLeast/atMost constraint")
+	}
+
+	nested, err := parseNestedExpression(data, negated, variable, propertyPath, generator)
+	if err != nil {
+		return nil, err
+	}
+
+	switch n := nested.(type) {
+	case NestedExpression:
+		n.Child.Cardinality = &cardinality
+		n.Child.Quantification = Exists
+		return n, nil
+	}
+
+	return nil, errors.New(fmt.Sprint("expected nested expression to build quantified nested expression but got %v", nested))
+}
+
+func scalarList(in []interface{}) ([]string, error) {
 	var acc []string
 	for _, e := range in {
 		switch pe := e.(type) {
-		case y.Scalar:
-			acc = append(acc, yaml.CleanYamlString(pe.String()))
+		case string:
+			acc = append(acc, pe)
+		case int:
+			acc = append(acc, strconv.FormatInt(int64(pe), 10))
+		case float32:
+			acc = append(acc, strconv.FormatFloat(float64(pe), 'f', 6, 64))
+		case float64:
+			acc = append(acc, strconv.FormatFloat(pe, 'f', 6, 64))
+		case bool:
+			acc = append(acc, strconv.FormatBool(pe))
 		default:
 			return nil, errors.New(fmt.Sprintf("expected scalars in 'in' constraint, found %v", e))
 		}

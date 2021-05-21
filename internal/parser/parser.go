@@ -2,12 +2,12 @@ package parser
 
 import (
 	"github.com/aml-org/amfopa/internal/parser/profile"
-	yamlparser "github.com/aml-org/amfopa/internal/parser/yaml"
+	y "github.com/smallfish/simpleyaml"
 )
 
 func Parse(profileText string) (*profile.Profile, error) {
 
-	node, err := yamlparser.Parse(profileText)
+	node, err := y.NewYaml([]byte(profileText))
 	if err != nil {
 		return nil, err
 	}
@@ -16,6 +16,5 @@ func Parse(profileText string) (*profile.Profile, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	return &prof, nil
 }

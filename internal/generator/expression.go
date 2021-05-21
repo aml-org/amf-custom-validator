@@ -70,10 +70,20 @@ func wrapNestedRegoResult(exp profile.NestedExpression, sharedGeneratorRego Simp
 	rego = append(rego, "]")
 
 	// Now Let's check if there was an error counting the failed nodes
-	if exp.Negated {
-		rego = append(rego, fmt.Sprintf("count(%ss) == 0", errorVariable))
+	if exp.Child.Cardinality != nil {
+		// quantified nested, we need to check for a particular number of failed nodes
+		if exp.Negated {
+			rego = append(rego, fmt.Sprintf("count(%s) - count(%ss) %s", variable, errorVariable, exp.Child.Cardinality.String()))
+		} else {
+			rego = append(rego, fmt.Sprintf("not count(%s) - count(%ss) %s", variable, errorVariable, exp.Child.Cardinality.String()))
+		}
 	} else {
-		rego = append(rego, fmt.Sprintf("not count(%ss) > 0", errorVariable))
+		// regular nested we just loo for one error
+		if exp.Negated {
+			rego = append(rego, fmt.Sprintf("count(%ss) == 0", errorVariable))
+		} else {
+			rego = append(rego, fmt.Sprintf("not count(%ss) > 0", errorVariable))
+		}
 	}
 
 	// accumulate path rules

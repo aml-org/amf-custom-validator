@@ -54,7 +54,7 @@ func (v Variable) String() string {
 	if v.Quantification == ForAll {
 		return "∀" + v.Name
 	} else if v.Cardinality != nil {
-		return "∃" + v.Name + ":" + v.Cardinality.String()
+		return "∃" + v.Name + ";" + v.Cardinality.String()
 	} else {
 		return "∃" + v.Name
 	}

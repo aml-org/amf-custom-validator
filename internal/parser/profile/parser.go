@@ -2,33 +2,30 @@ package profile
 
 import (
 	"errors"
-	"github.com/aml-org/amfopa/internal/parser/yaml"
-	y "github.com/kylelemons/go-gypsy/yaml"
+	y "github.com/smallfish/simpleyaml"
 )
 
-func Parse(doc y.Node) (Profile, error) {
+func Parse(doc *y.Yaml) (Profile, error) {
 	varGenerator := NewVarGenerator()
 	profile := NewProfile()
-	switch m := doc.(type) {
-	case y.Map:
-
-		name, err := yaml.GetString(m, "profile")
+	if doc.IsMap() {
+		name, err := doc.Get("profile").String()
 		if err != nil {
 			return profile, err
 		}
 		profile.Name = name
 
-		description, err := yaml.GetString(m, "description")
+		description, err := doc.Get("description").String()
 		if err == nil {
 			profile.Description = &description
 		}
 
-		validations, err := parseValidations(m)
-		if err != nil {
-			return profile, err
+		validations := doc.Get("validations")
+		if validations.IsFound() && !validations.IsMap() {
+			return profile, errors.New("validations must be a list of validations")
 		}
 
-		violations, err := parseValidationLevel("violation", m, validations, &varGenerator)
+		violations, err := parseValidationLevel("violation", doc, validations, &varGenerator)
 		if err != nil {
 			return profile, err
 		}
@@ -36,7 +33,7 @@ func Parse(doc y.Node) (Profile, error) {
 			profile.Violation = append(profile.Violation, rule)
 		}
 
-		warnings, err := parseValidationLevel("warning", m, validations, &varGenerator)
+		warnings, err := parseValidationLevel("warning", doc, validations, &varGenerator)
 		if err != nil {
 			return profile, err
 		}
@@ -44,7 +41,7 @@ func Parse(doc y.Node) (Profile, error) {
 			profile.Warning = append(profile.Violation, rule)
 		}
 
-		infos, err := parseValidationLevel("info", m, validations, &varGenerator)
+		infos, err := parseValidationLevel("info", doc, validations, &varGenerator)
 		if err != nil {
 			return profile, err
 		}
@@ -52,53 +49,34 @@ func Parse(doc y.Node) (Profile, error) {
 			profile.Info = append(profile.Violation, rule)
 		}
 		return profile, nil
-	default:
-		return profile, errors.New("expected map at profile YAML document")
 	}
+
+	return profile, errors.New("expected map at profile YAML document")
 }
 
-func parseValidationLevel(level string, profile y.Map, validations y.Map, varGenerator *VarGenerator) ([]Rule, error) {
-	validationsLevel := profile.Key(level)
-	if validationsLevel != nil {
-		switch names := validationsLevel.(type) {
-		case y.List:
-			rules := make([]Rule, names.Len())
-			for i, name := range names {
-				switch n := name.(type) {
-				case y.Scalar:
-					k := n.String()
-					switch v := validations.Key(k).(type) {
-					case y.Map:
-						r, err := ParseExpression(k, v, level, varGenerator)
-						if err != nil {
-							return nil, err
-						}
-						rules[i] = r
-					default:
-						// ignore
-					}
+func parseValidationLevel(level string, profile *y.Yaml, validations *y.Yaml, varGenerator *VarGenerator) ([]Rule, error) {
+	var rules []Rule
+
+	names := profile.Get(level)
+	if !names.IsFound() {
+		return rules, nil
+	}
+	size, err := names.GetArraySize()
+	if err != nil {
+		return rules, nil
+	}
+	for i := 0; i < size; i++ {
+		name, err := names.GetIndex(i).String()
+		if err == nil {
+			v := validations.Get(name)
+			if v.IsFound() {
+				r, err := ParseExpression(name, v, level, varGenerator)
+				if err != nil {
+					return nil, err
 				}
+				rules = append(rules, r)
 			}
-			return rules, nil
-
-		default:
-			return nil, errors.New("Expected a list of validation names for violation level " + level)
 		}
 	}
-
-	return make([]Rule, 0), nil
-}
-
-func parseValidations(node y.Map) (y.Map, error) {
-	value := node.Key("validations")
-	if value == nil {
-		return nil, errors.New("'validations' keyword without values")
-	} else {
-		switch validations := value.(type) {
-		case y.Map:
-			return validations, nil
-		default:
-			return nil, errors.New("expected map of validations not found")
-		}
-	}
+	return rules, nil
 }
