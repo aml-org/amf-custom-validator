@@ -1,0 +1,35 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "lessThan",
+          "http://www.w3.org/ns/shacl#focusNode": [
+            500,
+            100
+          ],
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching property comparison \u003c",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.minLength"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://test/data/integration/profile5/negative.data.raml#/declarations/types/scalar/name"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Min length must be less than max length must match in scalar",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "test-min-length"
+      }
+    }
+  ]
+}

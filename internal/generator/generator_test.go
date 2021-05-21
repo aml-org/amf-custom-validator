@@ -3,6 +3,7 @@ package generator
 import (
 	"context"
 	"github.com/aml-org/amfopa/internal/parser"
+	"github.com/aml-org/amfopa/internal/parser/profile"
 	"github.com/aml-org/amfopa/test"
 	"github.com/open-policy-agent/opa/rego"
 	"strings"
@@ -12,11 +13,13 @@ import (
 func TestGenerated(t *testing.T) {
 
 	for _, fix := range test.Fixtures("../../test/data") {
-		profile, err := parser.Parse(fix.ReadProfile())
+		profile.GenReset()
+		prof, err := parser.Parse(fix.ReadProfile())
 		if err != nil {
 			panic(err)
 		}
-		generated := Generate(*profile)
+
+		generated := Generate(*prof)
 
 		succes, err := validateRegoUnit(generated)
 		if !succes {
@@ -27,7 +30,7 @@ func TestGenerated(t *testing.T) {
 		expected := strings.TrimSpace(fix.ReadGenerated())
 
 		if actual != expected {
-			t.Errorf("Error in expected profile %s\n\nActual:\n%s\n----\nExpected:\n%s", fix.Profile, actual, expected)
+			t.Errorf("Error in expected prof %s\n\nActual:\n%s\n----\nExpected:\n%s", fix.Profile, actual, expected)
 		}
 	}
 }

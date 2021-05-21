@@ -1,0 +1,190 @@
+[
+{
+"@id": "file://test/data/integration/profile6/positive.data.raml",
+"@type": [
+"http://a.ml/vocabularies/document#Document",
+"http://a.ml/vocabularies/document#Fragment",
+"http://a.ml/vocabularies/document#Module",
+"http://a.ml/vocabularies/document#Unit"
+],
+"http://a.ml/vocabularies/document#encodes": [
+{
+"@id": "file://test/data/integration/profile6/positive.data.raml#/web-api",
+"@type": [
+"http://a.ml/vocabularies/apiContract#WebAPI",
+"http://a.ml/vocabularies/apiContract#API",
+"http://a.ml/vocabularies/document#RootDomainElement",
+"http://a.ml/vocabularies/document#DomainElement"
+],
+"http://a.ml/vocabularies/core#name": [
+{
+"@value": "Test API"
+}
+],
+"http://a.ml/vocabularies/apiContract#endpoint": [
+{
+"@id": "file://test/data/integration/profile6/positive.data.raml#/web-api/end-points/%2Fendpoint",
+"@type": [
+"http://a.ml/vocabularies/apiContract#EndPoint",
+"http://a.ml/vocabularies/document#DomainElement"
+],
+"http://a.ml/vocabularies/apiContract#path": [
+{
+"@value": "/endpoint"
+}
+],
+"http://a.ml/vocabularies/apiContract#supportedOperation": [
+{
+"@id": "file://test/data/integration/profile6/positive.data.raml#/web-api/end-points/%2Fendpoint/get",
+"@type": [
+"http://a.ml/vocabularies/apiContract#Operation",
+"http://a.ml/vocabularies/document#DomainElement"
+],
+"http://a.ml/vocabularies/apiContract#method": [
+{
+"@value": "get"
+}
+],
+"http://a.ml/vocabularies/apiContract#returns": [
+{
+"@id": "file://test/data/integration/profile6/positive.data.raml#/web-api/end-points/%2Fendpoint/get/200",
+"@type": [
+"http://a.ml/vocabularies/apiContract#Response",
+"http://a.ml/vocabularies/apiContract#Message",
+"http://a.ml/vocabularies/document#DomainElement"
+],
+"http://a.ml/vocabularies/apiContract#statusCode": [
+{
+"@value": "200"
+}
+],
+"http://a.ml/vocabularies/core#name": [
+{
+"@value": "200"
+}
+]
+},
+{
+"@id": "file://test/data/integration/profile6/positive.data.raml#/web-api/end-points/%2Fendpoint/get/300",
+"@type": [
+"http://a.ml/vocabularies/apiContract#Response",
+"http://a.ml/vocabularies/apiContract#Message",
+"http://a.ml/vocabularies/document#DomainElement"
+],
+"http://a.ml/vocabularies/apiContract#statusCode": [
+{
+"@value": "300"
+}
+],
+"http://a.ml/vocabularies/core#name": [
+{
+"@value": "300"
+}
+]
+},
+{
+"@id": "file://test/data/integration/profile6/positive.data.raml#/web-api/end-points/%2Fendpoint/get/400",
+"@type": [
+"http://a.ml/vocabularies/apiContract#Response",
+"http://a.ml/vocabularies/apiContract#Message",
+"http://a.ml/vocabularies/document#DomainElement"
+],
+"http://a.ml/vocabularies/apiContract#statusCode": [
+{
+"@value": "400"
+}
+],
+"http://a.ml/vocabularies/core#name": [
+{
+"@value": "400"
+}
+]
+},
+{
+"@id": "file://test/data/integration/profile6/positive.data.raml#/web-api/end-points/%2Fendpoint/get/401",
+"@type": [
+"http://a.ml/vocabularies/apiContract#Response",
+"http://a.ml/vocabularies/apiContract#Message",
+"http://a.ml/vocabularies/document#DomainElement"
+],
+"http://a.ml/vocabularies/apiContract#statusCode": [
+{
+"@value": "401"
+}
+],
+"http://a.ml/vocabularies/core#name": [
+{
+"@value": "401"
+}
+]
+},
+{
+"@id": "file://test/data/integration/profile6/positive.data.raml#/web-api/end-points/%2Fendpoint/get/500",
+"@type": [
+"http://a.ml/vocabularies/apiContract#Response",
+"http://a.ml/vocabularies/apiContract#Message",
+"http://a.ml/vocabularies/document#DomainElement"
+],
+"http://a.ml/vocabularies/apiContract#statusCode": [
+{
+"@value": "500"
+}
+],
+"http://a.ml/vocabularies/core#name": [
+{
+"@value": "500"
+}
+]
+}
+]
+},
+{
+"@id": "file://test/data/integration/profile6/positive.data.raml#/web-api/end-points/%2Fendpoint/post",
+"@type": [
+"http://a.ml/vocabularies/apiContract#Operation",
+"http://a.ml/vocabularies/document#DomainElement"
+],
+"http://a.ml/vocabularies/apiContract#method": [
+{
+"@value": "post"
+}
+],
+"http://a.ml/vocabularies/apiContract#returns": [
+{
+"@id": "file://test/data/integration/profile6/positive.data.raml#/web-api/end-points/%2Fendpoint/post/201",
+"@type": [
+"http://a.ml/vocabularies/apiContract#Response",
+"http://a.ml/vocabularies/apiContract#Message",
+"http://a.ml/vocabularies/document#DomainElement"
+],
+"http://a.ml/vocabularies/apiContract#statusCode": [
+{
+"@value": "201"
+}
+],
+"http://a.ml/vocabularies/core#name": [
+{
+"@value": "201"
+}
+]
+}
+]
+}
+]
+}
+]
+}
+],
+"http://a.ml/vocabularies/document#version": [
+{
+"@value": "2.3.0"
+}
+],
+"http://a.ml/vocabularies/document#root": [
+{
+"@value": true
+}
+]
+}
+]
+

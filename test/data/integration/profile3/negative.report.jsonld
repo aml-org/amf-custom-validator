@@ -1,0 +1,93 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "failed": 1,
+            "success": 1
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.supportedOperation"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint1"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Endpoints must have a POST method",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "validation1"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "failed": 1,
+            "success": 1
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.supportedOperation"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint2"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Endpoints must have a POST method",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "validation1"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "failed": 2,
+            "success": 0
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.supportedOperation"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Endpoints must have a POST method",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "validation1"
+      }
+    }
+  ]
+}

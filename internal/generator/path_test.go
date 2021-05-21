@@ -17,8 +17,8 @@ func TestGeneratePathPropertyArray(t *testing.T) {
 	result := GeneratePropertyArray(p, "x", "test")
 
 	expected := `gen_path_rule_1[nodes] {
-  x = data.sourceNode
-  nodes_tmp = object.get(x,"core:name",[])
+  init_x_0__test = data.sourceNode
+  nodes_tmp = object.get(init_x_0__test,"core:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }`
@@ -39,12 +39,12 @@ func TestGenerateAndPropertyArray(t *testing.T) {
 	result := GeneratePropertyArray(p, "x", "test")
 
 	expected := `gen_path_rule_1[nodes] {
-  x = data.sourceNode
-  tmp_x_0_xaxbxc_test = nested_nodes with data.nodes as x["x:a"]
-  x_0_xaxbxc_test = tmp_x_0_xaxbxc_test[_][_]
-  tmp_x_1_xaxbxc_test = nested_nodes with data.nodes as x_0_xaxbxc_test["x:b"]
-  x_1_xaxbxc_test = tmp_x_1_xaxbxc_test[_][_]
-  nodes_tmp = object.get(x_1_xaxbxc_test,"x:c",[])
+  init_x_0__test = data.sourceNode
+  tmp_x_0__test = nested_nodes with data.nodes as init_x_0__test["x:a"]
+  x_0__test = tmp_x_0__test[_][_]
+  tmp_x_2__test = nested_nodes with data.nodes as x_0__test["x:b"]
+  x_2__test = tmp_x_2__test[_][_]
+  nodes_tmp = object.get(x_2__test,"x:c",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }`
@@ -65,21 +65,21 @@ func TestGenerateOrPropertyArray(t *testing.T) {
 	result := GeneratePropertyArray(p, "x", "test")
 
 	expected := `gen_path_rule_1[nodes] {
-  x = data.sourceNode
-  tmp_x_0_xaxbxcxd_test = nested_nodes with data.nodes as x["x:a"]
-  x_0_xaxbxcxd_test = tmp_x_0_xaxbxcxd_test[_][_]
-  tmp_x_1_xaxbxcxd_test = nested_nodes with data.nodes as x_0_xaxbxcxd_test["x:b"]
-  x_1_xaxbxcxd_test = tmp_x_1_xaxbxcxd_test[_][_]
-  nodes_tmp = object.get(x_1_xaxbxcxd_test,"x:d",[])
+  init_x_0__test = data.sourceNode
+  tmp_x_0__test = nested_nodes with data.nodes as init_x_0__test["x:a"]
+  x_0__test = tmp_x_0__test[_][_]
+  tmp_x_2__test = nested_nodes with data.nodes as x_0__test["x:b"]
+  x_2__test = tmp_x_2__test[_][_]
+  nodes_tmp = object.get(x_2__test,"x:d",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 } {
-  x = data.sourceNode
-  tmp_x_0_xaxbxcxd_test = nested_nodes with data.nodes as x["x:a"]
-  x_0_xaxbxcxd_test = tmp_x_0_xaxbxcxd_test[_][_]
-  tmp_x_1_xaxbxcxd_test = nested_nodes with data.nodes as x_0_xaxbxcxd_test["x:c"]
-  x_1_xaxbxcxd_test = tmp_x_1_xaxbxcxd_test[_][_]
-  nodes_tmp = object.get(x_1_xaxbxcxd_test,"x:d",[])
+  init_x_0__test = data.sourceNode
+  tmp_x_0__test = nested_nodes with data.nodes as init_x_0__test["x:a"]
+  x_0__test = tmp_x_0__test[_][_]
+  tmp_x_2__test = nested_nodes with data.nodes as x_0__test["x:c"]
+  x_2__test = tmp_x_2__test[_][_]
+  nodes_tmp = object.get(x_2__test,"x:d",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }`

@@ -109,27 +109,27 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_43[nodes] {
-  x = data.sourceNode
-  tmp_x_0__minCount_ = nested_nodes with data.nodes as x["apiContract:supportedOperation"]
+gen_path_rule_2[nodes] {
+  init_x_0__minCount_ = data.sourceNode
+  tmp_x_0__minCount_ = nested_nodes with data.nodes as init_x_0__minCount_["apiContract:supportedOperation"]
   x_0__minCount_ = tmp_x_0__minCount_[_][_]
   nodes_tmp = object.get(x_0__minCount_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
 
-gen_path_rule_45[nodes] {
-  x = data.sourceNode
-  tmp_x_0__in_ = nested_nodes with data.nodes as x["apiContract:supportedOperation"]
+gen_path_rule_4[nodes] {
+  init_x_0__in_ = data.sourceNode
+  tmp_x_0__in_ = nested_nodes with data.nodes as init_x_0__in_["apiContract:supportedOperation"]
   x_0__in_ = tmp_x_0__in_[_][_]
   nodes_tmp = object.get(x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
 
-gen_path_rule_46[nodes] {
-  x = data.sourceNode
-  nodes_tmp = object.get(x,"shacl:name",[])
+gen_path_rule_5[nodes] {
+  init_x_0__pattern_ = data.sourceNode
+  nodes_tmp = object.get(init_x_0__pattern_,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
@@ -139,55 +139,55 @@ gen_path_rule_46[nodes] {
 violation[matches] {
   target_class[x] with data.class as "apiContract:EndPoint"
   #  querying path: apiContract.supportedOperation / apiContract.method
-  gen_propValues_42 = gen_path_rule_43 with data.sourceNode as x
-  not count(gen_propValues_42) >= 1
-  _result_0 := trace("minCount","apiContract.supportedOperation / apiContract.method",count(gen_propValues_42),"value not matching rule 1")
+  gen_propValues_1 = gen_path_rule_2 with data.sourceNode as x
+  not count(gen_propValues_1) >= 1
+  _result_0 := trace("minCount","apiContract.supportedOperation / apiContract.method",count(gen_propValues_1),"value not matching rule 1")
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 
 violation[matches] {
   target_class[x] with data.class as "apiContract:EndPoint"
   #  querying path: apiContract.supportedOperation / apiContract.method
-  x_check_array = gen_path_rule_45 with data.sourceNode as x
+  x_check_array = gen_path_rule_4 with data.sourceNode as x
   x_check_scalar = x_check_array[_]
   x_check = as_string(x_check_scalar)
-  gen_inValues_44 = { "publish","subscribe"}
-  not gen_inValues_44[x_check]
-  _result_0 := trace("in","apiContract.supportedOperation / apiContract.method",x_check,"Error with value gen_inValues_44 and enumeration ['publish','subscribe']")
+  gen_inValues_3 = { "publish","subscribe"}
+  not gen_inValues_3[x_check]
+  _result_0 := trace("in","apiContract.supportedOperation / apiContract.method",x_check,"Error with value gen_inValues_3 and enumeration ['publish','subscribe']")
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 
 violation[matches] {
   target_class[x] with data.class as "apiContract:EndPoint"
   #  querying path: shacl.name
-  gen_path_rule_46_node_array = gen_path_rule_46 with data.sourceNode as x
-  gen_path_rule_46_node = gen_path_rule_46_node_array[_]
-  not regex.match("^put|post$",gen_path_rule_46_node)
-  _result_0 := trace("pattern","shacl.name",gen_path_rule_46_node,"Error with value gen_path_rule_46_node and matching regular expression '^put|post$'")
+  gen_path_rule_5_node_array = gen_path_rule_5 with data.sourceNode as x
+  gen_path_rule_5_node = gen_path_rule_5_node_array[_]
+  not regex.match("^put|post$",gen_path_rule_5_node)
+  _result_0 := trace("pattern","shacl.name",gen_path_rule_5_node,"Error with value gen_path_rule_5_node and matching regular expression '^put|post$'")
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 # Path rules
 
-gen_path_rule_48[nodes] {
-  x = data.sourceNode
-  tmp_x_0__minCount_ = nested_nodes with data.nodes as x["apiContract:expects"]
+gen_path_rule_7[nodes] {
+  init_x_0__minCount_ = data.sourceNode
+  tmp_x_0__minCount_ = nested_nodes with data.nodes as init_x_0__minCount_["apiContract:expects"]
   x_0__minCount_ = tmp_x_0__minCount_[_][_]
-  tmp_x_1__minCount_ = nested_nodes with data.nodes as x_0__minCount_["apiContract:parameter"]
-  x_1__minCount_ = tmp_x_1__minCount_[_][_]
-  tmp_x_2__minCount_ = nested_nodes with data.nodes as x_1__minCount_["shapes:schema"]
+  tmp_x_2__minCount_ = nested_nodes with data.nodes as x_0__minCount_["apiContract:parameter"]
   x_2__minCount_ = tmp_x_2__minCount_[_][_]
-  nodes_tmp = object.get(x_2__minCount_,"shacl:name",[])
+  tmp_x_3__minCount_ = nested_nodes with data.nodes as x_2__minCount_["shapes:schema"]
+  x_3__minCount_ = tmp_x_3__minCount_[_][_]
+  nodes_tmp = object.get(x_3__minCount_,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 } {
-  x = data.sourceNode
-  tmp_x_0__minCount_ = nested_nodes with data.nodes as x["apiContract:expects"]
+  init_x_0__minCount_ = data.sourceNode
+  tmp_x_0__minCount_ = nested_nodes with data.nodes as init_x_0__minCount_["apiContract:expects"]
   x_0__minCount_ = tmp_x_0__minCount_[_][_]
-  tmp_x_1__minCount_ = nested_nodes with data.nodes as x_0__minCount_["apiContract:payload"]
-  x_1__minCount_ = tmp_x_1__minCount_[_][_]
-  tmp_x_2__minCount_ = nested_nodes with data.nodes as x_1__minCount_["shapes:schema"]
+  tmp_x_2__minCount_ = nested_nodes with data.nodes as x_0__minCount_["apiContract:payload"]
   x_2__minCount_ = tmp_x_2__minCount_[_][_]
-  nodes_tmp = object.get(x_2__minCount_,"shacl:name",[])
+  tmp_x_3__minCount_ = nested_nodes with data.nodes as x_2__minCount_["shapes:schema"]
+  x_3__minCount_ = tmp_x_3__minCount_[_][_]
+  nodes_tmp = object.get(x_3__minCount_,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
@@ -197,8 +197,8 @@ gen_path_rule_48[nodes] {
 violation[matches] {
   target_class[x] with data.class as "apiContract:EndPoint"
   #  querying path: apiContract.expects / (apiContract.parameter / shapes.schema) | (apiContract.payload / shapes.schema) / shacl.name
-  gen_propValues_47 = gen_path_rule_48 with data.sourceNode as x
-  not count(gen_propValues_47) >= 1
-  _result_0 := trace("minCount","apiContract.expects / (apiContract.parameter / shapes.schema) | (apiContract.payload / shapes.schema) / shacl.name",count(gen_propValues_47),"value not matching rule 1")
+  gen_propValues_6 = gen_path_rule_7 with data.sourceNode as x
+  not count(gen_propValues_6) >= 1
+  _result_0 := trace("minCount","apiContract.expects / (apiContract.parameter / shapes.schema) | (apiContract.payload / shapes.schema) / shacl.name",count(gen_propValues_6),"value not matching rule 1")
   matches := error("validation2",x,"orPath test",[_result_0])
 }

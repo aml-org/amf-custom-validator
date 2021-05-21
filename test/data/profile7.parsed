@@ -1,11 +1,6 @@
 and-or-not-rule[violation] :=  ∀x[Class(apiContract.Operation)] : 
   (
     (
-      ¬∃y;>= 1[Nested(x,∃y;>= 1,apiContract.returns)] : ¬
-        (
-          pattern(y,'apiContract.statusCode','^201$')
-        )
-    ∧
       ∃p;>= 1[Nested(x,∃p;>= 1,apiContract.returns)] : 
         (
           pattern(p,'apiContract.statusCode','^4[0-9]{2}$')
@@ -16,11 +11,16 @@ and-or-not-rule[violation] :=  ∀x[Class(apiContract.Operation)] :
           pattern(q,'apiContract.statusCode','^5[0-9]{2}$')
         )
     ∧
+      ∃y;>= 1[Nested(x,∃y;>= 1,apiContract.returns)] : ¬
+        (
+          pattern(y,'apiContract.statusCode','^201$')
+        )
+    ∧
       ∃z;>= 1[Nested(x,∃z;>= 1,apiContract.returns)] : 
         (
           pattern(z,'apiContract.statusCode','^2[0-9]{2}$')
         )
     )
   ∨
-    ¬¬in(x,'apiContract.method',get)
+    ¬in(x,'apiContract.method',get)
   )

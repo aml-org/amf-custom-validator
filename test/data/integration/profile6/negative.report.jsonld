@@ -1,0 +1,120 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#focusNode": "get",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_inValues_55 and enumeration ['get']",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.method"
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "failed": 0,
+            "success": 1
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "and-or-not-rule"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#focusNode": "get",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_inValues_55 and enumeration ['get']",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.method"
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "failed": 1,
+            "success": 0
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "and-or-not-rule"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#focusNode": "get",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_inValues_55 and enumeration ['get']",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.method"
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "failed": 1,
+            "success": 0
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "and-or-not-rule"
+      }
+    }
+  ]
+}

@@ -109,16 +109,16 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_30[nodes] {
-  x = data.sourceNode
-  nodes_tmp = object.get(x,"shacl:minLength",[])
+gen_path_rule_1[nodes] {
+  init_x_0__prop_ = data.sourceNode
+  nodes_tmp = object.get(init_x_0__prop_,"shacl:minLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
 
-gen_path_rule_31[nodes] {
-  x = data.sourceNode
-  nodes_tmp = object.get(x,"shacl:maxLength",[])
+gen_path_rule_2[nodes] {
+  init_x_0__alt_prop_ = data.sourceNode
+  nodes_tmp = object.get(init_x_0__alt_prop_,"shacl:maxLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
@@ -128,12 +128,12 @@ gen_path_rule_31[nodes] {
 violation[matches] {
   target_class[x] with data.class as "raml-shapes:ScalarShape"
   #  querying path: shacl.minLength
-  gen_path_rule_30As = gen_path_rule_30 with data.sourceNode as x
+  gen_path_rule_1As = gen_path_rule_1 with data.sourceNode as x
   #  querying path: shacl.maxLength
-  gen_path_rule_31Bs = gen_path_rule_31 with data.sourceNode as x
-  gen_path_rule_30A = gen_path_rule_30As[_]
-  gen_path_rule_31B = gen_path_rule_31Bs[_]
-  not gen_path_rule_30A < gen_path_rule_31B
-  _result_0 := trace("lessThan","shacl.minLength",[gen_path_rule_30A,gen_path_rule_31B],"value not matching property comparison <")
+  gen_path_rule_2Bs = gen_path_rule_2 with data.sourceNode as x
+  gen_path_rule_1A = gen_path_rule_1As[_]
+  gen_path_rule_2B = gen_path_rule_2Bs[_]
+  not gen_path_rule_1A < gen_path_rule_2B
+  _result_0 := trace("lessThan","shacl.minLength",[gen_path_rule_1A,gen_path_rule_2B],"value not matching property comparison <")
   matches := error("test-min-length",x,"Min length must be less than max length must match in scalar",[_result_0])
 }

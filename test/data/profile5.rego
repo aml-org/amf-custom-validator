@@ -109,16 +109,16 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_27[nodes] {
-  x = data.sourceNode
-  tmp_x = nested_nodes with data.nodes as x["apiContract:supportedOperation"]
+gen_path_rule_1[nodes] {
+  init_x_0__nested_ = data.sourceNode
+  tmp_x = nested_nodes with data.nodes as init_x_0__nested_["apiContract:supportedOperation"]
   x = tmp_x[_][_]
   nodes = x
 }
 
-gen_path_rule_29[nodes] {
-  y = data.sourceNode
-  nodes_tmp = object.get(y,"apiContract:method",[])
+gen_path_rule_3[nodes] {
+  init_y_0__in_ = data.sourceNode
+  nodes_tmp = object.get(init_y_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
@@ -128,16 +128,16 @@ gen_path_rule_29[nodes] {
 violation[matches] {
   target_class[x] with data.class as "apiContract:EndPoint"
   #  querying path: apiContract.supportedOperation
-  ys = gen_path_rule_27 with data.sourceNode as x
+  ys = gen_path_rule_1 with data.sourceNode as x
   ys_errors = [ ys_error|
     y = ys[_]
     #  querying path: apiContract.method
-    y_check_array = gen_path_rule_29 with data.sourceNode as y
+    y_check_array = gen_path_rule_3 with data.sourceNode as y
     y_check_scalar = y_check_array[_]
     y_check = as_string(y_check_scalar)
-    gen_inValues_28 = { "post"}
-    not gen_inValues_28[y_check]
-    _result_0 := trace("in","apiContract.method",y_check,"Error with value gen_inValues_28 and enumeration ['post']")
+    gen_inValues_2 = { "post"}
+    not gen_inValues_2[y_check]
+    _result_0 := trace("in","apiContract.method",y_check,"Error with value gen_inValues_2 and enumeration ['post']")
     ys_error := error("nested",y,"error in nested nodes under apiContract.supportedOperation",[_result_0])
   ]
   not count(ys) - count(ys_errors) >= 1

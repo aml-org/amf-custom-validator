@@ -1,0 +1,32 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "maxCount",
+          "http://www.w3.org/ns/shacl#focusNode": 4,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 3",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.endpoint"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://test/data/integration/profile9/negative.data.raml#/web-api"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "maximum number of endpoints test",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "max-endpoints"
+      }
+    }
+  ]
+}

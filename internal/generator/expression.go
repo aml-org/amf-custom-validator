@@ -43,13 +43,14 @@ func generateNested(exp profile.NestedExpression) []GeneratedRegoResult {
 	sharedGeneratorRego := GenerateNested(exp)
 	results := Dispatch(v)
 
+	var acc []GeneratedRegoResult
 	for _, rego := range results {
 		switch r := rego.(type) {
 		case BranchRegoResult:
-			return []GeneratedRegoResult{wrapNestedRegoResult(exp, sharedGeneratorRego, r)}
+			acc = append(acc, wrapNestedRegoResult(exp, sharedGeneratorRego, r))
 		}
 	}
-	return []GeneratedRegoResult{}
+	return acc
 }
 
 func wrapNestedRegoResult(exp profile.NestedExpression, sharedGeneratorRego SimpleRegoResult, branchRego BranchRegoResult) BranchRegoResult {
@@ -82,7 +83,7 @@ func wrapNestedRegoResult(exp profile.NestedExpression, sharedGeneratorRego Simp
 		if exp.Negated {
 			rego = append(rego, fmt.Sprintf("count(%ss) == 0", errorVariable))
 		} else {
-			rego = append(rego, fmt.Sprintf("not count(%ss) > 0", errorVariable))
+			rego = append(rego, fmt.Sprintf("count(%ss) > 0", errorVariable))
 		}
 	}
 
