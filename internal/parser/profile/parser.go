@@ -19,6 +19,15 @@ func Parse(doc *y.Yaml) (Profile, error) {
 			profile.Description = &description
 		}
 
+		prefixes := doc.Get("prefixes")
+		if prefixes.IsFound() {
+			context, err := ParsePrefixes(prefixes)
+			if err != nil {
+				return profile, err
+			}
+			profile.Prefixes = context
+		}
+
 		validations := doc.Get("validations")
 		if validations.IsFound() && !validations.IsMap() {
 			return profile, errors.New("validations must be a list of validations")
@@ -37,7 +46,7 @@ func Parse(doc *y.Yaml) (Profile, error) {
 			return profile, err
 		}
 		for _, rule := range warnings {
-			profile.Warning = append(profile.Violation, rule)
+			profile.Warning = append(profile.Warning, rule)
 		}
 
 		infos, err := parseValidationLevel("info", doc, validations)
@@ -45,7 +54,7 @@ func Parse(doc *y.Yaml) (Profile, error) {
 			return profile, err
 		}
 		for _, rule := range infos {
-			profile.Info = append(profile.Violation, rule)
+			profile.Info = append(profile.Info, rule)
 		}
 		return profile, nil
 	}

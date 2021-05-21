@@ -176,6 +176,6 @@ func wrapBranch(name string, message string, branch BranchRegoResult, matchesVar
 		acc = append(acc, matchesLine)
 	}
 
-	acc = append(acc, fmt.Sprintf("  %s := error(\"%s\",%s,\"%s\",[%s])", matchesVariable, name, mappingVariable, message, strings.Join(resultBindings, ",")))
+	acc = append(acc, fmt.Sprintf("  %s := error(\"%s\",%s,\"%s\",[%s])", matchesVariable, name, mappingVariable, strings.ReplaceAll(message, "\n", "\\n"), strings.Join(resultBindings, ",")))
 	return acc
 }

@@ -30,7 +30,7 @@ func Validate(profileText string, jsonldText string, debug bool) (string, error)
 		panic(err)
 	}
 
-	normalizedInput := Normalize(input)
+	normalizedInput := Normalize(input, module.Prefixes)
 
 	if debug {
 		println("Input data")

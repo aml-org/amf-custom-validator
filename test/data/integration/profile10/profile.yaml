@@ -1,0 +1,55 @@
+#%Validation Profile 1.0
+
+profile: Kiali
+
+prefixes:
+  istio: http://mulesoft.com/models/istio#
+
+violation:
+  - kia1103-virtual-service-no-route-protocol
+  - kia1104-virtual-service-weight-assumed-100-percent
+
+warning:
+  - kia1108-virtual-service-preferred-gateway-nomenclature
+
+validations:
+
+  kia1103-virtual-service-no-route-protocol:
+    message: |
+      [KIA1103 - VirtualService doesn’t define any route protocol](https://kiali.io/documentation/latest/validations/#_kia1103_virtualservice_doesn_t_define_any_route_protocol)
+      VirtualService is a defined set of rules for routing certain type of traffic to target destinations with rules.
+      At least one, 'tcp', 'http' or 'tls' must be defined.
+    targetClass: istio.Spec
+    or:
+      - propertyConstraints:
+          data.http:
+            minCount: 1
+      - propertyConstraints:
+          data.tcp:
+            minCount: 1
+      - propertyConstraints:
+          data.tls:
+            minCount: 1
+
+  kia1104-virtual-service-weight-assumed-100-percent:
+    message: |
+      [KIA1104 - The weight is assumed to be 100 because there is only one route destination](https://kiali.io/documentation/latest/validations/#_kia1104_the_weight_is_assumed_to_be_100_because_there_is_only_one_route_destination)
+      Istio assumes the weight to be 100 when there is only one HTTPRouteDestination or RouteDestination. The warning is present because there is one route with a weight less than 100.
+    targetClass: istio.HTTPRoute
+    not:
+      propertyConstraints:
+        data.route:
+          minCount: 1
+          maxCount: 1
+          nested:
+            propertyConstraints:
+              data.weight:
+                minCount: 1
+
+  kia1108-virtual-service-preferred-gateway-nomenclature:
+    message: |
+      [KIA1108 - Preferred nomenclature: <gateway namespace>/<gateway name>](https://kiali.io/documentation/latest/validations/#_kia1108_preferred_nomenclature_gateway_namespace_gateway_name)
+    targetClass: istio.Spec
+    propertyConstraints:
+      data.gateways:
+        pattern: "^.+\\/.+$"

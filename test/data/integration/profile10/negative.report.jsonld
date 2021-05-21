@@ -1,0 +1,53 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": 1,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
+          "http://www.w3.org/ns/shacl#resultPath": "data.route"
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "maxCount",
+          "http://www.w3.org/ns/shacl#focusNode": 1,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
+          "http://www.w3.org/ns/shacl#resultPath": "data.route"
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "failed": 0,
+            "success": 1
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "",
+          "http://www.w3.org/ns/shacl#resultPath": "data.route"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "http://a.ml/amf/default_document#/encodes/spec/http/0"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "[KIA1104 - The weight is assumed to be 100 because there is only one route destination](https://kiali.io/documentation/latest/validations/#_kia1104_the_weight_is_assumed_to_be_100_because_there_is_only_one_route_destination)\nIstio assumes the weight to be 100 when there is only one HTTPRouteDestination or RouteDestination. The warning is present because there is one route with a weight less than 100.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "kia1104-virtual-service-weight-assumed-100-percent"
+      }
+    }
+  ]
+}

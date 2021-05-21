@@ -1,0 +1,157 @@
+[
+  {
+    "@id": "http://a.ml/amf/default_document",
+    "@type": [
+      "http://a.ml/vocabularies/meta#DialectInstance",
+      "http://a.ml/vocabularies/document#Document",
+      "http://a.ml/vocabularies/document#Fragment",
+      "http://a.ml/vocabularies/document#Module",
+      "http://a.ml/vocabularies/document#Unit"
+    ],
+    "http://a.ml/vocabularies/meta#definedBy": [
+      {
+        "@id": "file://models/istio/networking.istio.io/VirtualService_v1beta1.yaml"
+      }
+    ],
+    "http://a.ml/vocabularies/document#encodes": [
+      {
+        "@id": "http://a.ml/amf/default_document#/encodes",
+        "@type": [
+          "http://mulesoft.com/models/istio#VirtualService",
+          "file://models/istio/networking.istio.io/VirtualService_v1beta1.yaml#/declarations/VirtualService",
+          "http://a.ml/vocabularies/meta#DialectDomainElement",
+          "http://a.ml/vocabularies/document#DomainElement"
+        ],
+        "http://a.ml/vocabularies/data#spec": [
+          {
+            "@id": "http://a.ml/amf/default_document#/encodes/spec",
+            "@type": [
+              "http://mulesoft.com/models/istio#Spec",
+              "file://models/istio/networking.istio.io/VirtualService_v1beta1.yaml#/declarations/Spec",
+              "http://a.ml/vocabularies/meta#DialectDomainElement",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/data#http": [
+              {
+                "@id": "http://a.ml/amf/default_document#/encodes/spec/http/0",
+                "@type": [
+                  "http://mulesoft.com/models/istio#HTTPRoute",
+                  "file://models/istio/networking.istio.io/VirtualService_v1beta1.yaml#/declarations/HTTPRoute",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/data#route": [
+                  {
+                    "@id": "http://a.ml/amf/default_document#/encodes/spec/http/0/route/0",
+                    "@type": [
+                      "http://mulesoft.com/models/istio#HTTPRouteDestination",
+                      "file://models/istio/networking.istio.io/VirtualService_v1beta1.yaml#/declarations/HTTPRouteDestination",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/data#weight": [
+                      {
+                        "@value": 10
+                      }
+                    ],
+                    "http://a.ml/vocabularies/data#destination": [
+                      {
+                        "@id": "http://a.ml/amf/default_document#/encodes/spec/http/0/route/0/destination",
+                        "@type": [
+                          "http://mulesoft.com/models/istio#Destination",
+                          "file://models/istio/networking.istio.io/VirtualService_v1beta1.yaml#/declarations/Destination",
+                          "http://a.ml/vocabularies/meta#DialectDomainElement",
+                          "http://a.ml/vocabularies/document#DomainElement"
+                        ],
+                        "http://a.ml/vocabularies/data#host": [
+                          {
+                            "@value": "reviews"
+                          }
+                        ],
+                        "http://a.ml/vocabularies/data#subset": [
+                          {
+                            "@value": "v1"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "@id": "http://a.ml/amf/default_document#/encodes/spec/http/0/route/1",
+                    "@type": [
+                      "http://mulesoft.com/models/istio#HTTPRouteDestination",
+                      "file://models/istio/networking.istio.io/VirtualService_v1beta1.yaml#/declarations/HTTPRouteDestination",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/data#weight": [
+                      {
+                        "@value": 90
+                      }
+                    ],
+                    "http://a.ml/vocabularies/data#destination": [
+                      {
+                        "@id": "http://a.ml/amf/default_document#/encodes/spec/http/0/route/1/destination",
+                        "@type": [
+                          "http://mulesoft.com/models/istio#Destination",
+                          "file://models/istio/networking.istio.io/VirtualService_v1beta1.yaml#/declarations/Destination",
+                          "http://a.ml/vocabularies/meta#DialectDomainElement",
+                          "http://a.ml/vocabularies/document#DomainElement"
+                        ],
+                        "http://a.ml/vocabularies/data#host": [
+                          {
+                            "@value": "other"
+                          }
+                        ],
+                        "http://a.ml/vocabularies/data#subset": [
+                          {
+                            "@value": "v1"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/data#hosts": [
+              {
+                "@value": "reviews"
+              }
+            ]
+          }
+        ],
+        "http://a.ml/vocabularies/data#metadata": [
+          {
+            "@id": "http://a.ml/amf/default_document#/encodes/metadata",
+            "@type": [
+              "file://models/istio/networking.istio.io/VirtualService_v1beta1.yaml#/declarations/ObjectMeta",
+              "http://a.ml/vocabularies/meta#DialectDomainElement",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/data#name": [
+              {
+                "@value": "reviews"
+              }
+            ]
+          }
+        ],
+        "http://a.ml/vocabularies/data#kind": [
+          {
+            "@value": "VirtualService"
+          }
+        ]
+      }
+    ],
+    "http://a.ml/vocabularies/document#version": [
+      {
+        "@value": "2.1.0"
+      }
+    ],
+    "http://a.ml/vocabularies/document#root": [
+      {
+        "@value": true
+      }
+    ]
+  }
+]

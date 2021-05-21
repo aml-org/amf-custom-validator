@@ -34,6 +34,7 @@ type Hashable interface {
 type Profile struct {
 	Name        string
 	Description *string
+	Prefixes    ProfileContext
 	Violation   []Rule
 	Warning     []Rule
 	Info        []Rule
@@ -43,6 +44,7 @@ func NewProfile() Profile {
 	return Profile{
 		Name:        "",
 		Description: nil,
+		Prefixes:    make(ProfileContext),
 		Violation:   make([]Rule, 0),
 		Warning:     make([]Rule, 0),
 		Info:        make([]Rule, 0),

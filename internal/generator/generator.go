@@ -10,6 +10,7 @@ type RegoUnit struct {
 	Name       string
 	Entrypoint string
 	Code       string
+	Prefixes   profile.ProfileContext
 }
 
 // Main entry point generating a valid Rego unit from a parsed profile.
@@ -24,6 +25,7 @@ func Generate(profile profile.Profile) RegoUnit {
 		Name:       packageName(profile),
 		Entrypoint: entrypoint(profile),
 		Code:       strings.Join(acc, "\n"),
+		Prefixes:   profile.Prefixes,
 	}
 }
 
