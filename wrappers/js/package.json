@@ -1,0 +1,11 @@
+{
+  "name": "amf-opa-validator",
+  "version": "0.1.0",
+  "description": "AMF validatior backed by Rego",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antonio Garrote",
+  "license": "ISC"
+}

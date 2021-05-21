@@ -179,7 +179,7 @@ func parseQualifiedNestedExpression(qNested *y.Yaml, negated bool, variable Vari
 		return n, nil
 	}
 
-	return nil, errors.New(fmt.Sprint("expected nested expression to build quantified nested expression but got %v", nested))
+	return nil, errors.New(fmt.Sprintf("expected nested expression to build quantified nested expression but got %v", nested))
 }
 
 // We are always stringifying the value to be able to compare it easily in Rego

@@ -7,13 +7,13 @@ import (
 
 func validateWrapper() js.Func {
 	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
-		println("Inside the function")
-		if len(args) != 2 {
+		if len(args) != 3 {
 			return "Invalid no of arguments passed"
 		}
 		profileString := args[0].String()
 		dataString := args[1].String()
-		res, err := validator.Validate(profileString, dataString, true)
+		debug := args[2].Bool()
+		res, err := validator.Validate(profileString, dataString, debug)
 		if err != nil {
 			return err.Error()
 		}
@@ -24,6 +24,6 @@ func validateWrapper() js.Func {
 
 func main() {
 	f := validateWrapper()
-	js.Global().Set("validateCustomProfile", f)
+	js.Global().Set("__AMF__validateCustomProfile", f)
 	<-make(chan bool)
 }
