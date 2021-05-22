@@ -12,7 +12,7 @@ import (
 
 func TestGenerated(t *testing.T) {
 
-	for _, fix := range test.Fixtures("../../test/data") {
+	for _, fix := range test.Fixtures("../../test/data/basic") {
 		profile.GenReset()
 		prof, err := parser.Parse(fix.ReadProfile())
 		if err != nil {

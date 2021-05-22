@@ -21,7 +21,7 @@ func Fixtures(root string) []Fixture {
 		if err != nil {
 			panic("error reading data directory")
 		}
-		if strings.Index(path, ".yaml") > -1 && strings.Index(path, "integration") == -1 /*&& strings.Index(path, "profile5") > -1*/ {
+		if strings.Index(path, ".yaml") > -1 /*&& strings.Index(path, "profile5") > -1*/ {
 			parsed := strings.ReplaceAll(path, ".yaml", ".parsed")
 			generated := strings.ReplaceAll(path, ".yaml", ".rego")
 			fixture := Fixture{
