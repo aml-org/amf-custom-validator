@@ -15,3 +15,6 @@
 vendor/
 
 .idea
+
+# Don't store the wasm code
+wrappers/js/lib/main.wasm
