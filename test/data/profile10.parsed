@@ -1,0 +1,6 @@
+array-limits[violation] :=  ∀x[Class(raml-shapes.ArrayShape)] : 
+  (
+    maxExclusive(x,'shacl.minCount',50.450000)
+  ∧
+    minInclusive(x,'shacl.minCount',25)
+  )

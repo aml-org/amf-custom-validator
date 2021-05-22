@@ -1,0 +1,15 @@
+#%Validation Profile 1.0
+
+profile: Test10
+
+violation:
+  - array-limits
+
+validations:
+
+  array-limits:
+    targetClass: raml-shapes.ArrayShape
+    propertyConstraints:
+      shacl.minCount:
+        minInclusive: 25
+        maxExclusive: 50.45

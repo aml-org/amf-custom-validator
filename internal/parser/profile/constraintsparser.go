@@ -107,6 +107,42 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, rule)
 	}
 
+	num := constraint.Get("minInclusive")
+	if num.IsFound() {
+		rule, err := parseMinInclusive(false, variable, path, num)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, rule)
+	}
+
+	num = constraint.Get("minExclusive")
+	if num.IsFound() {
+		rule, err := parseMinExclusive(false, variable, path, num)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, rule)
+	}
+
+	num = constraint.Get("maxInclusive")
+	if num.IsFound() {
+		rule, err := parseMaxInclusive(false, variable, path, num)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, rule)
+	}
+
+	num = constraint.Get("maxExclusive")
+	if num.IsFound() {
+		rule, err := parseMaxExclusive(false, variable, path, num)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, rule)
+	}
+
 	nested := constraint.Get("nested")
 	if nested.IsFound() && nested.IsMap() {
 		rule, err := parseNestedExpression(nested, false, variable, path, varGenerator)
