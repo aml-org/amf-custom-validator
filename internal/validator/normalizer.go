@@ -15,6 +15,7 @@ func Normalize(json interface{}, prefixes profile.ProfileContext) interface{} {
 		"doc":         "http://a.ml/vocabularies/document#",
 		"apiContract": "http://a.ml/vocabularies/apiContract#",
 		"core":        "http://a.ml/vocabularies/core#",
+		"xsd":         "http://www.w3.org/2001/XMLSchema#",
 	}
 	for n, p := range prefixes {
 		context[n] = p

@@ -107,6 +107,41 @@ nested_values[nested_values] {
   nested_values := {value | n = data.nodes[_]; value := n[data.property]}
 }
 
+# helper to check datatype constraints
+
+check_datatype(x,dt) = true {
+  dt == "xsd:string"
+  is_string(x)
+}
+
+check_datatype(x,dt) = true {
+  dt == "xsd:integer"
+  is_number(x)
+}
+
+check_datatype(x,dt) = true {
+  dt == "xsd:float"
+  is_number(x)
+}
+
+check_datatype(x,dt) = true {
+  dt == "xsd:boolean"
+  is_boolean(x)
+}
+
+check_datatype(x,dt) = true {
+  is_object(x)
+  t = object.get(x,"@type","")
+  t == dt
+}
+
+check_datatype(x,dt) = false {
+  not is_object(x)
+  dt != "xsd:string"
+  dt != "xsd:integer"
+  dt != "xsd:float"
+  dt != "xsd:boolean"
+}
 
 # Fetches all the nodes for a given RDF class
 target_class[node] {

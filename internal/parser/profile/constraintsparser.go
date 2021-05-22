@@ -143,6 +143,15 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, rule)
 	}
 
+	dt := constraint.Get("datatype")
+	if dt.IsFound() {
+		rule, err := parseDatatype(false, variable, path, dt)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, rule)
+	}
+
 	nested := constraint.Get("nested")
 	if nested.IsFound() && nested.IsMap() {
 		rule, err := parseNestedExpression(nested, false, variable, path, varGenerator)

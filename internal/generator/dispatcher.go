@@ -26,6 +26,8 @@ func Dispatch(r profile.Rule) []GeneratedRegoResult {
 		return simpleAsGeneratedRegoResult(GenerateRegoRule(e))
 	case profile.NumericRule:
 		return simpleAsGeneratedRegoResult(GenerateNumericComparison(e))
+	case profile.DatatypeRule:
+		return simpleAsGeneratedRegoResult(GenerateDatatype(e))
 	default:
 		panic(errors.New(fmt.Sprintf("unknown rule type %v", r)))
 	}
