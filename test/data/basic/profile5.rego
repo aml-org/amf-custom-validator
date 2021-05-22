@@ -3,8 +3,8 @@ package testprofile5
 
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {
-  node := input["@graph"][_]
-  node["@id"] = data.link["@id"]
+  id := data.link["@id"]
+  node := input["@ids"][id]
 }
 
 # Makes sure that value is wrapped in an array even if it is a single object property
@@ -71,17 +71,11 @@ check_datatype(x,dt) = false {
 
 # Fetches all the nodes for a given RDF class
 target_class[node] {
-  node := input["@graph"][_]
-  node["@type"][_] == data.class
+  class = data.class
+  id = input["@types"][class][_]
+  node = input["@ids"][id] 
 }
 
-# Fetches all the nodes without the given RDF class
-target_class_negated[result] {
-  node = input["@graph"][_]
-  classes = [type | c := node["@type"][_]; c == data.class; type := c]
-  count(classes) == 0
-  result := node
-}
 
 # Transform scalars to string, useful for 'in' constraints
 as_string(x) = x {

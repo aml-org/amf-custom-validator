@@ -10,7 +10,7 @@ import (
 const debug = false
 
 func TestValidate(t *testing.T) {
-	//filter := "profile10"
+	//filter := "profile1"
 	for _, fixture := range test.IntegrationFixtures("../../test/data/integration", nil) {
 		profile := fixture.ReadProfile()
 

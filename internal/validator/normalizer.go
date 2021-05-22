@@ -27,3 +27,32 @@ func Normalize(json interface{}, prefixes profile.ProfileContext) interface{} {
 
 	return flattened
 }
+
+func Index(json interface{}) interface{} {
+	classIndex := make(map[string][]string)
+	nodeIndex := make(map[string]interface{})
+
+	g := json.(map[string]interface{})["@graph"]
+	nodes := g.([]interface{})
+
+	for _, nn := range nodes {
+		n := nn.(map[string]interface{})
+		id := n["@id"].(string)
+		classes := n["@type"]
+		nodeIndex[id] = n
+		for _, cc := range classes.([]interface{}) {
+			c := cc.(string)
+			acc, ok := classIndex[c]
+			if !ok {
+				acc = make([]string, 0)
+			}
+			acc = append(acc, id)
+			classIndex[c] = acc
+		}
+	}
+
+	return map[string]interface{}{
+		"@ids":   nodeIndex,
+		"@types": classIndex,
+	}
+}
