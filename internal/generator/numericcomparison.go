@@ -26,10 +26,10 @@ func generateNumericRule(num profile.NumericRule, rule string, op string) []Simp
 
 	// Let's get the path computed and stored in the inValuesVariable
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GenerateNodeArray(path, num.Variable.Name, num.ValueHash())
+	pathResult := GeneratePropertyArray(path, num.Variable.Name, num.ValueHash())
 	valueVariable := profile.Genvar("numeric_comparison")
-	rego = append(rego, fmt.Sprintf("%s = %s with data.sourceNode as %s", valueVariable, pathResult.rule, num.Variable.Name))
-
+	rego = append(rego, fmt.Sprintf("%s_elem = %s with data.sourceNode as %s", valueVariable, pathResult.rule, num.Variable.Name))
+	rego = append(rego, fmt.Sprintf("%s = %s_elem[_]", valueVariable, valueVariable))
 	// Add the validation
 	if num.Negated {
 		i, errI := num.IntArgument()
@@ -61,7 +61,7 @@ func generateNumericRule(num profile.NumericRule, rule string, op string) []Simp
 		Path:       num.Path.Source(),
 		Value:      fmt.Sprintf("%s", valueVariable),
 		Variable:   valueVariable,
-		Trace:      fmt.Sprintf("value not matching rule %v", num.Argument),
+		Trace:      fmt.Sprintf("value not matching rule %s", num.String()),
 	}
 	return []SimpleRegoResult{r}
 }

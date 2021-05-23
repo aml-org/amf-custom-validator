@@ -13,7 +13,7 @@
           ],
           "http://a.ml/vocabularies/validation#component": "in",
           "http://www.w3.org/ns/shacl#focusNode": "get",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_inValues_83 and enumeration ['get']",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_inValues_95 and enumeration ['get']",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.method"
         },
         {
@@ -51,7 +51,7 @@
           ],
           "http://a.ml/vocabularies/validation#component": "in",
           "http://www.w3.org/ns/shacl#focusNode": "get",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_inValues_83 and enumeration ['get']",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_inValues_95 and enumeration ['get']",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.method"
         },
         {
@@ -89,7 +89,7 @@
           ],
           "http://a.ml/vocabularies/validation#component": "in",
           "http://www.w3.org/ns/shacl#focusNode": "get",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_inValues_83 and enumeration ['get']",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_inValues_95 and enumeration ['get']",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.method"
         },
         {

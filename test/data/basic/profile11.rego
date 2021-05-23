@@ -140,9 +140,9 @@ default info = []
 
 gen_path_rule_1[nodes] {
   init_x_0__ = data.sourceNode
-  tmp_x = nested_nodes with data.nodes as init_x_0__["apiContract:scheme"]
-  x = tmp_x[_][_]
-  nodes = x
+  nodes_tmp = object.get(init_x_0__,"apiContract:scheme",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
 }
 
 # Constraint rules
@@ -150,7 +150,8 @@ gen_path_rule_1[nodes] {
 violation[matches] {
   target_class[x] with data.class as "apiContract:WebAPI"
   #  querying path: apiContract.scheme
-  gen_datatype_check_2 = gen_path_rule_1 with data.sourceNode as x
+  gen_datatype_check_2_elem = gen_path_rule_1 with data.sourceNode as x
+  gen_datatype_check_2 = gen_datatype_check_2_elem[_]
   not check_datatype(gen_datatype_check_2,"xsd:string")
   _result_0 := trace("datatype","apiContract.scheme",gen_datatype_check_2,"Error with datatype gen_datatype_check_2")
   matches := error("allowed-protocols",x,"Validation error",[_result_0])

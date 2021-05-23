@@ -10,7 +10,7 @@ import (
 const debug = false
 
 func TestValidate(t *testing.T) {
-	//filter := "profile1"
+	//filter := "profile12"
 	for _, fixture := range test.IntegrationFixtures("../../test/data/integration", nil) {
 		profile := fixture.ReadProfile()
 
@@ -22,6 +22,7 @@ func TestValidate(t *testing.T) {
 			t.Errorf("positive case failed")
 		}
 		expected := strings.TrimSpace(fixture.ReadFixturePositiveReport())
+
 		//test.ForceWrite(string(fixture)+"/positive.report.jsonld", strings.TrimSpace(report))
 		if strings.TrimSpace(report) != expected {
 			t.Errorf(fmt.Sprintf("failed positive report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", fixture, expected, report))
@@ -39,6 +40,7 @@ func TestValidate(t *testing.T) {
 		if strings.TrimSpace(report) != expected {
 			t.Errorf(fmt.Sprintf("failed positive report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", fixture, expected, report))
 		}
+
 	}
 }
 

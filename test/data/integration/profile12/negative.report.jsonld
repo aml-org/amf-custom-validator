@@ -1,0 +1,90 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "datatype",
+          "http://www.w3.org/ns/shacl#focusNode": "100",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with datatype gen_datatype_check_44",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Validation error",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "array-limits"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "datatype",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@type": "xsd:string",
+            "@value": "100"
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with datatype gen_datatype_check_44",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails2"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Validation error",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "array-limits"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "datatype",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@type": "xsd:wadus",
+            "@value": "100"
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with datatype gen_datatype_check_44",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails3"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Validation error",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "array-limits"
+      }
+    }
+  ]
+}

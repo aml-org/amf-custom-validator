@@ -140,16 +140,16 @@ default info = []
 
 gen_path_rule_1[nodes] {
   init_x_0__ = data.sourceNode
-  tmp_x = nested_nodes with data.nodes as init_x_0__["shacl:minCount"]
-  x = tmp_x[_][_]
-  nodes = x
+  nodes_tmp = object.get(init_x_0__,"shacl:minCount",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
 }
 
 gen_path_rule_3[nodes] {
   init_x_0__ = data.sourceNode
-  tmp_x = nested_nodes with data.nodes as init_x_0__["shacl:minCount"]
-  x = tmp_x[_][_]
-  nodes = x
+  nodes_tmp = object.get(init_x_0__,"shacl:minCount",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
 }
 
 # Constraint rules
@@ -157,17 +157,19 @@ gen_path_rule_3[nodes] {
 violation[matches] {
   target_class[x] with data.class as "raml-shapes:ArrayShape"
   #  querying path: shacl.minCount
-  gen_numeric_comparison_2 = gen_path_rule_1 with data.sourceNode as x
+  gen_numeric_comparison_2_elem = gen_path_rule_1 with data.sourceNode as x
+  gen_numeric_comparison_2 = gen_numeric_comparison_2_elem[_]
   not gen_numeric_comparison_2 >= 25
-  _result_0 := trace("minimumInclusive","shacl.minCount",gen_numeric_comparison_2,"value not matching rule &{25}")
+  _result_0 := trace("minimumInclusive","shacl.minCount",gen_numeric_comparison_2,"value not matching rule minInclusive(x,'shacl.minCount',25)")
   matches := error("array-limits",x,"Validation error",[_result_0])
 }
 
 violation[matches] {
   target_class[x] with data.class as "raml-shapes:ArrayShape"
   #  querying path: shacl.minCount
-  gen_numeric_comparison_4 = gen_path_rule_3 with data.sourceNode as x
+  gen_numeric_comparison_4_elem = gen_path_rule_3 with data.sourceNode as x
+  gen_numeric_comparison_4 = gen_numeric_comparison_4_elem[_]
   not gen_numeric_comparison_4 < 50.450000
-  _result_0 := trace("maximumExclusive","shacl.minCount",gen_numeric_comparison_4,"value not matching rule &{50.45}")
+  _result_0 := trace("maximumExclusive","shacl.minCount",gen_numeric_comparison_4,"value not matching rule maxExclusive(x,'shacl.minCount',50.450000)")
   matches := error("array-limits",x,"Validation error",[_result_0])
 }
