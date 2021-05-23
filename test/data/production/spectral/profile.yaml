@@ -4,6 +4,8 @@ profile: Spectral
 
 violation:
   - operation-2xx-response
+  - operation-operationId-unique
+  - operation-parameters
 
 validations:
 
@@ -17,3 +19,42 @@ validations:
       apiContract.returns / apiContract.statusCode:
         minCount: 1
         pattern: "2[0-9][0-9]"
+
+  # automatically enforced by AMF
+  operation-operationId-unique:
+    message: |
+      Every operation must have a unique operationId.
+
+      Why? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,
+      all sorts of things like that.
+    targetClass: apiContract.WebAPI
+    rego: |
+        nested_nodes[endpoints] with data.nodes as $node["apiContract:endpoint"]
+        operations = [operation |
+          endpoint = endpoints[_]
+          supOperations = nested_nodes with data.nodes as  endpoint["apiContract:supportedOperation"]
+          op = supOperations[_][_]
+          op["apiContract:operationId"]
+          operation = op
+        ]
+
+        operationIds = {operationId |
+          operation = operations[_]
+          operationId = operation["apiContract:operationId"]
+        }
+        $result = (count(operations) == count(operationIds))
+
+  # automatically enforced by AMF
+  operation-parameters:
+    message: Operation parameters are unique and non-repeating.
+    targetClass: apiContract.EndPoint
+    rego: |
+      nested_nodes[parameters] with data.nodes as $node["apiContract:parameter"]
+      keys = [ desc |
+        parameter = parameters[_]
+        name = parameter["core:name"]
+        binding = parameter["apiContract:binding"]
+        desc = [name,binding]
+      ]
+      key_set = { e | e = keys[_] }
+      $result = (count(keys) == count(key_set))

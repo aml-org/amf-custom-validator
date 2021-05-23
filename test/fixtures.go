@@ -82,6 +82,7 @@ func ProductionFixtures(root string, filter *string) []ProductionFixture {
 }
 
 type ProductionExample struct {
+	File     string
 	Text     string
 	Positive bool
 }
@@ -97,11 +98,13 @@ func (f ProductionFixture) Examples() []ProductionExample {
 
 			if strings.Index(path, "positive") > -1 {
 				acc = append(acc, ProductionExample{
+					File:     path,
 					Text:     string(bytes),
 					Positive: true,
 				})
 			} else {
 				acc = append(acc, ProductionExample{
+					File:     path,
 					Text:     string(bytes),
 					Positive: false,
 				})

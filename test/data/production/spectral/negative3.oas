@@ -1,0 +1,29 @@
+openapi: 3.0.0
+
+info:
+  title: Example API
+
+
+paths:
+  /pet:
+    patch:
+      operationId: "update-pet"
+      responses:
+        "200":
+          description: ok
+    put:
+      operationId: "update-pet1"
+      responses:
+        "200":
+          description: ok
+  /other:
+    patch:
+      operationId: "update-pet2"
+      responses:
+        "200":
+          description: ok
+    put:
+      operationId: "update-pet3"
+      responses:
+        "200":
+          description: ok

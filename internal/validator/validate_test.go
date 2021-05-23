@@ -14,12 +14,15 @@ func TestProduction(t *testing.T) {
 	for _, fixture := range test.ProductionFixtures("../../test/data/production", nil) {
 		profile := fixture.Profile()
 		for _, example := range fixture.Examples() {
-			report, err := Validate(profile, example.Text, debug)
-			if err != nil {
-				t.Errorf("positive validation failed %v", err)
-			}
-			if conforms(report) != example.Positive {
-				t.Errorf(fmt.Sprintf("%s, expected conforms: %t got conforms %t", string(fixture), example.Positive, conforms(report)))
+			filter := ""
+			if strings.Index(example.File, filter) > -1 {
+				report, err := Validate(profile, example.Text, debug)
+				if err != nil {
+					t.Errorf("Validation failed %v", err)
+				}
+				if conforms(report) != example.Positive {
+					t.Errorf(fmt.Sprintf("%s, %s expected conforms: %t got conforms %t\n\n%s\n", string(fixture), example.File, example.Positive, conforms(report), report))
+				}
 			}
 		}
 	}
