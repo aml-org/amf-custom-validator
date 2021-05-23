@@ -1,0 +1,11 @@
+openapi: 3.0.0
+
+info:
+  title: Example API
+
+paths:
+  /path:
+    post:
+      responses:
+        "201":
+          description: teapot

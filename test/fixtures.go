@@ -15,6 +15,8 @@ type Fixture struct {
 
 type IntegrationFixture string
 
+type ProductionFixture string
+
 func Fixtures(root string) []Fixture {
 	fixtures := make([]Fixture, 0)
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
@@ -57,6 +59,66 @@ func IntegrationFixtures(root string, filter *string) []IntegrationFixture {
 		panic(err)
 	}
 	return fixtures
+}
+
+func ProductionFixtures(root string, filter *string) []ProductionFixture {
+	var fixtures []ProductionFixture
+	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		if info.IsDir() && !strings.HasSuffix(path, "production") {
+			if filter != nil {
+				if strings.Index(path, *filter) > -1 {
+					fixtures = append(fixtures, ProductionFixture(path))
+				}
+				return nil
+			}
+			fixtures = append(fixtures, ProductionFixture(path))
+		}
+		return nil
+	})
+	if err != nil {
+		panic(err)
+	}
+	return fixtures
+}
+
+type ProductionExample struct {
+	Text     string
+	Positive bool
+}
+
+func (f ProductionFixture) Examples() []ProductionExample {
+	var acc []ProductionExample
+	filepath.Walk(string(f), func(path string, info os.FileInfo, err error) error {
+		if strings.HasSuffix(path, ".jsonld") {
+			bytes, err := ioutil.ReadFile(string(path))
+			if err != nil {
+				panic(err)
+			}
+
+			if strings.Index(path, "positive") > -1 {
+				acc = append(acc, ProductionExample{
+					Text:     string(bytes),
+					Positive: true,
+				})
+			} else {
+				acc = append(acc, ProductionExample{
+					Text:     string(bytes),
+					Positive: false,
+				})
+			}
+		}
+		return nil
+	})
+
+	return acc
+}
+
+func (f ProductionFixture) Profile() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/profile.yaml")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
 }
 
 func (f IntegrationFixture) ReadProfile() string {

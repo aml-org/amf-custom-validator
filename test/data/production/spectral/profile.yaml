@@ -1,0 +1,19 @@
+#%Validation Profile 1.0
+
+profile: Spectral
+
+violation:
+  - operation-2xx-response
+
+validations:
+
+  operation-2xx-response:
+    message: |
+      Operation must have at least one 2xx response. Any API operation (endpoint) can fail but presumably it is also
+      meant to do something constructive at some point. If you forget to write out a success case for this API, then
+      this rule will let you know.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.returns / apiContract.statusCode:
+        minCount: 1
+        pattern: "2[0-9][0-9]"
