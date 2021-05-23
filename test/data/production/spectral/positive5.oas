@@ -1,0 +1,65 @@
+openapi: 3.0.0
+
+info:
+  title: Example API
+
+paths:
+  /users:
+    get:
+      responses:
+        '200':
+          description: the user being returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid: # the unique user id
+                    type: string
+                    format: uuid
+  /users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: the user identifier, as userId
+        schema:
+          type: string
+    get:
+      responses:
+        '200':
+          description: the user being returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid: # the unique user id
+                    type: string
+                    format: uuid
+  /users/{id}/others/{other}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: the user identifier, as userId
+        schema:
+          type: string
+      - name: other
+        in: path
+        required: true
+        description: the user identifier, as userId
+        schema:
+          type: string
+    get:
+      responses:
+        '200':
+          description: the user being returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid: # the unique user id
+                    type: string
+                    format: uuid

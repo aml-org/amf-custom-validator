@@ -6,6 +6,7 @@ violation:
   - operation-2xx-response
   - operation-operationId-unique
   - operation-parameters
+  - path-params
 
 validations:
 
@@ -58,3 +59,24 @@ validations:
       ]
       key_set = { e | e = keys[_] }
       $result = (count(keys) == count(key_set))
+
+  path-params:
+    message: |
+      Path parameters are correct and valid.
+        1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in
+           either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently
+           ignored.)
+        2. Every path.parameters and operation.parameters parameter must be used in the path string.
+    targetClass: apiContract.EndPoint
+    rego: |
+      path = $node["apiContract:path"]
+      pathVariables = {v | ms = regex.find_all_string_submatch_n("{([a-z0-9_]+)}", path, -1); m = ms[_]; v = m[1] }
+
+      nested_nodes[parameters] with data.nodes as object.get($node,"apiContract:parameter",[])
+      declaredPathVariables = { desc |
+        parameter = parameters[_]
+        name = parameter["core:name"]
+        parameter["apiContract:binding"] = "path"
+        desc = name
+      }
+      $result = (pathVariables == declaredPathVariables)

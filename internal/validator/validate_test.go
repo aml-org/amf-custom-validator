@@ -17,6 +17,7 @@ func TestProduction(t *testing.T) {
 			filter := ""
 			if strings.Index(example.File, filter) > -1 {
 				report, err := Validate(profile, example.Text, debug)
+				//println(report)
 				if err != nil {
 					t.Errorf("Validation failed %v", err)
 				}
