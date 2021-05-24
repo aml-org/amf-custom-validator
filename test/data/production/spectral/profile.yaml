@@ -49,21 +49,11 @@ validations:
       all sorts of things like that.
     targetClass: apiContract.WebAPI
     rego: |
-        nested_nodes[endpoints] with data.nodes as $node["apiContract:endpoint"]
-        operations = [operation |
-          endpoint = endpoints[_]
-          supOperations = nested_nodes with data.nodes as  endpoint["apiContract:supportedOperation"]
-          op = supOperations[_][_]
-          op["apiContract:operationId"]
-          operation = op
-        ]
+        o1 = collect with data.nodes as [$node] with data.property as "apiContract:endpoint"
+        operations = collect with data.nodes as o1 with data.property as "apiContract:supportedOperation"
+        operationIds = collect_values with data.nodes as operations with data.property as "apiContract:operationId"
 
-        operationIds = {operationId |
-          operation = operations[_]
-          operationId = operation["apiContract:operationId"]
-        }
         $result = (count(operations) == count(operationIds))
-
 
   # automatically enforced by AMF
   operation-parameters:
@@ -225,10 +215,10 @@ validations:
     message: Operation tags should be defined in global tags.
     targetClass: apiContract.WebAPI
     rego: |
-      o1 = collect with data.nodes as [x] with data.property as "apiContract:tag"
+      o1 = collect with data.nodes as [$node] with data.property as "apiContract:tag"
       top_level_tags = collect_values with data.nodes as o1 with data.property as "core:name"
 
-      p1 = collect with data.nodes as [x] with data.property as "apiContract:endpoint"
+      p1 = collect with data.nodes as [$node] with data.property as "apiContract:endpoint"
       p2 = collect with data.nodes as p1 with data.property as  "apiContract:supportedOperation"
       p3 = collect with data.nodes as p2 with data.property as "apiContract:tag"
       operation_tags = collect_values with data.nodes as p3 with data.property as "core:name"

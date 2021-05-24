@@ -13,6 +13,52 @@
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
           "http://www.w3.org/ns/shacl#focusNode": {
+            "@id": "file://./test/data/production/spectral/negative4.oas#/web-api",
+            "@type": [
+              "apiContract:WebAPI",
+              "apiContract:API",
+              "doc:RootDomainElement",
+              "doc:DomainElement"
+            ],
+            "apiContract:endpoint": [
+              {
+                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D"
+              },
+              {
+                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind"
+              }
+            ],
+            "core:name": "Example API",
+            "core:provider": {
+              "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/organization"
+            }
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
+          "http://www.w3.org/ns/shacl#resultPath": ""
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative4.oas#/web-api"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Every operation must have a unique operationId.\n\nWhy? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,\nall sorts of things like that.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "operation-operationId-unique"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "rego",
+          "http://www.w3.org/ns/shacl#focusNode": {
             "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",
             "@type": [
               "apiContract:EndPoint",

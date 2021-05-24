@@ -33,6 +33,27 @@ nested_values[nested_values] {
   nested_values := {value | n = data.nodes[_]; value := n[data.property]}
 }
 
+# collection functions
+
+# collect next set of nodes
+collect[r] {
+  nodes = data.nodes
+  n = nodes[_]
+  rs = object.get(n,data.property,[])
+  rss = nodes_array with data.nodes as rs
+  rsss = nested with data.nodes as rss
+  r = rsss[_]
+}
+
+# collect terminal values
+collect_values[r] {
+  nodes = data.nodes
+  n = nodes[_]
+  rs = object.get(n,data.property,[])
+  rss = nodes_array with data.nodes as rs
+  r = rss[_]
+}
+
 # helper to check datatype constraints
 
 check_datatype(x,dt) = true {
