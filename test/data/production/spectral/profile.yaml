@@ -25,6 +25,7 @@ violation:
 
 warning:
   - operation-singular-tag
+  - tag-description
 
 validations:
 
@@ -257,3 +258,17 @@ validations:
       propertyConstraints:
         apiContract.path:
           pattern: ".*\\\\?.*"
+
+  tag-description:
+    message: |
+      Tags alone are not very descriptive. Give folks a bit more information to work with.
+      If your tags are business objects then you can use the term to explain them a bit. An 'Account' could be a user
+      account, company information, bank account, potential sales lead, anything. What is clear to the folks writing
+      the document is probably not as clear to others.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiContract.tag:
+        nested:
+          propertyConstraints:
+            core.description:
+              minCount: 1
