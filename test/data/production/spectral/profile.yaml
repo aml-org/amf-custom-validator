@@ -21,6 +21,7 @@ violation:
   - operation-tag-defined
   - path-declarations-must-exist
   - path-keys-no-trailing-slash
+  - path-not-include-query
 
 warning:
   - operation-singular-tag
@@ -248,3 +249,11 @@ validations:
       propertyConstraints:
         apiContract.path:
           pattern: "\\\\/$"
+
+  path-not-include-query:
+    message: "Don't put query string items in the path, they belong in parameters with in: query."
+    targetClass: apiContract.EndPoint
+    not:
+      propertyConstraints:
+        apiContract.path:
+          pattern: ".*\\\\?.*"
