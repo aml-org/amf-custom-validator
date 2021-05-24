@@ -11,6 +11,7 @@ violation:
   - info-description
   - info-license
   - license-url
+  - no-eval-in-markdown
 
 validations:
 
@@ -49,6 +50,7 @@ validations:
         }
         $result = (count(operations) == count(operationIds))
 
+
   # automatically enforced by AMF
   operation-parameters:
     message: Operation parameters are unique and non-repeating.
@@ -63,6 +65,7 @@ validations:
       ]
       key_set = { e | e = keys[_] }
       $result = (count(keys) == count(key_set))
+
 
   path-params:
     message: |
@@ -84,6 +87,7 @@ validations:
         desc = name
       }
       $result = (pathVariables == declaredPathVariables)
+
 
   info-contact:
     message: |
@@ -125,3 +129,14 @@ validations:
     propertyConstraints:
       core.url:
         minCount: 1
+
+  no-eval-in-markdown:
+    message: |
+      This rule protects against an edge case, for anyone bringing in description documents from third parties and using
+      the parsed content rendered in HTML/JS. If one of those third parties does something shady like inject eval()
+      JavaScript statements, it could lead to an XSS attack.
+    targetClass: apiContract.WebAPI
+    not:
+      propertyConstraints:
+        core.description:
+          pattern: "eval\\\\("

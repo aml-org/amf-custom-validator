@@ -1,0 +1,32 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "pattern",
+          "http://www.w3.org/ns/shacl#focusNode": "a eval(somthing) description",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_path_rule_162_node and matching regular expression 'eval\\('",
+          "http://www.w3.org/ns/shacl#resultPath": "core.description"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative8.oas#/web-api"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "This rule protects against an edge case, for anyone bringing in description documents from third parties and using\nthe parsed content rendered in HTML/JS. If one of those third parties does something shady like inject eval()\nJavaScript statements, it could lead to an XSS attack.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "no-eval-in-markdown"
+      }
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-const debug = false
+const debug = true
 
 func TestProduction(t *testing.T) {
 	for _, fixture := range test.ProductionFixtures("../../test/data/production", nil) {
