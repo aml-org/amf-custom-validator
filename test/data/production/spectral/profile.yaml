@@ -22,6 +22,7 @@ violation:
   - path-declarations-must-exist
   - path-keys-no-trailing-slash
   - path-not-include-query
+  - duplicated-entry-in-enum
 
 warning:
   - operation-singular-tag
@@ -272,3 +273,13 @@ validations:
           propertyConstraints:
             core.description:
               minCount: 1
+
+  duplicated-entry-in-enum:
+    message: Each value of an enum must be different from one another.
+    targetClass: shapes.ScalarShape
+    rego: |
+      enum = object.get($node, "shacl:in",[])
+      enumValues = find with data.link as enum
+      props = [r | d = enumValues[_]; is_object(d); n=find with data.link as d; r=n["data:value"] ]
+      propsSet = {r | v = props[_]; r=v}
+      $result = (count(props) == count(propsSet))

@@ -57,7 +57,7 @@
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
           "http://www.w3.org/ns/shacl#focusNode": "/invoices/{id}/items?{test}",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_path_rule_337_node and matching regular expression '.*\\?.*'",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_path_rule_353_node and matching regular expression '.*\\?.*'",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.path"
         }
       ],

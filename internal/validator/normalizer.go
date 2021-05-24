@@ -16,6 +16,8 @@ func Normalize(json interface{}, prefixes profile.ProfileContext) interface{} {
 		"apiContract": "http://a.ml/vocabularies/apiContract#",
 		"core":        "http://a.ml/vocabularies/core#",
 		"xsd":         "http://www.w3.org/2001/XMLSchema#",
+		"rdfs":        "http://www.w3.org/2000/01/rdf-schema",
+		"rdf":         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
 	}
 	for n, p := range prefixes {
 		context[n] = p
@@ -40,14 +42,24 @@ func Index(json interface{}) interface{} {
 		id := n["@id"].(string)
 		classes := n["@type"]
 		nodeIndex[id] = n
-		for _, cc := range classes.([]interface{}) {
-			c := cc.(string)
-			acc, ok := classIndex[c]
+		switch cc := classes.(type) {
+		case string:
+			acc, ok := classIndex[cc]
 			if !ok {
 				acc = make([]string, 0)
 			}
 			acc = append(acc, id)
-			classIndex[c] = acc
+			classIndex[cc] = acc
+		case []interface{}:
+			for _, cc := range classes.([]interface{}) {
+				c := cc.(string)
+				acc, ok := classIndex[c]
+				if !ok {
+					acc = make([]string, 0)
+				}
+				acc = append(acc, id)
+				classIndex[c] = acc
+			}
 		}
 	}
 
