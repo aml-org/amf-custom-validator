@@ -20,6 +20,8 @@ paths:
         schema:
           type: string
     get:
+      description: op-description
+      operationId: opid1
       responses:
         '200':
           description: the user being returned
@@ -33,6 +35,8 @@ paths:
                     format: uuid
   /users/{id}:
     get:
+      description: op-description
+      operationId: opid2
       responses:
         '200':
           description: the user being returned
@@ -44,6 +48,7 @@ paths:
                   uuid: # the unique user id
                     type: string
                     format: uuid
+
   /users/{id}/others/{other}:
     parameters:
       - name: id
@@ -53,6 +58,8 @@ paths:
         schema:
           type: string
     get:
+      description: op-description
+      operationId: opid3
       responses:
         '200':
           description: the user being returned

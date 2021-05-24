@@ -88,6 +88,16 @@
                     "@value": "get"
                   }
                 ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "opid1"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#description": [
+                  {
+                    "@value": "op-description"
+                  }
+                ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
                     "@id": "file://./test/data/production/spectral/positive5.oas#/web-api/end-points/%2Fusers/get/200",
@@ -201,6 +211,11 @@
                       }
                     ]
                   }
+                ],
+                "http://a.ml/vocabularies/apiContract#operationId": [
+                  {
+                    "@value": "opid1"
+                  }
                 ]
               }
             ]
@@ -226,6 +241,16 @@
                 "http://a.ml/vocabularies/apiContract#method": [
                   {
                     "@value": "get"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "opid2"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#description": [
+                  {
+                    "@value": "op-description"
                   }
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
@@ -341,6 +366,11 @@
                       }
                     ]
                   }
+                ],
+                "http://a.ml/vocabularies/apiContract#operationId": [
+                  {
+                    "@value": "opid2"
+                  }
                 ]
               }
             ],
@@ -432,6 +462,16 @@
                 "http://a.ml/vocabularies/apiContract#method": [
                   {
                     "@value": "get"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "opid3"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#description": [
+                  {
+                    "@value": "op-description"
                   }
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
@@ -546,6 +586,11 @@
                         ]
                       }
                     ]
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#operationId": [
+                  {
+                    "@value": "opid3"
                   }
                 ]
               }

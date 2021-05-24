@@ -88,6 +88,16 @@
                     "@value": "post"
                   }
                 ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "opid"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#description": [
+                  {
+                    "@value": "op-description"
+                  }
+                ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
                     "@id": "file://./test/data/production/spectral/positive2.oas#/web-api/end-points/%2Fpath/post/201",
@@ -111,6 +121,11 @@
                         "@value": "teapot"
                       }
                     ]
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#operationId": [
+                  {
+                    "@value": "opid"
                   }
                 ]
               }

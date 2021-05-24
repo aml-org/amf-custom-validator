@@ -1,7 +1,6 @@
-openapi: 3.0.0
-
+openapi: "3.0.0"
 info:
-  title: Example API
+  title: Awesome API
   description: a description
   license:
     name: MIT
@@ -14,10 +13,18 @@ tags:
     description: description of the tag
 
 paths:
-  /path:
-    post:
-      description: op-description
+  /invoices/{id}/items:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: the invoice identifier, as is
+        schema:
+          type: string
+    get:
       operationId: opid
+      tags:
+        - Invoice Items
       responses:
-        "201":
+        "200":
           description: teapot

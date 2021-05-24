@@ -6,23 +6,28 @@ info:
 paths:
   /pet:
     patch:
+      description: op-description
       operationId: "update-pet"
       responses:
         "200":
           description: ok
     put:
+      description: op-description
       operationId: "update-pet"
       responses:
         "200":
           description: ok
+
   /other:
     patch:
+      description: op-description
       operationId: "update-pet"
       responses:
         "200":
           description: ok
     put:
       operationId: "update-pet"
+      description: op-description
       responses:
         "200":
           description: ok

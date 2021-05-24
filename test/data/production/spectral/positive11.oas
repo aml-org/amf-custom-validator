@@ -22,6 +22,8 @@ paths:
         schema:
           type: string
     get:
+      description: op-description
+      operationId: opid
       tags:
         - Invoice Items
       responses:

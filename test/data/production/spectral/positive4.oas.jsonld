@@ -88,6 +88,16 @@
                     "@value": "get"
                   }
                 ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "opid"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#description": [
+                  {
+                    "@value": "op-description"
+                  }
+                ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
                     "@id": "file://./test/data/production/spectral/positive4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200",
@@ -200,6 +210,11 @@
                         ]
                       }
                     ]
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#operationId": [
+                  {
+                    "@value": "opid"
                   }
                 ]
               }

@@ -13,4 +13,6 @@ info:
 paths:
   /path:
     get:
+      description: op-description
+      operationId: opid
       responses: {}

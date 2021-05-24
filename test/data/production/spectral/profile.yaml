@@ -1,6 +1,6 @@
 #%Validation Profile 1.0
 
-profile: Spectral
+profile: Spectral Base
 
 violation:
   - operation-2xx-response
@@ -15,6 +15,7 @@ violation:
   - no-script-tags-in-markdown
   - openapi-tags
   - operation-default-response
+  - operation-description
 
 validations:
 
@@ -177,3 +178,10 @@ validations:
       propertyConstraints:
         apiContract.statusCode:
           pattern: "default"
+
+  operation-description:
+    message: Operation must have a description explaining the operation functionality
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      core.description:
+        minCount: 1

@@ -16,6 +16,8 @@ tags:
 paths:
   /path:
     get:
+      description: op-description
+      operationId: opid
       responses:
         "200":
           description: teapot

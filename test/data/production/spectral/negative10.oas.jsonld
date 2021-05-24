@@ -88,6 +88,16 @@
                     "@value": "get"
                   }
                 ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "opid"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#description": [
+                  {
+                    "@value": "op-description"
+                  }
+                ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
                     "@id": "file://./test/data/production/spectral/negative10.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/get/200",
@@ -125,6 +135,11 @@
                         "@value": "Invoice Items"
                       }
                     ]
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#operationId": [
+                  {
+                    "@value": "opid"
                   }
                 ]
               }

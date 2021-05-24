@@ -125,6 +125,110 @@
       "http://www.w3.org/ns/shacl#sourceShape": {
         "@id": "openapi-tags"
       }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": 0,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
+          "http://www.w3.org/ns/shacl#resultPath": "core.description"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/patch"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Operation must have a description explaining the operation functionality",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "operation-description"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": 0,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
+          "http://www.w3.org/ns/shacl#resultPath": "core.description"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/put"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Operation must have a description explaining the operation functionality",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "operation-description"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": 0,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
+          "http://www.w3.org/ns/shacl#resultPath": "core.description"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/patch"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Operation must have a description explaining the operation functionality",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "operation-description"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": 0,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
+          "http://www.w3.org/ns/shacl#resultPath": "core.description"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/put"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Operation must have a description explaining the operation functionality",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "operation-description"
+      }
     }
   ]
 }
