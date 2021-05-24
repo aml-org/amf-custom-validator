@@ -68,6 +68,25 @@
               }
             ]
           }
+        ],
+        "http://a.ml/vocabularies/apiContract#tag": [
+          {
+            "@id": "file://./test/data/production/spectral/positive6.oas#/web-api/tag/Invoice%20Items",
+            "@type": [
+              "http://a.ml/vocabularies/apiContract#Tag",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "Invoice Items"
+              }
+            ],
+            "http://a.ml/vocabularies/core#description": [
+              {
+                "@value": "description of the tag"
+              }
+            ]
+          }
         ]
       }
     ],

@@ -27,6 +27,32 @@
       "http://www.w3.org/ns/shacl#sourceShape": {
         "@id": "info-contact"
       }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": 0,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative6.oas#/web-api"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "openapi-tags"
+      }
     }
   ]
 }

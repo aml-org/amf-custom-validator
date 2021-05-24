@@ -9,5 +9,8 @@ info:
   contact:
     name: A-Team
     email: a-team@goarmy.com
+tags:
+  - name: Invoice Items
+    description: description of the tag
 
 paths: {}

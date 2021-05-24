@@ -13,6 +13,7 @@ violation:
   - license-url
   - no-eval-in-markdown
   - no-script-tags-in-markdown
+  - openapi-tags
 
 validations:
 
@@ -153,3 +154,13 @@ validations:
       propertyConstraints:
         core.description:
           pattern: "<script>"
+
+  openapi-tags:
+    message: |
+      OpenAPI object should have non-empty tags array.
+      Why? Well, you can reference tags arbitrarily in operations, and definition is optional...
+      Defining tags allows you to add more information like a description.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiContract.tag:
+        minCount: 1
