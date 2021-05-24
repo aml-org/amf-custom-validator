@@ -14,6 +14,7 @@ violation:
   - no-eval-in-markdown
   - no-script-tags-in-markdown
   - openapi-tags
+  - operation-default-response
 
 validations:
 
@@ -24,9 +25,13 @@ validations:
       this rule will let you know.
     targetClass: apiContract.Operation
     propertyConstraints:
-      apiContract.returns / apiContract.statusCode:
-        minCount: 1
-        pattern: "2[0-9][0-9]"
+      apiContract.returns:
+        atLeast:
+          count: 1
+          validation:
+            propertyConstraints:
+              apiContract.statusCode:
+                pattern: "2[0-9][0-9]"
 
   # automatically enforced by AMF
   operation-operationId-unique:
@@ -164,3 +169,11 @@ validations:
     propertyConstraints:
       apiContract.tag:
         minCount: 1
+
+  operation-default-response:
+    message: Don't use default responses, provide a valid status code
+    targetClass: apiContract.Response
+    not:
+      propertyConstraints:
+        apiContract.statusCode:
+          pattern: "default"
