@@ -6,5 +6,8 @@ info:
   license:
     name: MIT
     url: https://www.tldrlegal.com/l/mit
+tags:
+  - name: tag
+    description: description of the tag
 
 paths: {}

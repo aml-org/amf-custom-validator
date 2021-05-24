@@ -38,6 +38,8 @@ paths:
     get:
       description: op-description
       operationId: opid
+      tags:
+        - Invoice Items
       responses:
         '200':
           description: the user being returned

@@ -18,6 +18,8 @@ paths:
     get:
       description: op-description
       operationId: opid1
+      tags:
+        - Invoice Items
       responses:
         '200':
           description: the user being returned
@@ -41,6 +43,8 @@ paths:
     get:
       description: op-description
       operationId: opid2
+      tags:
+        - Invoice Items
       responses:
         '200':
           description: the user being returned
@@ -70,6 +74,8 @@ paths:
     get:
       description: op-description
       operationId: opid3
+      tags:
+        - Invoice Items
       responses:
         '200':
           description: the user being returned

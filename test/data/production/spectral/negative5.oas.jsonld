@@ -212,6 +212,20 @@
                     ]
                   }
                 ],
+                "http://a.ml/vocabularies/apiContract#tag": [
+                  {
+                    "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers/get/tag/tag",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#Tag",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/core#name": [
+                      {
+                        "@value": "tag"
+                      }
+                    ]
+                  }
+                ],
                 "http://a.ml/vocabularies/apiContract#operationId": [
                   {
                     "@value": "opid1"
@@ -433,6 +447,20 @@
                     ]
                   }
                 ],
+                "http://a.ml/vocabularies/apiContract#tag": [
+                  {
+                    "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/tag/tag",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#Tag",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/core#name": [
+                      {
+                        "@value": "tag"
+                      }
+                    ]
+                  }
+                ],
                 "http://a.ml/vocabularies/apiContract#operationId": [
                   {
                     "@value": "opid2"
@@ -588,6 +616,20 @@
                     ]
                   }
                 ],
+                "http://a.ml/vocabularies/apiContract#tag": [
+                  {
+                    "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D/get/tag/tag",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#Tag",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/core#name": [
+                      {
+                        "@value": "tag"
+                      }
+                    ]
+                  }
+                ],
                 "http://a.ml/vocabularies/apiContract#operationId": [
                   {
                     "@value": "opid3"
@@ -659,6 +701,25 @@
                     ]
                   }
                 ]
+              }
+            ]
+          }
+        ],
+        "http://a.ml/vocabularies/apiContract#tag": [
+          {
+            "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/tag/tag",
+            "@type": [
+              "http://a.ml/vocabularies/apiContract#Tag",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "tag"
+              }
+            ],
+            "http://a.ml/vocabularies/core#description": [
+              {
+                "@value": "description of the tag"
               }
             ]
           }

@@ -5,6 +5,9 @@ info:
   contact:
     name: A-Team
     email: a-team@goarmy.com
+tags:
+  - name: tag
+    description: description of the tag
 
 paths:
   /users/{id}:
@@ -24,6 +27,8 @@ paths:
     get:
       description: op-description
       operationId: opid1
+      tags:
+        - tag
       responses:
         '200':
           description: the user being returned
@@ -54,6 +59,8 @@ paths:
     get:
       description: op-description
       operationId: opid2
+      tags:
+        - tag
       responses:
         '200':
           description: the user being returned

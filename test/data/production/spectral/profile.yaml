@@ -17,6 +17,10 @@ violation:
   - operation-default-response
   - operation-description
   - operation-operationId
+  - operation-tags
+
+warning:
+  - operation-singular-tag
 
 validations:
 
@@ -199,3 +203,19 @@ validations:
       apiContract.operationId:
         minCount: 1
         pattern: "^[a-z0-9\\\\-]+$"
+
+  operation-singular-tag:
+    message: |
+      Use just one tag for an operation, which is helpful for some documentation systems which use tags to avoid
+      duplicate content.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.tag:
+        maxCount: 1
+
+  operation-tags:
+    message: Operation should have non-empty tags array.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.tag:
+        minCount: 1

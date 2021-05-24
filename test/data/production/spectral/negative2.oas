@@ -10,9 +10,15 @@ info:
     name: MIT
     url: https://www.tldrlegal.com/l/mit
 
+tags:
+  - name: tag
+    description: description of the tag
+
 paths:
   /path:
     get:
       description: op-description
       operationId: opid
+      tags:
+        - tag
       responses: {}

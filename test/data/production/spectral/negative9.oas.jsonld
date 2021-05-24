@@ -63,6 +63,25 @@
               }
             ]
           }
+        ],
+        "http://a.ml/vocabularies/apiContract#tag": [
+          {
+            "@id": "file://./test/data/production/spectral/negative9.oas#/web-api/tag/tag",
+            "@type": [
+              "http://a.ml/vocabularies/apiContract#Tag",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "tag"
+              }
+            ],
+            "http://a.ml/vocabularies/core#description": [
+              {
+                "@value": "description of the tag"
+              }
+            ]
+          }
         ]
       }
     ],

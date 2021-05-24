@@ -14,7 +14,7 @@ func TestProduction(t *testing.T) {
 	for _, fixture := range test.ProductionFixtures("../../test/data/production", nil) {
 		profile := fixture.Profile()
 		for _, example := range fixture.Examples() {
-			filter := "13"
+			filter := ""
 			if strings.Index(example.File, filter) > -1 {
 				//println(example.File)
 				report, err := Validate(profile, example.Text, debug)
@@ -25,6 +25,7 @@ func TestProduction(t *testing.T) {
 				if conforms(report) != example.Positive {
 					t.Errorf(fmt.Sprintf("%s, %s expected conforms: %t got conforms %t\n\n%s\n", string(fixture), example.File, example.Positive, conforms(report), report))
 				}
+
 				//test.ForceWrite(example.Reportfile(), report)
 				expected := example.ReadReport()
 				actual := report

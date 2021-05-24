@@ -9,6 +9,9 @@ info:
   license:
     name: MIT
     url: https://www.tldrlegal.com/l/mit
+tags:
+  - name: tag
+    description: description of the tag
 
 paths:
   /users:
@@ -22,6 +25,8 @@ paths:
     get:
       description: op-description
       operationId: opid1
+      tags:
+        - tag
       responses:
         '200':
           description: the user being returned
@@ -37,6 +42,8 @@ paths:
     get:
       description: op-description
       operationId: opid2
+      tags:
+        - tag
       responses:
         '200':
           description: the user being returned
@@ -60,6 +67,8 @@ paths:
     get:
       description: op-description
       operationId: opid3
+      tags:
+        - tag
       responses:
         '200':
           description: the user being returned
