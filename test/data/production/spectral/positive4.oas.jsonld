@@ -21,6 +21,25 @@
             "@value": "Example API"
           }
         ],
+        "http://a.ml/vocabularies/core#provider": [
+          {
+            "@id": "file://./test/data/production/spectral/positive4.oas#/web-api/organization",
+            "@type": [
+              "http://a.ml/vocabularies/core#Organization",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "A-Team"
+              }
+            ],
+            "http://a.ml/vocabularies/core#email": [
+              {
+                "@value": "a-team@goarmy.com"
+              }
+            ]
+          }
+        ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
             "@id": "file://./test/data/production/spectral/positive4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",

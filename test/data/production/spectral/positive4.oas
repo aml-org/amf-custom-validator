@@ -2,6 +2,9 @@ openapi: 3.0.0
 
 info:
   title: Example API
+  contact:
+    name: A-Team
+    email: a-team@goarmy.com
 
 paths:
   /users/{id}:

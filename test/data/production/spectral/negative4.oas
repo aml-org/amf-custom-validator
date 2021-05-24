@@ -2,6 +2,9 @@ openapi: 3.0.0
 
 info:
   title: Example API
+  contact:
+    name: A-Team
+    email: a-team@goarmy.com
 
 paths:
   /users/{id}:
@@ -13,7 +16,7 @@ paths:
         schema:
           type: string
       - name: id
-        in: header
+        in: path
         required: true
         description: the user identifier, as userId
         schema:
@@ -39,7 +42,7 @@ paths:
         schema:
           type: string
       - name: other
-        in: cookie
+        in: query
         required: true
         description: the user identifier, as userId
         schema:
