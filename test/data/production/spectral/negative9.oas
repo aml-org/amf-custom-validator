@@ -1,0 +1,12 @@
+openapi: "3.0.0"
+info:
+  title: Awesome API
+  description: a <script>alert(somthing)</script> description
+  license:
+    name: MIT
+    url: https://www.tldrlegal.com/l/mit
+  contact:
+    name: A-Team
+    email: a-team@goarmy.com
+
+paths: {}
