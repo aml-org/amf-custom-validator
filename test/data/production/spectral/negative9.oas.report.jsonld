@@ -13,7 +13,7 @@
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
           "http://www.w3.org/ns/shacl#focusNode": "a \u003cscript\u003ealert(somthing)\u003c/script\u003e description",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_path_rule_294_node and matching regular expression '\u003cscript\u003e'",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_path_rule_343_node and matching regular expression '\u003cscript\u003e'",
           "http://www.w3.org/ns/shacl#resultPath": "core.description"
         }
       ],

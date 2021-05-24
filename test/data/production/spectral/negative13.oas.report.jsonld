@@ -1,0 +1,84 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": 0,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.operationId"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative13.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/get"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "operation-operationId"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "pattern",
+          "http://www.w3.org/ns/shacl#focusNode": "operation id",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_path_rule_26_node and matching regular expression '^[a-z0-9\\-]+$'",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.operationId"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative13.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems2/get"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "operation-operationId"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "pattern",
+          "http://www.w3.org/ns/shacl#focusNode": "operationId",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_path_rule_26_node and matching regular expression '^[a-z0-9\\-]+$'",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.operationId"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative13.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems3/get"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "operation-operationId"
+      }
+    }
+  ]
+}
