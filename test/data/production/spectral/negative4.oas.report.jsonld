@@ -1,0 +1,146 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "rego",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",
+            "@type": [
+              "apiContract:EndPoint",
+              "doc:DomainElement"
+            ],
+            "apiContract:parameter": [
+              {
+                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/path/id"
+              },
+              {
+                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/header/id"
+              }
+            ],
+            "apiContract:path": "/users/{id}",
+            "apiContract:supportedOperation": {
+              "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
+            }
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
+          "http://www.w3.org/ns/shacl#resultPath": ""
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Operation parameters are unique and non-repeating.",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "operation-parameters"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "rego",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind",
+            "@type": [
+              "apiContract:EndPoint",
+              "doc:DomainElement"
+            ],
+            "apiContract:parameter": [
+              {
+                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/parameter/query/other"
+              },
+              {
+                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/parameter/cookie/other"
+              }
+            ],
+            "apiContract:path": "/users/find",
+            "apiContract:supportedOperation": {
+              "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get"
+            }
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
+          "http://www.w3.org/ns/shacl#resultPath": ""
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Operation parameters are unique and non-repeating.",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "operation-parameters"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": 0,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
+          "http://www.w3.org/ns/shacl#resultPath": "core.description"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative4.oas#/web-api"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "info-description"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": 0,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
+          "http://www.w3.org/ns/shacl#resultPath": "core.license"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative4.oas#/web-api"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "info-license"
+      }
+    }
+  ]
+}

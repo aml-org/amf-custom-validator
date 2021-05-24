@@ -87,10 +87,22 @@ type ProductionExample struct {
 	Positive bool
 }
 
+func (f ProductionExample) ReadReport() string {
+	bytes, err := ioutil.ReadFile(strings.ReplaceAll(string(f.File), ".jsonld", ".report.jsonld"))
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
+func (f ProductionExample) Reportfile() string {
+	return strings.ReplaceAll(string(f.File), ".jsonld", ".report.jsonld")
+}
+
 func (f ProductionFixture) Examples() []ProductionExample {
 	var acc []ProductionExample
 	filepath.Walk(string(f), func(path string, info os.FileInfo, err error) error {
-		if strings.HasSuffix(path, ".jsonld") {
+		if strings.HasSuffix(path, ".jsonld") && !(strings.Index(path, "report") > -1) {
 			bytes, err := ioutil.ReadFile(string(path))
 			if err != nil {
 				panic(err)

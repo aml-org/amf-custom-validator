@@ -16,13 +16,20 @@ func TestProduction(t *testing.T) {
 		for _, example := range fixture.Examples() {
 			filter := ""
 			if strings.Index(example.File, filter) > -1 {
+				//println(example.File)
 				report, err := Validate(profile, example.Text, debug)
-				//println(report)
+
 				if err != nil {
 					t.Errorf("Validation failed %v", err)
 				}
 				if conforms(report) != example.Positive {
 					t.Errorf(fmt.Sprintf("%s, %s expected conforms: %t got conforms %t\n\n%s\n", string(fixture), example.File, example.Positive, conforms(report), report))
+				}
+				//test.ForceWrite(example.Reportfile(), report)
+				expected := example.ReadReport()
+				actual := report
+				if expected != actual {
+					t.Errorf(fmt.Sprintf("failed report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", example.File, expected, report))
 				}
 			}
 		}

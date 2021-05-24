@@ -1,0 +1,104 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "rego",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@id": "file://./test/data/production/spectral/negative3.oas#/web-api",
+            "@type": [
+              "apiContract:WebAPI",
+              "apiContract:API",
+              "doc:RootDomainElement",
+              "doc:DomainElement"
+            ],
+            "apiContract:endpoint": [
+              {
+                "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet"
+              },
+              {
+                "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother"
+              }
+            ],
+            "core:name": "Example API",
+            "core:provider": {
+              "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/organization"
+            }
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
+          "http://www.w3.org/ns/shacl#resultPath": ""
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Every operation must have a unique operationId.\n\nWhy? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,\nall sorts of things like that.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "operation-operationId-unique"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": 0,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
+          "http://www.w3.org/ns/shacl#resultPath": "core.description"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "info-description"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": 0,
+          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
+          "http://www.w3.org/ns/shacl#resultPath": "core.license"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "info-license"
+      }
+    }
+  ]
+}

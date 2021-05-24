@@ -1,0 +1,32 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "pattern",
+          "http://www.w3.org/ns/shacl#focusNode": "418",
+          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_path_rule_3_node and matching regular expression '2[0-9][0-9]'",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns / apiContract.statusCode"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative1.oas#/web-api/end-points/%2Fpath/get"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Operation must have at least one 2xx response. Any API operation (endpoint) can fail but presumably it is also\nmeant to do something constructive at some point. If you forget to write out a success case for this API, then\nthis rule will let you know.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "operation-2xx-response"
+      }
+    }
+  ]
+}

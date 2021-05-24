@@ -1,0 +1,120 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "rego",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers",
+            "@type": [
+              "apiContract:EndPoint",
+              "doc:DomainElement"
+            ],
+            "apiContract:parameter": {
+              "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers/parameter/path/id"
+            },
+            "apiContract:path": "/users",
+            "apiContract:supportedOperation": {
+              "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers/get"
+            }
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
+          "http://www.w3.org/ns/shacl#resultPath": ""
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "path-params"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "rego",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",
+            "@type": [
+              "apiContract:EndPoint",
+              "doc:DomainElement"
+            ],
+            "apiContract:path": "/users/{id}",
+            "apiContract:supportedOperation": {
+              "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
+            }
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
+          "http://www.w3.org/ns/shacl#resultPath": ""
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "path-params"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#Trace"
+          ],
+          "http://a.ml/vocabularies/validation#component": "rego",
+          "http://www.w3.org/ns/shacl#focusNode": {
+            "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D",
+            "@type": [
+              "apiContract:EndPoint",
+              "doc:DomainElement"
+            ],
+            "apiContract:parameter": {
+              "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D/parameter/path/id"
+            },
+            "apiContract:path": "/users/{id}/others/{other}",
+            "apiContract:supportedOperation": {
+              "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D/get"
+            }
+          },
+          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
+          "http://www.w3.org/ns/shacl#resultPath": ""
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "path-params"
+      }
+    }
+  ]
+}

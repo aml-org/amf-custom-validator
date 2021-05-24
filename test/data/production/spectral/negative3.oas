@@ -2,13 +2,6 @@ openapi: 3.0.0
 
 info:
   title: Example API
-  contact:
-    name: A-Team
-    email: a-team@goarmy.com
-  description: a description
-  license:
-    name: MIT
-    url: https://www.tldrlegal.com/l/mit
 
 paths:
   /pet:
