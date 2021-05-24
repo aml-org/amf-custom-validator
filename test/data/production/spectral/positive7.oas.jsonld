@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/spectral/negative2.oas",
+    "@id": "file://./test/data/production/spectral/positive7.oas",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/spectral/negative2.oas#/web-api",
+        "@id": "file://./test/data/production/spectral/positive7.oas#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -18,7 +18,7 @@
         ],
         "http://a.ml/vocabularies/core#name": [
           {
-            "@value": "Example API"
+            "@value": "Awesome API"
           }
         ],
         "http://a.ml/vocabularies/core#description": [
@@ -28,7 +28,7 @@
         ],
         "http://a.ml/vocabularies/core#provider": [
           {
-            "@id": "file://./test/data/production/spectral/negative2.oas#/web-api/organization",
+            "@id": "file://./test/data/production/spectral/positive7.oas#/web-api/organization",
             "@type": [
               "http://a.ml/vocabularies/core#Organization",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -47,7 +47,7 @@
         ],
         "http://a.ml/vocabularies/core#license": [
           {
-            "@id": "file://./test/data/production/spectral/negative2.oas#/web-api/license",
+            "@id": "file://./test/data/production/spectral/positive7.oas#/web-api/license",
             "@type": [
               "http://a.ml/vocabularies/core#License",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -60,35 +60,6 @@
             "http://a.ml/vocabularies/core#name": [
               {
                 "@value": "MIT"
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/apiContract#endpoint": [
-          {
-            "@id": "file://./test/data/production/spectral/negative2.oas#/web-api/end-points/%2Fpath",
-            "@type": [
-              "http://a.ml/vocabularies/apiContract#EndPoint",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/apiContract#path": [
-              {
-                "@value": "/path"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#supportedOperation": [
-              {
-                "@id": "file://./test/data/production/spectral/negative2.oas#/web-api/end-points/%2Fpath/get",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#Operation",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/apiContract#method": [
-                  {
-                    "@value": "get"
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#returns": []
               }
             ]
           }

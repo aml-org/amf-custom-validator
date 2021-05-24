@@ -8,6 +8,9 @@ violation:
   - operation-parameters
   - path-params
   - info-contact
+  - info-description
+  - info-license
+  - license-url
 
 validations:
 
@@ -92,3 +95,33 @@ validations:
     propertyConstraints:
       core.provider:
         minCount: 1
+
+  info-description:
+    message: |
+      OpenAPI object info description must be present and non-empty string.
+      Examples can contain Markdown so you can really go to town with them, implementing getting started information
+      like where to find authentication keys, and how to use them.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  info-license:
+    message: |
+      The info object should have a license key.
+      It can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License
+      to help give you an idea.
+      How useful this is in court is not entirely known, but having a license is better than not having a license.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.license:
+        minCount: 1
+
+    license-url:
+      message: |
+        Mentioning a license is only useful if people know what the license means, so add a link to the full text for
+        those who need it.
+      targetClass: core.License
+      propertyConstraints:
+        core.url:
+          minCount: 1

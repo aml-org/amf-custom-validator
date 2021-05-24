@@ -21,6 +21,11 @@
             "@value": "Example API"
           }
         ],
+        "http://a.ml/vocabularies/core#description": [
+          {
+            "@value": "a description"
+          }
+        ],
         "http://a.ml/vocabularies/core#provider": [
           {
             "@id": "file://./test/data/production/spectral/negative1.oas#/web-api/organization",
@@ -36,6 +41,25 @@
             "http://a.ml/vocabularies/core#email": [
               {
                 "@value": "a-team@goarmy.com"
+              }
+            ]
+          }
+        ],
+        "http://a.ml/vocabularies/core#license": [
+          {
+            "@id": "file://./test/data/production/spectral/negative1.oas#/web-api/license",
+            "@type": [
+              "http://a.ml/vocabularies/core#License",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#url": [
+              {
+                "@id": "https://www.tldrlegal.com/l/mit"
+              }
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "MIT"
               }
             ]
           }
