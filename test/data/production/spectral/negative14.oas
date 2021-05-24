@@ -27,3 +27,28 @@ paths:
       responses:
         "200":
           description: teapot
+    delete:
+      tags:
+        - tag1
+      description: op-description-delete
+      operationId: opiddelete
+      responses:
+        "200":
+          description: teapot
+
+  /invoices/{id}/items2:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: the invoice identifier, as is
+        schema:
+          type: string
+    get:
+      description: op-description
+      operationId: opid2
+      tags:
+        - tag3
+      responses:
+        "200":
+          description: teapot

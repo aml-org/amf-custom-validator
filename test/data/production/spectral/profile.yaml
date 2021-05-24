@@ -18,6 +18,7 @@ violation:
   - operation-description
   - operation-operationId
   - operation-tags
+  - operation-tag-defined
 
 warning:
   - operation-singular-tag
@@ -219,3 +220,18 @@ validations:
     propertyConstraints:
       apiContract.tag:
         minCount: 1
+
+  operation-tag-defined:
+    message: Operation tags should be defined in global tags.
+    targetClass: apiContract.WebAPI
+    rego: |
+      o1 = collect with data.nodes as [x] with data.property as "apiContract:tag"
+      top_level_tags = collect_values with data.nodes as o1 with data.property as "core:name"
+
+      p1 = collect with data.nodes as [x] with data.property as "apiContract:endpoint"
+      p2 = collect with data.nodes as p1 with data.property as  "apiContract:supportedOperation"
+      p3 = collect with data.nodes as p2 with data.property as "apiContract:tag"
+      operation_tags = collect_values with data.nodes as p3 with data.property as "core:name"
+
+      common_tags = operation_tags & top_level_tags
+      $result = (count(common_tags) == count(operation_tags))

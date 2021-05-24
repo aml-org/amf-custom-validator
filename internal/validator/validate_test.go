@@ -14,7 +14,7 @@ func TestProduction(t *testing.T) {
 	for _, fixture := range test.ProductionFixtures("../../test/data/production", nil) {
 		profile := fixture.Profile()
 		for _, example := range fixture.Examples() {
-			filter := ""
+			filter := "" // put the number of the text to filter here
 			if strings.Index(example.File, filter) > -1 {
 				//println(example.File)
 				report, err := Validate(profile, example.Text, debug)

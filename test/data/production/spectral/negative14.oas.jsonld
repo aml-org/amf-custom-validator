@@ -128,6 +128,72 @@
                     "@value": "opid"
                   }
                 ]
+              },
+              {
+                "@id": "file://./test/data/production/spectral/negative14.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/delete",
+                "@type": [
+                  "http://a.ml/vocabularies/apiContract#Operation",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/apiContract#method": [
+                  {
+                    "@value": "delete"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "opiddelete"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#description": [
+                  {
+                    "@value": "op-description-delete"
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#returns": [
+                  {
+                    "@id": "file://./test/data/production/spectral/negative14.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/delete/200",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#Response",
+                      "http://a.ml/vocabularies/apiContract#Message",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/apiContract#statusCode": [
+                      {
+                        "@value": "200"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/core#name": [
+                      {
+                        "@value": "200"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/core#description": [
+                      {
+                        "@value": "teapot"
+                      }
+                    ]
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#tag": [
+                  {
+                    "@id": "file://./test/data/production/spectral/negative14.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/delete/tag/tag1",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#Tag",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/core#name": [
+                      {
+                        "@value": "tag1"
+                      }
+                    ]
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#operationId": [
+                  {
+                    "@value": "opiddelete"
+                  }
+                ]
               }
             ],
             "http://a.ml/vocabularies/apiContract#parameter": [
@@ -175,6 +241,152 @@
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
                     "@id": "file://./test/data/production/spectral/negative14.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/parameter/default-binding/id/scalar/id",
+                    "@type": [
+                      "http://a.ml/vocabularies/shapes#ScalarShape",
+                      "http://a.ml/vocabularies/shapes#AnyShape",
+                      "http://www.w3.org/ns/shacl#Shape",
+                      "http://a.ml/vocabularies/shapes#Shape",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://www.w3.org/ns/shacl#datatype": [
+                      {
+                        "@id": "http://www.w3.org/2001/XMLSchema#string"
+                      }
+                    ],
+                    "http://www.w3.org/ns/shacl#name": [
+                      {
+                        "@value": "id"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@id": "file://./test/data/production/spectral/negative14.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems2",
+            "@type": [
+              "http://a.ml/vocabularies/apiContract#EndPoint",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/apiContract#path": [
+              {
+                "@value": "/invoices/{id}/items2"
+              }
+            ],
+            "http://a.ml/vocabularies/apiContract#supportedOperation": [
+              {
+                "@id": "file://./test/data/production/spectral/negative14.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems2/get",
+                "@type": [
+                  "http://a.ml/vocabularies/apiContract#Operation",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/apiContract#method": [
+                  {
+                    "@value": "get"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "opid2"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#description": [
+                  {
+                    "@value": "op-description"
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#returns": [
+                  {
+                    "@id": "file://./test/data/production/spectral/negative14.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems2/get/200",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#Response",
+                      "http://a.ml/vocabularies/apiContract#Message",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/apiContract#statusCode": [
+                      {
+                        "@value": "200"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/core#name": [
+                      {
+                        "@value": "200"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/core#description": [
+                      {
+                        "@value": "teapot"
+                      }
+                    ]
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#tag": [
+                  {
+                    "@id": "file://./test/data/production/spectral/negative14.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems2/get/tag/tag3",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#Tag",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/core#name": [
+                      {
+                        "@value": "tag3"
+                      }
+                    ]
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#operationId": [
+                  {
+                    "@value": "opid2"
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/apiContract#parameter": [
+              {
+                "@id": "file://./test/data/production/spectral/negative14.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems2/parameter/path/id",
+                "@type": [
+                  "http://a.ml/vocabularies/apiContract#Parameter",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "id"
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#paramName": [
+                  {
+                    "@value": "id"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#description": [
+                  {
+                    "@value": "the invoice identifier, as is"
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#required": [
+                  {
+                    "@value": true
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#style": [
+                  {
+                    "@value": "simple"
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#explode": [
+                  {
+                    "@value": false
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#binding": [
+                  {
+                    "@value": "path"
+                  }
+                ],
+                "http://a.ml/vocabularies/shapes#schema": [
+                  {
+                    "@id": "file://./test/data/production/spectral/negative14.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems2/parameter/default-binding/id/scalar/id",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",
