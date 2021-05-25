@@ -1,6 +1,10 @@
 openapi: "3.0.0"
 info:
   title: Awesome API
+  version: "1.0"
+servers:
+  - url: https://production.test.com/
+    description: production environment
 
 paths:
   /invoices:

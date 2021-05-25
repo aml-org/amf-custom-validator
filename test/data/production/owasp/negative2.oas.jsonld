@@ -21,6 +21,30 @@
             "@value": "Awesome API"
           }
         ],
+        "http://a.ml/vocabularies/apiContract#server": [
+          {
+            "@id": "file://./test/data/production/owasp/negative2.oas#/web-api/https%3A%2F%2Fproduction.test.com%2F",
+            "@type": [
+              "http://a.ml/vocabularies/apiContract#Server",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#urlTemplate": [
+              {
+                "@value": "https://production.test.com/"
+              }
+            ],
+            "http://a.ml/vocabularies/core#description": [
+              {
+                "@value": "production environment"
+              }
+            ]
+          }
+        ],
+        "http://a.ml/vocabularies/core#version": [
+          {
+            "@value": "1.0"
+          }
+        ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
             "@id": "file://./test/data/production/owasp/negative2.oas#/web-api/end-points/%2Finvoices",

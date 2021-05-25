@@ -1,0 +1,80 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative8.oas#/web-api",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.server",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 2,
+            "expected": 0,
+            "negated": false
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/owasp/negative8.oas#/web-api"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "The login page and all subsequent authenticated pages must be exclusively accessed over TLS or other strong\ntransport. The initial login page referred to as the 'login landing page', must be served over TLS or other strong\ntransport. Failure to utilize TLS or other strong transport for the login landing page allows an attacker to\nmodify the login form action, causing the user's credentials to be posted to an arbitrary location. Failure to\nutilize TLS or other strong transport for authenticated pages after login enables an attacker to view the\nunencrypted session ID and compromise the user's authenticated session.\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "broken-user-authentication-use-tls"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative8.oas#/web-api",
+          "http://www.w3.org/ns/shacl#resultPath": "security.security",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative8.oas#/web-api",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.endpoint / apiContract.supportedOperation",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 1,
+            "expected": 0,
+            "negated": false
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/owasp/negative8.oas#/web-api"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "broken-user-authentication-authenticate-api"
+      }
+    }
+  ]
+}

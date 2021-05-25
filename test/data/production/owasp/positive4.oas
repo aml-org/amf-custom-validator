@@ -1,6 +1,20 @@
 openapi: "3.0.0"
 info:
   title: Awesome API
+  version: "1.0"
+servers:
+  - url: https://production.test.com/
+    description: production environment
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
 
 paths:
   /invoices:

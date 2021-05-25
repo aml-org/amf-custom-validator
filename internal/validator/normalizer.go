@@ -18,6 +18,7 @@ func Normalize(json interface{}, prefixes profile.ProfileContext) interface{} {
 		"xsd":         "http://www.w3.org/2001/XMLSchema#",
 		"rdfs":        "http://www.w3.org/2000/01/rdf-schema",
 		"rdf":         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+		"security":    "http://a.ml/vocabularies/security#",
 	}
 	for n, p := range prefixes {
 		context[n] = p

@@ -6,8 +6,13 @@ violation:
   - broken-object-level-authorization-use-guids
   - excessive-data-exposure-mandatory-schema
   - lack-of-resources-and-rate-limiting-too-many-requests
-  - security-misconfiguration-disabled-http-methods-defined
   - security-misconfiguration-disabled-http-methods-disabled-or-2xx
+#  - security-misconfiguration-disabled-http-methods-all-methods-defined
+  - injection-pattern-on-string-parameters
+  - improper-assets-management-environment-info
+  - improper-assets-management-version
+  - broken-user-authentication-use-tls
+  - broken-user-authentication-authenticate-api
 
 validations:
 
@@ -85,3 +90,74 @@ validations:
                   apiContract.statusCode:
                     in:
                       - "403"
+
+  injection-pattern-on-string-parameters:
+    message: Define data types and strict patterns for all string parameters
+    targetClass: apiContract.Parameter
+    or:
+      - not:
+          propertyConstraints:
+            shapes.schema / shacl.datatype:
+              minCount: 1
+              in:
+                - "xsd:string"
+      - propertyConstraints:
+          shapes.schema / shacl.pattern:
+            minCount: 1
+
+  improper-assets-management-environment-info:
+    message: |
+      The purpose of an API host is unclear, and there are no explicit answers to the following questions:
+          Which environment is the API running in (e.g., production, staging, test, development)?
+          Who should have network access to the API (e.g., public, internal, partners)?
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiContract.server:
+        minCount: 1
+        nested:
+          propertyConstraints:
+            core.description:
+              minCount: 1
+
+  improper-assets-management-version:
+    message: |
+      The purpose of an API host is unclear, and there are no explicit answers to the following questions:
+          Which API version is running?
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.version:
+        minCount: 1
+
+  broken-user-authentication-use-tls:
+    message: |
+      The login page and all subsequent authenticated pages must be exclusively accessed over TLS or other strong
+      transport. The initial login page referred to as the "login landing page", must be served over TLS or other strong
+      transport. Failure to utilize TLS or other strong transport for the login landing page allows an attacker to
+      modify the login form action, causing the user's credentials to be posted to an arbitrary location. Failure to
+      utilize TLS or other strong transport for authenticated pages after login enables an attacker to view the
+      unencrypted session ID and compromise the user's authenticated session.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiContract.server:
+        atLeast:
+          count: 1
+          validation:
+            propertyConstraints:
+              core.urlTemplate:
+                pattern: "^https://"
+
+  broken-user-authentication-authenticate-api:
+    message: |
+      Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement
+      one-click authentication/etc.)
+    targetClass: apiContract.WebAPI
+    or:
+      - propertyConstraints:
+          security.security:
+            minCount: 1
+      - propertyConstraints:
+          apiContract.endpoint / apiContract.supportedOperation:
+            nested:
+              propertyConstraints:
+                security.security:
+                  minCount: 1

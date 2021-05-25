@@ -45,6 +45,96 @@
       "http://www.w3.org/ns/shacl#sourceShape": {
         "@id": "broken-object-level-authorization-use-guids"
       }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/itemId",
+          "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.datatype",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": [
+              "xsd:string"
+            ],
+            "expected": "x_check",
+            "negated": true
+          }
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/itemId",
+          "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.pattern",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/itemId"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Define data types and strict patterns for all string parameters",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "injection-pattern-on-string-parameters"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api",
+          "http://www.w3.org/ns/shacl#resultPath": "security.security",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.endpoint / apiContract.supportedOperation",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 1,
+            "expected": 0,
+            "negated": false
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/owasp/negative1.oas#/web-api"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "broken-user-authentication-authenticate-api"
+      }
     }
   ]
 }

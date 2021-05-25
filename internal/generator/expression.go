@@ -175,6 +175,11 @@ func wrapBranch(name string, message string, branch BranchRegoResult, matchesVar
 		acc = append(acc, matchesLine)
 	}
 
-	acc = append(acc, fmt.Sprintf("  %s := error(\"%s\",%s,\"%s\",[%s])", matchesVariable, name, mappingVariable, strings.ReplaceAll(message, "\n", "\\n"), strings.Join(resultBindings, ",")))
+	acc = append(acc, fmt.Sprintf("  %s := error(\"%s\",%s,\"%s\",[%s])", matchesVariable, name, mappingVariable, sanitizedMessage(message), strings.Join(resultBindings, ",")))
 	return acc
+}
+
+func sanitizedMessage(s string) string {
+	result := strings.ReplaceAll(s, "\n", "\\n")
+	return strings.ReplaceAll(result, "\"", "'")
 }

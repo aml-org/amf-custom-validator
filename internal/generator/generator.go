@@ -177,8 +177,14 @@ as_string(x) = x {
   is_string(x)
 }
 
+as_string(x) = x["@id"] {
+  is_object(x)
+  x["@id"]
+}
+
 as_string(x) = json.marshal(x) {
-  not is_string(x)
+  is_object(x)
+  not x["@id"]
 }
 
 

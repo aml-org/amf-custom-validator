@@ -17,6 +17,10 @@ do
     fi
     re="jsonld"
     if [[ $entry =~ $re ]]; then
+      re="report" # this cannot be generated, ignore
+      if [[ $entry =~ $re ]]; then
+        continue
+      fi
       rm $entry
     fi
   done
@@ -25,11 +29,10 @@ do
   do
     re="negative3|negative4" # this cannot be generated, ignore
     if [[ $entry =~ $re ]]; then
-      continue
-    fi
-    re="report" # this cannot be generated, ignore
-    if [[ $entry =~ $re ]]; then
-      continue
+      re="spectral"
+      if [[ $entry =~ $re ]]; then
+        continue
+      fi
     fi
     re="positive|negative"
     if [[ $entry =~ $re ]]; then

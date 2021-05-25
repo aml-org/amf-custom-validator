@@ -1,0 +1,29 @@
+openapi: "3.0.0"
+info:
+  title: Awesome API
+  version: "1.0"
+servers:
+  - url: http://production.test.com/
+    description: production environment
+  - url: http://test.test.com/
+    description: test environment
+paths:
+  /invoices/:
+    get:
+      description: op-description
+      operationId: opid
+      tags:
+        - Invoice Items
+      responses:
+        "200":
+          description: teapot
+          content:
+            application/json:
+              schema:
+                type: object
+        "429":
+          description: too many requests
+          content:
+            application/json:
+              schema:
+                type: string

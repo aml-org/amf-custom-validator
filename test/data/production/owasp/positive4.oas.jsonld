@@ -21,6 +21,30 @@
             "@value": "Awesome API"
           }
         ],
+        "http://a.ml/vocabularies/apiContract#server": [
+          {
+            "@id": "file://./test/data/production/owasp/positive4.oas#/web-api/https%3A%2F%2Fproduction.test.com%2F",
+            "@type": [
+              "http://a.ml/vocabularies/apiContract#Server",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#urlTemplate": [
+              {
+                "@value": "https://production.test.com/"
+              }
+            ],
+            "http://a.ml/vocabularies/core#description": [
+              {
+                "@value": "production environment"
+              }
+            ]
+          }
+        ],
+        "http://a.ml/vocabularies/core#version": [
+          {
+            "@value": "1.0"
+          }
+        ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
             "@id": "file://./test/data/production/owasp/positive4.oas#/web-api/end-points/%2Finvoices",
@@ -261,6 +285,68 @@
               }
             ]
           }
+        ],
+        "http://a.ml/vocabularies/security#security": [
+          {
+            "@id": "file://./test/data/production/owasp/positive4.oas#/web-api/requirement_1",
+            "@type": [
+              "http://a.ml/vocabularies/security#SecurityRequirement",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/security#schemes": [
+              {
+                "@id": "file://./test/data/production/owasp/positive4.oas#/web-api/requirement_1/bearerAuth",
+                "@type": [
+                  "http://a.ml/vocabularies/security#ParametrizedSecurityScheme",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "bearerAuth"
+                  }
+                ],
+                "http://a.ml/vocabularies/security#scheme": [
+                  {
+                    "@id": "file://./test/data/production/owasp/positive4.oas#/web-api/requirement_1/bearerAuth/bearerAuth",
+                    "@type": [
+                      "http://a.ml/vocabularies/security#SecurityScheme",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/core#name": [
+                      {
+                        "@value": "bearerAuth"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/security#type": [
+                      {
+                        "@value": "http"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/security#settings": [
+                      {
+                        "@id": "file://./test/data/production/owasp/positive4.oas#/declarations/securitySchemes/bearerAuth/settings/http",
+                        "@type": [
+                          "http://a.ml/vocabularies/security#HttpSettings",
+                          "http://a.ml/vocabularies/security#Settings",
+                          "http://a.ml/vocabularies/document#DomainElement"
+                        ],
+                        "http://a.ml/vocabularies/security#scheme": [
+                          {
+                            "@value": "bearer"
+                          }
+                        ],
+                        "http://a.ml/vocabularies/security#bearerFormat": [
+                          {
+                            "@value": "JWT"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
         ]
       }
     ],
@@ -272,6 +358,45 @@
     "http://a.ml/vocabularies/document#root": [
       {
         "@value": true
+      }
+    ],
+    "http://a.ml/vocabularies/document#declares": [
+      {
+        "@id": "file://./test/data/production/owasp/positive4.oas#/web-api/requirement_1/bearerAuth/bearerAuth",
+        "@type": [
+          "http://a.ml/vocabularies/security#SecurityScheme",
+          "http://a.ml/vocabularies/document#DomainElement"
+        ],
+        "http://a.ml/vocabularies/core#name": [
+          {
+            "@value": "bearerAuth"
+          }
+        ],
+        "http://a.ml/vocabularies/security#type": [
+          {
+            "@value": "http"
+          }
+        ],
+        "http://a.ml/vocabularies/security#settings": [
+          {
+            "@id": "file://./test/data/production/owasp/positive4.oas#/declarations/securitySchemes/bearerAuth/settings/http",
+            "@type": [
+              "http://a.ml/vocabularies/security#HttpSettings",
+              "http://a.ml/vocabularies/security#Settings",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/security#scheme": [
+              {
+                "@value": "bearer"
+              }
+            ],
+            "http://a.ml/vocabularies/security#bearerFormat": [
+              {
+                "@value": "JWT"
+              }
+            ]
+          }
+        ]
       }
     ]
   }
