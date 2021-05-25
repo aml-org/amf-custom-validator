@@ -18,7 +18,7 @@ paths:
                 type: object
     head:
       responses:
-        "429":
+        "403":
           content:
             application/json:
               schema:

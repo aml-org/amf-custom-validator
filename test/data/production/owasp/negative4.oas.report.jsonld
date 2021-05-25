@@ -1,0 +1,49 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative4.oas#/web-api/end-points/%2Finvoices/head",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 1,
+            "expected": 0,
+            "negated": false
+          }
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative4.oas#/web-api/end-points/%2Finvoices/head",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 1,
+            "expected": 0,
+            "negated": false
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/owasp/negative4.oas#/web-api/end-points/%2Finvoices/head"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Ensure API can only be accessed by the specified HTTP verbs. All other HTTP verbs should be disabled (e.g. HEAD).\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "security-misconfiguration-disabled-http-methods-disabled-or-2xx"
+      }
+    }
+  ]
+}
