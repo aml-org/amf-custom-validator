@@ -34,9 +34,9 @@ func GeneratePropertyComparison(comparison profile.PropertyComparisonRule) []Sim
 		Rego:       rego,
 		PathRules:  []RegoPathResult{pathResult, altPathResult},
 		Path:       comparison.Path.Source(),
-		Value:      fmt.Sprintf("[%s,%s]", propVariable, altPropVariable),
 		Variable:   comparison.Variable.Name,
-		Trace:      fmt.Sprintf("value not matching property comparison %s", comparison.Operator.String()),
+		TraceNode:  comparison.Variable.Name,
+		TraceValue: fmt.Sprintf("{\"negated\":%t, \"condition\":\"%s\",\"expected\":%s, \"actual\":%s}", comparison.Negated, comparison.Operator.String(), propVariable, altPropVariable),
 	}
 	return []SimpleRegoResult{r}
 }

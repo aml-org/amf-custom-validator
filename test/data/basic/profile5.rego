@@ -109,12 +109,12 @@ as_string(x) = json.marshal(x) {
 
 
 # Traces one evaluation of a constraint
-trace(component, path, value, traceMessage) = t {
+trace(constraint, path, node, value) = t {
   t := {
-    "component": component,
+    "component": constraint,
     "path": path,
-    "value": value,
-    "message": traceMessage
+    "focusNode": node["@id"],
+    "value": value
   }
 }
 
@@ -187,10 +187,10 @@ violation[matches] {
     y_check = as_string(y_check_scalar)
     gen_inValues_2 = { "post"}
     not gen_inValues_2[y_check]
-    _result_0 := trace("in","apiContract.method",y_check,"Error with value gen_inValues_2 and enumeration ['post']")
+    _result_0 := trace("in","apiContract.method",y,{"negated":false,"actual": gen_inValues_2,"expected": "y_check"})
     ys_error := error("nested",y,"error in nested nodes under apiContract.supportedOperation",[_result_0])
   ]
   not count(ys) - count(ys_errors) >= 1
-  _result_0 := trace("nested","apiContract.supportedOperation",{"failed": count(ys_errors), "success":(count(ys) - count(ys_errors))},"")
+  _result_0 := trace("nested","apiContract.supportedOperation",x,{"negated":false, "expected":0, "actual":count(ys_errors)})
   matches := error("validation1",x,"Endpoints must have a POST method",[_result_0])
 }

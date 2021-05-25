@@ -109,12 +109,12 @@ as_string(x) = json.marshal(x) {
 
 
 # Traces one evaluation of a constraint
-trace(component, path, value, traceMessage) = t {
+trace(constraint, path, node, value) = t {
   t := {
-    "component": component,
+    "component": constraint,
     "path": path,
-    "value": value,
-    "message": traceMessage
+    "focusNode": node["@id"],
+    "value": value
   }
 }
 
@@ -183,13 +183,13 @@ violation[matches] {
   x_check = as_string(x_check_scalar)
   gen_inValues_1 = { "subscribe"}
   not gen_inValues_1[x_check]
-  _result_0 := trace("in","apiContract.method",x_check,"Error with value gen_inValues_1 and enumeration ['subscribe']")
+  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_inValues_1,"expected": "x_check"})
   #  querying path: apiContract.method
   x_check_array = gen_path_rule_4 with data.sourceNode as x
   x_check_scalar = x_check_array[_]
   x_check = as_string(x_check_scalar)
   gen_inValues_3 = { "get"}
   not gen_inValues_3[x_check]
-  _result_1 := trace("in","apiContract.method",x_check,"Error with value gen_inValues_3 and enumeration ['get']")
+  _result_1 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_inValues_3,"expected": "x_check"})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }

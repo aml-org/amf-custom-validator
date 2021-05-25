@@ -18,11 +18,10 @@ func TestGenerated(t *testing.T) {
 		if err != nil {
 			panic(err)
 		}
-
+		profile.GenReset()
 		generated := Generate(*prof)
-
-		succes, err := validateRegoUnit(generated)
-		if !succes {
+		success, err := validateRegoUnit(generated)
+		if !success {
 			t.Error(err)
 		}
 		//test.ForceWrite(fix.Generated, generated.Code)

@@ -109,12 +109,12 @@ as_string(x) = json.marshal(x) {
 
 
 # Traces one evaluation of a constraint
-trace(component, path, value, traceMessage) = t {
+trace(constraint, path, node, value) = t {
   t := {
-    "component": component,
+    "component": constraint,
     "path": path,
-    "value": value,
-    "message": traceMessage
+    "focusNode": node["@id"],
+    "value": value
   }
 }
 
@@ -174,6 +174,6 @@ violation[matches] {
   gen_datatype_check_2_elem = gen_path_rule_1 with data.sourceNode as x
   gen_datatype_check_2 = gen_datatype_check_2_elem[_]
   not check_datatype(gen_datatype_check_2,"xsd:string")
-  _result_0 := trace("datatype","apiContract.scheme",gen_datatype_check_2,"Error with datatype gen_datatype_check_2")
+  _result_0 := trace("datatype","apiContract.scheme",x,{"negated":false,"actual": gen_datatype_check_2,"expected": "xsd:string"})
   matches := error("allowed-protocols",x,"Validation error",[_result_0])
 }

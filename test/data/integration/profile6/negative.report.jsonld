@@ -9,24 +9,31 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "in",
-          "http://www.w3.org/ns/shacl#focusNode": "get",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_inValues_11 and enumeration ['get']",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.method"
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.method",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": [
+              "get"
+            ],
+            "expected": "x_check",
+            "negated": true
+          }
         },
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "failed": 0,
-            "success": 1
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns"
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "expected": 0,
+            "negated": true
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -47,24 +54,31 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "in",
-          "http://www.w3.org/ns/shacl#focusNode": "get",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_inValues_11 and enumeration ['get']",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.method"
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.method",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": [
+              "get"
+            ],
+            "expected": "x_check",
+            "negated": true
+          }
         },
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "failed": 1,
-            "success": 0
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns"
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 1,
+            "expected": 0,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -85,24 +99,31 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "in",
-          "http://www.w3.org/ns/shacl#focusNode": "get",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_inValues_11 and enumeration ['get']",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.method"
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.method",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": [
+              "get"
+            ],
+            "expected": "x_check",
+            "negated": true
+          }
         },
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "failed": 1,
-            "success": 0
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns"
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 1,
+            "expected": 0,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {

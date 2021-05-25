@@ -99,7 +99,6 @@ func wrapNestedRegoResult(exp profile.NestedExpression, sharedGeneratorRego Simp
 	}
 
 	// build result
-	traceMessage := fmt.Sprintf("[e | e := %ss[_].trace]", errorVariable)
 	return BranchRegoResult{
 		Constraint: "nested",
 		Branch: []SimpleRegoResult{
@@ -108,9 +107,9 @@ func wrapNestedRegoResult(exp profile.NestedExpression, sharedGeneratorRego Simp
 				Rego:       rego,
 				PathRules:  pathRules,
 				Path:       sharedGeneratorRego.Path,
-				Value:      fmt.Sprintf("{\"failed\": count(%ss), \"success\":(count(%s) - count(%ss))}", errorVariable, variable, errorVariable),
+				TraceNode:  exp.Parent.Name,
+				TraceValue: fmt.Sprintf("{\"negated\":%t, \"expected\":0, \"actual\":count(%ss)}", exp.Negated, errorVariable),
 				Variable:   fmt.Sprintf("%ss", errorVariable),
-				TraceCode:  &traceMessage,
 			},
 		},
 	}
@@ -169,7 +168,7 @@ func wrapBranch(name string, message string, branch BranchRegoResult, matchesVar
 	for i, r := range branch.Branch {
 		bindingResult := fmt.Sprintf("_result_%d", i)
 		resultBindings = append(resultBindings, bindingResult)
-		matchesLine := fmt.Sprintf("  %s := trace(\"%s\",\"%s\",%s,\"%s\")", bindingResult, r.ConstraintId(), r.Path, r.Value, r.Trace)
+		matchesLine := fmt.Sprintf("  %s := trace(\"%s\",\"%s\",%s,%s)", bindingResult, r.ConstraintId(), r.Path, r.TraceNode, r.TraceValue)
 		for _, l := range r.Rego {
 			acc = append(acc, "  "+l)
 		}

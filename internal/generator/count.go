@@ -37,9 +37,9 @@ func generateRule(count profile.CountRule, rule string, condition string) []Simp
 		Rego:       rego,
 		PathRules:  []RegoPathResult{pathResult},
 		Path:       count.Path.Source(),
-		Value:      fmt.Sprintf("count(%s)", inValuesVariable),
+		TraceValue: fmt.Sprintf("{\"negated\":%t,\"condition\":\"%s\",\"actual\": count(%s),\"expected\": %d}", count.Negated, condition, inValuesVariable, count.Argument),
+		TraceNode:  count.Variable.Name,
 		Variable:   inValuesVariable,
-		Trace:      fmt.Sprintf("value not matching rule %d", count.Argument),
 	}
 	return []SimpleRegoResult{r}
 }

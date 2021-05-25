@@ -9,15 +9,16 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "failed": 1,
-            "success": 0
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.supportedOperation"
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile4/negative.data.raml#/web-api/end-points/%2Fendpoint2",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.supportedOperation",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 1,
+            "expected": 0,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {

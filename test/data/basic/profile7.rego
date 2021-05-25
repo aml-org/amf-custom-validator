@@ -109,12 +109,12 @@ as_string(x) = json.marshal(x) {
 
 
 # Traces one evaluation of a constraint
-trace(component, path, value, traceMessage) = t {
+trace(constraint, path, node, value) = t {
   t := {
-    "component": component,
+    "component": constraint,
     "path": path,
-    "value": value,
-    "message": traceMessage
+    "focusNode": node["@id"],
+    "value": value
   }
 }
 
@@ -253,7 +253,7 @@ violation[matches] {
   x_check = as_string(x_check_scalar)
   gen_inValues_1 = { "get"}
   gen_inValues_1[x_check]
-  _result_0 := trace("in","apiContract.method",x_check,"Error with value gen_inValues_1 and enumeration ['get']")
+  _result_0 := trace("in","apiContract.method",x,{"negated":true,"actual": gen_inValues_1,"expected": "x_check"})
   #  querying path: apiContract.returns
   ys = gen_path_rule_3 with data.sourceNode as x
   ys_errors = [ ys_error|
@@ -262,11 +262,11 @@ violation[matches] {
     gen_path_rule_4_node_array = gen_path_rule_4 with data.sourceNode as y
     gen_path_rule_4_node = gen_path_rule_4_node_array[_]
     not regex.match("^201$",gen_path_rule_4_node)
-    _result_0 := trace("pattern","apiContract.statusCode",gen_path_rule_4_node,"Error with value gen_path_rule_4_node and matching regular expression '^201$'")
+    _result_0 := trace("pattern","apiContract.statusCode",y,{"negated":false,"argument": gen_path_rule_4_node})
     ys_error := error("nested",y,"error in nested nodes under apiContract.returns",[_result_0])
   ]
   count(ys) - count(ys_errors) >= 1
-  _result_1 := trace("nested","apiContract.returns",{"failed": count(ys_errors), "success":(count(ys) - count(ys_errors))},"")
+  _result_1 := trace("nested","apiContract.returns",x,{"negated":true, "expected":0, "actual":count(ys_errors)})
   matches := error("and-or-not-rule",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0,_result_1])
 }
 
@@ -278,7 +278,7 @@ violation[matches] {
   x_check = as_string(x_check_scalar)
   gen_inValues_1 = { "get"}
   gen_inValues_1[x_check]
-  _result_0 := trace("in","apiContract.method",x_check,"Error with value gen_inValues_1 and enumeration ['get']")
+  _result_0 := trace("in","apiContract.method",x,{"negated":true,"actual": gen_inValues_1,"expected": "x_check"})
   #  querying path: apiContract.returns
   zs = gen_path_rule_5 with data.sourceNode as x
   zs_errors = [ zs_error|
@@ -287,11 +287,11 @@ violation[matches] {
     gen_path_rule_6_node_array = gen_path_rule_6 with data.sourceNode as z
     gen_path_rule_6_node = gen_path_rule_6_node_array[_]
     not regex.match("^2[0-9]{2}$",gen_path_rule_6_node)
-    _result_0 := trace("pattern","apiContract.statusCode",gen_path_rule_6_node,"Error with value gen_path_rule_6_node and matching regular expression '^2[0-9]{2}$'")
+    _result_0 := trace("pattern","apiContract.statusCode",z,{"negated":false,"argument": gen_path_rule_6_node})
     zs_error := error("nested",z,"error in nested nodes under apiContract.returns",[_result_0])
   ]
   not count(zs) - count(zs_errors) >= 1
-  _result_1 := trace("nested","apiContract.returns",{"failed": count(zs_errors), "success":(count(zs) - count(zs_errors))},"")
+  _result_1 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(zs_errors)})
   matches := error("and-or-not-rule",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0,_result_1])
 }
 
@@ -303,7 +303,7 @@ violation[matches] {
   x_check = as_string(x_check_scalar)
   gen_inValues_1 = { "get"}
   gen_inValues_1[x_check]
-  _result_0 := trace("in","apiContract.method",x_check,"Error with value gen_inValues_1 and enumeration ['get']")
+  _result_0 := trace("in","apiContract.method",x,{"negated":true,"actual": gen_inValues_1,"expected": "x_check"})
   #  querying path: apiContract.returns
   ps = gen_path_rule_7 with data.sourceNode as x
   ps_errors = [ ps_error|
@@ -312,11 +312,11 @@ violation[matches] {
     gen_path_rule_8_node_array = gen_path_rule_8 with data.sourceNode as p
     gen_path_rule_8_node = gen_path_rule_8_node_array[_]
     not regex.match("^4[0-9]{2}$",gen_path_rule_8_node)
-    _result_0 := trace("pattern","apiContract.statusCode",gen_path_rule_8_node,"Error with value gen_path_rule_8_node and matching regular expression '^4[0-9]{2}$'")
+    _result_0 := trace("pattern","apiContract.statusCode",p,{"negated":false,"argument": gen_path_rule_8_node})
     ps_error := error("nested",p,"error in nested nodes under apiContract.returns",[_result_0])
   ]
   not count(ps) - count(ps_errors) >= 1
-  _result_1 := trace("nested","apiContract.returns",{"failed": count(ps_errors), "success":(count(ps) - count(ps_errors))},"")
+  _result_1 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(ps_errors)})
   matches := error("and-or-not-rule",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0,_result_1])
 }
 
@@ -328,7 +328,7 @@ violation[matches] {
   x_check = as_string(x_check_scalar)
   gen_inValues_1 = { "get"}
   gen_inValues_1[x_check]
-  _result_0 := trace("in","apiContract.method",x_check,"Error with value gen_inValues_1 and enumeration ['get']")
+  _result_0 := trace("in","apiContract.method",x,{"negated":true,"actual": gen_inValues_1,"expected": "x_check"})
   #  querying path: apiContract.returns
   qs = gen_path_rule_9 with data.sourceNode as x
   qs_errors = [ qs_error|
@@ -337,10 +337,10 @@ violation[matches] {
     gen_path_rule_10_node_array = gen_path_rule_10 with data.sourceNode as q
     gen_path_rule_10_node = gen_path_rule_10_node_array[_]
     not regex.match("^5[0-9]{2}$",gen_path_rule_10_node)
-    _result_0 := trace("pattern","apiContract.statusCode",gen_path_rule_10_node,"Error with value gen_path_rule_10_node and matching regular expression '^5[0-9]{2}$'")
+    _result_0 := trace("pattern","apiContract.statusCode",q,{"negated":false,"argument": gen_path_rule_10_node})
     qs_error := error("nested",q,"error in nested nodes under apiContract.returns",[_result_0])
   ]
   not count(qs) - count(qs_errors) >= 1
-  _result_1 := trace("nested","apiContract.returns",{"failed": count(qs_errors), "success":(count(qs) - count(qs_errors))},"")
+  _result_1 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(qs_errors)})
   matches := error("and-or-not-rule",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0,_result_1])
 }

@@ -183,12 +183,12 @@ as_string(x) = json.marshal(x) {
 
 
 # Traces one evaluation of a constraint
-trace(component, path, value, traceMessage) = t {
+trace(constraint, path, node, value) = t {
   t := {
-    "component": component,
+    "component": constraint,
     "path": path,
-    "value": value,
-    "message": traceMessage
+    "focusNode": node["@id"],
+    "value": value
   }
 }
 

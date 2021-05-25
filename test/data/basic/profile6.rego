@@ -109,12 +109,12 @@ as_string(x) = json.marshal(x) {
 
 
 # Traces one evaluation of a constraint
-trace(component, path, value, traceMessage) = t {
+trace(constraint, path, node, value) = t {
   t := {
-    "component": component,
+    "component": constraint,
     "path": path,
-    "value": value,
-    "message": traceMessage
+    "focusNode": node["@id"],
+    "value": value
   }
 }
 
@@ -184,6 +184,6 @@ violation[matches] {
   gen_path_rule_1A = gen_path_rule_1As[_]
   gen_path_rule_2B = gen_path_rule_2Bs[_]
   not gen_path_rule_1A < gen_path_rule_2B
-  _result_0 := trace("lessThan","shacl.minLength",[gen_path_rule_1A,gen_path_rule_2B],"value not matching property comparison <")
+  _result_0 := trace("lessThan","shacl.minLength",x,{"negated":false, "condition":"<","expected":gen_path_rule_1A, "actual":gen_path_rule_2B})
   matches := error("test-min-length",x,"Min length must be less than max length must match in scalar",[_result_0])
 }

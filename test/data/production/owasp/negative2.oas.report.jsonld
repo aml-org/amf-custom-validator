@@ -1,0 +1,37 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative2.oas#/web-api/end-points/%2Finvoices/get/200",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.payload / shapes.schema",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/owasp/negative2.oas#/web-api/end-points/%2Finvoices/get/200"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Implement a schema-based response validation mechanism as an extra layer of security. As part of this mechanism\ndefine and enforce data returned by all API methods, including errors\n",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "excessive-data-exposure-mandatory-schema"
+      }
+    }
+  ]
+}

@@ -66,6 +66,15 @@ func (r NumericRule) FloatArgument() (float64, error) {
 	return r.Argument.Float()
 }
 
+func (r NumericRule) StringArgument() string {
+	i, err := r.Argument.Int()
+	if err == nil {
+		return fmt.Sprintf("%d", i)
+	}
+	f, _ := r.Argument.Float()
+	return fmt.Sprintf("%f", f)
+}
+
 func newNumericComparison(negated bool, name string, operation CardinalityOperation, variable Variable, path path.PropertyPath, argument *y.Yaml) (NumericRule, error) {
 	n := NumericRule{
 		AtomicStatement: AtomicStatement{

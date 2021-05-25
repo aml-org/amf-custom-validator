@@ -1,0 +1,21 @@
+openapi: "3.0.0"
+info:
+  title: Awesome API
+
+paths:
+  /invoices:
+    get:
+      description: op-description
+      responses:
+        "200":
+          description: teapot
+          content:
+            application/json:
+              schema:
+                type: object
+        "429":
+          description: too many requests
+          content:
+            application/json:
+              schema:
+                type: string

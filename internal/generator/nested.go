@@ -19,8 +19,8 @@ func GenerateNested(nested profile.NestedExpression) SimpleRegoResult {
 		Rego:       rego,
 		PathRules:  []RegoPathResult{pathResult},
 		Path:       nested.Path.Source(),
-		Value:      pluralName,
+		TraceValue: fmt.Sprintf("{}"),
+		TraceNode:  nested.Parent.Name,
 		Variable:   pluralName,
-		Trace:      fmt.Sprintf("nested under %s", path.Source()),
 	}
 }

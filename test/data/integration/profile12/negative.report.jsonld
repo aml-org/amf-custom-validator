@@ -9,12 +9,16 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "datatype",
-          "http://www.w3.org/ns/shacl#focusNode": "100",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with datatype gen_datatype_check_4",
-          "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount"
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": "100",
+            "expected": "xsd:integer",
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -35,15 +39,19 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "datatype",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "@type": "xsd:string",
-            "@value": "100"
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with datatype gen_datatype_check_4",
-          "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount"
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails2",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": {
+              "@type": "xsd:string",
+              "@value": "100"
+            },
+            "expected": "xsd:integer",
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -64,15 +72,19 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "datatype",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "@type": "xsd:wadus",
-            "@value": "100"
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with datatype gen_datatype_check_4",
-          "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount"
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails3",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": {
+              "@type": "xsd:wadus",
+              "@value": "100"
+            },
+            "expected": "xsd:integer",
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {

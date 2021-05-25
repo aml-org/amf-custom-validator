@@ -59,9 +59,9 @@ func generateNumericRule(num profile.NumericRule, rule string, op string) []Simp
 		Rego:       rego,
 		PathRules:  []RegoPathResult{pathResult},
 		Path:       num.Path.Source(),
-		Value:      fmt.Sprintf("%s", valueVariable),
 		Variable:   valueVariable,
-		Trace:      fmt.Sprintf("value not matching rule %s", num.String()),
+		TraceNode:  num.Variable.Name,
+		TraceValue: fmt.Sprintf("{\"negated\":%t,\"condition\":\"%s\",\"expected\":%s,\"actual\":%s}", num.Negated, op, valueVariable, num.StringArgument()),
 	}
 	return []SimpleRegoResult{r}
 }

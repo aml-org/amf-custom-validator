@@ -9,12 +9,17 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "maximumExclusive",
-          "http://www.w3.org/ns/shacl#focusNode": 100,
-          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule maxExclusive(x,'shacl.minCount',50)",
-          "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount"
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 50,
+            "condition": "\u003c",
+            "expected": 100,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {

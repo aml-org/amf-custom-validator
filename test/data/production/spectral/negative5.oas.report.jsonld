@@ -9,25 +9,14 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers",
-            "@type": [
-              "apiContract:EndPoint",
-              "doc:DomainElement"
-            ],
-            "apiContract:parameter": {
-              "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers/parameter/path/id"
-            },
-            "apiContract:path": "/users",
-            "apiContract:supportedOperation": {
-              "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers/get"
-            }
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
-          "http://www.w3.org/ns/shacl#resultPath": ""
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers",
+          "http://www.w3.org/ns/shacl#resultPath": "",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -48,22 +37,14 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",
-            "@type": [
-              "apiContract:EndPoint",
-              "doc:DomainElement"
-            ],
-            "apiContract:path": "/users/{id}",
-            "apiContract:supportedOperation": {
-              "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
-            }
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
-          "http://www.w3.org/ns/shacl#resultPath": ""
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",
+          "http://www.w3.org/ns/shacl#resultPath": "",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -84,25 +65,14 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D",
-            "@type": [
-              "apiContract:EndPoint",
-              "doc:DomainElement"
-            ],
-            "apiContract:parameter": {
-              "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D/parameter/path/id"
-            },
-            "apiContract:path": "/users/{id}/others/{other}",
-            "apiContract:supportedOperation": {
-              "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D/get"
-            }
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
-          "http://www.w3.org/ns/shacl#resultPath": ""
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D",
+          "http://www.w3.org/ns/shacl#resultPath": "",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {

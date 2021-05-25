@@ -50,9 +50,9 @@ func GenerateRegoRule(rule profile.RegoRule) []SimpleRegoResult {
 		Rego:       rego,
 		PathRules:  []RegoPathResult{pathResult}, // this can be an empty path result
 		Path:       rule.Path.Source(),
-		Value:      checkVariable,
 		Variable:   checkVariable,
-		Trace:      rule.Message,
+		TraceNode:  rule.Variable.Name,
+		TraceValue: fmt.Sprintf("{\"negated\":%t}", rule.Negated),
 	}
 	return []SimpleRegoResult{r}
 }

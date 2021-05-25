@@ -90,16 +90,16 @@ func buildViolation(level string, raw interface{}) map[string]interface{} {
 func buildTrace(raw interface{}) interface{} {
 	trace := raw.(map[string]interface{})
 	component := trace["component"]
-	message := trace["message"]
+	focusNode := trace["focusNode"]
 	path := trace["path"]
 	value := trace["value"]
 
 	res := map[string]interface{}{
-		"@type": []string{"http://a.ml/vocabularies/validation#Trace"},
+		"@type": []string{"http://a.ml/vocabularies/validation#TraceMessage"},
 		"http://a.ml/vocabularies/validation#component": component,
-		"http://www.w3.org/ns/shacl#resultMessage":      message,
+		"http://www.w3.org/ns/shacl#focusNode":          focusNode,
 		"http://www.w3.org/ns/shacl#resultPath":         path,
-		"http://www.w3.org/ns/shacl#focusNode":          value,
+		"http://www.w3.org/ns/shacl#traceValue":         value,
 	}
 
 	return res

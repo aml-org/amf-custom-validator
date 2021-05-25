@@ -9,12 +9,17 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": 0,
-          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
-          "http://www.w3.org/ns/shacl#resultPath": "core.provider"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative6.oas#/web-api",
+          "http://www.w3.org/ns/shacl#resultPath": "core.provider",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {

@@ -25,9 +25,9 @@ func GeneratePattern(pattern profile.PatternRule) []SimpleRegoResult {
 		Rego:       rego,
 		PathRules:  []RegoPathResult{pathResult},
 		Path:       pattern.Path.Source(),
-		Value:      checkVariable,
+		TraceNode:  pattern.Variable.Name,
+		TraceValue: fmt.Sprintf("{\"negated\":%t,\"argument\": %s}", pattern.Negated, checkVariable),
 		Variable:   checkVariable,
-		Trace:      fmt.Sprintf("Error with value %s and matching regular expression '%s'", checkVariable, pattern.Argument),
 	}
 	return []SimpleRegoResult{r}
 }

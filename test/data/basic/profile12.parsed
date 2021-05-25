@@ -1,0 +1,12 @@
+lack-of-resources-and-rate-limiting-too-many-requests[violation] :=  ∀x[Class(apiContract.Operation)] : 
+  (
+    ∃y;>= 1[Nested(x,∃y;>= 1,apiContract.returns)] : 
+      (
+        in(y,'apiContract.statusCode',200)
+      )
+  ∨
+    ∃z;>= 1[Nested(x,∃z;>= 1,apiContract.returns)] : 
+      (
+        in(z,'apiContract.statusCode',429)
+      )
+  )

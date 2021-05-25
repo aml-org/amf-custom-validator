@@ -61,7 +61,7 @@ func (r AndRule) Negate() Rule {
 		negatedBody[i] = br.Negate()
 	}
 
-	return NewOr(r.Negated, negatedBody)
+	return NewOr(false, negatedBody)
 }
 
 func (r OrRule) Negate() Rule {
@@ -70,7 +70,7 @@ func (r OrRule) Negate() Rule {
 		negatedBody[i] = br.Negate()
 	}
 
-	return NewAnd(!r.Negated, negatedBody)
+	return NewAnd(false, negatedBody)
 }
 
 func NewAnd(negated bool, body []Rule) AndRule {

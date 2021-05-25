@@ -9,12 +9,15 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "a \u003cscript\u003ealert(somthing)\u003c/script\u003e description",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_path_rule_738_node and matching regular expression '\u003cscript\u003e'",
-          "http://www.w3.org/ns/shacl#resultPath": "core.description"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative9.oas#/web-api",
+          "http://www.w3.org/ns/shacl#resultPath": "core.description",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "argument": "a \u003cscript\u003ealert(somthing)\u003c/script\u003e description",
+            "negated": true
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {

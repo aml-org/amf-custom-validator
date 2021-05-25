@@ -11,9 +11,9 @@ func GenerateClassTarget(variable string, class string) SimpleRegoResult {
 		Constraint: "classTarget",
 		Rego:       []string{rego},
 		Path:       "",
-		Value:      variable,
 		Variable:   variable,
-		Trace:      "",
+		TraceValue: fmt.Sprintf("{\"class\":\"%s\"}", class),
+		TraceNode:  variable,
 		PathRules:  []RegoPathResult{},
 	}
 }

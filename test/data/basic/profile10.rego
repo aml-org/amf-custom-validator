@@ -109,12 +109,12 @@ as_string(x) = json.marshal(x) {
 
 
 # Traces one evaluation of a constraint
-trace(component, path, value, traceMessage) = t {
+trace(constraint, path, node, value) = t {
   t := {
-    "component": component,
+    "component": constraint,
     "path": path,
-    "value": value,
-    "message": traceMessage
+    "focusNode": node["@id"],
+    "value": value
   }
 }
 
@@ -181,7 +181,7 @@ violation[matches] {
   gen_numeric_comparison_2_elem = gen_path_rule_1 with data.sourceNode as x
   gen_numeric_comparison_2 = gen_numeric_comparison_2_elem[_]
   not gen_numeric_comparison_2 >= 25
-  _result_0 := trace("minimumInclusive","shacl.minCount",gen_numeric_comparison_2,"value not matching rule minInclusive(x,'shacl.minCount',25)")
+  _result_0 := trace("minimumInclusive","shacl.minCount",x,{"negated":false,"condition":">=","expected":gen_numeric_comparison_2,"actual":25})
   matches := error("array-limits",x,"Validation error",[_result_0])
 }
 
@@ -191,6 +191,6 @@ violation[matches] {
   gen_numeric_comparison_4_elem = gen_path_rule_3 with data.sourceNode as x
   gen_numeric_comparison_4 = gen_numeric_comparison_4_elem[_]
   not gen_numeric_comparison_4 < 50.450000
-  _result_0 := trace("maximumExclusive","shacl.minCount",gen_numeric_comparison_4,"value not matching rule maxExclusive(x,'shacl.minCount',50.450000)")
+  _result_0 := trace("maximumExclusive","shacl.minCount",x,{"negated":false,"condition":"<","expected":gen_numeric_comparison_4,"actual":50.450000})
   matches := error("array-limits",x,"Validation error",[_result_0])
 }

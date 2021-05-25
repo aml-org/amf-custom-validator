@@ -109,12 +109,12 @@ as_string(x) = json.marshal(x) {
 
 
 # Traces one evaluation of a constraint
-trace(component, path, value, traceMessage) = t {
+trace(constraint, path, node, value) = t {
   t := {
-    "component": component,
+    "component": constraint,
     "path": path,
-    "value": value,
-    "message": traceMessage
+    "focusNode": node["@id"],
+    "value": value
   }
 }
 
@@ -194,7 +194,7 @@ violation[matches] {
   #  querying path: raml-shapes.schema
   gen_propValues_1 = gen_path_rule_2 with data.sourceNode as x
   not count(gen_propValues_1) >= 1
-  _result_0 := trace("minCount","raml-shapes.schema",count(gen_propValues_1),"value not matching rule 1")
+  _result_0 := trace("minCount","raml-shapes.schema",x,{"negated":false,"condition":">=","actual": count(gen_propValues_1),"expected": 1})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }
 
@@ -203,7 +203,7 @@ violation[matches] {
   #  querying path: raml-shapes.schema
   gen_propValues_3 = gen_path_rule_4 with data.sourceNode as x
   not count(gen_propValues_3) <= 3
-  _result_0 := trace("maxCount","raml-shapes.schema",count(gen_propValues_3),"value not matching rule 3")
+  _result_0 := trace("maxCount","raml-shapes.schema",x,{"negated":false,"condition":"<=","actual": count(gen_propValues_3),"expected": 3})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }
 
@@ -216,10 +216,10 @@ violation[matches] {
     #  querying path: shacl.minLength
     gen_propValues_6 = gen_path_rule_7 with data.sourceNode as y
     not count(gen_propValues_6) >= 1
-    _result_0 := trace("minCount","shacl.minLength",count(gen_propValues_6),"value not matching rule 1")
+    _result_0 := trace("minCount","shacl.minLength",y,{"negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
     ys_error := error("nested",y,"error in nested nodes under raml-shapes.schema",[_result_0])
   ]
   count(ys_errors) > 0
-  _result_0 := trace("nested","raml-shapes.schema",{"failed": count(ys_errors), "success":(count(ys) - count(ys_errors))},"")
+  _result_0 := trace("nested","raml-shapes.schema",x,{"negated":false, "expected":0, "actual":count(ys_errors)})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }

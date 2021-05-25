@@ -1,0 +1,62 @@
+#%Validation Profile 1.0
+
+profile: OWasp 2019 API Security
+
+violation:
+  - broken-object-level-authorization-use-guids
+  - excessive-data-exposure-mandatory-schema
+  - lack-of-resources-and-rate-limiting-too-many-requests
+  - security-misconfiguration-disabled-http-methods-defined
+  - security-misconfiguration-disabled-http-methods-disabled-or-2xx
+
+validations:
+
+  broken-object-level-authorization-use-guids:
+    message: Prefer to use random and unpredictable values as GUIDs for records’ IDs.
+    targetClass: apiContract.Parameter
+    or:
+      - not:
+          propertyConstraints:
+            core.name:
+              pattern: ".*id$"
+      - propertyConstraints:
+          shapes.schema / shacl.pattern:
+            minCount: 1
+            in:
+              - "(?im)^[{(]?[0-9A-F]{8}[-]?(?:[0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$"
+
+  excessive-data-exposure-mandatory-schema:
+    message: |
+      Implement a schema-based response validation mechanism as an extra layer of security. As part of this mechanism
+      define and enforce data returned by all API methods, including errors
+    targetClass: apiContract.Response
+    propertyConstraints:
+      apiContract.payload / shapes.schema:
+        minCount: 1
+
+  lack-of-resources-and-rate-limiting-too-many-requests:
+    message: |
+      Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will
+      be reset.
+    targetClass: apiContract.Operation
+    or:
+      - not:
+          not:
+            propertyConstraints:
+              apiContract.returns:
+                atLeast:
+                  count: 1
+                  validation:
+                    propertyConstraints:
+                      apiContract.statusCode:
+                        in:
+                          - "200"
+      - propertyConstraints:
+          apiContract.returns:
+            atLeast:
+              count: 1
+              validation:
+                propertyConstraints:
+                  apiContract.statusCode:
+                    in:
+                      - "403"

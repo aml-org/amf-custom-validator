@@ -109,12 +109,12 @@ as_string(x) = json.marshal(x) {
 
 
 # Traces one evaluation of a constraint
-trace(component, path, value, traceMessage) = t {
+trace(constraint, path, node, value) = t {
   t := {
-    "component": component,
+    "component": constraint,
     "path": path,
-    "value": value,
-    "message": traceMessage
+    "focusNode": node["@id"],
+    "value": value
   }
 }
 
@@ -170,7 +170,7 @@ violation[matches] {
   gen_rego_result_2 = (version != null)
   
   gen_rego_result_2 == true
-  _result_0 := trace("rego","",x,"Violation in native Rego constraint")
+  _result_0 := trace("rego","",x,{"negated":true})
   matches := error("simple-rego",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0])
 }
 # Path rules
@@ -186,7 +186,7 @@ violation[matches] {
   gen_rego_result_4 = (version != null)
   
   gen_rego_result_4 != true
-  _result_0 := trace("rego","",x,"api without version")
+  _result_0 := trace("rego","",x,{"negated":false})
   matches := error("simple-rego2",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0])
 }
 # Path rules
@@ -207,6 +207,6 @@ violation[matches] {
   gen_path_rule_5_node = gen_path_rule_5_node_array
   gen_rego_result_6 = (gen_path_rule_5_node != null) # custom 3
   gen_rego_result_6 != true
-  _result_0 := trace("rego","apiContract.version",gen_path_rule_5_node,"Violation in native Rego constraint")
+  _result_0 := trace("rego","apiContract.version",x,{"negated":false})
   matches := error("simple-rego3",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0])
 }

@@ -9,29 +9,14 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "@id": "file://./test/data/production/spectral/negative18.oas#/declarations/types/TheBadModel/property/number_of_connectors/scalar/number_of_connectors",
-            "@type": [
-              "shapes:ScalarShape",
-              "shapes:AnyShape",
-              "shacl:Shape",
-              "shapes:Shape",
-              "doc:DomainElement"
-            ],
-            "core:description": "The number of extension points.",
-            "shacl:datatype": {
-              "@id": "xsd:integer"
-            },
-            "shacl:in": {
-              "@id": "file://./test/data/production/spectral/negative18.oas#/declarations/types/TheBadModel/property/number_of_connectors/scalar/number_of_connectors/list"
-            },
-            "shacl:name": "number_of_connectors"
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
-          "http://www.w3.org/ns/shacl#resultPath": ""
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative18.oas#/declarations/types/TheBadModel/property/number_of_connectors/scalar/number_of_connectors",
+          "http://www.w3.org/ns/shacl#resultPath": "",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {

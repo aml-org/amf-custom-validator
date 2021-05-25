@@ -2,12 +2,18 @@
 
 for production_dir in ./test/data/production/*
 do
+  echo $production_dir
+  #re="owasp"
+  #if  [[ $production_dir =~ $re ]]; then
   # remove jsonld
   for entry in $production_dir/*
   do
     re="negative3|negative4" # this cannot be generated, ignore
     if [[ $entry =~ $re ]]; then
-      continue
+      re="spectral"
+      if [[ $entry =~ $re ]]; then
+        continue
+      fi
     fi
     re="jsonld"
     if [[ $entry =~ $re ]]; then
@@ -18,6 +24,10 @@ do
   for entry in $production_dir/*
   do
     re="negative3|negative4" # this cannot be generated, ignore
+    if [[ $entry =~ $re ]]; then
+      continue
+    fi
+    re="report" # this cannot be generated, ignore
     if [[ $entry =~ $re ]]; then
       continue
     fi
@@ -35,4 +45,5 @@ do
       fi
     fi
   done
+  #fi
 done

@@ -9,12 +9,15 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "default",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_path_rule_101_node and matching regular expression 'default'",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.statusCode"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative11.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/get/default",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.statusCode",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "argument": "default",
+            "negated": true
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {

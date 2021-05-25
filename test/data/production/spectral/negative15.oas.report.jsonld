@@ -9,25 +9,14 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "@id": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems",
-            "@type": [
-              "apiContract:EndPoint",
-              "doc:DomainElement"
-            ],
-            "apiContract:parameter": {
-              "@id": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems/parameter/path/"
-            },
-            "apiContract:path": "/invoices/{}/items",
-            "apiContract:supportedOperation": {
-              "@id": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems/get"
-            }
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
-          "http://www.w3.org/ns/shacl#resultPath": ""
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems",
+          "http://www.w3.org/ns/shacl#resultPath": "",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -48,12 +37,15 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "/invoices/{}/items",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_path_rule_271_node and matching regular expression '{}'",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.path"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.path",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "argument": "/invoices/{}/items",
+            "negated": true
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -74,12 +66,15 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "/invoices/{id}/items/{}",
-          "http://www.w3.org/ns/shacl#resultMessage": "Error with value gen_path_rule_271_node and matching regular expression '{}'",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.path"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7B%7D",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.path",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "argument": "/invoices/{id}/items/{}",
+            "negated": true
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {

@@ -11,12 +11,12 @@ import (
 const debug = false
 
 func TestProduction(t *testing.T) {
-	for _, fixture := range test.ProductionFixtures("../../test/data/production", nil) {
+	filter := ""
+	for _, fixture := range test.ProductionFixtures("../../test/data/production", &filter) {
 		profile := fixture.Profile()
 		for _, example := range fixture.Examples() {
 			filter := "" // put the number of the text to filter here
 			if strings.Index(example.File, filter) > -1 {
-				//println(example.File)
 				report, err := Validate(profile, example.Text, debug)
 
 				if err != nil {
@@ -38,8 +38,8 @@ func TestProduction(t *testing.T) {
 }
 
 func TestValidate(t *testing.T) {
-	//filter := "profile12"
-	for _, fixture := range test.IntegrationFixtures("../../test/data/integration", nil) {
+	filter := ""
+	for _, fixture := range test.IntegrationFixtures("../../test/data/integration", &filter) {
 		prof := fixture.ReadProfile()
 		profile.GenReset()
 		report, err := Validate(prof, fixture.ReadFixturePositiveData(), debug)

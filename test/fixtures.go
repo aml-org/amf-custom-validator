@@ -70,8 +70,9 @@ func ProductionFixtures(root string, filter *string) []ProductionFixture {
 					fixtures = append(fixtures, ProductionFixture(path))
 				}
 				return nil
+			} else {
+				fixtures = append(fixtures, ProductionFixture(path))
 			}
-			fixtures = append(fixtures, ProductionFixture(path))
 		}
 		return nil
 	})

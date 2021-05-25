@@ -9,32 +9,14 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "@id": "file://./test/data/production/spectral/negative4.oas#/web-api",
-            "@type": [
-              "apiContract:WebAPI",
-              "apiContract:API",
-              "doc:RootDomainElement",
-              "doc:DomainElement"
-            ],
-            "apiContract:endpoint": [
-              {
-                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D"
-              },
-              {
-                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind"
-              }
-            ],
-            "core:name": "Example API",
-            "core:provider": {
-              "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/organization"
-            }
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
-          "http://www.w3.org/ns/shacl#resultPath": ""
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative4.oas#/web-api",
+          "http://www.w3.org/ns/shacl#resultPath": "",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -55,30 +37,14 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",
-            "@type": [
-              "apiContract:EndPoint",
-              "doc:DomainElement"
-            ],
-            "apiContract:parameter": [
-              {
-                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/path/id"
-              },
-              {
-                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/header/id"
-              }
-            ],
-            "apiContract:path": "/users/{id}",
-            "apiContract:supportedOperation": {
-              "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
-            }
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
-          "http://www.w3.org/ns/shacl#resultPath": ""
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",
+          "http://www.w3.org/ns/shacl#resultPath": "",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -99,30 +65,14 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": {
-            "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind",
-            "@type": [
-              "apiContract:EndPoint",
-              "doc:DomainElement"
-            ],
-            "apiContract:parameter": [
-              {
-                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/parameter/query/other"
-              },
-              {
-                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/parameter/cookie/other"
-              }
-            ],
-            "apiContract:path": "/users/find",
-            "apiContract:supportedOperation": {
-              "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get"
-            }
-          },
-          "http://www.w3.org/ns/shacl#resultMessage": "Violation in native Rego constraint",
-          "http://www.w3.org/ns/shacl#resultPath": ""
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind",
+          "http://www.w3.org/ns/shacl#resultPath": "",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -143,12 +93,17 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": 0,
-          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
-          "http://www.w3.org/ns/shacl#resultPath": "core.description"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative4.oas#/web-api",
+          "http://www.w3.org/ns/shacl#resultPath": "core.description",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -169,12 +124,17 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": 0,
-          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
-          "http://www.w3.org/ns/shacl#resultPath": "core.license"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative4.oas#/web-api",
+          "http://www.w3.org/ns/shacl#resultPath": "core.license",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -195,12 +155,17 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": 0,
-          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative4.oas#/web-api",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -221,12 +186,17 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": 0,
-          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
-          "http://www.w3.org/ns/shacl#resultPath": "core.description"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
+          "http://www.w3.org/ns/shacl#resultPath": "core.description",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -247,12 +217,17 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": 0,
-          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
-          "http://www.w3.org/ns/shacl#resultPath": "core.description"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get",
+          "http://www.w3.org/ns/shacl#resultPath": "core.description",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -273,12 +248,17 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": 0,
-          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.operationId"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.operationId",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -299,12 +279,17 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": 0,
-          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.operationId"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.operationId",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -325,12 +310,17 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": 0,
-          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
@@ -351,12 +341,17 @@
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#Trace"
+            "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": 0,
-          "http://www.w3.org/ns/shacl#resultMessage": "value not matching rule 1",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag"
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 0,
+            "condition": "\u003e=",
+            "expected": 1,
+            "negated": false
+          }
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {

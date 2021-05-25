@@ -32,9 +32,9 @@ func GenerateIn(in profile.InRule) []SimpleRegoResult {
 		Rego:       rego,
 		PathRules:  []RegoPathResult{pathResult},
 		Path:       in.Path.Source(),
-		Value:      inValuesTestVariable,
+		TraceNode:  in.Variable.Name,
+		TraceValue: fmt.Sprintf("{\"negated\":%t,\"actual\": %s,\"expected\": \"%s\"}", in.Negated, inValuesVariable, strings.ReplaceAll(inValuesTestVariable, "\"", "'")),
 		Variable:   inValuesTestVariable,
-		Trace:      fmt.Sprintf("Error with value %s and enumeration ['%s']", inValuesVariable, strings.Join(in.Argument, "','")),
 	}
 	return []SimpleRegoResult{r}
 }
