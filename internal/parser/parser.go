@@ -2,7 +2,7 @@ package parser
 
 import (
 	"github.com/aml-org/amfopa/internal/parser/profile"
-	y "github.com/smallfish/simpleyaml"
+	y "github.com/aml-org/amfopa/internal/parser/yaml"
 )
 
 func Parse(profileText string) (*profile.Profile, error) {

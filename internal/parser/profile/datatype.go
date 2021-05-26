@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/aml-org/amfopa/internal"
 	"github.com/aml-org/amfopa/internal/parser/path"
-	y "github.com/smallfish/simpleyaml"
+	y "github.com/aml-org/amfopa/internal/parser/yaml"
 	"strings"
 )
 

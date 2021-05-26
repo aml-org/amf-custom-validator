@@ -3,7 +3,7 @@ package profile
 import (
 	"errors"
 	"github.com/aml-org/amfopa/internal/parser/path"
-	y "github.com/smallfish/simpleyaml"
+	y "github.com/aml-org/amfopa/internal/parser/yaml"
 )
 
 func ParseExpression(name string, data *y.Yaml, level string, varGenerator *VarGenerator) (Rule, error) {

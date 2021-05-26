@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	pathParser "github.com/aml-org/amfopa/internal/parser/path"
-	y "github.com/smallfish/simpleyaml"
+	y "github.com/aml-org/amfopa/internal/parser/yaml"
 	"strconv"
 )
 
@@ -228,23 +228,36 @@ func parseQualifiedNestedExpression(qNested *y.Yaml, negated bool, variable Vari
 }
 
 // We are always stringifying the value to be able to compare it easily in Rego
-func scalarList(in []interface{}) ([]string, error) {
+func scalarList(in []*y.Yaml) ([]string, error) {
 	var acc []string
 	for _, e := range in {
-		switch pe := e.(type) {
-		case string:
-			acc = append(acc, pe)
-		case int:
-			acc = append(acc, strconv.FormatInt(int64(pe), 10))
-		case float32:
-			acc = append(acc, strconv.FormatFloat(float64(pe), 'f', 6, 64))
-		case float64:
-			acc = append(acc, strconv.FormatFloat(pe, 'f', 6, 64))
-		case bool:
-			acc = append(acc, strconv.FormatBool(pe))
-		default:
-			return nil, errors.New(fmt.Sprintf("expected scalars in 'in' constraint, found %v", e))
+		s, nok := e.String()
+		if nok == nil {
+			acc = append(acc, s)
+			continue
 		}
+
+		i, nok := e.Int()
+		if nok == nil {
+			acc = append(acc, strconv.Itoa(i))
+			continue
+		}
+
+		f, nok := e.Float()
+		if nok == nil {
+			acc = append(acc, strconv.FormatFloat(f, 'f', 6, 64))
+			continue
+		}
+
+		b, nok := e.Bool()
+		if nok == nil {
+			acc = append(acc, strconv.FormatBool(b))
+			continue
+		}
+
+		l, c := e.Pos()
+		return nil, errors.New(fmt.Sprintf("expected scalars in 'in' constraint, found %v at [%d,%d]", e, l, c))
+
 	}
 
 	return acc, nil

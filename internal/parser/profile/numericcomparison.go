@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/aml-org/amfopa/internal"
 	"github.com/aml-org/amfopa/internal/parser/path"
-	y "github.com/smallfish/simpleyaml"
+	y "github.com/aml-org/amfopa/internal/parser/yaml"
 )
 
 type NumericRule struct {
@@ -40,7 +40,7 @@ func (r NumericRule) Negate() Rule {
 }
 
 func (r NumericRule) ValueHash() string {
-	v := fmt.Sprintf("%s %s %d", r.Name, r.Operation.String(), r.Argument)
+	v := fmt.Sprintf("%s %s %s", r.Name, r.Operation.String(), r.StringArgument())
 	return internal.HashString(v)
 }
 
