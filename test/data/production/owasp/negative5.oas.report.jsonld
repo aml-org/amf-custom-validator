@@ -18,7 +18,7 @@
             "actual": [
               "xsd:string"
             ],
-            "expected": "x_check",
+            "expected": "gen_x_check_217",
             "negated": true
           }
         },

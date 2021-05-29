@@ -30,7 +30,7 @@
             "actual": [
               "(?im)^[{(]?[0-9A-F]{8}[-]?(?:[0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$"
             ],
-            "expected": "x_check",
+            "expected": "gen_x_check_6",
             "negated": false
           }
         }
@@ -62,7 +62,7 @@
             "actual": [
               "xsd:string"
             ],
-            "expected": "x_check",
+            "expected": "gen_x_check_29",
             "negated": true
           }
         },

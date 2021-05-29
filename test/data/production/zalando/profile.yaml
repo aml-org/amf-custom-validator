@@ -1,0 +1,74 @@
+#%Validation Profile 1.0
+
+profile: Zalando
+
+violation:
+  - 218-title-must-be-provided
+  - 218-description-must-be-provided
+  - 218-version-must-be-provided
+  - 218-contact-name-must-be-provided
+  - 218-contact-url-must-be-provided
+  - 218-contact-email-must-be-provided
+  - 166-do-not-use-link-headers
+
+
+validations:
+  218-title-must-be-provided:
+    message: Title has to be provided
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.name:
+        minCount: 1
+
+  218-description-must-be-provided:
+    message: Description has to be provided
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  218-version-must-be-provided:
+    message: Version has to be provided
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.version:
+        minCount: 1
+
+  218-contact-name-must-be-provided:
+    message: Contact name must be provided
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.provider / core.name:
+        minCount: 1
+
+  218-contact-url-must-be-provided:
+    message: Contact name must be provided
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.provider / core.url:
+        minCount: 1
+
+  218-contact-email-must-be-provided:
+    message: Contact name must be provided
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.provider / core.email:
+        minCount: 1
+
+  166-do-not-use-link-headers:
+    message: Do Not Use Link Headers with JSON entities
+    targetClass: apiContract.Parameter
+    not:
+      propertyConstraints:
+        core.name:
+          in:
+            - Link
+        apiContract.binding:
+          in:
+            - header
+
+
+
+
+
+
