@@ -2,6 +2,7 @@ package profile
 
 import (
 	"errors"
+	"fmt"
 	"github.com/aml-org/amfopa/internal/parser/path"
 	y "github.com/aml-org/amfopa/internal/parser/yaml"
 )
@@ -9,7 +10,8 @@ import (
 func ParseExpression(name string, data *y.Yaml, level string, varGenerator *VarGenerator) (Rule, error) {
 	targetClass, err := data.Get("targetClass").String()
 	if err != nil {
-		return nil, errors.New("missing targetClass in validation definition")
+		l, c := data.Pos()
+		return nil, errors.New(fmt.Sprintf("missing targetClass in validation definition at [%d,%d]", l, c))
 	}
 	message, err := data.Get("message").String()
 	if err != nil {
@@ -77,7 +79,8 @@ func parseExpressionValue(variable Variable, data *y.Yaml, varGenerator *VarGene
 		}
 	}
 
-	return nil, errors.New("unknown expression node, cannot find properties to parse")
+	l, c := data.Pos()
+	return nil, errors.New(fmt.Sprintf("unknown expression node, cannot find properties to parse at [%d,%d]", l, c))
 
 }
 

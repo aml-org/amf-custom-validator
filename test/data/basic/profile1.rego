@@ -172,21 +172,21 @@ gen_path_rule_2[nodes] {
   nodes = nodes_tmp2[_]
 }
 
-gen_path_rule_4[nodes] {
+gen_path_rule_5[nodes] {
   init_x_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
 
-gen_path_rule_6[nodes] {
+gen_path_rule_7[nodes] {
   init_x_0__maxCount_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__maxCount_,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
 
-gen_path_rule_7[nodes] {
+gen_path_rule_8[nodes] {
   init_x_0__pattern_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__pattern_,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -207,30 +207,30 @@ violation[matches] {
 violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: apiContract.method
-  x_check_array = gen_path_rule_4 with data.sourceNode as x
-  x_check_scalar = x_check_array[_]
-  x_check = as_string(x_check_scalar)
+  gen_x_check_4_array = gen_path_rule_5 with data.sourceNode as x
+  gen_x_check_4_scalar = gen_x_check_4_array[_]
+  gen_x_check_4 = as_string(gen_x_check_4_scalar)
   gen_inValues_3 = { "publish","subscribe","1","2"}
-  not gen_inValues_3[x_check]
-  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_inValues_3,"expected": "x_check"})
+  not gen_inValues_3[gen_x_check_4]
+  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_4,"expected": "[\"publish\",\"subscribe\",\"1\",\"2\"]"})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 
 violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: shacl.name
-  gen_propValues_5 = gen_path_rule_6 with data.sourceNode as x
-  not count(gen_propValues_5) <= 1
-  _result_0 := trace("maxCount","shacl.name",x,{"negated":false,"condition":"<=","actual": count(gen_propValues_5),"expected": 1})
+  gen_propValues_6 = gen_path_rule_7 with data.sourceNode as x
+  not count(gen_propValues_6) <= 1
+  _result_0 := trace("maxCount","shacl.name",x,{"negated":false,"condition":"<=","actual": count(gen_propValues_6),"expected": 1})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 
 violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: shacl.name
-  gen_path_rule_7_node_array = gen_path_rule_7 with data.sourceNode as x
-  gen_path_rule_7_node = gen_path_rule_7_node_array[_]
-  not regex.match("^put|post$",gen_path_rule_7_node)
-  _result_0 := trace("pattern","shacl.name",x,{"negated":false,"argument": gen_path_rule_7_node})
+  gen_gen_path_rule_8_node_9_array = gen_path_rule_8 with data.sourceNode as x
+  gen_gen_path_rule_8_node_9 = gen_gen_path_rule_8_node_9_array[_]
+  not regex.match("^put|post$",gen_gen_path_rule_8_node_9)
+  _result_0 := trace("pattern","shacl.name",x,{"negated":false,"argument": gen_gen_path_rule_8_node_9})
   matches := error("validation1",x,"This is the message",[_result_0])
 }

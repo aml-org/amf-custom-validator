@@ -41,6 +41,15 @@ func (r InRule) ValueHash() string {
 	return internal.HashString(v)
 }
 
+func (r InRule) JSONValues() string {
+	var acc []string
+	for _, v := range r.Argument {
+		acc = append(acc, fmt.Sprintf("\\\"%s\\\"", v))
+	}
+
+	return fmt.Sprintf("[%s]", strings.Join(acc, ","))
+}
+
 func (r InRule) String() string {
 	var negation = ""
 	if r.Negated {

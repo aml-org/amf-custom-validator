@@ -172,21 +172,21 @@ gen_path_rule_1[nodes] {
   nodes = x
 }
 
-gen_path_rule_3[nodes] {
+gen_path_rule_4[nodes] {
   init_y_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_y_0__in_,"apiContract:statusCode",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
 
-gen_path_rule_4[nodes] {
+gen_path_rule_5[nodes] {
   init_x_0__nested_ = data.sourceNode
   tmp_x = nested_nodes with data.nodes as init_x_0__nested_["apiContract:returns"]
   x = tmp_x[_][_]
   nodes = x
 }
 
-gen_path_rule_6[nodes] {
+gen_path_rule_8[nodes] {
   init_z_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_z_0__in_,"apiContract:statusCode",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -202,27 +202,27 @@ violation[matches] {
   ys_errors = [ ys_error|
     y = ys[_]
     #  querying path: apiContract.statusCode
-    y_check_array = gen_path_rule_3 with data.sourceNode as y
-    y_check_scalar = y_check_array[_]
-    y_check = as_string(y_check_scalar)
+    gen_y_check_3_array = gen_path_rule_4 with data.sourceNode as y
+    gen_y_check_3_scalar = gen_y_check_3_array[_]
+    gen_y_check_3 = as_string(gen_y_check_3_scalar)
     gen_inValues_2 = { "200"}
-    not gen_inValues_2[y_check]
-    _result_0 := trace("in","apiContract.statusCode",y,{"negated":false,"actual": gen_inValues_2,"expected": "y_check"})
+    not gen_inValues_2[gen_y_check_3]
+    _result_0 := trace("in","apiContract.statusCode",y,{"negated":false,"actual": gen_y_check_3,"expected": "[\"200\"]"})
     ys_error := error("nested",y,"error in nested nodes under apiContract.returns",[_result_0])
   ]
   not count(ys) - count(ys_errors) >= 1
   _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(ys_errors)})
   #  querying path: apiContract.returns
-  zs = gen_path_rule_4 with data.sourceNode as x
+  zs = gen_path_rule_5 with data.sourceNode as x
   zs_errors = [ zs_error|
     z = zs[_]
     #  querying path: apiContract.statusCode
-    z_check_array = gen_path_rule_6 with data.sourceNode as z
-    z_check_scalar = z_check_array[_]
-    z_check = as_string(z_check_scalar)
-    gen_inValues_5 = { "429"}
-    not gen_inValues_5[z_check]
-    _result_0 := trace("in","apiContract.statusCode",z,{"negated":false,"actual": gen_inValues_5,"expected": "z_check"})
+    gen_z_check_7_array = gen_path_rule_8 with data.sourceNode as z
+    gen_z_check_7_scalar = gen_z_check_7_array[_]
+    gen_z_check_7 = as_string(gen_z_check_7_scalar)
+    gen_inValues_6 = { "429"}
+    not gen_inValues_6[gen_z_check_7]
+    _result_0 := trace("in","apiContract.statusCode",z,{"negated":false,"actual": gen_z_check_7,"expected": "[\"429\"]"})
     zs_error := error("nested",z,"error in nested nodes under apiContract.returns",[_result_0])
   ]
   not count(zs) - count(zs_errors) >= 1

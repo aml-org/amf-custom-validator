@@ -165,14 +165,14 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_2[nodes] {
+gen_path_rule_3[nodes] {
   init_x_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
 
-gen_path_rule_4[nodes] {
+gen_path_rule_6[nodes] {
   init_x_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -184,18 +184,18 @@ gen_path_rule_4[nodes] {
 violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: apiContract.method
-  x_check_array = gen_path_rule_2 with data.sourceNode as x
-  x_check_scalar = x_check_array[_]
-  x_check = as_string(x_check_scalar)
+  gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
+  gen_x_check_2_scalar = gen_x_check_2_array[_]
+  gen_x_check_2 = as_string(gen_x_check_2_scalar)
   gen_inValues_1 = { "subscribe"}
-  not gen_inValues_1[x_check]
-  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_inValues_1,"expected": "x_check"})
+  not gen_inValues_1[gen_x_check_2]
+  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_2,"expected": "[\"subscribe\"]"})
   #  querying path: apiContract.method
-  x_check_array = gen_path_rule_4 with data.sourceNode as x
-  x_check_scalar = x_check_array[_]
-  x_check = as_string(x_check_scalar)
-  gen_inValues_3 = { "get"}
-  not gen_inValues_3[x_check]
-  _result_1 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_inValues_3,"expected": "x_check"})
+  gen_x_check_5_array = gen_path_rule_6 with data.sourceNode as x
+  gen_x_check_5_scalar = gen_x_check_5_array[_]
+  gen_x_check_5 = as_string(gen_x_check_5_scalar)
+  gen_inValues_4 = { "get"}
+  not gen_inValues_4[gen_x_check_5]
+  _result_1 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_5,"expected": "[\"get\"]"})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }

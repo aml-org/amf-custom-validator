@@ -27,10 +27,8 @@
           "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/id",
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.pattern",
           "http://www.w3.org/ns/shacl#traceValue": {
-            "actual": [
-              "(?im)^[{(]?[0-9A-F]{8}[-]?(?:[0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$"
-            ],
-            "expected": "gen_x_check_6",
+            "actual": "lala",
+            "expected": "[\"(?im)^[{(]?[0-9A-F]{8}[-]?(?:[0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$\"]",
             "negated": false
           }
         }
@@ -59,10 +57,8 @@
           "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/itemId",
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.datatype",
           "http://www.w3.org/ns/shacl#traceValue": {
-            "actual": [
-              "xsd:string"
-            ],
-            "expected": "gen_x_check_29",
+            "actual": "xsd:string",
+            "expected": "[\"xsd:string\"]",
             "negated": true
           }
         },

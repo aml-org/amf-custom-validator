@@ -209,10 +209,10 @@ gen_path_rule_5[nodes] {
 violation[matches] {
   target_class[x] with data.class as "apiContract:WebAPI"
   #  querying path: apiContract.version
-  gen_path_rule_5_node_array = gen_path_rule_5 with data.sourceNode as x
-  gen_path_rule_5_node = gen_path_rule_5_node_array
-  gen_rego_result_6 = (gen_path_rule_5_node != null) # custom 3
-  gen_rego_result_6 != true
+  gen_gen_path_rule_5_node_6_array = gen_path_rule_5 with data.sourceNode as x
+  gen_gen_path_rule_5_node_6 = gen_gen_path_rule_5_node_6_array
+  gen_rego_result_7 = (gen_gen_path_rule_5_node_6 != null) # custom 3
+  gen_rego_result_7 != true
   _result_0 := trace("rego","apiContract.version",x,{"negated":false})
   matches := error("simple-rego3",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0])
 }

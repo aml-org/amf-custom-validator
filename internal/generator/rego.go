@@ -19,7 +19,7 @@ func GenerateRegoRule(rule profile.RegoRule) []SimpleRegoResult {
 
 	// If this is not a top-level rego rule (the path generates code), we use the bind the check variable for the path computation result
 	if len(pathResult.rego) > 0 {
-		checkVariable = pathResult.rule + "_node"
+		checkVariable = profile.Genvar(pathResult.rule + "_node")
 		rego = append(rego, "#  querying path: "+path.Source())
 		rego = append(rego, fmt.Sprintf("%s_array = %s with data.sourceNode as %s", checkVariable, pathResult.rule, rule.Variable.Name))
 		rego = append(rego, fmt.Sprintf("%s = %s_array", checkVariable, checkVariable))

@@ -15,10 +15,8 @@
           "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative5.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/parameter/query/itemId",
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.datatype",
           "http://www.w3.org/ns/shacl#traceValue": {
-            "actual": [
-              "xsd:string"
-            ],
-            "expected": "gen_x_check_217",
+            "actual": "xsd:string",
+            "expected": "[\"xsd:string\"]",
             "negated": true
           }
         },

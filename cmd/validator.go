@@ -4,6 +4,7 @@ import (
 	"github.com/aml-org/amfopa/internal/validator"
 	"io/ioutil"
 	"os"
+	"strconv"
 )
 
 func main() {
@@ -20,7 +21,16 @@ func main() {
 		panic(err)
 	}
 
-	res, err := validator.Validate(string(profile), string(data), true)
+	debug := false
+	if len(os.Args) >= 3 {
+		parsedDebug, ok := strconv.ParseBool(os.Args[3])
+		if ok != nil {
+			panic("usage validate PROFILE_PATH FILE_PATH [DEBUG=true|false]")
+		}
+		debug = parsedDebug
+	}
+
+	res, err := validator.Validate(string(profile), string(data), debug)
 	if err != nil {
 		panic(err)
 	}

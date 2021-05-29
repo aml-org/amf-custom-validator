@@ -7,12 +7,13 @@ import (
 )
 
 func GenerateIn(in profile.InRule) []SimpleRegoResult {
+
 	path := in.Path
 	var rego []string
 
 	// Let's get the path computed and stored in the inValuesVariable
 	inValuesVariable := profile.Genvar("inValues")
-	inValuesTestVariable := fmt.Sprintf("%s_check", in.Variable.Name)
+	inValuesTestVariable := profile.Genvar(fmt.Sprintf("%s_check", in.Variable.Name))
 
 	rego = append(rego, "#  querying path: "+path.Source())
 	pathResult := GeneratePropertyArray(path, in.Variable.Name, "in_"+in.ValueHash())
@@ -33,7 +34,7 @@ func GenerateIn(in profile.InRule) []SimpleRegoResult {
 		PathRules:  []RegoPathResult{pathResult},
 		Path:       in.Path.Source(),
 		TraceNode:  in.Variable.Name,
-		TraceValue: fmt.Sprintf("{\"negated\":%t,\"actual\": %s,\"expected\": \"%s\"}", in.Negated, inValuesVariable, strings.ReplaceAll(inValuesTestVariable, "\"", "'")),
+		TraceValue: fmt.Sprintf("{\"negated\":%t,\"actual\": %s,\"expected\": \"%s\"}", in.Negated, strings.ReplaceAll(inValuesTestVariable, "\"", "'"), in.JSONValues()),
 		Variable:   inValuesTestVariable,
 	}
 	return []SimpleRegoResult{r}

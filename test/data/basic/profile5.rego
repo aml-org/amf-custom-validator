@@ -172,7 +172,7 @@ gen_path_rule_1[nodes] {
   nodes = x
 }
 
-gen_path_rule_3[nodes] {
+gen_path_rule_4[nodes] {
   init_y_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_y_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -188,12 +188,12 @@ violation[matches] {
   ys_errors = [ ys_error|
     y = ys[_]
     #  querying path: apiContract.method
-    y_check_array = gen_path_rule_3 with data.sourceNode as y
-    y_check_scalar = y_check_array[_]
-    y_check = as_string(y_check_scalar)
+    gen_y_check_3_array = gen_path_rule_4 with data.sourceNode as y
+    gen_y_check_3_scalar = gen_y_check_3_array[_]
+    gen_y_check_3 = as_string(gen_y_check_3_scalar)
     gen_inValues_2 = { "post"}
-    not gen_inValues_2[y_check]
-    _result_0 := trace("in","apiContract.method",y,{"negated":false,"actual": gen_inValues_2,"expected": "y_check"})
+    not gen_inValues_2[gen_y_check_3]
+    _result_0 := trace("in","apiContract.method",y,{"negated":false,"actual": gen_y_check_3,"expected": "[\"post\"]"})
     ys_error := error("nested",y,"error in nested nodes under apiContract.supportedOperation",[_result_0])
   ]
   not count(ys) - count(ys_errors) >= 1

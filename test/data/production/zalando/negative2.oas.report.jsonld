@@ -15,10 +15,8 @@
           "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative2.oas#/web-api/end-points/%2Fpath/parameter/header/Link",
           "http://www.w3.org/ns/shacl#resultPath": "core.name",
           "http://www.w3.org/ns/shacl#traceValue": {
-            "actual": [
-              "Link"
-            ],
-            "expected": "gen_x_check_2700",
+            "actual": "Link",
+            "expected": "[\"Link\"]",
             "negated": true
           }
         },
@@ -30,10 +28,8 @@
           "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative2.oas#/web-api/end-points/%2Fpath/parameter/header/Link",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.binding",
           "http://www.w3.org/ns/shacl#traceValue": {
-            "actual": [
-              "header"
-            ],
-            "expected": "gen_x_check_2703",
+            "actual": "header",
+            "expected": "[\"header\"]",
             "negated": true
           }
         }
