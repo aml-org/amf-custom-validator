@@ -2,6 +2,19 @@
 
 Implementation of a validator for the AMF validation profile syntax backed by a rego translation.
 
+## Evironment
+
+In order for the build and test process the following environment variales must be
+defined:
+
+- _GO_: path to the go binary going to be used to compile and run tests
+- _AMF_: path to an AMF jar going to be used to parse examples and validate the validation profile dialect
+
+## Test
+
+`make test`
+
+
 ## Directory structure
 
 - `cmd`
@@ -37,6 +50,9 @@ The `$AMF` environment variable pointing to the AMF jar file must be defined
 
 `gen_property_parser`: parsed the PEG grammar for the property path parser and generates the module in the `internal/parser` package.
 
+- `third_party`
+
+Dependencies with other tools including the AML dialect for the custom validation profile and the grammar for the property path parser
 
 - `test`
 

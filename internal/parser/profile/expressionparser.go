@@ -50,6 +50,11 @@ func parseExpressionValue(variable Variable, data *y.Yaml, varGenerator *VarGene
 		return parseImplicitRego(code, variable)
 	}
 
+	codeModule := data.Get("regoModule")
+	if codeModule.IsFound() {
+		return parseImplicitRego(codeModule, variable)
+	}
+
 	and := data.Get("and")
 	if and.IsFound() {
 		if and.IsArray() {

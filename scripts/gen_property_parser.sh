@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
+set -e
+
 go get -u github.com/mna/pigeon
-pigeon propertyparser.peg > ../internal/parser/path/peg.go
+pigeon ./third_party/propertyparser.peg > ./internal/parser/path/peg.go

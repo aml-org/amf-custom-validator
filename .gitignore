@@ -21,3 +21,4 @@ wrappers/js/lib/main.wasm
 
 amf.jar
 validator
+amf-opa-validator

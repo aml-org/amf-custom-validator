@@ -20,7 +20,7 @@ validations:
   simple-rego2:
     message: GET operations must have 2xx, 4xx and 5xx status codes but no 201
     targetClass: apiContract.WebAPI
-    rego:
+    regoModule:
       message: api without version
       code: |
         version = object.get($node, "core:version", null)

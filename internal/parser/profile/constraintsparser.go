@@ -170,6 +170,17 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, rule)
 	}
 	return acc, nil
+
+	codeModule := constraint.Get("regoModule")
+	if codeModule.IsFound() {
+		rule, err := ParseRego(codeModule, false, variable, path)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, rule)
+	}
+	return acc, nil
+
 }
 
 func ParseRego(code *y.Yaml, negated bool, variable Variable, path pathParser.PropertyPath) (Rule, error) {

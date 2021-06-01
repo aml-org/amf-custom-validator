@@ -3,8 +3,11 @@
 for production_dir in ./test/data/production/*
 do
   echo $production_dir
-  re="zalando"
-  if  [[ $production_dir =~ $re ]]; then
+
+  ## uncomment to work with a single directory
+  #re="zalando"
+  #if  [[ $production_dir =~ $re ]]; then
+
   # remove jsonld
   for entry in $production_dir/*
   do
@@ -52,5 +55,7 @@ do
       fi
     fi
   done
-  fi
+
+  ## uncomment to work with a single directory
+  #fi
 done
