@@ -1,0 +1,133 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "pattern",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/id/scalar/id",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.name",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "argument": "id",
+            "negated": true
+          }
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/id/scalar/id",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.datatype",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": "xsd:boolean",
+            "expected": "[\"xsd:string\"]",
+            "negated": false
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/id/scalar/id"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "ID field with string type expected",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "174-common-field-types-id"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "pattern",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/scalar/invoice_id",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.name",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "argument": "invoice_id",
+            "negated": true
+          }
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/scalar/invoice_id",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.datatype",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": "shapes:number",
+            "expected": "[\"xsd:string\"]",
+            "negated": false
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/scalar/invoice_id"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "ID field with string type expected",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "174-common-field-types-id"
+      }
+    },
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/created_at/scalar/created_at",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.name",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": "created_at",
+            "expected": "[\"created_at\"]",
+            "negated": true
+          }
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "in",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/created_at/scalar/created_at",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.datatype",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": "xsd:string",
+            "expected": "[\"xsd:dateTime\"]",
+            "negated": false
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/created_at/scalar/created_at"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Created-at fields must be date-times",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "174-common-field-types-created-at"
+      }
+    }
+  ]
+}

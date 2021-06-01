@@ -3,8 +3,8 @@
 for production_dir in ./test/data/production/*
 do
   echo $production_dir
-  #re="owasp"
-  #if  [[ $production_dir =~ $re ]]; then
+  re="zalando"
+  if  [[ $production_dir =~ $re ]]; then
   # remove jsonld
   for entry in $production_dir/*
   do
@@ -36,6 +36,10 @@ do
     fi
     re="positive|negative"
     if [[ $entry =~ $re ]]; then
+      re="report" # this cannot be generated, ignore
+      if [[ $entry =~ $re ]]; then
+        continue
+      fi
       re="oas"
       if [[ $entry =~ $re ]]; then
         echo $entry
@@ -48,5 +52,5 @@ do
       fi
     fi
   done
-  #fi
+  fi
 done

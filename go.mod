@@ -7,7 +7,7 @@ require (
 	github.com/mna/pigeon v1.1.0 // indirect
 	github.com/open-policy-agent/opa v0.28.0
 	github.com/piprate/json-gold v0.4.0
-	golang.org/x/sys v0.0.0-20210514084401-e8d321eab015 // indirect
-	golang.org/x/tools v0.1.1 // indirect
+	golang.org/x/sys v0.0.0-20210601080250-7ecdf8ef093b // indirect
+	golang.org/x/tools v0.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
 )

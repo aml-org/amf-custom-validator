@@ -83,6 +83,14 @@ Term
 Factor
   <- "(" _ expr:Expression _ ")" { return expr,nil }
   / Iri
+  / "@type" {
+    res := IRI{
+      Value: "@type",
+      Inverse: false,
+      Transitive: false,
+    }
+    return res,nil
+  }
 
 Iri "iri" <- ns:[a-zA-Z0-9_-]+ "." prop:[a-zA-Z0-9_-]+ _ mod:["^","*"]? {
 

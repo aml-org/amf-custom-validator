@@ -204,26 +204,36 @@ var g = &grammar{
 						pos:  position{line: 85, col: 5, offset: 1515},
 						name: "Iri",
 					},
+					&actionExpr{
+						pos: position{line: 86, col: 5, offset: 1523},
+						run: (*parser).callonFactor11,
+						expr: &litMatcher{
+							pos:        position{line: 86, col: 5, offset: 1523},
+							val:        "@type",
+							ignoreCase: false,
+							want:       "\"@type\"",
+						},
+					},
 				},
 			},
 		},
 		{
 			name:        "Iri",
 			displayName: "\"iri\"",
-			pos:         position{line: 87, col: 1, offset: 1520},
+			pos:         position{line: 95, col: 1, offset: 1648},
 			expr: &actionExpr{
-				pos: position{line: 87, col: 14, offset: 1533},
+				pos: position{line: 95, col: 14, offset: 1661},
 				run: (*parser).callonIri1,
 				expr: &seqExpr{
-					pos: position{line: 87, col: 14, offset: 1533},
+					pos: position{line: 95, col: 14, offset: 1661},
 					exprs: []interface{}{
 						&labeledExpr{
-							pos:   position{line: 87, col: 14, offset: 1533},
+							pos:   position{line: 95, col: 14, offset: 1661},
 							label: "ns",
 							expr: &oneOrMoreExpr{
-								pos: position{line: 87, col: 17, offset: 1536},
+								pos: position{line: 95, col: 17, offset: 1664},
 								expr: &charClassMatcher{
-									pos:        position{line: 87, col: 17, offset: 1536},
+									pos:        position{line: 95, col: 17, offset: 1664},
 									val:        "[a-zA-Z0-9_-]",
 									chars:      []rune{'_', '-'},
 									ranges:     []rune{'a', 'z', 'A', 'Z', '0', '9'},
@@ -233,18 +243,18 @@ var g = &grammar{
 							},
 						},
 						&litMatcher{
-							pos:        position{line: 87, col: 32, offset: 1551},
+							pos:        position{line: 95, col: 32, offset: 1679},
 							val:        ".",
 							ignoreCase: false,
 							want:       "\".\"",
 						},
 						&labeledExpr{
-							pos:   position{line: 87, col: 36, offset: 1555},
+							pos:   position{line: 95, col: 36, offset: 1683},
 							label: "prop",
 							expr: &oneOrMoreExpr{
-								pos: position{line: 87, col: 41, offset: 1560},
+								pos: position{line: 95, col: 41, offset: 1688},
 								expr: &charClassMatcher{
-									pos:        position{line: 87, col: 41, offset: 1560},
+									pos:        position{line: 95, col: 41, offset: 1688},
 									val:        "[a-zA-Z0-9_-]",
 									chars:      []rune{'_', '-'},
 									ranges:     []rune{'a', 'z', 'A', 'Z', '0', '9'},
@@ -254,16 +264,16 @@ var g = &grammar{
 							},
 						},
 						&ruleRefExpr{
-							pos:  position{line: 87, col: 56, offset: 1575},
+							pos:  position{line: 95, col: 56, offset: 1703},
 							name: "_",
 						},
 						&labeledExpr{
-							pos:   position{line: 87, col: 58, offset: 1577},
+							pos:   position{line: 95, col: 58, offset: 1705},
 							label: "mod",
 							expr: &zeroOrOneExpr{
-								pos: position{line: 87, col: 62, offset: 1581},
+								pos: position{line: 95, col: 62, offset: 1709},
 								expr: &charClassMatcher{
-									pos:        position{line: 87, col: 62, offset: 1581},
+									pos:        position{line: 95, col: 62, offset: 1709},
 									val:        "[\"^\",\"*\"]",
 									chars:      []rune{'"', '^', '"', ',', '"', '*', '"'},
 									ignoreCase: false,
@@ -278,11 +288,11 @@ var g = &grammar{
 		{
 			name:        "_",
 			displayName: "\"whitespace\"",
-			pos:         position{line: 108, col: 1, offset: 2079},
+			pos:         position{line: 116, col: 1, offset: 2207},
 			expr: &zeroOrMoreExpr{
-				pos: position{line: 108, col: 19, offset: 2097},
+				pos: position{line: 116, col: 19, offset: 2225},
 				expr: &charClassMatcher{
-					pos:        position{line: 108, col: 19, offset: 2097},
+					pos:        position{line: 116, col: 19, offset: 2225},
 					val:        "[ \\n\\t\\r]",
 					chars:      []rune{' ', '\n', '\t', '\r'},
 					ignoreCase: false,
@@ -352,6 +362,22 @@ func (p *parser) callonFactor2() (interface{}, error) {
 	stack := p.vstack[len(p.vstack)-1]
 	_ = stack
 	return p.cur.onFactor2(stack["expr"])
+}
+
+func (c *current) onFactor11() (interface{}, error) {
+	res := IRI{
+		Value:      "@type",
+		Inverse:    false,
+		Transitive: false,
+	}
+	return res, nil
+
+}
+
+func (p *parser) callonFactor11() (interface{}, error) {
+	stack := p.vstack[len(p.vstack)-1]
+	_ = stack
+	return p.cur.onFactor11()
 }
 
 func (c *current) onIri1(ns, prop, mod interface{}) (interface{}, error) {

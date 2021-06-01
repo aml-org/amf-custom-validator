@@ -10,6 +10,11 @@ violation:
   - 218-contact-url-must-be-provided
   - 218-contact-email-must-be-provided
   - 166-do-not-use-link-headers
+  - 174-common-field-types-id
+  - 174-common-field-types-created-at
+  - 174-common-field-types-modified-at
+  - 174-common-field-types-type
+
 
 
 validations:
@@ -67,8 +72,67 @@ validations:
           in:
             - header
 
+  136-avoid-trailing-slashes:
+    message: Rule avoid trailing slashes is not followed
+    targetClass: apiContract.EndPoint
+    not:
+      propertyConstraints:
+        apiContract.path:
+          pattern: "\\\\/$"
 
+  174-common-field-types-id:
+    message: ID field with string type expected
+    targetClass: shapes.Shape
+    or:
+      - not:
+          propertyConstraints:
+            shacl.name:
+              pattern: "(.+_)*id"
+      - propertyConstraints:
+          shacl.datatype:
+            in:
+              - xsd:string
 
+  174-common-field-types-created-at:
+    message: Created-at fields must be date-times
+    targetClass: shapes.Shape
+    or:
+      - not:
+          propertyConstraints:
+            shacl.name:
+              in:
+                - created_at
+      - propertyConstraints:
+          shacl.datatype:
+            in:
+              - xsd:dateTime
 
+  174-common-field-types-modified-at:
+    message: Modified-at fields must be date-times
+    targetClass: shapes.Shape
+    or:
+      - not:
+          propertyConstraints:
+            shacl.name:
+              in:
+                - modified_at
+      - propertyConstraints:
+          shacl.datatype:
+            in:
+              - xsd:dateTime
+
+  174-common-field-types-type:
+    message: Type fields must be strings
+    targetClass: shapes.Shape
+    or:
+      - not:
+          propertyConstraints:
+            shacl.name:
+              in:
+                - string
+      - propertyConstraints:
+          shacl.datatype:
+            in:
+              - xsd:string
 
 

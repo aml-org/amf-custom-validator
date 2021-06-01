@@ -1,0 +1,43 @@
+openapi: "3.0.0"
+info:
+  title: Awesome API
+  description: a description
+  version: 1.0.0
+  license:
+    name: MIT
+    url: https://www.tldrlegal.com/l/mit
+  contact:
+    name: A-Team
+    email: a-team@goarmy.com
+    url: http://a-team.com
+
+
+paths:
+  /invoices/{invoice_id}/items:
+    parameters:
+      - name: invoice_id
+        in: path
+        required: true
+        description: the invoice identifier, as is
+        schema:
+          type: number
+    get:
+      description: op-description
+      operationId: opid
+      tags:
+        - Invoice Items
+      responses:
+        "200":
+          description: teapot
+          content:
+            "application/json":
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: boolean
+                  created_at:
+                    description: when got this node created
+                    type: string
+                  type:
+                    type: number
