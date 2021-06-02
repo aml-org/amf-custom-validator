@@ -22,6 +22,8 @@ func Dispatch(r profile.Rule) []GeneratedRegoResult {
 		return branchAsGeneratedRegoResult(GenerateAnd(e))
 	case profile.OrRule:
 		return branchAsGeneratedRegoResult(GenerateOr(e))
+	case profile.ConditionalRule:
+		return branchAsGeneratedRegoResult(GenerateConditional(e))
 	case profile.RegoRule:
 		return simpleAsGeneratedRegoResult(GenerateRegoRule(e))
 	case profile.NumericRule:

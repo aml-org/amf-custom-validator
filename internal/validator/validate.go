@@ -14,6 +14,13 @@ func Validate(profileText string, jsonldText string, debug bool) (string, error)
 	if err != nil {
 		panic(err)
 	}
+
+	if debug {
+		println("Logic translation")
+		println("-------------------------------")
+		println(parsed.String())
+	}
+
 	module := generator.Generate(*parsed)
 
 	if debug {
@@ -51,6 +58,7 @@ func Validate(profileText string, jsonldText string, debug bool) (string, error)
 	)
 
 	ctx := context.Background()
+
 	result, err := validator.Eval(ctx)
 	if err != nil {
 		return "", err

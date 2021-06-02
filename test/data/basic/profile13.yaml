@@ -1,0 +1,23 @@
+#%Validation Profile 1.0
+
+profile: Test13
+
+violation:
+  - 174-common-field-types-type
+
+
+validations:
+
+  174-common-field-types-type:
+    message: Type fields must be strings
+    targetClass: shapes.Shape
+    if:
+      propertyConstraints:
+        shacl.name:
+          in:
+            - string
+    then:
+      propertyConstraints:
+        shacl.datatype:
+          in:
+            - xsd:string

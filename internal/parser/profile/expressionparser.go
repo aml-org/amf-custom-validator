@@ -84,6 +84,17 @@ func parseExpressionValue(variable Variable, data *y.Yaml, varGenerator *VarGene
 		}
 	}
 
+	head := data.Get("if")
+	if head.IsFound() {
+		tail := data.Get("then")
+		if tail.IsFound() {
+			return parseConditional(head, tail, variable, varGenerator)
+		} else {
+			l, c := head.Pos()
+			return nil, errors.New(fmt.Sprintf("Found if clause without else statement at [%d,%d]", l, c))
+		}
+	}
+
 	l, c := data.Pos()
 	return nil, errors.New(fmt.Sprintf("unknown expression node, cannot find properties to parse at [%d,%d]", l, c))
 
@@ -117,6 +128,18 @@ func parseAnd(and *y.Yaml, variable Variable, varGenerator *VarGenerator) (Rule,
 		values = append(values, c)
 	}
 	return NewAnd(false, values), nil
+}
+
+func parseConditional(head *y.Yaml, tail *y.Yaml, variable Variable, generator *VarGenerator) (Rule, error) {
+	headRule, err := parseExpressionValue(variable, head, generator)
+	if err != nil {
+		return nil, err
+	}
+	tailRule, err := parseExpressionValue(variable, tail, generator)
+	if err != nil {
+		return nil, err
+	}
+	return NewConditional(false, headRule, tailRule), nil
 }
 
 func parseOr(or *y.Yaml, variable Variable, varGenerator *VarGenerator) (Rule, error) {

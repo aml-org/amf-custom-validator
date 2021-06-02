@@ -1,0 +1,6 @@
+174-common-field-types-type[violation] :=  ∀x[Class(shapes.Shape)] : 
+  (
+    in(x,'shacl.name',string)
+  →
+    in(x,'shacl.datatype',xsd:string)
+  )

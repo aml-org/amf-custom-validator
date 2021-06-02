@@ -2,6 +2,7 @@ package profile
 
 import (
 	"errors"
+	"fmt"
 	y "github.com/aml-org/amfopa/internal/parser/yaml"
 )
 
@@ -29,8 +30,8 @@ func Parse(doc *y.Yaml) (Profile, error) {
 		}
 
 		validations := doc.Get("validations")
-		if validations.IsFound() && !validations.IsMap() {
-			return profile, errors.New("validations must be a list of validations")
+		if !validations.IsFound() || !validations.IsMap() {
+			return profile, errors.New("validations must be a map of validations")
 		}
 
 		violations, err := parseValidationLevel("violation", doc, validations)
@@ -59,7 +60,8 @@ func Parse(doc *y.Yaml) (Profile, error) {
 		return profile, nil
 	}
 
-	return profile, errors.New("expected map at profile YAML document")
+	l, c := doc.Pos()
+	return profile, errors.New(fmt.Sprintf("expected map at profile YAML document, [%d,%d]", l, c))
 }
 
 func parseValidationLevel(level string, profile *y.Yaml, validations *y.Yaml) ([]Rule, error) {

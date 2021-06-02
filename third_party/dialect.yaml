@@ -8,6 +8,27 @@ external:
   shacl: "http://www.w3.org/ns/shacl#"
   validation: "http://a.ml/vocabularies/amf-validation#"
 nodeMappings:
+  conditionalNode:
+    classTerm: shacl.RegoConstraint
+    mapping:
+      name:
+        propertyTerm: schema-org.name
+        range: string
+      message:
+        propertyTerm: shacl.message
+        range: string
+      targetClass:
+        propertyTerm: validation.ramlClassId
+        range: string
+        allowMultiple: true
+      if:
+        propertyTerm: validation.if
+        range: [ conditionalNode, shapeValidationNode, inlinedRegoNode, regoModuleNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
+        mandatory: true
+      then:
+        propertyTerm: validation.then
+        range: [ conditionalNode, shapeValidationNode, inlinedRegoNode, regoModuleNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
+        mandatory: true
   inlinedRegoNode:
     classTerm: shacl.RegoConstraint
     mapping:
@@ -151,7 +172,7 @@ nodeMappings:
         mandatory: true
       validation:
         propertyTerm: shacl.valueShape
-        range: [ shapeValidationNode, inlinedRegoNode, regoModuleNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
+        range: [ conditionalNode, shapeValidationNode, inlinedRegoNode, regoModuleNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
         mandatory: true
   shapeValidationNode:
     classTerm: validation.ShapeValidation
@@ -190,7 +211,7 @@ nodeMappings:
         allowMultiple: true
       and:
         propertyTerm: shacl.and
-        range: [ shapeValidationNode, inlinedRegoNode, regoModuleNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
+        range: [ conditionalNode, shapeValidationNode, inlinedRegoNode, regoModuleNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
         allowMultiple: true
         mandatory: true
   notShapeValidationNode:
@@ -209,7 +230,7 @@ nodeMappings:
       not:
         propertyTerm: shacl.not
         mandatory: true
-        range: [ shapeValidationNode, inlinedRegoNode, regoModuleNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
+        range: [ conditionalNode, shapeValidationNode, inlinedRegoNode, regoModuleNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
   orShapeValidationNode:
     classTerm: validation.OrShapeValidation
     mapping:
@@ -226,7 +247,7 @@ nodeMappings:
       or:
         mandatory: true
         propertyTerm: shacl.or
-        range: [ shapeValidationNode, inlinedRegoNode, regoModuleNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
+        range: [ conditionalNode, shapeValidationNode, inlinedRegoNode, regoModuleNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
         allowMultiple: true
   xoneShapeValidationNode:
     classTerm: validation.XoneShapeValidation
@@ -244,7 +265,7 @@ nodeMappings:
       xone:
         mandatory: true
         propertyTerm: shacl.xone
-        range: [ shapeValidationNode, inlinedRegoNode, regoModuleNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
+        range: [ conditionalNode, shapeValidationNode, inlinedRegoNode, regoModuleNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
         allowMultiple: true
 
   ramlPrefixNode:
@@ -294,7 +315,7 @@ nodeMappings:
       validations:
         propertyTerm: validation.validations
         mapKey: name
-        range: [ shapeValidationNode, regoValidationNode, regoModuleValidationNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
+        range: [ conditionalNode, shapeValidationNode, regoValidationNode, regoModuleValidationNode, xoneShapeValidationNode, orShapeValidationNode, notShapeValidationNode, andShapeValidationNode]
 documents:
   fragments:
     encodes:

@@ -2174,6 +2174,63 @@ validations:
                         pattern: ^5[0-9]{2}$
 ```
 
+### 6.5 conditionals
+
+Sometimes constraints must be expressed as conditional statements, for example, in the following profile we are checking that
+if a field is named `created_at` must have a schema of type `dateTime`:
+
+```yaml
+#%Validation Profile 1.0
+
+profile: Test13b
+
+violation:
+ - common-field-types-modified-at
+
+validations:
+  common-field-types-modified-at:
+    message: Modified-at fields must be date-times
+    targetClass: shapes.Shape
+    or:
+      - not:
+          propertyConstraints:
+            shacl.name:
+              in:
+                - modified_at
+      - propertyConstraints:
+          shacl.datatype:
+            in:
+              - xsd:dateTime
+```
+In the example we are using [material implication](https://en.wikipedia.org/wiki/Material_implication_(rule_of_inference)) to express the condition
+using an `or` constraint.
+
+The same constraint can be rewritten to use directly the `if` / `then` conditional constraint:
+
+```yaml
+#%Validation Profile 1.0
+
+profile: Test13b
+
+violation:
+ - common-field-types-modified-at
+
+validations:
+  common-field-types-modified-at:
+    message: Modified-at fields must be date-times
+    targetClass: shapes.Shape
+    if:
+      propertyConstraints:
+        shacl.name:
+          in:
+            - modified_at
+    then:
+      propertyConstraints:
+        shacl.datatype:
+          in:
+            - xsd:dateTime
+``` 
+
 ## 7. Severity levels and modularity
 
 Let's look at a simple RAML spec:
