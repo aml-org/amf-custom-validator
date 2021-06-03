@@ -28,16 +28,11 @@ func (rs RuleSlice) Len() int {
 }
 
 func (rs RuleSlice) Less(i int, j int) bool {
-	ri := rs[i]
-	rj := rs[j]
-
-	return ri.String() < rj.String()
+	return rs[i].String() < rs[j].String()
 }
 
 func (rs RuleSlice) Swap(i int, j int) {
-	tmp := rs[i]
-	rs[i] = rs[j]
-	rs[j] = tmp
+	rs[i], rs[j] = rs[j], rs[i]
 }
 
 type AtomicStatement struct {
