@@ -11,12 +11,12 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
-          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://a.ml/vocabularies/validation#component": "maxCount",
           "http://www.w3.org/ns/shacl#focusNode": "http://a.ml/amf/default_document#/encodes/spec/http/0",
           "http://www.w3.org/ns/shacl#resultPath": "data.route",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
-            "condition": "\u003e=",
+            "condition": "\u003c=",
             "expected": 1,
             "negated": true
           }
@@ -25,12 +25,12 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
-          "http://a.ml/vocabularies/validation#component": "maxCount",
+          "http://a.ml/vocabularies/validation#component": "minCount",
           "http://www.w3.org/ns/shacl#focusNode": "http://a.ml/amf/default_document#/encodes/spec/http/0",
           "http://www.w3.org/ns/shacl#resultPath": "data.route",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
-            "condition": "\u003c=",
+            "condition": "\u003e=",
             "expected": 1,
             "negated": true
           }

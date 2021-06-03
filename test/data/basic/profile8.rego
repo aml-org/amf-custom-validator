@@ -165,20 +165,20 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_2[nodes] {
-  init_x_0__minCount_ = data.sourceNode
-  tmp_x_0__minCount_ = nested_nodes with data.nodes as init_x_0__minCount_["apiContract:supportedOperation"]
-  x_0__minCount_ = tmp_x_0__minCount_[_][_]
-  nodes_tmp = object.get(x_0__minCount_,"apiContract:method",[])
+gen_path_rule_3[nodes] {
+  init_x_0__in_ = data.sourceNode
+  tmp_x_0__in_ = nested_nodes with data.nodes as init_x_0__in_["apiContract:supportedOperation"]
+  x_0__in_ = tmp_x_0__in_[_][_]
+  nodes_tmp = object.get(x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
 
 gen_path_rule_5[nodes] {
-  init_x_0__in_ = data.sourceNode
-  tmp_x_0__in_ = nested_nodes with data.nodes as init_x_0__in_["apiContract:supportedOperation"]
-  x_0__in_ = tmp_x_0__in_[_][_]
-  nodes_tmp = object.get(x_0__in_,"apiContract:method",[])
+  init_x_0__minCount_ = data.sourceNode
+  tmp_x_0__minCount_ = nested_nodes with data.nodes as init_x_0__minCount_["apiContract:supportedOperation"]
+  x_0__minCount_ = tmp_x_0__minCount_[_][_]
+  nodes_tmp = object.get(x_0__minCount_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
@@ -195,21 +195,21 @@ gen_path_rule_6[nodes] {
 violation[matches] {
   target_class[x] with data.class as "apiContract:EndPoint"
   #  querying path: apiContract.supportedOperation / apiContract.method
-  gen_propValues_1 = gen_path_rule_2 with data.sourceNode as x
-  not count(gen_propValues_1) >= 1
-  _result_0 := trace("minCount","apiContract.supportedOperation / apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_1),"expected": 1})
+  gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
+  gen_x_check_2_scalar = gen_x_check_2_array[_]
+  gen_x_check_2 = as_string(gen_x_check_2_scalar)
+  gen_inValues_1 = { "publish","subscribe"}
+  not gen_inValues_1[gen_x_check_2]
+  _result_0 := trace("in","apiContract.supportedOperation / apiContract.method",x,{"negated":false,"actual": gen_x_check_2,"expected": "[\"publish\",\"subscribe\"]"})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 
 violation[matches] {
   target_class[x] with data.class as "apiContract:EndPoint"
   #  querying path: apiContract.supportedOperation / apiContract.method
-  gen_x_check_4_array = gen_path_rule_5 with data.sourceNode as x
-  gen_x_check_4_scalar = gen_x_check_4_array[_]
-  gen_x_check_4 = as_string(gen_x_check_4_scalar)
-  gen_inValues_3 = { "publish","subscribe"}
-  not gen_inValues_3[gen_x_check_4]
-  _result_0 := trace("in","apiContract.supportedOperation / apiContract.method",x,{"negated":false,"actual": gen_x_check_4,"expected": "[\"publish\",\"subscribe\"]"})
+  gen_propValues_4 = gen_path_rule_5 with data.sourceNode as x
+  not count(gen_propValues_4) >= 1
+  _result_0 := trace("minCount","apiContract.supportedOperation / apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_4),"expected": 1})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 

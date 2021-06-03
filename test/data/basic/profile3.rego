@@ -187,15 +187,15 @@ violation[matches] {
   gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
   gen_x_check_2_scalar = gen_x_check_2_array[_]
   gen_x_check_2 = as_string(gen_x_check_2_scalar)
-  gen_inValues_1 = { "subscribe"}
+  gen_inValues_1 = { "get"}
   not gen_inValues_1[gen_x_check_2]
-  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_2,"expected": "[\"subscribe\"]"})
+  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_2,"expected": "[\"get\"]"})
   #  querying path: apiContract.method
   gen_x_check_5_array = gen_path_rule_6 with data.sourceNode as x
   gen_x_check_5_scalar = gen_x_check_5_array[_]
   gen_x_check_5 = as_string(gen_x_check_5_scalar)
-  gen_inValues_4 = { "get"}
+  gen_inValues_4 = { "subscribe"}
   not gen_inValues_4[gen_x_check_5]
-  _result_1 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_5,"expected": "[\"get\"]"})
+  _result_1 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_5,"expected": "[\"subscribe\"]"})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }

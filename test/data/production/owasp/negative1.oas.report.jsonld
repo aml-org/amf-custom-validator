@@ -11,18 +11,6 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
-          "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/id",
-          "http://www.w3.org/ns/shacl#resultPath": "core.name",
-          "http://www.w3.org/ns/shacl#traceValue": {
-            "argument": "id",
-            "negated": true
-          }
-        },
-        {
-          "@type": [
-            "http://a.ml/vocabularies/validation#TraceMessage"
-          ],
           "http://a.ml/vocabularies/validation#component": "in",
           "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/id",
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.pattern",
@@ -30,6 +18,18 @@
             "actual": "lala",
             "expected": "[\"(?im)^[{(]?[0-9A-F]{8}[-]?(?:[0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$\"]",
             "negated": false
+          }
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "pattern",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/id",
+          "http://www.w3.org/ns/shacl#resultPath": "core.name",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "argument": "id",
+            "negated": true
           }
         }
       ],
@@ -59,6 +59,20 @@
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": "xsd:string",
             "expected": "[\"xsd:string\"]",
+            "negated": true
+          }
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/itemId",
+          "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.datatype",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 1,
+            "condition": "\u003e=",
+            "expected": 1,
             "negated": true
           }
         },

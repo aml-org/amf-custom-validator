@@ -17,10 +17,10 @@ func (r AndRule) String() string {
 	}
 
 	body := make([]string, len(r.Body))
+	sort.Sort(r.Body)
 	for i, v := range r.Body {
 		body[i] = v.String()
 	}
-	sort.Strings(body)
 	if len(body) > 1 {
 		return fmt.Sprintf("%s(\n%s\n)", negation, strings.Join(IndentArray(body), "\n∧\n"))
 	} else {
@@ -35,6 +35,7 @@ func (r OrRule) String() string {
 	}
 
 	body := make([]string, len(r.Body))
+	sort.Sort(r.Body)
 	for i, v := range r.Body {
 		body[i] = v.String()
 	}

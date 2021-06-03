@@ -51,7 +51,7 @@ func TestValidate(t *testing.T) {
 		}
 		expected := strings.TrimSpace(fixture.ReadFixturePositiveReport())
 
-		test.ForceWrite(string(fixture)+"/positive.report.jsonld", strings.TrimSpace(report))
+		//test.ForceWrite(string(fixture)+"/positive.report.jsonld", strings.TrimSpace(report))
 		if strings.TrimSpace(report) != expected {
 			t.Errorf(fmt.Sprintf("failed positive report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", fixture, expected, report))
 		}

@@ -3,6 +3,7 @@ package generator
 import (
 	"fmt"
 	"github.com/aml-org/amfopa/internal/parser/profile"
+	"sort"
 )
 
 // Generates code snippets for an AND rule. The result is a set of branches,
@@ -19,6 +20,7 @@ func GenerateAnd(and profile.AndRule) []BranchRegoResult {
 		}
 	} else {
 		branches := make([]BranchRegoResult, 0)
+		sort.Sort(and.Body)
 		for _, r := range and.Body {
 			results := Dispatch(r)
 			for _, rr := range results {

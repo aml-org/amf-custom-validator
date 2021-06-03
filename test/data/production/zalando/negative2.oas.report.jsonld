@@ -13,10 +13,10 @@
           ],
           "http://a.ml/vocabularies/validation#component": "in",
           "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative2.oas#/web-api/end-points/%2Fpath/parameter/header/Link",
-          "http://www.w3.org/ns/shacl#resultPath": "core.name",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.binding",
           "http://www.w3.org/ns/shacl#traceValue": {
-            "actual": "Link",
-            "expected": "[\"Link\"]",
+            "actual": "header",
+            "expected": "[\"header\"]",
             "negated": true
           }
         },
@@ -26,10 +26,10 @@
           ],
           "http://a.ml/vocabularies/validation#component": "in",
           "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative2.oas#/web-api/end-points/%2Fpath/parameter/header/Link",
-          "http://www.w3.org/ns/shacl#resultPath": "apiContract.binding",
+          "http://www.w3.org/ns/shacl#resultPath": "core.name",
           "http://www.w3.org/ns/shacl#traceValue": {
-            "actual": "header",
-            "expected": "[\"header\"]",
+            "actual": "Link",
+            "expected": "[\"Link\"]",
             "negated": true
           }
         }

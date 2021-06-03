@@ -166,15 +166,15 @@ default info = []
 # Path rules
 
 gen_path_rule_2[nodes] {
-  init_x_0__minCount_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__minCount_,"raml-shapes:schema",[])
+  init_x_0__maxCount_ = data.sourceNode
+  nodes_tmp = object.get(init_x_0__maxCount_,"raml-shapes:schema",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
 
 gen_path_rule_4[nodes] {
-  init_x_0__maxCount_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__maxCount_,"raml-shapes:schema",[])
+  init_x_0__minCount_ = data.sourceNode
+  nodes_tmp = object.get(init_x_0__minCount_,"raml-shapes:schema",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
@@ -199,8 +199,8 @@ violation[matches] {
   target_class[x] with data.class as "apiContract:Parameter"
   #  querying path: raml-shapes.schema
   gen_propValues_1 = gen_path_rule_2 with data.sourceNode as x
-  not count(gen_propValues_1) >= 1
-  _result_0 := trace("minCount","raml-shapes.schema",x,{"negated":false,"condition":">=","actual": count(gen_propValues_1),"expected": 1})
+  not count(gen_propValues_1) <= 3
+  _result_0 := trace("maxCount","raml-shapes.schema",x,{"negated":false,"condition":"<=","actual": count(gen_propValues_1),"expected": 3})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }
 
@@ -208,8 +208,8 @@ violation[matches] {
   target_class[x] with data.class as "apiContract:Parameter"
   #  querying path: raml-shapes.schema
   gen_propValues_3 = gen_path_rule_4 with data.sourceNode as x
-  not count(gen_propValues_3) <= 3
-  _result_0 := trace("maxCount","raml-shapes.schema",x,{"negated":false,"condition":"<=","actual": count(gen_propValues_3),"expected": 3})
+  not count(gen_propValues_3) >= 1
+  _result_0 := trace("minCount","raml-shapes.schema",x,{"negated":false,"condition":">=","actual": count(gen_propValues_3),"expected": 1})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }
 

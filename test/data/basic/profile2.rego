@@ -165,42 +165,14 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_2[nodes] {
-  init_x_0__minCount_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
-}
-
-gen_path_rule_7[nodes] {
-  init_x_0__minCount_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
-}
-
-gen_path_rule_5[nodes] {
+gen_path_rule_3[nodes] {
   init_x_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
 
-gen_path_rule_7[nodes] {
-  init_x_0__minCount_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
-}
-
-gen_path_rule_2[nodes] {
-  init_x_0__minCount_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
-}
-
-gen_path_rule_10[nodes] {
+gen_path_rule_8[nodes] {
   init_x_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -208,6 +180,20 @@ gen_path_rule_10[nodes] {
 }
 
 gen_path_rule_5[nodes] {
+  init_x_0__minCount_ = data.sourceNode
+  nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+
+gen_path_rule_8[nodes] {
+  init_x_0__in_ = data.sourceNode
+  nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+
+gen_path_rule_3[nodes] {
   init_x_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -215,8 +201,22 @@ gen_path_rule_5[nodes] {
 }
 
 gen_path_rule_10[nodes] {
-  init_x_0__in_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
+  init_x_0__minCount_ = data.sourceNode
+  nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+
+gen_path_rule_5[nodes] {
+  init_x_0__minCount_ = data.sourceNode
+  nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  nodes = nodes_tmp2[_]
+}
+
+gen_path_rule_10[nodes] {
+  init_x_0__minCount_ = data.sourceNode
+  nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
@@ -226,63 +226,63 @@ gen_path_rule_10[nodes] {
 violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: apiContract.method
-  gen_propValues_1 = gen_path_rule_2 with data.sourceNode as x
-  not count(gen_propValues_1) >= 1
-  _result_0 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_1),"expected": 1})
+  gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
+  gen_x_check_2_scalar = gen_x_check_2_array[_]
+  gen_x_check_2 = as_string(gen_x_check_2_scalar)
+  gen_inValues_1 = { "get"}
+  not gen_inValues_1[gen_x_check_2]
+  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_2,"expected": "[\"get\"]"})
   #  querying path: apiContract.method
-  gen_propValues_6 = gen_path_rule_7 with data.sourceNode as x
-  not count(gen_propValues_6) >= 1
-  _result_1 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
+  gen_x_check_7_array = gen_path_rule_8 with data.sourceNode as x
+  gen_x_check_7_scalar = gen_x_check_7_array[_]
+  gen_x_check_7 = as_string(gen_x_check_7_scalar)
+  gen_inValues_6 = { "subscribe"}
+  not gen_inValues_6[gen_x_check_7]
+  _result_1 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_7,"expected": "[\"subscribe\"]"})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }
 
 violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: apiContract.method
-  gen_x_check_4_array = gen_path_rule_5 with data.sourceNode as x
-  gen_x_check_4_scalar = gen_x_check_4_array[_]
-  gen_x_check_4 = as_string(gen_x_check_4_scalar)
-  gen_inValues_3 = { "subscribe"}
-  not gen_inValues_3[gen_x_check_4]
-  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_4,"expected": "[\"subscribe\"]"})
+  gen_propValues_4 = gen_path_rule_5 with data.sourceNode as x
+  not count(gen_propValues_4) >= 1
+  _result_0 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_4),"expected": 1})
   #  querying path: apiContract.method
-  gen_propValues_6 = gen_path_rule_7 with data.sourceNode as x
-  not count(gen_propValues_6) >= 1
-  _result_1 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
+  gen_x_check_7_array = gen_path_rule_8 with data.sourceNode as x
+  gen_x_check_7_scalar = gen_x_check_7_array[_]
+  gen_x_check_7 = as_string(gen_x_check_7_scalar)
+  gen_inValues_6 = { "subscribe"}
+  not gen_inValues_6[gen_x_check_7]
+  _result_1 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_7,"expected": "[\"subscribe\"]"})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }
 
 violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: apiContract.method
-  gen_propValues_1 = gen_path_rule_2 with data.sourceNode as x
-  not count(gen_propValues_1) >= 1
-  _result_0 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_1),"expected": 1})
+  gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
+  gen_x_check_2_scalar = gen_x_check_2_array[_]
+  gen_x_check_2 = as_string(gen_x_check_2_scalar)
+  gen_inValues_1 = { "get"}
+  not gen_inValues_1[gen_x_check_2]
+  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_2,"expected": "[\"get\"]"})
   #  querying path: apiContract.method
-  gen_x_check_9_array = gen_path_rule_10 with data.sourceNode as x
-  gen_x_check_9_scalar = gen_x_check_9_array[_]
-  gen_x_check_9 = as_string(gen_x_check_9_scalar)
-  gen_inValues_8 = { "get"}
-  not gen_inValues_8[gen_x_check_9]
-  _result_1 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_9,"expected": "[\"get\"]"})
+  gen_propValues_9 = gen_path_rule_10 with data.sourceNode as x
+  not count(gen_propValues_9) >= 1
+  _result_1 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_9),"expected": 1})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }
 
 violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: apiContract.method
-  gen_x_check_4_array = gen_path_rule_5 with data.sourceNode as x
-  gen_x_check_4_scalar = gen_x_check_4_array[_]
-  gen_x_check_4 = as_string(gen_x_check_4_scalar)
-  gen_inValues_3 = { "subscribe"}
-  not gen_inValues_3[gen_x_check_4]
-  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_4,"expected": "[\"subscribe\"]"})
+  gen_propValues_4 = gen_path_rule_5 with data.sourceNode as x
+  not count(gen_propValues_4) >= 1
+  _result_0 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_4),"expected": 1})
   #  querying path: apiContract.method
-  gen_x_check_9_array = gen_path_rule_10 with data.sourceNode as x
-  gen_x_check_9_scalar = gen_x_check_9_array[_]
-  gen_x_check_9 = as_string(gen_x_check_9_scalar)
-  gen_inValues_8 = { "get"}
-  not gen_inValues_8[gen_x_check_9]
-  _result_1 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_9,"expected": "[\"get\"]"})
+  gen_propValues_9 = gen_path_rule_10 with data.sourceNode as x
+  not count(gen_propValues_9) >= 1
+  _result_1 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_9),"expected": 1})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }

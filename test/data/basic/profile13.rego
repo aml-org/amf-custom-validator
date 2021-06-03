@@ -167,14 +167,14 @@ default info = []
 
 gen_path_rule_3[nodes] {
   init_x_0__in_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__in_,"shacl:name",[])
+  nodes_tmp = object.get(init_x_0__in_,"shacl:datatype",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
 
 gen_path_rule_6[nodes] {
   init_x_0__in_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__in_,"shacl:datatype",[])
+  nodes_tmp = object.get(init_x_0__in_,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   nodes = nodes_tmp2[_]
 }
@@ -183,19 +183,19 @@ gen_path_rule_6[nodes] {
 
 violation[matches] {
   target_class[x] with data.class as "shapes:Shape"
-  #  querying path: shacl.name
+  #  querying path: shacl.datatype
   gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
   gen_x_check_2_scalar = gen_x_check_2_array[_]
   gen_x_check_2 = as_string(gen_x_check_2_scalar)
-  gen_inValues_1 = { "string"}
-  gen_inValues_1[gen_x_check_2]
-  _result_0 := trace("in","shacl.name",x,{"negated":true,"actual": gen_x_check_2,"expected": "[\"string\"]"})
-  #  querying path: shacl.datatype
+  gen_inValues_1 = { "xsd:string"}
+  not gen_inValues_1[gen_x_check_2]
+  _result_0 := trace("in","shacl.datatype",x,{"negated":false,"actual": gen_x_check_2,"expected": "[\"xsd:string\"]"})
+  #  querying path: shacl.name
   gen_x_check_5_array = gen_path_rule_6 with data.sourceNode as x
   gen_x_check_5_scalar = gen_x_check_5_array[_]
   gen_x_check_5 = as_string(gen_x_check_5_scalar)
-  gen_inValues_4 = { "xsd:string"}
-  not gen_inValues_4[gen_x_check_5]
-  _result_1 := trace("in","shacl.datatype",x,{"negated":false,"actual": gen_x_check_5,"expected": "[\"xsd:string\"]"})
+  gen_inValues_4 = { "string"}
+  gen_inValues_4[gen_x_check_5]
+  _result_1 := trace("in","shacl.name",x,{"negated":true,"actual": gen_x_check_5,"expected": "[\"string\"]"})
   matches := error("174-common-field-types-type",x,"Type fields must be strings",[_result_0,_result_1])
 }

@@ -18,7 +18,26 @@ type BaseStatement struct {
 
 type ComplexStatement struct {
 	BaseStatement
-	Body []Rule
+	Body RuleSlice
+}
+
+type RuleSlice []Rule
+
+func (rs RuleSlice) Len() int {
+	return len(rs)
+}
+
+func (rs RuleSlice) Less(i int, j int) bool {
+	ri := rs[i]
+	rj := rs[j]
+
+	return ri.String() < rj.String()
+}
+
+func (rs RuleSlice) Swap(i int, j int) {
+	tmp := rs[i]
+	rs[i] = rs[j]
+	rs[j] = tmp
 }
 
 type AtomicStatement struct {

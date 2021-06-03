@@ -3,6 +3,7 @@ package generator
 import (
 	"fmt"
 	"github.com/aml-org/amfopa/internal/parser/profile"
+	"sort"
 )
 
 func GenerateOr(or profile.OrRule) []BranchRegoResult {
@@ -16,6 +17,7 @@ func GenerateOr(or profile.OrRule) []BranchRegoResult {
 		}
 
 	} else {
+		sort.Sort(or.Body)
 		rego := collectAllResults(or)
 		regoBranches := filterBranchesResult(rego)
 		regoResults := filterSimpleResults(rego)
@@ -42,7 +44,7 @@ func expandBranches(regoResults []SimpleRegoResult, branchsets [][]BranchRegoRes
 				var sourceExpanded []SimpleRegoResult
 				sourceExpanded = append(sourceExpanded, sourceBranchArray...)
 				for _, r := range branch.Branch {
-					sourceExpanded = append(sourceBranchArray, r)
+					sourceExpanded = append(sourceExpanded, r)
 				}
 				newAcc = append(newAcc, sourceExpanded)
 			}

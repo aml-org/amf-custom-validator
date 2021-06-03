@@ -11,18 +11,6 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
-          "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/id/scalar/id",
-          "http://www.w3.org/ns/shacl#resultPath": "shacl.name",
-          "http://www.w3.org/ns/shacl#traceValue": {
-            "argument": "id",
-            "negated": true
-          }
-        },
-        {
-          "@type": [
-            "http://a.ml/vocabularies/validation#TraceMessage"
-          ],
           "http://a.ml/vocabularies/validation#component": "in",
           "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/id/scalar/id",
           "http://www.w3.org/ns/shacl#resultPath": "shacl.datatype",
@@ -30,6 +18,18 @@
             "actual": "xsd:boolean",
             "expected": "[\"xsd:string\"]",
             "negated": false
+          }
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "pattern",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/id/scalar/id",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.name",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "argument": "id",
+            "negated": true
           }
         }
       ],
@@ -53,18 +53,6 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
-          "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/scalar/invoice_id",
-          "http://www.w3.org/ns/shacl#resultPath": "shacl.name",
-          "http://www.w3.org/ns/shacl#traceValue": {
-            "argument": "invoice_id",
-            "negated": true
-          }
-        },
-        {
-          "@type": [
-            "http://a.ml/vocabularies/validation#TraceMessage"
-          ],
           "http://a.ml/vocabularies/validation#component": "in",
           "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/scalar/invoice_id",
           "http://www.w3.org/ns/shacl#resultPath": "shacl.datatype",
@@ -72,6 +60,18 @@
             "actual": "shapes:number",
             "expected": "[\"xsd:string\"]",
             "negated": false
+          }
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "pattern",
+          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/scalar/invoice_id",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.name",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "argument": "invoice_id",
+            "negated": true
           }
         }
       ],
@@ -97,11 +97,11 @@
           ],
           "http://a.ml/vocabularies/validation#component": "in",
           "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/created_at/scalar/created_at",
-          "http://www.w3.org/ns/shacl#resultPath": "shacl.name",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.datatype",
           "http://www.w3.org/ns/shacl#traceValue": {
-            "actual": "created_at",
-            "expected": "[\"created_at\"]",
-            "negated": true
+            "actual": "xsd:string",
+            "expected": "[\"xsd:dateTime\"]",
+            "negated": false
           }
         },
         {
@@ -110,11 +110,11 @@
           ],
           "http://a.ml/vocabularies/validation#component": "in",
           "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/created_at/scalar/created_at",
-          "http://www.w3.org/ns/shacl#resultPath": "shacl.datatype",
+          "http://www.w3.org/ns/shacl#resultPath": "shacl.name",
           "http://www.w3.org/ns/shacl#traceValue": {
-            "actual": "xsd:string",
-            "expected": "[\"xsd:dateTime\"]",
-            "negated": false
+            "actual": "created_at",
+            "expected": "[\"created_at\"]",
+            "negated": true
           }
         }
       ],
