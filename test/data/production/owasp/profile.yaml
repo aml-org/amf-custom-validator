@@ -19,16 +19,16 @@ validations:
   broken-object-level-authorization-use-guids:
     message: Prefer to use random and unpredictable values as GUIDs for records’ IDs.
     targetClass: apiContract.Parameter
-    or:
-      - not:
-          propertyConstraints:
-            core.name:
-              pattern: ".*id$"
-      - propertyConstraints:
-          shapes.schema / shacl.pattern:
-            minCount: 1
-            in:
-              - "(?im)^[{(]?[0-9A-F]{8}[-]?(?:[0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$"
+    if:
+      propertyConstraints:
+        core.name:
+          pattern: ".*id$"
+    then:
+      propertyConstraints:
+        shapes.schema / shacl.pattern:
+          minCount: 1
+          in:
+            - "(?im)^[{(]?[0-9A-F]{8}[-]?(?:[0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$"
 
   excessive-data-exposure-mandatory-schema:
     message: |
@@ -44,44 +44,34 @@ validations:
       Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will
       be reset.
     targetClass: apiContract.Operation
-    or:
-      - not:
-          propertyConstraints:
-            apiContract.returns:
-              atLeast:
-                count: 1
-                validation:
-                  propertyConstraints:
-                    apiContract.statusCode:
-                      in:
-                        - "200"
-      - propertyConstraints:
-          apiContract.returns:
-            atLeast:
-              count: 1
-              validation:
-                propertyConstraints:
-                  apiContract.statusCode:
-                    in:
-                      - "429"
+    if:
+      propertyConstraints:
+        apiContract.returns:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                apiContract.statusCode:
+                  in:
+                    - "200"
+    then:
+      propertyConstraints:
+        apiContract.returns:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                apiContract.statusCode:
+                  in:
+                    - "429"
 
   security-misconfiguration-disabled-http-methods-disabled-or-2xx:
     message: |
       Ensure API can only be accessed by the specified HTTP verbs. All other HTTP verbs should be disabled (e.g. HEAD).
     targetClass: apiContract.Operation
-    or:
-      - not:
-          not:
-            propertyConstraints:
-              apiContract.returns:
-                atLeast:
-                  count: 1
-                  validation:
-                    propertyConstraints:
-                      apiContract.statusCode:
-                        in:
-                          - "200"
-      - propertyConstraints:
+    if:
+      not:
+        propertyConstraints:
           apiContract.returns:
             atLeast:
               count: 1
@@ -89,21 +79,31 @@ validations:
                 propertyConstraints:
                   apiContract.statusCode:
                     in:
-                      - "403"
+                      - "200"
+    then:
+      propertyConstraints:
+        apiContract.returns:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                apiContract.statusCode:
+                  in:
+                    - "403"
 
   injection-pattern-on-string-parameters:
     message: Define data types and strict patterns for all string parameters
     targetClass: apiContract.Parameter
-    or:
-      - not:
-          propertyConstraints:
-            shapes.schema / shacl.datatype:
-              minCount: 1
-              in:
-                - "xsd:string"
-      - propertyConstraints:
-          shapes.schema / shacl.pattern:
-            minCount: 1
+    if:
+      propertyConstraints:
+        shapes.schema / shacl.datatype:
+          minCount: 1
+          in:
+            - "xsd:string"
+    then:
+      propertyConstraints:
+        shapes.schema / shacl.pattern:
+          minCount: 1
 
   improper-assets-management-environment-info:
     message: |

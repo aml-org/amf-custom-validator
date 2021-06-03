@@ -13,6 +13,7 @@ func Parse(profileText string) (*profile.Profile, error) {
 	}
 
 	prof, err := profile.Parse(node)
+
 	if err != nil {
 		return nil, err
 	}

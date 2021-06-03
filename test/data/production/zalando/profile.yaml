@@ -83,56 +83,54 @@ validations:
   174-common-field-types-id:
     message: ID field with string type expected
     targetClass: shapes.Shape
-    or:
-      - not:
-          propertyConstraints:
-            shacl.name:
-              pattern: "(.+_)*id"
-      - propertyConstraints:
-          shacl.datatype:
-            in:
-              - xsd:string
+    if:
+      propertyConstraints:
+        shacl.name:
+          pattern: "(.+_)*id"
+    then:
+      propertyConstraints:
+        shacl.datatype:
+          in:
+            - xsd:string
 
   174-common-field-types-created-at:
     message: Created-at fields must be date-times
     targetClass: shapes.Shape
-    or:
-      - not:
-          propertyConstraints:
-            shacl.name:
-              in:
-                - created_at
-      - propertyConstraints:
-          shacl.datatype:
-            in:
-              - xsd:dateTime
+    if:
+      propertyConstraints:
+        shacl.name:
+          in:
+            - created_at
+    then:
+      propertyConstraints:
+        shacl.datatype:
+          in:
+            - xsd:dateTime
 
   174-common-field-types-modified-at:
     message: Modified-at fields must be date-times
     targetClass: shapes.Shape
-    or:
-      - not:
-          propertyConstraints:
-            shacl.name:
-              in:
-                - modified_at
-      - propertyConstraints:
-          shacl.datatype:
-            in:
-              - xsd:dateTime
+    if:
+      propertyConstraints:
+        shacl.name:
+          in:
+            - modified_at
+    then:
+      propertyConstraints:
+        shacl.datatype:
+          in:
+            - xsd:dateTime
 
   174-common-field-types-type:
     message: Type fields must be strings
     targetClass: shapes.Shape
-    or:
-      - not:
-          propertyConstraints:
-            shacl.name:
-              in:
-                - string
-      - propertyConstraints:
-          shacl.datatype:
-            in:
-              - xsd:string
-
-
+    if:
+      propertyConstraints:
+        shacl.name:
+          in:
+            - string
+    then:
+      propertyConstraints:
+        shacl.datatype:
+          in:
+            - xsd:string
