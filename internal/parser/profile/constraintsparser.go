@@ -169,7 +169,6 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		}
 		acc = append(acc, rule)
 	}
-	return acc, nil
 
 	codeModule := constraint.Get("regoModule")
 	if codeModule.IsFound() {
