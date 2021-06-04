@@ -7,7 +7,10 @@ test-profiles:
 test-go:
 	go test ./internal/...
 
-test: test-profiles test-go
+test-js: build-js
+	cd ./wrappers/js && npm install && ./node_modules/.bin/mocha
+
+test: test-profiles test-go test-js
 
 build-js:
 	./scripts/gen_js_package.sh

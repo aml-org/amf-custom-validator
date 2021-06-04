@@ -22,8 +22,19 @@ func validateWrapper() js.Func {
 	return jsonFunc
 }
 
+func exitWrapper(c chan bool) js.Func {
+	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		c <- true
+		return nil
+	})
+	return jsonFunc
+}
+
 func main() {
+	c := make(chan bool)
 	f := validateWrapper()
 	js.Global().Set("__AMF__validateCustomProfile", f)
-	<-make(chan bool)
+	f = exitWrapper(c)
+	js.Global().Set("__AMF__terminateValidator", f)
+	<-c
 }

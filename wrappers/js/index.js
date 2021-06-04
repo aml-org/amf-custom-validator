@@ -33,6 +33,7 @@ const validateCustomProfile = function(profile, data, debug, cb) {
 
 const exit = function() {
     if(INIT) {
+        __AMF__terminateValidator()
         go.exit(0)
         INIT = false;
         go = new Go();
