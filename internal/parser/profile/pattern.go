@@ -11,28 +11,10 @@ type PatternRule struct {
 	Argument string
 }
 
-func (r PatternRule) Clone() Rule {
-	return PatternRule{
-		AtomicStatement: AtomicStatement{
-			BaseStatement: BaseStatement{
-				Negated: r.Negated,
-				Name:    r.Name,
-			},
-			Variable: r.Variable,
-			Path:     r.Path,
-		},
-		Argument: r.Argument,
-	}
-}
-
 func (r PatternRule) Negate() Rule {
-	cloned := r.Clone()
-	switch c := cloned.(type) {
-	case PatternRule:
-		c.Negated = !r.Negated
-		return c
-	}
-	return cloned
+	negated := r
+	negated.Negated = !r.Negated
+	return negated
 }
 
 func (r PatternRule) ValueHash() string {

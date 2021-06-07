@@ -21,24 +21,10 @@ func newExpression(negated bool, name string, varGenerator *VarGenerator) Expres
 	}
 }
 
-func (exp Expression) Clone() Rule {
-	return Expression{
-		BaseStatement: BaseStatement{
-			Negated: exp.Negated,
-			Name:    exp.Name,
-		},
-		Variable: exp.Variable,
-	}
-}
-
 func (exp Expression) Negate() Rule {
-	cloned := exp.Clone()
-	switch expr := cloned.(type) {
-	case Expression:
-		expr.Negated = !exp.Negated
-		return expr
-	}
-	return cloned
+	negated := exp
+	negated.Negated = !exp.Negated
+	return negated
 }
 
 func (exp Expression) String() string {

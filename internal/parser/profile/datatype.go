@@ -13,28 +13,10 @@ type DatatypeRule struct {
 	Argument string
 }
 
-func (r DatatypeRule) Clone() Rule {
-	return DatatypeRule{
-		AtomicStatement: AtomicStatement{
-			BaseStatement: BaseStatement{
-				Negated: r.Negated,
-				Name:    r.Name,
-			},
-			Variable: r.Variable,
-			Path:     r.Path,
-		},
-		Argument: r.Argument,
-	}
-}
-
 func (r DatatypeRule) Negate() Rule {
-	cloned := r.Clone()
-	switch c := cloned.(type) {
-	case DatatypeRule:
-		c.Negated = !r.Negated
-		return c
-	}
-	return cloned
+	negated := r
+	negated.Negated = !r.Negated
+	return negated
 }
 
 func (r DatatypeRule) ValueHash() string {

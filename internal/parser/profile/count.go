@@ -19,29 +19,10 @@ type CountRule struct {
 	Argument  int
 }
 
-func (r CountRule) Clone() Rule {
-	return CountRule{
-		AtomicStatement: AtomicStatement{
-			BaseStatement: BaseStatement{
-				Negated: r.Negated,
-				Name:    r.Name,
-			},
-			Variable: r.Variable,
-			Path:     r.Path,
-		},
-		Qualifier: r.Qualifier,
-		Argument:  r.Argument,
-	}
-}
-
 func (r CountRule) Negate() Rule {
-	cloned := r.Clone()
-	switch c := cloned.(type) {
-	case CountRule:
-		c.Negated = !r.Negated
-		return c
-	}
-	return cloned
+	negated := r
+	negated.Negated = !r.Negated
+	return negated
 }
 
 func (r CountRule) ValueHash() string {

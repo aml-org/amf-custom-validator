@@ -26,27 +26,10 @@ func newNestedExpression(negated bool, parent Variable, path path.PropertyPath, 
 	return nested
 }
 
-func (exp NestedExpression) Clone() Rule {
-	return NestedExpression{
-		BaseStatement: BaseStatement{
-			Negated: exp.Negated,
-			Name:    exp.Name,
-		},
-		Path:   exp.Path,
-		Parent: exp.Parent,
-		Child:  exp.Child,
-		Value:  exp.Value,
-	}
-}
-
 func (exp NestedExpression) Negate() Rule {
-	cloned := exp.Clone()
-	switch expr := cloned.(type) {
-	case NestedExpression:
-		expr.Negated = !exp.Negated
-		return expr
-	}
-	return cloned
+	negated := exp
+	negated.Negated = !exp.Negated
+	return negated
 }
 
 func (exp NestedExpression) String() string {

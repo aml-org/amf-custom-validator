@@ -12,28 +12,10 @@ type InRule struct {
 	Argument []string
 }
 
-func (r InRule) Clone() Rule {
-	return InRule{
-		AtomicStatement: AtomicStatement{
-			BaseStatement: BaseStatement{
-				Negated: r.Negated,
-				Name:    r.Name,
-			},
-			Variable: r.Variable,
-			Path:     r.Path,
-		},
-		Argument: r.Argument,
-	}
-}
-
 func (r InRule) Negate() Rule {
-	cloned := r.Clone()
-	switch c := cloned.(type) {
-	case InRule:
-		c.Negated = !r.Negated
-		return c
-	}
-	return cloned
+	negated := r
+	negated.Negated = !r.Negated
+	return negated
 }
 
 func (r InRule) ValueHash() string {

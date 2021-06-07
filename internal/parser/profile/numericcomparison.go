@@ -14,29 +14,10 @@ type NumericRule struct {
 	Argument  *y.Yaml
 }
 
-func (r NumericRule) Clone() Rule {
-	return NumericRule{
-		AtomicStatement: AtomicStatement{
-			BaseStatement: BaseStatement{
-				Negated: r.Negated,
-				Name:    r.Name,
-			},
-			Variable: r.Variable,
-			Path:     r.Path,
-		},
-		Operation: r.Operation,
-		Argument:  r.Argument,
-	}
-}
-
 func (r NumericRule) Negate() Rule {
-	cloned := r.Clone()
-	switch c := cloned.(type) {
-	case NumericRule:
-		c.Negated = !r.Negated
-		return c
-	}
-	return cloned
+	negated := r
+	negated.Negated = !r.Negated
+	return negated
 }
 
 func (r NumericRule) ValueHash() string {

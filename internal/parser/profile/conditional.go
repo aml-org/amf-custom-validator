@@ -29,10 +29,6 @@ func (r ConditionalRule) String() string {
 	}
 }
 
-func (r ConditionalRule) Clone() Rule {
-	return NewConditional(r.Negated, r.Head(), r.Tail())
-}
-
 func (r ConditionalRule) Negate() Rule {
 	return NewConditional(!r.Negated, r.Head(), r.Tail())
 }
