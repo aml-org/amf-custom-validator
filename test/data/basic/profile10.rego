@@ -187,7 +187,7 @@ violation[matches] {
   gen_numeric_comparison_2_elem = gen_path_rule_1 with data.sourceNode as x
   gen_numeric_comparison_2 = gen_numeric_comparison_2_elem[_]
   not gen_numeric_comparison_2 < 50.450000
-  _result_0 := trace("maximumExclusive","shacl.minCount",x,{"negated":false,"condition":"<","expected":gen_numeric_comparison_2,"actual":50.450000})
+  _result_0 := trace("maximumExclusive","shacl.minCount",x,{"negated":false,"condition":"<","expected":50.450000,"actual":gen_numeric_comparison_2})
   matches := error("array-limits",x,"Validation error",[_result_0])
 }
 
@@ -197,6 +197,6 @@ violation[matches] {
   gen_numeric_comparison_4_elem = gen_path_rule_3 with data.sourceNode as x
   gen_numeric_comparison_4 = gen_numeric_comparison_4_elem[_]
   not gen_numeric_comparison_4 >= 25
-  _result_0 := trace("minimumInclusive","shacl.minCount",x,{"negated":false,"condition":">=","expected":gen_numeric_comparison_4,"actual":25})
+  _result_0 := trace("minimumInclusive","shacl.minCount",x,{"negated":false,"condition":">=","expected":25,"actual":gen_numeric_comparison_4})
   matches := error("array-limits",x,"Validation error",[_result_0])
 }

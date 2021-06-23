@@ -58,7 +58,7 @@ func TestValidate(t *testing.T) {
 
 		report, err = Validate(prof, fixture.ReadFixtureNegativeData(), debug)
 		if err != nil {
-			t.Errorf("positive validation failed %v", err)
+			t.Errorf("negative validation failed %v", err)
 		}
 		if conforms(report) {
 			t.Errorf("negative case failed")
@@ -66,7 +66,7 @@ func TestValidate(t *testing.T) {
 		expected = strings.TrimSpace(fixture.ReadFixtureNegativeReport())
 		//test.ForceWrite(string(fixture)+"/negative.report.jsonld", strings.TrimSpace(report))
 		if strings.TrimSpace(report) != expected {
-			t.Errorf(fmt.Sprintf("failed positive report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", fixture, expected, report))
+			t.Errorf(fmt.Sprintf("failed negative report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", fixture, expected, report))
 		}
 
 	}
