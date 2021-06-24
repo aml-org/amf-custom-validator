@@ -16,7 +16,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 100,
-            "condition": "\u003c",
+            "condition": "<",
             "expected": 50,
             "negated": false
           }

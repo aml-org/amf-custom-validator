@@ -16,7 +16,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "movie.reviews",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 88000,
-            "condition": "\u003c=",
+            "condition": "<=",
             "expected": 1000,
             "negated": false
           }
@@ -30,7 +30,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "movie.rating",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1.9,
-            "condition": "\u003c=",
+            "condition": "<=",
             "expected": 5,
             "negated": true
           }

@@ -44,7 +44,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "core.description",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }
@@ -75,7 +75,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "core.license",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }
@@ -106,7 +106,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }
@@ -137,7 +137,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "core.description",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }
@@ -168,7 +168,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "core.description",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }
@@ -199,7 +199,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "core.description",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }
@@ -230,7 +230,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "core.description",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }
@@ -261,7 +261,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }
@@ -292,7 +292,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }
@@ -323,7 +323,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }
@@ -354,7 +354,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }

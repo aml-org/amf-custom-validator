@@ -16,7 +16,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.endpoint",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 4,
-            "condition": "\u003c=",
+            "condition": "<=",
             "expected": 3,
             "negated": false
           }

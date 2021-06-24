@@ -16,7 +16,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "data.route",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
-            "condition": "\u003c=",
+            "condition": "<=",
             "expected": 1,
             "negated": true
           }
@@ -30,7 +30,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "data.route",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": true
           }
