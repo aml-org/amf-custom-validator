@@ -1,4 +1,4 @@
-module github.com/aml-org/amfopa
+module github.com/aml-org/amf-custom-validator
 
 go 1.15
 
