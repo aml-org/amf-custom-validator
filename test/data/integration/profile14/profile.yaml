@@ -1,0 +1,18 @@
+#%Validation Profile 1.0
+profile: lowRatingAndReview
+prefixes:
+  movie: http://anypoint.com/vocabs/movie#
+violation:
+  - bad-movie
+validations:
+  bad-movie:
+    targetClass: movie.Movie
+    message: "Movie has low rating and reviews"
+    if:
+      propertyConstraints:
+        movie.rating:
+          maxInclusive: 5
+    then:
+      propertyConstraints:
+        movie.reviews:
+          maxInclusive: 1000

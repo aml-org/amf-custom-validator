@@ -1,0 +1,51 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "maximumInclusive",
+          "http://www.w3.org/ns/shacl#focusNode": "http://0.0.0.0:8080/v1/movie/Lionsgate/Disaster+Movie#/",
+          "http://www.w3.org/ns/shacl#resultPath": "movie.reviews",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 88000,
+            "condition": "\u003c=",
+            "expected": 1000,
+            "negated": false
+          }
+        },
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/validation#component": "maximumInclusive",
+          "http://www.w3.org/ns/shacl#focusNode": "http://0.0.0.0:8080/v1/movie/Lionsgate/Disaster+Movie#/",
+          "http://www.w3.org/ns/shacl#resultPath": "movie.rating",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 1.9,
+            "condition": "\u003c=",
+            "expected": 5,
+            "negated": true
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "http://0.0.0.0:8080/v1/movie/Lionsgate/Disaster+Movie#/"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Movie has low rating and reviews",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "bad-movie"
+      }
+    }
+  ]
+}
