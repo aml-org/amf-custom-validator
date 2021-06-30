@@ -71,7 +71,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.datatype",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": true
           }
@@ -85,7 +85,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.pattern",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }
@@ -116,7 +116,7 @@
           "http://www.w3.org/ns/shacl#resultPath": "security.security",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
-            "condition": "\u003e=",
+            "condition": ">=",
             "expected": 1,
             "negated": false
           }

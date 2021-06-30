@@ -52,6 +52,7 @@ func encode(data interface{}) string {
 	var b bytes.Buffer
 	enc := json.NewEncoder(&b)
 	enc.SetIndent("", "  ")
+	enc.SetEscapeHTML(false)
 	enc.Encode(data)
 	return b.String()
 }
