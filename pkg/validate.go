@@ -1,4 +1,4 @@
-package main
+package pkg
 
 import internal "github.com/aml-org/amf-custom-validator/internal/validator"
 
