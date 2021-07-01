@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"github.com/aml-org/amfopa/internal/generator"
-	"github.com/aml-org/amfopa/internal/parser"
+	"github.com/aml-org/amf-custom-validator/internal/generator"
+	"github.com/aml-org/amf-custom-validator/internal/parser"
 	"github.com/open-policy-agent/opa/rego"
 )
 

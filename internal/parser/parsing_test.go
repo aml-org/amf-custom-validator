@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"github.com/aml-org/amfopa/test"
+	"github.com/aml-org/amf-custom-validator/test"
 	"strings"
 	"testing"
 )

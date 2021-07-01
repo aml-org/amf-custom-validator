@@ -2,7 +2,7 @@ package generator
 
 import (
 	"fmt"
-	"github.com/aml-org/amfopa/internal/parser/profile"
+	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 )
 
 // Generates the Rego code snippet for the rule, supports minCount and maxCount

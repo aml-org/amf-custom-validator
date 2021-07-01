@@ -2,9 +2,9 @@ package profile
 
 import (
 	"fmt"
-	"github.com/aml-org/amfopa/internal"
-	"github.com/aml-org/amfopa/internal/parser/path"
-	y "github.com/aml-org/amfopa/internal/parser/yaml"
+	"github.com/aml-org/amf-custom-validator/internal"
+	"github.com/aml-org/amf-custom-validator/internal/parser/path"
+	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
 	"strings"
 )
 

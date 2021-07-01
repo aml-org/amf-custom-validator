@@ -1,7 +1,7 @@
 package validator
 
 import (
-	"github.com/aml-org/amfopa/internal/parser/profile"
+	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"github.com/piprate/json-gold/ld"
 )
 

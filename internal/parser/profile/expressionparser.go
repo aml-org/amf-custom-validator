@@ -3,8 +3,8 @@ package profile
 import (
 	"errors"
 	"fmt"
-	"github.com/aml-org/amfopa/internal/parser/path"
-	y "github.com/aml-org/amfopa/internal/parser/yaml"
+	"github.com/aml-org/amf-custom-validator/internal/parser/path"
+	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
 )
 
 func ParseExpression(name string, data *y.Yaml, level string, varGenerator *VarGenerator) (Rule, error) {
