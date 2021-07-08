@@ -8,7 +8,7 @@ In order for the build and test process the following environment variales must 
 defined:
 
 - _GO_: path to the go binary going to be used to compile and run tests
-- _AMF_: path to an AMF jar going to be used to parse examples and validate the validation profile dialect
+- _AMF_JAR_: path to an AMF fat jar going to be used to parse examples and validate the validation profile dialect
 
 ## Test
 
@@ -46,7 +46,7 @@ Auxiliary scripts:
 `gen_js_package`: generates the node WASM package
 
 `gen_production_examples`: regenerates the JSON-LD for the RAML/OAS examples in the production tests. 
-The `$AMF` environment variable pointing to the AMF jar file must be defined
+The `AMF_JAR` environment variable pointing to the AMF jar file must be defined
 
 `gen_property_parser`: parsed the PEG grammar for the property path parser and generates the module in the `internal/parser` package.
 

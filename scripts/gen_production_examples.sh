@@ -46,12 +46,12 @@ do
       re="oas"
       if [[ $entry =~ $re ]]; then
         echo $entry
-        java -jar $AMF parse -in "OAS 3.0" -mime-in "application/yaml" --validate false $entry | jq > $entry.jsonld
+        java -jar $AMF_JAR parse -in "OAS 3.0" -mime-in "application/yaml" --validate false $entry | jq > $entry.jsonld
       fi
       re="raml"
       if [[ $entry =~ $re ]]; then
         echo $entry
-        java -jar $AMF parse -in "RAML 1.0" -mime-in "application/yaml" --validate false $entry | jq > $entry.jsonld
+        java -jar $AMF_JAR parse -in "RAML 1.0" -mime-in "application/yaml" --validate false $entry | jq > $entry.jsonld
       fi
     fi
   done
