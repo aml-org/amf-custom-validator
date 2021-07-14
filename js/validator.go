@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/aml-org/amfopa/internal/validator"
+	"github.com/aml-org/amf-custom-validator/internal/validator"
 	"syscall/js"
 )
 

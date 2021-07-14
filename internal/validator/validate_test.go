@@ -2,8 +2,8 @@ package validator
 
 import (
 	"fmt"
-	"github.com/aml-org/amfopa/internal/parser/profile"
-	"github.com/aml-org/amfopa/test"
+	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/aml-org/amf-custom-validator/test"
 	"strings"
 	"testing"
 )

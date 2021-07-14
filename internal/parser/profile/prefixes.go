@@ -2,7 +2,7 @@ package profile
 
 import (
 	"errors"
-	y "github.com/aml-org/amfopa/internal/parser/yaml"
+	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
 )
 
 type ProfileContext = map[string]string

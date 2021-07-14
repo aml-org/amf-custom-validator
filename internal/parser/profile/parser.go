@@ -3,7 +3,7 @@ package profile
 import (
 	"errors"
 	"fmt"
-	y "github.com/aml-org/amfopa/internal/parser/yaml"
+	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
 )
 
 func Parse(doc *y.Yaml) (Profile, error) {

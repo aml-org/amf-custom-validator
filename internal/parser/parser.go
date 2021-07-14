@@ -1,8 +1,8 @@
 package parser
 
 import (
-	"github.com/aml-org/amfopa/internal/parser/profile"
-	y "github.com/aml-org/amfopa/internal/parser/yaml"
+	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
 )
 
 func Parse(profileText string) (*profile.Profile, error) {

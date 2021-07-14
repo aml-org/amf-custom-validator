@@ -2,9 +2,9 @@ package generator
 
 import (
 	"context"
-	"github.com/aml-org/amfopa/internal/parser"
-	"github.com/aml-org/amfopa/internal/parser/profile"
-	"github.com/aml-org/amfopa/test"
+	"github.com/aml-org/amf-custom-validator/internal/parser"
+	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/aml-org/amf-custom-validator/test"
 	"github.com/open-policy-agent/opa/rego"
 	"strings"
 	"testing"

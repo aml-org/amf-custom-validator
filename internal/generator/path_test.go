@@ -1,8 +1,8 @@
 package generator
 
 import (
-	"github.com/aml-org/amfopa/internal/parser/path"
-	"github.com/aml-org/amfopa/internal/parser/profile"
+	"github.com/aml-org/amf-custom-validator/internal/parser/path"
+	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"strings"
 	"testing"
 )

@@ -3,8 +3,8 @@ package profile
 import (
 	"errors"
 	"fmt"
-	pathParser "github.com/aml-org/amfopa/internal/parser/path"
-	y "github.com/aml-org/amfopa/internal/parser/yaml"
+	pathParser "github.com/aml-org/amf-custom-validator/internal/parser/path"
+	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
 	"strconv"
 )
 
