@@ -19,20 +19,27 @@ ARG SBT_VERSION=1.5.4
 #
 #RUN make ci-java
 
-
 FROM golang:1.15 AS CI-GO
 # Install make
 RUN apt-get update && apt-get install make
 
-COPY . /go/src
+# First copy dependencies to enable Docker caching them
+COPY ./go.mod ./go.sum /go/src/
 WORKDIR /go/src
-
 RUN go mod tidy
+
+COPY . .
 RUN make ci-go
 
 FROM node:12 AS CI-JS
-COPY --from=CI-GO /go/src ./src
+
+# First copy dependencies to enable Docker caching them
+COPY . ./src
 WORKDIR ./src
+RUN npm install
+
+# Copy generated WASM
+COPY --from=CI-GO /go/src/wrappers/js/lib/main.wasm ./wrappers/js/lib
 
 RUN make ci-js
 
