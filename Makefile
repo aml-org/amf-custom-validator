@@ -2,20 +2,34 @@
 
 all: test build
 
+## TEST ===================================================================================
+test: test-profiles test-go test-js
+
 test-profiles:
 	./scripts/check_profile_syntax.sh
+
 test-go:
 	go test ./internal/...
 
-test-js: build-js
+# must run build-js first
+test-js:
 	cd ./wrappers/js && npm install && ./node_modules/.bin/mocha
 
-test: test-profiles test-go test-js
+## BUILD ==================================================================================
+
+build: build-native build-js
+
+build-native:
+	rm -f amf-opa-validator
+	go build -o amf-opa-validator ./cmd/validator.go
 
 build-js:
 	./scripts/gen_js_package.sh
-build-native:
-	rm -f amf-opa-validator
-	${GO} build -o amf-opa-validator ./cmd/validator.go
 
-build: build-native build-js
+## CI =====================================================================================
+
+ci-java: test-profiles
+
+ci-go: test-go build-native build-js
+
+ci-js: test-js
