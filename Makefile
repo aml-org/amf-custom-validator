@@ -13,7 +13,7 @@ test-go:
 
 # must run build-js first
 test-js:
-	cd ./wrappers/js && npm install && ./node_modules/.bin/mocha
+	cd ./wrappers/js && npm install && npm test
 
 ## BUILD ==================================================================================
 
