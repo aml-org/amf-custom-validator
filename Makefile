@@ -1,12 +1,9 @@
 .PHONY: test
 
-all: test build
+all: build test
 
 ## TEST ===================================================================================
-test: test-profiles test-go test-js
-
-test-profiles:
-	./scripts/check_profile_syntax.sh
+test: test-go test-js
 
 test-go:
 	go test ./internal/...
@@ -27,8 +24,6 @@ build-js:
 	./scripts/gen_js_package.sh
 
 ## CI =====================================================================================
-
-ci-java: test-profiles
 
 ci-go: test-go build-native build-js
 

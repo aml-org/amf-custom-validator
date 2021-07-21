@@ -2,17 +2,6 @@
 pipeline {
     agent none
     stages {
-//         stage('Test profiles (Java)') {
-//             agent {
-//                 dockerfile {
-//                     filename 'Dockerfile'
-//                     additionalBuildArgs  '--target CI-JAVA'
-//                 }
-//             }
-//             steps {
-//                 echo "Success" // Tests are actually run when building the agent in the Dockerfile
-//             }
-//         }
         stage('Test validator (Go)') {
             agent {
                 dockerfile {
