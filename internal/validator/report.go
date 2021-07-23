@@ -26,7 +26,7 @@ func BuildReport(result rego.ResultSet) (string, error) {
 			"http://www.w3.org/ns/shacl#conforms": true,
 		}
 
-		return encode(res), nil
+		return Encode(res), nil
 	} else {
 		var results []interface{}
 		for _, r := range violations {
@@ -44,11 +44,11 @@ func BuildReport(result rego.ResultSet) (string, error) {
 			"http://www.w3.org/ns/shacl#conforms": false,
 			"http://www.w3.org/ns/shacl#result":   results,
 		}
-		return encode(res), nil
+		return Encode(res), nil
 	}
 }
 
-func encode(data interface{}) string {
+func Encode(data interface{}) string {
 	var b bytes.Buffer
 	enc := json.NewEncoder(&b)
 	enc.SetIndent("", "  ")

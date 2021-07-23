@@ -18,7 +18,7 @@ build: build-native build-js
 
 build-native:
 	rm -f amf-opa-validator
-	go build -o amf-opa-validator ./cmd/validator.go
+	go build -o amf-opa-validator ./cmd/validate/validate.go
 
 build-js:
 	./scripts/gen_js_package.sh
@@ -28,3 +28,14 @@ build-js:
 ci-go: test-go build-native build-js
 
 ci-js: test-js
+
+## Helpers ================================================================================
+generate:
+	go run cmd/generate/generate.go $(profile) >> $(out)
+
+normalize:
+	go run cmd/normalize/normalize.go $(profile) $(data) >> $(out)
+
+validate:
+	go run cmd/validate/validate.go $(profile) $(data) >> $(out)
+

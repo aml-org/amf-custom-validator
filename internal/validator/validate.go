@@ -10,25 +10,25 @@ import (
 )
 
 func Validate(profileText string, jsonldText string, debug bool) (string, error) {
-	parsed, err := parser.Parse(profileText)
+	err, module := Generate(profileText, debug)
+	normalizedInput := Normalize_(jsonldText, module, debug)
+
+	validator := rego.New(
+		rego.Query("data."+module.Name+"."+module.Entrypoint),
+		rego.Module(module.Name+".rego", module.Code),
+		rego.Input(normalizedInput),
+	)
+	ctx := context.Background()
+	result, err := validator.Eval(ctx)
+
 	if err != nil {
-		panic(err)
+		return "", err
+	} else {
+		return BuildReport(result)
 	}
+}
 
-	if debug {
-		println("Logic translation")
-		println("-------------------------------")
-		println(parsed.String())
-	}
-
-	module := generator.Generate(*parsed)
-
-	if debug {
-		println("Generated profile")
-		println("-------------------------------")
-		println(module.Code)
-	}
-
+func Normalize_(jsonldText string, module generator.RegoUnit, debug bool) interface{} {
 	decoder := json.NewDecoder(bytes.NewBuffer([]byte(jsonldText)))
 	decoder.UseNumber()
 
@@ -51,18 +51,27 @@ func Validate(profileText string, jsonldText string, debug bool) (string, error)
 		}
 		println(b.String())
 	}
-	validator := rego.New(
-		rego.Query("data."+module.Name+"."+module.Entrypoint),
-		rego.Module(module.Name+".rego", module.Code),
-		rego.Input(normalizedInput),
-	)
+	return normalizedInput
+}
 
-	ctx := context.Background()
-
-	result, err := validator.Eval(ctx)
+func Generate(profileText string, debug bool) (error, generator.RegoUnit) {
+	parsed, err := parser.Parse(profileText)
 	if err != nil {
-		return "", err
-	} else {
-		return BuildReport(result)
+		panic(err)
 	}
+
+	if debug {
+		println("Logic translation")
+		println("-------------------------------")
+		println(parsed.String())
+	}
+
+	module := generator.Generate(*parsed)
+
+	if debug {
+		println("Generated profile")
+		println("-------------------------------")
+		println(module.Code)
+	}
+	return err, module
 }
