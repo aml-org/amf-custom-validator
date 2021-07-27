@@ -1,0 +1,51 @@
+{
+  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
+  "http://www.w3.org/ns/shacl#conforms": false,
+  "http://www.w3.org/ns/shacl#result": [
+    {
+      "@type": [
+        "http://www.w3.org/ns/shacl#ValidationResult"
+      ],
+      "http://a.ml/vocabularies/validation#trace": [
+        {
+          "@type": [
+            "http://a.ml/vocabularies/validation#TraceMessage"
+          ],
+          "http://a.ml/vocabularies/amf/parser#lexicalPosition": {
+            "@type": [
+              "http://a.ml/vocabularies/amf/parser#Position"
+            ],
+            "http://a.ml/vocabularies/amf/parser#end": {
+              "@type": "http://a.ml/vocabularies/amf/parser#Location",
+              "http://a.ml/vocabularies/amf/parser#column": 0,
+              "http://a.ml/vocabularies/amf/parser#line": 16
+            },
+            "http://a.ml/vocabularies/amf/parser#start": {
+              "@type": "http://a.ml/vocabularies/amf/parser#Location",
+              "http://a.ml/vocabularies/amf/parser#column": 0,
+              "http://a.ml/vocabularies/amf/parser#line": 10
+            }
+          },
+          "http://a.ml/vocabularies/validation#component": "nested",
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile4/negative.data.raml#/web-api/end-points/%2Fendpoint2",
+          "http://www.w3.org/ns/shacl#resultPath": "apiContract.supportedOperation",
+          "http://www.w3.org/ns/shacl#traceValue": {
+            "actual": 1,
+            "expected": 0,
+            "negated": false
+          }
+        }
+      ],
+      "http://www.w3.org/ns/shacl#focusNode": {
+        "@id": "file://test/data/integration/profile4/negative.data.raml#/web-api/end-points/%2Fendpoint2"
+      },
+      "http://www.w3.org/ns/shacl#resultMessage": "Endpoints must have a POST method",
+      "http://www.w3.org/ns/shacl#resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "http://www.w3.org/ns/shacl#sourceShape": {
+        "@id": "validation1"
+      }
+    }
+  ]
+}
