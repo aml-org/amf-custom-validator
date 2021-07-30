@@ -31,7 +31,7 @@ func main() {
 		debug = parsedDebug
 	}
 
-	res, err := validator.Validate(string(profile), string(data), debug)
+	res, err := validator.Validate(string(profile), string(data), debug, nil)
 	if err != nil {
 		panic(err)
 	}
