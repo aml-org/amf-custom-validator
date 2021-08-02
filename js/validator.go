@@ -13,7 +13,7 @@ func validateWrapper() js.Func {
 		profileString := args[0].String()
 		dataString := args[1].String()
 		debug := args[2].Bool()
-		res, err := validator.Validate(profileString, dataString, debug)
+		res, err := validator.Validate(profileString, dataString, debug, nil)
 		if err != nil {
 			return err.Error()
 		}
