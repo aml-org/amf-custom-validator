@@ -113,13 +113,36 @@ as_string(x) = json.marshal(x) {
   not x["@id"]
 }
 
-
 # Traces one evaluation of a constraint
 trace(constraint, path, node, value) = t {
+  id := node["@id"]
+  raw_lexical := input["@lexical"][id]
+  lexical_parts := regex.find_n("\\d+", raw_lexical, 4)
   t := {
     "component": constraint,
     "path": path,
-    "focusNode": node["@id"],
+    "focusNode": id,
+    "value": value,
+	"lexical": {
+      "start": {
+        "line": lexical_parts[0],
+        "column": lexical_parts[1]
+      },
+      "end": {
+        "line": lexical_parts[2],
+        "column": lexical_parts[3]
+      }
+    }
+  }
+}
+
+trace(constraint, path, node, value) = t {
+  id := node["@id"]
+  not input["@lexical"][id]
+  t := {
+    "component": constraint,
+    "path": path,
+    "focusNode": id,
     "value": value
   }
 }

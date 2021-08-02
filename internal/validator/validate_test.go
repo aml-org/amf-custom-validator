@@ -69,6 +69,21 @@ func TestValidate(t *testing.T) {
 			t.Errorf(fmt.Sprintf("failed negative report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", fixture, expected, report))
 		}
 
+		lexicalFixture, fixtureError := fixture.ReadFixtureNegativeDataWithLexical()
+		if fixtureError == nil {
+			report, err = Validate(prof, lexicalFixture, debug)
+			if err != nil {
+				t.Errorf("negative validation failed %v", err)
+			}
+			if conforms(report) {
+				t.Errorf("negative case failed")
+			}
+			expected = strings.TrimSpace(fixture.ReadFixtureNegativeReportWithLexical())
+			if strings.TrimSpace(report) != expected {
+				t.Errorf(fmt.Sprintf("failed negative lexical report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", lexicalFixture, expected, report))
+			}
+			//test.ForceWrite(string(fixture)+"/negative.report.lexical.jsonld", strings.TrimSpace(report))
+		}
 	}
 }
 

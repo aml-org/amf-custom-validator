@@ -19,6 +19,7 @@ func Normalize(json interface{}, prefixes profile.ProfileContext) interface{} {
 		"rdfs":        "http://www.w3.org/2000/01/rdf-schema",
 		"rdf":         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
 		"security":    "http://a.ml/vocabularies/security#",
+		"sourcemaps":  "http://a.ml/vocabularies/document-source-maps#",
 	}
 	for n, p := range prefixes {
 		context[n] = p
@@ -64,8 +65,45 @@ func Index(json interface{}) interface{} {
 		}
 	}
 
+	// Build lexical index
+	lexicalIndex := make(map[string]interface{})
+	for _, sourceMapId := range classIndex["sourcemaps:SourceMap"] {
+		sourceMap := nodeIndex[sourceMapId].(map[string]interface{})
+		lexicalContainer := sourceMap["sourcemaps:lexical"] // can be map or array of maps
+
+		switch v := lexicalContainer.(type) {
+		case map[string]interface{}:
+			addLexicalEntryFrom(&v, &nodeIndex, &lexicalIndex)
+		case []interface{}:
+			for _, e := range v {
+				switch vv := e.(type) {
+				case map[string]interface{}:
+					addLexicalEntryFrom(&vv, &nodeIndex, &lexicalIndex)
+				}
+			}
+		}
+	}
+
 	return map[string]interface{}{
-		"@ids":   nodeIndex,
-		"@types": classIndex,
+		"@ids":     nodeIndex,
+		"@types":   classIndex,
+		"@lexical": lexicalIndex,
+	}
+}
+
+func addLexicalEntryFrom(node, nodeIndex, lexicalIndex *map[string]interface{}) {
+	lexicalEntry := (*nodeIndex)[(*node)["@id"].(string)].(map[string]interface{})
+	id := lexicalEntry["sourcemaps:element"].(string)
+	value := lexicalEntry["sourcemaps:value"]
+
+	/**
+	Index:
+		nodeId -> lexical
+
+	Cannot index property lexical info (property URI -> lexical) because property URIs are not unique and will
+	get overwritten by each node
+	*/
+	if _, ok := (*nodeIndex)[id]; ok {
+		(*lexicalIndex)[id] = value
 	}
 }

@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/open-policy-agent/opa/rego"
+	"strconv"
 	"strings"
 )
 
@@ -26,7 +27,7 @@ func BuildReport(result rego.ResultSet) (string, error) {
 			"http://www.w3.org/ns/shacl#conforms": true,
 		}
 
-		return encode(res), nil
+		return Encode(res), nil
 	} else {
 		var results []interface{}
 		for _, r := range violations {
@@ -44,11 +45,11 @@ func BuildReport(result rego.ResultSet) (string, error) {
 			"http://www.w3.org/ns/shacl#conforms": false,
 			"http://www.w3.org/ns/shacl#result":   results,
 		}
-		return encode(res), nil
+		return Encode(res), nil
 	}
 }
 
-func encode(data interface{}) string {
+func Encode(data interface{}) string {
 	var b bytes.Buffer
 	enc := json.NewEncoder(&b)
 	enc.SetIndent("", "  ")
@@ -103,5 +104,36 @@ func buildTrace(raw interface{}) interface{} {
 		"http://www.w3.org/ns/shacl#traceValue":         value,
 	}
 
+	switch trace["lexical"].(type) {
+	case map[string]interface{}:
+		res["http://a.ml/vocabularies/amf/parser#lexicalPosition"] = buildLexicalPosition(trace)
+	}
+
+	return res
+}
+
+func buildLexicalPosition(trace map[string]interface{}) map[string]interface{} {
+	lexical := trace["lexical"].(map[string]interface{})
+	start := lexical["start"].(map[string]interface{})
+	end := lexical["end"].(map[string]interface{})
+
+	res := map[string]interface{}{
+		"@type": []string{"http://a.ml/vocabularies/amf/parser#Position"},
+		"http://a.ml/vocabularies/amf/parser#start": map[string]interface{}{
+			"@type": "http://a.ml/vocabularies/amf/parser#Location",
+			"http://a.ml/vocabularies/amf/parser#line":   intFrom(start["line"]),
+			"http://a.ml/vocabularies/amf/parser#column": intFrom(start["column"]),
+		},
+		"http://a.ml/vocabularies/amf/parser#end": map[string]interface{}{
+			"@type": "http://a.ml/vocabularies/amf/parser#Location",
+			"http://a.ml/vocabularies/amf/parser#line":   intFrom(end["line"]),
+			"http://a.ml/vocabularies/amf/parser#column": intFrom(end["column"]),
+		},
+	}
+	return res
+}
+
+func intFrom(any interface{}) int {
+	res, _ := strconv.Atoi(any.(string))
 	return res
 }

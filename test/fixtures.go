@@ -161,6 +161,11 @@ func (f IntegrationFixture) ReadFixtureNegativeData() string {
 	return string(bytes)
 }
 
+func (f IntegrationFixture) ReadFixtureNegativeDataWithLexical() (string, error) {
+	bytes, err := ioutil.ReadFile(string(f) + "/negative.data.lexical.jsonld")
+	return string(bytes), err
+}
+
 func (f IntegrationFixture) ReadFixturePositiveReport() string {
 	bytes, err := ioutil.ReadFile(string(f) + "/positive.report.jsonld")
 	if err != nil {
@@ -171,6 +176,14 @@ func (f IntegrationFixture) ReadFixturePositiveReport() string {
 
 func (f IntegrationFixture) ReadFixtureNegativeReport() string {
 	bytes, err := ioutil.ReadFile(string(f) + "/negative.report.jsonld")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
+func (f IntegrationFixture) ReadFixtureNegativeReportWithLexical() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/negative.report.lexical.jsonld")
 	if err != nil {
 		panic(err)
 	}

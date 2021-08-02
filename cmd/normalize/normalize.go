@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/validator"
 	"io/ioutil"
 	"os"
@@ -22,18 +23,19 @@ func main() {
 	}
 
 	debug := false
-	if len(os.Args) >= 3 {
+	if len(os.Args) > 3 {
 		parsedDebug, ok := strconv.ParseBool(os.Args[3])
 		if ok != nil {
-			panic("usage validate PROFILE_PATH FILE_PATH [DEBUG=true|false]")
+			panic("usage normalize PROFILE_PATH FILE_PATH [DEBUG=true|false]")
 		}
 		debug = parsedDebug
 	}
 
-	res, err := validator.Validate(string(profile), string(data), debug)
+	err, module := validator.Generate(string(profile), debug)
+	res := validator.Normalize_(string(data), module, debug)
 	if err != nil {
 		panic(err)
 	}
 
-	println(res)
+	fmt.Println(validator.Encode(res))
 }

@@ -11,8 +11,23 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
+          "http://a.ml/vocabularies/amf/parser#lexicalPosition": {
+            "@type": [
+              "http://a.ml/vocabularies/amf/parser#Position"
+            ],
+            "http://a.ml/vocabularies/amf/parser#end": {
+              "@type": "http://a.ml/vocabularies/amf/parser#Location",
+              "http://a.ml/vocabularies/amf/parser#column": 0,
+              "http://a.ml/vocabularies/amf/parser#line": 9
+            },
+            "http://a.ml/vocabularies/amf/parser#start": {
+              "@type": "http://a.ml/vocabularies/amf/parser#Location",
+              "http://a.ml/vocabularies/amf/parser#column": 6,
+              "http://a.ml/vocabularies/amf/parser#line": 8
+            }
+          },
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile1.negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request/parameter/query/a",
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile1/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request/parameter/query/a",
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.minLength",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -23,7 +38,7 @@
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
-        "@id": "file://test/data/integration/profile1.negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request/parameter/query/a"
+        "@id": "file://test/data/integration/profile1/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request/parameter/query/a"
       },
       "http://www.w3.org/ns/shacl#resultMessage": "Scalars in parameters must have minLength defined",
       "http://www.w3.org/ns/shacl#resultSeverity": {
@@ -42,8 +57,23 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
+          "http://a.ml/vocabularies/amf/parser#lexicalPosition": {
+            "@type": [
+              "http://a.ml/vocabularies/amf/parser#Position"
+            ],
+            "http://a.ml/vocabularies/amf/parser#end": {
+              "@type": "http://a.ml/vocabularies/amf/parser#Location",
+              "http://a.ml/vocabularies/amf/parser#column": 8,
+              "http://a.ml/vocabularies/amf/parser#line": 18
+            },
+            "http://a.ml/vocabularies/amf/parser#start": {
+              "@type": "http://a.ml/vocabularies/amf/parser#Location",
+              "http://a.ml/vocabularies/amf/parser#column": 6,
+              "http://a.ml/vocabularies/amf/parser#line": 18
+            }
+          },
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile1.negative.data.raml#/web-api/end-points/%2Fendpoint2/get/request/parameter/query/d",
+          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile1/negative.data.raml#/web-api/end-points/%2Fendpoint2/get/request/parameter/query/d",
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.minLength",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -54,7 +84,7 @@
         }
       ],
       "http://www.w3.org/ns/shacl#focusNode": {
-        "@id": "file://test/data/integration/profile1.negative.data.raml#/web-api/end-points/%2Fendpoint2/get/request/parameter/query/d"
+        "@id": "file://test/data/integration/profile1/negative.data.raml#/web-api/end-points/%2Fendpoint2/get/request/parameter/query/d"
       },
       "http://www.w3.org/ns/shacl#resultMessage": "Scalars in parameters must have minLength defined",
       "http://www.w3.org/ns/shacl#resultSeverity": {
