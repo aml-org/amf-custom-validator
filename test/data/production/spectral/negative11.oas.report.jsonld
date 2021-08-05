@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative11.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/get/default",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.statusCode",
           "http://www.w3.org/ns/shacl#traceValue": {
             "argument": "default",

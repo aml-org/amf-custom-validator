@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers",
           "http://www.w3.org/ns/shacl#resultPath": "",
           "http://www.w3.org/ns/shacl#traceValue": {
             "negated": false
@@ -40,7 +39,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",
           "http://www.w3.org/ns/shacl#resultPath": "",
           "http://www.w3.org/ns/shacl#traceValue": {
             "negated": false
@@ -68,7 +66,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D",
           "http://www.w3.org/ns/shacl#resultPath": "",
           "http://www.w3.org/ns/shacl#traceValue": {
             "negated": false

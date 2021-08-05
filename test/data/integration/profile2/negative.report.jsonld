@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile2/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.parameter",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,

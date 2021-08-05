@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative3.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "",
           "http://www.w3.org/ns/shacl#traceValue": {
             "negated": false
@@ -40,7 +39,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative3.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "core.description",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -71,7 +69,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative3.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "core.license",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -102,7 +99,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative3.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -133,7 +129,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/patch",
           "http://www.w3.org/ns/shacl#resultPath": "core.description",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -164,7 +159,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/put",
           "http://www.w3.org/ns/shacl#resultPath": "core.description",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -195,7 +189,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/patch",
           "http://www.w3.org/ns/shacl#resultPath": "core.description",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -226,7 +219,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/put",
           "http://www.w3.org/ns/shacl#resultPath": "core.description",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -257,7 +249,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/patch",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -288,7 +279,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/put",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -319,7 +309,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/patch",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -350,7 +339,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/put",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.tag",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,

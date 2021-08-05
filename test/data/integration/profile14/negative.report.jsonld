@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "maximumInclusive",
-          "http://www.w3.org/ns/shacl#focusNode": "http://0.0.0.0:8080/v1/movie/Lionsgate/Disaster+Movie#/",
           "http://www.w3.org/ns/shacl#resultPath": "movie.reviews",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 88000,
@@ -26,7 +25,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "maximumInclusive",
-          "http://www.w3.org/ns/shacl#focusNode": "http://0.0.0.0:8080/v1/movie/Lionsgate/Disaster+Movie#/",
           "http://www.w3.org/ns/shacl#resultPath": "movie.rating",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1.9,

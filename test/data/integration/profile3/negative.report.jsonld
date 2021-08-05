@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint1",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.supportedOperation",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
@@ -42,7 +41,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint2",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.supportedOperation",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
@@ -72,7 +70,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.supportedOperation",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 2,

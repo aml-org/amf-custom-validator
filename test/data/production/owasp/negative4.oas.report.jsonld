@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative4.oas#/web-api/end-points/%2Finvoices/head",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
@@ -25,7 +24,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative4.oas#/web-api/end-points/%2Finvoices/head",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
@@ -55,7 +53,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative4.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "security.security",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -69,7 +66,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative4.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.endpoint / apiContract.supportedOperation",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 2,

@@ -37,7 +37,6 @@
             },
             "http://a.ml/vocabularies/lexical#uri": ""
           },
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
@@ -75,7 +74,6 @@
             },
             "http://a.ml/vocabularies/lexical#uri": ""
           },
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.method",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": "get",
@@ -130,7 +128,6 @@
             },
             "http://a.ml/vocabularies/lexical#uri": ""
           },
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
@@ -168,7 +165,6 @@
             },
             "http://a.ml/vocabularies/lexical#uri": ""
           },
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.method",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": "get",
@@ -223,7 +219,6 @@
             },
             "http://a.ml/vocabularies/lexical#uri": ""
           },
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -261,7 +256,6 @@
             },
             "http://a.ml/vocabularies/lexical#uri": ""
           },
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.method",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": "get",

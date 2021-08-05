@@ -37,7 +37,6 @@
             },
             "http://a.ml/vocabularies/lexical#uri": ""
           },
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.parameter / shapes.schema",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
@@ -92,7 +91,6 @@
             },
             "http://a.ml/vocabularies/lexical#uri": ""
           },
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/put/request",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.parameter / shapes.schema",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,

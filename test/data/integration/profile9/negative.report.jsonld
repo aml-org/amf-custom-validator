@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "maxCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile9/negative.data.raml#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.endpoint",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 4,

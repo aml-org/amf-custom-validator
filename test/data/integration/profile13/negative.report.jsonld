@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile13/negative.data.oas#/web-api/end-points/%2Finvoices/head",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
@@ -25,7 +24,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile13/negative.data.oas#/web-api/end-points/%2Finvoices/head",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.returns",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,

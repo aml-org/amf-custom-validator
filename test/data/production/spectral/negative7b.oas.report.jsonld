@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative7b.oas#/web-api/license",
           "http://www.w3.org/ns/shacl#resultPath": "core.url",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,

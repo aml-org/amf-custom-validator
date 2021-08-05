@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "datatype",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails",
           "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": "100",
@@ -42,7 +41,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "datatype",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails2",
           "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": {
@@ -75,7 +73,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "datatype",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails3",
           "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": {

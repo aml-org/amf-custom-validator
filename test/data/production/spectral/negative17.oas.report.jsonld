@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative17.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%3F%7Btest%7D",
           "http://www.w3.org/ns/shacl#resultPath": "",
           "http://www.w3.org/ns/shacl#traceValue": {
             "negated": false
@@ -40,7 +39,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative17.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%3F%7Btest%7D",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.path",
           "http://www.w3.org/ns/shacl#traceValue": {
             "argument": "/invoices/{id}/items?{test}",

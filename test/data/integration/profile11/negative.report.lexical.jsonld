@@ -37,7 +37,6 @@
             },
             "http://a.ml/vocabularies/lexical#uri": ""
           },
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails",
           "http://www.w3.org/ns/shacl#resultPath": "shacl.minCount",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 100,

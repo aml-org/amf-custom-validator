@@ -62,7 +62,7 @@ func buildViolation(level string, raw interface{}) map[string]interface{} {
 	violation := raw.(map[string]interface{})
 	msg := violation["message"].(string)
 	shapeId := violation["shapeId"].(string)
-	target := violation["target"].(string)
+	focusNode := violation["focusNode"].(string)
 	traces := violation["trace"].([]interface{})
 
 	acc := make([]interface{}, 0)
@@ -76,7 +76,7 @@ func buildViolation(level string, raw interface{}) map[string]interface{} {
 			"@id": "http://www.w3.org/ns/shacl#" + strings.Title(level),
 		},
 		"http://www.w3.org/ns/shacl#focusNode": map[string]string{
-			"@id": target,
+			"@id": focusNode,
 		},
 		"http://a.ml/vocabularies/validation#trace": acc,
 		"http://www.w3.org/ns/shacl#resultMessage":  msg,
@@ -92,14 +92,12 @@ func buildViolation(level string, raw interface{}) map[string]interface{} {
 func buildTrace(raw interface{}) interface{} {
 	trace := raw.(map[string]interface{})
 	component := trace["component"]
-	focusNode := trace["focusNode"]
 	path := trace["path"]
 	value := trace["value"]
 
 	res := map[string]interface{}{
 		"@type": []string{"http://a.ml/vocabularies/validation#TraceMessage"},
 		"http://a.ml/vocabularies/validation#component": component,
-		"http://www.w3.org/ns/shacl#focusNode":          focusNode,
 		"http://www.w3.org/ns/shacl#resultPath":         path,
 		"http://www.w3.org/ns/shacl#traceValue":         value,
 	}

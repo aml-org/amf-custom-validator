@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative13.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "",
           "http://www.w3.org/ns/shacl#traceValue": {
             "negated": false
@@ -40,7 +39,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative13.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/get",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.operationId",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -71,7 +69,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative13.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems2/get",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.operationId",
           "http://www.w3.org/ns/shacl#traceValue": {
             "argument": "operation id",
@@ -100,7 +97,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative13.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems3/get",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.operationId",
           "http://www.w3.org/ns/shacl#traceValue": {
             "argument": "operationId",

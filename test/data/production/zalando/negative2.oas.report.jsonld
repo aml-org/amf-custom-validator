@@ -12,7 +12,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "in",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative2.oas#/web-api/end-points/%2Fpath/parameter/header/Link",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.binding",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": "header",
@@ -25,7 +24,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "in",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/zalando/negative2.oas#/web-api/end-points/%2Fpath/parameter/header/Link",
           "http://www.w3.org/ns/shacl#resultPath": "core.name",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": "Link",
