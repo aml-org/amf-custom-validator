@@ -11,22 +11,32 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
-          "http://a.ml/vocabularies/amf/parser#lexicalPosition": {
-            "@type": [
-              "http://a.ml/vocabularies/amf/parser#Position"
-            ],
-            "http://a.ml/vocabularies/amf/parser#end": {
-              "@type": "http://a.ml/vocabularies/amf/parser#Location",
-              "http://a.ml/vocabularies/amf/parser#column": 0,
-              "http://a.ml/vocabularies/amf/parser#line": 22
-            },
-            "http://a.ml/vocabularies/amf/parser#start": {
-              "@type": "http://a.ml/vocabularies/amf/parser#Location",
-              "http://a.ml/vocabularies/amf/parser#column": 0,
-              "http://a.ml/vocabularies/amf/parser#line": 5
-            }
-          },
           "http://a.ml/vocabularies/validation#component": "nested",
+          "http://a.ml/vocabularies/validation#location": {
+            "@type": [
+              "http://a.ml/vocabularies/lexical#Location"
+            ],
+            "http://a.ml/vocabularies/lexical#range": {
+              "@type": [
+                "http://a.ml/vocabularies/lexical#Range"
+              ],
+              "http://a.ml/vocabularies/lexical#end": {
+                "@type": [
+                  "http://a.ml/vocabularies/lexical#Position"
+                ],
+                "http://a.ml/vocabularies/lexical#column": 0,
+                "http://a.ml/vocabularies/lexical#line": 22
+              },
+              "http://a.ml/vocabularies/lexical#start": {
+                "@type": [
+                  "http://a.ml/vocabularies/lexical#Position"
+                ],
+                "http://a.ml/vocabularies/lexical#column": 0,
+                "http://a.ml/vocabularies/lexical#line": 5
+              }
+            },
+            "http://a.ml/vocabularies/lexical#uri": ""
+          },
           "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint1",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.supportedOperation",
           "http://www.w3.org/ns/shacl#traceValue": {
@@ -56,22 +66,32 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
-          "http://a.ml/vocabularies/amf/parser#lexicalPosition": {
-            "@type": [
-              "http://a.ml/vocabularies/amf/parser#Position"
-            ],
-            "http://a.ml/vocabularies/amf/parser#end": {
-              "@type": "http://a.ml/vocabularies/amf/parser#Location",
-              "http://a.ml/vocabularies/amf/parser#column": 0,
-              "http://a.ml/vocabularies/amf/parser#line": 40
-            },
-            "http://a.ml/vocabularies/amf/parser#start": {
-              "@type": "http://a.ml/vocabularies/amf/parser#Location",
-              "http://a.ml/vocabularies/amf/parser#column": 0,
-              "http://a.ml/vocabularies/amf/parser#line": 22
-            }
-          },
           "http://a.ml/vocabularies/validation#component": "nested",
+          "http://a.ml/vocabularies/validation#location": {
+            "@type": [
+              "http://a.ml/vocabularies/lexical#Location"
+            ],
+            "http://a.ml/vocabularies/lexical#range": {
+              "@type": [
+                "http://a.ml/vocabularies/lexical#Range"
+              ],
+              "http://a.ml/vocabularies/lexical#end": {
+                "@type": [
+                  "http://a.ml/vocabularies/lexical#Position"
+                ],
+                "http://a.ml/vocabularies/lexical#column": 0,
+                "http://a.ml/vocabularies/lexical#line": 40
+              },
+              "http://a.ml/vocabularies/lexical#start": {
+                "@type": [
+                  "http://a.ml/vocabularies/lexical#Position"
+                ],
+                "http://a.ml/vocabularies/lexical#column": 0,
+                "http://a.ml/vocabularies/lexical#line": 22
+              }
+            },
+            "http://a.ml/vocabularies/lexical#uri": ""
+          },
           "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint2",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.supportedOperation",
           "http://www.w3.org/ns/shacl#traceValue": {
@@ -101,22 +121,32 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
-          "http://a.ml/vocabularies/amf/parser#lexicalPosition": {
-            "@type": [
-              "http://a.ml/vocabularies/amf/parser#Position"
-            ],
-            "http://a.ml/vocabularies/amf/parser#end": {
-              "@type": "http://a.ml/vocabularies/amf/parser#Location",
-              "http://a.ml/vocabularies/amf/parser#column": 12,
-              "http://a.ml/vocabularies/amf/parser#line": 56
-            },
-            "http://a.ml/vocabularies/amf/parser#start": {
-              "@type": "http://a.ml/vocabularies/amf/parser#Location",
-              "http://a.ml/vocabularies/amf/parser#column": 0,
-              "http://a.ml/vocabularies/amf/parser#line": 40
-            }
-          },
           "http://a.ml/vocabularies/validation#component": "nested",
+          "http://a.ml/vocabularies/validation#location": {
+            "@type": [
+              "http://a.ml/vocabularies/lexical#Location"
+            ],
+            "http://a.ml/vocabularies/lexical#range": {
+              "@type": [
+                "http://a.ml/vocabularies/lexical#Range"
+              ],
+              "http://a.ml/vocabularies/lexical#end": {
+                "@type": [
+                  "http://a.ml/vocabularies/lexical#Position"
+                ],
+                "http://a.ml/vocabularies/lexical#column": 12,
+                "http://a.ml/vocabularies/lexical#line": 56
+              },
+              "http://a.ml/vocabularies/lexical#start": {
+                "@type": [
+                  "http://a.ml/vocabularies/lexical#Position"
+                ],
+                "http://a.ml/vocabularies/lexical#column": 0,
+                "http://a.ml/vocabularies/lexical#line": 40
+              }
+            },
+            "http://a.ml/vocabularies/lexical#uri": ""
+          },
           "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.supportedOperation",
           "http://www.w3.org/ns/shacl#traceValue": {

@@ -11,22 +11,32 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
-          "http://a.ml/vocabularies/amf/parser#lexicalPosition": {
-            "@type": [
-              "http://a.ml/vocabularies/amf/parser#Position"
-            ],
-            "http://a.ml/vocabularies/amf/parser#end": {
-              "@type": "http://a.ml/vocabularies/amf/parser#Location",
-              "http://a.ml/vocabularies/amf/parser#column": 0,
-              "http://a.ml/vocabularies/amf/parser#line": 9
-            },
-            "http://a.ml/vocabularies/amf/parser#start": {
-              "@type": "http://a.ml/vocabularies/amf/parser#Location",
-              "http://a.ml/vocabularies/amf/parser#column": 6,
-              "http://a.ml/vocabularies/amf/parser#line": 8
-            }
-          },
           "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://a.ml/vocabularies/validation#location": {
+            "@type": [
+              "http://a.ml/vocabularies/lexical#Location"
+            ],
+            "http://a.ml/vocabularies/lexical#range": {
+              "@type": [
+                "http://a.ml/vocabularies/lexical#Range"
+              ],
+              "http://a.ml/vocabularies/lexical#end": {
+                "@type": [
+                  "http://a.ml/vocabularies/lexical#Position"
+                ],
+                "http://a.ml/vocabularies/lexical#column": 0,
+                "http://a.ml/vocabularies/lexical#line": 9
+              },
+              "http://a.ml/vocabularies/lexical#start": {
+                "@type": [
+                  "http://a.ml/vocabularies/lexical#Position"
+                ],
+                "http://a.ml/vocabularies/lexical#column": 6,
+                "http://a.ml/vocabularies/lexical#line": 8
+              }
+            },
+            "http://a.ml/vocabularies/lexical#uri": ""
+          },
           "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile1/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request/parameter/query/a",
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.minLength",
           "http://www.w3.org/ns/shacl#traceValue": {
@@ -57,22 +67,32 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
-          "http://a.ml/vocabularies/amf/parser#lexicalPosition": {
-            "@type": [
-              "http://a.ml/vocabularies/amf/parser#Position"
-            ],
-            "http://a.ml/vocabularies/amf/parser#end": {
-              "@type": "http://a.ml/vocabularies/amf/parser#Location",
-              "http://a.ml/vocabularies/amf/parser#column": 8,
-              "http://a.ml/vocabularies/amf/parser#line": 18
-            },
-            "http://a.ml/vocabularies/amf/parser#start": {
-              "@type": "http://a.ml/vocabularies/amf/parser#Location",
-              "http://a.ml/vocabularies/amf/parser#column": 6,
-              "http://a.ml/vocabularies/amf/parser#line": 18
-            }
-          },
           "http://a.ml/vocabularies/validation#component": "minCount",
+          "http://a.ml/vocabularies/validation#location": {
+            "@type": [
+              "http://a.ml/vocabularies/lexical#Location"
+            ],
+            "http://a.ml/vocabularies/lexical#range": {
+              "@type": [
+                "http://a.ml/vocabularies/lexical#Range"
+              ],
+              "http://a.ml/vocabularies/lexical#end": {
+                "@type": [
+                  "http://a.ml/vocabularies/lexical#Position"
+                ],
+                "http://a.ml/vocabularies/lexical#column": 8,
+                "http://a.ml/vocabularies/lexical#line": 18
+              },
+              "http://a.ml/vocabularies/lexical#start": {
+                "@type": [
+                  "http://a.ml/vocabularies/lexical#Position"
+                ],
+                "http://a.ml/vocabularies/lexical#column": 6,
+                "http://a.ml/vocabularies/lexical#line": 18
+              }
+            },
+            "http://a.ml/vocabularies/lexical#uri": ""
+          },
           "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile1/negative.data.raml#/web-api/end-points/%2Fendpoint2/get/request/parameter/query/d",
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.minLength",
           "http://www.w3.org/ns/shacl#traceValue": {

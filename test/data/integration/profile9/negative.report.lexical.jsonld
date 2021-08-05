@@ -11,22 +11,32 @@
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
-          "http://a.ml/vocabularies/amf/parser#lexicalPosition": {
-            "@type": [
-              "http://a.ml/vocabularies/amf/parser#Position"
-            ],
-            "http://a.ml/vocabularies/amf/parser#end": {
-              "@type": "http://a.ml/vocabularies/amf/parser#Location",
-              "http://a.ml/vocabularies/amf/parser#column": 20,
-              "http://a.ml/vocabularies/amf/parser#line": 28
-            },
-            "http://a.ml/vocabularies/amf/parser#start": {
-              "@type": "http://a.ml/vocabularies/amf/parser#Location",
-              "http://a.ml/vocabularies/amf/parser#column": 0,
-              "http://a.ml/vocabularies/amf/parser#line": 3
-            }
-          },
           "http://a.ml/vocabularies/validation#component": "maxCount",
+          "http://a.ml/vocabularies/validation#location": {
+            "@type": [
+              "http://a.ml/vocabularies/lexical#Location"
+            ],
+            "http://a.ml/vocabularies/lexical#range": {
+              "@type": [
+                "http://a.ml/vocabularies/lexical#Range"
+              ],
+              "http://a.ml/vocabularies/lexical#end": {
+                "@type": [
+                  "http://a.ml/vocabularies/lexical#Position"
+                ],
+                "http://a.ml/vocabularies/lexical#column": 20,
+                "http://a.ml/vocabularies/lexical#line": 28
+              },
+              "http://a.ml/vocabularies/lexical#start": {
+                "@type": [
+                  "http://a.ml/vocabularies/lexical#Position"
+                ],
+                "http://a.ml/vocabularies/lexical#column": 0,
+                "http://a.ml/vocabularies/lexical#line": 3
+              }
+            },
+            "http://a.ml/vocabularies/lexical#uri": ""
+          },
           "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile9/negative.data.raml#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.endpoint",
           "http://www.w3.org/ns/shacl#traceValue": {

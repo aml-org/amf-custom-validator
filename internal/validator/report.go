@@ -106,31 +106,42 @@ func buildTrace(raw interface{}) interface{} {
 
 	switch trace["lexical"].(type) {
 	case map[string]interface{}:
-		res["http://a.ml/vocabularies/amf/parser#lexicalPosition"] = buildLexicalPosition(trace)
+		res["http://a.ml/vocabularies/validation#location"] = buildLocationNode(trace)
 	}
 
 	return res
 }
 
-func buildLexicalPosition(trace map[string]interface{}) map[string]interface{} {
+func buildLocationNode(trace map[string]interface{}) map[string]interface{} {
 	lexical := trace["lexical"].(map[string]interface{})
 	start := lexical["start"].(map[string]interface{})
 	end := lexical["end"].(map[string]interface{})
 
-	res := map[string]interface{}{
-		"@type": []string{"http://a.ml/vocabularies/amf/parser#Position"},
-		"http://a.ml/vocabularies/amf/parser#start": map[string]interface{}{
-			"@type": "http://a.ml/vocabularies/amf/parser#Location",
-			"http://a.ml/vocabularies/amf/parser#line":   intFrom(start["line"]),
-			"http://a.ml/vocabularies/amf/parser#column": intFrom(start["column"]),
-		},
-		"http://a.ml/vocabularies/amf/parser#end": map[string]interface{}{
-			"@type": "http://a.ml/vocabularies/amf/parser#Location",
-			"http://a.ml/vocabularies/amf/parser#line":   intFrom(end["line"]),
-			"http://a.ml/vocabularies/amf/parser#column": intFrom(end["column"]),
-		},
+	startNode := map[string]interface{}{
+		"@type":                                   []string{"http://a.ml/vocabularies/lexical#Position"},
+		"http://a.ml/vocabularies/lexical#line":   intFrom(start["line"]),
+		"http://a.ml/vocabularies/lexical#column": intFrom(start["column"]),
 	}
-	return res
+
+	endNode := map[string]interface{}{
+		"@type":                                   []string{"http://a.ml/vocabularies/lexical#Position"},
+		"http://a.ml/vocabularies/lexical#line":   intFrom(end["line"]),
+		"http://a.ml/vocabularies/lexical#column": intFrom(end["column"]),
+	}
+
+	rangeNode := map[string]interface{}{
+		"@type":                                  []string{"http://a.ml/vocabularies/lexical#Range"},
+		"http://a.ml/vocabularies/lexical#start": startNode,
+		"http://a.ml/vocabularies/lexical#end":   endNode,
+	}
+
+	locationNode := map[string]interface{}{
+		"@type":                                  []string{"http://a.ml/vocabularies/lexical#Location"},
+		"http://a.ml/vocabularies/lexical#uri":   "", // TODO complete this!
+		"http://a.ml/vocabularies/lexical#range": rangeNode,
+	}
+
+	return locationNode
 }
 
 func intFrom(any interface{}) int {
