@@ -1,4 +1,21 @@
 {
+  "@context": {
+    "actual": {
+      "@id": "http://a.ml/vocabularies/validation#actual"
+    },
+    "argument": {
+      "@id": "http://a.ml/vocabularies/validation#argument"
+    },
+    "condition": {
+      "@id": "http://a.ml/vocabularies/validation#condition"
+    },
+    "expected": {
+      "@id": "http://a.ml/vocabularies/validation#expected"
+    },
+    "negated": {
+      "@id": "http://a.ml/vocabularies/validation#negated"
+    }
+  },
   "@type": "http://www.w3.org/ns/shacl#ValidationReport",
   "http://www.w3.org/ns/shacl#conforms": false,
   "http://www.w3.org/ns/shacl#result": [
@@ -6,13 +23,13 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "scalar-parameters",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile2/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.parameter",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
@@ -27,9 +44,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Scalars in parameters must have minLength defined",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "scalar-parameters"
       }
     }
   ]

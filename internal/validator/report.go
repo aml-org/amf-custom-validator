@@ -21,9 +21,28 @@ func BuildReport(result rego.ResultSet) (string, error) {
 	warnings := m["warning"].([]interface{})
 	infos := m["info"].([]interface{})
 
+	contextNode := map[string]interface{}{
+		"actual": map[string]string{
+			"@id": "http://a.ml/vocabularies/validation#actual",
+		},
+		"condition": map[string]string{
+			"@id": "http://a.ml/vocabularies/validation#condition",
+		},
+		"expected": map[string]string{
+			"@id": "http://a.ml/vocabularies/validation#expected",
+		},
+		"negated": map[string]string{
+			"@id": "http://a.ml/vocabularies/validation#negated",
+		},
+		"argument": map[string]string{
+			"@id": "http://a.ml/vocabularies/validation#argument",
+		},
+	}
+
 	if (len(violations) + len(warnings) + len(infos)) == 0 {
 		res := map[string]interface{}{
 			"@type":                               "http://www.w3.org/ns/shacl#ValidationReport",
+			"@context":                            contextNode,
 			"http://www.w3.org/ns/shacl#conforms": true,
 		}
 
@@ -42,6 +61,7 @@ func BuildReport(result rego.ResultSet) (string, error) {
 
 		res := map[string]interface{}{
 			"@type":                               "http://www.w3.org/ns/shacl#ValidationReport",
+			"@context":                            contextNode,
 			"http://www.w3.org/ns/shacl#conforms": false,
 			"http://www.w3.org/ns/shacl#result":   results,
 		}
@@ -61,8 +81,8 @@ func Encode(data interface{}) string {
 func buildViolation(level string, raw interface{}) map[string]interface{} {
 	violation := raw.(map[string]interface{})
 	msg := violation["message"].(string)
-	shapeId := violation["shapeId"].(string)
-	target := violation["target"].(string)
+	sourceShapeName := violation["sourceShapeName"].(string)
+	focusNode := violation["focusNode"].(string)
 	traces := violation["trace"].([]interface{})
 
 	acc := make([]interface{}, 0)
@@ -76,13 +96,11 @@ func buildViolation(level string, raw interface{}) map[string]interface{} {
 			"@id": "http://www.w3.org/ns/shacl#" + strings.Title(level),
 		},
 		"http://www.w3.org/ns/shacl#focusNode": map[string]string{
-			"@id": target,
+			"@id": focusNode,
 		},
-		"http://a.ml/vocabularies/validation#trace": acc,
-		"http://www.w3.org/ns/shacl#resultMessage":  msg,
-		"http://www.w3.org/ns/shacl#sourceShape": map[string]string{
-			"@id": shapeId,
-		},
+		"http://a.ml/vocabularies/validation#trace":           acc,
+		"http://www.w3.org/ns/shacl#resultMessage":            msg,
+		"http://a.ml/vocabularies/validation#sourceShapeName": sourceShapeName,
 	}
 
 	return res
@@ -92,45 +110,54 @@ func buildViolation(level string, raw interface{}) map[string]interface{} {
 func buildTrace(raw interface{}) interface{} {
 	trace := raw.(map[string]interface{})
 	component := trace["component"]
-	focusNode := trace["focusNode"]
 	path := trace["path"]
 	value := trace["value"]
 
 	res := map[string]interface{}{
 		"@type": []string{"http://a.ml/vocabularies/validation#TraceMessage"},
 		"http://a.ml/vocabularies/validation#component": component,
-		"http://www.w3.org/ns/shacl#focusNode":          focusNode,
 		"http://www.w3.org/ns/shacl#resultPath":         path,
 		"http://www.w3.org/ns/shacl#traceValue":         value,
 	}
 
 	switch trace["lexical"].(type) {
 	case map[string]interface{}:
-		res["http://a.ml/vocabularies/amf/parser#lexicalPosition"] = buildLexicalPosition(trace)
+		res["http://a.ml/vocabularies/validation#location"] = buildLocationNode(trace)
 	}
 
 	return res
 }
 
-func buildLexicalPosition(trace map[string]interface{}) map[string]interface{} {
+func buildLocationNode(trace map[string]interface{}) map[string]interface{} {
 	lexical := trace["lexical"].(map[string]interface{})
 	start := lexical["start"].(map[string]interface{})
 	end := lexical["end"].(map[string]interface{})
 
-	res := map[string]interface{}{
-		"@type": []string{"http://a.ml/vocabularies/amf/parser#Position"},
-		"http://a.ml/vocabularies/amf/parser#start": map[string]interface{}{
-			"@type": "http://a.ml/vocabularies/amf/parser#Location",
-			"http://a.ml/vocabularies/amf/parser#line":   intFrom(start["line"]),
-			"http://a.ml/vocabularies/amf/parser#column": intFrom(start["column"]),
-		},
-		"http://a.ml/vocabularies/amf/parser#end": map[string]interface{}{
-			"@type": "http://a.ml/vocabularies/amf/parser#Location",
-			"http://a.ml/vocabularies/amf/parser#line":   intFrom(end["line"]),
-			"http://a.ml/vocabularies/amf/parser#column": intFrom(end["column"]),
-		},
+	startNode := map[string]interface{}{
+		"@type":                                   []string{"http://a.ml/vocabularies/lexical#Position"},
+		"http://a.ml/vocabularies/lexical#line":   intFrom(start["line"]),
+		"http://a.ml/vocabularies/lexical#column": intFrom(start["column"]),
 	}
-	return res
+
+	endNode := map[string]interface{}{
+		"@type":                                   []string{"http://a.ml/vocabularies/lexical#Position"},
+		"http://a.ml/vocabularies/lexical#line":   intFrom(end["line"]),
+		"http://a.ml/vocabularies/lexical#column": intFrom(end["column"]),
+	}
+
+	rangeNode := map[string]interface{}{
+		"@type":                                  []string{"http://a.ml/vocabularies/lexical#Range"},
+		"http://a.ml/vocabularies/lexical#start": startNode,
+		"http://a.ml/vocabularies/lexical#end":   endNode,
+	}
+
+	locationNode := map[string]interface{}{
+		"@type":                                  []string{"http://a.ml/vocabularies/lexical#Location"},
+		"http://a.ml/vocabularies/lexical#uri":   "", // TODO complete this!
+		"http://a.ml/vocabularies/lexical#range": rangeNode,
+	}
+
+	return locationNode
 }
 
 func intFrom(any interface{}) int {

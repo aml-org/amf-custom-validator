@@ -1,4 +1,21 @@
 {
+  "@context": {
+    "actual": {
+      "@id": "http://a.ml/vocabularies/validation#actual"
+    },
+    "argument": {
+      "@id": "http://a.ml/vocabularies/validation#argument"
+    },
+    "condition": {
+      "@id": "http://a.ml/vocabularies/validation#condition"
+    },
+    "expected": {
+      "@id": "http://a.ml/vocabularies/validation#expected"
+    },
+    "negated": {
+      "@id": "http://a.ml/vocabularies/validation#negated"
+    }
+  },
   "@type": "http://www.w3.org/ns/shacl#ValidationReport",
   "http://www.w3.org/ns/shacl#conforms": false,
   "http://www.w3.org/ns/shacl#result": [
@@ -6,13 +23,13 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "broken-object-level-authorization-use-guids",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "in",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/id",
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.pattern",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": "lala",
@@ -25,7 +42,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/id",
           "http://www.w3.org/ns/shacl#resultPath": "core.name",
           "http://www.w3.org/ns/shacl#traceValue": {
             "argument": "id",
@@ -39,22 +55,19 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Prefer to use random and unpredictable values as GUIDs for records’ IDs.",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "broken-object-level-authorization-use-guids"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "injection-pattern-on-string-parameters",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "in",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/itemId",
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.datatype",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": "xsd:string",
@@ -67,7 +80,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/itemId",
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.datatype",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
@@ -81,7 +93,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/itemId",
           "http://www.w3.org/ns/shacl#resultPath": "shapes.schema / shacl.pattern",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -97,22 +108,19 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Define data types and strict patterns for all string parameters",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "injection-pattern-on-string-parameters"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "broken-user-authentication-authenticate-api",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "security.security",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -126,7 +134,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative1.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.endpoint / apiContract.supportedOperation",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
@@ -141,9 +148,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "broken-user-authentication-authenticate-api"
       }
     }
   ]

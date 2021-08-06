@@ -1,4 +1,21 @@
 {
+  "@context": {
+    "actual": {
+      "@id": "http://a.ml/vocabularies/validation#actual"
+    },
+    "argument": {
+      "@id": "http://a.ml/vocabularies/validation#argument"
+    },
+    "condition": {
+      "@id": "http://a.ml/vocabularies/validation#condition"
+    },
+    "expected": {
+      "@id": "http://a.ml/vocabularies/validation#expected"
+    },
+    "negated": {
+      "@id": "http://a.ml/vocabularies/validation#negated"
+    }
+  },
   "@type": "http://www.w3.org/ns/shacl#ValidationReport",
   "http://www.w3.org/ns/shacl#conforms": false,
   "http://www.w3.org/ns/shacl#result": [
@@ -6,13 +23,13 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "duplicated-entry-in-enum",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative18.oas#/declarations/types/TheBadModel/property/number_of_connectors/scalar/number_of_connectors",
           "http://www.w3.org/ns/shacl#resultPath": "",
           "http://www.w3.org/ns/shacl#traceValue": {
             "negated": false
@@ -25,9 +42,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Each value of an enum must be different from one another.",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "duplicated-entry-in-enum"
       }
     }
   ]

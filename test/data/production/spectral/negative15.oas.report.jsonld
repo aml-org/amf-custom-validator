@@ -1,4 +1,21 @@
 {
+  "@context": {
+    "actual": {
+      "@id": "http://a.ml/vocabularies/validation#actual"
+    },
+    "argument": {
+      "@id": "http://a.ml/vocabularies/validation#argument"
+    },
+    "condition": {
+      "@id": "http://a.ml/vocabularies/validation#condition"
+    },
+    "expected": {
+      "@id": "http://a.ml/vocabularies/validation#expected"
+    },
+    "negated": {
+      "@id": "http://a.ml/vocabularies/validation#negated"
+    }
+  },
   "@type": "http://www.w3.org/ns/shacl#ValidationReport",
   "http://www.w3.org/ns/shacl#conforms": false,
   "http://www.w3.org/ns/shacl#result": [
@@ -6,13 +23,13 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "path-params",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems",
           "http://www.w3.org/ns/shacl#resultPath": "",
           "http://www.w3.org/ns/shacl#traceValue": {
             "negated": false
@@ -25,22 +42,19 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "path-params"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "path-declarations-must-exist",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.path",
           "http://www.w3.org/ns/shacl#traceValue": {
             "argument": "/invoices/{}/items",
@@ -54,22 +68,19 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Path parameter declarations cannot be empty, ex./given/{} is invalid.",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "path-declarations-must-exist"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "path-declarations-must-exist",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7B%7D",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.path",
           "http://www.w3.org/ns/shacl#traceValue": {
             "argument": "/invoices/{id}/items/{}",
@@ -83,9 +94,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Path parameter declarations cannot be empty, ex./given/{} is invalid.",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "path-declarations-must-exist"
       }
     }
   ]

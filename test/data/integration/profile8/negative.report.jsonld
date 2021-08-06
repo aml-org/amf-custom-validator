@@ -1,4 +1,21 @@
 {
+  "@context": {
+    "actual": {
+      "@id": "http://a.ml/vocabularies/validation#actual"
+    },
+    "argument": {
+      "@id": "http://a.ml/vocabularies/validation#argument"
+    },
+    "condition": {
+      "@id": "http://a.ml/vocabularies/validation#condition"
+    },
+    "expected": {
+      "@id": "http://a.ml/vocabularies/validation#expected"
+    },
+    "negated": {
+      "@id": "http://a.ml/vocabularies/validation#negated"
+    }
+  },
   "@type": "http://www.w3.org/ns/shacl#ValidationReport",
   "http://www.w3.org/ns/shacl#conforms": false,
   "http://www.w3.org/ns/shacl#result": [
@@ -6,13 +23,13 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "simple-rego",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile8/negative.data.raml#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "",
           "http://www.w3.org/ns/shacl#traceValue": {
             "negated": true
@@ -25,22 +42,19 @@
       "http://www.w3.org/ns/shacl#resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "simple-rego"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "simple-rego2",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "rego",
-          "http://www.w3.org/ns/shacl#focusNode": "file://test/data/integration/profile8/negative.data.raml#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "",
           "http://www.w3.org/ns/shacl#traceValue": {
             "negated": false
@@ -53,9 +67,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "simple-rego2"
       }
     }
   ]

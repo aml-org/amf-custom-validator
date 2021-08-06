@@ -1,4 +1,21 @@
 {
+  "@context": {
+    "actual": {
+      "@id": "http://a.ml/vocabularies/validation#actual"
+    },
+    "argument": {
+      "@id": "http://a.ml/vocabularies/validation#argument"
+    },
+    "condition": {
+      "@id": "http://a.ml/vocabularies/validation#condition"
+    },
+    "expected": {
+      "@id": "http://a.ml/vocabularies/validation#expected"
+    },
+    "negated": {
+      "@id": "http://a.ml/vocabularies/validation#negated"
+    }
+  },
   "@type": "http://www.w3.org/ns/shacl#ValidationReport",
   "http://www.w3.org/ns/shacl#conforms": false,
   "http://www.w3.org/ns/shacl#result": [
@@ -6,13 +23,13 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "no-script-tags-in-markdown",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative9.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "core.description",
           "http://www.w3.org/ns/shacl#traceValue": {
             "argument": "a <script>alert(somthing)</script> description",
@@ -26,9 +43,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "This rule protects against a potential hack, for anyone bringing in description documents from third parties then\ngenerating HTML documentation. If one of those third parties does something shady like inject <script> tags, they\ncould easily execute arbitrary code on your domain, which if it's the same as your main application could be all\nsorts of terrible.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "no-script-tags-in-markdown"
       }
     }
   ]

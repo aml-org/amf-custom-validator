@@ -1,4 +1,21 @@
 {
+  "@context": {
+    "actual": {
+      "@id": "http://a.ml/vocabularies/validation#actual"
+    },
+    "argument": {
+      "@id": "http://a.ml/vocabularies/validation#argument"
+    },
+    "condition": {
+      "@id": "http://a.ml/vocabularies/validation#condition"
+    },
+    "expected": {
+      "@id": "http://a.ml/vocabularies/validation#expected"
+    },
+    "negated": {
+      "@id": "http://a.ml/vocabularies/validation#negated"
+    }
+  },
   "@type": "http://www.w3.org/ns/shacl#ValidationReport",
   "http://www.w3.org/ns/shacl#conforms": false,
   "http://www.w3.org/ns/shacl#result": [
@@ -6,13 +23,13 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "info-license",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/spectral/negative7.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "core.license",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -28,9 +45,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "info-license"
       }
     }
   ]

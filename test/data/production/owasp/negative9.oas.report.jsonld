@@ -1,4 +1,21 @@
 {
+  "@context": {
+    "actual": {
+      "@id": "http://a.ml/vocabularies/validation#actual"
+    },
+    "argument": {
+      "@id": "http://a.ml/vocabularies/validation#argument"
+    },
+    "condition": {
+      "@id": "http://a.ml/vocabularies/validation#condition"
+    },
+    "expected": {
+      "@id": "http://a.ml/vocabularies/validation#expected"
+    },
+    "negated": {
+      "@id": "http://a.ml/vocabularies/validation#negated"
+    }
+  },
   "@type": "http://www.w3.org/ns/shacl#ValidationReport",
   "http://www.w3.org/ns/shacl#conforms": false,
   "http://www.w3.org/ns/shacl#result": [
@@ -6,13 +23,13 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "broken-user-authentication-authenticate-api",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "minCount",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative9.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "security.security",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 0,
@@ -26,7 +43,6 @@
             "http://a.ml/vocabularies/validation#TraceMessage"
           ],
           "http://a.ml/vocabularies/validation#component": "nested",
-          "http://www.w3.org/ns/shacl#focusNode": "file://./test/data/production/owasp/negative9.oas#/web-api",
           "http://www.w3.org/ns/shacl#resultPath": "apiContract.endpoint / apiContract.supportedOperation",
           "http://www.w3.org/ns/shacl#traceValue": {
             "actual": 1,
@@ -41,9 +57,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "broken-user-authentication-authenticate-api"
       }
     }
   ]

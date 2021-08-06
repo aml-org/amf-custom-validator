@@ -195,7 +195,6 @@ trace(constraint, path, node, value) = t {
   t := {
     "component": constraint,
     "path": path,
-    "focusNode": id,
     "value": value,
 	"lexical": {
       "start": {
@@ -216,17 +215,16 @@ trace(constraint, path, node, value) = t {
   t := {
     "component": constraint,
     "path": path,
-    "focusNode": id,
     "value": value
   }
 }
 
 # Builds an error message that can be returned to the calling client software
-error(shapeId, target, message, traceLog) = e {
-  id := target["@id"]
+error(sourceShapeName, focusNode, message, traceLog) = e {
+  id := focusNode["@id"]
   e := {
-    "shapeId": shapeId,
-    "target": id,
+    "sourceShapeName": sourceShapeName,
+    "focusNode": id,
     "message": message,
     "trace": traceLog
   }
