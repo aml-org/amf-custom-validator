@@ -21,9 +21,28 @@ func BuildReport(result rego.ResultSet) (string, error) {
 	warnings := m["warning"].([]interface{})
 	infos := m["info"].([]interface{})
 
+	contextNode := map[string]interface{}{
+		"actual": map[string]string{
+			"@id": "http://a.ml/vocabularies/validation#actual",
+		},
+		"condition": map[string]string{
+			"@id": "http://a.ml/vocabularies/validation#condition",
+		},
+		"expected": map[string]string{
+			"@id": "http://a.ml/vocabularies/validation#expected",
+		},
+		"negated": map[string]string{
+			"@id": "http://a.ml/vocabularies/validation#negated",
+		},
+		"argument": map[string]string{
+			"@id": "http://a.ml/vocabularies/validation#argument",
+		},
+	}
+
 	if (len(violations) + len(warnings) + len(infos)) == 0 {
 		res := map[string]interface{}{
 			"@type":                               "http://www.w3.org/ns/shacl#ValidationReport",
+			"@context":                            contextNode,
 			"http://www.w3.org/ns/shacl#conforms": true,
 		}
 
@@ -42,6 +61,7 @@ func BuildReport(result rego.ResultSet) (string, error) {
 
 		res := map[string]interface{}{
 			"@type":                               "http://www.w3.org/ns/shacl#ValidationReport",
+			"@context":                            contextNode,
 			"http://www.w3.org/ns/shacl#conforms": false,
 			"http://www.w3.org/ns/shacl#result":   results,
 		}
@@ -78,8 +98,8 @@ func buildViolation(level string, raw interface{}) map[string]interface{} {
 		"http://www.w3.org/ns/shacl#focusNode": map[string]string{
 			"@id": focusNode,
 		},
-		"http://a.ml/vocabularies/validation#trace": acc,
-		"http://www.w3.org/ns/shacl#resultMessage":  msg,
+		"http://a.ml/vocabularies/validation#trace":           acc,
+		"http://www.w3.org/ns/shacl#resultMessage":            msg,
 		"http://a.ml/vocabularies/validation#sourceShapeName": sourceShapeName,
 	}
 
