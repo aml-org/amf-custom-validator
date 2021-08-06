@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "info-contact",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -27,9 +28,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Info object should contain contact object.\n\nHopefully your API description document is so good that nobody ever needs to contact you with questions, but that\nis rarely the case. The contact object has a few different options for contact details.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "info-contact"
       }
     }
   ]

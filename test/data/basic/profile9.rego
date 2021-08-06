@@ -146,10 +146,10 @@ trace(constraint, path, node, value) = t {
 }
 
 # Builds an error message that can be returned to the calling client software
-error(shapeId, focusNode, message, traceLog) = e {
+error(sourceShapeName, focusNode, message, traceLog) = e {
   id := focusNode["@id"]
   e := {
-    "shapeId": shapeId,
+    "sourceShapeName": sourceShapeName,
     "focusNode": id,
     "message": message,
     "trace": traceLog

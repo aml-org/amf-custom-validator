@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-description",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -27,9 +28,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Operation must have a description explaining the operation functionality",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-description"
       }
     }
   ]

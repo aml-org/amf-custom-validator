@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-operationId-unique",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -24,15 +25,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Every operation must have a unique operationId.\n\nWhy? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,\nall sorts of things like that.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-operationId-unique"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-parameters",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -51,15 +50,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Operation parameters are unique and non-repeating.",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-parameters"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-parameters",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -78,15 +75,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Operation parameters are unique and non-repeating.",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-parameters"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "info-description",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -108,15 +103,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "info-description"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "info-license",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -138,15 +131,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "info-license"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "openapi-tags",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -168,15 +159,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "openapi-tags"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-description",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -198,15 +187,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Operation must have a description explaining the operation functionality",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-description"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-description",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -228,15 +215,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Operation must have a description explaining the operation functionality",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-description"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-operationId",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -258,15 +243,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-operationId"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-operationId",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -288,15 +271,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-operationId"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-tags",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -318,15 +299,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Operation should have non-empty tags array.",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-tags"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-tags",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -348,9 +327,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Operation should have non-empty tags array.",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-tags"
       }
     }
   ]

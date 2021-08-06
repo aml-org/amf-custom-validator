@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "injection-pattern-on-string-parameters",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -52,15 +53,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Define data types and strict patterns for all string parameters",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "injection-pattern-on-string-parameters"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "broken-user-authentication-authenticate-api",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -94,9 +93,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "broken-user-authentication-authenticate-api"
       }
     }
   ]

@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "improper-assets-management-environment-info",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -26,15 +27,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "The purpose of an API host is unclear, and there are no explicit answers to the following questions:\n    Which environment is the API running in (e.g., production, staging, test, development)?\n    Who should have network access to the API (e.g., public, internal, partners)?\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "improper-assets-management-environment-info"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "broken-user-authentication-authenticate-api",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -68,9 +67,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "broken-user-authentication-authenticate-api"
       }
     }
   ]

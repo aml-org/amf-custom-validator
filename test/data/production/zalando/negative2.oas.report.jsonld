@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "166-do-not-use-link-headers",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -38,9 +39,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Do Not Use Link Headers with JSON entities",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "166-do-not-use-link-headers"
       }
     }
   ]

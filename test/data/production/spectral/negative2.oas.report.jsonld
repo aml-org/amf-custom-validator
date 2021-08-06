@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-2xx-response",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -26,9 +27,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Operation must have at least one 2xx response. Any API operation (endpoint) can fail but presumably it is also\nmeant to do something constructive at some point. If you forget to write out a success case for this API, then\nthis rule will let you know.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-2xx-response"
       }
     }
   ]

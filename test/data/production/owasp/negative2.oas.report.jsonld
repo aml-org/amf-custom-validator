@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "excessive-data-exposure-mandatory-schema",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -27,15 +28,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Implement a schema-based response validation mechanism as an extra layer of security. As part of this mechanism\ndefine and enforce data returned by all API methods, including errors\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "excessive-data-exposure-mandatory-schema"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "broken-user-authentication-authenticate-api",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -69,9 +68,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "broken-user-authentication-authenticate-api"
       }
     }
   ]

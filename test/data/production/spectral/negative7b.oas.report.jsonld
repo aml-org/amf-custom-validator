@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "license-url",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -27,9 +28,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Mentioning a license is only useful if people know what the license means, so add a link to the full text for\nthose who need it.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "license-url"
       }
     }
   ]

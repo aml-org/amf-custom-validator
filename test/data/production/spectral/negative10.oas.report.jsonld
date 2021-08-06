@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "openapi-tags",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -27,15 +28,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "openapi-tags"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-tag-defined",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -54,9 +53,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Operation tags should be defined in global tags.",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-tag-defined"
       }
     }
   ]

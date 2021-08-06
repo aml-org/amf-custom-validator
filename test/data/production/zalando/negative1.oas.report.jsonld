@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "218-title-must-be-provided",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -27,15 +28,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Title has to be provided",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "218-title-must-be-provided"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "218-description-must-be-provided",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -57,15 +56,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Description has to be provided",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "218-description-must-be-provided"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "218-version-must-be-provided",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -87,15 +84,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Version has to be provided",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "218-version-must-be-provided"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "218-contact-name-must-be-provided",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -117,15 +112,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Contact name must be provided",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "218-contact-name-must-be-provided"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "218-contact-url-must-be-provided",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -147,15 +140,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Contact name must be provided",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "218-contact-url-must-be-provided"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "218-contact-email-must-be-provided",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -177,9 +168,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Contact name must be provided",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "218-contact-email-must-be-provided"
       }
     }
   ]

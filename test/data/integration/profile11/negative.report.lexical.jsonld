@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "array-limits",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -52,9 +53,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Validation error",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "array-limits"
       }
     }
   ]

@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-default-response",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -25,9 +26,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Don't use default responses, provide a valid status code",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-default-response"
       }
     }
   ]

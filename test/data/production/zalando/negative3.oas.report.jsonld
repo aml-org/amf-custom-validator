@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "174-common-field-types-id",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -37,15 +38,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "ID field with string type expected",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "174-common-field-types-id"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "174-common-field-types-id",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -77,15 +76,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "ID field with string type expected",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "174-common-field-types-id"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "174-common-field-types-created-at",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -118,9 +115,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Created-at fields must be date-times",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "174-common-field-types-created-at"
       }
     }
   ]

@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "path-keys-no-trailing-slash",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -25,9 +26,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Keep trailing slashes off of paths, as it can cause some confusion. Some web tooling (like mock servers, real\nservers, code generators, application frameworks, etc.) will treat example.com/foo and example.com/foo/ as the\nsame thing, but other tooling will not. Avoid any confusion by just documenting them without the slash, and maybe\nsome tooling will let people shove a / on there when they're using it or maybe not, but at least the docs are\nsuggesting how it should be done properly.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "path-keys-no-trailing-slash"
       }
     }
   ]

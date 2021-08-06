@@ -61,7 +61,7 @@ func Encode(data interface{}) string {
 func buildViolation(level string, raw interface{}) map[string]interface{} {
 	violation := raw.(map[string]interface{})
 	msg := violation["message"].(string)
-	shapeId := violation["shapeId"].(string)
+	sourceShapeName := violation["sourceShapeName"].(string)
 	focusNode := violation["focusNode"].(string)
 	traces := violation["trace"].([]interface{})
 
@@ -80,9 +80,7 @@ func buildViolation(level string, raw interface{}) map[string]interface{} {
 		},
 		"http://a.ml/vocabularies/validation#trace": acc,
 		"http://www.w3.org/ns/shacl#resultMessage":  msg,
-		"http://www.w3.org/ns/shacl#sourceShape": map[string]string{
-			"@id": shapeId,
-		},
+		"http://a.ml/vocabularies/validation#sourceShapeName": sourceShapeName,
 	}
 
 	return res

@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "max-endpoints",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -27,9 +28,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "maximum number of endpoints test",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "max-endpoints"
       }
     }
   ]

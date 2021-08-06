@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-tags",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -27,15 +28,13 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Operation should have non-empty tags array.",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-tags"
       }
     },
     {
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "operation-tag-defined",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -54,9 +53,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Operation tags should be defined in global tags.",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "operation-tag-defined"
       }
     }
   ]

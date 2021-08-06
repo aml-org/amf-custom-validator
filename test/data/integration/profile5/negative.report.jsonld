@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "test-min-length",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -27,9 +28,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "Min length must be less than max length must match in scalar",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "test-min-length"
       }
     }
   ]

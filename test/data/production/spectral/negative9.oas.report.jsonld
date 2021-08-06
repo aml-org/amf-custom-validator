@@ -6,6 +6,7 @@
       "@type": [
         "http://www.w3.org/ns/shacl#ValidationResult"
       ],
+      "http://a.ml/vocabularies/validation#sourceShapeName": "no-script-tags-in-markdown",
       "http://a.ml/vocabularies/validation#trace": [
         {
           "@type": [
@@ -25,9 +26,6 @@
       "http://www.w3.org/ns/shacl#resultMessage": "This rule protects against a potential hack, for anyone bringing in description documents from third parties then\ngenerating HTML documentation. If one of those third parties does something shady like inject <script> tags, they\ncould easily execute arbitrary code on your domain, which if it's the same as your main application could be all\nsorts of terrible.\n",
       "http://www.w3.org/ns/shacl#resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "http://www.w3.org/ns/shacl#sourceShape": {
-        "@id": "no-script-tags-in-markdown"
       }
     }
   ]
