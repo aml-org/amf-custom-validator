@@ -1,21 +1,10 @@
 {
   "@context": {
-    "actual": {
-      "@id": "http://a.ml/vocabularies/validation#actual"
+    "conforms": {
+      "@id": "http://www.w3.org/ns/shacl#conforms"
     },
-    "argument": {
-      "@id": "http://a.ml/vocabularies/validation#argument"
-    },
-    "condition": {
-      "@id": "http://a.ml/vocabularies/validation#condition"
-    },
-    "expected": {
-      "@id": "http://a.ml/vocabularies/validation#expected"
-    },
-    "negated": {
-      "@id": "http://a.ml/vocabularies/validation#negated"
-    }
+    "shacl": "http://www.w3.org/ns/shacl#"
   },
-  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
-  "http://www.w3.org/ns/shacl#conforms": true
+  "@type": "shacl:ValidationReport",
+  "conforms": true
 }

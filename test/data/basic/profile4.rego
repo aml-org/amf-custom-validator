@@ -114,44 +114,57 @@ as_string(x) = json.marshal(x) {
 }
 
 # Traces one evaluation of a constraint
-trace(constraint, path, node, value) = t {
-  id := node["@id"]
-  raw_lexical := input["@lexical"][id]
-  lexical_parts := regex.find_n("\\d+", raw_lexical, 4)
-  t := {
-    "component": constraint,
-    "path": path,
-    "value": value,
-	"lexical": {
-      "start": {
-        "line": lexical_parts[0],
-        "column": lexical_parts[1]
-      },
-      "end": {
-        "line": lexical_parts[2],
-        "column": lexical_parts[3]
-      }
+trace(constraint, resultPath, focusNode, traceValue) = t {
+  id := focusNode["@id"]
+  raw_range := input["@lexical"][id]
+  range_parts := regex.find_n("\\d+", raw_range, 4)
+  range := {
+	"@type": ["lexical:Range"],
+    "start": {
+	  "@type": ["lexical:Position"],
+  	  "line": to_number(range_parts[0]),
+  	  "column": to_number(range_parts[1])
+    },
+    "end": {
+	  "@type": ["lexical:Position"],
+  	  "line": to_number(range_parts[2]),
+  	  "column": to_number(range_parts[3])
     }
+  }
+  t := {
+	"@type": ["validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue,
+	"location": {
+	  "@type": ["lexical:Location"],
+      "uri": "",
+      "range": range
+	}
   }
 }
 
-trace(constraint, path, node, value) = t {
-  id := node["@id"]
+trace(constraint, resultPath, focusNode, traceValue) = t {
+  id := focusNode["@id"]
   not input["@lexical"][id]
   t := {
+	"@type": ["validation:TraceMessage"],
     "component": constraint,
-    "path": path,
-    "value": value
+    "resultPath": resultPath,
+    "traceValue": traceValue
   }
 }
 
 # Builds an error message that can be returned to the calling client software
-error(sourceShapeName, focusNode, message, traceLog) = e {
+error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
   e := {
+	"@type": ["shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
-    "focusNode": id,
-    "message": message,
+    "focusNode": {
+		"@id": id,
+	},
+    "resultMessage": resultMessage,
     "trace": traceLog
   }
 }
@@ -247,6 +260,6 @@ violation[matches] {
     ys_error := error("nested",y,"error in nested nodes under raml-shapes.schema",[_result_0])
   ]
   count(ys_errors) > 0
-  _result_0 := trace("nested","raml-shapes.schema",x,{"negated":false, "expected":0, "actual":count(ys_errors)})
+  _result_0 := trace("nested","raml-shapes.schema",x,{"negated":false, "expected":0, "actual":count(ys_errors), "subResult": ys_errors})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }

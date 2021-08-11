@@ -114,44 +114,57 @@ as_string(x) = json.marshal(x) {
 }
 
 # Traces one evaluation of a constraint
-trace(constraint, path, node, value) = t {
-  id := node["@id"]
-  raw_lexical := input["@lexical"][id]
-  lexical_parts := regex.find_n("\\d+", raw_lexical, 4)
-  t := {
-    "component": constraint,
-    "path": path,
-    "value": value,
-	"lexical": {
-      "start": {
-        "line": lexical_parts[0],
-        "column": lexical_parts[1]
-      },
-      "end": {
-        "line": lexical_parts[2],
-        "column": lexical_parts[3]
-      }
+trace(constraint, resultPath, focusNode, traceValue) = t {
+  id := focusNode["@id"]
+  raw_range := input["@lexical"][id]
+  range_parts := regex.find_n("\\d+", raw_range, 4)
+  range := {
+	"@type": ["lexical:Range"],
+    "start": {
+	  "@type": ["lexical:Position"],
+  	  "line": to_number(range_parts[0]),
+  	  "column": to_number(range_parts[1])
+    },
+    "end": {
+	  "@type": ["lexical:Position"],
+  	  "line": to_number(range_parts[2]),
+  	  "column": to_number(range_parts[3])
     }
+  }
+  t := {
+	"@type": ["validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue,
+	"location": {
+	  "@type": ["lexical:Location"],
+      "uri": "",
+      "range": range
+	}
   }
 }
 
-trace(constraint, path, node, value) = t {
-  id := node["@id"]
+trace(constraint, resultPath, focusNode, traceValue) = t {
+  id := focusNode["@id"]
   not input["@lexical"][id]
   t := {
+	"@type": ["validation:TraceMessage"],
     "component": constraint,
-    "path": path,
-    "value": value
+    "resultPath": resultPath,
+    "traceValue": traceValue
   }
 }
 
 # Builds an error message that can be returned to the calling client software
-error(sourceShapeName, focusNode, message, traceLog) = e {
+error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
   e := {
+	"@type": ["shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
-    "focusNode": id,
-    "message": message,
+    "focusNode": {
+		"@id": id,
+	},
+    "resultMessage": resultMessage,
     "trace": traceLog
   }
 }
@@ -232,7 +245,7 @@ violation[matches] {
     ys_error := error("nested",y,"error in nested nodes under apiContract.returns",[_result_0])
   ]
   not count(ys) - count(ys_errors) >= 1
-  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(ys_errors)})
+  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(ys_errors), "subResult": ys_errors})
   #  querying path: apiContract.returns
   zs = gen_path_rule_5 with data.sourceNode as x
   zs_errors = [ zs_error|
@@ -247,6 +260,6 @@ violation[matches] {
     zs_error := error("nested",z,"error in nested nodes under apiContract.returns",[_result_0])
   ]
   not count(zs) - count(zs_errors) >= 1
-  _result_1 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(zs_errors)})
+  _result_1 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(zs_errors), "subResult": zs_errors})
   matches := error("lack-of-resources-and-rate-limiting-too-many-requests",x,"Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n",[_result_0,_result_1])
 }

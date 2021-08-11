@@ -6,44 +6,101 @@
     "argument": {
       "@id": "http://a.ml/vocabularies/validation#argument"
     },
+    "column": {
+      "@id": "http://a.ml/vocabularies/lexical#column"
+    },
+    "component": {
+      "@id": "http://a.ml/vocabularies/validation#component"
+    },
     "condition": {
       "@id": "http://a.ml/vocabularies/validation#condition"
+    },
+    "conforms": {
+      "@id": "http://www.w3.org/ns/shacl#conforms"
+    },
+    "end": {
+      "@id": "http://a.ml/vocabularies/lexical#end"
     },
     "expected": {
       "@id": "http://a.ml/vocabularies/validation#expected"
     },
+    "focusNode": {
+      "@id": "http://www.w3.org/ns/shacl#focusNode"
+    },
+    "lexical": "http://a.ml/vocabularies/lexical#",
+    "line": {
+      "@id": "http://a.ml/vocabularies/lexical#line"
+    },
+    "location": {
+      "@id": "http://a.ml/vocabularies/validation#location"
+    },
     "negated": {
       "@id": "http://a.ml/vocabularies/validation#negated"
-    }
+    },
+    "range": {
+      "@id": "http://a.ml/vocabularies/lexical#range"
+    },
+    "result": {
+      "@id": "http://www.w3.org/ns/shacl#result"
+    },
+    "resultMessage": {
+      "@id": "http://www.w3.org/ns/shacl#resultMessage"
+    },
+    "resultPath": {
+      "@id": "http://www.w3.org/ns/shacl#resultPath"
+    },
+    "resultSeverity": {
+      "@id": "http://www.w3.org/ns/shacl#resultSeverity"
+    },
+    "shacl": "http://www.w3.org/ns/shacl#",
+    "sourceShapeName": {
+      "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
+    },
+    "start": {
+      "@id": "http://a.ml/vocabularies/lexical#start"
+    },
+    "subResult": {
+      "@id": "http://a.ml/vocabularies/validation#subResult"
+    },
+    "trace": {
+      "@id": "http://a.ml/vocabularies/validation#trace"
+    },
+    "traceValue": {
+      "@id": "http://www.w3.org/ns/shacl#traceValue"
+    },
+    "uri": {
+      "@id": "http://a.ml/vocabularies/lexical#uri"
+    },
+    "validation": "http://a.ml/vocabularies/validation#"
   },
-  "@type": "http://www.w3.org/ns/shacl#ValidationReport",
-  "http://www.w3.org/ns/shacl#conforms": false,
-  "http://www.w3.org/ns/shacl#result": [
+  "@type": "shacl:ValidationReport",
+  "conforms": false,
+  "result": [
     {
       "@type": [
-        "http://www.w3.org/ns/shacl#ValidationResult"
+        "shacl:ValidationResult"
       ],
-      "http://a.ml/vocabularies/validation#sourceShapeName": "no-eval-in-markdown",
-      "http://a.ml/vocabularies/validation#trace": [
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative8.oas#/web-api"
+      },
+      "resultMessage": "This rule protects against an edge case, for anyone bringing in description documents from third parties and using\nthe parsed content rendered in HTML/JS. If one of those third parties does something shady like inject eval()\nJavaScript statements, it could lead to an XSS attack.\n",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "no-eval-in-markdown",
+      "trace": [
         {
           "@type": [
-            "http://a.ml/vocabularies/validation#TraceMessage"
+            "validation:TraceMessage"
           ],
-          "http://a.ml/vocabularies/validation#component": "pattern",
-          "http://www.w3.org/ns/shacl#resultPath": "core.description",
-          "http://www.w3.org/ns/shacl#traceValue": {
+          "component": "pattern",
+          "resultPath": "core.description",
+          "traceValue": {
             "argument": "a eval(somthing) description",
             "negated": true
           }
         }
-      ],
-      "http://www.w3.org/ns/shacl#focusNode": {
-        "@id": "file://./test/data/production/spectral/negative8.oas#/web-api"
-      },
-      "http://www.w3.org/ns/shacl#resultMessage": "This rule protects against an edge case, for anyone bringing in description documents from third parties and using\nthe parsed content rendered in HTML/JS. If one of those third parties does something shady like inject eval()\nJavaScript statements, it could lead to an XSS attack.\n",
-      "http://www.w3.org/ns/shacl#resultSeverity": {
-        "@id": "http://www.w3.org/ns/shacl#Violation"
-      }
+      ]
     }
   ]
 }
