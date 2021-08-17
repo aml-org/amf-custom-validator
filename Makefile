@@ -39,3 +39,5 @@ normalize:
 validate:
 	go run cmd/validate/validate.go $(profile) $(data) >> $(out)
 
+validate-profiles:
+	sh ./scripts/validate-profiles.sh
