@@ -6,7 +6,8 @@ pipeline {
             agent {
                 dockerfile {
                     filename 'Dockerfile'
-                    additionalBuildArgs  '--target CI-GO'
+                    additionalBuildArgs  '--target ci-go'
+                    registryCredentialsId 'dockerhub-pro-credentials'
                 }
             }
             steps {
@@ -17,11 +18,39 @@ pipeline {
             agent {
                 dockerfile {
                     filename 'Dockerfile'
-                    additionalBuildArgs  '--target CI-JS'
+                    additionalBuildArgs  '--target ci-js'
+                    registryCredentialsId 'dockerhub-pro-credentials'
                 }
             }
             steps {
                 echo "Success" // Tests are actually run when building the agent in the Dockerfile
+            }
+        }
+        stage('Publish snapshot') {
+            when {
+                anyOf {
+                    branch 'develop'
+                }
+            }
+            agent {
+                dockerfile {
+                    filename 'Dockerfile'
+                    additionalBuildArgs  '--target publish-snapshot --build-arg BUILD_NUMBER=${BUILD_NUMBER}'
+                    registryCredentialsId 'dockerhub-pro-credentials'
+                }
+            }
+            steps {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'github-salt', passwordVariable: 'GITHUB_PASS', usernameVariable: 'GITHUB_USER']]) {
+                          sh '''#!/bin/bash
+                                URL="https://${GITHUB_USER}:${GITHUB_PASS}@github.com/aml-org/amf-custom-validator"
+                                cd ./wrappers/js
+                                npm-snapshot $BUILD_NUMBER
+                                VERSION=$(node -pe "require('./package.json').version")
+                                npm publish --access public
+                                git tag $VERSION
+                                git push $URL $VERSION
+                          '''
+                }
             }
         }
     }

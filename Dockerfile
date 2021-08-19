@@ -1,4 +1,4 @@
-FROM golang:1.15 AS CI-GO
+FROM golang:1.15 AS ci-go
 # Install make
 RUN apt-get update && apt-get install make
 
@@ -10,15 +10,19 @@ RUN go mod tidy
 COPY . .
 RUN make ci-go
 
-FROM node:12 AS CI-JS
+FROM node:12 AS ci-js
 
 # First copy dependencies to enable Docker caching them
 COPY . ./src
-WORKDIR ./src
+WORKDIR ./src/wrappers/js
 RUN npm install
 
 # Copy generated WASM
-COPY --from=CI-GO /go/src/wrappers/js/lib/main.wasm ./wrappers/js/lib
+COPY --from=ci-go /go/src/wrappers/js/lib/main.wasm.gz ./lib
 
+WORKDIR ../../
 RUN make ci-js
 
+FROM ci-js AS publish-snapshot
+
+RUN npm install -g npm-snapshot
