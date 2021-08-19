@@ -30,6 +30,7 @@ pipeline {
             when {
                 anyOf {
                     branch 'develop'
+                    branch 'continuous-delivery'
                 }
             }
             agent {
