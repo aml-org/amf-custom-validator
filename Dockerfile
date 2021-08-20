@@ -26,3 +26,4 @@ RUN make ci-js
 FROM ci-js AS publish-snapshot
 
 RUN npm install -g npm-snapshot
+RUN npm install -g npm-cli-login

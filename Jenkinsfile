@@ -40,18 +40,21 @@ pipeline {
                     registryCredentialsId 'dockerhub-pro-credentials'
                 }
             }
+            environment {
+                NPM = credentials('aml-org-bot-npm')
+                GITHUB = credentials('github-salt')
+            }
             steps {
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'github-salt', passwordVariable: 'GITHUB_PASS', usernameVariable: 'GITHUB_USER']]) {
-                          sh '''#!/bin/bash
-                                URL="https://${GITHUB_USER}:${GITHUB_PASS}@github.com/aml-org/amf-custom-validator"
-                                cd ./wrappers/js
-                                npm-snapshot $BUILD_NUMBER
-                                VERSION=$(node -pe "require('./package.json').version")
-                                npm publish --access public
-                                git tag $VERSION
-                                git push $URL $VERSION
-                          '''
-                }
+                sh '''  #!/bin/bash
+                        npm-cli-login -u $NPM_USR -p $NPM_PSW
+                        URL="https://${GITHUB_USR}:${GITHUB_PSW}@github.com/aml-org/amf-custom-validator"
+                        cd ./wrappers/js
+                        npm-snapshot $BUILD_NUMBER
+                        VERSION=$(node -pe "require('./package.json').version")
+                        npm publish --access public
+                        git tag $VERSION
+                        git push $URL $VERSION
+                '''
             }
         }
     }
