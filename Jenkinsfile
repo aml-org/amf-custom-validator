@@ -46,7 +46,7 @@ pipeline {
             }
             steps {
                 sh '''  #!/bin/bash
-                        npm-cli-login -u $NPM_USR -p $NPM_PSW
+                        npm-cli-login -u $NPM_USR -p $NPM_PSW -e nicolas.schejtman@mulesoft.com
                         URL="https://${GITHUB_USR}:${GITHUB_PSW}@github.com/aml-org/amf-custom-validator"
                         cd ./wrappers/js
                         npm-snapshot $BUILD_NUMBER
