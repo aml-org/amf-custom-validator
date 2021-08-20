@@ -114,44 +114,57 @@ as_string(x) = json.marshal(x) {
 }
 
 # Traces one evaluation of a constraint
-trace(constraint, path, node, value) = t {
-  id := node["@id"]
-  raw_lexical := input["@lexical"][id]
-  lexical_parts := regex.find_n("\\d+", raw_lexical, 4)
-  t := {
-    "component": constraint,
-    "path": path,
-    "value": value,
-	"lexical": {
-      "start": {
-        "line": lexical_parts[0],
-        "column": lexical_parts[1]
-      },
-      "end": {
-        "line": lexical_parts[2],
-        "column": lexical_parts[3]
-      }
+trace(constraint, resultPath, focusNode, traceValue) = t {
+  id := focusNode["@id"]
+  raw_range := input["@lexical"][id]
+  range_parts := regex.find_n("\\d+", raw_range, 4)
+  range := {
+	"@type": ["lexical:Range"],
+    "start": {
+	  "@type": ["lexical:Position"],
+  	  "line": to_number(range_parts[0]),
+  	  "column": to_number(range_parts[1])
+    },
+    "end": {
+	  "@type": ["lexical:Position"],
+  	  "line": to_number(range_parts[2]),
+  	  "column": to_number(range_parts[3])
     }
+  }
+  t := {
+	"@type": ["validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue,
+	"location": {
+	  "@type": ["lexical:Location"],
+      "uri": "",
+      "range": range
+	}
   }
 }
 
-trace(constraint, path, node, value) = t {
-  id := node["@id"]
+trace(constraint, resultPath, focusNode, traceValue) = t {
+  id := focusNode["@id"]
   not input["@lexical"][id]
   t := {
+	"@type": ["validation:TraceMessage"],
     "component": constraint,
-    "path": path,
-    "value": value
+    "resultPath": resultPath,
+    "traceValue": traceValue
   }
 }
 
 # Builds an error message that can be returned to the calling client software
-error(sourceShapeName, focusNode, message, traceLog) = e {
+error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
   e := {
+	"@type": ["shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
-    "focusNode": id,
-    "message": message,
+    "focusNode": {
+		"@id": id,
+	},
+    "resultMessage": resultMessage,
     "trace": traceLog
   }
 }
@@ -286,7 +299,7 @@ violation[matches] {
     ps_error := error("nested",p,"error in nested nodes under apiContract.returns",[_result_0])
   ]
   not count(ps) - count(ps_errors) >= 1
-  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(ps_errors)})
+  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(ps_errors), "subResult": ps_errors})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
@@ -311,7 +324,7 @@ violation[matches] {
     qs_error := error("nested",q,"error in nested nodes under apiContract.returns",[_result_0])
   ]
   not count(qs) - count(qs_errors) >= 1
-  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(qs_errors)})
+  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(qs_errors), "subResult": qs_errors})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
@@ -336,7 +349,7 @@ violation[matches] {
     ys_error := error("nested",y,"error in nested nodes under apiContract.returns",[_result_0])
   ]
   count(ys) - count(ys_errors) >= 1
-  _result_0 := trace("nested","apiContract.returns",x,{"negated":true, "expected":0, "actual":count(ys_errors)})
+  _result_0 := trace("nested","apiContract.returns",x,{"negated":true, "expected":0, "actual":count(ys_errors), "subResult": ys_errors})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
@@ -361,7 +374,7 @@ violation[matches] {
     zs_error := error("nested",z,"error in nested nodes under apiContract.returns",[_result_0])
   ]
   not count(zs) - count(zs_errors) >= 1
-  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(zs_errors)})
+  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(zs_errors), "subResult": zs_errors})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]

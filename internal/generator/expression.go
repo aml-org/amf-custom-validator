@@ -108,7 +108,7 @@ func wrapNestedRegoResult(exp profile.NestedExpression, sharedGeneratorRego Simp
 				PathRules:  pathRules,
 				Path:       sharedGeneratorRego.Path,
 				TraceNode:  exp.Parent.Name,
-				TraceValue: fmt.Sprintf("{\"negated\":%t, \"expected\":0, \"actual\":count(%ss)}", exp.Negated, errorVariable),
+				TraceValue: fmt.Sprintf("{\"negated\":%t, \"expected\":0, \"actual\":count(%ss), \"subResult\": %ss}", exp.Negated, errorVariable, errorVariable),
 				Variable:   fmt.Sprintf("%ss", errorVariable),
 			},
 		},

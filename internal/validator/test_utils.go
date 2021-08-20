@@ -9,7 +9,7 @@ import (
 const debug = false
 
 func conforms(report string) bool {
-	return strings.Index(report, "\"http://www.w3.org/ns/shacl#conforms\": true") > -1
+	return strings.Index(report, "\"conforms\": true") > -1
 }
 
 func printMilestones(profile interface{}, data string, milestonesChan *chan milestones.Milestone) {

@@ -31,8 +31,8 @@ func main() {
 		debug = parsedDebug
 	}
 
-	err, module := validator.Generate(string(profile), debug)
-	res := validator.Normalize_(string(data), module, debug)
+	err, module := validator.Generate(string(profile), debug, nil)
+	res := validator.Normalize_(string(data), module, debug, nil)
 	if err != nil {
 		panic(err)
 	}
