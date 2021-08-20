@@ -1,6 +1,8 @@
 require(__dirname + "/lib/wasm_exec");
 const fs = require("fs");
-const wasm = fs.readFileSync(__dirname + "/lib/main.wasm")
+const pako = require("pako");
+const wasm_gz = fs.readFileSync(__dirname + "/lib/main.wasm.gz")
+const wasm = pako.ungzip(wasm_gz)
 
 let INIT = false
 let go = new Go();
