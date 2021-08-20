@@ -30,6 +30,7 @@ pipeline {
             when {
                 anyOf {
                     branch 'develop'
+                    branch 'continuous-delivery'
                 }
             }
             agent {
@@ -49,7 +50,7 @@ pipeline {
                         npm-cli-login -u $NPM_USR -p $NPM_PSW -e nicolas.schejtman@mulesoft.com
                         URL="https://${GITHUB_USR}:${GITHUB_PSW}@github.com/aml-org/amf-custom-validator"
                         cd ./wrappers/js
-                        npm-snapshot $BUILD_NUMBER
+                        npm-snapshot 6
                         VERSION=$(node -pe "require('./package.json').version")
                         npm publish --access public
                         git tag $VERSION
