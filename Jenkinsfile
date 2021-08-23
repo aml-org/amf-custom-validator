@@ -53,7 +53,7 @@ pipeline {
                         VERSION=$(node -pe "require('./package.json').version")
                         npm publish --access public
                         git tag v$VERSION
-                        git push $URL $VERSION
+                        git push $URL v$VERSION
                 '''
             }
         }
