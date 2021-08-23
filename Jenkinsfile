@@ -52,7 +52,7 @@ pipeline {
                         npm-snapshot $BUILD_NUMBER
                         VERSION=$(node -pe "require('./package.json').version")
                         npm publish --access public
-                        git tag $VERSION
+                        git tag v$VERSION
                         git push $URL $VERSION
                 '''
             }
