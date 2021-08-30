@@ -1,8 +1,8 @@
 require(__dirname + "/lib/wasm_exec");
 const fs = require("fs");
 const pako = require("pako");
-const wasm_gz = fs.readFileSync(__dirname + "/lib/main.wasm.gz")
-const wasm = pako.ungzip(wasm_gz)
+let wasm_gz
+let wasm
 
 let INIT = false
 let go = new Go();
@@ -20,6 +20,10 @@ const validateCustomProfile = function(profile, data, debug, cb) {
         let res = run(profile, data, debug);
         cb(res,null);
     } else {
+        if(!wasm_gz || !wasm) {
+            wasm_gz = fs.readFileSync(__dirname + "/lib/main.wasm.gz")
+            wasm = pako.ungzip(wasm_gz)
+        }
         if (WebAssembly) {
             WebAssembly.instantiate(wasm, go.importObject).then((result) => {
                 go.run(result.instance);
