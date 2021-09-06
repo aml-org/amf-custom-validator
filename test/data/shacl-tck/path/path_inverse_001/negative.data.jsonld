@@ -1,0 +1,41 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#InvalidResource1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#Person"
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#Parent1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#Any"
+    ],
+    "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#child": [
+      {
+        "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#InvalidResource1"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#Parent2",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#Any"
+    ],
+    "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#child": [
+      {
+        "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#InvalidResource1"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#Parent3",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#Any"
+    ],
+    "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#child": [
+      {
+        "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#InvalidResource1"
+      }
+    ]
+  }
+]

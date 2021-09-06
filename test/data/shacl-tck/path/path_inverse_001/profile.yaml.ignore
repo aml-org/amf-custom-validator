@@ -1,0 +1,16 @@
+#%Validation Profile 1.0
+
+profile: pathInverse001
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/path/path-inverse-001.test#
+
+violation:
+  - TestShape
+
+validations:
+  TestShape:
+    targetClass: ex.Person
+    propertyConstraints:
+      ex.child^:
+        minCount: 2
+        maxCount: 2

@@ -17,6 +17,8 @@ type IntegrationFixture string
 
 type ProductionFixture string
 
+type ShaclTckFixture string
+
 func Fixtures(root string) []Fixture {
 	fixtures := make([]Fixture, 0)
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
@@ -32,6 +34,29 @@ func Fixtures(root string) []Fixture {
 				Generated: generated,
 			}
 			fixtures = append(fixtures, fixture)
+		}
+		return nil
+	})
+	if err != nil {
+		panic(err)
+	}
+	return fixtures
+}
+
+func ShaclTckFixtures(root string, filter *string) []ShaclTckFixture {
+	var fixtures []ShaclTckFixture
+	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		relativePath := path[len(root):]
+		nesting := strings.Count(relativePath, "/")
+		if info.IsDir() && nesting == 2 {
+			if filter != nil {
+				if strings.Index(path, *filter) > -1 {
+					fixtures = append(fixtures, ShaclTckFixture(path))
+				}
+				return nil
+			} else {
+				fixtures = append(fixtures, ShaclTckFixture(path))
+			}
 		}
 		return nil
 	})
@@ -127,6 +152,51 @@ func (f ProductionFixture) Examples() []ProductionExample {
 	})
 
 	return acc
+}
+
+func (f ShaclTckFixture) ReadProfile() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/profile.yaml")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
+func (f ShaclTckFixture) IsIgnored() bool {
+	_, err := os.Stat(string(f) + "/profile.yaml.ignore")
+	return !os.IsNotExist(err)
+}
+
+func (f ShaclTckFixture) ReadFixturePositiveData() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/positive.data.jsonld")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
+func (f ShaclTckFixture) ReadFixtureNegativeData() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/negative.data.jsonld")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
+func (f ShaclTckFixture) ReadFixturePositiveReport() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/positive.report.jsonld")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
+func (f ShaclTckFixture) ReadFixtureNegativeReport() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/negative.report.jsonld")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
 }
 
 func (f ProductionFixture) Profile() string {

@@ -1,0 +1,24 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#ValidResource1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#Person"
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#Parent1",
+    "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#child^": [
+      {
+        "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#ValidResource1"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#Parent2",
+    "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#child^": [
+      {
+        "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#ValidResource1"
+      }
+    ]
+  }
+]
