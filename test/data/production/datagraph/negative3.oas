@@ -1,0 +1,71 @@
+openapi: "3.0.0"
+info:
+  title: Awesome API
+  version: "1.0"
+servers:
+  - url: https://production.test.com/
+    description: production environment
+
+components:
+  schemas:
+    Customer:
+      description: a customer
+      type: object
+      properties:
+        id:
+          description: a property
+          type: string
+        name:
+          description: a property
+          type: string
+      required: ["id"]
+    Invoice:
+      description: an invoice
+      type: object
+      properties:
+        id:
+          description: a property
+          type: string
+      required: ["id"]
+paths:
+  /users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: the user identifier, as is
+        schema:
+          type: string
+    get:
+      description: op-description
+      operationId: opid
+      tags:
+        - Invoice Items
+      responses:
+        "200":
+          description: teapot
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+  /invoices/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: the invoice identifier, as is
+        schema:
+          type: string
+    get:
+      description: op-description
+      operationId: opid
+      tags:
+        - Invoice Items
+      responses:
+        "200":
+          description: teapot
+          content:
+            application/yaml:
+              example:
+                a: 1
+                b: 2
