@@ -11,6 +11,11 @@ violation:
   - missing-type-description
   - missing-property-description
   - missing-parameter-description
+  - request-response-antipattern
+  - heterogeneous-oneof
+  - heterogeneous-anyof
+  - heterogeneous-union
+  - nil-union-antipattern
 
 validations:
 
@@ -161,3 +166,128 @@ validations:
       core.description:
         minCount: 1
 
+  request-response-antipattern:
+    message: |
+      Resource schemas should describe the information of the exposed resource, not a Request/Response RPC message wrapper
+      containing the resource and out-of-band information.
+    targetClass: shacl.NodeShape
+    not:
+      or:
+        - propertyConstraints:
+            shacl.name:
+              pattern: ".*(r|R)equest.*"
+        - propertyConstraints:
+            shacl.name:
+              pattern: ".*(r|R)esponse.*"
+
+  heterogeneous-oneof:
+    message: |
+      Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object
+      shapes with scalar flags/properties can be used as an alternative
+    targetClass: shapes.AnyShape
+    not:
+      and:
+        - propertyConstraints:
+            shacl.xone:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    rdf.type:
+                      pattern: ".*#NodeShape"
+        - propertyConstraints:
+            shacl.xone:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    rdf.type:
+                      pattern: ".*#ScalarShape"
+
+  heterogeneous-anyof:
+    message: |
+      Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object
+      shapes with scalar flags/properties can be used as an alternative
+    targetClass: shapes.AnyShape
+    not:
+      and:
+        - propertyConstraints:
+            shacl.or:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    rdf.type:
+                      pattern: ".*#NodeShape"
+        - propertyConstraints:
+            shacl.or:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    rdf.type:
+                      pattern: ".*#ScalarShape"
+
+  heterogeneous-union:
+    message: |
+      Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object
+      shapes with scalar flags/properties can be used as an alternative
+    targetClass: shapes.AnyShape
+    not:
+      and:
+        - propertyConstraints:
+            shapes.anyOf:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    rdf.type:
+                      pattern: ".*#NodeShape"
+        - propertyConstraints:
+            shapes.anyOf:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    rdf.type:
+                      pattern: ".*#ScalarShape"
+
+  nil-union-antipattern:
+    message: |
+      Unions between nil and other types of shapes are unnecessary when representing an optional properties. Optional
+      properties should be used instead.
+    targetClass: shapes.AnyShape
+    and:
+      - not:
+          propertyConstraints:
+            shacl.or:
+              minCount: 2
+              maxCount: 2
+              atMost:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    rdf.type:
+                      pattern: ".*#NilShape"
+      - not:
+          propertyConstraints:
+            shacl.xone:
+              minCount: 2
+              maxCount: 2
+              atMost:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    rdf.type:
+                      pattern: ".*#NilShape"
+      - not:
+          propertyConstraints:
+            shapes.anyOf:
+              minCount: 2
+              maxCount: 2
+              atMost:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    rdf.type:
+                      pattern: ".*#NilShape"
