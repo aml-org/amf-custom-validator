@@ -23,7 +23,7 @@ func TestProduction(t *testing.T) {
 					t.Errorf(fmt.Sprintf("%s, %s expected conforms: %t got conforms %t\n\n%s\n", string(fixture), example.File, example.Positive, conforms(report), report))
 				}
 
-				//test.ForceWrite(example.Reportfile(), report)
+				// test.ForceWrite(example.Reportfile(), report)
 				expected := example.ReadReport()
 				actual := report
 				if expected != actual {

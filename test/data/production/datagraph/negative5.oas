@@ -18,6 +18,7 @@ components:
     Customer:
       description: a customer
       type: object
+      additionalProperties: false
       properties:
         identifier:
           description: a property
@@ -28,6 +29,7 @@ components:
     Invoice:
       description: an invoice
       type: object
+      additionalProperties: false
       properties:
         id:
           description: a property

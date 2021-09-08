@@ -636,7 +636,7 @@
         ],
         "http://www.w3.org/ns/shacl#closed": [
           {
-            "@value": false
+            "@value": true
           }
         ],
         "http://www.w3.org/ns/shacl#property": [
@@ -765,7 +765,7 @@
         ],
         "http://www.w3.org/ns/shacl#closed": [
           {
-            "@value": false
+            "@value": true
           }
         ],
         "http://www.w3.org/ns/shacl#property": [

@@ -17,6 +17,7 @@ violation:
   - nil-union-antipattern
   - unsupported-response-schema-shapes
   - non-scalar-url-parameters
+  - open-schemas-ignored
 
 validations:
 
@@ -286,3 +287,15 @@ validations:
         - propertyConstraints:
             shapes.schema / shapes.items / shacl.datatype:
               minCount: 1
+
+  open-schemas-ignored:
+    message: |
+      Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.
+      Consider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.
+      If you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.
+    targetClass: shacl.NodeShape
+    not:
+      propertyConstraints:
+        shacl.closed:
+          in:
+            - false

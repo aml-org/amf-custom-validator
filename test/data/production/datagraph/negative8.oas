@@ -18,6 +18,7 @@ components:
     Customer:
       description: a customer
       type: object
+      additionalProperties: false
       properties:
         id:
           description: a property
@@ -30,6 +31,7 @@ components:
       oneOf:
         - type: object
           description: an user
+          additionalProperties: false
           properties:
             id:
               description: a property
@@ -40,6 +42,7 @@ components:
       anyOf:
         - type: object
           description: an user
+          additionalProperties: false
           properties:
             id:
               description: a property

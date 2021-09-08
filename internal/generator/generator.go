@@ -177,6 +177,20 @@ as_string(x) = x {
   is_string(x)
 }
 
+as_string(x) = "false" {
+  is_boolean(x)
+  x == false
+}
+
+as_string(x) = "true" {
+  is_boolean(x)
+  x == true
+}
+
+as_string(x) = format_int(x, 10) {
+  is_number(x)
+}
+
 as_string(x) = x["@id"] {
   is_object(x)
   x["@id"]

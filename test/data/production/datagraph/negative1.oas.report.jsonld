@@ -194,6 +194,33 @@
           }
         }
       ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/datagraph/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fjson/schema"
+      },
+      "resultMessage": "Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.\nConsider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.\nIf you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.\n",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "open-schemas-ignored",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "in",
+          "resultPath": "shacl.closed",
+          "traceValue": {
+            "actual": "false",
+            "expected": "[\"false\"]",
+            "negated": true
+          }
+        }
+      ]
     }
   ]
 }

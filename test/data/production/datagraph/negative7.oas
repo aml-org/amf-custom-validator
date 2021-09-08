@@ -18,6 +18,7 @@ components:
     CustomerResponse:
       description: a customer
       type: object
+      additionalProperties: false
       properties:
         id:
           description: a property
@@ -29,6 +30,7 @@ components:
     InvoiceRequest:
       type: object
       description: an invoice
+      additionalProperties: false
       properties:
         uuid:
           description: a property

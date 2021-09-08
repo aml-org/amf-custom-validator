@@ -18,6 +18,7 @@ components:
     Customer:
       description: a customer
       type: object
+      additionalProperties: false
       properties:
         id:
           description: a property
@@ -30,8 +31,10 @@ components:
           oneOf:
             - type: object
               description: this is correct
+              additionalProperties: false
             - type: "null"
               description: this is problematic
+              additionalProperties: false
       required: [ "id" ]
 paths:
   /users/{id}:

@@ -18,7 +18,6 @@ components:
     Customer:
       description: a customer
       type: object
-      additionalProperties: false
       properties:
         id:
           description: a property
@@ -26,16 +25,8 @@ components:
         name:
           description: a property
           type: string
-      required: ["id"]
-    Invoice:
-      description: an invoice
-      type: object
-      additionalProperties: false
-      properties:
-        id:
-          description: a property
-          type: string
-      required: ["id"]
+      required: [ "id" ]
+      additionalProperties: true
 paths:
   /users/{id}:
     parameters:
@@ -54,30 +45,6 @@ paths:
         "200":
           description: teapot
           content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Customer"
-  /invoices/{id}:
-    parameters:
-      - name: id
-        in: path
-        required: true
-        description: the invoice identifier, as is
-        schema:
-          type: string
-    get:
-      description: op-description
-      operationId: opid
-      tags:
-        - Invoice Items
-      responses:
-        "200":
-          description: teapot
-          content:
-            application/yaml:
-              example:
-                a: 1
-                b: 2
             application/json:
               schema:
                 $ref: "#/components/schemas/Customer"

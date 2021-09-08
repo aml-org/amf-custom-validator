@@ -18,6 +18,7 @@ components:
     Customer:
       description: a customer
       type: object
+      additionalProperties: false
       properties:
         id:
           description: a property
@@ -29,8 +30,10 @@ components:
           description: the invoice
           oneOf:
             - type: object
+              additionalProperties: false
               description: this is correct
             - type: object
+              additionalProperties: false
               description: this is not problematic now
       required: [ "id" ]
 paths:
