@@ -61,29 +61,38 @@ func wrapNestedRegoResult(exp profile.NestedExpression, sharedGeneratorRego Simp
 	rego = append(rego, sharedGeneratorRego.Rego...)
 	// this variable holds each of the nested nodes
 	variable := sharedGeneratorRego.Variable
-	errorVariable := fmt.Sprintf("%s_error", variable)
+	errorNodeVariable := fmt.Sprintf("%s_error_nodes", variable) // all failing nodes will be collected here eventually
+	allErrorsVariable := fmt.Sprintf("%s_errors", variable) // all failing nodes will be collected here eventually
+	errorTuples := fmt.Sprintf("%s_error_tuples", variable) // all tuples errorNode -> errorsForThat node, will be collected here
+	errorVariable := fmt.Sprintf("%s_error", variable) // all failing errors for each nested node will be collected here
+	// this is an intermediate variable collecting tuples [inner_node, error] so we can catch the case where the inner
+	// constraint validates multiple value of a property inside a single nested node
+	innerErrorVariable := fmt.Sprintf("%s_inner_error", variable)
 	// let's create a comprehension for the conditions over the nested nodes
-	rego = append(rego, fmt.Sprintf("%ss = [ %s|", errorVariable, errorVariable)) // report errors using this variable
+	rego = append(rego, fmt.Sprintf("%s = [ %s|", errorTuples, errorVariable)) // report errors using this variable
 	rego = append(rego, fmt.Sprintf("  %s = %s[_]", nestedVariable, variable))    // the underlying rules expect the quantified variable that was passed on profile parsing
-	for _, l := range wrapBranch("nested", fmt.Sprintf("error in nested nodes under %s", sharedGeneratorRego.Path), branchRego, errorVariable, nestedVariable) {
+	// note we are passing innerErrorVariable here
+	for _, l := range wrapBranch("nested", fmt.Sprintf("error in nested nodes under %s", sharedGeneratorRego.Path), branchRego, innerErrorVariable, nestedVariable) {
 		rego = append(rego, l)
 	}
+	rego = append(rego, fmt.Sprintf("  %s = [%s,%s]", errorVariable, nestedVariable, innerErrorVariable))
 	rego = append(rego, "]")
-
+	// let's now split the collected tuples into set of failing nodes for cardinality checks
+	rego = append(rego, fmt.Sprintf("%s = { nodeId | n = %s[_]; nodeId = n[0] }", errorNodeVariable, errorTuples))
 	// Now Let's check if there was an error counting the failed nodes
 	if exp.Child.Cardinality != nil {
 		// quantified nested, we need to check for a particular number of failed nodes
 		if exp.Negated {
-			rego = append(rego, fmt.Sprintf("count(%s) - count(%ss) %s", variable, errorVariable, exp.Child.Cardinality.String()))
+			rego = append(rego, fmt.Sprintf("count(%s) - count(%s) %s", variable, errorNodeVariable, exp.Child.Cardinality.String()))
 		} else {
-			rego = append(rego, fmt.Sprintf("not count(%s) - count(%ss) %s", variable, errorVariable, exp.Child.Cardinality.String()))
+			rego = append(rego, fmt.Sprintf("not count(%s) - count(%s) %s", variable, errorNodeVariable, exp.Child.Cardinality.String()))
 		}
 	} else {
 		// regular nested we just loo for one error
 		if exp.Negated {
-			rego = append(rego, fmt.Sprintf("count(%ss) == 0", errorVariable))
+			rego = append(rego, fmt.Sprintf("count(%s) == 0", errorNodeVariable))
 		} else {
-			rego = append(rego, fmt.Sprintf("count(%ss) > 0", errorVariable))
+			rego = append(rego, fmt.Sprintf("count(%s) > 0", errorNodeVariable))
 		}
 	}
 
@@ -98,6 +107,9 @@ func wrapNestedRegoResult(exp profile.NestedExpression, sharedGeneratorRego Simp
 		}
 	}
 
+	// collect the errors for reporting
+	rego = append(rego, fmt.Sprintf("%s = [ _error | n = %s[_]; _error = n[1] ]", allErrorsVariable, errorTuples))
+
 	// build result
 	return BranchRegoResult{
 		Constraint: "nested",
@@ -108,8 +120,8 @@ func wrapNestedRegoResult(exp profile.NestedExpression, sharedGeneratorRego Simp
 				PathRules:  pathRules,
 				Path:       sharedGeneratorRego.Path,
 				TraceNode:  exp.Parent.Name,
-				TraceValue: fmt.Sprintf("{\"negated\":%t, \"expected\":0, \"actual\":count(%ss), \"subResult\": %ss}", exp.Negated, errorVariable, errorVariable),
-				Variable:   fmt.Sprintf("%ss", errorVariable),
+				TraceValue: fmt.Sprintf("{\"negated\":%t, \"expected\":0, \"actual\":count(%s), \"subResult\": %s}", exp.Negated, errorNodeVariable, allErrorsVariable),
+				Variable:   fmt.Sprintf("%s", errorNodeVariable),
 			},
 		},
 	}

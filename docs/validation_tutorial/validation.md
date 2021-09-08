@@ -264,6 +264,7 @@ There is a number of property constraints over scalar properties that can be def
 - `pattern`: Validates the value of a property in a target node against the provided regular expression
 - `maxCount`: Validates the maximum number of values that the target node can have for a property
 - `minCount`: Validates the minimum number of values that the target node can have for a property
+- `exactCount`: Validates the exact number of values that the target node can have for a property
 - `minExclusive`: Validates the minimum value that a value in a property of the target node can have
 - `maxExclusive`: Validates the maximum value that a value in a property of the target node can have
 - `minInclusive`:Validates the minimum or equal value that a value in a property of the target node can have
@@ -1410,6 +1411,7 @@ These are the qualified constraints supported:
 
 - *atLeast*: Makes it possible to check that a particular validation rule matches a minimum number of the target nodes
 - *atMost*: Makes it possible to check that a particular validation rule matches a maximum number of the target nodes
+- *exactly*: Makes it possible to check that a particular validation rule matches a exact number of the target nodes
 
 The following API describes a RAML API with different endpoints supporting each a different set of HTTP operations:
 

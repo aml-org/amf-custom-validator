@@ -25,13 +25,6 @@ components:
         name:
           description: a property
           type: string
-        invoice:
-          description: the invoice
-          oneOf:
-            - type: object
-              description: this is correct
-            - type: "null"
-              description: this is problematic
       required: [ "id" ]
 paths:
   /users/{id}:
@@ -48,7 +41,7 @@ paths:
       tags:
         - Invoice Items
       responses:
-        "200":
+        "500":
           description: teapot
           content:
             application/json:

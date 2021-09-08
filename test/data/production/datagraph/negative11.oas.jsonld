@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/datagraph/negative9.oas",
+    "@id": "file://./test/data/production/datagraph/negative11.oas",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api",
+        "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -23,7 +23,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#server": [
           {
-            "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/https%3A%2F%2Fproduction.test.com%2F",
+            "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/https%3A%2F%2Fproduction.test.com%2F",
             "@type": [
               "http://a.ml/vocabularies/apiContract#Server",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -47,7 +47,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
-            "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",
+            "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -59,7 +59,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
+                "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -81,7 +81,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200",
+                    "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -104,7 +104,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#payload": [
                       {
-                        "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson",
+                        "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Payload",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -116,7 +116,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/schema",
+                            "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/schema",
                             "@type": [
                               "http://www.w3.org/ns/shacl#NodeShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",
@@ -126,7 +126,7 @@
                             ],
                             "http://a.ml/vocabularies/document#link-target": [
                               {
-                                "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer"
+                                "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/types/Customer"
                               }
                             ],
                             "http://a.ml/vocabularies/document#link-label": [
@@ -152,7 +152,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#tag": [
                   {
-                    "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/tag/Invoice%20Items",
+                    "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/tag/Invoice%20Items",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Tag",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -173,7 +173,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#parameter": [
               {
-                "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/path/id",
+                "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/path/id",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Parameter",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -215,7 +215,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/default-binding/id/scalar/id",
+                    "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/default-binding/id/scalar/id",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -241,14 +241,14 @@
         ],
         "http://a.ml/vocabularies/security#security": [
           {
-            "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/requirement_1",
+            "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/requirement_1",
             "@type": [
               "http://a.ml/vocabularies/security#SecurityRequirement",
               "http://a.ml/vocabularies/document#DomainElement"
             ],
             "http://a.ml/vocabularies/security#schemes": [
               {
-                "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/requirement_1/basicAuth",
+                "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/requirement_1/basicAuth",
                 "@type": [
                   "http://a.ml/vocabularies/security#ParametrizedSecurityScheme",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -260,7 +260,7 @@
                 ],
                 "http://a.ml/vocabularies/security#scheme": [
                   {
-                    "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/requirement_1/basicAuth/basicAuth",
+                    "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/requirement_1/basicAuth/basicAuth",
                     "@type": [
                       "http://a.ml/vocabularies/security#SecurityScheme",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -277,7 +277,7 @@
                     ],
                     "http://a.ml/vocabularies/security#settings": [
                       {
-                        "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/securitySchemes/basicAuth/settings/http",
+                        "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/securitySchemes/basicAuth/settings/http",
                         "@type": [
                           "http://a.ml/vocabularies/security#HttpSettings",
                           "http://a.ml/vocabularies/security#Settings",
@@ -310,7 +310,7 @@
     ],
     "http://a.ml/vocabularies/document#declares": [
       {
-        "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer",
+        "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/types/Customer",
         "@type": [
           "http://www.w3.org/ns/shacl#NodeShape",
           "http://a.ml/vocabularies/shapes#AnyShape",
@@ -325,7 +325,7 @@
         ],
         "http://www.w3.org/ns/shacl#property": [
           {
-            "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/id",
+            "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/types/Customer/property/id",
             "@type": [
               "http://www.w3.org/ns/shacl#PropertyShape",
               "http://www.w3.org/ns/shacl#Shape",
@@ -339,7 +339,7 @@
             ],
             "http://a.ml/vocabularies/shapes#range": [
               {
-                "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/id/scalar/id",
+                "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/types/Customer/property/id/scalar/id",
                 "@type": [
                   "http://a.ml/vocabularies/shapes#ScalarShape",
                   "http://a.ml/vocabularies/shapes#AnyShape",
@@ -376,7 +376,7 @@
             ]
           },
           {
-            "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/name",
+            "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/types/Customer/property/name",
             "@type": [
               "http://www.w3.org/ns/shacl#PropertyShape",
               "http://www.w3.org/ns/shacl#Shape",
@@ -390,7 +390,7 @@
             ],
             "http://a.ml/vocabularies/shapes#range": [
               {
-                "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/name/scalar/name",
+                "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/types/Customer/property/name/scalar/name",
                 "@type": [
                   "http://a.ml/vocabularies/shapes#ScalarShape",
                   "http://a.ml/vocabularies/shapes#AnyShape",
@@ -427,7 +427,7 @@
             ]
           },
           {
-            "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/invoice",
+            "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/types/Customer/property/matrix",
             "@type": [
               "http://www.w3.org/ns/shacl#PropertyShape",
               "http://www.w3.org/ns/shacl#Shape",
@@ -436,67 +436,67 @@
             ],
             "http://www.w3.org/ns/shacl#path": [
               {
-                "@id": "http://a.ml/vocabularies/data#invoice"
+                "@id": "http://a.ml/vocabularies/data#matrix"
               }
             ],
             "http://a.ml/vocabularies/shapes#range": [
               {
-                "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/invoice/any/invoice",
+                "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/types/Customer/property/matrix/array/matrix",
                 "@type": [
+                  "http://a.ml/vocabularies/shapes#MatrixShape",
+                  "http://a.ml/vocabularies/shapes#ArrayShape",
                   "http://a.ml/vocabularies/shapes#AnyShape",
                   "http://www.w3.org/ns/shacl#Shape",
                   "http://a.ml/vocabularies/shapes#Shape",
                   "http://a.ml/vocabularies/document#DomainElement"
                 ],
-                "http://www.w3.org/ns/shacl#name": [
+                "http://a.ml/vocabularies/shapes#items": [
                   {
-                    "@value": "invoice"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#description": [
-                  {
-                    "@value": "the invoice"
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#xone": [
-                  {
-                    "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/invoice/any/invoice/xone/0/item0",
+                    "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/types/Customer/property/matrix/array/matrix/items/array/items",
                     "@type": [
-                      "http://www.w3.org/ns/shacl#NodeShape",
+                      "http://a.ml/vocabularies/shapes#ArrayShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",
                       "http://www.w3.org/ns/shacl#Shape",
                       "http://a.ml/vocabularies/shapes#Shape",
                       "http://a.ml/vocabularies/document#DomainElement"
                     ],
-                    "http://www.w3.org/ns/shacl#closed": [
+                    "http://a.ml/vocabularies/shapes#items": [
                       {
-                        "@value": false
+                        "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/types/Customer/property/matrix/array/matrix/items/array/items/items/scalar/items",
+                        "@type": [
+                          "http://a.ml/vocabularies/shapes#ScalarShape",
+                          "http://a.ml/vocabularies/shapes#AnyShape",
+                          "http://www.w3.org/ns/shacl#Shape",
+                          "http://a.ml/vocabularies/shapes#Shape",
+                          "http://a.ml/vocabularies/document#DomainElement"
+                        ],
+                        "http://www.w3.org/ns/shacl#datatype": [
+                          {
+                            "@id": "http://www.w3.org/2001/XMLSchema#integer"
+                          }
+                        ],
+                        "http://www.w3.org/ns/shacl#name": [
+                          {
+                            "@value": "items"
+                          }
+                        ]
                       }
                     ],
                     "http://www.w3.org/ns/shacl#name": [
                       {
-                        "@value": "item0"
-                      }
-                    ],
-                    "http://a.ml/vocabularies/core#description": [
-                      {
-                        "@value": "this is correct"
+                        "@value": "items"
                       }
                     ]
-                  },
+                  }
+                ],
+                "http://www.w3.org/ns/shacl#name": [
                   {
-                    "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/invoice/any/invoice/xone/1/nil/item1",
-                    "@type": [
-                      "http://a.ml/vocabularies/shapes#NilShape",
-                      "http://www.w3.org/ns/shacl#Shape",
-                      "http://a.ml/vocabularies/shapes#Shape",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://www.w3.org/ns/shacl#name": [
-                      {
-                        "@value": "item1"
-                      }
-                    ]
+                    "@value": "matrix"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#description": [
+                  {
+                    "@value": "a matrix"
                   }
                 ]
               }
@@ -508,7 +508,7 @@
             ],
             "http://www.w3.org/ns/shacl#name": [
               {
-                "@value": "invoice"
+                "@value": "matrix"
               }
             ]
           }
@@ -525,7 +525,7 @@
         ]
       },
       {
-        "@id": "file://./test/data/production/datagraph/negative9.oas#/web-api/requirement_1/basicAuth/basicAuth",
+        "@id": "file://./test/data/production/datagraph/negative11.oas#/web-api/requirement_1/basicAuth/basicAuth",
         "@type": [
           "http://a.ml/vocabularies/security#SecurityScheme",
           "http://a.ml/vocabularies/document#DomainElement"
@@ -542,7 +542,7 @@
         ],
         "http://a.ml/vocabularies/security#settings": [
           {
-            "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/securitySchemes/basicAuth/settings/http",
+            "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/securitySchemes/basicAuth/settings/http",
             "@type": [
               "http://a.ml/vocabularies/security#HttpSettings",
               "http://a.ml/vocabularies/security#Settings",

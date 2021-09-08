@@ -81,37 +81,21 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/invoice/any/invoice/xone/0/item0"
+        "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/invoice/any/invoice"
       },
-      "resultMessage": "Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema.\n",
+      "resultMessage": "Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object\nshapes with scalar flags/properties can be used as an alternative\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "missing-type-description",
+      "sourceShapeName": "heterogeneous-union",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "minCount",
-          "resultPath": "core.description",
+          "component": "rego",
+          "resultPath": "",
           "traceValue": {
-            "actual": 0,
-            "condition": ">=",
-            "expected": 1,
-            "negated": false
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "minCount",
-          "resultPath": "doc.link-target",
-          "traceValue": {
-            "actual": 0,
-            "condition": ">=",
-            "expected": 1,
             "negated": false
           }
         }
@@ -124,36 +108,20 @@
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/invoice/any/invoice"
       },
-      "resultMessage": "Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object\nshapes with scalar flags/properties can be used as an alternative\n",
+      "resultMessage": "Unions between nil and other types of shapes are unnecessary when representing an optional properties. Optional\nproperties should be used instead.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "heterogeneous-oneof",
+      "sourceShapeName": "nil-union-antipattern",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "nested",
-          "resultPath": "shacl.xone",
+          "component": "rego",
+          "resultPath": "",
           "traceValue": {
-            "actual": 0,
-            "expected": 0,
-            "negated": true,
-            "subResult": []
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "nested",
-          "resultPath": "shacl.xone",
-          "traceValue": {
-            "actual": 0,
-            "expected": 0,
-            "negated": true,
-            "subResult": []
+            "negated": false
           }
         }
       ]

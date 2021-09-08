@@ -9,8 +9,10 @@ import (
 func GenerateCount(count profile.CountRule) []SimpleRegoResult {
 	if count.Qualifier == profile.Min {
 		return generateRule(count, "minCount", ">=")
-	} else {
+	} else if count.Qualifier == profile.Max {
 		return generateRule(count, "maxCount", "<=")
+	} else {
+		return generateRule(count, "exact", "==")
 	}
 }
 

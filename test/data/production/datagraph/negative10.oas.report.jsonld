@@ -81,47 +81,60 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative8.oas#/declarations/types/any/Problematic"
+        "@id": "file://./test/data/production/datagraph/negative10.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
       },
-      "resultMessage": "Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object\nshapes with scalar flags/properties can be used as an alternative\n",
+      "resultMessage": "HTTP resources not returning a 2xx success response do not describe normal responses from the API and cannot federated.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "heterogeneous-union",
+      "sourceShapeName": "no-2xx-response",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "rego",
-          "resultPath": "",
+          "component": "pattern",
+          "resultPath": "apiContract.method",
           "traceValue": {
-            "negated": false
+            "argument": "get",
+            "negated": true
           }
-        }
-      ]
-    },
-    {
-      "@type": [
-        "shacl:ValidationResult"
-      ],
-      "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative8.oas#/declarations/types/any/Problematic2"
-      },
-      "resultMessage": "Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object\nshapes with scalar flags/properties can be used as an alternative\n",
-      "resultSeverity": {
-        "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "sourceShapeName": "heterogeneous-union",
-      "trace": [
+        },
         {
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "rego",
-          "resultPath": "",
+          "component": "nested",
+          "resultPath": "apiContract.returns",
           "traceValue": {
-            "negated": false
+            "actual": 1,
+            "expected": 0,
+            "negated": false,
+            "subResult": [
+              {
+                "@type": [
+                  "shacl:ValidationResult"
+                ],
+                "focusNode": {
+                  "@id": "file://./test/data/production/datagraph/negative10.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/500"
+                },
+                "resultMessage": "error in nested nodes under apiContract.returns",
+                "sourceShapeName": "nested",
+                "trace": [
+                  {
+                    "@type": [
+                      "validation:TraceMessage"
+                    ],
+                    "component": "pattern",
+                    "resultPath": "apiContract.statusCode",
+                    "traceValue": {
+                      "argument": "500",
+                      "negated": false
+                    }
+                  }
+                ]
+              }
+            ]
           }
         }
       ]

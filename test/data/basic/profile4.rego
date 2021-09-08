@@ -251,15 +251,18 @@ violation[matches] {
   target_class[x] with data.class as "apiContract:Parameter"
   #  querying path: raml-shapes.schema
   ys = gen_path_rule_5 with data.sourceNode as x
-  ys_errors = [ ys_error|
+  ys_error_tuples = [ ys_error|
     y = ys[_]
     #  querying path: shacl.minLength
     gen_propValues_6 = gen_path_rule_7 with data.sourceNode as y
     not count(gen_propValues_6) >= 1
     _result_0 := trace("minCount","shacl.minLength",y,{"negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
-    ys_error := error("nested",y,"error in nested nodes under raml-shapes.schema",[_result_0])
+    ys_inner_error := error("nested",y,"error in nested nodes under raml-shapes.schema",[_result_0])
+    ys_error = [y,ys_inner_error]
   ]
-  count(ys_errors) > 0
-  _result_0 := trace("nested","raml-shapes.schema",x,{"negated":false, "expected":0, "actual":count(ys_errors), "subResult": ys_errors})
+  ys_error_nodes = { nodeId | n = ys_error_tuples[_]; nodeId = n[0] }
+  count(ys_error_nodes) > 0
+  ys_errors = [ _error | n = ys_error_tuples[_]; _error = n[1] ]
+  _result_0 := trace("nested","raml-shapes.schema",x,{"negated":false, "expected":0, "actual":count(ys_error_nodes), "subResult": ys_errors})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }

@@ -30,8 +30,8 @@ components:
           oneOf:
             - type: object
               description: this is correct
-            - type: "null"
-              description: this is problematic
+            - type: object
+              description: this is not problematic now
       required: [ "id" ]
 paths:
   /users/{id}:
