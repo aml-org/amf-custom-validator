@@ -16,6 +16,7 @@ violation:
   - heterogeneous-union
   - nil-union-antipattern
   - unsupported-response-schema-shapes
+  - non-scalar-url-parameters
 
 validations:
 
@@ -263,3 +264,25 @@ validations:
         - propertyConstraints:
             "@type":
               pattern: ".*:TupleShape"
+
+  non-scalar-url-parameters:
+    message: |
+      Encoding complex objects into URL parameters is not a standardized way of passing information that cannot be
+      automatically processed. Complex information should be passed in the body of the HTTP request.
+    targetClass: apiContract.Parameter
+    if:
+      or:
+        - propertyConstraints:
+            apiContract.binding:
+              pattern: "path"
+        - propertyConstraints:
+            apiContract.binding:
+              pattern: "query"
+    then:
+      or:
+        - propertyConstraints:
+            shapes.schema / shacl.datatype:
+              minCount: 1
+        - propertyConstraints:
+            shapes.schema / shapes.items / shacl.datatype:
+              minCount: 1
