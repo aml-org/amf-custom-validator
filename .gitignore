@@ -26,3 +26,4 @@ wrappers/js/node_modules
 amf.jar
 amf-opa-validator
 validation-profile.yaml
+.DS_Store
