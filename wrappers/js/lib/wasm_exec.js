@@ -296,10 +296,12 @@
 						this._scheduledTimeouts.set(id, setTimeout(
 							() => {
 								this._resume();
-								while (this._scheduledTimeouts.has(id)) {
+								var retry = true;
+								while (this._scheduledTimeouts.has(id) && retry) {
 									// for some reason Go failed to register the timeout event, log and try again
 									// (temporary workaround for https://github.com/golang/go/issues/28975)
-									console.warn("scheduleTimeoutEvent: missed timeout event");
+									console.warn("[WASM] scheduleTimeoutEvent: missed timeout event (id: " + id  + " f(sp)=" + timeout +")");
+									retry = false;
 									this._resume();
 								}
 							},
