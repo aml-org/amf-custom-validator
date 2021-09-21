@@ -57,5 +57,31 @@ pipeline {
                 '''
             }
         }
+        stage('Publish snapshot web') {
+            when {
+                anyOf {
+                    branch 'develop'
+                }
+            }
+            agent {
+                dockerfile {
+                    filename 'Dockerfile'
+                    additionalBuildArgs  '--target publish-snapshot'
+                    registryCredentialsId 'dockerhub-pro-credentials'
+                }
+            }
+            environment {
+                NPM = credentials('aml-org-bot-npm')
+            }
+            steps {
+                sh '''  #!/bin/bash
+                        cd /src
+                        npm-cli-login -u $NPM_USR -p $NPM_PSW -e als-amf-team@mulesoft.com
+                        cd ./wrappers/js-web
+                        npm-snapshot $BUILD_NUMBER
+                        npm publish --access public
+                '''
+            }
+        }
     }
 }

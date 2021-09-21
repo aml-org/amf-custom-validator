@@ -29,3 +29,4 @@ COPY . .
 RUN chmod -R 777 ./
 RUN npm install -g npm-snapshot
 RUN npm install -g npm-cli-login
+RUN make build-js-web

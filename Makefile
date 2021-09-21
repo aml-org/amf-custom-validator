@@ -14,7 +14,7 @@ test-js:
 
 ## BUILD ==================================================================================
 
-build: build-native build-js
+build: build-native build-js build-js-web
 
 build-native:
 	rm -f amf-opa-validator
@@ -23,6 +23,10 @@ build-native:
 build-js:
 	./scripts/gen_js_package.sh
 
+build-js-web:
+	make build-js
+	./scripts/gen_js_web_package.sh
+	
 ## CI =====================================================================================
 
 ci-go: test-go build-native build-js
