@@ -24,9 +24,8 @@ build-js:
 	./scripts/gen_js_package.sh
 
 build-js-web:
-	make build-js
 	./scripts/gen_js_web_package.sh
-	
+
 ## CI =====================================================================================
 
 ci-go: test-go build-native build-js
