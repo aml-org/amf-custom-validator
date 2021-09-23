@@ -21,6 +21,11 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, newMaxCount(false, variable, path, max))
 	}
 
+	exact, err := constraint.Get("exactCount").Int()
+	if err == nil {
+		acc = append(acc, newExactCount(false, variable, path, exact))
+	}
+
 	pattern, err := constraint.Get("pattern").String()
 	if err == nil {
 		acc = append(acc, newPattern(false, variable, path, pattern))
@@ -101,6 +106,15 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 	atMost := constraint.Get("atMost")
 	if atMost.IsFound() {
 		rule, err := parseQualifiedNestedExpression(atMost, false, variable, path, varGenerator, LTEQ)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, rule)
+	}
+
+	exactly := constraint.Get("exactly")
+	if exactly.IsFound() {
+		rule, err := parseQualifiedNestedExpression(exactly, false, variable, path, varGenerator, EQ)
 		if err != nil {
 			return nil, err
 		}

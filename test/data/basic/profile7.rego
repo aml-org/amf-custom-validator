@@ -103,6 +103,20 @@ as_string(x) = x {
   is_string(x)
 }
 
+as_string(x) = "false" {
+  is_boolean(x)
+  x == false
+}
+
+as_string(x) = "true" {
+  is_boolean(x)
+  x == true
+}
+
+as_string(x) = format_int(x, 10) {
+  is_number(x)
+}
+
 as_string(x) = x["@id"] {
   is_object(x)
   x["@id"]
@@ -289,17 +303,20 @@ violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: apiContract.returns
   ps = gen_path_rule_1 with data.sourceNode as x
-  ps_errors = [ ps_error|
+  ps_error_tuples = [ ps_error|
     p = ps[_]
     #  querying path: apiContract.statusCode
     gen_gen_path_rule_2_node_3_array = gen_path_rule_2 with data.sourceNode as p
     gen_gen_path_rule_2_node_3 = gen_gen_path_rule_2_node_3_array[_]
     not regex.match("^4[0-9]{2}$",gen_gen_path_rule_2_node_3)
     _result_0 := trace("pattern","apiContract.statusCode",p,{"negated":false,"argument": gen_gen_path_rule_2_node_3})
-    ps_error := error("nested",p,"error in nested nodes under apiContract.returns",[_result_0])
+    ps_inner_error := error("nested",p,"error in nested nodes under apiContract.returns",[_result_0])
+    ps_error = [p,ps_inner_error]
   ]
-  not count(ps) - count(ps_errors) >= 1
-  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(ps_errors), "subResult": ps_errors})
+  ps_error_nodes = { nodeId | n = ps_error_tuples[_]; nodeId = n[0] }
+  not count(ps) - count(ps_error_nodes) >= 1
+  ps_errors = [ _error | n = ps_error_tuples[_]; _error = n[1] ]
+  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(ps_error_nodes), "subResult": ps_errors})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
@@ -314,17 +331,20 @@ violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: apiContract.returns
   qs = gen_path_rule_4 with data.sourceNode as x
-  qs_errors = [ qs_error|
+  qs_error_tuples = [ qs_error|
     q = qs[_]
     #  querying path: apiContract.statusCode
     gen_gen_path_rule_5_node_6_array = gen_path_rule_5 with data.sourceNode as q
     gen_gen_path_rule_5_node_6 = gen_gen_path_rule_5_node_6_array[_]
     not regex.match("^5[0-9]{2}$",gen_gen_path_rule_5_node_6)
     _result_0 := trace("pattern","apiContract.statusCode",q,{"negated":false,"argument": gen_gen_path_rule_5_node_6})
-    qs_error := error("nested",q,"error in nested nodes under apiContract.returns",[_result_0])
+    qs_inner_error := error("nested",q,"error in nested nodes under apiContract.returns",[_result_0])
+    qs_error = [q,qs_inner_error]
   ]
-  not count(qs) - count(qs_errors) >= 1
-  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(qs_errors), "subResult": qs_errors})
+  qs_error_nodes = { nodeId | n = qs_error_tuples[_]; nodeId = n[0] }
+  not count(qs) - count(qs_error_nodes) >= 1
+  qs_errors = [ _error | n = qs_error_tuples[_]; _error = n[1] ]
+  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(qs_error_nodes), "subResult": qs_errors})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
@@ -339,17 +359,20 @@ violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: apiContract.returns
   ys = gen_path_rule_7 with data.sourceNode as x
-  ys_errors = [ ys_error|
+  ys_error_tuples = [ ys_error|
     y = ys[_]
     #  querying path: apiContract.statusCode
     gen_gen_path_rule_8_node_9_array = gen_path_rule_8 with data.sourceNode as y
     gen_gen_path_rule_8_node_9 = gen_gen_path_rule_8_node_9_array[_]
     not regex.match("^201$",gen_gen_path_rule_8_node_9)
     _result_0 := trace("pattern","apiContract.statusCode",y,{"negated":false,"argument": gen_gen_path_rule_8_node_9})
-    ys_error := error("nested",y,"error in nested nodes under apiContract.returns",[_result_0])
+    ys_inner_error := error("nested",y,"error in nested nodes under apiContract.returns",[_result_0])
+    ys_error = [y,ys_inner_error]
   ]
-  count(ys) - count(ys_errors) >= 1
-  _result_0 := trace("nested","apiContract.returns",x,{"negated":true, "expected":0, "actual":count(ys_errors), "subResult": ys_errors})
+  ys_error_nodes = { nodeId | n = ys_error_tuples[_]; nodeId = n[0] }
+  count(ys) - count(ys_error_nodes) >= 1
+  ys_errors = [ _error | n = ys_error_tuples[_]; _error = n[1] ]
+  _result_0 := trace("nested","apiContract.returns",x,{"negated":true, "expected":0, "actual":count(ys_error_nodes), "subResult": ys_errors})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
@@ -364,17 +387,20 @@ violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: apiContract.returns
   zs = gen_path_rule_10 with data.sourceNode as x
-  zs_errors = [ zs_error|
+  zs_error_tuples = [ zs_error|
     z = zs[_]
     #  querying path: apiContract.statusCode
     gen_gen_path_rule_11_node_12_array = gen_path_rule_11 with data.sourceNode as z
     gen_gen_path_rule_11_node_12 = gen_gen_path_rule_11_node_12_array[_]
     not regex.match("^2[0-9]{2}$",gen_gen_path_rule_11_node_12)
     _result_0 := trace("pattern","apiContract.statusCode",z,{"negated":false,"argument": gen_gen_path_rule_11_node_12})
-    zs_error := error("nested",z,"error in nested nodes under apiContract.returns",[_result_0])
+    zs_inner_error := error("nested",z,"error in nested nodes under apiContract.returns",[_result_0])
+    zs_error = [z,zs_inner_error]
   ]
-  not count(zs) - count(zs_errors) >= 1
-  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(zs_errors), "subResult": zs_errors})
+  zs_error_nodes = { nodeId | n = zs_error_tuples[_]; nodeId = n[0] }
+  not count(zs) - count(zs_error_nodes) >= 1
+  zs_errors = [ _error | n = zs_error_tuples[_]; _error = n[1] ]
+  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(zs_error_nodes), "subResult": zs_errors})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]

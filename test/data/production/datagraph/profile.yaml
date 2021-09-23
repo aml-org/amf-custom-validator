@@ -1,0 +1,301 @@
+#%Validation Profile 1.0
+
+profile: Anypoint Datagraph Best Practices
+
+violation:
+  - not-anonymous-types
+  - missing-return-type
+  - not-json-response
+  - no-2xx-response
+  - only-http-basic-security-supported
+  - potential-key-parameters
+  - missing-type-description
+  - missing-property-description
+  - missing-parameter-description
+  - request-response-antipattern
+  - heterogeneous-union
+  - nil-union-antipattern
+  - unsupported-response-schema-shapes
+  - non-scalar-url-parameters
+  - open-schemas-ignored
+
+validations:
+
+  not-anonymous-types:
+    message: |
+      Instead of inlining definition of schemas in HTTP responses,
+      referencing declared types is preferred since it provides descriptive names for the federated types
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.method:
+        pattern: "get"
+      apiContract.returns / apiContract.payload:
+        nested:
+          if:
+            propertyConstraints:
+              core.mediaType:
+                pattern: "application/json"
+              shapes.schema:
+                minCount: 1
+          then:
+            propertyConstraints:
+              shapes.schema / doc.link-label:
+                minCount: 1
+
+  missing-return-type:
+    message: |
+      Operations without schemas cannot be federated, a schema must be provided
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.method:
+        pattern: "get"
+      apiContract.returns / apiContract.payload:
+        nested:
+          if:
+            propertyConstraints:
+              core.mediaType:
+                pattern: "application/json"
+          then:
+            propertyConstraints:
+              shapes.schema:
+                minCount: 1
+
+  not-json-response:
+    message: |
+      Only JSON payloads are supported at the moment in DataGraph. This is the preferred media type format.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.method:
+        pattern: "get"
+      apiContract.returns / apiContract.payload:
+        atLeast:
+          count: 1
+          validation:
+            propertyConstraints:
+               core.mediaType:
+                pattern: "application/json"
+
+  no-2xx-response:
+    message: |
+      HTTP resources not returning a 2xx success response do not describe normal responses from the API and cannot federated.
+    targetClass: apiContract.Operation
+    if:
+      propertyConstraints:
+        apiContract.method:
+          pattern: "get"
+    then:
+      propertyConstraints:
+        apiContract.returns:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                apiContract.statusCode:
+                  pattern: "2.+"
+
+  only-http-basic-security-supported:
+    message: |
+      Only basic authentication for clientId/Secret credentials or no authentication schemes are supported
+    targetClass: apiContract.WebAPI
+    if:
+      propertyConstraints:
+        security.security:
+          minCount: 1
+    then:
+      propertyConstraints:
+        security.security / security.schemes / security.scheme:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                security.type:
+                  pattern: "http"
+
+  potential-key-parameters:
+    message: |
+      Mandatory parameters for a resource should overlap with the required properties of the returned schema
+      so they can be used as a key for the type
+    targetClass: apiContract.EndPoint
+    rego: |
+      # navigate to the potential return schema
+      nested_nodes[parameters] with data.nodes as $node["apiContract:parameter"]
+      mandatory_params = { mandatory_param |
+        parameter = parameters[_]
+        parameter["apiContract:required"] == true
+        mandatory_param = parameter["core:name"]
+      }
+      nested_nodes[ops] with data.nodes as x["apiContract:supportedOperation"]
+      op = ops[_]
+      nested_nodes[resps] with data.nodes as op["apiContract:returns"]
+      resp = resps[_]
+      nested_nodes[payloads] with data.nodes as resp["apiContract:payload"]
+      payload = payloads[_]
+      payload["core:mediaType"] == "application/json"
+      nested_nodes[schemas] with data.nodes as payload["shapes:schema"]
+      schema = schemas[_]
+
+      # check for properties through linked targets
+      nested_nodes[linked_nodes] with data.nodes as object.get(schema,"doc:link-target",[{}])
+      linked_node = linked_nodes[_]
+      nested_nodes[linked_props] with data.nodes as object.get(linked_node,"shacl:property",[])
+      mandatory_linked_props = { mandatory_linked_prop |
+        linked_prop = linked_props[_]
+        linked_prop["shacl:minCount"] > 0
+        mandatory_linked_prop = linked_prop["shacl:name"]
+      }
+
+      # check for node shapes with direct properties
+      nested_nodes[direct_props] with data.nodes as object.get(schema, "shacl:property",[])
+      mandatory_direct_props = { mandatory_direct_prop |
+        direct_prop = direct_props[_]
+        direct_prop["shacl:minCount"] > 0
+        mandatory_direct_prop = direct_prop["shacl:name"]
+      }
+
+      all_props := mandatory_linked_props | mandatory_direct_props
+      $result = count(mandatory_params - all_props) == 0
+
+  missing-type-description:
+    message: |
+      Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to
+      understand your API and it will be reused as type descriptions in the federated API GraphQL schema.
+    targetClass: shacl.NodeShape
+    or:
+      - propertyConstraints:
+          doc.link-target:
+            minCount: 1
+      - propertyConstraints:
+          core.description:
+            minCount: 1
+
+  missing-property-description:
+    message: |
+      Providing a description of schema properties is a good practice that makes it easier for consumers of your API to
+      understand your API and it will be reused as type descriptions in the federated API GraphQL schema fields.
+    targetClass: shacl.PropertyShape
+    propertyConstraints:
+      shapes.range / core.description:
+        minCount: 1
+
+  missing-parameter-description:
+    message: |
+      Providing a description of API parameters is a good practice that makes it easier for consumers of your API to
+      understand your API and it will be reused as type descriptions in the federated API GraphQL schema field arguments.
+    targetClass: apiContract.Parameter
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  request-response-antipattern:
+    message: |
+      Resource schemas should describe the information of the exposed resource, not a Request/Response RPC message wrapper
+      containing the resource and out-of-band information.
+    targetClass: shacl.NodeShape
+    not:
+      or:
+        - propertyConstraints:
+            shacl.name:
+              pattern: ".*(r|R)equest.*"
+        - propertyConstraints:
+            shacl.name:
+              pattern: ".*(r|R)esponse.*"
+
+  heterogeneous-union:
+    message: |
+      Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object
+      shapes with scalar flags/properties can be used as an alternative
+    targetClass: shapes.AnyShape
+    rego: |
+      nested_nodes[members_xone] with data.nodes as object.get($node,"shacl:xone",[])
+      nested_nodes[members_or] with data.nodes as object.get($node,"shacl:or",[])
+      nested_nodes[members_anyof] with data.nodes as object.get($node,"shapes:anyOf",[])
+      members = array.concat(members_xone, array.concat(members_or, members_anyof))
+      types := { type |
+        member := members[_]
+        member_types := member["@type"]
+        maybe_type = member_types[_]
+        maybe_type != "shapes:Shape"
+        maybe_type != "shacl:Shape"
+        maybe_type != "shapes:AnyShape"
+        maybe_type != "doc:DomainElement"
+        type = maybe_type
+      }
+      $result = (count(types) <= 1) # 0 if there is no xone,or,anyof at all
+
+
+  nil-union-antipattern:
+    message: |
+      Unions between nil and other types of shapes are unnecessary when representing an optional properties. Optional
+      properties should be used instead.
+    targetClass: shapes.AnyShape
+    rego: |
+      nested_nodes[members_xone] with data.nodes as object.get($node,"shacl:xone",[])
+      nested_nodes[members_or] with data.nodes as object.get($node,"shacl:or",[])
+      nested_nodes[members_anyof] with data.nodes as object.get($node,"shapes:anyOf",[])
+      members = array.concat(members_xone, array.concat(members_or, members_anyof))
+      count(members) == 2
+      types := { type |
+        member := members[_]
+        member_types := member["@type"]
+        maybe_type = member_types[_]
+        maybe_type != "shapes:Shape"
+        maybe_type != "shacl:Shape"
+        maybe_type != "shapes:AnyShape"
+        maybe_type != "doc:DomainElement"
+        type = maybe_type
+      }
+      count(types) > 1
+      $result = types["shapes:NilShape"]
+
+  unsupported-response-schema-shapes:
+    message: |
+      Only objects, arrays, unions and scalars in responses can be mapped to GraphQL types
+    targetClass: shapes.AnyShape
+    not:
+      or:
+        - propertyConstraints:
+            "@type":
+              pattern: ".*:MatrixShape"
+        - propertyConstraints:
+            "@type":
+              pattern: ".*:SchemaShape"
+        - propertyConstraints:
+            "@type":
+              pattern: ".*:FileShape"
+        - propertyConstraints:
+            "@type":
+              pattern: ".*:TupleShape"
+
+  non-scalar-url-parameters:
+    message: |
+      Encoding complex objects into URL parameters is not a standardized way of passing information that cannot be
+      automatically processed. Complex information should be passed in the body of the HTTP request.
+    targetClass: apiContract.Parameter
+    if:
+      or:
+        - propertyConstraints:
+            apiContract.binding:
+              pattern: "path"
+        - propertyConstraints:
+            apiContract.binding:
+              pattern: "query"
+    then:
+      or:
+        - propertyConstraints:
+            shapes.schema / shacl.datatype:
+              minCount: 1
+        - propertyConstraints:
+            shapes.schema / shapes.items / shacl.datatype:
+              minCount: 1
+
+  open-schemas-ignored:
+    message: |
+      Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.
+      Consider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.
+      If you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.
+    targetClass: shacl.NodeShape
+    not:
+      propertyConstraints:
+        shacl.closed:
+          in:
+            - false

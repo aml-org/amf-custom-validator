@@ -11,6 +11,7 @@ type CountQualifier int
 const (
 	Min CountQualifier = iota
 	Max
+	Exact
 )
 
 type CountRule struct {
@@ -83,3 +84,10 @@ func newMaxCount(negated bool, variable Variable, path path.PropertyPath, argume
 	c.Name = "maxCount"
 	return c
 }
+
+func newExactCount(negated bool, variable Variable, path path.PropertyPath, argument int) CountRule {
+	c := newCount(negated, Exact, variable, path, argument)
+	c.Name = "exactCount"
+	return c
+}
+

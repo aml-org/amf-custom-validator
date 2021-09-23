@@ -103,6 +103,20 @@ as_string(x) = x {
   is_string(x)
 }
 
+as_string(x) = "false" {
+  is_boolean(x)
+  x == false
+}
+
+as_string(x) = "true" {
+  is_boolean(x)
+  x == true
+}
+
+as_string(x) = format_int(x, 10) {
+  is_number(x)
+}
+
 as_string(x) = x["@id"] {
   is_object(x)
   x["@id"]
@@ -233,7 +247,7 @@ violation[matches] {
   target_class[x] with data.class as "apiContract:Operation"
   #  querying path: apiContract.returns
   ys = gen_path_rule_1 with data.sourceNode as x
-  ys_errors = [ ys_error|
+  ys_error_tuples = [ ys_error|
     y = ys[_]
     #  querying path: apiContract.statusCode
     gen_y_check_3_array = gen_path_rule_4 with data.sourceNode as y
@@ -242,13 +256,16 @@ violation[matches] {
     gen_inValues_2 = { "200"}
     not gen_inValues_2[gen_y_check_3]
     _result_0 := trace("in","apiContract.statusCode",y,{"negated":false,"actual": gen_y_check_3,"expected": "[\"200\"]"})
-    ys_error := error("nested",y,"error in nested nodes under apiContract.returns",[_result_0])
+    ys_inner_error := error("nested",y,"error in nested nodes under apiContract.returns",[_result_0])
+    ys_error = [y,ys_inner_error]
   ]
-  not count(ys) - count(ys_errors) >= 1
-  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(ys_errors), "subResult": ys_errors})
+  ys_error_nodes = { nodeId | n = ys_error_tuples[_]; nodeId = n[0] }
+  not count(ys) - count(ys_error_nodes) >= 1
+  ys_errors = [ _error | n = ys_error_tuples[_]; _error = n[1] ]
+  _result_0 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(ys_error_nodes), "subResult": ys_errors})
   #  querying path: apiContract.returns
   zs = gen_path_rule_5 with data.sourceNode as x
-  zs_errors = [ zs_error|
+  zs_error_tuples = [ zs_error|
     z = zs[_]
     #  querying path: apiContract.statusCode
     gen_z_check_7_array = gen_path_rule_8 with data.sourceNode as z
@@ -257,9 +274,12 @@ violation[matches] {
     gen_inValues_6 = { "429"}
     not gen_inValues_6[gen_z_check_7]
     _result_0 := trace("in","apiContract.statusCode",z,{"negated":false,"actual": gen_z_check_7,"expected": "[\"429\"]"})
-    zs_error := error("nested",z,"error in nested nodes under apiContract.returns",[_result_0])
+    zs_inner_error := error("nested",z,"error in nested nodes under apiContract.returns",[_result_0])
+    zs_error = [z,zs_inner_error]
   ]
-  not count(zs) - count(zs_errors) >= 1
-  _result_1 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(zs_errors), "subResult": zs_errors})
+  zs_error_nodes = { nodeId | n = zs_error_tuples[_]; nodeId = n[0] }
+  not count(zs) - count(zs_error_nodes) >= 1
+  zs_errors = [ _error | n = zs_error_tuples[_]; _error = n[1] ]
+  _result_1 := trace("nested","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(zs_error_nodes), "subResult": zs_errors})
   matches := error("lack-of-resources-and-rate-limiting-too-many-requests",x,"Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n",[_result_0,_result_1])
 }
