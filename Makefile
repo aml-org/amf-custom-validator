@@ -8,6 +8,9 @@ test: test-go test-js
 test-go:
 	go test ./internal/...
 
+go-coverage:
+	go test -coverprofile=coverage.out ./internal/...
+
 # must run build-js first
 test-js:
 	cd ./wrappers/js && npm install && npm test
