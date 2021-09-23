@@ -26,6 +26,26 @@ pipeline {
                 echo "Success" // Tests are actually run when building the agent in the Dockerfile
             }
         }
+        stage('Coverage') {
+            agent {
+                dockerfile {
+                    filename 'Dockerfile'
+                    additionalBuildArgs  '--target coverage'
+                    registryCredentialsId 'dockerhub-pro-credentials'
+                }
+            }
+            steps {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'sonarqube-official', passwordVariable: 'SONAR_SERVER_TOKEN', usernameVariable: 'SONAR_SERVER_URL']]) {
+                    sh '''  #!/bin/bash
+                            cp /usr/src/coverage.out ./
+                            echo sonar.host.url=${SONAR_SERVER_URL} >> sonar-project.properties
+                            echo sonar.login=${SONAR_SERVER_TOKEN} >> sonar-project.properties
+                            sonar-scanner
+                    '''
+                }
+
+            }
+        }
         stage('Publish snapshot') {
             when {
                 anyOf {

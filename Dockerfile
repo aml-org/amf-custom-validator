@@ -10,6 +10,12 @@ RUN go mod tidy
 COPY . .
 RUN make ci-go
 
+FROM ci-go AS go-coverage
+RUN make go-coverage
+
+FROM sonarsource/sonar-scanner-cli as coverage
+COPY --from=go-coverage /go/src/coverage.out .
+
 FROM node:12 AS ci-js
 
 # First copy dependencies to enable Docker caching them
