@@ -233,7 +233,8 @@ violation[matches] {
   target_class[x] with data.class as "apiContract:EndPoint"
   #  querying path: apiContract.supportedOperation
   ys = gen_path_rule_1 with data.sourceNode as x
-  ys_error_tuples = [ ys_error|
+  y_errorAcc0 = []
+  ys_br_0 = [ ys_br_0_error|
     y = ys[_]
     #  querying path: apiContract.method
     gen_y_check_3_array = gen_path_rule_4 with data.sourceNode as y
@@ -242,12 +243,16 @@ violation[matches] {
     gen_inValues_2 = { "post"}
     not gen_inValues_2[gen_y_check_3]
     _result_0 := trace("in","apiContract.method",y,{"negated":false,"actual": gen_y_check_3,"expected": "[\"post\"]"})
-    ys_inner_error := error("nested",y,"error in nested nodes under apiContract.supportedOperation",[_result_0])
-    ys_error = [y,ys_inner_error]
+    ys_br_0_inner_error := error("nested",y,"error in nested nodes under apiContract.supportedOperation",[_result_0])
+    ys_br_0_error = [y["@id"],ys_br_0_inner_error]
   ]
-  ys_error_nodes = { nodeId | n = ys_error_tuples[_]; nodeId = n[0] }
-  not count(ys) - count(ys_error_nodes) >= 1
-  ys_errors = [ _error | n = ys_error_tuples[_]; _error = n[1] ]
-  _result_0 := trace("nested","apiContract.supportedOperation",x,{"negated":false, "expected":0, "actual":count(ys_error_nodes), "subResult": ys_errors})
+  ys_br_0_errors = { nodeId | n = ys_br_0[_]; nodeId = n[0] }
+  ys_br_0_errors_errors = [ node | n = ys_br_0[_]; node = n[1] ]
+  y_errorAcc1 = array.concat(y_errorAcc0,ys_br_0_errors_errors)
+  y_errorAcc = y_errorAcc1
+  # let's accumulate results
+  ys_error_node_variables_agg = ys_br_0_errors
+  not count(ys) - count(ys_error_node_variables_agg) >= 1
+  _result_0 := trace("existential","apiContract.supportedOperation",x,{"negated":false, "expected":0, "actual":count(ys_error_node_variables_agg), "subResult": y_errorAcc})
   matches := error("validation1",x,"Endpoints must have a POST method",[_result_0])
 }

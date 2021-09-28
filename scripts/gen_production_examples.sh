@@ -5,8 +5,8 @@ do
   echo $production_dir
 
   # uncomment to work with a single directory
-  re="datagraph"
-  if  [[ $production_dir =~ $re ]]; then
+  #re="best-practices"
+  #if  [[ $production_dir =~ $re ]]; then
 
   # remove jsonld
   for entry in $production_dir/*
@@ -57,5 +57,5 @@ do
   done
 
   ## uncomment to work with a single directory
-  fi
+  #fi
 done

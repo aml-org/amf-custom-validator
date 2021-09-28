@@ -81,47 +81,22 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile4/negative.data.raml#/web-api/end-points/%2Fendpoint2"
+        "@id": "file://./test/data/integration/profile15/negative.data.oas#/web-api/end-points/%2Fusers/get"
       },
-      "resultMessage": "Endpoints must have a POST method",
+      "resultMessage": "Resources should be coarse-grained not fine-grained",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "sourceShapeName": "resource-should-be-coarse-grained",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "existential",
-          "location": {
-            "@type": [
-              "lexical:Location"
-            ],
-            "range": {
-              "@type": [
-                "lexical:Range"
-              ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 16
-              },
-              "start": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 10
-              }
-            },
-            "uri": ""
-          },
-          "resultPath": "apiContract.supportedOperation",
+          "resultPath": "apiContract.returns",
           "traceValue": {
-            "actual": 1,
+            "actual": 2,
             "expected": 0,
             "negated": false,
             "subResult": [
@@ -130,46 +105,68 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://test/data/integration/profile4/negative.data.raml#/web-api/end-points/%2Fendpoint2/get"
+                  "@id": "file://./test/data/integration/profile15/negative.data.oas#/web-api/end-points/%2Fusers/get/201"
                 },
-                "resultMessage": "error in nested nodes under apiContract.supportedOperation",
+                "resultMessage": "error in nested nodes under apiContract.returns",
                 "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
                       "validation:TraceMessage"
                     ],
-                    "component": "in",
-                    "location": {
-                      "@type": [
-                        "lexical:Location"
-                      ],
-                      "range": {
-                        "@type": [
-                          "lexical:Range"
-                        ],
-                        "end": {
-                          "@type": [
-                            "lexical:Position"
-                          ],
-                          "column": 0,
-                          "line": 16
-                        },
-                        "start": {
-                          "@type": [
-                            "lexical:Position"
-                          ],
-                          "column": 2,
-                          "line": 11
-                        }
-                      },
-                      "uri": ""
-                    },
-                    "resultPath": "apiContract.method",
+                    "component": "pattern",
+                    "resultPath": "apiContract.statusCode",
                     "traceValue": {
-                      "actual": "get",
-                      "expected": "[\"put\",\"patch\"]",
+                      "argument": "201",
                       "negated": false
+                    }
+                  }
+                ]
+              },
+              {
+                "@type": [
+                  "shacl:ValidationResult"
+                ],
+                "focusNode": {
+                  "@id": "file://./test/data/integration/profile15/negative.data.oas#/web-api/end-points/%2Fusers/get/200"
+                },
+                "resultMessage": "error in nested nodes under apiContract.returns",
+                "sourceShapeName": "nested",
+                "trace": [
+                  {
+                    "@type": [
+                      "validation:TraceMessage"
+                    ],
+                    "component": "existential",
+                    "resultPath": "apiContract.payload / shapes.schema",
+                    "traceValue": {
+                      "actual": 1,
+                      "expected": 0,
+                      "negated": false,
+                      "subResult": [
+                        {
+                          "@type": [
+                            "shacl:ValidationResult"
+                          ],
+                          "focusNode": {
+                            "@id": "file://./test/data/integration/profile15/negative.data.oas#/web-api/end-points/%2Fusers/get/200/application%2Fjson/array/schema"
+                          },
+                          "resultMessage": "error in nested nodes under apiContract.payload / shapes.schema",
+                          "sourceShapeName": "nested",
+                          "trace": [
+                            {
+                              "@type": [
+                                "validation:TraceMessage"
+                              ],
+                              "component": "rego",
+                              "resultPath": "",
+                              "traceValue": {
+                                "negated": false
+                              }
+                            }
+                          ]
+                        }
+                      ]
                     }
                   }
                 ]
