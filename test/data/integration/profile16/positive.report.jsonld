@@ -1,0 +1,10 @@
+{
+  "@context": {
+    "conforms": {
+      "@id": "http://www.w3.org/ns/shacl#conforms"
+    },
+    "shacl": "http://www.w3.org/ns/shacl#"
+  },
+  "@type": "shacl:ValidationReport",
+  "conforms": true
+}

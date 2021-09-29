@@ -1,0 +1,37 @@
+openapi: "3.0.0"
+info:
+  title: Awesome API
+  version: "1.0"
+servers:
+  - url: https://production.test.com/
+    description: production environment
+
+components:
+  schemas:
+    Customer:
+      description: a customer
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          description: a property
+          type: string
+        name:
+          description: a property
+          type: string
+      required: ["id"]
+
+paths:
+  /users:
+    get:
+      description: op-description-users
+      operationId: users
+      tags:
+        - All users
+      responses:
+        "201":
+          description: teapot
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customers"
