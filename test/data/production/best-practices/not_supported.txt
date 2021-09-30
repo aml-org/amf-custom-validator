@@ -1,0 +1,1 @@
+- resources: use nouns not verbs

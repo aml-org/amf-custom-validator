@@ -1,0 +1,123 @@
+openapi: "3.0.0"
+info:
+  title: Awesome API
+  version: "1.0"
+  description: the awesome API
+servers:
+  - url: https://production.test.com/api/v1
+    description: production environment
+externalDocs:
+  description: "Find more info here",
+  url: "https://example.com"
+
+components:
+  schemas:
+    Customer:
+      description: a customer
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          description: a property
+          type: string
+        name:
+          description: a property
+          type: string
+        streetAddress:
+          description: a property
+          type: string
+        createdAt:
+          description: a property
+          type: string
+          format: date-time
+        nested:
+          type: object
+          description: desc
+          properties:
+            nestedProp:
+              description: desc
+              type: string
+            startDate:
+              description: desc
+              type: string
+              format: date-time
+      required: ["id"]
+
+paths:
+  /users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: the user identifier, as is
+        schema:
+          type: string
+      - name: accept
+        description: desc
+        in: header
+        schema:
+          type: string
+    get:
+      description: op-description
+      operationId: opid
+      tags:
+        - Invoice Items
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Customer"
+
+      responses:
+        "200":
+          description: teapot
+          headers:
+            content-type:
+              description: desc
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+
+  /users-list/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: the user identifier, as is
+        schema:
+          type: string
+        example:
+          id: 34
+      - name: accept
+        description: desc
+        in: header
+        schema:
+          type: string
+        example:
+          name: a
+    get:
+      description: op-description
+      operationId: opid
+      tags:
+        - Invoice Items
+      responses:
+        "200":
+          description: teapot
+          headers:
+            content-type:
+              description: desc
+              schema:
+                type: string
+              example:
+                teapot
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+              examples:
+                a:
+                  value:
+                    id: z
