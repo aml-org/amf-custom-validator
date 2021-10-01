@@ -1,0 +1,16 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+  validation1:
+    targetClass: ex.Test
+    propertyConstraints:
+      ex.property:
+        maxInclusive: 1
+
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#
+

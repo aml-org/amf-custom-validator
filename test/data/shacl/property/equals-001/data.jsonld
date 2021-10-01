@@ -1,0 +1,85 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/equals-001.test#InvalidResource1",
+    "@type": "http://datashapes.org/sh/tests/core/property/equals-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/equals-001.test#property1": [
+      {
+        "@value": "A"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/equals-001.test#property2": [
+      {
+        "@value": "B"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/equals-001.test#InvalidResource2",
+    "@type": "http://datashapes.org/sh/tests/core/property/equals-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/equals-001.test#property1": [
+      {
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/equals-001.test#InvalidResource3",
+    "@type": "http://datashapes.org/sh/tests/core/property/equals-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/equals-001.test#property2": [
+      {
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/equals-001.test#InvalidResource4",
+    "@type": "http://datashapes.org/sh/tests/core/property/equals-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/equals-001.test#property1": [
+      {
+        "@value": "A"
+      },
+      {
+        "@value": "B"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/equals-001.test#property2": [
+      {
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/equals-001.test#ValidResource1",
+    "@type": "http://datashapes.org/sh/tests/core/property/equals-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/equals-001.test#property1": [
+      {
+        "@value": "A"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/equals-001.test#property2": [
+      {
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/equals-001.test#ValidResource2",
+    "@type": "http://datashapes.org/sh/tests/core/property/equals-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/equals-001.test#property1": [
+      {
+        "@value": "A"
+      },
+      {
+        "@value": "B"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/equals-001.test#property2": [
+      {
+        "@value": "A"
+      },
+      {
+        "@value": "B"
+      }
+    ]
+  }
+]

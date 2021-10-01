@@ -1,0 +1,38 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#InvalidResource1",
+    "@type": "http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#property": [
+      {
+        "@value": 2
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#InvalidResource2",
+    "@type": "http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#property": [
+      {
+        "@value": "a"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#ValidResource1",
+    "@type": "http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#property": [
+      {
+        "@value": 0
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#ValidResource2",
+    "@type": "http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/maxInclusive-001.test#property": [
+      {
+        "@value": 1
+      }
+    ]
+  }
+]

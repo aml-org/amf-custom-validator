@@ -1,0 +1,29 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/minCount-001.test#InvalidPerson",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Invalid person"
+      }
+    ],
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/minCount-001.test#Person"
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/minCount-001.test#ValidResource",
+    "http://datashapes.org/sh/tests/core/property/minCount-001.test#firstName": [
+      {
+        "@value": "John"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Valid resource"
+      }
+    ],
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/minCount-001.test#Person"
+    ]
+  }
+]

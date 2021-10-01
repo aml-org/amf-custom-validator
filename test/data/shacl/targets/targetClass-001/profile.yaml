@@ -1,0 +1,18 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: ex.MyClass
+    propertyConstraints:
+      ex.myProperty:
+        maxCount: 1
+
+
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/targets/targetClass-001.test#
+

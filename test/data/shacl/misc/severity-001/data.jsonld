@@ -1,0 +1,9 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/misc/severity-001.test#HelloNode",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/misc/severity-001.test#Hello"
+    ],
+    "http://datashapes.org/sh/tests/core/misc/severity-001.test#hello": "hello string, not integer"
+  }
+]

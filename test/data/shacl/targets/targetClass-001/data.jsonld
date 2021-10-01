@@ -1,0 +1,34 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/targets/targetClass-001.test#InvalidInstance1",
+    "http://datashapes.org/sh/tests/core/targets/targetClass-001.test#myProperty": [
+      {
+        "@value": "A"
+      },
+      {
+        "@value": "B"
+      }
+    ],
+    "@type": "http://datashapes.org/sh/tests/core/targets/targetClass-001.test#MyClass"
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/targets/targetClass-001.test#ValidInstance1",
+    "http://datashapes.org/sh/tests/core/targets/targetClass-001.test#myProperty": [
+      {
+        "@value": "A"
+      }
+    ],
+    "@type": "http://datashapes.org/sh/tests/core/targets/targetClass-001.test#MyClass"
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/targets/targetClass-001.test#ValidInstance2",
+    "http://datashapes.org/sh/tests/core/targets/targetClass-001.test#myProperty": [
+      {
+        "@value": "A"
+      },
+      {
+        "@value": "B"
+      }
+    ]
+  }
+]

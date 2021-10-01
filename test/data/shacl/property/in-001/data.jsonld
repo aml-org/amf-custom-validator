@@ -1,0 +1,56 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/in-001.test#InvalidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/in-001.test#ShapeClass"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Invalid instance1"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/in-001.test#property": [
+      {
+        "@value": "D"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/in-001.test#ValidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/in-001.test#ShapeClass"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Valid instance1"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/in-001.test#property": [
+      {
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/in-001.test#ValidInstance2",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/in-001.test#ShapeClass"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Valid instance2"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/in-001.test#property": [
+      {
+        "@value": "A"
+      },
+      {
+        "@value": "B"
+      },
+      {
+        "@value": "C"
+      }
+    ]
+  }
+]

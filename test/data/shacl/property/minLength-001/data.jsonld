@@ -1,0 +1,33 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/minLength-001.test#InvalidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/minLength-001.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/minLength-001.test#testProperty": [
+      {
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/minLength-001.test#ValidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/minLength-001.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/minLength-001.test#testProperty": [
+      {
+        "@value": "AB"
+      },
+      {
+        "@value": "ABC"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/minLength-001.test#ValidInstance2",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/minLength-001.test#TestShape"
+    ]
+  }
+]

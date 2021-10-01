@@ -1,0 +1,22 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/lessThan-002.test#InvalidInstance1",
+    "@type": "http://datashapes.org/sh/tests/core/property/lessThan-002.test#Test",
+    "http://datashapes.org/sh/tests/core/property/lessThan-002.test#first": [
+      {
+        "@value": 2
+      },
+      {
+        "@value": 1
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/lessThan-002.test#second": [
+      {
+        "@value": "a"
+      },
+      {
+        "@value": "b"
+      }
+    ]
+  }
+]

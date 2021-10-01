@@ -1,0 +1,18 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: ex.Test
+    propertyConstraints:
+      ex.property1:
+        disjointWithProperty: ex.property2
+
+
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/property/disjoint-001.test#
+

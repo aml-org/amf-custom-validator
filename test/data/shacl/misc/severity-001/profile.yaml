@@ -1,0 +1,16 @@
+#%Validation Profile 1.0
+profile: test
+
+
+warning:
+  - validation1
+
+validations:
+  validation1:
+    targetClass: ex.Hello
+    propertyConstraints:
+      ex.hello:
+        datatype: xsd.integer
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/misc/severity-001.test#
+

@@ -1,0 +1,35 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/minExclusive-001.test#InvalidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/minExclusive-001.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/minExclusive-001.test#testProperty": [
+      {
+        "@value": 40
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/minExclusive-001.test#InvalidInstance2",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/minExclusive-001.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/minExclusive-001.test#testProperty": [
+      {
+        "@value": 39
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/minExclusive-001.test#ValidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/minExclusive-001.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/minExclusive-001.test#testProperty": [
+      {
+        "@value": 42
+      }
+    ]
+  }
+]

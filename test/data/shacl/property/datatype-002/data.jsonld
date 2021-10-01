@@ -1,0 +1,39 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/datatype-002.test#InvalidInstance1",
+    "@type": ["http://datashapes.org/sh/tests/core/property/datatype-002.test#Test"],
+    "http://datashapes.org/sh/tests/core/property/datatype-002.test#value": [
+      {
+        "@language": "en",
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/datatype-002.test#InvalidInstance2",
+    "@type": ["http://datashapes.org/sh/tests/core/property/datatype-002.test#Test"],
+    "http://datashapes.org/sh/tests/core/property/datatype-002.test#value": [
+      {
+        "@value": 42
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/datatype-002.test#ValidInstance1",
+    "@type": ["http://datashapes.org/sh/tests/core/property/datatype-002.test#Test"],
+    "http://datashapes.org/sh/tests/core/property/datatype-002.test#value": [
+      {
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/datatype-002.test#ValidInstance2",
+    "@type": ["http://datashapes.org/sh/tests/core/property/datatype-002.test#Test"],
+    "http://datashapes.org/sh/tests/core/property/datatype-002.test#value": [
+      {
+        "@value": "A"
+      }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: ex.Test
+    propertyConstraints:
+      ex.first:
+        lessThanProperty: ex.second
+
+
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/property/lessThan-002.test#
+

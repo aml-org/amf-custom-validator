@@ -1,0 +1,23 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: ex.RectangleWithArea
+    or:
+      - propertyConstraints:
+          ex.height:
+            minCount: 1
+          ex.width:
+            minCount: 1
+      - propertyConstraints:
+          ex.area:
+            minCount: 1
+
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/node/or-001.test#
+

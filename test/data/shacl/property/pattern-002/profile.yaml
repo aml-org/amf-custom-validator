@@ -1,0 +1,20 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: ex.TestShape
+    propertyConstraints:
+      ex.property:
+        datatype: xsd.string
+        pattern: joh
+        flags: i
+
+
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/property/pattern-002.test#
+
