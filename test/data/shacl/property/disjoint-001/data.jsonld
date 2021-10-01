@@ -1,0 +1,63 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/disjoint-001.test#InvalidResource1",
+    "http://datashapes.org/sh/tests/core/property/disjoint-001.test#property1": [
+      {
+        "@value": "A"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/disjoint-001.test#property2": [
+      {
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/disjoint-001.test#InvalidResource2",
+    "http://datashapes.org/sh/tests/core/property/disjoint-001.test#property1": [
+      {
+        "@value": "A"
+      },
+      {
+        "@value": "B"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/disjoint-001.test#property2": [
+      {
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/disjoint-001.test#ValidResource1",
+    "http://datashapes.org/sh/tests/core/property/disjoint-001.test#property1": [
+      {
+        "@value": "A"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/disjoint-001.test#property2": [
+      {
+        "@value": "B"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/disjoint-001.test#ValidResource2",
+    "http://datashapes.org/sh/tests/core/property/disjoint-001.test#property1": [
+      {
+        "@value": "A"
+      },
+      {
+        "@value": "B"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/disjoint-001.test#property2": [
+      {
+        "@value": "D"
+      },
+      {
+        "@value": "C"
+      }
+    ]
+  }
+]

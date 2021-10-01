@@ -1,0 +1,24 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/minExclusive-002.test#InvalidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/minExclusive-002.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/minExclusive-002.test#testProperty": [
+      {
+        "@value": "A string"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/minExclusive-002.test#InvalidInstance2",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/minExclusive-002.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/minExclusive-002.test#testProperty": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  }
+]

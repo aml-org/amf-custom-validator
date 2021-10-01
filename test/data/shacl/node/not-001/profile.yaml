@@ -1,0 +1,19 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: ex.Test
+    not:
+      propertyConstraints:
+        ex.property:
+          minCount: 1
+
+
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/node/not-001#
+

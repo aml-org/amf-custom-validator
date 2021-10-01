@@ -1,0 +1,45 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/datatype-001.test#InvalidResource1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/datatype-001.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/datatype-001.test#dateProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2011-01-01"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/datatype-001.test#integerProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "11.1"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/datatype-001.test#ValidResource",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/datatype-001.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/datatype-001.test#dateProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2014-09-01"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/datatype-001.test#integerProperty": [
+      {
+        "@value": 1234
+      },
+      {
+        "@value": 0
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Valid resource"
+      }
+    ]
+  }
+]

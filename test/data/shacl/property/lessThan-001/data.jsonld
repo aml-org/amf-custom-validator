@@ -1,0 +1,75 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/lessThan-001.test#InvalidResource1",
+    "@type": "http://datashapes.org/sh/tests/core/property/lessThan-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/lessThan-001.test#property1": [
+      {
+        "@value": 4
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/lessThan-001.test#property2": [
+      {
+        "@value": 4
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/lessThan-001.test#InvalidResource2",
+    "@type": "http://datashapes.org/sh/tests/core/property/lessThan-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/lessThan-001.test#property1": [
+      {
+        "@value": 6
+      },
+      {
+        "@value": 4
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/lessThan-001.test#property2": [
+      {
+        "@value": 5
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/lessThan-001.test#InvalidResource3",
+    "@type": "http://datashapes.org/sh/tests/core/property/lessThan-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/lessThan-001.test#property1": [
+      {
+        "@value": 5
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/lessThan-001.test#property2": [
+      {
+        "@value": 4
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/lessThan-001.test#ValidResource1",
+    "@type": "http://datashapes.org/sh/tests/core/property/lessThan-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/lessThan-001.test#property1": [
+      {
+        "@value": 4
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/lessThan-001.test#property2": [
+      {
+        "@value": 6
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/lessThan-001.test#ValidResource2",
+    "@type": "http://datashapes.org/sh/tests/core/property/lessThan-001.test#Test",
+    "http://datashapes.org/sh/tests/core/property/lessThan-001.test#property1": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "3.1"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "3.2"
+      }
+    ]
+  }
+]

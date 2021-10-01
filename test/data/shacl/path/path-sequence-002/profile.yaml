@@ -1,0 +1,18 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: ex.Test
+    propertyConstraints:
+      ex.property1 / ex.property2 / ex.property3:
+        minCount: 1
+
+
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/path/path-sequence-002.test#
+

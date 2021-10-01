@@ -1,0 +1,27 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/node/and-002.test#InvalidInstance2",
+    "@type": "http://datashapes.org/sh/tests/core/node/and-002.test#Test",
+    "http://datashapes.org/sh/tests/core/node/and-002.test#property": [
+      {
+        "@value": "One"
+      },
+      {
+        "@value": "Two"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/node/and-002.test#ValidInstance1",
+    "@type": "http://datashapes.org/sh/tests/core/node/and-002.test#Test",
+    "http://datashapes.org/sh/tests/core/node/and-002.test#property": [
+      {
+        "@value": "One"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/node/and-002.test#InvalidInstance1",
+    "@type": "http://datashapes.org/sh/tests/core/node/and-002.test#Test"
+  }
+]

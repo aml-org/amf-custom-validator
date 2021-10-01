@@ -1,0 +1,65 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#InvalidResource1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#Test"
+    ],
+    "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#property1": [
+      {
+        "@id": "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#Node3"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#property2": [
+      {
+        "@id": "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#Node4"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#InvalidResource2",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#Test"
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#Node1",
+    "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#property2": [
+      {
+        "@value": "One"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#Node2",
+    "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#property2": [
+      {
+        "@value": "Two"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#ValidResource1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#Test"
+    ],
+    "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#property1": [
+      {
+        "@id": "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#Node1"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#ValidResource2",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#Test"
+    ],
+    "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#property1": [
+      {
+        "@id": "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#Node2"
+      },
+      {
+        "@id": "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#Node1"
+      }
+    ]
+  }
+]

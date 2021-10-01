@@ -1,0 +1,50 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/node/xone-001.test#Bob",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/node/xone-001.test#Person"
+    ],
+    "http://datashapes.org/sh/tests/core/node/xone-001.test#firstName": [
+      {
+        "@value": "Robert"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/node/xone-001.test#lastName": [
+      {
+        "@value": "Coin"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/node/xone-001.test#Carla",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/node/xone-001.test#Person"
+    ],
+    "http://datashapes.org/sh/tests/core/node/xone-001.test#fullName": [
+      {
+        "@value": "Carla Miller"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/node/xone-001.test#Dory",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/node/xone-001.test#Person"
+    ],
+    "http://datashapes.org/sh/tests/core/node/xone-001.test#firstName": [
+      {
+        "@value": "Dory"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/node/xone-001.test#fullName": [
+      {
+        "@value": "Dory Dunce"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/node/xone-001.test#lastName": [
+      {
+        "@value": "Dunce"
+      }
+    ]
+  }
+]

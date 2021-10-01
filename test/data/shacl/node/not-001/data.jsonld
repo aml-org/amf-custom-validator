@@ -1,0 +1,21 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/node/not-001#InvalidResource1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/node/not-001#Test",
+      "http://www.w3.org/2000/01/rdf-schema#Resource"
+    ],
+    "http://datashapes.org/sh/tests/core/node/not-001#property": [
+      {
+        "@value": "some value"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/node/not-001#ValidResource1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/node/not-001#Test",
+      "http://www.w3.org/2000/01/rdf-schema#Resource"
+    ]
+  }
+]

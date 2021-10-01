@@ -1,0 +1,29 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/maxCount-002.test#InvalidResource",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Resource"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Invalid resource"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#versionInfo": [
+      {
+        "@value": "1.0"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/maxCount-002.test#ValidResource",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Resource"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Valid resource"
+      }
+    ]
+  }
+]
