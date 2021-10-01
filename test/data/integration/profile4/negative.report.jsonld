@@ -93,7 +93,7 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "nested",
+          "component": "existential",
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
             "actual": 1,

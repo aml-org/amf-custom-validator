@@ -1,0 +1,40 @@
+#%Validation Profile 1.0
+
+profile: Anypoint Best Practices
+
+violation:
+  - resource-should-be-coarse-grained
+
+
+validations:
+
+  resource-should-be-coarse-grained:
+    message: Resources should be coarse-grained not fine-grained
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apicContract.method:
+        pattern: get
+      apiContract.returns:
+        atLeast:
+          count: 1
+          validation:
+            or:
+              - propertyConstraints:
+                  apiContract.statusCode:
+                    pattern: "200"
+              - propertyConstraints:
+                  apiContract.payload / shapes.schema:
+                    atLeast:
+                      count: 1
+                      validation:
+                        and:
+                          - rego: |
+                              types := [ type |
+                                t = $node["@type"][_]
+                                t == "shacl:NodeShape"
+                                type = t
+                              ]
+                              $result = count(types) == 1
+                          - propertyConstraints:
+                              shacl.name:
+                                minCount: 1

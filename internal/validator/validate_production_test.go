@@ -15,7 +15,6 @@ func TestProduction(t *testing.T) {
 			filter := "" // put the number of the text to filter here
 			if strings.Index(example.File, filter) > -1 {
 				report, err := Validate(profile, example.Text, debug, nil)
-
 				if err != nil {
 					t.Errorf("Validation failed %v", err)
 				}
@@ -23,7 +22,7 @@ func TestProduction(t *testing.T) {
 					t.Errorf(fmt.Sprintf("%s, %s expected conforms: %t got conforms %t\n\n%s\n", string(fixture), example.File, example.Positive, conforms(report), report))
 				}
 
-				// test.ForceWrite(example.Reportfile(), report)
+				//test.ForceWrite(example.Reportfile(), report)
 				expected := example.ReadReport()
 				actual := report
 				if expected != actual {

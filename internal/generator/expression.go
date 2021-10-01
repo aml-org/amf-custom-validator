@@ -23,7 +23,11 @@ func GenerateNestedExpression(exp profile.Rule) []GeneratedRegoResult {
 	case profile.TopLevelExpression:
 		panic(errors.New("nested expressions not supported yet"))
 	case profile.NestedExpression:
-		return generateNested(e)
+		if e.Child.Quantification == profile.ForAll {
+			return generateNestedForAll(e)
+		} else {
+			return generateNestedExistential(e)
+		}
 	default:
 		panic(errors.New(fmt.Sprintf("expected expression or top-level expression, got %v", exp)))
 	}
@@ -38,7 +42,7 @@ func generateTopLevel(exp profile.TopLevelExpression) string {
 	return wrapTopLevelRegoResult(exp, results)
 }
 
-func generateNested(exp profile.NestedExpression) []GeneratedRegoResult {
+func generateNestedForAll(exp profile.NestedExpression) []GeneratedRegoResult {
 	v := exp.Value
 	sharedGeneratorRego := GenerateNested(exp)
 	results := Dispatch(v)
@@ -48,9 +52,113 @@ func generateNested(exp profile.NestedExpression) []GeneratedRegoResult {
 		switch r := rego.(type) {
 		case BranchRegoResult:
 			acc = append(acc, wrapNestedRegoResult(exp, sharedGeneratorRego, r))
+		case SimpleRegoResult:
+			wrappedBranch := BranchRegoResult{Branch: []SimpleRegoResult{r}}
+			acc = append(acc, wrapNestedRegoResult(exp, sharedGeneratorRego, wrappedBranch))
 		}
 	}
 	return acc
+}
+
+func generateNestedExistential(exp profile.NestedExpression) []GeneratedRegoResult {
+	v := exp.Value
+
+	var rego[] string
+
+	// we extract the same node for all the checks in the related branches
+	sharedGeneratorRego := GenerateNested(exp)
+	rego = append(rego, sharedGeneratorRego.Rego...)
+	var variable = sharedGeneratorRego.Variable
+
+	// accumulate path rules
+	var pathRules []RegoPathResult
+	for _, pr := range sharedGeneratorRego.PathRules {
+		pathRules = append(pathRules, pr)
+	}
+
+	results := Dispatch(v)
+	var branchErrors []string
+	var errorAcc = fmt.Sprintf("%s_errorAcc", exp.Child.Name)
+	rego = append(rego, fmt.Sprintf("%s0 = []",errorAcc))
+	for i,b := range results {
+		switch r := b.(type) {
+		case BranchRegoResult:
+			rego = append(rego, wrapExistentialNestedRegoResult(variable, i, errorAcc, exp.Child.Name, sharedGeneratorRego, r, &branchErrors)...)
+			// accumulate paths
+			for _, r := range r.Branch {
+				for _, pr := range r.PathRules {
+					pathRules = append(pathRules, pr)
+				}
+			}
+		case SimpleRegoResult:
+			var wrappedBranch = BranchRegoResult{Branch: []SimpleRegoResult{r}}
+			rego = append(rego, wrapExistentialNestedRegoResult(variable, i, errorAcc, exp.Child.Name, sharedGeneratorRego, wrappedBranch, &branchErrors)...)
+			// accumulate paths
+			for _, pr := range r.PathRules {
+				pathRules = append(pathRules, pr)
+			}
+		}
+	}
+	rego = append(rego, fmt.Sprintf("%s = %s%d", errorAcc, errorAcc, len(results)))
+
+
+	rego = append(rego, "# let's accumulate results")
+	errorNodeVariable := fmt.Sprintf("%s_error_node_variables_agg", variable)
+	aggVar := strings.Join(branchErrors, " | ") // TODO: change this for AND/OR  cases?
+	rego = append(rego, fmt.Sprintf("%s = %s", errorNodeVariable, aggVar))
+
+	// quantified nested, we need to check for a particular number of failed nodes
+	if exp.Negated {
+		rego = append(rego, fmt.Sprintf("count(%s) - count(%s) %s", variable, errorNodeVariable, exp.Child.Cardinality.String()))
+	} else {
+		rego = append(rego, fmt.Sprintf("not count(%s) - count(%s) %s", variable, errorNodeVariable, exp.Child.Cardinality.String()))
+	}
+
+	// build result
+	return []GeneratedRegoResult{
+		BranchRegoResult{
+			Constraint: "existential",
+			Branch: []SimpleRegoResult{
+				{
+					Constraint: "existential",
+					Rego:       rego,
+					PathRules:  pathRules,
+					Path:       sharedGeneratorRego.Path,
+					TraceNode:  exp.Parent.Name,
+					TraceValue: fmt.Sprintf("{\"negated\":%t, \"expected\":0, \"actual\":count(%s), \"subResult\": %s}", exp.Negated, errorNodeVariable, errorAcc),
+					Variable:   fmt.Sprintf("%s", errorNodeVariable),
+				},
+			},
+		},
+	}
+}
+
+func wrapExistentialNestedRegoResult(variable string, i int, errorAcc string, nodeVariable string, sharedGeneratorRego SimpleRegoResult, branchRego BranchRegoResult, branchErrors *[]string) []string {
+	branchResultVariable := fmt.Sprintf("%s_br_%d",variable, i)
+	branchResultError := fmt.Sprintf("%s_br_%d_errors", variable, i)
+	*branchErrors = append(*branchErrors, branchResultError)
+
+	var rego []string
+	errorVariable := fmt.Sprintf("%s_error", branchResultVariable) // all failing errors for each nested node will be collected here
+	// this is an intermediate variable collecting tuples [inner_node, error] so we can catch the case where the inner
+	// constraint validates multiple value of a property inside a single nested node
+	innerErrorVariable := fmt.Sprintf("%s_inner_error", branchResultVariable)
+	// let's create a comprehension for the conditions over the nested nodes
+	rego = append(rego, fmt.Sprintf("%s = [ %s|", branchResultVariable, errorVariable)) // report errors using this variable
+	rego = append(rego, fmt.Sprintf("  %s = %s[_]", nodeVariable, sharedGeneratorRego.Variable))    // the underlying rules expect the quantified variable that was passed on profile parsing
+	// note we are passing innerErrorVariable here
+	for _, l := range wrapBranch("nested", fmt.Sprintf("error in nested nodes under %s", sharedGeneratorRego.Path), branchRego, innerErrorVariable, nodeVariable) {
+		rego = append(rego, l)
+	}
+	rego = append(rego, fmt.Sprintf("  %s = [%s[\"@id\"],%s]", errorVariable, nodeVariable, innerErrorVariable))
+	rego = append(rego, "]")
+
+	// let's now split the collected tuples into set of failing nodes for cardinality checks
+	rego = append(rego, fmt.Sprintf("%s = { nodeId | n = %s[_]; nodeId = n[0] }", branchResultError, branchResultVariable))
+	rego = append(rego, fmt.Sprintf("%s_errors = [ node | n = %s[_]; node = n[1] ]", branchResultError, branchResultVariable))
+	rego = append(rego, fmt.Sprintf("%s%d = array.concat(%s%d,%s_errors)",errorAcc, i+1, errorAcc, i, branchResultError))
+
+	return rego
 }
 
 func wrapNestedRegoResult(exp profile.NestedExpression, sharedGeneratorRego SimpleRegoResult, branchRego BranchRegoResult) BranchRegoResult {
@@ -80,21 +188,14 @@ func wrapNestedRegoResult(exp profile.NestedExpression, sharedGeneratorRego Simp
 	// let's now split the collected tuples into set of failing nodes for cardinality checks
 	rego = append(rego, fmt.Sprintf("%s = { nodeId | n = %s[_]; nodeId = n[0] }", errorNodeVariable, errorTuples))
 	// Now Let's check if there was an error counting the failed nodes
-	if exp.Child.Cardinality != nil {
-		// quantified nested, we need to check for a particular number of failed nodes
-		if exp.Negated {
-			rego = append(rego, fmt.Sprintf("count(%s) - count(%s) %s", variable, errorNodeVariable, exp.Child.Cardinality.String()))
-		} else {
-			rego = append(rego, fmt.Sprintf("not count(%s) - count(%s) %s", variable, errorNodeVariable, exp.Child.Cardinality.String()))
-		}
+
+	// regular nested we just look for one error
+	if exp.Negated {
+		rego = append(rego, fmt.Sprintf("count(%s) == 0", errorNodeVariable))
 	} else {
-		// regular nested we just loo for one error
-		if exp.Negated {
-			rego = append(rego, fmt.Sprintf("count(%s) == 0", errorNodeVariable))
-		} else {
-			rego = append(rego, fmt.Sprintf("count(%s) > 0", errorNodeVariable))
-		}
+		rego = append(rego, fmt.Sprintf("count(%s) > 0", errorNodeVariable))
 	}
+
 
 	// accumulate path rules
 	var pathRules []RegoPathResult

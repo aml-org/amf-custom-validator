@@ -1,0 +1,375 @@
+#%Validation Profile 1.0
+
+profile: Anypoint Best Practices
+
+violation:
+  - resource-use-lowercase
+  - media-type-headers-response
+  - base-url-pattern-server
+  - camel-case-fields
+  - date-time-representation
+  - use-schemas-responses
+  - use-schemas-requests
+  - provide-examples
+  - api-must-have-title
+  - api-must-have-description
+  - api-must-have-documentation
+  - operations-must-have-identifiers
+  - operations-must-have-descriptions
+  - responses-must-have-descriptions
+  - headers-must-have-descriptions
+  - query-params-must-have-descriptions
+  - property-shape-ranges-must-have-descriptions
+  - payload-shapes-must-have-descriptions
+  - preferred-media-type-representations
+  - standard-get-status-codes
+  - standard-post-status-codes
+  - standard-put-status-codes
+  - standard-delete-status-codes
+
+validations:
+
+  resource-use-lowercase:
+    message: |
+      Naming conventions for resources:
+      - Use lower case (example: /accounts)
+      - For resources with more than 2 words
+          - use lowercase for both words (example: /lineitems) or
+          - use kebab-case (aka spinal-case) (example: /line-items)
+    targetClass: apiContract.EndPoint
+    propertyConstraints:
+      apiContract.path:
+        pattern: "^[a-z\\\\/\\\\{\\\\}-]+$"
+
+  media-type-headers-response:
+    message: |
+      - For the response: use ‘content-type’ header
+    targetClass: apiContract.Response
+    propertyConstraints:
+      apiContract.header:
+        atLeast:
+          count: 1
+          validation:
+            propertyConstraints:
+              core.name:
+                in:
+                  - content-type
+
+  base-url-pattern-server:
+    message: Include the “api” word and the version of the API in the base Url (e.g. domain/api/v1)
+    targetClass: apiContract.Server
+    or:
+      - propertyConstraints:
+          core.urlTemplate:
+            pattern: "/api/v[0-9]+"
+      - propertyConstraints:
+          core.urlTemplate:
+            pattern: "/api/[0-9].[0.9]"
+
+  camel-case-fields:
+    message: Use camelCase for all the names (fields), preferably don’t use underscores.
+    targetClass: shacl.PropertyShape
+    propertyConstraints:
+      shacl.name:
+        pattern: "^[a-z]+([A-Z][a-z]+)*$"
+
+  date-time-representation:
+    message: |
+      Use standard date formats: ISO8601
+      Use UTC
+        2016-10-27T13:42:21+00:00    (+00:00 is the time zones hour offset)
+        2016-10-27T13:42:21Z     (Z is place holder for local time zone)
+    targetClass: shapes.ScalarShape
+    if:
+      or:
+        - propertyConstraints:
+            shacl.name:
+              pattern: "createdAt"
+        - propertyConstraints:
+            shacl.name:
+              pattern: "updatedAt"
+        - propertyConstraints:
+            shacl.name:
+              pattern: "^.*[dD]ate.*$"
+    then:
+      propertyConstraints:
+        shacl.datatype:
+          minCount: 1
+          in:
+            - xsd:dateTime
+
+  use-schemas-responses:
+    message: |
+      Use schemas or data types in the specification to determine the format of the responses.
+    targetClass: apiContract.Response
+    propertyConstraints:
+      apiContract.payload / shapes.schema:
+        minCount: 1
+
+  use-schemas-requests:
+    message: |
+      Use schemas or data types in the specification to determine the format of the requests.
+    targetClass: apiContract.Request
+    propertyConstraints:
+      apiContract.payload:
+        nested:
+          propertyConstraints:
+            shapes.schema:
+              minCount: 1
+
+  provide-examples:
+    message: Always include examples in requests and responses
+    targetClass: apiContract.Payload
+    or:
+      - propertyConstraints:
+          apiContract.examples:
+            minCount: 1
+      - propertyConstraints:
+          shapes.schema / apiContract.examples:
+            minCount: 1
+
+  api-must-have-title:
+    message: Provide the title for the API
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.name:
+        minCount: 1
+
+  api-must-have-description:
+    message: Provide the description for the API
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  api-must-have-documentation:
+    message: Provide the documentation for the API
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.documentation:
+        minCount: 1
+
+  operations-must-have-identifiers:
+    message: Provide identifiers for the operations
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      core.name:
+        minCount: 1
+
+  operations-must-have-descriptions:
+    message: Provide descriptions for the operations
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  responses-must-have-descriptions:
+    message: Provide descriptions for the responses
+    targetClass: apiContract.Response
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  headers-must-have-descriptions:
+    message: Provide descriptions for request headers
+    targetClass: apiContract.Parameter
+    if:
+      propertyConstraints:
+        apiContract.binding:
+          pattern: header
+    then:
+      propertyConstraints:
+        core.description:
+          minCount: 1
+
+  query-params-must-have-descriptions:
+    message: Provide descriptions for query params
+    targetClass: apiContract.Parameter
+    if:
+      propertyConstraints:
+        apiContract.binding:
+          pattern: query
+    then:
+      propertyConstraints:
+        core.description:
+          minCount: 1
+
+  property-shape-ranges-must-have-descriptions:
+    message: Provide descriptions for data shapes
+    targetClass: shapes.PropertyShape
+    propertyConstraints:
+      shapes.range / (doc.link-target / core.description) | core.description:
+        minCount: 1
+
+  payload-shapes-must-have-descriptions:
+    message: Provide description for data shapes
+    targetClass: shacl.NodeShape
+    propertyConstraints:
+      core.description | (doc.link-target / core.description):
+        minCount: 1
+
+  preferred-media-type-representations:
+    message: |
+      If there is no standard media type and format, try to use as much as possible extensible formats such as JSON
+      (application/json) and XML (application/xml), preferably JSON.
+    targetClass: apiContract.Payload
+    propertyConstraints:
+      core.mediaType:
+        in:
+          - application/json
+          - application/xml
+
+  standard-get-status-codes:
+    message: |
+      These response codes [200,204,304,400,401,403,404,405,406,408,410,412,415,429,500,502,503,504,509,510,511,550,598,
+      599]should be used as standard for GET operations, the use of not defined return codes is discouraged and should
+      only be done in exceptional circumstances.
+    targetClass: apiContract.Operation
+    if:
+      propertyConstraints:
+        apiContract.method:
+          pattern: get
+    then:
+      propertyConstraints:
+        apiContract.returns / apiContract.statusCode:
+          in:
+            - 200
+            - 204
+            - 304
+            - 400
+            - 401
+            - 403
+            - 404
+            - 405
+            - 406
+            - 408
+            - 410
+            - 412
+            - 415
+            - 429
+            - 500
+            - 502
+            - 503
+            - 504
+            - 509
+            - 510
+            - 511
+            - 550
+            - 598
+            - 599
+
+  standard-post-status-codes:
+    message: |
+      These response codes [201,202,400,401,403,404,405,406,408,409,410,415,429,500,502,503,504,509,510,511,550,598,599]
+      should be used as standard for POST operations, the use of not defined return codes is discouraged and should
+      only be done in exceptional circumstances.
+    targetClass: apiContract.Operation
+    if:
+      propertyConstraints:
+        apiContract.method:
+          pattern: post
+    then:
+      propertyConstraints:
+        apiContract.returns / apiContract.statusCode:
+          in:
+            - 201
+            - 202
+            - 400
+            - 401
+            - 403
+            - 404
+            - 405
+            - 406
+            - 408
+            - 409
+            - 410
+            - 415
+            - 429
+            - 500
+            - 502
+            - 503
+            - 504
+            - 509
+            - 510
+            - 511
+            - 550
+            - 598
+            - 599
+
+  standard-put-status-codes:
+    message: |
+      These response codes [200,202,204,400,401,403,404,405,406,408,409,410,412,415,429,500,502,503,504,509,510,511,550,
+      598,599] should be used as standard for PUT operations, the use of not defined return codes is discouraged and
+      should only be done in exceptional circumstances.
+    targetClass: apiContract.Operation
+    if:
+      propertyConstraints:
+        apiContract.method:
+          pattern: put
+    then:
+      propertyConstraints:
+        apiContract.returns / apiContract.statusCode:
+          in:
+            - 200
+            - 202
+            - 204
+            - 400
+            - 401
+            - 403
+            - 404
+            - 405
+            - 406
+            - 408
+            - 409
+            - 410
+            - 412
+            - 415
+            - 429
+            - 500
+            - 502
+            - 503
+            - 504
+            - 509
+            - 510
+            - 511
+            - 550
+            - 598
+            - 599
+
+  standard-delete-status-codes:
+    message: |
+      These response codes [200,202,204,400,401,403,404,405,406,408,409,410,429,500,502,503,504,509,510,511,550,598,599]
+      should be used as standard for DELETE operations, the use of not defined return codes is discouraged and should
+      only be done in exceptional circumstances.
+    targetClass: apiContract.Operation
+    if:
+      propertyConstraints:
+        apiContract.method:
+          pattern: delete
+    then:
+      propertyConstraints:
+        apiContract.returns / apiContract.statusCode:
+          in:
+            - 200
+            - 202
+            - 204
+            - 400
+            - 401
+            - 403
+            - 404
+            - 405
+            - 406
+            - 408
+            - 409
+            - 410
+            - 429
+            - 500
+            - 502
+            - 503
+            - 504
+            - 509
+            - 510
+            - 511
+            - 550
+            - 598
+            - 599

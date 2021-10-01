@@ -93,7 +93,7 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "nested",
+          "component": "existential",
           "location": {
             "@type": [
               "lexical:Location"
@@ -232,7 +232,7 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "nested",
+          "component": "existential",
           "location": {
             "@type": [
               "lexical:Location"
@@ -371,7 +371,7 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "nested",
+          "component": "existential",
           "location": {
             "@type": [
               "lexical:Location"

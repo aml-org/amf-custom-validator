@@ -106,7 +106,7 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "nested",
+          "component": "existential",
           "resultPath": "security.security / security.schemes / security.scheme",
           "traceValue": {
             "actual": 1,
