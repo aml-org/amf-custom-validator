@@ -2,13 +2,14 @@ package validator
 
 import (
 	"fmt"
+	"github.com/aml-org/amf-custom-validator/internal/config"
 	p "github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"github.com/aml-org/amf-custom-validator/pkg/milestones"
 	"io/ioutil"
 	"strings"
 )
 
-const debug = false
+
 
 func conforms(report string) bool {
 	return strings.Index(report, "\"conforms\": true") > -1
@@ -32,7 +33,7 @@ func validate(profile relativePath, data relativePath) string {
 	p.GenReset()
 	profileText := read(profile)
 	dataText := read(data)
-	report, err := Validate(profileText, dataText, false, nil)
+	report, err := Validate(profileText, dataText, config.Debug, nil)
 	if err != nil {
 		panic(err)
 	}

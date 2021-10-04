@@ -2,11 +2,11 @@ package validator
 
 import (
 	"fmt"
+	"github.com/aml-org/amf-custom-validator/internal/config"
 	"testing"
 )
 
 const shaclTckPath relativePath = "../../test/data/shacl"
-const override = false
 
 func testFn(directory relativePath, t *testing.T) {
 	resolvedDirectory := fmt.Sprintf("%s/%s", shaclTckPath, directory)
@@ -14,7 +14,7 @@ func testFn(directory relativePath, t *testing.T) {
 	data := fmt.Sprintf("%s/data.jsonld", resolvedDirectory)
 	actualText := validate(profile, data)
 	expected := fmt.Sprintf("%s/report.jsonld", resolvedDirectory)
-	if override {
+	if config.Override {
 		write(actualText, expected)
 	} else {
 		if !compare(actualText, expected) {

@@ -1,10 +1,8 @@
 package validator
 
 import (
-	"fmt"
+	"github.com/aml-org/amf-custom-validator/internal/config"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
-	"github.com/aml-org/amf-custom-validator/pkg/events"
-	"github.com/aml-org/amf-custom-validator/pkg/milestones"
 	"github.com/aml-org/amf-custom-validator/test"
 	"strings"
 	"testing"
@@ -15,23 +13,23 @@ func TestIntegrationPositiveData(t *testing.T) {
 	for _, fixture := range test.IntegrationFixtures("../../test/data/integration", &filter) {
 		prof := fixture.ReadProfile()
 		profile.GenReset()
-		eventsChan := make(chan events.Event)
-		milestonesChan := make(chan milestones.Milestone)
-		go milestones.GenerateMilestonesFromEvents(&eventsChan, &milestonesChan)
-		go printMilestones(fixture,"Positive", &milestonesChan)
-		report, err := Validate(prof, fixture.ReadFixturePositiveData(), debug, &eventsChan)
+		report, err := Validate(prof, fixture.ReadFixturePositiveData(), config.Debug, nil)
 
 		if err != nil {
-			t.Errorf("positive validation failed %v", err)
+			t.Errorf("%s > Positive case > Failed with error %v", fixture, err)
 		}
-		if !conforms(report) {
-			t.Errorf("positive case failed")
-		}
-		expected := strings.TrimSpace(fixture.ReadFixturePositiveReport())
 
-		//test.ForceWrite(string(fixture)+"/positive.report.jsonld", strings.TrimSpace(report))
-		if strings.TrimSpace(report) != expected {
-			t.Errorf(fmt.Sprintf("failed positive report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", fixture, expected, report))
+		if !conforms(report) {
+			t.Errorf("%s > Positive case > Should conform", fixture)
+		}
+
+		if config.Override {
+			test.ForceWrite(string(fixture)+"/positive.report.jsonld", strings.TrimSpace(report))
+		} else {
+			expected := strings.TrimSpace(fixture.ReadFixturePositiveReport())
+			if strings.TrimSpace(report) != expected {
+				t.Errorf("%s > Positive case > Actual did not match expected", fixture)
+			}
 		}
 	}
 }
@@ -41,21 +39,21 @@ func TestIntegrationNegativeData(t *testing.T) {
 	for _, fixture := range test.IntegrationFixtures("../../test/data/integration", &filter) {
 		prof := fixture.ReadProfile()
 		profile.GenReset()
-		eventsChan := make(chan events.Event)
-		milestonesChan := make(chan milestones.Milestone)
-		go milestones.GenerateMilestonesFromEvents(&eventsChan, &milestonesChan)
-		go printMilestones(fixture,"Negative", &milestonesChan)
-		report, err := Validate(prof, fixture.ReadFixtureNegativeData(), debug, &eventsChan)
+		report, err := Validate(prof, fixture.ReadFixtureNegativeData(), config.Debug, nil)
 		if err != nil {
-			t.Errorf("negative validation failed %v", err)
+			t.Errorf("%s > Negative case > Failed with error %v", fixture, err)
 		}
 		if conforms(report) {
-			t.Errorf("negative case failed")
+			t.Errorf("%s > Negative case > Should not conform", fixture)
 		}
-		expected := strings.TrimSpace(fixture.ReadFixtureNegativeReport())
-		//test.ForceWrite(string(fixture)+"/negative.report.jsonld", strings.TrimSpace(report))
-		if strings.TrimSpace(report) != expected {
-			t.Errorf(fmt.Sprintf("failed negative report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", fixture, expected, report))
+
+		if config.Override {
+			test.ForceWrite(string(fixture)+"/negative.report.jsonld", strings.TrimSpace(report))
+		} else {
+			expected := strings.TrimSpace(fixture.ReadFixtureNegativeReport())
+			if strings.TrimSpace(report) != expected {
+				t.Errorf("%s > Negative case > Actual did not match expected", fixture)
+			}
 		}
 	}
 }
@@ -68,22 +66,23 @@ func TestIntegrationNegativeDataWithLexical(t *testing.T) {
 
 		lexicalFixture, fixtureError := fixture.ReadFixtureNegativeDataWithLexical()
 		if fixtureError == nil {
-			eventsChan := make(chan events.Event)
-			milestonesChan := make(chan milestones.Milestone)
-			go milestones.GenerateMilestonesFromEvents(&eventsChan, &milestonesChan)
-			go printMilestones(fixture, "Negative+Lexical", &milestonesChan)
-			report, err := Validate(prof, lexicalFixture, debug, &eventsChan)
+			report, err := Validate(prof, lexicalFixture, config.Debug, nil)
 			if err != nil {
-				t.Errorf("negative validation failed %v", err)
+				t.Errorf("%s > Negative case with lexical > Failed with error %v", fixture, err)
 			}
+
 			if conforms(report) {
-				t.Errorf("negative case failed")
+				t.Errorf("%s > Negative case with lexical > Should not conform", fixture)
 			}
-			expected := strings.TrimSpace(fixture.ReadFixtureNegativeReportWithLexical())
-			if strings.TrimSpace(report) != expected {
-				t.Errorf(fmt.Sprintf("failed negative lexical report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", lexicalFixture, expected, report))
+
+			if config.Override {
+				test.ForceWrite(string(fixture)+"/negative.report.lexical.jsonld", strings.TrimSpace(report))
+			} else {
+				expected := strings.TrimSpace(fixture.ReadFixtureNegativeReportWithLexical())
+				if strings.TrimSpace(report) != expected {
+					t.Errorf("%s > Negative case with lexical > Actual did not match expected", fixture)
+				}
 			}
-			//test.ForceWrite(string(fixture)+"/negative.report.lexical.jsonld", strings.TrimSpace(report))
 		}
 	}
 }
