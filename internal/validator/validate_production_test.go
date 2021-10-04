@@ -2,6 +2,7 @@ package validator
 
 import (
 	"fmt"
+	"github.com/aml-org/amf-custom-validator/internal/config"
 	"github.com/aml-org/amf-custom-validator/test"
 	"strings"
 	"testing"
@@ -22,7 +23,9 @@ func TestProduction(t *testing.T) {
 					t.Errorf(fmt.Sprintf("%s, %s expected conforms: %t got conforms %t\n\n%s\n", string(fixture), example.File, example.Positive, conforms(report), report))
 				}
 
-				//test.ForceWrite(example.Reportfile(), report)
+				if config.Override {
+					test.ForceWrite(example.Reportfile(), report)
+				}
 				expected := example.ReadReport()
 				actual := report
 				if expected != actual {

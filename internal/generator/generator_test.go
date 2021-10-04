@@ -2,6 +2,7 @@ package generator
 
 import (
 	"context"
+	"github.com/aml-org/amf-custom-validator/internal/config"
 	"github.com/aml-org/amf-custom-validator/internal/parser"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"github.com/aml-org/amf-custom-validator/test"
@@ -24,7 +25,9 @@ func TestGenerated(t *testing.T) {
 		if !success {
 			t.Error(err)
 		}
-		//test.ForceWrite(fix.Generated, generated.Code)
+		if config.Override {
+			test.ForceWrite(fix.Generated, generated.Code)
+		}
 		actual := strings.TrimSpace(generated.Code)
 		expected := strings.TrimSpace(fix.ReadGenerated())
 
