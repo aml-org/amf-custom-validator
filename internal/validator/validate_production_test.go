@@ -15,22 +15,24 @@ func TestProduction(t *testing.T) {
 		for _, example := range fixture.Examples() {
 			filter := "" // put the number of the text to filter here
 			if strings.Index(example.File, filter) > -1 {
-				report, err := Validate(profile, example.Text, debug, nil)
+				report, err := Validate(profile, example.Text, config.Debug, nil)
 				if err != nil {
 					t.Errorf("Validation failed %v", err)
 				}
 				if conforms(report) != example.Positive {
-					t.Errorf(fmt.Sprintf("%s, %s expected conforms: %t got conforms %t\n\n%s\n", string(fixture), example.File, example.Positive, conforms(report), report))
+					t.Errorf(fmt.Sprintf("%s, %s expected conforms: %t got conforms %t\n", string(fixture), example.File, example.Positive, conforms(report)))
 				}
 
 				if config.Override {
 					test.ForceWrite(example.Reportfile(), report)
+				} else {
+					expected := example.ReadReport()
+					actual := report
+					if expected != actual {
+						t.Errorf(fmt.Sprintf("failed report for %s", example.File))
+					}
 				}
-				expected := example.ReadReport()
-				actual := report
-				if expected != actual {
-					t.Errorf(fmt.Sprintf("failed report for %s\n-------------Expected:\n%s\n-------------Actual:\n%s\n", example.File, expected, report))
-				}
+
 			}
 		}
 	}
