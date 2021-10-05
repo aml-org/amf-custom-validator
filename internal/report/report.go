@@ -19,9 +19,9 @@ func BuildReport(result rego.ResultSet) (string, error) {
 	warning := Warning
 	info := Info
 
-	violations := parseResults(m["violation"].([]any), &violation)
-	warnings := parseResults(m["warning"].([]any), &warning)
-	infos := parseResults(m["info"].([]any), &info)
+	violations := mergeTracesFrom(parseResults(m["violation"].([]any), &violation))
+	warnings := mergeTracesFrom(parseResults(m["warning"].([]any), &warning))
+	infos := mergeTracesFrom(parseResults(m["info"].([]any), &info))
 
 	if (len(violations) + len(warnings) + len(infos)) == 0 {
 		res := object{
@@ -141,4 +141,68 @@ func Encode(data any) string {
 	enc.SetEscapeHTML(false)
 	enc.Encode(data)
 	return b.String()
+}
+
+type ResultIndexKey struct {
+	sourceShapeName string
+	focusNode       string
+}
+
+type ResultIndexValue struct {
+	result     Result
+	traceIndex map[TraceIndexKey]Trace
+}
+
+type TraceIndexKey struct {
+	component  string
+	resultPath string
+}
+
+func mergeTracesFrom(results []Result) []Result {
+	var resultIndex = make(map[ResultIndexKey]ResultIndexValue)
+	for _, result := range results {
+		indexKey := ResultIndexKey{
+			sourceShapeName: result.SourceShapeName,
+			focusNode:       result.FocusNode.Id,
+		}
+
+		if indexValue, ok := resultIndex[indexKey]; ok {
+			buildTraceIndex(result, indexValue.traceIndex) // update trace index
+		} else {
+			traceIndex := make(map[TraceIndexKey]Trace)
+			buildTraceIndex(result, traceIndex)
+			resultIndex[indexKey] = ResultIndexValue{
+				result:     result,
+				traceIndex: traceIndex,
+			}
+		}
+	}
+
+	var res []Result
+	for _, vResult := range resultIndex {
+		var traces []Trace
+		for _, vTrace := range vResult.traceIndex {
+			traces = append(traces, vTrace)
+		}
+		mergedResult := Result{
+			Typed:           vResult.result.Typed,
+			SourceShapeName: vResult.result.SourceShapeName,
+			FocusNode:       vResult.result.FocusNode,
+			ResultSeverity:  vResult.result.ResultSeverity,
+			ResultMessage:   vResult.result.ResultMessage,
+			Trace:           traces,
+		}
+		res = append(res, mergedResult)
+	}
+	return res
+}
+
+func buildTraceIndex(result Result, traceIndex map[TraceIndexKey]Trace) {
+	for _, trace := range result.Trace {
+		kTrace := TraceIndexKey{
+			component:  trace.Component,
+			resultPath: trace.ResultPath,
+		}
+		traceIndex[kTrace] = trace // always overwrite
+	}
 }

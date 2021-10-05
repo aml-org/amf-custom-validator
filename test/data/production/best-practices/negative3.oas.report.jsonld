@@ -102,20 +102,6 @@
             "negated": false,
             "argument": "https://production.test.com"
           }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "pattern",
-          "resultPath": "core.urlTemplate",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "negated": false,
-            "argument": "https://production.test.com"
-          }
         }
       ]
     }

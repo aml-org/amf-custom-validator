@@ -44,7 +44,7 @@ func TestNodeNot001(t *testing.T) {
 }
 
 func TestNodeOr001(t *testing.T) {
-	ignore("node/or-001", t)
+	testFn("node/or-001", t)
 }
 
 func TestNodeXone001(t *testing.T) {

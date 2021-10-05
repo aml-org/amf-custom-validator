@@ -93,6 +93,22 @@
           "@type": [
             "validation:TraceMessage"
           ],
+          "component": "nested",
+          "resultPath": "data.route",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 0,
+            "expected": 0,
+            "negated": true,
+            "subResult": null
+          }
+        },
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
           "component": "maxCount",
           "resultPath": "data.route",
           "traceValue": {
@@ -119,22 +135,6 @@
             "condition": ">=",
             "expected": 1,
             "negated": true
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "nested",
-          "resultPath": "data.route",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "actual": 0,
-            "expected": 0,
-            "negated": true,
-            "subResult": null
           }
         }
       ]

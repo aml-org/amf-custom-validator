@@ -124,50 +124,6 @@
                         "validation:TraceValue"
                       ],
                       "actual": "429",
-                      "expected": "[\"200\"]",
-                      "negated": false
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "existential",
-          "resultPath": "apiContract.returns",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "actual": 1,
-            "expected": 0,
-            "negated": false,
-            "subResult": [
-              {
-                "@type": [
-                  "shacl:ValidationResult"
-                ],
-                "sourceShapeName": "nested",
-                "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative4.oas#/web-api/end-points/%2Finvoices/head/429"
-                },
-                "resultMessage": "error in nested nodes under apiContract.returns",
-                "trace": [
-                  {
-                    "@type": [
-                      "validation:TraceMessage"
-                    ],
-                    "component": "in",
-                    "resultPath": "apiContract.statusCode",
-                    "traceValue": {
-                      "@type": [
-                        "validation:TraceValue"
-                      ],
-                      "actual": "429",
                       "expected": "[\"403\"]",
                       "negated": false
                     }
@@ -192,22 +148,6 @@
       },
       "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "trace": [
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "minCount",
-          "resultPath": "security.security",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "actual": 0,
-            "condition": ">=",
-            "expected": 1,
-            "negated": false
-          }
-        },
         {
           "@type": [
             "validation:TraceMessage"
@@ -279,6 +219,22 @@
                 ]
               }
             ]
+          }
+        },
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "security.security",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
           }
         }
       ]

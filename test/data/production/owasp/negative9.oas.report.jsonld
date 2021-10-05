@@ -93,22 +93,6 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "minCount",
-          "resultPath": "security.security",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "actual": 0,
-            "condition": ">=",
-            "expected": 1,
-            "negated": false
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
           "component": "nested",
           "resultPath": "apiContract.endpoint / apiContract.supportedOperation",
           "traceValue": {
@@ -148,6 +132,22 @@
                 ]
               }
             ]
+          }
+        },
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "security.security",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
           }
         }
       ]

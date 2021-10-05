@@ -93,21 +93,6 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "in",
-          "resultPath": "shapes.schema / shacl.datatype",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "actual": "xsd:string",
-            "expected": "[\"xsd:string\"]",
-            "negated": true
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
           "component": "minCount",
           "resultPath": "shapes.schema / shacl.datatype",
           "traceValue": {
@@ -134,6 +119,21 @@
             "condition": ">=",
             "expected": 1,
             "negated": false
+          }
+        },
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "in",
+          "resultPath": "shapes.schema / shacl.datatype",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": "xsd:string",
+            "expected": "[\"xsd:string\"]",
+            "negated": true
           }
         }
       ]

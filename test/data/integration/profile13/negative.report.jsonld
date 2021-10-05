@@ -124,50 +124,6 @@
                         "validation:TraceValue"
                       ],
                       "actual": "429",
-                      "expected": "[\"200\"]",
-                      "negated": false
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "existential",
-          "resultPath": "apiContract.returns",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "actual": 1,
-            "expected": 0,
-            "negated": false,
-            "subResult": [
-              {
-                "@type": [
-                  "shacl:ValidationResult"
-                ],
-                "sourceShapeName": "nested",
-                "focusNode": {
-                  "@id": "file://test/data/integration/profile13/negative.data.oas#/web-api/end-points/%2Finvoices/head/429"
-                },
-                "resultMessage": "error in nested nodes under apiContract.returns",
-                "trace": [
-                  {
-                    "@type": [
-                      "validation:TraceMessage"
-                    ],
-                    "component": "in",
-                    "resultPath": "apiContract.statusCode",
-                    "traceValue": {
-                      "@type": [
-                        "validation:TraceValue"
-                      ],
-                      "actual": "429",
                       "expected": "[\"403\"]",
                       "negated": false
                     }

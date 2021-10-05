@@ -80,81 +80,6 @@
       "@type": [
         "shacl:ValidationResult"
       ],
-      "sourceShapeName": "lack-of-resources-and-rate-limiting-too-many-requests",
-      "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative3.oas#/web-api/end-points/%2Finvoices/get"
-      },
-      "resultSeverity": {
-        "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "resultMessage": "Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n",
-      "trace": [
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "existential",
-          "resultPath": "apiContract.returns",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "actual": 0,
-            "expected": 0,
-            "negated": true,
-            "subResult": null
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "existential",
-          "resultPath": "apiContract.returns",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "actual": 1,
-            "expected": 0,
-            "negated": false,
-            "subResult": [
-              {
-                "@type": [
-                  "shacl:ValidationResult"
-                ],
-                "sourceShapeName": "nested",
-                "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative3.oas#/web-api/end-points/%2Finvoices/get/200"
-                },
-                "resultMessage": "error in nested nodes under apiContract.returns",
-                "trace": [
-                  {
-                    "@type": [
-                      "validation:TraceMessage"
-                    ],
-                    "component": "in",
-                    "resultPath": "apiContract.statusCode",
-                    "traceValue": {
-                      "@type": [
-                        "validation:TraceValue"
-                      ],
-                      "actual": "200",
-                      "expected": "[\"429\"]",
-                      "negated": false
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "@type": [
-        "shacl:ValidationResult"
-      ],
       "sourceShapeName": "broken-user-authentication-authenticate-api",
       "focusNode": {
         "@id": "file://./test/data/production/owasp/negative3.oas#/web-api"
@@ -245,6 +170,65 @@
                       "actual": 0,
                       "condition": ">=",
                       "expected": 1,
+                      "negated": false
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "sourceShapeName": "lack-of-resources-and-rate-limiting-too-many-requests",
+      "focusNode": {
+        "@id": "file://./test/data/production/owasp/negative3.oas#/web-api/end-points/%2Finvoices/get"
+      },
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "resultMessage": "Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "existential",
+          "resultPath": "apiContract.returns",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 1,
+            "expected": 0,
+            "negated": false,
+            "subResult": [
+              {
+                "@type": [
+                  "shacl:ValidationResult"
+                ],
+                "sourceShapeName": "nested",
+                "focusNode": {
+                  "@id": "file://./test/data/production/owasp/negative3.oas#/web-api/end-points/%2Finvoices/get/200"
+                },
+                "resultMessage": "error in nested nodes under apiContract.returns",
+                "trace": [
+                  {
+                    "@type": [
+                      "validation:TraceMessage"
+                    ],
+                    "component": "in",
+                    "resultPath": "apiContract.statusCode",
+                    "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "actual": "200",
+                      "expected": "[\"429\"]",
                       "negated": false
                     }
                   }

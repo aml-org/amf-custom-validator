@@ -94,22 +94,6 @@
             "validation:TraceMessage"
           ],
           "component": "maximumInclusive",
-          "resultPath": "movie.reviews",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "actual": 88000,
-            "condition": "<=",
-            "expected": 1000,
-            "negated": false
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "maximumInclusive",
           "resultPath": "movie.rating",
           "traceValue": {
             "@type": [
@@ -119,6 +103,22 @@
             "condition": "<=",
             "expected": 5,
             "negated": true
+          }
+        },
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "maximumInclusive",
+          "resultPath": "movie.reviews",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 88000,
+            "condition": "<=",
+            "expected": 1000,
+            "negated": false
           }
         }
       ]

@@ -93,6 +93,20 @@
           "@type": [
             "validation:TraceMessage"
           ],
+          "component": "pattern",
+          "resultPath": "shacl.name",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "id"
+          }
+        },
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
           "component": "in",
           "resultPath": "shacl.datatype",
           "traceValue": {
@@ -102,20 +116,6 @@
             "actual": "xsd:boolean",
             "expected": "[\"xsd:string\"]",
             "negated": false
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "pattern",
-          "resultPath": "shacl.name",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "negated": true,
-            "argument": "id"
           }
         }
       ]

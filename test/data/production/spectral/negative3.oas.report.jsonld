@@ -108,37 +108,6 @@
       "@type": [
         "shacl:ValidationResult"
       ],
-      "sourceShapeName": "info-description",
-      "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api"
-      },
-      "resultSeverity": {
-        "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
-      "trace": [
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "minCount",
-          "resultPath": "core.description",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "actual": 0,
-            "condition": ">=",
-            "expected": 1,
-            "negated": false
-          }
-        }
-      ]
-    },
-    {
-      "@type": [
-        "shacl:ValidationResult"
-      ],
       "sourceShapeName": "info-license",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative3.oas#/web-api"
@@ -170,71 +139,9 @@
       "@type": [
         "shacl:ValidationResult"
       ],
-      "sourceShapeName": "openapi-tags",
-      "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api"
-      },
-      "resultSeverity": {
-        "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
-      "trace": [
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "minCount",
-          "resultPath": "apiContract.tag",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "actual": 0,
-            "condition": ">=",
-            "expected": 1,
-            "negated": false
-          }
-        }
-      ]
-    },
-    {
-      "@type": [
-        "shacl:ValidationResult"
-      ],
       "sourceShapeName": "operation-description",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/patch"
-      },
-      "resultSeverity": {
-        "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "resultMessage": "Operation must have a description explaining the operation functionality",
-      "trace": [
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "minCount",
-          "resultPath": "core.description",
-          "traceValue": {
-            "@type": [
-              "validation:TraceValue"
-            ],
-            "actual": 0,
-            "condition": ">=",
-            "expected": 1,
-            "negated": false
-          }
-        }
-      ]
-    },
-    {
-      "@type": [
-        "shacl:ValidationResult"
-      ],
-      "sourceShapeName": "operation-description",
-      "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/put"
       },
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
@@ -402,6 +309,99 @@
           ],
           "component": "minCount",
           "resultPath": "apiContract.tag",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "sourceShapeName": "info-description",
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api"
+      },
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "core.description",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "sourceShapeName": "openapi-tags",
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api"
+      },
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "apiContract.tag",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "sourceShapeName": "operation-description",
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/put"
+      },
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "resultMessage": "Operation must have a description explaining the operation functionality",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "core.description",
           "traceValue": {
             "@type": [
               "validation:TraceValue"
