@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "preferred-media-type-representations",
       "focusNode": {
         "@id": "file://./test/data/production/best-practices/negative8.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fother"
       },
-      "resultMessage": "If there is no standard media type and format, try to use as much as possible extensible formats such as JSON\n(application/json) and XML (application/xml), preferably JSON.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "preferred-media-type-representations",
+      "resultMessage": "If there is no standard media type and format, try to use as much as possible extensible formats such as JSON\n(application/json) and XML (application/xml), preferably JSON.\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "in",
           "resultPath": "core.mediaType",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "application/other",
             "expected": "[\"application/json\",\"application/xml\"]",
             "negated": false

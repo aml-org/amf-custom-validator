@@ -80,47 +80,25 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "and-or-not-rule",
       "focusNode": {
         "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get"
       },
-      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "and-or-not-rule",
+      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "existential",
-          "location": {
-            "@type": [
-              "lexical:Location"
-            ],
-            "range": {
-              "@type": [
-                "lexical:Range"
-              ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 17
-              },
-              "start": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 2,
-                "line": 13
-              }
-            },
-            "uri": ""
-          },
           "resultPath": "apiContract.returns",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -129,17 +107,25 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/201"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
                       "validation:TraceMessage"
                     ],
                     "component": "pattern",
+                    "resultPath": "apiContract.statusCode",
+                    "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "negated": false,
+                      "argument": "201"
+                    },
                     "location": {
                       "@type": [
                         "lexical:Location"
@@ -148,39 +134,27 @@
                         "@type": [
                           "lexical:Range"
                         ],
-                        "end": {
-                          "@type": [
-                            "lexical:Position"
-                          ],
-                          "column": 0,
-                          "line": 17
-                        },
                         "start": {
                           "@type": [
                             "lexical:Position"
                           ],
-                          "column": 6,
-                          "line": 15
+                          "line": 15,
+                          "column": 6
+                        },
+                        "end": {
+                          "@type": [
+                            "lexical:Position"
+                          ],
+                          "line": 17,
+                          "column": 0
                         }
-                      },
-                      "uri": ""
-                    },
-                    "resultPath": "apiContract.statusCode",
-                    "traceValue": {
-                      "argument": "201",
-                      "negated": false
+                      }
                     }
                   }
                 ]
               }
             ]
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "in",
+          },
           "location": {
             "@type": [
               "lexical:Location"
@@ -189,28 +163,60 @@
               "@type": [
                 "lexical:Range"
               ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 17
-              },
               "start": {
                 "@type": [
                   "lexical:Position"
                 ],
-                "column": 2,
-                "line": 13
+                "line": 13,
+                "column": 2
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 17,
+                "column": 0
               }
-            },
-            "uri": ""
-          },
+            }
+          }
+        },
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "in",
           "resultPath": "apiContract.method",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "get",
             "expected": "[\"get\"]",
             "negated": true
+          },
+          "location": {
+            "@type": [
+              "lexical:Location"
+            ],
+            "range": {
+              "@type": [
+                "lexical:Range"
+              ],
+              "start": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 13,
+                "column": 2
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 17,
+                "column": 0
+              }
+            }
           }
         }
       ]
@@ -219,47 +225,25 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "and-or-not-rule",
       "focusNode": {
         "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get"
       },
-      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "and-or-not-rule",
+      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "existential",
-          "location": {
-            "@type": [
-              "lexical:Location"
-            ],
-            "range": {
-              "@type": [
-                "lexical:Range"
-              ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 10,
-                "line": 20
-              },
-              "start": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 2,
-                "line": 18
-              }
-            },
-            "uri": ""
-          },
           "resultPath": "apiContract.returns",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -268,17 +252,25 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get/200"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
                       "validation:TraceMessage"
                     ],
                     "component": "pattern",
+                    "resultPath": "apiContract.statusCode",
+                    "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "negated": false,
+                      "argument": "200"
+                    },
                     "location": {
                       "@type": [
                         "lexical:Location"
@@ -287,39 +279,27 @@
                         "@type": [
                           "lexical:Range"
                         ],
-                        "end": {
-                          "@type": [
-                            "lexical:Position"
-                          ],
-                          "column": 10,
-                          "line": 20
-                        },
                         "start": {
                           "@type": [
                             "lexical:Position"
                           ],
-                          "column": 6,
-                          "line": 20
+                          "line": 20,
+                          "column": 6
+                        },
+                        "end": {
+                          "@type": [
+                            "lexical:Position"
+                          ],
+                          "line": 20,
+                          "column": 10
                         }
-                      },
-                      "uri": ""
-                    },
-                    "resultPath": "apiContract.statusCode",
-                    "traceValue": {
-                      "argument": "200",
-                      "negated": false
+                      }
                     }
                   }
                 ]
               }
             ]
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "in",
+          },
           "location": {
             "@type": [
               "lexical:Location"
@@ -328,28 +308,60 @@
               "@type": [
                 "lexical:Range"
               ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 10,
-                "line": 20
-              },
               "start": {
                 "@type": [
                   "lexical:Position"
                 ],
-                "column": 2,
-                "line": 18
+                "line": 18,
+                "column": 2
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 20,
+                "column": 10
               }
-            },
-            "uri": ""
-          },
+            }
+          }
+        },
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "in",
           "resultPath": "apiContract.method",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "get",
             "expected": "[\"get\"]",
             "negated": true
+          },
+          "location": {
+            "@type": [
+              "lexical:Location"
+            ],
+            "range": {
+              "@type": [
+                "lexical:Range"
+              ],
+              "start": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 18,
+                "column": 2
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 20,
+                "column": 10
+              }
+            }
           }
         }
       ]
@@ -358,20 +370,30 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "and-or-not-rule",
       "focusNode": {
         "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get"
       },
-      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "and-or-not-rule",
+      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "existential",
+          "resultPath": "apiContract.returns",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 0,
+            "expected": 0,
+            "negated": true,
+            "subResult": null
+          },
           "location": {
             "@type": [
               "lexical:Location"
@@ -380,29 +402,21 @@
               "@type": [
                 "lexical:Range"
               ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 17
-              },
               "start": {
                 "@type": [
                   "lexical:Position"
                 ],
-                "column": 2,
-                "line": 13
+                "line": 13,
+                "column": 2
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 17,
+                "column": 0
               }
-            },
-            "uri": ""
-          },
-          "resultPath": "apiContract.returns",
-          "traceValue": {
-            "actual": 0,
-            "expected": 0,
-            "negated": true,
-            "subResult": []
+            }
           }
         },
         {
@@ -410,6 +424,15 @@
             "validation:TraceMessage"
           ],
           "component": "in",
+          "resultPath": "apiContract.method",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": "get",
+            "expected": "[\"get\"]",
+            "negated": true
+          },
           "location": {
             "@type": [
               "lexical:Location"
@@ -418,28 +441,21 @@
               "@type": [
                 "lexical:Range"
               ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 17
-              },
               "start": {
                 "@type": [
                   "lexical:Position"
                 ],
-                "column": 2,
-                "line": 13
+                "line": 13,
+                "column": 2
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 17,
+                "column": 0
               }
-            },
-            "uri": ""
-          },
-          "resultPath": "apiContract.method",
-          "traceValue": {
-            "actual": "get",
-            "expected": "[\"get\"]",
-            "negated": true
+            }
           }
         }
       ]

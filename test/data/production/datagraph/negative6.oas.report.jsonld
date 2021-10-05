@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "missing-type-description",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative6.oas#/declarations/types/Invoice"
       },
-      "resultMessage": "Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "missing-type-description",
+      "resultMessage": "Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema.\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "minCount",
           "resultPath": "core.description",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -109,6 +112,9 @@
           "component": "minCount",
           "resultPath": "doc.link-target",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -121,14 +127,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "missing-property-description",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative6.oas#/declarations/types/Customer/property/id"
       },
-      "resultMessage": "Providing a description of schema properties is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema fields.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "missing-property-description",
+      "resultMessage": "Providing a description of schema properties is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema fields.\n",
       "trace": [
         {
           "@type": [
@@ -137,6 +143,9 @@
           "component": "minCount",
           "resultPath": "shapes.range / core.description",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -149,14 +158,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "missing-parameter-description",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative6.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/path/id"
       },
-      "resultMessage": "Providing a description of API parameters is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema field arguments.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "missing-parameter-description",
+      "resultMessage": "Providing a description of API parameters is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema field arguments.\n",
       "trace": [
         {
           "@type": [
@@ -165,6 +174,9 @@
           "component": "minCount",
           "resultPath": "core.description",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,

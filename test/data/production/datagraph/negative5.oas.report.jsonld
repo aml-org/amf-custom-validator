@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "potential-key-parameters",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D"
       },
-      "resultMessage": "Mandatory parameters for a resource should overlap with the required properties of the returned schema\nso they can be used as a key for the type\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "potential-key-parameters",
+      "resultMessage": "Mandatory parameters for a resource should overlap with the required properties of the returned schema\nso they can be used as a key for the type\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }

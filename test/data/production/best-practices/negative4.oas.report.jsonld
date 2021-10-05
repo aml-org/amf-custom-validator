@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "camel-case-fields",
       "focusNode": {
         "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer/property/nested/nested/property/nested-prop"
       },
-      "resultMessage": "Use camelCase for all the names (fields), preferably don’t use underscores.",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "camel-case-fields",
+      "resultMessage": "Use camelCase for all the names (fields), preferably don’t use underscores.",
       "trace": [
         {
           "@type": [
@@ -96,8 +96,11 @@
           "component": "pattern",
           "resultPath": "shacl.name",
           "traceValue": {
-            "argument": "nested-prop",
-            "negated": false
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": false,
+            "argument": "nested-prop"
           }
         }
       ]

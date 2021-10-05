@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "ex:InvalidInstance1"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "maxCount",
           "resultPath": "ex.myProperty",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 2,
             "condition": "<=",
             "expected": 1,

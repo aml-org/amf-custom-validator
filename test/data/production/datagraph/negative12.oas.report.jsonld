@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "non-scalar-url-parameters",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative12.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/query/args"
       },
-      "resultMessage": "Encoding complex objects into URL parameters is not a standardized way of passing information that cannot be\nautomatically processed. Complex information should be passed in the body of the HTTP request.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "non-scalar-url-parameters",
+      "resultMessage": "Encoding complex objects into URL parameters is not a standardized way of passing information that cannot be\nautomatically processed. Complex information should be passed in the body of the HTTP request.\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "minCount",
           "resultPath": "shapes.schema / shacl.datatype",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -109,6 +112,9 @@
           "component": "minCount",
           "resultPath": "shapes.schema / shapes.items / shacl.datatype",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -122,8 +128,11 @@
           "component": "pattern",
           "resultPath": "apiContract.binding",
           "traceValue": {
-            "argument": "query",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "query"
           }
         }
       ]

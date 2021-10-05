@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-description",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative12.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/get"
       },
-      "resultMessage": "Operation must have a description explaining the operation functionality",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-description",
+      "resultMessage": "Operation must have a description explaining the operation functionality",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "minCount",
           "resultPath": "core.description",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,

@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "array-limits",
       "focusNode": {
         "@id": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "array-limits",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "maximumExclusive",
           "resultPath": "shacl.minCount",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 100,
             "condition": "<",
             "expected": 50,

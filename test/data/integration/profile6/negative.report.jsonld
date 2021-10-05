@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "and-or-not-rule",
       "focusNode": {
         "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get"
       },
-      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "and-or-not-rule",
+      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "existential",
           "resultPath": "apiContract.returns",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -104,11 +107,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/201"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -117,8 +120,11 @@
                     "component": "pattern",
                     "resultPath": "apiContract.statusCode",
                     "traceValue": {
-                      "argument": "201",
-                      "negated": false
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "negated": false,
+                      "argument": "201"
                     }
                   }
                 ]
@@ -133,6 +139,9 @@
           "component": "in",
           "resultPath": "apiContract.method",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "get",
             "expected": "[\"get\"]",
             "negated": true
@@ -144,14 +153,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "and-or-not-rule",
       "focusNode": {
         "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get"
       },
-      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "and-or-not-rule",
+      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "trace": [
         {
           "@type": [
@@ -160,6 +169,9 @@
           "component": "existential",
           "resultPath": "apiContract.returns",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -168,11 +180,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get/200"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -181,8 +193,11 @@
                     "component": "pattern",
                     "resultPath": "apiContract.statusCode",
                     "traceValue": {
-                      "argument": "200",
-                      "negated": false
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "negated": false,
+                      "argument": "200"
                     }
                   }
                 ]
@@ -197,6 +212,9 @@
           "component": "in",
           "resultPath": "apiContract.method",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "get",
             "expected": "[\"get\"]",
             "negated": true
@@ -208,14 +226,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "and-or-not-rule",
       "focusNode": {
         "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get"
       },
-      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "and-or-not-rule",
+      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "trace": [
         {
           "@type": [
@@ -224,10 +242,13 @@
           "component": "existential",
           "resultPath": "apiContract.returns",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "expected": 0,
             "negated": true,
-            "subResult": []
+            "subResult": null
           }
         },
         {
@@ -237,6 +258,9 @@
           "component": "in",
           "resultPath": "apiContract.method",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "get",
             "expected": "[\"get\"]",
             "negated": true

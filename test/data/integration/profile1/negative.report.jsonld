@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "scalar-parameters",
       "focusNode": {
         "@id": "file://test/data/integration/profile1.negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request/parameter/query/a"
       },
-      "resultMessage": "Scalars in parameters must have minLength defined",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "scalar-parameters",
+      "resultMessage": "Scalars in parameters must have minLength defined",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "minCount",
           "resultPath": "shapes.schema / shacl.minLength",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -108,14 +111,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "scalar-parameters",
       "focusNode": {
         "@id": "file://test/data/integration/profile1.negative.data.raml#/web-api/end-points/%2Fendpoint2/get/request/parameter/query/d"
       },
-      "resultMessage": "Scalars in parameters must have minLength defined",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "scalar-parameters",
+      "resultMessage": "Scalars in parameters must have minLength defined",
       "trace": [
         {
           "@type": [
@@ -124,6 +127,9 @@
           "component": "minCount",
           "resultPath": "shapes.schema / shacl.minLength",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,

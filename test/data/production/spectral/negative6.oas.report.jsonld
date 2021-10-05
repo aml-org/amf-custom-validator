@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "info-contact",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative6.oas#/web-api"
       },
-      "resultMessage": "Info object should contain contact object.\n\nHopefully your API description document is so good that nobody ever needs to contact you with questions, but that\nis rarely the case. The contact object has a few different options for contact details.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "info-contact",
+      "resultMessage": "Info object should contain contact object.\n\nHopefully your API description document is so good that nobody ever needs to contact you with questions, but that\nis rarely the case. The contact object has a few different options for contact details.\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "minCount",
           "resultPath": "core.provider",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,

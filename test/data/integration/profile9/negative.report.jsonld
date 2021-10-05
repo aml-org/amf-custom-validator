@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "max-endpoints",
       "focusNode": {
         "@id": "file://test/data/integration/profile9/negative.data.raml#/web-api"
       },
-      "resultMessage": "maximum number of endpoints test",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "max-endpoints",
+      "resultMessage": "maximum number of endpoints test",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "maxCount",
           "resultPath": "apiContract.endpoint",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 4,
             "condition": "<=",
             "expected": 3,

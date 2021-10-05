@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "openapi-tags",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative10.oas#/web-api"
       },
-      "resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "openapi-tags",
+      "resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "minCount",
           "resultPath": "apiContract.tag",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -108,14 +111,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-tag-defined",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative10.oas#/web-api"
       },
-      "resultMessage": "Operation tags should be defined in global tags.",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-tag-defined",
+      "resultMessage": "Operation tags should be defined in global tags.",
       "trace": [
         {
           "@type": [
@@ -124,6 +127,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }

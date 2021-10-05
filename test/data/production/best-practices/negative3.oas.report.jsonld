@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "base-url-pattern-server",
       "focusNode": {
         "@id": "file://./test/data/production/best-practices/negative3.oas#/web-api/https%3A%2F%2Fproduction.test.com"
       },
-      "resultMessage": "Include the “api” word and the version of the API in the base Url (e.g. domain/api/v1)",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "base-url-pattern-server",
+      "resultMessage": "Include the “api” word and the version of the API in the base Url (e.g. domain/api/v1)",
       "trace": [
         {
           "@type": [
@@ -96,8 +96,11 @@
           "component": "pattern",
           "resultPath": "core.urlTemplate",
           "traceValue": {
-            "argument": "https://production.test.com",
-            "negated": false
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": false,
+            "argument": "https://production.test.com"
           }
         },
         {
@@ -107,8 +110,11 @@
           "component": "pattern",
           "resultPath": "core.urlTemplate",
           "traceValue": {
-            "argument": "https://production.test.com",
-            "negated": false
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": false,
+            "argument": "https://production.test.com"
           }
         }
       ]

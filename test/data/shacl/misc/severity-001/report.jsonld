@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "ex:HelloNode"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Warning"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "datatype",
           "resultPath": "ex.hello",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "hello string, not integer",
             "expected": "xsd:integer",
             "negated": false

@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "improper-assets-management-environment-info",
       "focusNode": {
         "@id": "file://./test/data/production/owasp/negative6.oas#/web-api"
       },
-      "resultMessage": "The purpose of an API host is unclear, and there are no explicit answers to the following questions:\n    Which environment is the API running in (e.g., production, staging, test, development)?\n    Who should have network access to the API (e.g., public, internal, partners)?\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "improper-assets-management-environment-info",
+      "resultMessage": "The purpose of an API host is unclear, and there are no explicit answers to the following questions:\n    Which environment is the API running in (e.g., production, staging, test, development)?\n    Who should have network access to the API (e.g., public, internal, partners)?\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "minCount",
           "resultPath": "apiContract.server",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -108,14 +111,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "broken-user-authentication-use-tls",
       "focusNode": {
         "@id": "file://./test/data/production/owasp/negative6.oas#/web-api"
       },
-      "resultMessage": "The login page and all subsequent authenticated pages must be exclusively accessed over TLS or other strong\ntransport. The initial login page referred to as the 'login landing page', must be served over TLS or other strong\ntransport. Failure to utilize TLS or other strong transport for the login landing page allows an attacker to\nmodify the login form action, causing the user's credentials to be posted to an arbitrary location. Failure to\nutilize TLS or other strong transport for authenticated pages after login enables an attacker to view the\nunencrypted session ID and compromise the user's authenticated session.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "broken-user-authentication-use-tls",
+      "resultMessage": "The login page and all subsequent authenticated pages must be exclusively accessed over TLS or other strong\ntransport. The initial login page referred to as the 'login landing page', must be served over TLS or other strong\ntransport. Failure to utilize TLS or other strong transport for the login landing page allows an attacker to\nmodify the login form action, causing the user's credentials to be posted to an arbitrary location. Failure to\nutilize TLS or other strong transport for authenticated pages after login enables an attacker to view the\nunencrypted session ID and compromise the user's authenticated session.\n",
       "trace": [
         {
           "@type": [
@@ -124,10 +127,13 @@
           "component": "existential",
           "resultPath": "apiContract.server",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "expected": 0,
             "negated": false,
-            "subResult": []
+            "subResult": null
           }
         }
       ]
@@ -136,14 +142,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "broken-user-authentication-authenticate-api",
       "focusNode": {
         "@id": "file://./test/data/production/owasp/negative6.oas#/web-api"
       },
-      "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "broken-user-authentication-authenticate-api",
+      "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "trace": [
         {
           "@type": [
@@ -152,6 +158,9 @@
           "component": "minCount",
           "resultPath": "security.security",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -165,6 +174,9 @@
           "component": "nested",
           "resultPath": "apiContract.endpoint / apiContract.supportedOperation",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -173,11 +185,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://./test/data/production/owasp/negative6.oas#/web-api/end-points/%2Finvoices%2F/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -186,6 +198,9 @@
                     "component": "minCount",
                     "resultPath": "security.security",
                     "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
                       "actual": 0,
                       "condition": ">=",
                       "expected": 1,

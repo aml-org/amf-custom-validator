@@ -80,20 +80,30 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "scalar-parameters",
       "focusNode": {
         "@id": "file://test/data/integration/profile1/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request/parameter/query/a"
       },
-      "resultMessage": "Scalars in parameters must have minLength defined",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "scalar-parameters",
+      "resultMessage": "Scalars in parameters must have minLength defined",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "minCount",
+          "resultPath": "shapes.schema / shacl.minLength",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          },
           "location": {
             "@type": [
               "lexical:Location"
@@ -102,29 +112,21 @@
               "@type": [
                 "lexical:Range"
               ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 9
-              },
               "start": {
                 "@type": [
                   "lexical:Position"
                 ],
-                "column": 6,
-                "line": 8
+                "line": 8,
+                "column": 6
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 9,
+                "column": 0
               }
-            },
-            "uri": ""
-          },
-          "resultPath": "shapes.schema / shacl.minLength",
-          "traceValue": {
-            "actual": 0,
-            "condition": ">=",
-            "expected": 1,
-            "negated": false
+            }
           }
         }
       ]
@@ -133,20 +135,30 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "scalar-parameters",
       "focusNode": {
         "@id": "file://test/data/integration/profile1/negative.data.raml#/web-api/end-points/%2Fendpoint2/get/request/parameter/query/d"
       },
-      "resultMessage": "Scalars in parameters must have minLength defined",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "scalar-parameters",
+      "resultMessage": "Scalars in parameters must have minLength defined",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "minCount",
+          "resultPath": "shapes.schema / shacl.minLength",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          },
           "location": {
             "@type": [
               "lexical:Location"
@@ -155,29 +167,21 @@
               "@type": [
                 "lexical:Range"
               ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 8,
-                "line": 18
-              },
               "start": {
                 "@type": [
                   "lexical:Position"
                 ],
-                "column": 6,
-                "line": 18
+                "line": 18,
+                "column": 6
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 18,
+                "column": 8
               }
-            },
-            "uri": ""
-          },
-          "resultPath": "shapes.schema / shacl.minLength",
-          "traceValue": {
-            "actual": 0,
-            "condition": ">=",
-            "expected": 1,
-            "negated": false
+            }
           }
         }
       ]

@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "file://test/data/integration/profile4/negative.data.raml#/web-api/end-points/%2Fendpoint2"
       },
-      "resultMessage": "Endpoints must have a POST method",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Endpoints must have a POST method",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "existential",
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -104,11 +107,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile4/negative.data.raml#/web-api/end-points/%2Fendpoint2/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.supportedOperation",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -117,6 +120,9 @@
                     "component": "in",
                     "resultPath": "apiContract.method",
                     "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
                       "actual": "get",
                       "expected": "[\"put\",\"patch\"]",
                       "negated": false

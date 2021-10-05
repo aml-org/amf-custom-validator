@@ -1,11 +1,10 @@
-package validator
+package report
 
 import (
 	"bytes"
 	"encoding/json"
 	"errors"
 	"github.com/open-policy-agent/opa/rego"
-	"strings"
 )
 
 func BuildReport(result rego.ResultSet) (string, error) {
@@ -14,14 +13,18 @@ func BuildReport(result rego.ResultSet) (string, error) {
 	}
 
 	raw := result[0]
-	m := raw.Expressions[0].Value.(map[string]interface{})
+	m := raw.Expressions[0].Value.(object)
 
-	violations := m["violation"].([]interface{})
-	warnings := m["warning"].([]interface{})
-	infos := m["info"].([]interface{})
+	violation := Violation
+	warning := Warning
+	info := Info
+
+	violations := parseResults(m["violation"].([]any), &violation)
+	warnings := parseResults(m["warning"].([]any), &warning)
+	infos := parseResults(m["info"].([]any), &info)
 
 	if (len(violations) + len(warnings) + len(infos)) == 0 {
-		res := map[string]interface{}{
+		res := object{
 			"@type":    "shacl:ValidationReport",
 			"@context": conformsContext(),
 			"conforms": true,
@@ -29,18 +32,12 @@ func BuildReport(result rego.ResultSet) (string, error) {
 
 		return Encode(res), nil
 	} else {
-		var results []interface{}
-		for _, r := range violations {
-			results = append(results, buildViolation("violation", r))
-		}
-		for _, r := range warnings {
-			results = append(results, buildViolation("warning", r))
-		}
-		for _, r := range infos {
-			results = append(results, buildViolation("info", r))
-		}
+		var results []Result
+		results = append(results, violations...)
+		results = append(results, warnings...)
+		results = append(results, infos...)
 
-		res := map[string]interface{}{
+		res := object{
 			"@type":    "shacl:ValidationReport",
 			"@context": fullContext(),
 			"conforms": false,
@@ -49,9 +46,10 @@ func BuildReport(result rego.ResultSet) (string, error) {
 		return Encode(res), nil
 	}
 }
-func conformsContext() map[string]interface{} {
-	return map[string]interface{}{
-		"conforms": map[string]string{
+
+func conformsContext() object {
+	return object{
+		"conforms": object{
 			"@id": "http://www.w3.org/ns/shacl#conforms",
 		},
 		"shacl": "http://www.w3.org/ns/shacl#",
@@ -59,75 +57,75 @@ func conformsContext() map[string]interface{} {
 
 }
 
-func fullContext() map[string]interface{} {
-	return map[string]interface{}{
-		"actual": map[string]string{
+func fullContext() object {
+	return object{
+		"actual": object{
 			"@id": "http://a.ml/vocabularies/validation#actual",
 		},
-		"condition": map[string]string{
+		"condition": object{
 			"@id": "http://a.ml/vocabularies/validation#condition",
 		},
-		"expected": map[string]string{
+		"expected": object{
 			"@id": "http://a.ml/vocabularies/validation#expected",
 		},
-		"negated": map[string]string{
+		"negated": object{
 			"@id": "http://a.ml/vocabularies/validation#negated",
 		},
-		"argument": map[string]string{
+		"argument": object{
 			"@id": "http://a.ml/vocabularies/validation#argument",
 		},
-		"focusNode": map[string]string{
+		"focusNode": object{
 			"@id": "http://www.w3.org/ns/shacl#focusNode",
 		},
-		"trace": map[string]string{
+		"trace": object{
 			"@id": "http://a.ml/vocabularies/validation#trace",
 		},
-		"component": map[string]string{
+		"component": object{
 			"@id": "http://a.ml/vocabularies/validation#component",
 		},
-		"resultPath": map[string]string{
+		"resultPath": object{
 			"@id": "http://www.w3.org/ns/shacl#resultPath",
 		},
-		"traceValue": map[string]string{
+		"traceValue": object{
 			"@id": "http://www.w3.org/ns/shacl#traceValue",
 		},
-		"location": map[string]string{
+		"location": object{
 			"@id": "http://a.ml/vocabularies/validation#location",
 		},
-		"uri": map[string]string{
+		"uri": object{
 			"@id": "http://a.ml/vocabularies/lexical#uri",
 		},
-		"start": map[string]string{
+		"start": object{
 			"@id": "http://a.ml/vocabularies/lexical#start",
 		},
-		"end": map[string]string{
+		"end": object{
 			"@id": "http://a.ml/vocabularies/lexical#end",
 		},
-		"range": map[string]string{
+		"range": object{
 			"@id": "http://a.ml/vocabularies/lexical#range",
 		},
-		"line": map[string]string{
+		"line": object{
 			"@id": "http://a.ml/vocabularies/lexical#line",
 		},
-		"column": map[string]string{
+		"column": object{
 			"@id": "http://a.ml/vocabularies/lexical#column",
 		},
-		"sourceShapeName": map[string]string{
+		"sourceShapeName": object{
 			"@id": "http://a.ml/vocabularies/validation#sourceShapeName",
 		},
-		"conforms": map[string]string{
+		"conforms": object{
 			"@id": "http://www.w3.org/ns/shacl#conforms",
 		},
-		"result": map[string]string{
+		"result": object{
 			"@id": "http://www.w3.org/ns/shacl#result",
 		},
-		"subResult": map[string]string{
+		"subResult": object{
 			"@id": "http://a.ml/vocabularies/validation#subResult",
 		},
-		"resultSeverity": map[string]string{
+		"resultSeverity": object{
 			"@id": "http://www.w3.org/ns/shacl#resultSeverity",
 		},
-		"resultMessage": map[string]string{
+		"resultMessage": object{
 			"@id": "http://www.w3.org/ns/shacl#resultMessage",
 		},
 		"shacl":      "http://www.w3.org/ns/shacl#",
@@ -136,19 +134,11 @@ func fullContext() map[string]interface{} {
 	}
 }
 
-func Encode(data interface{}) string {
+func Encode(data any) string {
 	var b bytes.Buffer
 	enc := json.NewEncoder(&b)
 	enc.SetIndent("", "  ")
 	enc.SetEscapeHTML(false)
 	enc.Encode(data)
 	return b.String()
-}
-
-func buildViolation(level string, raw interface{}) map[string]interface{} {
-	violation := raw.(map[string]interface{})
-	violation["resultSeverity"] = map[string]string{
-		"@id": "http://www.w3.org/ns/shacl#" + strings.Title(level),
-	}
-	return violation
 }

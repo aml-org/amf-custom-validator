@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "174-common-field-types-id",
       "focusNode": {
         "@id": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/id/scalar/id"
       },
-      "resultMessage": "ID field with string type expected",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "174-common-field-types-id",
+      "resultMessage": "ID field with string type expected",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "in",
           "resultPath": "shacl.datatype",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "xsd:boolean",
             "expected": "[\"xsd:string\"]",
             "negated": false
@@ -108,8 +111,11 @@
           "component": "pattern",
           "resultPath": "shacl.name",
           "traceValue": {
-            "argument": "id",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "id"
           }
         }
       ]
@@ -118,14 +124,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "174-common-field-types-id",
       "focusNode": {
         "@id": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/scalar/invoice_id"
       },
-      "resultMessage": "ID field with string type expected",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "174-common-field-types-id",
+      "resultMessage": "ID field with string type expected",
       "trace": [
         {
           "@type": [
@@ -134,6 +140,9 @@
           "component": "in",
           "resultPath": "shacl.datatype",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "shapes:number",
             "expected": "[\"xsd:string\"]",
             "negated": false
@@ -146,8 +155,11 @@
           "component": "pattern",
           "resultPath": "shacl.name",
           "traceValue": {
-            "argument": "invoice_id",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "invoice_id"
           }
         }
       ]
@@ -156,14 +168,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "174-common-field-types-created-at",
       "focusNode": {
         "@id": "file://./test/data/production/zalando/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/created_at/scalar/created_at"
       },
-      "resultMessage": "Created-at fields must be date-times",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "174-common-field-types-created-at",
+      "resultMessage": "Created-at fields must be date-times",
       "trace": [
         {
           "@type": [
@@ -172,6 +184,9 @@
           "component": "in",
           "resultPath": "shacl.datatype",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "xsd:string",
             "expected": "[\"xsd:dateTime\"]",
             "negated": false
@@ -184,6 +199,9 @@
           "component": "in",
           "resultPath": "shacl.name",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "created_at",
             "expected": "[\"created_at\"]",
             "negated": true

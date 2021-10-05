@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "path-params",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers"
       },
-      "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "path-params",
+      "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }
@@ -105,14 +108,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "path-params",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D"
       },
-      "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "path-params",
+      "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "trace": [
         {
           "@type": [
@@ -121,6 +124,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }
@@ -130,14 +136,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "path-params",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D"
       },
-      "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "path-params",
+      "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "trace": [
         {
           "@type": [
@@ -146,6 +152,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }

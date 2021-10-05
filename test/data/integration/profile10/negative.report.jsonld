@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "kia1104-virtual-service-weight-assumed-100-percent",
       "focusNode": {
         "@id": "http://a.ml/amf/default_document#/encodes/spec/http/0"
       },
-      "resultMessage": "[KIA1104 - The weight is assumed to be 100 because there is only one route destination](https://kiali.io/documentation/latest/validations/#_kia1104_the_weight_is_assumed_to_be_100_because_there_is_only_one_route_destination)\nIstio assumes the weight to be 100 when there is only one HTTPRouteDestination or RouteDestination. The warning is present because there is one route with a weight less than 100.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "kia1104-virtual-service-weight-assumed-100-percent",
+      "resultMessage": "[KIA1104 - The weight is assumed to be 100 because there is only one route destination](https://kiali.io/documentation/latest/validations/#_kia1104_the_weight_is_assumed_to_be_100_because_there_is_only_one_route_destination)\nIstio assumes the weight to be 100 when there is only one HTTPRouteDestination or RouteDestination. The warning is present because there is one route with a weight less than 100.\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "maxCount",
           "resultPath": "data.route",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "condition": "<=",
             "expected": 1,
@@ -109,6 +112,9 @@
           "component": "minCount",
           "resultPath": "data.route",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "condition": ">=",
             "expected": 1,
@@ -122,10 +128,13 @@
           "component": "nested",
           "resultPath": "data.route",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "expected": 0,
             "negated": true,
-            "subResult": []
+            "subResult": null
           }
         }
       ]

@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "ex:InvalidRectangle2"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
@@ -96,11 +96,16 @@
           "component": "minCount",
           "resultPath": "ex.height",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
-            "negated": false
-          }
+            "negated": false,
+            "argument": null
+          },
+          "location": null
         },
         {
           "@type": [
@@ -109,11 +114,16 @@
           "component": "minCount",
           "resultPath": "ex.area",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
-            "negated": false
-          }
+            "negated": false,
+            "argument": null
+          },
+          "location": null
         }
       ]
     },
@@ -121,14 +131,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "ex:InvalidRectangle1"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
@@ -137,11 +147,16 @@
           "component": "minCount",
           "resultPath": "ex.width",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
-            "negated": false
-          }
+            "negated": false,
+            "argument": null
+          },
+          "location": null
         },
         {
           "@type": [
@@ -150,11 +165,16 @@
           "component": "minCount",
           "resultPath": "ex.area",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
-            "negated": false
-          }
+            "negated": false,
+            "argument": null
+          },
+          "location": null
         }
       ]
     },
@@ -162,14 +182,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "ex:InvalidRectangle2"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
@@ -178,11 +198,16 @@
           "component": "minCount",
           "resultPath": "ex.width",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
-            "negated": false
-          }
+            "negated": false,
+            "argument": null
+          },
+          "location": null
         },
         {
           "@type": [
@@ -191,11 +216,16 @@
           "component": "minCount",
           "resultPath": "ex.area",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
-            "negated": false
-          }
+            "negated": false,
+            "argument": null
+          },
+          "location": null
         }
       ]
     }

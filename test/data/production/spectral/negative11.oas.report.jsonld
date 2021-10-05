@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-default-response",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative11.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/get/default"
       },
-      "resultMessage": "Don't use default responses, provide a valid status code",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-default-response",
+      "resultMessage": "Don't use default responses, provide a valid status code",
       "trace": [
         {
           "@type": [
@@ -96,8 +96,11 @@
           "component": "pattern",
           "resultPath": "apiContract.statusCode",
           "traceValue": {
-            "argument": "default",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "default"
           }
         }
       ]

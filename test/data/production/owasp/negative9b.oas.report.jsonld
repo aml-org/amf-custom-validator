@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "broken-user-authentication-authenticate-api",
       "focusNode": {
         "@id": "file://./test/data/production/owasp/negative9b.oas#/web-api"
       },
-      "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "broken-user-authentication-authenticate-api",
+      "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "minCount",
           "resultPath": "security.security",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -109,6 +112,9 @@
           "component": "nested",
           "resultPath": "apiContract.endpoint / apiContract.supportedOperation",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -117,11 +123,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://./test/data/production/owasp/negative9b.oas#/web-api/end-points/%2Finvoices/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -130,6 +136,9 @@
                     "component": "minCount",
                     "resultPath": "security.security",
                     "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
                       "actual": 0,
                       "condition": ">=",
                       "expected": 1,

@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "only-http-basic-security-supported",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative4.oas#/web-api"
       },
-      "resultMessage": "Only basic authentication for clientId/Secret credentials or no authentication schemes are supported\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "only-http-basic-security-supported",
+      "resultMessage": "Only basic authentication for clientId/Secret credentials or no authentication schemes are supported\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "minCount",
           "resultPath": "security.security",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "condition": ">=",
             "expected": 1,
@@ -109,6 +112,9 @@
           "component": "existential",
           "resultPath": "security.security / security.schemes / security.scheme",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -117,11 +123,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://./test/data/production/datagraph/negative4.oas#/web-api/requirement_1/oAuth/oAuth"
                 },
                 "resultMessage": "error in nested nodes under security.security / security.schemes / security.scheme",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -130,8 +136,11 @@
                     "component": "pattern",
                     "resultPath": "security.type",
                     "traceValue": {
-                      "argument": "OAuth 2.0",
-                      "negated": false
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "negated": false,
+                      "argument": "OAuth 2.0"
                     }
                   }
                 ]

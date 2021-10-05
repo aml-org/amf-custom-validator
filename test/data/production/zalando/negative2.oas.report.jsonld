@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "166-do-not-use-link-headers",
       "focusNode": {
         "@id": "file://./test/data/production/zalando/negative2.oas#/web-api/end-points/%2Fpath/parameter/header/Link"
       },
-      "resultMessage": "Do Not Use Link Headers with JSON entities",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "166-do-not-use-link-headers",
+      "resultMessage": "Do Not Use Link Headers with JSON entities",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "in",
           "resultPath": "apiContract.binding",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "header",
             "expected": "[\"header\"]",
             "negated": true
@@ -108,6 +111,9 @@
           "component": "in",
           "resultPath": "core.name",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "Link",
             "expected": "[\"Link\"]",
             "negated": true

@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "simple-rego",
       "focusNode": {
         "@id": "file://test/data/integration/profile8/negative.data.raml#/web-api"
       },
-      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "simple-rego",
+      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": true
           }
         }
@@ -105,14 +108,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "simple-rego2",
       "focusNode": {
         "@id": "file://test/data/integration/profile8/negative.data.raml#/web-api"
       },
-      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "simple-rego2",
+      "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "trace": [
         {
           "@type": [
@@ -121,6 +124,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }

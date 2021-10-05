@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request"
       },
-      "resultMessage": "Scalars in parameters must have minLength defined",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Scalars in parameters must have minLength defined",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "nested",
           "resultPath": "apiContract.parameter / shapes.schema",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -104,11 +107,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request/parameter/default-binding/b/scalar/schema"
                 },
                 "resultMessage": "error in nested nodes under apiContract.parameter / shapes.schema",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -117,6 +120,9 @@
                     "component": "minCount",
                     "resultPath": "shacl.minLength",
                     "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
                       "actual": 0,
                       "condition": ">=",
                       "expected": 1,
@@ -134,14 +140,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/put/request"
       },
-      "resultMessage": "Scalars in parameters must have minLength defined",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Scalars in parameters must have minLength defined",
       "trace": [
         {
           "@type": [
@@ -150,6 +156,9 @@
           "component": "nested",
           "resultPath": "apiContract.parameter / shapes.schema",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -158,11 +167,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/put/request/parameter/default-binding/g/scalar/schema"
                 },
                 "resultMessage": "error in nested nodes under apiContract.parameter / shapes.schema",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -171,6 +180,9 @@
                     "component": "minCount",
                     "resultPath": "shacl.minLength",
                     "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
                       "actual": 0,
                       "condition": ">=",
                       "expected": 1,

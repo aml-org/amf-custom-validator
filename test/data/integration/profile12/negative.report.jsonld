@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "array-limits",
       "focusNode": {
         "@id": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "array-limits",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "datatype",
           "resultPath": "shacl.minCount",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "100",
             "expected": "xsd:integer",
             "negated": false
@@ -107,14 +110,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "array-limits",
       "focusNode": {
         "@id": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails2"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "array-limits",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
@@ -123,6 +126,9 @@
           "component": "datatype",
           "resultPath": "shacl.minCount",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": {
               "@type": "xsd:string",
               "@value": "100"
@@ -137,14 +143,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "array-limits",
       "focusNode": {
         "@id": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails3"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "array-limits",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
@@ -153,6 +159,9 @@
           "component": "datatype",
           "resultPath": "shacl.minCount",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": {
               "@type": "xsd:wadus",
               "@value": "100"

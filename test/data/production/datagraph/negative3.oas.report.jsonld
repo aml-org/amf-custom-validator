@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "not-json-response",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get"
       },
-      "resultMessage": "Only JSON payloads are supported at the moment in DataGraph. This is the preferred media type format.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "not-json-response",
+      "resultMessage": "Only JSON payloads are supported at the moment in DataGraph. This is the preferred media type format.\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "existential",
           "resultPath": "apiContract.returns / apiContract.payload",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -104,11 +107,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://./test/data/production/datagraph/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fyaml"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns / apiContract.payload",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -117,8 +120,11 @@
                     "component": "pattern",
                     "resultPath": "core.mediaType",
                     "traceValue": {
-                      "argument": "application/yaml",
-                      "negated": false
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "negated": false,
+                      "argument": "application/yaml"
                     }
                   }
                 ]
@@ -132,14 +138,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "open-schemas-ignored",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative3.oas#/declarations/types/Invoice"
       },
-      "resultMessage": "Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.\nConsider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.\nIf you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "open-schemas-ignored",
+      "resultMessage": "Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.\nConsider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.\nIf you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.\n",
       "trace": [
         {
           "@type": [
@@ -148,6 +154,9 @@
           "component": "in",
           "resultPath": "shacl.closed",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "false",
             "expected": "[\"false\"]",
             "negated": true

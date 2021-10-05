@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "bad-movie",
       "focusNode": {
         "@id": "http://0.0.0.0:8080/v1/movie/Lionsgate/Disaster+Movie#/"
       },
-      "resultMessage": "Movie has low rating and reviews",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "bad-movie",
+      "resultMessage": "Movie has low rating and reviews",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "maximumInclusive",
           "resultPath": "movie.reviews",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 88000,
             "condition": "<=",
             "expected": 1000,
@@ -109,6 +112,9 @@
           "component": "maximumInclusive",
           "resultPath": "movie.rating",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1.9,
             "condition": "<=",
             "expected": 5,

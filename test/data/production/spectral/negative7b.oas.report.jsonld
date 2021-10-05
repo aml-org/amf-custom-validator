@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "license-url",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative7b.oas#/web-api/license"
       },
-      "resultMessage": "Mentioning a license is only useful if people know what the license means, so add a link to the full text for\nthose who need it.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "license-url",
+      "resultMessage": "Mentioning a license is only useful if people know what the license means, so add a link to the full text for\nthose who need it.\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "minCount",
           "resultPath": "core.url",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,

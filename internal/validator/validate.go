@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"github.com/aml-org/amf-custom-validator/internal/generator"
 	"github.com/aml-org/amf-custom-validator/internal/parser"
+	r "github.com/aml-org/amf-custom-validator/internal/report"
 	e "github.com/aml-org/amf-custom-validator/pkg/events"
 	"github.com/open-policy-agent/opa/rego"
 )
@@ -29,7 +30,7 @@ func Validate(profileText string, jsonldText string, debug bool, eventChan *chan
 		return "", err
 	} else {
 		dispatch(e.NewEvent(e.BuildReportStart), eventChan)
-		report, err := BuildReport(result)
+		report, err := r.BuildReport(result)
 		dispatch(e.NewEvent(e.BuildReportDone), eventChan)
 		closeIfNotNil(eventChan)
 		return report, err

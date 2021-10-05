@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/aml-org/amf-custom-validator/internal/report"
 	"github.com/aml-org/amf-custom-validator/internal/validator"
 	"io/ioutil"
 	"os"
@@ -37,5 +38,5 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println(validator.Encode(res))
+	fmt.Println(report.Encode(res))
 }

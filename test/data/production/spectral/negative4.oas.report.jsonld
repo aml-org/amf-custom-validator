@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-operationId-unique",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative4.oas#/web-api"
       },
-      "resultMessage": "Every operation must have a unique operationId.\n\nWhy? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,\nall sorts of things like that.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-operationId-unique",
+      "resultMessage": "Every operation must have a unique operationId.\n\nWhy? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,\nall sorts of things like that.\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }
@@ -105,14 +108,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-parameters",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D"
       },
-      "resultMessage": "Operation parameters are unique and non-repeating.",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-parameters",
+      "resultMessage": "Operation parameters are unique and non-repeating.",
       "trace": [
         {
           "@type": [
@@ -121,6 +124,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }
@@ -130,14 +136,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-parameters",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind"
       },
-      "resultMessage": "Operation parameters are unique and non-repeating.",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-parameters",
+      "resultMessage": "Operation parameters are unique and non-repeating.",
       "trace": [
         {
           "@type": [
@@ -146,6 +152,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }
@@ -155,14 +164,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "info-description",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative4.oas#/web-api"
       },
-      "resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "info-description",
+      "resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
       "trace": [
         {
           "@type": [
@@ -171,6 +180,9 @@
           "component": "minCount",
           "resultPath": "core.description",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -183,14 +195,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "info-license",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative4.oas#/web-api"
       },
-      "resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "info-license",
+      "resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
       "trace": [
         {
           "@type": [
@@ -199,6 +211,9 @@
           "component": "minCount",
           "resultPath": "core.license",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -211,14 +226,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "openapi-tags",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative4.oas#/web-api"
       },
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
       "resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
-      "resultSeverity": {
-        "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "sourceShapeName": "openapi-tags",
       "trace": [
         {
           "@type": [
@@ -227,6 +242,9 @@
           "component": "minCount",
           "resultPath": "apiContract.tag",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -239,14 +257,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-description",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
       },
-      "resultMessage": "Operation must have a description explaining the operation functionality",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-description",
+      "resultMessage": "Operation must have a description explaining the operation functionality",
       "trace": [
         {
           "@type": [
@@ -255,6 +273,9 @@
           "component": "minCount",
           "resultPath": "core.description",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -267,14 +288,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-description",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get"
       },
-      "resultMessage": "Operation must have a description explaining the operation functionality",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-description",
+      "resultMessage": "Operation must have a description explaining the operation functionality",
       "trace": [
         {
           "@type": [
@@ -283,6 +304,9 @@
           "component": "minCount",
           "resultPath": "core.description",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -295,14 +319,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-operationId",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
       },
-      "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-operationId",
+      "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
       "trace": [
         {
           "@type": [
@@ -311,6 +335,9 @@
           "component": "minCount",
           "resultPath": "apiContract.operationId",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -323,14 +350,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-operationId",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get"
       },
-      "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-operationId",
+      "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
       "trace": [
         {
           "@type": [
@@ -339,6 +366,9 @@
           "component": "minCount",
           "resultPath": "apiContract.operationId",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -351,14 +381,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-tags",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
       },
-      "resultMessage": "Operation should have non-empty tags array.",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-tags",
+      "resultMessage": "Operation should have non-empty tags array.",
       "trace": [
         {
           "@type": [
@@ -367,6 +397,9 @@
           "component": "minCount",
           "resultPath": "apiContract.tag",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -379,14 +412,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-tags",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get"
       },
-      "resultMessage": "Operation should have non-empty tags array.",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-tags",
+      "resultMessage": "Operation should have non-empty tags array.",
       "trace": [
         {
           "@type": [
@@ -395,6 +428,9 @@
           "component": "minCount",
           "resultPath": "apiContract.tag",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,

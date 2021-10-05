@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "ex:InvalidResource1"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "lessThan",
           "resultPath": "ex.property1",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 4,
             "condition": "<",
             "expected": 4,
@@ -108,14 +111,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "ex:InvalidResource2"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
@@ -124,6 +127,9 @@
           "component": "lessThan",
           "resultPath": "ex.property1",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 5,
             "condition": "<",
             "expected": 6,
@@ -136,14 +142,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "ex:InvalidResource3"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
@@ -152,6 +158,9 @@
           "component": "lessThan",
           "resultPath": "ex.property1",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 4,
             "condition": "<",
             "expected": 5,

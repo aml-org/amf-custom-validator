@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "media-type-headers-response",
       "focusNode": {
         "@id": "file://./test/data/production/best-practices/negative2.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200"
       },
-      "resultMessage": "- For the response: use ‘content-type’ header\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "media-type-headers-response",
+      "resultMessage": "- For the response: use ‘content-type’ header\n",
       "trace": [
         {
           "@type": [
@@ -96,10 +96,13 @@
           "component": "existential",
           "resultPath": "apiContract.header",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "expected": 0,
             "negated": false,
-            "subResult": []
+            "subResult": null
           }
         }
       ]

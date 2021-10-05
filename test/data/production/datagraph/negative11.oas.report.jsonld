@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "unsupported-response-schema-shapes",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative11.oas#/declarations/types/Customer/property/matrix/array/matrix"
       },
-      "resultMessage": "Only objects, arrays, unions and scalars in responses can be mapped to GraphQL types\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "unsupported-response-schema-shapes",
+      "resultMessage": "Only objects, arrays, unions and scalars in responses can be mapped to GraphQL types\n",
       "trace": [
         {
           "@type": [
@@ -96,8 +96,11 @@
           "component": "pattern",
           "resultPath": "@type",
           "traceValue": {
-            "argument": "shapes:MatrixShape",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "shapes:MatrixShape"
           }
         }
       ]

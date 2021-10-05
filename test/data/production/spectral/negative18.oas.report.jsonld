@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "duplicated-entry-in-enum",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative18.oas#/declarations/types/TheBadModel/property/number_of_connectors/scalar/number_of_connectors"
       },
-      "resultMessage": "Each value of an enum must be different from one another.",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "duplicated-entry-in-enum",
+      "resultMessage": "Each value of an enum must be different from one another.",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }

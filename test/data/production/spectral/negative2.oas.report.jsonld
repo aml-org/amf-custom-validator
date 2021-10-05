@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "operation-2xx-response",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative2.oas#/web-api/end-points/%2Fpath/get"
       },
-      "resultMessage": "Operation must have at least one 2xx response. Any API operation (endpoint) can fail but presumably it is also\nmeant to do something constructive at some point. If you forget to write out a success case for this API, then\nthis rule will let you know.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "operation-2xx-response",
+      "resultMessage": "Operation must have at least one 2xx response. Any API operation (endpoint) can fail but presumably it is also\nmeant to do something constructive at some point. If you forget to write out a success case for this API, then\nthis rule will let you know.\n",
       "trace": [
         {
           "@type": [
@@ -96,10 +96,13 @@
           "component": "existential",
           "resultPath": "apiContract.returns",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "expected": 0,
             "negated": false,
-            "subResult": []
+            "subResult": null
           }
         }
       ]

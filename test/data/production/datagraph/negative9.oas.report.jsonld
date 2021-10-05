@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "heterogeneous-union",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/invoice/any/invoice"
       },
-      "resultMessage": "Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object\nshapes with scalar flags/properties can be used as an alternative\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "heterogeneous-union",
+      "resultMessage": "Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object\nshapes with scalar flags/properties can be used as an alternative\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }
@@ -105,14 +108,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "nil-union-antipattern",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative9.oas#/declarations/types/Customer/property/invoice/any/invoice"
       },
-      "resultMessage": "Unions between nil and other types of shapes are unnecessary when representing an optional properties. Optional\nproperties should be used instead.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "nil-union-antipattern",
+      "resultMessage": "Unions between nil and other types of shapes are unnecessary when representing an optional properties. Optional\nproperties should be used instead.\n",
       "trace": [
         {
           "@type": [
@@ -121,6 +124,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }

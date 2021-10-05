@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "path-params",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems"
       },
-      "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "path-params",
+      "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }
@@ -105,14 +108,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "path-declarations-must-exist",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems"
       },
-      "resultMessage": "Path parameter declarations cannot be empty, ex./given/{} is invalid.",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "path-declarations-must-exist",
+      "resultMessage": "Path parameter declarations cannot be empty, ex./given/{} is invalid.",
       "trace": [
         {
           "@type": [
@@ -121,8 +124,11 @@
           "component": "pattern",
           "resultPath": "apiContract.path",
           "traceValue": {
-            "argument": "/invoices/{}/items",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "/invoices/{}/items"
           }
         }
       ]
@@ -131,14 +137,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "path-declarations-must-exist",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7B%7D"
       },
-      "resultMessage": "Path parameter declarations cannot be empty, ex./given/{} is invalid.",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "path-declarations-must-exist",
+      "resultMessage": "Path parameter declarations cannot be empty, ex./given/{} is invalid.",
       "trace": [
         {
           "@type": [
@@ -147,8 +153,11 @@
           "component": "pattern",
           "resultPath": "apiContract.path",
           "traceValue": {
-            "argument": "/invoices/{id}/items/{}",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "/invoices/{id}/items/{}"
           }
         }
       ]

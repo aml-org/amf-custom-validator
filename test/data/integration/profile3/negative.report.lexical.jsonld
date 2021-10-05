@@ -80,47 +80,25 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint1"
       },
-      "resultMessage": "Endpoints must have a POST method",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Endpoints must have a POST method",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "existential",
-          "location": {
-            "@type": [
-              "lexical:Location"
-            ],
-            "range": {
-              "@type": [
-                "lexical:Range"
-              ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 22
-              },
-              "start": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 5
-              }
-            },
-            "uri": ""
-          },
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -129,17 +107,26 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint1/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.supportedOperation",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
                       "validation:TraceMessage"
                     ],
                     "component": "in",
+                    "resultPath": "apiContract.method",
+                    "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "actual": "get",
+                      "expected": "[\"put\",\"patch\"]",
+                      "negated": false
+                    },
                     "location": {
                       "@type": [
                         "lexical:Location"
@@ -148,55 +135,27 @@
                         "@type": [
                           "lexical:Range"
                         ],
-                        "end": {
-                          "@type": [
-                            "lexical:Position"
-                          ],
-                          "column": 0,
-                          "line": 22
-                        },
                         "start": {
                           "@type": [
                             "lexical:Position"
                           ],
-                          "column": 2,
-                          "line": 14
+                          "line": 14,
+                          "column": 2
+                        },
+                        "end": {
+                          "@type": [
+                            "lexical:Position"
+                          ],
+                          "line": 22,
+                          "column": 0
                         }
-                      },
-                      "uri": ""
-                    },
-                    "resultPath": "apiContract.method",
-                    "traceValue": {
-                      "actual": "get",
-                      "expected": "[\"put\",\"patch\"]",
-                      "negated": false
+                      }
                     }
                   }
                 ]
               }
             ]
-          }
-        }
-      ]
-    },
-    {
-      "@type": [
-        "shacl:ValidationResult"
-      ],
-      "focusNode": {
-        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint2"
-      },
-      "resultMessage": "Endpoints must have a POST method",
-      "resultSeverity": {
-        "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "sourceShapeName": "validation1",
-      "trace": [
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "existential",
+          },
           "location": {
             "@type": [
               "lexical:Location"
@@ -205,25 +164,48 @@
               "@type": [
                 "lexical:Range"
               ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 40
-              },
               "start": {
                 "@type": [
                   "lexical:Position"
                 ],
-                "column": 0,
-                "line": 22
+                "line": 5,
+                "column": 0
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 22,
+                "column": 0
               }
-            },
-            "uri": ""
-          },
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "sourceShapeName": "validation1",
+      "focusNode": {
+        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint2"
+      },
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "resultMessage": "Endpoints must have a POST method",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "existential",
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -232,17 +214,26 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint2/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.supportedOperation",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
                       "validation:TraceMessage"
                     ],
                     "component": "in",
+                    "resultPath": "apiContract.method",
+                    "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "actual": "get",
+                      "expected": "[\"put\",\"patch\"]",
+                      "negated": false
+                    },
                     "location": {
                       "@type": [
                         "lexical:Location"
@@ -251,55 +242,27 @@
                         "@type": [
                           "lexical:Range"
                         ],
-                        "end": {
-                          "@type": [
-                            "lexical:Position"
-                          ],
-                          "column": 0,
-                          "line": 40
-                        },
                         "start": {
                           "@type": [
                             "lexical:Position"
                           ],
-                          "column": 2,
-                          "line": 31
+                          "line": 31,
+                          "column": 2
+                        },
+                        "end": {
+                          "@type": [
+                            "lexical:Position"
+                          ],
+                          "line": 40,
+                          "column": 0
                         }
-                      },
-                      "uri": ""
-                    },
-                    "resultPath": "apiContract.method",
-                    "traceValue": {
-                      "actual": "get",
-                      "expected": "[\"put\",\"patch\"]",
-                      "negated": false
+                      }
                     }
                   }
                 ]
               }
             ]
-          }
-        }
-      ]
-    },
-    {
-      "@type": [
-        "shacl:ValidationResult"
-      ],
-      "focusNode": {
-        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3"
-      },
-      "resultMessage": "Endpoints must have a POST method",
-      "resultSeverity": {
-        "@id": "http://www.w3.org/ns/shacl#Violation"
-      },
-      "sourceShapeName": "validation1",
-      "trace": [
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "existential",
+          },
           "location": {
             "@type": [
               "lexical:Location"
@@ -308,25 +271,48 @@
               "@type": [
                 "lexical:Range"
               ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 12,
-                "line": 56
-              },
               "start": {
                 "@type": [
                   "lexical:Position"
                 ],
-                "column": 0,
-                "line": 40
+                "line": 22,
+                "column": 0
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 40,
+                "column": 0
               }
-            },
-            "uri": ""
-          },
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "sourceShapeName": "validation1",
+      "focusNode": {
+        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3"
+      },
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "resultMessage": "Endpoints must have a POST method",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "existential",
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 2,
             "expected": 0,
             "negated": false,
@@ -335,17 +321,26 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.supportedOperation",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
                       "validation:TraceMessage"
                     ],
                     "component": "in",
+                    "resultPath": "apiContract.method",
+                    "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "actual": "get",
+                      "expected": "[\"put\",\"patch\"]",
+                      "negated": false
+                    },
                     "location": {
                       "@type": [
                         "lexical:Location"
@@ -354,28 +349,21 @@
                         "@type": [
                           "lexical:Range"
                         ],
-                        "end": {
-                          "@type": [
-                            "lexical:Position"
-                          ],
-                          "column": 0,
-                          "line": 49
-                        },
                         "start": {
                           "@type": [
                             "lexical:Position"
                           ],
-                          "column": 2,
-                          "line": 41
+                          "line": 41,
+                          "column": 2
+                        },
+                        "end": {
+                          "@type": [
+                            "lexical:Position"
+                          ],
+                          "line": 49,
+                          "column": 0
                         }
-                      },
-                      "uri": ""
-                    },
-                    "resultPath": "apiContract.method",
-                    "traceValue": {
-                      "actual": "get",
-                      "expected": "[\"put\",\"patch\"]",
-                      "negated": false
+                      }
                     }
                   }
                 ]
@@ -384,17 +372,26 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3/post"
                 },
                 "resultMessage": "error in nested nodes under apiContract.supportedOperation",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
                       "validation:TraceMessage"
                     ],
                     "component": "in",
+                    "resultPath": "apiContract.method",
+                    "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "actual": "post",
+                      "expected": "[\"put\",\"patch\"]",
+                      "negated": false
+                    },
                     "location": {
                       "@type": [
                         "lexical:Location"
@@ -403,33 +400,50 @@
                         "@type": [
                           "lexical:Range"
                         ],
-                        "end": {
-                          "@type": [
-                            "lexical:Position"
-                          ],
-                          "column": 12,
-                          "line": 56
-                        },
                         "start": {
                           "@type": [
                             "lexical:Position"
                           ],
-                          "column": 2,
-                          "line": 49
+                          "line": 49,
+                          "column": 2
+                        },
+                        "end": {
+                          "@type": [
+                            "lexical:Position"
+                          ],
+                          "line": 56,
+                          "column": 12
                         }
-                      },
-                      "uri": ""
-                    },
-                    "resultPath": "apiContract.method",
-                    "traceValue": {
-                      "actual": "post",
-                      "expected": "[\"put\",\"patch\"]",
-                      "negated": false
+                      }
                     }
                   }
                 ]
               }
             ]
+          },
+          "location": {
+            "@type": [
+              "lexical:Location"
+            ],
+            "range": {
+              "@type": [
+                "lexical:Range"
+              ],
+              "start": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 40,
+                "column": 0
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 56,
+                "column": 12
+              }
+            }
           }
         }
       ]

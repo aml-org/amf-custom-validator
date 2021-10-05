@@ -80,47 +80,25 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request"
       },
-      "resultMessage": "Scalars in parameters must have minLength defined",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Scalars in parameters must have minLength defined",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "nested",
-          "location": {
-            "@type": [
-              "lexical:Location"
-            ],
-            "range": {
-              "@type": [
-                "lexical:Range"
-              ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 18
-              },
-              "start": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 7
-              }
-            },
-            "uri": ""
-          },
           "resultPath": "apiContract.parameter / shapes.schema",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -129,17 +107,27 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request/parameter/query/b/scalar/schema"
                 },
                 "resultMessage": "error in nested nodes under apiContract.parameter / shapes.schema",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
                       "validation:TraceMessage"
                     ],
                     "component": "minCount",
+                    "resultPath": "shacl.minLength",
+                    "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "actual": 0,
+                      "condition": ">=",
+                      "expected": 1,
+                      "negated": false
+                    },
                     "location": {
                       "@type": [
                         "lexical:Location"
@@ -148,34 +136,50 @@
                         "@type": [
                           "lexical:Range"
                         ],
-                        "end": {
-                          "@type": [
-                            "lexical:Position"
-                          ],
-                          "column": 0,
-                          "line": 11
-                        },
                         "start": {
                           "@type": [
                             "lexical:Position"
                           ],
-                          "column": 6,
-                          "line": 10
+                          "line": 10,
+                          "column": 6
+                        },
+                        "end": {
+                          "@type": [
+                            "lexical:Position"
+                          ],
+                          "line": 11,
+                          "column": 0
                         }
-                      },
-                      "uri": ""
-                    },
-                    "resultPath": "shacl.minLength",
-                    "traceValue": {
-                      "actual": 0,
-                      "condition": ">=",
-                      "expected": 1,
-                      "negated": false
+                      }
                     }
                   }
                 ]
               }
             ]
+          },
+          "location": {
+            "@type": [
+              "lexical:Location"
+            ],
+            "range": {
+              "@type": [
+                "lexical:Range"
+              ],
+              "start": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 7,
+                "column": 0
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 18,
+                "column": 0
+              }
+            }
           }
         }
       ]
@@ -184,47 +188,25 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/put/request"
       },
-      "resultMessage": "Scalars in parameters must have minLength defined",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Scalars in parameters must have minLength defined",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "nested",
-          "location": {
-            "@type": [
-              "lexical:Location"
-            ],
-            "range": {
-              "@type": [
-                "lexical:Range"
-              ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 31
-              },
-              "start": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 19
-              }
-            },
-            "uri": ""
-          },
           "resultPath": "apiContract.parameter / shapes.schema",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -233,17 +215,27 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/put/request/parameter/query/g/scalar/schema"
                 },
                 "resultMessage": "error in nested nodes under apiContract.parameter / shapes.schema",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
                       "validation:TraceMessage"
                     ],
                     "component": "minCount",
+                    "resultPath": "shacl.minLength",
+                    "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "actual": 0,
+                      "condition": ">=",
+                      "expected": 1,
+                      "negated": false
+                    },
                     "location": {
                       "@type": [
                         "lexical:Location"
@@ -252,34 +244,50 @@
                         "@type": [
                           "lexical:Range"
                         ],
-                        "end": {
-                          "@type": [
-                            "lexical:Position"
-                          ],
-                          "column": 0,
-                          "line": 25
-                        },
                         "start": {
                           "@type": [
                             "lexical:Position"
                           ],
-                          "column": 6,
-                          "line": 24
+                          "line": 24,
+                          "column": 6
+                        },
+                        "end": {
+                          "@type": [
+                            "lexical:Position"
+                          ],
+                          "line": 25,
+                          "column": 0
                         }
-                      },
-                      "uri": ""
-                    },
-                    "resultPath": "shacl.minLength",
-                    "traceValue": {
-                      "actual": 0,
-                      "condition": ">=",
-                      "expected": 1,
-                      "negated": false
+                      }
                     }
                   }
                 ]
               }
             ]
+          },
+          "location": {
+            "@type": [
+              "lexical:Location"
+            ],
+            "range": {
+              "@type": [
+                "lexical:Range"
+              ],
+              "start": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 19,
+                "column": 0
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 31,
+                "column": 0
+              }
+            }
           }
         }
       ]

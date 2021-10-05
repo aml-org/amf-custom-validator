@@ -80,20 +80,30 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "max-endpoints",
       "focusNode": {
         "@id": "file://test/data/integration/profile9/negative.data.raml#/web-api"
       },
-      "resultMessage": "maximum number of endpoints test",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "max-endpoints",
+      "resultMessage": "maximum number of endpoints test",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "maxCount",
+          "resultPath": "apiContract.endpoint",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 4,
+            "condition": "<=",
+            "expected": 3,
+            "negated": false
+          },
           "location": {
             "@type": [
               "lexical:Location"
@@ -102,29 +112,21 @@
               "@type": [
                 "lexical:Range"
               ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 20,
-                "line": 28
-              },
               "start": {
                 "@type": [
                   "lexical:Position"
                 ],
-                "column": 0,
-                "line": 3
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 28,
+                "column": 20
               }
-            },
-            "uri": ""
-          },
-          "resultPath": "apiContract.endpoint",
-          "traceValue": {
-            "actual": 4,
-            "condition": "<=",
-            "expected": 3,
-            "negated": false
+            }
           }
         }
       ]

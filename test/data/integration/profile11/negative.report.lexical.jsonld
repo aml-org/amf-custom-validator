@@ -80,20 +80,30 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "array-limits",
       "focusNode": {
         "@id": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails"
       },
-      "resultMessage": "Validation error",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "array-limits",
+      "resultMessage": "Validation error",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "maximumExclusive",
+          "resultPath": "shacl.minCount",
+          "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "actual": 100,
+            "condition": "<",
+            "expected": 50,
+            "negated": false
+          },
           "location": {
             "@type": [
               "lexical:Location"
@@ -102,29 +112,21 @@
               "@type": [
                 "lexical:Range"
               ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 17,
-                "line": 9
-              },
               "start": {
                 "@type": [
                   "lexical:Position"
                 ],
-                "column": 2,
-                "line": 7
+                "line": 7,
+                "column": 2
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 9,
+                "column": 17
               }
-            },
-            "uri": ""
-          },
-          "resultPath": "shacl.minCount",
-          "traceValue": {
-            "actual": 100,
-            "condition": "<",
-            "expected": 50,
-            "negated": false
+            }
           }
         }
       ]

@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "provide-examples",
       "focusNode": {
         "@id": "file://./test/data/production/best-practices/negative7.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson"
       },
-      "resultMessage": "Always include examples in requests and responses",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "provide-examples",
+      "resultMessage": "Always include examples in requests and responses",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "minCount",
           "resultPath": "apiContract.examples",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -109,6 +112,9 @@
           "component": "minCount",
           "resultPath": "shapes.schema / apiContract.examples",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -121,14 +127,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "provide-examples",
       "focusNode": {
         "@id": "file://./test/data/production/best-practices/negative7.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/requestBody/application%2Fjson"
       },
-      "resultMessage": "Always include examples in requests and responses",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "provide-examples",
+      "resultMessage": "Always include examples in requests and responses",
       "trace": [
         {
           "@type": [
@@ -137,6 +143,9 @@
           "component": "minCount",
           "resultPath": "apiContract.examples",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -150,6 +159,9 @@
           "component": "minCount",
           "resultPath": "shapes.schema / apiContract.examples",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,

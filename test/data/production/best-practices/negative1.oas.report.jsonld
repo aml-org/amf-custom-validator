@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "resource-use-lowercase",
       "focusNode": {
         "@id": "file://./test/data/production/best-practices/negative1.oas#/web-api/end-points/%2FUsers%2F%7Bid%7D"
       },
-      "resultMessage": "Naming conventions for resources:\n- Use lower case (example: /accounts)\n- For resources with more than 2 words\n    - use lowercase for both words (example: /lineitems) or\n    - use kebab-case (aka spinal-case) (example: /line-items)\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "resource-use-lowercase",
+      "resultMessage": "Naming conventions for resources:\n- Use lower case (example: /accounts)\n- For resources with more than 2 words\n    - use lowercase for both words (example: /lineitems) or\n    - use kebab-case (aka spinal-case) (example: /line-items)\n",
       "trace": [
         {
           "@type": [
@@ -96,8 +96,11 @@
           "component": "pattern",
           "resultPath": "apiContract.path",
           "traceValue": {
-            "argument": "/Users/{id}",
-            "negated": false
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": false,
+            "argument": "/Users/{id}"
           }
         }
       ]

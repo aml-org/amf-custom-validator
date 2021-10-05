@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "date-time-representation",
       "focusNode": {
         "@id": "file://./test/data/production/best-practices/negative5.oas#/declarations/types/Customer/property/nested/nested/property/startDate/scalar/startDate"
       },
-      "resultMessage": "Use standard date formats: ISO8601\nUse UTC\n  2016-10-27T13:42:21+00:00    (+00:00 is the time zones hour offset)\n  2016-10-27T13:42:21Z     (Z is place holder for local time zone)\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "date-time-representation",
+      "resultMessage": "Use standard date formats: ISO8601\nUse UTC\n  2016-10-27T13:42:21+00:00    (+00:00 is the time zones hour offset)\n  2016-10-27T13:42:21Z     (Z is place holder for local time zone)\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "in",
           "resultPath": "shacl.datatype",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "xsd:string",
             "expected": "[\"xsd:dateTime\"]",
             "negated": false
@@ -108,8 +111,11 @@
           "component": "pattern",
           "resultPath": "shacl.name",
           "traceValue": {
-            "argument": "startDate",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "startDate"
           }
         }
       ]
@@ -118,14 +124,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "date-time-representation",
       "focusNode": {
         "@id": "file://./test/data/production/best-practices/negative5.oas#/declarations/types/Customer/property/createdAt/scalar/createdAt"
       },
-      "resultMessage": "Use standard date formats: ISO8601\nUse UTC\n  2016-10-27T13:42:21+00:00    (+00:00 is the time zones hour offset)\n  2016-10-27T13:42:21Z     (Z is place holder for local time zone)\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "date-time-representation",
+      "resultMessage": "Use standard date formats: ISO8601\nUse UTC\n  2016-10-27T13:42:21+00:00    (+00:00 is the time zones hour offset)\n  2016-10-27T13:42:21Z     (Z is place holder for local time zone)\n",
       "trace": [
         {
           "@type": [
@@ -134,6 +140,9 @@
           "component": "in",
           "resultPath": "shacl.datatype",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": "xsd:string",
             "expected": "[\"xsd:dateTime\"]",
             "negated": false
@@ -146,8 +155,11 @@
           "component": "pattern",
           "resultPath": "shacl.name",
           "traceValue": {
-            "argument": "createdAt",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "createdAt"
           }
         }
       ]

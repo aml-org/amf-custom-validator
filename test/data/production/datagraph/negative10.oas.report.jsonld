@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "no-2xx-response",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative10.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
       },
-      "resultMessage": "HTTP resources not returning a 2xx success response do not describe normal responses from the API and cannot federated.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "no-2xx-response",
+      "resultMessage": "HTTP resources not returning a 2xx success response do not describe normal responses from the API and cannot federated.\n",
       "trace": [
         {
           "@type": [
@@ -96,8 +96,11 @@
           "component": "pattern",
           "resultPath": "apiContract.method",
           "traceValue": {
-            "argument": "get",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "get"
           }
         },
         {
@@ -107,6 +110,9 @@
           "component": "existential",
           "resultPath": "apiContract.returns",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -115,11 +121,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://./test/data/production/datagraph/negative10.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/500"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -128,8 +134,11 @@
                     "component": "pattern",
                     "resultPath": "apiContract.statusCode",
                     "traceValue": {
-                      "argument": "500",
-                      "negated": false
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "negated": false,
+                      "argument": "500"
                     }
                   }
                 ]

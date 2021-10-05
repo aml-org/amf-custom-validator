@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "request-response-antipattern",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative7.oas#/declarations/types/InvoiceRequest"
       },
-      "resultMessage": "Resource schemas should describe the information of the exposed resource, not a Request/Response RPC message wrapper\ncontaining the resource and out-of-band information.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "request-response-antipattern",
+      "resultMessage": "Resource schemas should describe the information of the exposed resource, not a Request/Response RPC message wrapper\ncontaining the resource and out-of-band information.\n",
       "trace": [
         {
           "@type": [
@@ -96,8 +96,11 @@
           "component": "pattern",
           "resultPath": "shacl.name",
           "traceValue": {
-            "argument": "InvoiceRequest",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "InvoiceRequest"
           }
         }
       ]
@@ -106,14 +109,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "request-response-antipattern",
       "focusNode": {
         "@id": "file://./test/data/production/datagraph/negative7.oas#/declarations/types/CustomerResponse"
       },
-      "resultMessage": "Resource schemas should describe the information of the exposed resource, not a Request/Response RPC message wrapper\ncontaining the resource and out-of-band information.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "request-response-antipattern",
+      "resultMessage": "Resource schemas should describe the information of the exposed resource, not a Request/Response RPC message wrapper\ncontaining the resource and out-of-band information.\n",
       "trace": [
         {
           "@type": [
@@ -122,8 +125,11 @@
           "component": "pattern",
           "resultPath": "shacl.name",
           "traceValue": {
-            "argument": "CustomerResponse",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "CustomerResponse"
           }
         }
       ]

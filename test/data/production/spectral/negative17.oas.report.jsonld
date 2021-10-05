@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "path-params",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative17.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%3F%7Btest%7D"
       },
-      "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "path-params",
+      "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "rego",
           "resultPath": "",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "negated": false
           }
         }
@@ -105,14 +108,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "path-not-include-query",
       "focusNode": {
         "@id": "file://./test/data/production/spectral/negative17.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%3F%7Btest%7D"
       },
-      "resultMessage": "Don't put query string items in the path, they belong in parameters with in: query.",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "path-not-include-query",
+      "resultMessage": "Don't put query string items in the path, they belong in parameters with in: query.",
       "trace": [
         {
           "@type": [
@@ -121,8 +124,11 @@
           "component": "pattern",
           "resultPath": "apiContract.path",
           "traceValue": {
-            "argument": "/invoices/{id}/items?{test}",
-            "negated": true
+            "@type": [
+              "validation:TraceValue"
+            ],
+            "negated": true,
+            "argument": "/invoices/{id}/items?{test}"
           }
         }
       ]

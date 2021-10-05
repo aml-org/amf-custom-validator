@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "test-min-length",
       "focusNode": {
         "@id": "file://test/data/integration/profile5/negative.data.raml#/declarations/types/scalar/name"
       },
-      "resultMessage": "Min length must be less than max length must match in scalar",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "test-min-length",
+      "resultMessage": "Min length must be less than max length must match in scalar",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "lessThan",
           "resultPath": "shacl.minLength",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 100,
             "condition": "<",
             "expected": 500,

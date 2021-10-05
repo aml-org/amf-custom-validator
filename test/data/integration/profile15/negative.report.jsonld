@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "resource-should-be-coarse-grained",
       "focusNode": {
         "@id": "file://./test/data/integration/profile15/negative.data.oas#/web-api/end-points/%2Fusers/get"
       },
-      "resultMessage": "Resources should be coarse-grained not fine-grained",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "resource-should-be-coarse-grained",
+      "resultMessage": "Resources should be coarse-grained not fine-grained",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "existential",
           "resultPath": "apiContract.returns",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 2,
             "expected": 0,
             "negated": false,
@@ -104,11 +107,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://./test/data/integration/profile15/negative.data.oas#/web-api/end-points/%2Fusers/get/201"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -117,8 +120,11 @@
                     "component": "pattern",
                     "resultPath": "apiContract.statusCode",
                     "traceValue": {
-                      "argument": "201",
-                      "negated": false
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "negated": false,
+                      "argument": "201"
                     }
                   }
                 ]
@@ -127,11 +133,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://./test/data/integration/profile15/negative.data.oas#/web-api/end-points/%2Fusers/get/200"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -140,6 +146,9 @@
                     "component": "existential",
                     "resultPath": "apiContract.payload / shapes.schema",
                     "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
                       "actual": 1,
                       "expected": 0,
                       "negated": false,
@@ -148,11 +157,11 @@
                           "@type": [
                             "shacl:ValidationResult"
                           ],
+                          "sourceShapeName": "nested",
                           "focusNode": {
                             "@id": "file://./test/data/integration/profile15/negative.data.oas#/web-api/end-points/%2Fusers/get/200/application%2Fjson/array/schema"
                           },
                           "resultMessage": "error in nested nodes under apiContract.payload / shapes.schema",
-                          "sourceShapeName": "nested",
                           "trace": [
                             {
                               "@type": [
@@ -161,6 +170,9 @@
                               "component": "rego",
                               "resultPath": "",
                               "traceValue": {
+                                "@type": [
+                                  "validation:TraceValue"
+                                ],
                                 "negated": false
                               }
                             }

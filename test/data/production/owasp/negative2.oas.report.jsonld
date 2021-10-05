@@ -80,14 +80,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "excessive-data-exposure-mandatory-schema",
       "focusNode": {
         "@id": "file://./test/data/production/owasp/negative2.oas#/web-api/end-points/%2Finvoices/get/200"
       },
-      "resultMessage": "Implement a schema-based response validation mechanism as an extra layer of security. As part of this mechanism\ndefine and enforce data returned by all API methods, including errors\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "excessive-data-exposure-mandatory-schema",
+      "resultMessage": "Implement a schema-based response validation mechanism as an extra layer of security. As part of this mechanism\ndefine and enforce data returned by all API methods, including errors\n",
       "trace": [
         {
           "@type": [
@@ -96,6 +96,9 @@
           "component": "minCount",
           "resultPath": "apiContract.payload / shapes.schema",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -108,14 +111,14 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "broken-user-authentication-authenticate-api",
       "focusNode": {
         "@id": "file://./test/data/production/owasp/negative2.oas#/web-api"
       },
-      "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "broken-user-authentication-authenticate-api",
+      "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "trace": [
         {
           "@type": [
@@ -124,6 +127,9 @@
           "component": "minCount",
           "resultPath": "security.security",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 0,
             "condition": ">=",
             "expected": 1,
@@ -137,6 +143,9 @@
           "component": "nested",
           "resultPath": "apiContract.endpoint / apiContract.supportedOperation",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -145,11 +154,11 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://./test/data/production/owasp/negative2.oas#/web-api/end-points/%2Finvoices/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
@@ -158,6 +167,9 @@
                     "component": "minCount",
                     "resultPath": "security.security",
                     "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
                       "actual": 0,
                       "condition": ">=",
                       "expected": 1,

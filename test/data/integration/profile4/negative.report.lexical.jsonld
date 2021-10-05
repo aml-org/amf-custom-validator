@@ -80,47 +80,25 @@
       "@type": [
         "shacl:ValidationResult"
       ],
+      "sourceShapeName": "validation1",
       "focusNode": {
         "@id": "file://test/data/integration/profile4/negative.data.raml#/web-api/end-points/%2Fendpoint2"
       },
-      "resultMessage": "Endpoints must have a POST method",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "validation1",
+      "resultMessage": "Endpoints must have a POST method",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "existential",
-          "location": {
-            "@type": [
-              "lexical:Location"
-            ],
-            "range": {
-              "@type": [
-                "lexical:Range"
-              ],
-              "end": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 16
-              },
-              "start": {
-                "@type": [
-                  "lexical:Position"
-                ],
-                "column": 0,
-                "line": 10
-              }
-            },
-            "uri": ""
-          },
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
+            "@type": [
+              "validation:TraceValue"
+            ],
             "actual": 1,
             "expected": 0,
             "negated": false,
@@ -129,17 +107,26 @@
                 "@type": [
                   "shacl:ValidationResult"
                 ],
+                "sourceShapeName": "nested",
                 "focusNode": {
                   "@id": "file://test/data/integration/profile4/negative.data.raml#/web-api/end-points/%2Fendpoint2/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.supportedOperation",
-                "sourceShapeName": "nested",
                 "trace": [
                   {
                     "@type": [
                       "validation:TraceMessage"
                     ],
                     "component": "in",
+                    "resultPath": "apiContract.method",
+                    "traceValue": {
+                      "@type": [
+                        "validation:TraceValue"
+                      ],
+                      "actual": "get",
+                      "expected": "[\"put\",\"patch\"]",
+                      "negated": false
+                    },
                     "location": {
                       "@type": [
                         "lexical:Location"
@@ -148,33 +135,50 @@
                         "@type": [
                           "lexical:Range"
                         ],
-                        "end": {
-                          "@type": [
-                            "lexical:Position"
-                          ],
-                          "column": 0,
-                          "line": 16
-                        },
                         "start": {
                           "@type": [
                             "lexical:Position"
                           ],
-                          "column": 2,
-                          "line": 11
+                          "line": 11,
+                          "column": 2
+                        },
+                        "end": {
+                          "@type": [
+                            "lexical:Position"
+                          ],
+                          "line": 16,
+                          "column": 0
                         }
-                      },
-                      "uri": ""
-                    },
-                    "resultPath": "apiContract.method",
-                    "traceValue": {
-                      "actual": "get",
-                      "expected": "[\"put\",\"patch\"]",
-                      "negated": false
+                      }
                     }
                   }
                 ]
               }
             ]
+          },
+          "location": {
+            "@type": [
+              "lexical:Location"
+            ],
+            "range": {
+              "@type": [
+                "lexical:Range"
+              ],
+              "start": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 10,
+                "column": 0
+              },
+              "end": {
+                "@type": [
+                  "lexical:Position"
+                ],
+                "line": 16,
+                "column": 0
+              }
+            }
           }
         }
       ]
