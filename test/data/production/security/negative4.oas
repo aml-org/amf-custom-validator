@@ -1,0 +1,36 @@
+openapi: "3.0.0"
+info:
+  title: Awesome API
+  version: "1.0"
+
+servers:
+  - url: http://my.api.server.com/
+    description: API server
+
+components:
+
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes:
+            write: modify objects in your account
+            read: read objects in your account
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+
+security:
+  - OAuth2:
+      - write
+      - read
+paths:
+  /users:
+    get:
+      description: op-description
+      operationId: opid
+      tags:
+        - Invoice Items
+      responses:
+        "200":
+          description: teapot

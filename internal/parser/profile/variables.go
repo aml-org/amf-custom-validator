@@ -63,6 +63,25 @@ func (c VariableCardinality) String() string {
 	}
 }
 
+func (c VariableCardinality) RuleName() string {
+	switch c.Operator {
+	case GTEQ:
+		return "atLeast"
+	case GT:
+		return "exactlyOrMore"
+	case EQ:
+		return "exactly"
+	case NEQ:
+		return "distinctFrom"
+	case LT:
+		return "exactlyOrLess"
+	case LTEQ:
+		return "atMost"
+	default:
+		panic("Unknown Cardinality ")
+	}
+}
+
 type Variable struct {
 	Quantification Quantification
 	Name           string

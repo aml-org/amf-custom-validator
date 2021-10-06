@@ -1,0 +1,28 @@
+openapi: "3.0.0"
+info:
+  title: Awesome API
+  version: "1.0"
+
+servers:
+  - url: http://my.api.server.com/
+    description: API server
+
+components:
+  securitySchemes:
+    regularSecurity:
+      type: http
+      scheme: basic
+
+security:
+  - regularSecurity: []
+
+paths:
+  /users:
+    get:
+      description: op-description
+      operationId: opid
+      tags:
+        - Invoice Items
+      responses:
+        "200":
+          description: teapot

@@ -93,11 +93,11 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "existential",
+          "component": "atLeast",
           "resultPath": "apiContract.returns",
           "traceValue": {
-            "actual": 1,
-            "expected": 0,
+            "cardinality": 1,
+            "failedNodes": 1,
             "negated": false,
             "subResult": [
               {
@@ -124,18 +124,19 @@
                   }
                 ]
               }
-            ]
+            ],
+            "successfulNodes": 0
           }
         },
         {
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "existential",
+          "component": "atLeast",
           "resultPath": "apiContract.returns",
           "traceValue": {
-            "actual": 1,
-            "expected": 0,
+            "cardinality": 1,
+            "failedNodes": 1,
             "negated": false,
             "subResult": [
               {
@@ -162,7 +163,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "successfulNodes": 0
           }
         }
       ]
@@ -200,8 +202,7 @@
           "component": "nested",
           "resultPath": "apiContract.endpoint / apiContract.supportedOperation",
           "traceValue": {
-            "actual": 2,
-            "expected": 0,
+            "failedNodes": 2,
             "negated": false,
             "subResult": [
               {
@@ -254,7 +255,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "successfulNodes": 0
           }
         }
       ]

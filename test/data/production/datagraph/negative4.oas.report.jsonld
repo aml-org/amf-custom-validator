@@ -106,11 +106,11 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "existential",
+          "component": "atLeast",
           "resultPath": "security.security / security.schemes / security.scheme",
           "traceValue": {
-            "actual": 1,
-            "expected": 0,
+            "cardinality": 1,
+            "failedNodes": 1,
             "negated": false,
             "subResult": [
               {
@@ -136,7 +136,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "successfulNodes": 0
           }
         }
       ]

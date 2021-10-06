@@ -12,7 +12,7 @@ validations:
     message: Resources should be coarse-grained not fine-grained
     targetClass: apiContract.Operation
     propertyConstraints:
-      apicContract.method:
+      apiContract.method:
         pattern: get
       apiContract.returns:
         atLeast:

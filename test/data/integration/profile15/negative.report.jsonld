@@ -93,11 +93,11 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "existential",
+          "component": "atLeast",
           "resultPath": "apiContract.returns",
           "traceValue": {
-            "actual": 2,
-            "expected": 0,
+            "cardinality": 1,
+            "failedNodes": 2,
             "negated": false,
             "subResult": [
               {
@@ -137,11 +137,11 @@
                     "@type": [
                       "validation:TraceMessage"
                     ],
-                    "component": "existential",
+                    "component": "atLeast",
                     "resultPath": "apiContract.payload / shapes.schema",
                     "traceValue": {
-                      "actual": 1,
-                      "expected": 0,
+                      "cardinality": 1,
+                      "failedNodes": 1,
                       "negated": false,
                       "subResult": [
                         {
@@ -166,12 +166,14 @@
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "successfulNodes": 0
                     }
                   }
                 ]
               }
-            ]
+            ],
+            "successfulNodes": 0
           }
         }
       ]

@@ -121,8 +121,7 @@
           },
           "resultPath": "apiContract.parameter",
           "traceValue": {
-            "actual": 1,
-            "expected": 0,
+            "failedNodes": 1,
             "negated": false,
             "subResult": [
               {
@@ -167,8 +166,7 @@
                     },
                     "resultPath": "shapes.schema",
                     "traceValue": {
-                      "actual": 1,
-                      "expected": 0,
+                      "failedNodes": 1,
                       "negated": false,
                       "subResult": [
                         {
@@ -221,12 +219,14 @@
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "successfulNodes": 0
                     }
                   }
                 ]
               }
-            ]
+            ],
+            "successfulNodes": 0
           }
         }
       ]

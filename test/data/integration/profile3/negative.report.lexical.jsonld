@@ -93,7 +93,7 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "existential",
+          "component": "atLeast",
           "location": {
             "@type": [
               "lexical:Location"
@@ -121,8 +121,8 @@
           },
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
-            "actual": 1,
-            "expected": 0,
+            "cardinality": 2,
+            "failedNodes": 1,
             "negated": false,
             "subResult": [
               {
@@ -174,7 +174,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "successfulNodes": 1
           }
         }
       ]
@@ -196,7 +197,7 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "existential",
+          "component": "atLeast",
           "location": {
             "@type": [
               "lexical:Location"
@@ -224,8 +225,8 @@
           },
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
-            "actual": 1,
-            "expected": 0,
+            "cardinality": 2,
+            "failedNodes": 1,
             "negated": false,
             "subResult": [
               {
@@ -277,7 +278,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "successfulNodes": 1
           }
         }
       ]
@@ -299,7 +301,7 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "existential",
+          "component": "atLeast",
           "location": {
             "@type": [
               "lexical:Location"
@@ -327,8 +329,8 @@
           },
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
-            "actual": 2,
-            "expected": 0,
+            "cardinality": 2,
+            "failedNodes": 2,
             "negated": false,
             "subResult": [
               {
@@ -429,7 +431,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "successfulNodes": 0
           }
         }
       ]

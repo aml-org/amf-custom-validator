@@ -93,13 +93,14 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "existential",
+          "component": "atLeast",
           "resultPath": "apiContract.returns",
           "traceValue": {
-            "actual": 0,
-            "expected": 0,
+            "cardinality": 1,
+            "failedNodes": 0,
             "negated": false,
-            "subResult": []
+            "subResult": [],
+            "successfulNodes": 0
           }
         }
       ]
