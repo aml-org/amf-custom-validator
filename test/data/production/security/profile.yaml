@@ -29,6 +29,15 @@ violation:
   - bearer-token-cleartext
   - http-token-cleartext
   - oauth1-deprecated
+  - operation-access-tokens-oauth2-cleartext
+  - operation-insecure-basic-auth
+  - operation-bearer-token-cleartext
+  - operation-http-token-cleartext
+  - oauth2-redirections-non-encrypted
+  - unknown-security-scheme
+  - valid-server-urltemplate
+  - valid-oauth2-redirection-urls
+  - matching-oauth2-scopes
 
 validations:
 
@@ -268,8 +277,223 @@ validations:
 
       This is a potential risk, because the definition is in security schemes. However, it easily turns into an actual
       risk when the unsafe method is used in a security requirement.
-    targetClass: apiContract.WebAPI
+    targetClass: security.SecurityScheme
     not:
       propertyConstraints:
-        security.security / security.schemes / security.scheme / security.settings / security.scheme:
+        security.settings / security.scheme:
           pattern: oauth
+
+  operation-access-tokens-oauth2-cleartext:
+    message: |
+      The API operation accepts access tokens from authorization code grant flow that are transported in the clear over
+      an unencrypted channel. Attackers can easily intercept API calls and retrieve the unencrypted tokens. They can
+      then use the tokens to make other API calls.
+    targetClass: apiContract.Operation
+    if:
+      and:
+        - propertyConstraints:
+            security.security / security.schemes / security.scheme / security.type :
+              pattern: "OAuth 2.0"
+        - propertyConstraints:
+            apiContract.server / core.urlTemplate :
+              minCount: 1
+    then:
+      propertyConstraints:
+        apiContract.server / core.urlTemplate :
+          pattern: "^https:.*$"
+
+  operation-insecure-basic-auth:
+    message: |
+      Your operation accepts basic authentication credentials sent in cleartext over an unencrypted channel. Attackers can
+      easily intercept API calls and retrieve the credentials. They can then use the credentials to make other API calls.
+    targetClass: apiContract.Operation
+    if:
+      and:
+        - propertyConstraints:
+            security.security / security.schemes / security.scheme:
+              nested:
+                and:
+                  - propertyConstraints:
+                      security.type:
+                        pattern: "http"
+                  - propertyConstraints:
+                      security.settings / security.scheme:
+                        pattern: "basic"
+        - propertyConstraints:
+            apiContract.server / core.urlTemplate :
+              minCount: 1
+    then:
+      propertyConstraints:
+        apiContract.server / core.urlTemplate:
+          pattern: "^https:.*$"
+
+  operation-bearer-token-cleartext:
+    message: |
+      Bearer tokens from OAuth 2.0 authorization flows are transported in the clear over an unencrypted channel.
+      Attackers can easily intercept API calls and retrieve the unencrypted tokens. They can then use the tokens to
+      make other API calls.
+    targetClass: apiContract.Operation
+    if:
+      and:
+        - propertyConstraints:
+            security.security / security.schemes / security.scheme:
+              nested:
+                and:
+                  - propertyConstraints:
+                      security.type :
+                        pattern: "http"
+                  - propertyConstraints:
+                      security.settings / security.scheme:
+                        pattern: "bearer"
+        - propertyConstraints:
+            apiContract.server / core.urlTemplate :
+              minCount: 1
+    then:
+      propertyConstraints:
+        apiContract.server / core.urlTemplate :
+          pattern: "^https:.*$"
+
+  operation-http-token-cleartext:
+    message: |
+      Operation accepts credentials sent in cleartext over an unencrypted channel for a secure alternative HTTP authentication method included in IANA Authentication Scheme Registry.
+
+      These schemes aim to address the shortcomings of Basic and Digest authentication and include the following:
+
+          HTTP Origin-Bound Authentication (HOBA) (RFC 7486)
+          Mutual Authentication Protocol for HTTP (RFC 8120)
+          Salted Challenge Response HTTP Authentication Mechanism (SCRAM) (RFC 7804)
+              SCRAM-SHA-1
+              SCRAM-SHA-256
+          Voluntary Application Server Identification (VAPID) for Web Push (RFC 8292)
+
+      Attackers can easily intercept API calls and retrieve the unencrypted tokens. They can then use the tokens to make other API calls.
+    targetClass: apiContract.Operation
+    if:
+      and:
+        - propertyConstraints:
+            security.security / security.schemes / security.scheme:
+              nested:
+                and:
+                  - propertyConstraints:
+                      security.type :
+                        pattern: "http"
+                  - propertyConstraints:
+                      security.settings / security.scheme:
+                        in:
+                          - hoba
+                          - mutual
+                          - scram-sha-1
+                          - SCRAM-SHA-1
+                          - scram-sha-256
+                          - SCRAM-SHA-256
+                          - vapid
+                          - digest
+        - propertyConstraints:
+            apiContract.server / core.urlTemplate :
+              minCount: 1
+    then:
+      propertyConstraints:
+        apiContract.server / core.urlTemplate :
+          pattern: "^https:.*$"
+
+  oauth2-redirections-non-encrypted:
+    message: Oauth2 redirection flows use non encrypted transport
+    targetClass: security.OAuth2Flow
+    and:
+      - propertyConstraints:
+          security.accessTokenUri:
+            pattern: "^https:.*$"
+      - propertyConstraints:
+          security.authorizeUri:
+            pattern: "^https:.*$"
+
+  unknown-security-scheme:
+    message: |
+      One or more global security schemes in your API allows setting HTTP authentication methods that are not included
+      in IANA Authentication Scheme Registry.
+
+      This is a potential risk, because the definition is in security schemes. However, it easily turns into an actual
+      risk when the unsafe method is used in a security requirement.
+    targetClass: security.SecurityScheme
+    if:
+      propertyConstraints:
+        security.type:
+          in:
+            - http
+    then:
+      propertyConstraints:
+        security.settings / security.scheme:
+          in:
+            - basic
+            - bearer
+            - digest
+            - hoba
+            - mutual
+            - scram-sha-1
+            - SCRAM-SHA-1
+            - scram-sha-256
+            - SCRAM-SHA-256
+            - vapid
+            - negotiate
+            - oauth
+
+  valid-server-urltemplate:
+    message: |
+      The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all
+      URLs in the API contract must be proper URLs in a valid format.
+    targetClass: apiContract.Server
+    propertyConstraints:
+      core.urlTemplate:
+        pattern: "^(https?:\\\\/\\\\/)?[-A-Za-z0-9+&@#\\\\/%?=~_|!:,.;\\\\{\\\\}]+[-A-Za-z0-9+&@#\\\\/%=~_|\\\\{\\\\}]$"
+
+  valid-oauth2-redirection-urls:
+    message: |
+      The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all
+      URLs in the API contract must be proper URLs in a valid format.
+    targetClass: security.OAuth2Flow
+    and:
+      - propertyConstraints:
+          security.accessTokenUri:
+            pattern: "^(https?:\\\\/\\\\/)?[-A-Za-z0-9+&@#\\\\/%?=~_|!:,.;]+[-A-Za-z0-9+&@#\\\\/%=~_|]$"
+      - propertyConstraints:
+          security.authorizationUri:
+            pattern: "^(https?:\\\\/\\\\/)?[-A-Za-z0-9+&@#\\\\/%?=~_|!:,.;]+[-A-Za-z0-9+&@#\\\\/%=~_|]$"
+
+
+  matching-oauth2-scopes:
+    message: scopes in OAuth2 security scheme declarations must match application of the security scheme
+    targetClass: security.SecurityRequirement
+    rego: |
+      nested_nodes[schemesArray] with data.nodes as $node["security:schemes"]
+      scheme = schemesArray[0]
+
+      # compute set of declared scopes
+      nested_nodes[securitySchemesArray] with data.nodes as scheme["security:scheme"]
+      securityScheme = securitySchemesArray[0]
+      secType = securityScheme["security:type"]
+      secType == "OAuth 2.0"
+      nested_nodes[settingsArray] with data.nodes as securityScheme["security:settings"]
+      settings = settingsArray[0]
+      nested_nodes[flowsArray] with data.nodes as settings["security:flows"]
+      flow = flowsArray[_]
+      flow["security:flow"] == "authorizationCode"
+      nested_nodes[scopesArray] with data.nodes as flow["security:scope"]
+      scopesSet = {name |
+        scope = scopesArray[_]
+        name = scope["core:name"]
+      }
+
+      # compute of used scopes
+      nested_nodes[appliedSettingsArray] with data.nodes as scheme["security:settings"]
+      appliedSettings = appliedSettingsArray[0]
+      nested_nodes[appliedSettingsFlowsArray] with data.nodes as appliedSettings["security:flows"]
+      appliedSettingsFlows = appliedSettingsFlowsArray[0]
+      nested_nodes[appliedScopesArray] with data.nodes as appliedSettingsFlows["security:scope"]
+      appliedScopesSet = { name |
+        settingsScope = appliedScopesArray[_]
+        name = settingsScope["core:name"]
+      }
+
+      # check inclusion of sets
+      notPresent = appliedScopesSet - scopesSet
+      $result = (count(notPresent) == 0)

@@ -81,22 +81,35 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative11.oas#/web-api/requirement_1/OAuth1/OAuth1"
+        "@id": "file://./test/data/production/security/negative14.oas#/declarations/securitySchemes/myAuth"
       },
-      "resultMessage": "One or more global security schemes in your API allows using OAuth 1.0 authentication.\n\nThis is a potential risk, because the definition is in security schemes. However, it easily turns into an actual\nrisk when the unsafe method is used in a security requirement.\n",
+      "resultMessage": "One or more global security schemes in your API allows setting HTTP authentication methods that are not included\nin IANA Authentication Scheme Registry.\n\nThis is a potential risk, because the definition is in security schemes. However, it easily turns into an actual\nrisk when the unsafe method is used in a security requirement.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "oauth1-deprecated",
+      "sourceShapeName": "unknown-security-scheme",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "pattern",
+          "component": "in",
           "resultPath": "security.settings / security.scheme",
           "traceValue": {
-            "argument": "oauth",
+            "actual": "foo",
+            "expected": "[\"basic\",\"bearer\",\"digest\",\"hoba\",\"mutual\",\"scram-sha-1\",\"SCRAM-SHA-1\",\"scram-sha-256\",\"SCRAM-SHA-256\",\"vapid\",\"negotiate\",\"oauth\"]",
+            "negated": false
+          }
+        },
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "in",
+          "resultPath": "security.type",
+          "traceValue": {
+            "actual": "http",
+            "expected": "[\"http\"]",
             "negated": true
           }
         }

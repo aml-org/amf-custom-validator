@@ -81,23 +81,47 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative11.oas#/web-api/requirement_1/OAuth1/OAuth1"
+        "@id": "file://./test/data/production/security/negative12.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
       },
-      "resultMessage": "One or more global security schemes in your API allows using OAuth 1.0 authentication.\n\nThis is a potential risk, because the definition is in security schemes. However, it easily turns into an actual\nrisk when the unsafe method is used in a security requirement.\n",
+      "resultMessage": "The API operation accepts access tokens from authorization code grant flow that are transported in the clear over\nan unencrypted channel. Attackers can easily intercept API calls and retrieve the unencrypted tokens. They can\nthen use the tokens to make other API calls.\n",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "oauth1-deprecated",
+      "sourceShapeName": "operation-access-tokens-oauth2-cleartext",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "pattern",
-          "resultPath": "security.settings / security.scheme",
+          "component": "minCount",
+          "resultPath": "apiContract.server / core.urlTemplate",
           "traceValue": {
-            "argument": "oauth",
+            "actual": 1,
+            "condition": ">=",
+            "expected": 1,
             "negated": true
+          }
+        },
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "pattern",
+          "resultPath": "security.security / security.schemes / security.scheme / security.type",
+          "traceValue": {
+            "argument": "OAuth 2.0",
+            "negated": true
+          }
+        },
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "pattern",
+          "resultPath": "apiContract.server / core.urlTemplate",
+          "traceValue": {
+            "argument": "http://production.test.com/",
+            "negated": false
           }
         }
       ]

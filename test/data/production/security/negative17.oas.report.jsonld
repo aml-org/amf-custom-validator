@@ -81,23 +81,22 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative11.oas#/web-api/requirement_1/OAuth1/OAuth1"
+        "@id": "file://./test/data/production/security/negative17.oas#/web-api/requirement_1"
       },
-      "resultMessage": "One or more global security schemes in your API allows using OAuth 1.0 authentication.\n\nThis is a potential risk, because the definition is in security schemes. However, it easily turns into an actual\nrisk when the unsafe method is used in a security requirement.\n",
+      "resultMessage": "scopes in OAuth2 security scheme declarations must match application of the security scheme",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "oauth1-deprecated",
+      "sourceShapeName": "matching-oauth2-scopes",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "pattern",
-          "resultPath": "security.settings / security.scheme",
+          "component": "rego",
+          "resultPath": "",
           "traceValue": {
-            "argument": "oauth",
-            "negated": true
+            "negated": false
           }
         }
       ]

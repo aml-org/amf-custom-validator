@@ -81,23 +81,23 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative11.oas#/web-api/requirement_1/OAuth1/OAuth1"
+        "@id": "file://./test/data/production/security/negative13.oas#/declarations/securitySchemes/OAuth2/settings/oauth2/authorizationCode"
       },
-      "resultMessage": "One or more global security schemes in your API allows using OAuth 1.0 authentication.\n\nThis is a potential risk, because the definition is in security schemes. However, it easily turns into an actual\nrisk when the unsafe method is used in a security requirement.\n",
+      "resultMessage": "Oauth2 redirection flows use non encrypted transport",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
-      "sourceShapeName": "oauth1-deprecated",
+      "sourceShapeName": "oauth2-redirections-non-encrypted",
       "trace": [
         {
           "@type": [
             "validation:TraceMessage"
           ],
           "component": "pattern",
-          "resultPath": "security.settings / security.scheme",
+          "resultPath": "security.accessTokenUri",
           "traceValue": {
-            "argument": "oauth",
-            "negated": true
+            "argument": "http://example.com/oauth/token",
+            "negated": false
           }
         }
       ]
