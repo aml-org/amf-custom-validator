@@ -614,7 +614,7 @@ Level: Violation
 `datatype` is a constraint that limits the valid scalar value for a property in the parsed graph. This constraint is not
 specially useful in custom validations, since RAML, OAS and AsyncAPI have well defined types for all the properties, but
 it can still used to modify standard type definitions, for example, making it mandatory for a version to be an integer, 
-instead of a sting. They are also used internally to define the standard validations for the different API specs.
+instead of a string. They are also used internally to define the standard validations for the different API specs.
 
 We will got back to this constraint when reviewing how override default validations, changing the default validation profiles
 associated to the different standards.

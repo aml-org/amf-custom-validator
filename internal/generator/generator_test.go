@@ -27,13 +27,15 @@ func TestGenerated(t *testing.T) {
 		}
 		if config.Override {
 			test.ForceWrite(fix.Generated, generated.Code)
-		}
-		actual := strings.TrimSpace(generated.Code)
-		expected := strings.TrimSpace(fix.ReadGenerated())
+		} else {
+			actual := strings.TrimSpace(generated.Code)
+			expected := strings.TrimSpace(fix.ReadGenerated())
 
-		if actual != expected {
-			t.Errorf("Error in expected prof %s\n\nActual:\n%s\n----\nExpected:\n%s", fix.Profile, actual, expected)
+			if actual != expected {
+				t.Errorf("%s > Actual did not match expected", fix.Profile)
+			}
 		}
+
 	}
 }
 
