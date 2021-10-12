@@ -47,7 +47,7 @@ validations:
         minCount: 1
 
   218-contact-url-must-be-provided:
-    message: Contact name must be provided
+    message: Contact URL must be provided
     targetClass: apiContract.WebAPI
     propertyConstraints:
       core.provider / core.url:

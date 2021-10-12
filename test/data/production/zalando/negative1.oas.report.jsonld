@@ -195,7 +195,7 @@
       "focusNode": {
         "@id": "file://./test/data/production/zalando/negative1.oas#/web-api"
       },
-      "resultMessage": "Contact name must be provided",
+      "resultMessage": "Contact URL must be provided",
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#Violation"
       },
