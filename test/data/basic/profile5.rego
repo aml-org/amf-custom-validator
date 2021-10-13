@@ -253,6 +253,6 @@ violation[matches] {
   # let's accumulate results
   ys_error_node_variables_agg = ys_br_0_errors
   not count(ys) - count(ys_error_node_variables_agg) >= 1
-  _result_0 := trace("existential","apiContract.supportedOperation",x,{"negated":false, "expected":0, "actual":count(ys_error_node_variables_agg), "subResult": y_errorAcc})
+  _result_0 := trace("atLeast","apiContract.supportedOperation",x,{"negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)), "cardinality":1, "subResult": y_errorAcc})
   matches := error("validation1",x,"Endpoints must have a POST method",[_result_0])
 }

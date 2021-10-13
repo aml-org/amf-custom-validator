@@ -122,10 +122,10 @@
           "component": "nested",
           "resultPath": "data.route",
           "traceValue": {
-            "actual": 0,
-            "expected": 0,
+            "failedNodes": 0,
             "negated": true,
-            "subResult": []
+            "subResult": [],
+            "successfulNodes": 1
           }
         }
       ]

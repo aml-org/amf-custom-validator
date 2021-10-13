@@ -321,7 +321,7 @@ violation[matches] {
   # let's accumulate results
   ps_error_node_variables_agg = ps_br_0_errors
   not count(ps) - count(ps_error_node_variables_agg) >= 1
-  _result_0 := trace("existential","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(ps_error_node_variables_agg), "subResult": p_errorAcc})
+  _result_0 := trace("atLeast","apiContract.returns",x,{"negated":false, "failedNodes":count(ps_error_node_variables_agg), "successfulNodes":(count(ps)-count(ps_error_node_variables_agg)), "cardinality":1, "subResult": p_errorAcc})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
@@ -354,7 +354,7 @@ violation[matches] {
   # let's accumulate results
   qs_error_node_variables_agg = qs_br_0_errors
   not count(qs) - count(qs_error_node_variables_agg) >= 1
-  _result_0 := trace("existential","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(qs_error_node_variables_agg), "subResult": q_errorAcc})
+  _result_0 := trace("atLeast","apiContract.returns",x,{"negated":false, "failedNodes":count(qs_error_node_variables_agg), "successfulNodes":(count(qs)-count(qs_error_node_variables_agg)), "cardinality":1, "subResult": q_errorAcc})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
@@ -387,7 +387,7 @@ violation[matches] {
   # let's accumulate results
   ys_error_node_variables_agg = ys_br_0_errors
   count(ys) - count(ys_error_node_variables_agg) >= 1
-  _result_0 := trace("existential","apiContract.returns",x,{"negated":true, "expected":0, "actual":count(ys_error_node_variables_agg), "subResult": y_errorAcc})
+  _result_0 := trace("atLeast","apiContract.returns",x,{"negated":true, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)), "cardinality":1, "subResult": y_errorAcc})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
@@ -420,7 +420,7 @@ violation[matches] {
   # let's accumulate results
   zs_error_node_variables_agg = zs_br_0_errors
   not count(zs) - count(zs_error_node_variables_agg) >= 1
-  _result_0 := trace("existential","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(zs_error_node_variables_agg), "subResult": z_errorAcc})
+  _result_0 := trace("atLeast","apiContract.returns",x,{"negated":false, "failedNodes":count(zs_error_node_variables_agg), "successfulNodes":(count(zs)-count(zs_error_node_variables_agg)), "cardinality":1, "subResult": z_errorAcc})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]

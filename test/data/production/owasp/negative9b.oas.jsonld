@@ -146,7 +146,6 @@
                                 "@value": false
                               }
                             ],
-                            "http://www.w3.org/ns/shacl#property": [],
                             "http://www.w3.org/ns/shacl#name": [
                               {
                                 "@value": "schema"
@@ -322,7 +321,6 @@
                                 "@value": false
                               }
                             ],
-                            "http://www.w3.org/ns/shacl#property": [],
                             "http://www.w3.org/ns/shacl#name": [
                               {
                                 "@value": "schema"
@@ -482,7 +480,7 @@
     ],
     "http://a.ml/vocabularies/document#version": [
       {
-        "@value": "2.3.0"
+        "@value": "3.1.0"
       }
     ],
     "http://a.ml/vocabularies/document#root": [

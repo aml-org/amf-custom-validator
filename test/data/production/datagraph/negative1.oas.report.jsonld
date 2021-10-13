@@ -96,8 +96,7 @@
           "component": "nested",
           "resultPath": "apiContract.returns / apiContract.payload",
           "traceValue": {
-            "actual": 1,
-            "expected": 0,
+            "failedNodes": 1,
             "negated": false,
             "subResult": [
               {
@@ -149,7 +148,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "successfulNodes": 0
           }
         }
       ]

@@ -267,7 +267,7 @@ violation[matches] {
   # let's accumulate results
   ys_error_node_variables_agg = ys_br_0_errors
   not count(ys) - count(ys_error_node_variables_agg) >= 1
-  _result_0 := trace("existential","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(ys_error_node_variables_agg), "subResult": y_errorAcc})
+  _result_0 := trace("atLeast","apiContract.returns",x,{"negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)), "cardinality":1, "subResult": y_errorAcc})
   #  querying path: apiContract.returns
   zs = gen_path_rule_5 with data.sourceNode as x
   z_errorAcc0 = []
@@ -290,6 +290,6 @@ violation[matches] {
   # let's accumulate results
   zs_error_node_variables_agg = zs_br_0_errors
   not count(zs) - count(zs_error_node_variables_agg) >= 1
-  _result_1 := trace("existential","apiContract.returns",x,{"negated":false, "expected":0, "actual":count(zs_error_node_variables_agg), "subResult": z_errorAcc})
+  _result_1 := trace("atLeast","apiContract.returns",x,{"negated":false, "failedNodes":count(zs_error_node_variables_agg), "successfulNodes":(count(zs)-count(zs_error_node_variables_agg)), "cardinality":1, "subResult": z_errorAcc})
   matches := error("lack-of-resources-and-rate-limiting-too-many-requests",x,"Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n",[_result_0,_result_1])
 }

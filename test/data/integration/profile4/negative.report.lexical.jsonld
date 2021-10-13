@@ -93,7 +93,7 @@
           "@type": [
             "validation:TraceMessage"
           ],
-          "component": "existential",
+          "component": "atLeast",
           "location": {
             "@type": [
               "lexical:Location"
@@ -121,8 +121,8 @@
           },
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
-            "actual": 1,
-            "expected": 0,
+            "cardinality": 1,
+            "failedNodes": 1,
             "negated": false,
             "subResult": [
               {
@@ -174,7 +174,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "successfulNodes": 0
           }
         }
       ]

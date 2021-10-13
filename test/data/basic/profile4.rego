@@ -265,18 +265,23 @@ violation[matches] {
   target_class[x] with data.class as "apiContract:Parameter"
   #  querying path: raml-shapes.schema
   ys = gen_path_rule_5 with data.sourceNode as x
-  ys_error_tuples = [ ys_error|
+  y_errorAcc0 = []
+  ys_br_0 = [ ys_br_0_error|
     y = ys[_]
     #  querying path: shacl.minLength
     gen_propValues_6 = gen_path_rule_7 with data.sourceNode as y
     not count(gen_propValues_6) >= 1
     _result_0 := trace("minCount","shacl.minLength",y,{"negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
-    ys_inner_error := error("nested",y,"error in nested nodes under raml-shapes.schema",[_result_0])
-    ys_error = [y,ys_inner_error]
+    ys_br_0_inner_error := error("nested",y,"error in nested nodes under raml-shapes.schema",[_result_0])
+    ys_br_0_error = [y["@id"],ys_br_0_inner_error]
   ]
-  ys_error_nodes = { nodeId | n = ys_error_tuples[_]; nodeId = n[0] }
-  count(ys_error_nodes) > 0
-  ys_errors = [ _error | n = ys_error_tuples[_]; _error = n[1] ]
-  _result_0 := trace("nested","raml-shapes.schema",x,{"negated":false, "expected":0, "actual":count(ys_error_nodes), "subResult": ys_errors})
+  ys_br_0_errors = { nodeId | n = ys_br_0[_]; nodeId = n[0] }
+  ys_br_0_errors_errors = [ node | n = ys_br_0[_]; node = n[1] ]
+  y_errorAcc1 = array.concat(y_errorAcc0,ys_br_0_errors_errors)
+  y_errorAcc = y_errorAcc1
+  # let's accumulate results
+  ys_error_node_variables_agg = ys_br_0_errors
+  count(ys_error_node_variables_agg) > 0
+  _result_0 := trace("nested","raml-shapes.schema",x,{"negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)),"subResult": y_errorAcc})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }
