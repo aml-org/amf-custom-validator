@@ -7,9 +7,8 @@ import (
 	"github.com/aml-org/amf-custom-validator/pkg/milestones"
 	"io/ioutil"
 	"strings"
+	"testing"
 )
-
-
 
 func conforms(report string) bool {
 	return strings.Index(report, "\"conforms\": true") > -1
@@ -50,6 +49,31 @@ func write(content string, path relativePath) {
 	if err != nil {
 		panic(err)
 	}
+}
+
+/**
+Directory file naming convention
+Profile -> profile.yaml
+Data -> data.jsonld
+Report -> report.jsonld
+*/
+func validateAndCompareDirectory(directory relativePath, t *testing.T) {
+	resolvedDirectory := fmt.Sprintf("%s", directory)
+	profile := fmt.Sprintf("%s/profile.yaml", resolvedDirectory)
+	data := fmt.Sprintf("%s/data.jsonld", resolvedDirectory)
+	actualText := validate(profile, data)
+	expected := fmt.Sprintf("%s/report.jsonld", resolvedDirectory)
+	if config.Override {
+		write(actualText, expected)
+	} else {
+		if !compare(actualText, expected) {
+			t.Errorf("Failed %s. Actual did not match expexted", directory)
+		}
+	}
+}
+
+func ignoreDirectory(directory relativePath, t *testing.T) {
+	t.Skipf("Ignored %s", directory)
 }
 
 type relativePath = string
