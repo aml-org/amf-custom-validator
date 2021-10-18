@@ -1,0 +1,62 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/duration#ValidResource",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/duration#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/duration#durationProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#duration",
+        "@value": "PT1004199059S"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#duration",
+        "@value": "PT130S"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#duration",
+        "@value": "PT2M10S"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#duration",
+        "@value": "P1DT2S"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#duration",
+        "@value": "-P1Y"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#duration",
+        "@value": "P1Y2M3DT5H20M30.123S"
+      }
+    ]
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/duration#InvalidResource",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/duration#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/duration#durationProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#duration",
+        "@value": "1Y"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#duration",
+        "@value": "P1S"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#duration",
+        "@value": "P-1Y"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#duration",
+        "@value": "P1M2Y"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#duration",
+        "@value": "P1Y-1M"
+      }
+    ]
+  }
+]

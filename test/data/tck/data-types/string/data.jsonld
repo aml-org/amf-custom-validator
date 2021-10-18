@@ -1,0 +1,26 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/string#ValidResource",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/string#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/string#stringProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "true"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "1.0"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": ""
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": " "
+      }
+    ]
+  }
+]

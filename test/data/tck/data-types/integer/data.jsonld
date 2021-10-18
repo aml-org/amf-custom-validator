@@ -1,0 +1,42 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/integer#ValidResource",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/integer#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/integer#integerProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#integer",
+        "@value": "-123456789012345678901234567890"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#integer",
+        "@value": "2147483647"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#integer",
+        "@value": "-0000000000000000000005"
+      }
+    ]
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/integer#InvalidResource",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/integer#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/integer#integerProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#integer",
+        "@value": "1."
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#integer",
+        "@value": "2.6"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#integer",
+        "@value": "A"
+      }
+    ]
+  }
+]

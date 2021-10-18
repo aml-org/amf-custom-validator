@@ -1,0 +1,58 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/boolean#ValidResource",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/boolean#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/boolean#booleanProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "true"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "false"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "1"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "0"
+      }
+    ]
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/boolean#InvalidResource",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/boolean#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/boolean#booleanProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "TRUE"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "True"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "FALSE"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "False"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "1.0"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "0.0"
+      }
+    ]
+  }
+]

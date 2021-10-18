@@ -1,0 +1,26 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/coercion#ValidResource",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/coercion#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/coercion#booleanProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "true"
+      }
+    ]
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/boolean#InvalidResource",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/boolean#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/coercion#booleanProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "NOT A BOOLEAN"
+      }
+    ]
+  }
+]

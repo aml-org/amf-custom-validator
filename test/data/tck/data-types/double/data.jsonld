@@ -1,0 +1,62 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/double#ValidResource",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/double#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/double#doubleProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": "123.456"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": "+1234.456"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": "-1.2344e56"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": "-.45E-6"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": "INF"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": "-INF"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": "NaN"
+      }
+    ]
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/double#InvalidResource",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/double#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/data-types/double#doubleProperty": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": "1234.4E 56"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": "1E+2.5"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": "+INF"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": "NAN"
+      }
+    ]
+  }
+]
