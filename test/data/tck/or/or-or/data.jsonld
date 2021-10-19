@@ -1,0 +1,95 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#ValidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#a": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#b": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#c": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#d": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#ValidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#a": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#b": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#ValidResource3",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#a": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#c": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#ValidResource4",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#a": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#b": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#c": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#d": {
+      "@value": false
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#ValidResource5",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#b": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#c": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#d": {
+      "@value": false
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#InvalidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#a": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#b": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#c": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-or#d": {
+      "@value": false
+    }
+  }
+]

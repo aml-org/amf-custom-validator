@@ -1,0 +1,71 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#ValidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#walksLikeDuck": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#quaksLikeDuck": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#isDuck": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#isDog": {
+      "@value": false
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#ValidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#walksLikeDuck": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#quaksLikeDuck": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#isDog": {
+      "@value": false
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#InvalidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#walksLikeDuck": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#quaksLikeDuck": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#isDuck": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#isDog": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#InvalidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#walksLikeDuck": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#quaksLikeDuck": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#isDuck": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#isDog": {
+      "@value": false
+    }
+  }
+]

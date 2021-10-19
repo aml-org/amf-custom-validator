@@ -1,0 +1,110 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#ValidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#a": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#b": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#c": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#d": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#ValidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#a": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#b": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#ValidResource3",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#a": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#c": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#ValidResource4",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#a": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#b": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#c": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#d": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#InvalidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#a": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#b": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#c": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#d": {
+      "@value": false
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#InvalidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#a": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#b": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#c": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#d": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#InvalidResource3",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#a": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#b": {
+      "@value": false
+    }
+  }
+]

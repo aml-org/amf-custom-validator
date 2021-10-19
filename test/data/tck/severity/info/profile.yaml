@@ -1,0 +1,16 @@
+#%Validation Profile 1.0
+profile: test
+
+
+info:
+  - validation1
+
+validations:
+  validation1:
+    targetClass: ex.Test
+    propertyConstraints:
+      ex.a:
+        minCount: 1
+prefixes:
+  ex: https://github.com/aml-org/amf-custom-validator/test/data/tck/severity/info#
+

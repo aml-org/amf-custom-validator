@@ -1,0 +1,50 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#ValidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount": {
+      "@value": 0
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#isValid": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#ValidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount": {
+      "@value": 1
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#isValid": {
+      "@value": false
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#InvalidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount": {
+      "@value": 1
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#isValid": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#InvalidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount": {
+      "@value": 0
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#isValid": {
+      "@value": false
+    }
+  }
+]

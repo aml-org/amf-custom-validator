@@ -1,0 +1,8 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/misc/deactivated-001.test#InvalidResource1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/misc/deactivated-001.test#Test"
+    ]
+  }
+]

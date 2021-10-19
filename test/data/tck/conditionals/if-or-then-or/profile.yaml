@@ -1,0 +1,31 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: ex.Test
+    if:
+      or:
+        - propertyConstraints:
+            ex.isDomesticAnimal:
+              in: [ true ]
+        - propertyConstraints:
+            ex.isPet:
+              in: [ true ]
+    then:
+      or:
+        - propertyConstraints:
+            ex.isCat:
+              in: [ true ]
+        - propertyConstraints:
+            ex.isDog:
+              in: [ true ]
+
+
+prefixes:
+  ex: https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#
+
