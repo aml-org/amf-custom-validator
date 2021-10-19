@@ -1,4 +1,4 @@
-package test2
+package profile_test_2
 
 
 # Finds a node in the graph, following a link in the flatten JSON-LD node

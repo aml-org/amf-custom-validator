@@ -3,6 +3,7 @@ package generator
 import (
 	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"regexp"
 	"strings"
 )
 
@@ -49,7 +50,12 @@ func pkg(profile profile.Profile) string {
 }
 
 func packageName(profile profile.Profile) string {
-	return strings.ReplaceAll(strings.ToLower(profile.Name), " ", "")
+	reg, err := regexp.Compile("[^a-zA-Z0-9]+")
+	if err != nil {
+		panic(err)
+	}
+	sanitizedName := reg.ReplaceAllString(strings.ToLower(profile.Name), "_")
+	return fmt.Sprintf("profile_%s", sanitizedName)
 }
 
 func entrypoint(profile profile.Profile) string {
