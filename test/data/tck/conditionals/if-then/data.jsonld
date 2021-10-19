@@ -1,0 +1,50 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#ValidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#errorCount": {
+      "@value": 0
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#isValid": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#ValidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#errorCount": {
+      "@value": 1
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#isValid": {
+      "@value": false
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#ValidResource3",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#errorCount": {
+      "@value": 0
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#isValid": {
+      "@value": false
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#InvalidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#errorCount": {
+      "@value": 1
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then#isValid": {
+      "@value": true
+    }
+  }
+]

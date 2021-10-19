@@ -1,0 +1,8 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/severity/info#InvalidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/severity/info#Test"
+    ]
+  }
+]

@@ -1,0 +1,28 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: ex.Test
+    or:
+      - propertyConstraints:
+          ex.a0:
+            nested:
+              propertyConstraints:
+                ex.a1:
+                  in: [true]
+      - propertyConstraints:
+          ex.b0:
+            nested:
+              propertyConstraints:
+                ex.b1:
+                  in: [true]
+
+
+prefixes:
+  ex: https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-nested#
+

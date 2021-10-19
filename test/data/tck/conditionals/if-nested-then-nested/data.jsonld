@@ -1,0 +1,74 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#ValidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#pet": {
+      "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#Dog1",
+      "@type": [
+        "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#Dog"
+      ],
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#barks": {
+        "@value": true
+      },
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#isDog": {
+        "@value": true
+      }
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#ValidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#pet": {
+      "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#Cat1",
+      "@type": [
+        "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#Cat"
+      ],
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#barks": {
+        "@value": false
+      },
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#isDog": {
+        "@value": false
+      }
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#ValidResource3",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#pet": {
+      "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#SilentDog1",
+      "@type": [
+        "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#Dog"
+      ],
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#barks": {
+        "@value": false
+      },
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#isDog": {
+        "@value": true
+      }
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#InvalidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#pet": {
+      "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#StrangeCat1",
+      "@type": [
+        "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#Cat"
+      ],
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#barks": {
+        "@value": true
+      },
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-nested-then-nested#isDog": {
+        "@value": false
+      }
+    }
+  }
+]

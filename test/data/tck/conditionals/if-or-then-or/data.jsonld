@@ -1,0 +1,75 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#ValidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isDomesticAnimal": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isPet": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isDog": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#ValidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isPet": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isCat": {
+      "@value": true
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#ValidResource3",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isPet": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isCat": {
+      "@value": false
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": "This is valid because we are not enforcing a minCount on isDog"
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#InvalidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isDomesticAnimal": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isPet": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isCat": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isDog": {
+      "@value": false
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#InvalidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isPet": {
+      "@value": true
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isCat": {
+      "@value": false
+    },
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-or-then-or#isDog": {
+      "@value": false
+    }
+  }
+]

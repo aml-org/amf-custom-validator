@@ -1,0 +1,12 @@
+#%Validation Profile 1.0
+profile: test
+
+validations:
+  validation1:
+    targetClass: ex.Test
+    propertyConstraints:
+      ex.property:
+        minCount: 1
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/misc/deactivated-001.test#
+

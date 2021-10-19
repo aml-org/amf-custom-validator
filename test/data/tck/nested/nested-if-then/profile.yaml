@@ -1,0 +1,26 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: ex.Test
+    propertyConstraints:
+      ex.property:
+        nested:
+          if:
+            propertyConstraints:
+              ex.a:
+                in: [true]
+          then:
+            propertyConstraints:
+              ex.b:
+                in: [true]
+
+
+prefixes:
+  ex: https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-if-then#
+

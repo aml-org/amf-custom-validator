@@ -17,6 +17,10 @@ func ignoreShaclCase(subDirectory relativePath, t *testing.T) {
 	ignoreDirectory(directory, t)
 }
 
+func TestMiscDeactivated001(t *testing.T) {
+	testShaclCase("misc/deactivated-001", t)
+}
+
 func TestMiscSeverity001(t *testing.T) {
 	testShaclCase("misc/severity-001", t)
 }

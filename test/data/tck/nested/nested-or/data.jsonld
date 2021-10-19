@@ -1,0 +1,86 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#ValidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#property": {
+      "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#ValidResource1/property",
+      "@type": [
+        "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#Nested"
+      ],
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#a": {
+        "@value": true
+      },
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#b": {
+        "@value": true
+      }
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#ValidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#property": {
+      "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#ValidResource2/property",
+      "@type": [
+        "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#Nested"
+      ],
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#a": {
+        "@value": true
+      }
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#ValidResource3",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#property": {
+      "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#ValidResource3/property",
+      "@type": [
+        "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#Nested"
+      ],
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#a": {
+        "@value": false
+      },
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#b": {
+        "@value": true
+      }
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#ValidResource4",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#property": {
+      "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#ValidResource4/property",
+      "@type": [
+        "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#Nested"
+      ],
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#a": {
+        "@value": false
+      }
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#InvalidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#property": {
+      "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#InvalidResource1/property",
+      "@type": [
+        "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#Nested"
+      ],
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#a": {
+        "@value": false
+      },
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-or#b": {
+        "@value": false
+      }
+    }
+  }
+]
