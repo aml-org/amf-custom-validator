@@ -50,6 +50,7 @@ pipeline {
             when {
                 anyOf {
                     branch 'develop'
+                    branch 'APIMF-3409-test'
                 }
             }
             agent {
