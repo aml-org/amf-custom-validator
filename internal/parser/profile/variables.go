@@ -34,7 +34,7 @@ func (op CardinalityOperation) String() string {
 	case EQ:
 		return fmt.Sprintf("=")
 	case NEQ:
-		return fmt.Sprintf("<>")
+		return fmt.Sprintf("!=")
 	case LT:
 		return fmt.Sprintf("<")
 	case LTEQ:
@@ -53,7 +53,7 @@ func (c VariableCardinality) String() string {
 	case EQ:
 		return fmt.Sprintf("= %d", c.Value)
 	case NEQ:
-		return fmt.Sprintf("<> %d", c.Value)
+		return fmt.Sprintf("!= %d", c.Value)
 	case LT:
 		return fmt.Sprintf("< %d", c.Value)
 	case LTEQ:

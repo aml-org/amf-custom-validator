@@ -70,7 +70,7 @@ func TestPropertyDatatype002(t *testing.T) {
 }
 
 func TestPropertyDisjoint001(t *testing.T) {
-	ignoreShaclCase("property/disjoint-001", t)
+	testShaclCase("property/disjoint-001", t)
 }
 
 func TestPropertyEquals001(t *testing.T) {
