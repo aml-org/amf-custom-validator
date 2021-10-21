@@ -24,7 +24,7 @@ build-native:
 	go build -o amf-opa-validator ./cmd/validate/validate.go
 
 build-js:
-	./scripts/gen_js_package.sh
+	./scripts/gen_js_package.sh && ./scripts/gen_js_web_package.sh
 
 ## CI =====================================================================================
 

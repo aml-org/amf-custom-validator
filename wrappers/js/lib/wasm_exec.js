@@ -1,3 +1,8 @@
+// wasm_exec.js obtained from https://github.com/golang/go/blob/758ac371ab930734053ed226ac62681e62ab8eea/misc/wasm/wasm_exec.js
+// Log with custom changes (we should keep track if we diverge from original content):
+//  -
+
+// ---------------------------------------------------
 // Copyright 2018 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
@@ -11,6 +16,7 @@
 	// - Node.js
 	// - Electron
 	// - Parcel
+	// - Webpack
 
 	if (typeof global !== "undefined") {
 		// global already exists
@@ -28,7 +34,7 @@
 
 	if (!global.fs && global.require) {
 		const fs = require("fs");
-		if (Object.keys(fs) !== 0) {
+		if (typeof fs === "object" && fs !== null && Object.keys(fs).length !== 0) {
 			global.fs = fs;
 		}
 	}
@@ -556,6 +562,7 @@
 	}
 
 	if (
+		typeof module !== "undefined" &&
 		global.require &&
 		global.require.main === module &&
 		global.process &&
