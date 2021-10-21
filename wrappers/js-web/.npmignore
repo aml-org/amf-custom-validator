@@ -1,0 +1,10 @@
+# Directories
+scripts/
+tmp/
+lib/
+node_modules/
+test/
+
+# Files
+index.js
+webpack.config.js
