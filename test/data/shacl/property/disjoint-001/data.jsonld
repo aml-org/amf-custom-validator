@@ -1,6 +1,7 @@
 [
   {
     "@id": "http://datashapes.org/sh/tests/core/property/disjoint-001.test#InvalidResource1",
+    "@type": ["http://datashapes.org/sh/tests/core/property/disjoint-001.test#Test"],
     "http://datashapes.org/sh/tests/core/property/disjoint-001.test#property1": [
       {
         "@value": "A"
@@ -14,6 +15,7 @@
   },
   {
     "@id": "http://datashapes.org/sh/tests/core/property/disjoint-001.test#InvalidResource2",
+    "@type": ["http://datashapes.org/sh/tests/core/property/disjoint-001.test#Test"],
     "http://datashapes.org/sh/tests/core/property/disjoint-001.test#property1": [
       {
         "@value": "A"
@@ -30,6 +32,7 @@
   },
   {
     "@id": "http://datashapes.org/sh/tests/core/property/disjoint-001.test#ValidResource1",
+    "@type": ["http://datashapes.org/sh/tests/core/property/disjoint-001.test#Test"],
     "http://datashapes.org/sh/tests/core/property/disjoint-001.test#property1": [
       {
         "@value": "A"
@@ -43,6 +46,7 @@
   },
   {
     "@id": "http://datashapes.org/sh/tests/core/property/disjoint-001.test#ValidResource2",
+    "@type": ["http://datashapes.org/sh/tests/core/property/disjoint-001.test#Test"],
     "http://datashapes.org/sh/tests/core/property/disjoint-001.test#property1": [
       {
         "@value": "A"
