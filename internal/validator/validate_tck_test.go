@@ -72,6 +72,14 @@ func TestConditionalsIfNestedThenNested(t *testing.T) {
 	testTckCase("conditionals/if-nested-then-nested", t)
 }
 
+func TestConditionalsIfNotThen(t *testing.T) {
+	testTckCase("conditionals/if-not-then", t)
+}
+
+func TestConditionalsIfNotThenNot(t *testing.T) {
+	testTckCase("conditionals/if-not-then-not", t)
+}
+
 // And ('simple and' tested in SHACL TCK)
 
 func TestAndAnd(t *testing.T) {
@@ -84,6 +92,10 @@ func TestAndIfThen(t *testing.T) {
 
 func TestAndNested(t *testing.T) {
 	testTckCase("and/and-nested", t)
+}
+
+func TestAndNot(t *testing.T) {
+	testTckCase("and/and-not", t)
 }
 
 func TestAndOr(t *testing.T) {
@@ -108,6 +120,10 @@ func TestOrOr(t *testing.T) {
 	testTckCase("or/or-or", t)
 }
 
+func TestOrNot(t *testing.T) {
+	testTckCase("or/or-not", t)
+}
+
 // Severity ('violation' & 'warning' severities tested in SHACL TCK)
 
 func TestSeverityInfo(t *testing.T) {
@@ -130,4 +146,8 @@ func TestNestedNested(t *testing.T) {
 
 func TestNestedOr(t *testing.T) {
 	testTckCase("nested/nested-or", t)
+}
+
+func TestNestedNot(t *testing.T) {
+	testTckCase("nested/nested-not", t)
 }
