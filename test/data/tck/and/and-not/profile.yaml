@@ -1,0 +1,24 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: ex.Test
+    and:
+      - not:
+          propertyConstraints:
+            ex.a:
+              in: [ true ]
+      - not:
+          propertyConstraints:
+            ex.b:
+              in: [ true ]
+
+
+prefixes:
+  ex: https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-not#
+

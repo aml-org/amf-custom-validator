@@ -1,0 +1,57 @@
+[
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#ValidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#property": {
+      "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#ValidResource1/property",
+      "@type": [
+        "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#Nested"
+      ],
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#a": {
+        "@value": false
+      }
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#ValidResource2",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#property": {
+      "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#ValidResource2/property",
+      "@type": [
+        "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#Nested"
+      ],
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#a": [
+        {
+          "@value": false
+        },
+        {
+          "@value": false
+        }
+      ]
+    }
+  },
+  {
+    "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#InvalidResource1",
+    "@type": [
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#Test"
+    ],
+    "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#property": {
+      "@id": "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#InvalidResource1/property",
+      "@type": [
+        "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#Nested"
+      ],
+      "https://github.com/aml-org/amf-custom-validator/test/data/tck/nested/nested-not#a": [
+        {
+          "@value": true
+        },
+        {
+          "@value": false
+        }
+      ]
+    }
+  }
+]

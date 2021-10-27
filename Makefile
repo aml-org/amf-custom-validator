@@ -26,6 +26,8 @@ build-native:
 build-js:
 	./scripts/gen_js_package.sh
 
+build-js-web: build-js bundle-web-js
+
 bundle-web-js:
 	./scripts/bundle_js_web_package.sh
 
