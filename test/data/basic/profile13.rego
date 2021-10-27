@@ -130,7 +130,9 @@ as_string(x) = json.marshal(x) {
 # Traces one evaluation of a constraint
 trace(constraint, resultPath, focusNode, traceValue) = t {
   id := focusNode["@id"]
-  raw_range := input["@lexical"][id]
+  location := input["@lexical"][id]
+  raw_range := location["range"]
+  uri := location["uri"]	
   range_parts := regex.find_n("\\d+", raw_range, 4)
   range := {
 	"@type": ["lexical:Range"],
@@ -152,7 +154,7 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
     "traceValue": traceValue,
 	"location": {
 	  "@type": ["lexical:Location"],
-      "uri": "",
+      "uri": uri,
       "range": range
 	}
   }

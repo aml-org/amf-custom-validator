@@ -5,10 +5,12 @@ import (
 	"github.com/piprate/json-gold/ld"
 )
 
+type Object = map[string]interface{}
+
 func Normalize(json interface{}, prefixes profile.ProfileContext) interface{} {
 	proc := ld.NewJsonLdProcessor()
 	options := ld.NewJsonLdOptions("")
-	context := map[string]interface{}{
+	context := Object{
 		"data":        "http://a.ml/vocabularies/data#",
 		"shacl":       "http://www.w3.org/ns/shacl#",
 		"shapes":      "http://a.ml/vocabularies/shapes#",
@@ -34,13 +36,13 @@ func Normalize(json interface{}, prefixes profile.ProfileContext) interface{} {
 
 func Index(json interface{}) interface{} {
 	classIndex := make(map[string][]string)
-	nodeIndex := make(map[string]interface{})
+	nodeIndex := make(Object)
 
-	g := json.(map[string]interface{})["@graph"]
+	g := json.(Object)["@graph"]
 	nodes := g.([]interface{})
 
 	for _, nn := range nodes {
-		n := nn.(map[string]interface{})
+		n := nn.(Object)
 		id := n["@id"].(string)
 		classes := n["@type"]
 		nodeIndex[id] = n
@@ -65,45 +67,97 @@ func Index(json interface{}) interface{} {
 		}
 	}
 
-	// Build lexical index
-	lexicalIndex := make(map[string]interface{})
-	for _, sourceMapId := range classIndex["sourcemaps:SourceMap"] {
-		sourceMap := nodeIndex[sourceMapId].(map[string]interface{})
-		lexicalContainer := sourceMap["sourcemaps:lexical"] // can be map or array of maps
+	var locationIndex *LocationIndex = createLocationIndex(&nodeIndex, &classIndex)
 
-		switch v := lexicalContainer.(type) {
-		case map[string]interface{}:
-			addLexicalEntryFrom(&v, &nodeIndex, &lexicalIndex)
-		case []interface{}:
-			for _, e := range v {
-				switch vv := e.(type) {
-				case map[string]interface{}:
-					addLexicalEntryFrom(&vv, &nodeIndex, &lexicalIndex)
-				}
-			}
-		}
+	// Build lexical index
+	lexicalIndex := make(Object)
+	for _, sourceMapId := range classIndex["sourcemaps:SourceMap"] {
+		sourceMap := nodeIndex[sourceMapId].(Object)
+		lexicalContainer := sourceMap["sourcemaps:lexical"] // can be map or array of maps
+		handleSingleOrMultipleNodes(&lexicalContainer, func(node *Object){
+			addLexicalEntryFrom(node, &nodeIndex, &lexicalIndex, locationIndex)
+		})
 	}
 
-	return map[string]interface{}{
+	return Object{
 		"@ids":     nodeIndex,
 		"@types":   classIndex,
 		"@lexical": lexicalIndex,
 	}
 }
 
-func addLexicalEntryFrom(node, nodeIndex, lexicalIndex *map[string]interface{}) {
-	lexicalEntry := (*nodeIndex)[(*node)["@id"].(string)].(map[string]interface{})
+func addLexicalEntryFrom(node, nodeIndex, lexicalIndex *Object, locIndex *LocationIndex) {
+	lexicalEntry := (*nodeIndex)[(*node)["@id"].(string)].(Object)
 	id := lexicalEntry["sourcemaps:element"].(string)
 	value := lexicalEntry["sourcemaps:value"]
 
 	/**
 	Index:
-		nodeId -> lexical
+		nodeId -> (range , uri)
 
 	Cannot index property lexical info (property URI -> lexical) because property URIs are not unique and will
 	get overwritten by each node
 	*/
 	if _, ok := (*nodeIndex)[id]; ok {
-		(*lexicalIndex)[id] = value
+		(*lexicalIndex)[id] = Object{
+			"range": value,
+			"uri":   locIndex.Location(id),
+		}
+	}
+}
+
+func createLocationIndex(nodeIndex *Object, classIndex *map[string][]string) *LocationIndex {
+	sourceInformation := (*classIndex)["doc:BaseUnitSourceInformation"]
+	if len(sourceInformation) > 0 {
+		sourceInformationNode := (*nodeIndex)[sourceInformation[0]].(Object)
+		defaultLocation := sourceInformationNode["doc:rootLocation"].(string)
+		additionalLocations := sourceInformationNode["doc:additionalLocations"]
+		idToLocation := make(map[string]string)
+		handleSingleOrMultipleNodes(&additionalLocations, func(node *Object){
+			addElementsOfLoc(node, nodeIndex, &idToLocation)
+		})
+		return &LocationIndex{DefaultLocation: defaultLocation, IdToLocation: idToLocation}
+
+	} else {
+		return &LocationIndex{IdToLocation: make(map[string]string), DefaultLocation: ""}
+	}
+}
+
+func addElementsOfLoc(node *Object, nodeIndex *Object, idToLocation *map[string]string) {
+	locationNode := (*nodeIndex)[(*node)["@id"].(string)].(Object)
+	locationValue := locationNode["doc:location"].(string)
+	elementIds := locationNode["doc:elements"]
+	handleSingleOrMultipleNodes(&elementIds, func(node *Object){
+		(*idToLocation)[(*node)["@id"].(string)] = locationValue
+	})
+}
+
+func handleSingleOrMultipleNodes(node *interface{}, operation func(*Object)) {
+	switch v := (*node).(type) {
+	case Object: // single node
+		operation(&v)
+	case []interface{}: // array with multiple nodes
+		for _, e := range v {
+			switch vv := e.(type) {
+			case Object:
+				operation(&vv)
+			}
+		}
+	default:
+	}
+}
+
+
+type LocationIndex struct {
+	DefaultLocation string
+	IdToLocation map[string]string
+}
+
+func (locIndex *LocationIndex) Location(id string) string {
+	value, exists := locIndex.IdToLocation[id]
+	if exists {
+		return value
+	} else {
+		return locIndex.DefaultLocation
 	}
 }
