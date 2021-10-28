@@ -81,7 +81,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get"
+        "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get"
       },
       "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
@@ -117,7 +117,7 @@
                 "line": 13
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile6/negative.data.raml"
           },
           "resultPath": "apiContract.returns",
           "traceValue": {
@@ -130,7 +130,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/201"
+                  "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/returns/resp/201"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
                 "sourceShapeName": "nested",
@@ -163,7 +163,7 @@
                           "line": 15
                         }
                       },
-                      "uri": ""
+                      "uri": "file://test/data/integration/profile6/negative.data.raml"
                     },
                     "resultPath": "apiContract.statusCode",
                     "traceValue": {
@@ -205,7 +205,7 @@
                 "line": 13
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile6/negative.data.raml"
           },
           "resultPath": "apiContract.method",
           "traceValue": {
@@ -221,7 +221,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get"
+        "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get"
       },
       "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
@@ -257,7 +257,7 @@
                 "line": 18
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile6/negative.data.raml"
           },
           "resultPath": "apiContract.returns",
           "traceValue": {
@@ -270,7 +270,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get/200"
+                  "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/returns/resp/200"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
                 "sourceShapeName": "nested",
@@ -303,7 +303,7 @@
                           "line": 20
                         }
                       },
-                      "uri": ""
+                      "uri": "file://test/data/integration/profile6/negative.data.raml"
                     },
                     "resultPath": "apiContract.statusCode",
                     "traceValue": {
@@ -345,7 +345,7 @@
                 "line": 18
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile6/negative.data.raml"
           },
           "resultPath": "apiContract.method",
           "traceValue": {
@@ -361,7 +361,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get"
+        "@id": "file://test/data/integration/profile6/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get"
       },
       "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
@@ -397,7 +397,7 @@
                 "line": 13
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile6/negative.data.raml"
           },
           "resultPath": "apiContract.returns",
           "traceValue": {
@@ -436,7 +436,7 @@
                 "line": 13
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile6/negative.data.raml"
           },
           "resultPath": "apiContract.method",
           "traceValue": {

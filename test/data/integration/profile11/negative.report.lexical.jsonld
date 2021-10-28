@@ -81,7 +81,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile11/negative.data.raml#/declarations/types/array/Emails"
+        "@id": "file://test/data/integration/profile11/negative.data.raml#/declares/array/Emails"
       },
       "resultMessage": "Validation error",
       "resultSeverity": {
@@ -117,7 +117,7 @@
                 "line": 7
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile11/negative.data.raml"
           },
           "resultPath": "shacl.minCount",
           "traceValue": {

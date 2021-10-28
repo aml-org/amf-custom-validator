@@ -81,7 +81,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile1/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request/parameter/query/a"
+        "@id": "file://test/data/integration/profile1/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a"
       },
       "resultMessage": "Scalars in parameters must have minLength defined",
       "resultSeverity": {
@@ -117,7 +117,7 @@
                 "line": 8
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile1/negative.data.raml"
           },
           "resultPath": "shapes.schema / shacl.minLength",
           "traceValue": {
@@ -134,7 +134,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile1/negative.data.raml#/web-api/end-points/%2Fendpoint2/get/request/parameter/query/d"
+        "@id": "file://test/data/integration/profile1/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/d"
       },
       "resultMessage": "Scalars in parameters must have minLength defined",
       "resultSeverity": {
@@ -170,7 +170,7 @@
                 "line": 18
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile1/negative.data.raml"
           },
           "resultPath": "shapes.schema / shacl.minLength",
           "traceValue": {

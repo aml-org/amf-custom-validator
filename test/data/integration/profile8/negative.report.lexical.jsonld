@@ -81,7 +81,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile8/negative.data.raml#/web-api"
+        "@id": "file://test/data/integration/profile8/negative.data.raml/web-api"
       },
       "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
@@ -107,7 +107,7 @@
                   "lexical:Position"
                 ],
                 "column": 10,
-                "line": 6
+                "line": 8
               },
               "start": {
                 "@type": [
@@ -117,7 +117,7 @@
                 "line": 3
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile8/negative.data.raml"
           },
           "resultPath": "",
           "traceValue": {
@@ -131,7 +131,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile8/negative.data.raml#/web-api"
+        "@id": "file://test/data/integration/profile8/negative.data.raml/web-api"
       },
       "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
       "resultSeverity": {
@@ -157,7 +157,7 @@
                   "lexical:Position"
                 ],
                 "column": 10,
-                "line": 6
+                "line": 8
               },
               "start": {
                 "@type": [
@@ -167,7 +167,7 @@
                 "line": 3
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile8/negative.data.raml"
           },
           "resultPath": "",
           "traceValue": {
