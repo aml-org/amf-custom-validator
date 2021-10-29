@@ -1,48 +1,30 @@
-require("../js/lib/wasm_exec");
-let wasm_gz = require("../js/lib/main.wasm.gz")
-const pako = require("pako");
-let wasm
+require("../js/lib/wasm_exec")
 
-let INIT = false
-let go = new Go();
-
-const run = function(profile, data, debug) {
-    let before = new Date()
-    const res = __AMF__validateCustomProfile(profile,data, debug);
-    let after = new Date();
-    if (debug) console.log("Elapsed : " + (after - before))
-    return res;
+// should cache this
+const readWasm = () => {
+    const pako = require("pako")
+    const wasmCompressed = require("../js/lib/main.wasm.gz")
+    return pako.ungzip(Buffer.from(wasmCompressed, 'base64'))
 }
 
-const validateCustomProfile = function(profile, data, debug, cb) {
-    if (INIT) {
-        let res = run(profile, data, debug);
-        cb(res,null);
-    } else {
-        if(!wasm_gz || !wasm) {
-            wasm = pako.ungzip(Buffer.from(wasm_gz, 'base64'))
-        }
-        if (WebAssembly) {
-            WebAssembly.instantiate(wasm, go.importObject).then((result) => {
-                go.run(result.instance);
-                INIT = true;
-                let res = run(profile, data, debug);
-                cb(res,null);
-            });
-        } else {
-            cb(null,new Error("WebAssembly is not supported in your JS environment"));
-        }
-    }
+// should cache this
+const compileWasmModule = () => WebAssembly.compile(readWasm())
+
+// should create one instance per validate call
+const createWasmInstance = (go) => compileWasmModule().then(module => WebAssembly.instantiate(module, go.importObject))
+
+const validate = (profile, data, debug, callback) => {
+    const go = new Go()
+    createWasmInstance(go)
+        .then(instance => {
+            go.run(instance)
+        })
+        .then(() => {
+            const result = __AMF__validateCustomProfile(profile, data, debug)
+            go.exit(0)
+            __AMF__terminateValidator()
+            callback(result)
+        })
 }
 
-const exit = function() {
-    if(INIT) {
-        __AMF__terminateValidator()
-        go.exit(0)
-        INIT = false;
-        go = new Go();
-    }
-}
-
-module.exports.validate = validateCustomProfile;
-module.exports.exit = exit;
+module.exports.validate = validate
