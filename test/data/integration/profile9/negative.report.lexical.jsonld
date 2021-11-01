@@ -81,7 +81,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile9/negative.data.raml#/web-api"
+        "@id": "file://test/data/integration/profile9/negative.data.raml/web-api"
       },
       "resultMessage": "maximum number of endpoints test",
       "resultSeverity": {
@@ -117,7 +117,7 @@
                 "line": 3
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile9/negative.data.raml"
           },
           "resultPath": "apiContract.endpoint",
           "traceValue": {

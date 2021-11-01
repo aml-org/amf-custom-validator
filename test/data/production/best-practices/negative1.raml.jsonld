@@ -1,0 +1,432 @@
+{
+  "@graph": [
+    {
+      "@id": "file://negative1.raml#/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#APIContractProcessingData"
+      ],
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.2.0",
+      "http://a.ml/vocabularies/document#transformed": true,
+      "http://a.ml/vocabularies/document#sourceSpec": "RAML 1.0"
+    },
+    {
+      "@id": "file://negative1.raml/BaseUnitSourceInformation",
+      "@type": [
+        "http://a.ml/vocabularies/document#BaseUnitSourceInformation"
+      ],
+      "http://a.ml/vocabularies/document#rootLocation": "file://negative1.raml",
+      "http://a.ml/vocabularies/document#additionalLocations": [
+        {
+          "@id": "file://negative1.raml/BaseUnitSourceInformation/location_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml/web-api",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "http://a.ml/vocabularies/apiContract#API",
+        "http://a.ml/vocabularies/document#RootDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "sfdsdf",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://negative1.raml/web-api#/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml/BaseUnitSourceInformation/location_0",
+      "@type": [
+        "http://a.ml/vocabularies/document#LocationInformation"
+      ],
+      "http://a.ml/vocabularies/document#location": "file://lib.raml",
+      "http://a.ml/vocabularies/document#elements": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/scalar/no-camel-case"
+        },
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case"
+        },
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml/web-api#/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://negative1.raml/web-api#/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://negative1.raml/web-api#/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml/web-api#/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://negative1.raml/web-api",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(2,0)-(7,36)]"
+    },
+    {
+      "@id": "file://negative1.raml/web-api#/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/core#name",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(2,0)-(3,0)]"
+    },
+    {
+      "@id": "file://negative1.raml",
+      "http://a.ml/vocabularies/document#references": [
+        {
+          "@id": "file://negative1.raml#/references/0"
+        }
+      ],
+      "http://a.ml/vocabularies/document#declares": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType"
+        }
+      ],
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://negative1.raml/web-api"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://negative1.raml#/BaseUnitProcessingData"
+      },
+      "http://a.ml/vocabularies/document#sourceInformation": {
+        "@id": "file://negative1.raml/BaseUnitSourceInformation"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://negative1.raml#/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml#/references/0",
+      "@type": [
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/document#declares": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType"
+        }
+      ],
+      "http://a.ml/vocabularies/document#root": false,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://negative1.raml#/references/0/BaseUnitProcessingData"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://negative1.raml#/references/0/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#closed": false,
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "mainApiType",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml#/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#aliases-array": [
+        {
+          "@id": "file://negative1.raml#/source-map/aliases-array/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#closed": false,
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "IncorrectType",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml#/references/0/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#APIContractProcessingData"
+      ],
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.2.0",
+      "http://a.ml/vocabularies/document#sourceSpec": "RAML 1.0"
+    },
+    {
+      "@id": "file://negative1.raml#/references/0/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://negative1.raml#/references/0/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#no-camel-case"
+        }
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/scalar/no-camel-case"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#name": "no-camel-case",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#type-property-lexical-info": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/source-map/type-property-lexical-info/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/source-map/lexical/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#declared-element": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/source-map/declared-element/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml#/source-map/aliases-array/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://negative1.raml",
+      "http://a.ml/vocabularies/document-source-maps#value": "someLib->file://negative1.raml#/references/0::file://lib.raml::lib.raml"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#type-property-lexical-info": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/source-map/type-property-lexical-info/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/source-map/lexical/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#declared-element": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/source-map/declared-element/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml#/references/0/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://negative1.raml#/references/0",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(1,0)-(7,27)]"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/scalar/no-camel-case",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "no-camel-case",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/scalar/no-camel-case/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/source-map/synthesized-field/element_1"
+        },
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#closed",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/source-map/type-property-lexical-info/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://negative1.raml#/declares/shape/mainApiType",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(5,4)-(5,8)]"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://negative1.raml#/declares/shape/mainApiType",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(4,2)-(7,27)]"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/source-map/declared-element/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://negative1.raml#/declares/shape/mainApiType",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#closed",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/source-map/type-property-lexical-info/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(5,4)-(5,8)]"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(4,2)-(7,27)]"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#name",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(4,2)-(4,15)]"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/source-map/declared-element/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/scalar/no-camel-case/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/scalar/no-camel-case/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/scalar/no-camel-case/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/source-map/synthesized-field/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#path",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minCount",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(7,6)-(7,27)]"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/shapes#range",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(7,21)-(7,27)]"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/scalar/no-camel-case/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/scalar/no-camel-case",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(7,6)-(7,27)]"
+    },
+    {
+      "@id": "file://negative1.raml#/declares/shape/mainApiType/shape/IncorrectType/property/property/no-camel-case/scalar/no-camel-case/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#datatype",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(7,21)-(7,27)]"
+    }
+  ]
+}

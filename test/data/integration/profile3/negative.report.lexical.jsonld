@@ -81,7 +81,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint1"
+        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint1"
       },
       "resultMessage": "Endpoints must have a POST method",
       "resultSeverity": {
@@ -117,7 +117,7 @@
                 "line": 5
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile3/negative.data.raml"
           },
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
@@ -130,7 +130,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint1/get"
+                  "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.supportedOperation",
                 "sourceShapeName": "nested",
@@ -163,7 +163,7 @@
                           "line": 14
                         }
                       },
-                      "uri": ""
+                      "uri": "file://test/data/integration/profile3/negative.data.raml"
                     },
                     "resultPath": "apiContract.method",
                     "traceValue": {
@@ -185,7 +185,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint2"
+        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint2"
       },
       "resultMessage": "Endpoints must have a POST method",
       "resultSeverity": {
@@ -221,7 +221,7 @@
                 "line": 22
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile3/negative.data.raml"
           },
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
@@ -234,7 +234,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint2/get"
+                  "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.supportedOperation",
                 "sourceShapeName": "nested",
@@ -267,7 +267,7 @@
                           "line": 31
                         }
                       },
-                      "uri": ""
+                      "uri": "file://test/data/integration/profile3/negative.data.raml"
                     },
                     "resultPath": "apiContract.method",
                     "traceValue": {
@@ -289,7 +289,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3"
+        "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint3"
       },
       "resultMessage": "Endpoints must have a POST method",
       "resultSeverity": {
@@ -325,7 +325,7 @@
                 "line": 40
               }
             },
-            "uri": ""
+            "uri": "file://test/data/integration/profile3/negative.data.raml"
           },
           "resultPath": "apiContract.supportedOperation",
           "traceValue": {
@@ -338,7 +338,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3/get"
+                  "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.supportedOperation",
                 "sourceShapeName": "nested",
@@ -371,7 +371,7 @@
                           "line": 41
                         }
                       },
-                      "uri": ""
+                      "uri": "file://test/data/integration/profile3/negative.data.raml"
                     },
                     "resultPath": "apiContract.method",
                     "traceValue": {
@@ -387,7 +387,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3/post"
+                  "@id": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/post"
                 },
                 "resultMessage": "error in nested nodes under apiContract.supportedOperation",
                 "sourceShapeName": "nested",
@@ -420,7 +420,7 @@
                           "line": 49
                         }
                       },
-                      "uri": ""
+                      "uri": "file://test/data/integration/profile3/negative.data.raml"
                     },
                     "resultPath": "apiContract.method",
                     "traceValue": {
