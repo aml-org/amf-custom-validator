@@ -10,24 +10,26 @@ describe('validator', () => {
 
             const validator = require(__dirname + "/../index")
 
-            validator.validate(profile, data, false, (r, err) => {
-                if (err) {
-                    done(err);
-                } else {
-                    let report = JSON.parse(r)
-                    assert.ok(report["conforms"] === false)
-                    validator.validate(profile, data, false, (r,err) => {
-                        if (err) {
-                            done(err)
-                        } else {
-                            let report = JSON.parse(r)
-                            assert.ok(report["conforms"] === false)
-                            validator.exit();
-                            done();
-                        }
-                    });
-                }
-            });
+            validator.initialize(() => {
+                validator.validate(profile, data, false, (r, err) => {
+                    if (err) {
+                        done(err);
+                    } else {
+                        let report = JSON.parse(r)
+                        assert.ok(report["conforms"] === false)
+                        validator.validate(profile, data, false, (r, err) => {
+                            if (err) {
+                                done(err)
+                            } else {
+                                let report = JSON.parse(r)
+                                assert.ok(report["conforms"] === false)
+                                validator.exit();
+                                done();
+                            }
+                        });
+                    }
+                });
+            })
         });
     })
 })

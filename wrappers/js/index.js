@@ -4,8 +4,8 @@ const pako = require("pako");
 let wasm_gz
 let wasm
 
-let INIT = false
-let go = new Go();
+let initialized = false
+let go = null;
 
 const run = function(profile, data, debug) {
     let before = new Date()
@@ -16,35 +16,41 @@ const run = function(profile, data, debug) {
 }
 
 const validateCustomProfile = function(profile, data, debug, cb) {
-    if (INIT) {
+    if (initialized) {
         let res = run(profile, data, debug);
         cb(res,null);
     } else {
-        if(!wasm_gz || !wasm) {
-            wasm_gz = fs.readFileSync(__dirname + "/lib/main.wasm.gz")
-            wasm = pako.ungzip(wasm_gz)
-        }
-        if (WebAssembly) {
-            WebAssembly.instantiate(wasm, go.importObject).then((result) => {
-                go.run(result.instance);
-                INIT = true;
-                let res = run(profile, data, debug);
-                cb(res,null);
-            });
-        } else {
-            cb(null,new Error("WebAssembly is not supported in your JS environment"));
-        }
+        cb(null,new Error("WASM/GO not initialized"))
+    }
+}
+const initialize = function(cb) {
+    if (initialized === true) {
+        cb(null)
+    }
+    go = new Go();
+    if(!wasm_gz || !wasm) {
+        wasm_gz = fs.readFileSync(__dirname + "/lib/main.wasm.gz")
+        wasm = pako.ungzip(wasm_gz)
+    }
+    if (WebAssembly) {
+        WebAssembly.instantiate(wasm, go.importObject).then((result) => {
+            go.run(result.instance);
+            initialized = true;
+            cb(null);
+        });
+    } else {
+        cb(new Error("WebAssembly is not supported in your JS environment"));
     }
 }
 
 const exit = function() {
-    if(INIT) {
+    if(initialized) {
         __AMF__terminateValidator()
         go.exit(0)
-        INIT = false;
-        go = new Go();
+        initialized = false;
     }
 }
 
+module.exports.initialize = initialize;
 module.exports.validate = validateCustomProfile;
 module.exports.exit = exit;
