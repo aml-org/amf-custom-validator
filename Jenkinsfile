@@ -46,6 +46,41 @@ pipeline {
 
             }
         }
+        stage('Nexus IQ') {
+            when {
+                anyOf {
+                    branch 'develop'
+                    branch 'master'
+                }
+            }
+            agent {
+                // image used by valkyr -> https://github.com/mulesoft/kilonova-nexusiq-cli
+                docker {
+                    image 'artifacts.msap.io/mulesoft/kilonova-nexusiq-cli:v107.0.2'
+                    registryUrl 'https://artifacts.msap.io/'
+                    registryCredentialsId 'harbor-docker-registry'
+                }
+            }
+            steps {
+                withCredentials([
+                    [$class: 'UsernamePasswordMultiBinding', credentialsId: 'nexus-iq', passwordVariable: 'NEXUS_PASS', usernameVariable: 'NEXUS_USER'],
+                ]) {
+                script {
+                    def args = [
+                        '--authentication "$NEXUS_USER:$NEXUS_PASS"',
+                        "--server-url https://nexusiq.build.msap.io",
+                        "--application-id amf-custom-validator",
+                        "--fail-on-policy-warnings true" // might have to remove this if all policies are taken into account
+                     // "--stage $stage",
+                    ]
+                    def result = sh(returnStatus: true, script: "java -jar /bin/nexusiq-cli ${args.join(' ')} go.sum")
+                    if (result != 0) {
+                        unstable "Failed Nexus IQ policies"
+                    }
+                }
+                }
+            }
+        }
         stage('Publish snapshot') {
             when {
                 anyOf {
