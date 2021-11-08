@@ -16,6 +16,21 @@ RUN make go-coverage
 FROM sonarsource/sonar-scanner-cli as coverage
 COPY --from=go-coverage /go/src/coverage.out .
 
+FROM openjdk:8u292-jre AS ci-java
+#FROM openjdk/8u292-jdk AS ci-java
+# Copy content
+COPY . ./src
+WORKDIR ./src
+
+RUN pwd
+RUN ls -la
+
+# Install make
+RUN apt-get update && apt-get install make
+
+# Install
+RUN make ci-java
+
 FROM node:12 AS ci-js
 
 # First copy dependencies to enable Docker caching them

@@ -37,15 +37,8 @@ ci-go: test-go build-native build-js
 
 ci-js: test-js
 
-## Helpers ================================================================================
-generate:
-	go run cmd/generate/generate.go $(profile) >> $(out)
-
-normalize:
-	go run cmd/normalize/normalize.go $(profile) $(data) >> $(out)
-
-validate:
-	go run cmd/validate/validate.go $(profile) $(data) >> $(out)
-
-validate-profiles:
-	sh ./scripts/validate-profiles.sh
+ci-java:
+	./scripts/download-cli.sh
+	./scripts/download-dialects-and-vocabularies.sh
+	./scripts/validate-profiles.sh
+	#./scripts/validate-reports.sh
