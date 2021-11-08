@@ -29,4 +29,6 @@ wrappers/js-web/node_modules
 
 amf.jar
 amf-opa-validator
-validation-profile.yaml
+
+dialects
+vocabularies
