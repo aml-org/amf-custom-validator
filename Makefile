@@ -42,3 +42,18 @@ ci-java:
 	./scripts/download-dialects-and-vocabularies.sh
 	./scripts/validate-profiles.sh
 	#./scripts/validate-reports.sh
+
+
+## Helpers ================================================================================
+generate:
+	go run cmd/generate/generate.go $(profile) >> $(out)
+
+normalize:
+	go run cmd/normalize/normalize.go $(profile) $(data) >> $(out)
+
+validate:
+	go run cmd/validate/validate.go $(profile) $(data) >> $(out)
+
+validate-profiles:
+	./scripts/download-dialects-and-vocabularies.sh
+	./scripts/validate-profiles.sh
