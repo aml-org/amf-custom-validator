@@ -6,6 +6,7 @@ import (
 	"errors"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"github.com/aml-org/amf-custom-validator/internal/types"
+	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
 	"github.com/open-policy-agent/opa/rego"
 	"strings"
 )
@@ -83,80 +84,9 @@ func buildConformsContext() types.ObjectMap {
 	}
 }
 func buildFullContext(profileContext profile.ProfileContext) types.ObjectMap {
-	context := types.ObjectMap{
-		"actual": types.StringMap{
-			"@id": "http://a.ml/vocabularies/validation#actual",
-		},
-		"condition": types.StringMap{
-			"@id": "http://a.ml/vocabularies/validation#condition",
-		},
-		"expected": types.StringMap{
-			"@id": "http://a.ml/vocabularies/validation#expected",
-		},
-		"negated": types.StringMap{
-			"@id": "http://a.ml/vocabularies/validation#negated",
-		},
-		"argument": types.StringMap{
-			"@id": "http://a.ml/vocabularies/validation#argument",
-		},
-		"focusNode": types.StringMap{
-			"@id": "http://www.w3.org/ns/shacl#focusNode",
-		},
-		"trace": types.StringMap{
-			"@id": "http://a.ml/vocabularies/validation#trace",
-		},
-		"component": types.StringMap{
-			"@id": "http://a.ml/vocabularies/validation#component",
-		},
-		"resultPath": types.StringMap{
-			"@id": "http://www.w3.org/ns/shacl#resultPath",
-		},
-		"traceValue": types.StringMap{
-			"@id": "http://www.w3.org/ns/shacl#traceValue",
-		},
-		"location": types.StringMap{
-			"@id": "http://a.ml/vocabularies/validation#location",
-		},
-		"uri": types.StringMap{
-			"@id": "http://a.ml/vocabularies/lexical#uri",
-		},
-		"start": types.StringMap{
-			"@id": "http://a.ml/vocabularies/lexical#start",
-		},
-		"end": types.StringMap{
-			"@id": "http://a.ml/vocabularies/lexical#end",
-		},
-		"range": types.StringMap{
-			"@id": "http://a.ml/vocabularies/lexical#range",
-		},
-		"line": types.StringMap{
-			"@id": "http://a.ml/vocabularies/lexical#line",
-		},
-		"column": types.StringMap{
-			"@id": "http://a.ml/vocabularies/lexical#column",
-		},
-		"sourceShapeName": types.StringMap{
-			"@id": "http://a.ml/vocabularies/validation#sourceShapeName",
-		},
-		"conforms": types.StringMap{
-			"@id": "http://www.w3.org/ns/shacl#conforms",
-		},
-		"result": types.StringMap{
-			"@id": "http://www.w3.org/ns/shacl#result",
-		},
-		"subResult": types.StringMap{
-			"@id": "http://a.ml/vocabularies/validation#subResult",
-		},
-		"resultSeverity": types.StringMap{
-			"@id": "http://www.w3.org/ns/shacl#resultSeverity",
-		},
-		"resultMessage": types.StringMap{
-			"@id": "http://www.w3.org/ns/shacl#resultMessage",
-		},
-		"shacl":      "http://www.w3.org/ns/shacl#",
-		"validation": "http://a.ml/vocabularies/validation#",
-		"lexical":    "http://a.ml/vocabularies/lexical#",
-	}
+	context := make(types.ObjectMap)
+	types.MergeObjectMap(&context, &contexts.DefaultValidationContext)
+	types.MergeObjectMap(&context, &contexts.DefaultAMFContext)
 	for k, v := range profileContext {
 		context[k] = v
 	}
