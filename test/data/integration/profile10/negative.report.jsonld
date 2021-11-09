@@ -27,6 +27,7 @@
     "focusNode": {
       "@id": "http://www.w3.org/ns/shacl#focusNode"
     },
+    "istio": "http://mulesoft.com/models/istio#",
     "lexical": "http://a.ml/vocabularies/lexical#",
     "line": {
       "@id": "http://a.ml/vocabularies/lexical#line"

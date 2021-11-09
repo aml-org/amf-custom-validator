@@ -21,6 +21,7 @@
     "end": {
       "@id": "http://a.ml/vocabularies/lexical#end"
     },
+    "ex": "http://datashapes.org/sh/tests/core/property/maxCount-002.test#",
     "expected": {
       "@id": "http://a.ml/vocabularies/validation#expected"
     },
@@ -37,9 +38,11 @@
     "negated": {
       "@id": "http://a.ml/vocabularies/validation#negated"
     },
+    "owl": "http://www.w3.org/2002/07/owl#",
     "range": {
       "@id": "http://a.ml/vocabularies/lexical#range"
     },
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "result": {
       "@id": "http://www.w3.org/ns/shacl#result"
     },

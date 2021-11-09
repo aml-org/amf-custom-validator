@@ -4,11 +4,12 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"github.com/open-policy-agent/opa/rego"
 	"strings"
 )
 
-func BuildReport(result rego.ResultSet) (string, error) {
+func BuildReport(result rego.ResultSet, profileContext profile.ProfileContext) (string, error) {
 	if len(result) == 0 {
 		return "", errors.New("empty result from evaluation")
 	}
@@ -20,47 +21,68 @@ func BuildReport(result rego.ResultSet) (string, error) {
 	warnings := m["warning"].([]interface{})
 	infos := m["info"].([]interface{})
 
-	if (len(violations) + len(warnings) + len(infos)) == 0 {
+	conforms := (len(violations) + len(warnings) + len(infos)) == 0
+	context := buildContext(conforms, profileContext)
+
+	if conforms {
 		res := map[string]interface{}{
 			"@type":    "shacl:ValidationReport",
-			"@context": conformsContext(),
+			"@context": context,
 			"conforms": true,
 		}
 
 		return Encode(res), nil
 	} else {
-		var results []interface{}
-		for _, r := range violations {
-			results = append(results, buildViolation("violation", r))
-		}
-		for _, r := range warnings {
-			results = append(results, buildViolation("warning", r))
-		}
-		for _, r := range infos {
-			results = append(results, buildViolation("info", r))
-		}
+		results := buildResults(violations, warnings, infos)
 
 		res := map[string]interface{}{
 			"@type":    "shacl:ValidationReport",
-			"@context": fullContext(),
+			"@context": context,
 			"conforms": false,
 			"result":   results,
 		}
 		return Encode(res), nil
 	}
 }
-func conformsContext() map[string]interface{} {
+
+func buildResults(violations []interface{}, warnings []interface{}, infos []interface{}) []interface{} {
+	var results []interface{}
+	for _, r := range violations {
+		results = append(results, buildViolation("violation", r))
+	}
+	for _, r := range warnings {
+		results = append(results, buildViolation("warning", r))
+	}
+	for _, r := range infos {
+		results = append(results, buildViolation("info", r))
+	}
+	return results
+}
+func buildViolation(level string, raw interface{}) map[string]interface{} {
+	violation := raw.(map[string]interface{})
+	violation["resultSeverity"] = map[string]string{
+		"@id": "http://www.w3.org/ns/shacl#" + strings.Title(level),
+	}
+	return violation
+}
+
+func buildContext(conforms bool, profileContext profile.ProfileContext) map[string]interface{} {
+	if conforms {
+		return buildConformsContext()
+	} else {
+		return buildFullContext(profileContext)
+	}
+}
+func buildConformsContext() map[string]interface{} {
 	return map[string]interface{}{
 		"conforms": map[string]string{
 			"@id": "http://www.w3.org/ns/shacl#conforms",
 		},
 		"shacl": "http://www.w3.org/ns/shacl#",
 	}
-
 }
-
-func fullContext() map[string]interface{} {
-	return map[string]interface{}{
+func buildFullContext(profileContext profile.ProfileContext) map[string]interface{} {
+	context := map[string]interface{}{
 		"actual": map[string]string{
 			"@id": "http://a.ml/vocabularies/validation#actual",
 		},
@@ -134,6 +156,10 @@ func fullContext() map[string]interface{} {
 		"validation": "http://a.ml/vocabularies/validation#",
 		"lexical":    "http://a.ml/vocabularies/lexical#",
 	}
+	for k, v := range profileContext {
+		context[k] = v
+	}
+	return context
 }
 
 func Encode(data interface{}) string {
@@ -143,12 +169,4 @@ func Encode(data interface{}) string {
 	enc.SetEscapeHTML(false)
 	enc.Encode(data)
 	return b.String()
-}
-
-func buildViolation(level string, raw interface{}) map[string]interface{} {
-	violation := raw.(map[string]interface{})
-	violation["resultSeverity"] = map[string]string{
-		"@id": "http://www.w3.org/ns/shacl#" + strings.Title(level),
-	}
-	return violation
 }

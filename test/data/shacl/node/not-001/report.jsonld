@@ -21,6 +21,7 @@
     "end": {
       "@id": "http://a.ml/vocabularies/lexical#end"
     },
+    "ex": "http://datashapes.org/sh/tests/core/node/not-001#",
     "expected": {
       "@id": "http://a.ml/vocabularies/validation#expected"
     },

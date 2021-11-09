@@ -21,6 +21,7 @@
     "end": {
       "@id": "http://a.ml/vocabularies/lexical#end"
     },
+    "ex": "http://datashapes.org/sh/tests/core/targets/targetClass-001.test#",
     "expected": {
       "@id": "http://a.ml/vocabularies/validation#expected"
     },

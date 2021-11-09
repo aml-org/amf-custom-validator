@@ -21,6 +21,7 @@
     "end": {
       "@id": "http://a.ml/vocabularies/lexical#end"
     },
+    "ex": "http://datashapes.org/sh/tests/core/property/minCount-001.test#",
     "expected": {
       "@id": "http://a.ml/vocabularies/validation#expected"
     },

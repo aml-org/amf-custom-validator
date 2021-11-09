@@ -21,6 +21,7 @@
     "end": {
       "@id": "http://a.ml/vocabularies/lexical#end"
     },
+    "ex": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-not#",
     "expected": {
       "@id": "http://a.ml/vocabularies/validation#expected"
     },

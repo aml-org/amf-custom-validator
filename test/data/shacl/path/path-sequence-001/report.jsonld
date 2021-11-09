@@ -21,6 +21,7 @@
     "end": {
       "@id": "http://a.ml/vocabularies/lexical#end"
     },
+    "ex": "http://datashapes.org/sh/tests/core/path/path-sequence-001.test#",
     "expected": {
       "@id": "http://a.ml/vocabularies/validation#expected"
     },
