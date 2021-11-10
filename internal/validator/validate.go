@@ -29,7 +29,7 @@ func Validate(profileText string, jsonldText string, debug bool, eventChan *chan
 		return "", err
 	} else {
 		dispatch(e.NewEvent(e.BuildReportStart), eventChan)
-		report, err := BuildReport(result)
+		report, err := BuildReport(result, module.Prefixes)
 		dispatch(e.NewEvent(e.BuildReportDone), eventChan)
 		closeIfNotNil(eventChan)
 		return report, err

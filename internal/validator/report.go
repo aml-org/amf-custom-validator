@@ -4,136 +4,93 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/aml-org/amf-custom-validator/internal/types"
+	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
 	"github.com/open-policy-agent/opa/rego"
 	"strings"
 )
 
-func BuildReport(result rego.ResultSet) (string, error) {
+func BuildReport(result rego.ResultSet, profileContext profile.ProfileContext) (string, error) {
 	if len(result) == 0 {
 		return "", errors.New("empty result from evaluation")
 	}
 
 	raw := result[0]
-	m := raw.Expressions[0].Value.(map[string]interface{})
+	m := raw.Expressions[0].Value.(types.ObjectMap)
 
 	violations := m["violation"].([]interface{})
 	warnings := m["warning"].([]interface{})
 	infos := m["info"].([]interface{})
 
-	if (len(violations) + len(warnings) + len(infos)) == 0 {
-		res := map[string]interface{}{
+	conforms := (len(violations) + len(warnings) + len(infos)) == 0
+	context := buildContext(conforms, profileContext)
+
+	if conforms {
+		res := types.ObjectMap{
 			"@type":    "shacl:ValidationReport",
-			"@context": conformsContext(),
+			"@context": context,
 			"conforms": true,
 		}
 
 		return Encode(res), nil
 	} else {
-		var results []interface{}
-		for _, r := range violations {
-			results = append(results, buildViolation("violation", r))
-		}
-		for _, r := range warnings {
-			results = append(results, buildViolation("warning", r))
-		}
-		for _, r := range infos {
-			results = append(results, buildViolation("info", r))
-		}
+		results := buildResults(violations, warnings, infos)
 
-		res := map[string]interface{}{
+		res := types.ObjectMap{
 			"@type":    "shacl:ValidationReport",
-			"@context": fullContext(),
+			"@context": context,
 			"conforms": false,
 			"result":   results,
 		}
 		return Encode(res), nil
 	}
 }
-func conformsContext() map[string]interface{} {
-	return map[string]interface{}{
-		"conforms": map[string]string{
+
+func buildResults(violations []interface{}, warnings []interface{}, infos []interface{}) []interface{} {
+	var results []interface{}
+	for _, r := range violations {
+		results = append(results, buildViolation("violation", r))
+	}
+	for _, r := range warnings {
+		results = append(results, buildViolation("warning", r))
+	}
+	for _, r := range infos {
+		results = append(results, buildViolation("info", r))
+	}
+	return results
+}
+func buildViolation(level string, raw interface{}) types.ObjectMap {
+	violation := raw.(types.ObjectMap)
+	violation["resultSeverity"] = types.StringMap{
+		"@id": "http://www.w3.org/ns/shacl#" + strings.Title(level),
+	}
+	return violation
+}
+
+func buildContext(conforms bool, profileContext profile.ProfileContext) types.ObjectMap {
+	if conforms {
+		return buildConformsContext()
+	} else {
+		return buildFullContext(profileContext)
+	}
+}
+func buildConformsContext() types.ObjectMap {
+	return types.ObjectMap{
+		"conforms": types.StringMap{
 			"@id": "http://www.w3.org/ns/shacl#conforms",
 		},
 		"shacl": "http://www.w3.org/ns/shacl#",
 	}
-
 }
-
-func fullContext() map[string]interface{} {
-	return map[string]interface{}{
-		"actual": map[string]string{
-			"@id": "http://a.ml/vocabularies/validation#actual",
-		},
-		"condition": map[string]string{
-			"@id": "http://a.ml/vocabularies/validation#condition",
-		},
-		"expected": map[string]string{
-			"@id": "http://a.ml/vocabularies/validation#expected",
-		},
-		"negated": map[string]string{
-			"@id": "http://a.ml/vocabularies/validation#negated",
-		},
-		"argument": map[string]string{
-			"@id": "http://a.ml/vocabularies/validation#argument",
-		},
-		"focusNode": map[string]string{
-			"@id": "http://www.w3.org/ns/shacl#focusNode",
-		},
-		"trace": map[string]string{
-			"@id": "http://a.ml/vocabularies/validation#trace",
-		},
-		"component": map[string]string{
-			"@id": "http://a.ml/vocabularies/validation#component",
-		},
-		"resultPath": map[string]string{
-			"@id": "http://www.w3.org/ns/shacl#resultPath",
-		},
-		"traceValue": map[string]string{
-			"@id": "http://www.w3.org/ns/shacl#traceValue",
-		},
-		"location": map[string]string{
-			"@id": "http://a.ml/vocabularies/validation#location",
-		},
-		"uri": map[string]string{
-			"@id": "http://a.ml/vocabularies/lexical#uri",
-		},
-		"start": map[string]string{
-			"@id": "http://a.ml/vocabularies/lexical#start",
-		},
-		"end": map[string]string{
-			"@id": "http://a.ml/vocabularies/lexical#end",
-		},
-		"range": map[string]string{
-			"@id": "http://a.ml/vocabularies/lexical#range",
-		},
-		"line": map[string]string{
-			"@id": "http://a.ml/vocabularies/lexical#line",
-		},
-		"column": map[string]string{
-			"@id": "http://a.ml/vocabularies/lexical#column",
-		},
-		"sourceShapeName": map[string]string{
-			"@id": "http://a.ml/vocabularies/validation#sourceShapeName",
-		},
-		"conforms": map[string]string{
-			"@id": "http://www.w3.org/ns/shacl#conforms",
-		},
-		"result": map[string]string{
-			"@id": "http://www.w3.org/ns/shacl#result",
-		},
-		"subResult": map[string]string{
-			"@id": "http://a.ml/vocabularies/validation#subResult",
-		},
-		"resultSeverity": map[string]string{
-			"@id": "http://www.w3.org/ns/shacl#resultSeverity",
-		},
-		"resultMessage": map[string]string{
-			"@id": "http://www.w3.org/ns/shacl#resultMessage",
-		},
-		"shacl":      "http://www.w3.org/ns/shacl#",
-		"validation": "http://a.ml/vocabularies/validation#",
-		"lexical":    "http://a.ml/vocabularies/lexical#",
+func buildFullContext(profileContext profile.ProfileContext) types.ObjectMap {
+	context := make(types.ObjectMap)
+	types.MergeObjectMap(&context, &contexts.DefaultValidationContext)
+	types.MergeObjectMap(&context, &contexts.DefaultAMFContext)
+	for k, v := range profileContext {
+		context[k] = v
 	}
+	return context
 }
 
 func Encode(data interface{}) string {
@@ -143,12 +100,4 @@ func Encode(data interface{}) string {
 	enc.SetEscapeHTML(false)
 	enc.Encode(data)
 	return b.String()
-}
-
-func buildViolation(level string, raw interface{}) map[string]interface{} {
-	violation := raw.(map[string]interface{})
-	violation["resultSeverity"] = map[string]string{
-		"@id": "http://www.w3.org/ns/shacl#" + strings.Title(level),
-	}
-	return violation
 }

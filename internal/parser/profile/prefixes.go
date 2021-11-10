@@ -3,9 +3,10 @@ package profile
 import (
 	"errors"
 	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
+	"github.com/aml-org/amf-custom-validator/internal/types"
 )
 
-type ProfileContext = map[string]string
+type ProfileContext = types.StringMap
 
 // Captures the aliases and JSON-LD URI prefix for the profile
 func ParsePrefixes(y *y.Yaml) (ProfileContext, error) {

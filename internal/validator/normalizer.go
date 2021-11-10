@@ -2,27 +2,16 @@ package validator
 
 import (
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/aml-org/amf-custom-validator/internal/types"
+	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
 	"github.com/piprate/json-gold/ld"
 )
-
-type Object = map[string]interface{}
 
 func Normalize(json interface{}, prefixes profile.ProfileContext) interface{} {
 	proc := ld.NewJsonLdProcessor()
 	options := ld.NewJsonLdOptions("")
-	context := Object{
-		"data":        "http://a.ml/vocabularies/data#",
-		"shacl":       "http://www.w3.org/ns/shacl#",
-		"shapes":      "http://a.ml/vocabularies/shapes#",
-		"doc":         "http://a.ml/vocabularies/document#",
-		"apiContract": "http://a.ml/vocabularies/apiContract#",
-		"core":        "http://a.ml/vocabularies/core#",
-		"xsd":         "http://www.w3.org/2001/XMLSchema#",
-		"rdfs":        "http://www.w3.org/2000/01/rdf-schema",
-		"rdf":         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-		"security":    "http://a.ml/vocabularies/security#",
-		"sourcemaps":  "http://a.ml/vocabularies/document-source-maps#",
-	}
+	context := make(types.ObjectMap)
+	types.MergeObjectMap(&context, &contexts.DefaultAMFContext)
 	for n, p := range prefixes {
 		context[n] = p
 	}
@@ -36,13 +25,13 @@ func Normalize(json interface{}, prefixes profile.ProfileContext) interface{} {
 
 func Index(json interface{}) interface{} {
 	classIndex := make(map[string][]string)
-	nodeIndex := make(Object)
+	nodeIndex := make(types.ObjectMap)
 
-	g := json.(Object)["@graph"]
+	g := json.(types.ObjectMap)["@graph"]
 	nodes := g.([]interface{})
 
 	for _, nn := range nodes {
-		n := nn.(Object)
+		n := nn.(types.ObjectMap)
 		id := n["@id"].(string)
 		classes := n["@type"]
 		nodeIndex[id] = n
@@ -70,24 +59,24 @@ func Index(json interface{}) interface{} {
 	var locationIndex *LocationIndex = createLocationIndex(&nodeIndex, &classIndex)
 
 	// Build lexical index
-	lexicalIndex := make(Object)
+	lexicalIndex := make(types.ObjectMap)
 	for _, sourceMapId := range classIndex["sourcemaps:SourceMap"] {
-		sourceMap := nodeIndex[sourceMapId].(Object)
+		sourceMap := nodeIndex[sourceMapId].(types.ObjectMap)
 		lexicalContainer := sourceMap["sourcemaps:lexical"] // can be map or array of maps
-		handleSingleOrMultipleNodes(&lexicalContainer, func(node *Object){
+		handleSingleOrMultipleNodes(&lexicalContainer, func(node *types.ObjectMap) {
 			addLexicalEntryFrom(node, &nodeIndex, &lexicalIndex, locationIndex)
 		})
 	}
 
-	return Object{
+	return types.ObjectMap{
 		"@ids":     nodeIndex,
 		"@types":   classIndex,
 		"@lexical": lexicalIndex,
 	}
 }
 
-func addLexicalEntryFrom(node, nodeIndex, lexicalIndex *Object, locIndex *LocationIndex) {
-	lexicalEntry := (*nodeIndex)[(*node)["@id"].(string)].(Object)
+func addLexicalEntryFrom(node, nodeIndex, lexicalIndex *types.ObjectMap, locIndex *LocationIndex) {
+	lexicalEntry := (*nodeIndex)[(*node)["@id"].(string)].(types.ObjectMap)
 	id := lexicalEntry["sourcemaps:element"].(string)
 	value := lexicalEntry["sourcemaps:value"]
 
@@ -99,47 +88,47 @@ func addLexicalEntryFrom(node, nodeIndex, lexicalIndex *Object, locIndex *Locati
 	get overwritten by each node
 	*/
 	if _, ok := (*nodeIndex)[id]; ok {
-		(*lexicalIndex)[id] = Object{
+		(*lexicalIndex)[id] = types.ObjectMap{
 			"range": value,
 			"uri":   locIndex.Location(id),
 		}
 	}
 }
 
-func createLocationIndex(nodeIndex *Object, classIndex *map[string][]string) *LocationIndex {
+func createLocationIndex(nodeIndex *types.ObjectMap, classIndex *map[string][]string) *LocationIndex {
 	sourceInformation := (*classIndex)["doc:BaseUnitSourceInformation"]
 	if len(sourceInformation) > 0 {
-		sourceInformationNode := (*nodeIndex)[sourceInformation[0]].(Object)
+		sourceInformationNode := (*nodeIndex)[sourceInformation[0]].(types.ObjectMap)
 		defaultLocation := sourceInformationNode["doc:rootLocation"].(string)
 		additionalLocations := sourceInformationNode["doc:additionalLocations"]
-		idToLocation := make(map[string]string)
-		handleSingleOrMultipleNodes(&additionalLocations, func(node *Object){
+		idToLocation := make(types.StringMap)
+		handleSingleOrMultipleNodes(&additionalLocations, func(node *types.ObjectMap) {
 			addElementsOfLoc(node, nodeIndex, &idToLocation)
 		})
 		return &LocationIndex{DefaultLocation: defaultLocation, IdToLocation: idToLocation}
 
 	} else {
-		return &LocationIndex{IdToLocation: make(map[string]string), DefaultLocation: ""}
+		return &LocationIndex{IdToLocation: make(types.StringMap), DefaultLocation: ""}
 	}
 }
 
-func addElementsOfLoc(node *Object, nodeIndex *Object, idToLocation *map[string]string) {
-	locationNode := (*nodeIndex)[(*node)["@id"].(string)].(Object)
+func addElementsOfLoc(node *types.ObjectMap, nodeIndex *types.ObjectMap, idToLocation *types.StringMap) {
+	locationNode := (*nodeIndex)[(*node)["@id"].(string)].(types.ObjectMap)
 	locationValue := locationNode["doc:location"].(string)
 	elementIds := locationNode["doc:elements"]
-	handleSingleOrMultipleNodes(&elementIds, func(node *Object){
+	handleSingleOrMultipleNodes(&elementIds, func(node *types.ObjectMap) {
 		(*idToLocation)[(*node)["@id"].(string)] = locationValue
 	})
 }
 
-func handleSingleOrMultipleNodes(node *interface{}, operation func(*Object)) {
+func handleSingleOrMultipleNodes(node *interface{}, operation func(*types.ObjectMap)) {
 	switch v := (*node).(type) {
-	case Object: // single node
+	case types.ObjectMap: // single node
 		operation(&v)
 	case []interface{}: // array with multiple nodes
 		for _, e := range v {
 			switch vv := e.(type) {
-			case Object:
+			case types.ObjectMap:
 				operation(&vv)
 			}
 		}
@@ -147,10 +136,9 @@ func handleSingleOrMultipleNodes(node *interface{}, operation func(*Object)) {
 	}
 }
 
-
 type LocationIndex struct {
 	DefaultLocation string
-	IdToLocation map[string]string
+	IdToLocation    types.StringMap
 }
 
 func (locIndex *LocationIndex) Location(id string) string {

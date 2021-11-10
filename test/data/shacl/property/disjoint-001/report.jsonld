@@ -3,6 +3,7 @@
     "actual": {
       "@id": "http://a.ml/vocabularies/validation#actual"
     },
+    "apiContract": "http://a.ml/vocabularies/apiContract#",
     "argument": {
       "@id": "http://a.ml/vocabularies/validation#argument"
     },
@@ -18,9 +19,13 @@
     "conforms": {
       "@id": "http://www.w3.org/ns/shacl#conforms"
     },
+    "core": "http://a.ml/vocabularies/core#",
+    "data": "http://a.ml/vocabularies/data#",
+    "doc": "http://a.ml/vocabularies/document#",
     "end": {
       "@id": "http://a.ml/vocabularies/lexical#end"
     },
+    "ex": "http://datashapes.org/sh/tests/core/property/disjoint-001.test#",
     "expected": {
       "@id": "http://a.ml/vocabularies/validation#expected"
     },
@@ -40,6 +45,8 @@
     "range": {
       "@id": "http://a.ml/vocabularies/lexical#range"
     },
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema",
     "result": {
       "@id": "http://www.w3.org/ns/shacl#result"
     },
@@ -52,10 +59,13 @@
     "resultSeverity": {
       "@id": "http://www.w3.org/ns/shacl#resultSeverity"
     },
+    "security": "http://a.ml/vocabularies/security#",
     "shacl": "http://www.w3.org/ns/shacl#",
+    "shapes": "http://a.ml/vocabularies/shapes#",
     "sourceShapeName": {
       "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
     },
+    "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
     "start": {
       "@id": "http://a.ml/vocabularies/lexical#start"
     },
@@ -71,7 +81,8 @@
     "uri": {
       "@id": "http://a.ml/vocabularies/lexical#uri"
     },
-    "validation": "http://a.ml/vocabularies/validation#"
+    "validation": "http://a.ml/vocabularies/validation#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@type": "shacl:ValidationReport",
   "conforms": false,
