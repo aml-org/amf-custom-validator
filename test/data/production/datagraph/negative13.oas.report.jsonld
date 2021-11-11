@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative13.oas#/declarations/types/Customer"
+        "@id": "file://./test/data/production/datagraph/negative13.yaml#/declarations/types/Customer"
       },
       "resultMessage": "Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.\nConsider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.\nIf you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.\n",
       "resultSeverity": {

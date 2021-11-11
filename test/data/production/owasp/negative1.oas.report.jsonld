@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/id"
+        "@id": "file://./test/data/production/owasp/negative1.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/id"
       },
       "resultMessage": "Prefer to use random and unpredictable values as GUIDs for records’ IDs.",
       "resultSeverity": {
@@ -129,7 +129,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/itemId"
+        "@id": "file://./test/data/production/owasp/negative1.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/parameter/path/itemId"
       },
       "resultMessage": "Define data types and strict patterns for all string parameters",
       "resultSeverity": {
@@ -182,7 +182,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative1.oas#/web-api"
+        "@id": "file://./test/data/production/owasp/negative1.yaml#/web-api"
       },
       "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "resultSeverity": {
@@ -218,7 +218,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/get"
+                  "@id": "file://./test/data/production/owasp/negative1.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7Bitem_id%7D/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
                 "sourceShapeName": "nested",

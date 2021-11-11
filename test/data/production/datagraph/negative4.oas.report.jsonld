@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative4.oas#/web-api"
+        "@id": "file://./test/data/production/datagraph/negative4.yaml#/web-api"
       },
       "resultMessage": "Only basic authentication for clientId/Secret credentials or no authentication schemes are supported\n",
       "resultSeverity": {
@@ -128,7 +128,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/datagraph/negative4.oas#/web-api/requirement_1/oAuth/oAuth"
+                  "@id": "file://./test/data/production/datagraph/negative4.yaml#/web-api/requirement_1/oAuth/oAuth"
                 },
                 "resultMessage": "error in nested nodes under security.security / security.schemes / security.scheme",
                 "sourceShapeName": "nested",

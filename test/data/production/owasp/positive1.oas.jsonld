@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/owasp/positive1.oas",
+    "@id": "file://./test/data/production/owasp/positive1.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/owasp/positive1.oas#/web-api",
+        "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -23,7 +23,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#server": [
           {
-            "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/https%3A%2F%2Fproduction.test.com%2F",
+            "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/https%3A%2F%2Fproduction.test.com%2F",
             "@type": [
               "http://a.ml/vocabularies/apiContract#Server",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -47,7 +47,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
-            "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/end-points/%2Finvoices",
+            "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/end-points/%2Finvoices",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -59,7 +59,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/end-points/%2Finvoices/get",
+                "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/end-points/%2Finvoices/get",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -76,7 +76,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/end-points/%2Finvoices/get/200",
+                    "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/end-points/%2Finvoices/get/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -99,7 +99,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#payload": [
                       {
-                        "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/end-points/%2Finvoices/get/200/application%2Fjson",
+                        "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/end-points/%2Finvoices/get/200/application%2Fjson",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Payload",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -111,7 +111,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/end-points/%2Finvoices/get/200/application%2Fjson/schema",
+                            "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/end-points/%2Finvoices/get/200/application%2Fjson/schema",
                             "@type": [
                               "http://www.w3.org/ns/shacl#NodeShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",
@@ -135,7 +135,7 @@
                     ]
                   },
                   {
-                    "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/end-points/%2Finvoices/get/429",
+                    "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/end-points/%2Finvoices/get/429",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -158,7 +158,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#payload": [
                       {
-                        "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/end-points/%2Finvoices/get/429/application%2Fjson",
+                        "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/end-points/%2Finvoices/get/429/application%2Fjson",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Payload",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -170,7 +170,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/end-points/%2Finvoices/get/429/application%2Fjson/scalar/schema",
+                            "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/end-points/%2Finvoices/get/429/application%2Fjson/scalar/schema",
                             "@type": [
                               "http://a.ml/vocabularies/shapes#ScalarShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",
@@ -200,14 +200,14 @@
         ],
         "http://a.ml/vocabularies/security#security": [
           {
-            "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/requirement_1",
+            "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/requirement_1",
             "@type": [
               "http://a.ml/vocabularies/security#SecurityRequirement",
               "http://a.ml/vocabularies/document#DomainElement"
             ],
             "http://a.ml/vocabularies/security#schemes": [
               {
-                "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/requirement_1/bearerAuth",
+                "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/requirement_1/bearerAuth",
                 "@type": [
                   "http://a.ml/vocabularies/security#ParametrizedSecurityScheme",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -219,7 +219,7 @@
                 ],
                 "http://a.ml/vocabularies/security#scheme": [
                   {
-                    "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/requirement_1/bearerAuth/bearerAuth",
+                    "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/requirement_1/bearerAuth/bearerAuth",
                     "@type": [
                       "http://a.ml/vocabularies/security#SecurityScheme",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -236,7 +236,7 @@
                     ],
                     "http://a.ml/vocabularies/security#settings": [
                       {
-                        "@id": "file://./test/data/production/owasp/positive1.oas#/declarations/securitySchemes/bearerAuth/settings/http",
+                        "@id": "file://./test/data/production/owasp/positive1.yaml#/declarations/securitySchemes/bearerAuth/settings/http",
                         "@type": [
                           "http://a.ml/vocabularies/security#HttpSettings",
                           "http://a.ml/vocabularies/security#Settings",
@@ -274,7 +274,7 @@
     ],
     "http://a.ml/vocabularies/document#declares": [
       {
-        "@id": "file://./test/data/production/owasp/positive1.oas#/web-api/requirement_1/bearerAuth/bearerAuth",
+        "@id": "file://./test/data/production/owasp/positive1.yaml#/web-api/requirement_1/bearerAuth/bearerAuth",
         "@type": [
           "http://a.ml/vocabularies/security#SecurityScheme",
           "http://a.ml/vocabularies/document#DomainElement"
@@ -291,7 +291,7 @@
         ],
         "http://a.ml/vocabularies/security#settings": [
           {
-            "@id": "file://./test/data/production/owasp/positive1.oas#/declarations/securitySchemes/bearerAuth/settings/http",
+            "@id": "file://./test/data/production/owasp/positive1.yaml#/declarations/securitySchemes/bearerAuth/settings/http",
             "@type": [
               "http://a.ml/vocabularies/security#HttpSettings",
               "http://a.ml/vocabularies/security#Settings",

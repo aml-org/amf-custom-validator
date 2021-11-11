@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative6.oas#/declarations/types/Invoice"
+        "@id": "file://./test/data/production/datagraph/negative6.yaml#/declarations/types/Invoice"
       },
       "resultMessage": "Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema.\n",
       "resultSeverity": {
@@ -132,7 +132,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative6.oas#/declarations/types/Customer/property/id"
+        "@id": "file://./test/data/production/datagraph/negative6.yaml#/declarations/types/Customer/property/id"
       },
       "resultMessage": "Providing a description of schema properties is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema fields.\n",
       "resultSeverity": {
@@ -160,7 +160,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative6.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/path/id"
+        "@id": "file://./test/data/production/datagraph/negative6.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/path/id"
       },
       "resultMessage": "Providing a description of API parameters is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema field arguments.\n",
       "resultSeverity": {

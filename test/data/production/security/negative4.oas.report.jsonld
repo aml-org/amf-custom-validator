@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative4.oas#/web-api"
+        "@id": "file://./test/data/production/security/negative4.yaml#/web-api"
       },
       "resultMessage": "Access tokens from authorization code grant flow are transported in the clear over an unencrypted channel.\nAttackers can easily intercept API calls and retrieve the unencrypted tokens. They can then use the tokens to make\nother API calls.\n",
       "resultSeverity": {

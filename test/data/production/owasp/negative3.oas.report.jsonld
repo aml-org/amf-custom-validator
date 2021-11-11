@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative3.oas#/web-api/end-points/%2Finvoices/get"
+        "@id": "file://./test/data/production/owasp/negative3.yaml#/web-api/end-points/%2Finvoices/get"
       },
       "resultMessage": "Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n",
       "resultSeverity": {
@@ -129,7 +129,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative3.oas#/web-api/end-points/%2Finvoices/get/200"
+                  "@id": "file://./test/data/production/owasp/negative3.yaml#/web-api/end-points/%2Finvoices/get/200"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
                 "sourceShapeName": "nested",
@@ -159,7 +159,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative3.oas#/web-api"
+        "@id": "file://./test/data/production/owasp/negative3.yaml#/web-api"
       },
       "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "resultSeverity": {
@@ -195,7 +195,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative3.oas#/web-api/end-points/%2Finvoices/get"
+                  "@id": "file://./test/data/production/owasp/negative3.yaml#/web-api/end-points/%2Finvoices/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
                 "sourceShapeName": "nested",
@@ -220,7 +220,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative3.oas#/web-api/end-points/%2Finvoices/head"
+                  "@id": "file://./test/data/production/owasp/negative3.yaml#/web-api/end-points/%2Finvoices/head"
                 },
                 "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
                 "sourceShapeName": "nested",

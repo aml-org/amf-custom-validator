@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/security/negative6.oas",
+    "@id": "file://./test/data/production/security/negative6.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/security/negative6.oas#/web-api",
+        "@id": "file://./test/data/production/security/negative6.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -23,7 +23,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#server": [
           {
-            "@id": "file://./test/data/production/security/negative6.oas#/web-api/https%3A%2F%2Fmy.api.server.com%2F",
+            "@id": "file://./test/data/production/security/negative6.yaml#/web-api/https%3A%2F%2Fmy.api.server.com%2F",
             "@type": [
               "http://a.ml/vocabularies/apiContract#Server",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -47,7 +47,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
-            "@id": "file://./test/data/production/security/negative6.oas#/web-api/end-points/%2Fusers",
+            "@id": "file://./test/data/production/security/negative6.yaml#/web-api/end-points/%2Fusers",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -59,7 +59,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/security/negative6.oas#/web-api/end-points/%2Fusers/get",
+                "@id": "file://./test/data/production/security/negative6.yaml#/web-api/end-points/%2Fusers/get",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -81,7 +81,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/security/negative6.oas#/web-api/end-points/%2Fusers/get/200",
+                    "@id": "file://./test/data/production/security/negative6.yaml#/web-api/end-points/%2Fusers/get/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -106,7 +106,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#tag": [
                   {
-                    "@id": "file://./test/data/production/security/negative6.oas#/web-api/end-points/%2Fusers/get/tag/Invoice%20Items",
+                    "@id": "file://./test/data/production/security/negative6.yaml#/web-api/end-points/%2Fusers/get/tag/Invoice%20Items",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Tag",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -129,14 +129,14 @@
         ],
         "http://a.ml/vocabularies/security#security": [
           {
-            "@id": "file://./test/data/production/security/negative6.oas#/web-api/requirement_1",
+            "@id": "file://./test/data/production/security/negative6.yaml#/web-api/requirement_1",
             "@type": [
               "http://a.ml/vocabularies/security#SecurityRequirement",
               "http://a.ml/vocabularies/document#DomainElement"
             ],
             "http://a.ml/vocabularies/security#schemes": [
               {
-                "@id": "file://./test/data/production/security/negative6.oas#/web-api/requirement_1/OAuth2",
+                "@id": "file://./test/data/production/security/negative6.yaml#/web-api/requirement_1/OAuth2",
                 "@type": [
                   "http://a.ml/vocabularies/security#ParametrizedSecurityScheme",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -148,7 +148,7 @@
                 ],
                 "http://a.ml/vocabularies/security#scheme": [
                   {
-                    "@id": "file://./test/data/production/security/negative6.oas#/web-api/requirement_1/OAuth2/OAuth2",
+                    "@id": "file://./test/data/production/security/negative6.yaml#/web-api/requirement_1/OAuth2/OAuth2",
                     "@type": [
                       "http://a.ml/vocabularies/security#SecurityScheme",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -165,7 +165,7 @@
                     ],
                     "http://a.ml/vocabularies/security#settings": [
                       {
-                        "@id": "file://./test/data/production/security/negative6.oas#/declarations/securitySchemes/OAuth2/settings/oauth2",
+                        "@id": "file://./test/data/production/security/negative6.yaml#/declarations/securitySchemes/OAuth2/settings/oauth2",
                         "@type": [
                           "http://a.ml/vocabularies/security#OAuth2Settings",
                           "http://a.ml/vocabularies/security#Settings",
@@ -173,7 +173,7 @@
                         ],
                         "http://a.ml/vocabularies/security#flows": [
                           {
-                            "@id": "file://./test/data/production/security/negative6.oas#/declarations/securitySchemes/OAuth2/settings/oauth2/password",
+                            "@id": "file://./test/data/production/security/negative6.yaml#/declarations/securitySchemes/OAuth2/settings/oauth2/password",
                             "@type": [
                               "http://a.ml/vocabularies/security#OAuth2Flow",
                               "http://a.ml/vocabularies/document#DomainElement"
@@ -190,7 +190,7 @@
                             ],
                             "http://a.ml/vocabularies/security#scope": [
                               {
-                                "@id": "file://./test/data/production/security/negative6.oas#/declarations/securitySchemes/OAuth2/settings/oauth2/password/write",
+                                "@id": "file://./test/data/production/security/negative6.yaml#/declarations/securitySchemes/OAuth2/settings/oauth2/password/write",
                                 "@type": [
                                   "http://a.ml/vocabularies/security#Scope",
                                   "http://a.ml/vocabularies/document#DomainElement"
@@ -207,7 +207,7 @@
                                 ]
                               },
                               {
-                                "@id": "file://./test/data/production/security/negative6.oas#/declarations/securitySchemes/OAuth2/settings/oauth2/password/read",
+                                "@id": "file://./test/data/production/security/negative6.yaml#/declarations/securitySchemes/OAuth2/settings/oauth2/password/read",
                                 "@type": [
                                   "http://a.ml/vocabularies/security#Scope",
                                   "http://a.ml/vocabularies/document#DomainElement"
@@ -232,7 +232,7 @@
                 ],
                 "http://a.ml/vocabularies/security#settings": [
                   {
-                    "@id": "file://./test/data/production/security/negative6.oas#/web-api/requirement_1/OAuth2/settings/oauth2",
+                    "@id": "file://./test/data/production/security/negative6.yaml#/web-api/requirement_1/OAuth2/settings/oauth2",
                     "@type": [
                       "http://a.ml/vocabularies/security#OAuth2Settings",
                       "http://a.ml/vocabularies/security#Settings",
@@ -240,14 +240,14 @@
                     ],
                     "http://a.ml/vocabularies/security#flows": [
                       {
-                        "@id": "file://./test/data/production/security/negative6.oas#/web-api/requirement_1/OAuth2/settings/oauth2/default-flow",
+                        "@id": "file://./test/data/production/security/negative6.yaml#/web-api/requirement_1/OAuth2/settings/oauth2/default-flow",
                         "@type": [
                           "http://a.ml/vocabularies/security#OAuth2Flow",
                           "http://a.ml/vocabularies/document#DomainElement"
                         ],
                         "http://a.ml/vocabularies/security#scope": [
                           {
-                            "@id": "file://./test/data/production/security/negative6.oas#/web-api/requirement_1/OAuth2/settings/oauth2/default-flow/write",
+                            "@id": "file://./test/data/production/security/negative6.yaml#/web-api/requirement_1/OAuth2/settings/oauth2/default-flow/write",
                             "@type": [
                               "http://a.ml/vocabularies/security#Scope",
                               "http://a.ml/vocabularies/document#DomainElement"
@@ -259,7 +259,7 @@
                             ]
                           },
                           {
-                            "@id": "file://./test/data/production/security/negative6.oas#/web-api/requirement_1/OAuth2/settings/oauth2/default-flow/read",
+                            "@id": "file://./test/data/production/security/negative6.yaml#/web-api/requirement_1/OAuth2/settings/oauth2/default-flow/read",
                             "@type": [
                               "http://a.ml/vocabularies/security#Scope",
                               "http://a.ml/vocabularies/document#DomainElement"
@@ -293,7 +293,7 @@
     ],
     "http://a.ml/vocabularies/document#declares": [
       {
-        "@id": "file://./test/data/production/security/negative6.oas#/web-api/requirement_1/OAuth2/OAuth2",
+        "@id": "file://./test/data/production/security/negative6.yaml#/web-api/requirement_1/OAuth2/OAuth2",
         "@type": [
           "http://a.ml/vocabularies/security#SecurityScheme",
           "http://a.ml/vocabularies/document#DomainElement"
@@ -310,7 +310,7 @@
         ],
         "http://a.ml/vocabularies/security#settings": [
           {
-            "@id": "file://./test/data/production/security/negative6.oas#/declarations/securitySchemes/OAuth2/settings/oauth2",
+            "@id": "file://./test/data/production/security/negative6.yaml#/declarations/securitySchemes/OAuth2/settings/oauth2",
             "@type": [
               "http://a.ml/vocabularies/security#OAuth2Settings",
               "http://a.ml/vocabularies/security#Settings",
@@ -318,7 +318,7 @@
             ],
             "http://a.ml/vocabularies/security#flows": [
               {
-                "@id": "file://./test/data/production/security/negative6.oas#/declarations/securitySchemes/OAuth2/settings/oauth2/password",
+                "@id": "file://./test/data/production/security/negative6.yaml#/declarations/securitySchemes/OAuth2/settings/oauth2/password",
                 "@type": [
                   "http://a.ml/vocabularies/security#OAuth2Flow",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -335,7 +335,7 @@
                 ],
                 "http://a.ml/vocabularies/security#scope": [
                   {
-                    "@id": "file://./test/data/production/security/negative6.oas#/declarations/securitySchemes/OAuth2/settings/oauth2/password/write",
+                    "@id": "file://./test/data/production/security/negative6.yaml#/declarations/securitySchemes/OAuth2/settings/oauth2/password/write",
                     "@type": [
                       "http://a.ml/vocabularies/security#Scope",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -352,7 +352,7 @@
                     ]
                   },
                   {
-                    "@id": "file://./test/data/production/security/negative6.oas#/declarations/securitySchemes/OAuth2/settings/oauth2/password/read",
+                    "@id": "file://./test/data/production/security/negative6.yaml#/declarations/securitySchemes/OAuth2/settings/oauth2/password/read",
                     "@type": [
                       "http://a.ml/vocabularies/security#Scope",
                       "http://a.ml/vocabularies/document#DomainElement"

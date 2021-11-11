@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/best-practices/negative7.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson"
+        "@id": "file://./test/data/production/best-practices/negative7.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson"
       },
       "resultMessage": "Always include examples in requests and responses",
       "resultSeverity": {
@@ -132,7 +132,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/best-practices/negative7.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/requestBody/application%2Fjson"
+        "@id": "file://./test/data/production/best-practices/negative7.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/requestBody/application%2Fjson"
       },
       "resultMessage": "Always include examples in requests and responses",
       "resultSeverity": {

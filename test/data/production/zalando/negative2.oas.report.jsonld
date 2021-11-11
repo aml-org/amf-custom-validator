@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/zalando/negative2.oas#/web-api/end-points/%2Fpath/parameter/header/Link"
+        "@id": "file://./test/data/production/zalando/negative2.yaml#/web-api/end-points/%2Fpath/parameter/header/Link"
       },
       "resultMessage": "Do Not Use Link Headers with JSON entities",
       "resultSeverity": {

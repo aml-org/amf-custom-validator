@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative10.oas#/web-api"
+        "@id": "file://./test/data/production/security/negative10.yaml#/web-api"
       },
       "resultMessage": "Bearer tokens from OAuth 2.0 authorization flows are transported in the clear over an unencrypted channel.\nAttackers can easily intercept API calls and retrieve the unencrypted tokens. They can then use the tokens to\nmake other API calls.\n",
       "resultSeverity": {

@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/owasp/negative2.oas",
+    "@id": "file://./test/data/production/owasp/negative2.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/owasp/negative2.oas#/web-api",
+        "@id": "file://./test/data/production/owasp/negative2.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -23,7 +23,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#server": [
           {
-            "@id": "file://./test/data/production/owasp/negative2.oas#/web-api/https%3A%2F%2Fproduction.test.com%2F",
+            "@id": "file://./test/data/production/owasp/negative2.yaml#/web-api/https%3A%2F%2Fproduction.test.com%2F",
             "@type": [
               "http://a.ml/vocabularies/apiContract#Server",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -47,7 +47,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
-            "@id": "file://./test/data/production/owasp/negative2.oas#/web-api/end-points/%2Finvoices",
+            "@id": "file://./test/data/production/owasp/negative2.yaml#/web-api/end-points/%2Finvoices",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -59,7 +59,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/owasp/negative2.oas#/web-api/end-points/%2Finvoices/get",
+                "@id": "file://./test/data/production/owasp/negative2.yaml#/web-api/end-points/%2Finvoices/get",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -76,7 +76,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/owasp/negative2.oas#/web-api/end-points/%2Finvoices/get/200",
+                    "@id": "file://./test/data/production/owasp/negative2.yaml#/web-api/end-points/%2Finvoices/get/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -99,7 +99,7 @@
                     ]
                   },
                   {
-                    "@id": "file://./test/data/production/owasp/negative2.oas#/web-api/end-points/%2Finvoices/get/429",
+                    "@id": "file://./test/data/production/owasp/negative2.yaml#/web-api/end-points/%2Finvoices/get/429",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -122,7 +122,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#payload": [
                       {
-                        "@id": "file://./test/data/production/owasp/negative2.oas#/web-api/end-points/%2Finvoices/get/429/application%2Fjson",
+                        "@id": "file://./test/data/production/owasp/negative2.yaml#/web-api/end-points/%2Finvoices/get/429/application%2Fjson",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Payload",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -134,7 +134,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/production/owasp/negative2.oas#/web-api/end-points/%2Finvoices/get/429/application%2Fjson/scalar/schema",
+                            "@id": "file://./test/data/production/owasp/negative2.yaml#/web-api/end-points/%2Finvoices/get/429/application%2Fjson/scalar/schema",
                             "@type": [
                               "http://a.ml/vocabularies/shapes#ScalarShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",

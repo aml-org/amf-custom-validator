@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/best-practices/negative3.oas#/web-api/https%3A%2F%2Fproduction.test.com"
+        "@id": "file://./test/data/production/best-practices/negative3.yaml#/web-api/https%3A%2F%2Fproduction.test.com"
       },
       "resultMessage": "Include the “api” word and the version of the API in the base Url (e.g. domain/api/v1)",
       "resultSeverity": {

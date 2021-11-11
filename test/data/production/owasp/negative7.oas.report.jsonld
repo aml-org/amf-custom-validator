@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative7.oas#/web-api"
+        "@id": "file://./test/data/production/owasp/negative7.yaml#/web-api"
       },
       "resultMessage": "The purpose of an API host is unclear, and there are no explicit answers to the following questions:\n    Which API version is running?\n",
       "resultSeverity": {
@@ -119,7 +119,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative7.oas#/web-api"
+        "@id": "file://./test/data/production/owasp/negative7.yaml#/web-api"
       },
       "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "resultSeverity": {
@@ -155,7 +155,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative7.oas#/web-api/end-points/%2Finvoices%2F/get"
+                  "@id": "file://./test/data/production/owasp/negative7.yaml#/web-api/end-points/%2Finvoices%2F/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
                 "sourceShapeName": "nested",

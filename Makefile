@@ -39,7 +39,6 @@ ci-js: test-js
 
 ci-java:
 	./scripts/download-cli.sh
-	./scripts/download-dialects-and-vocabularies.sh
 	./scripts/validate-profiles.sh
 	#./scripts/validate-reports.sh
 
@@ -55,5 +54,4 @@ validate:
 	go run cmd/validate/validate.go $(profile) $(data) >> $(out)
 
 validate-profiles:
-	./scripts/download-dialects-and-vocabularies.sh
 	./scripts/validate-profiles.sh

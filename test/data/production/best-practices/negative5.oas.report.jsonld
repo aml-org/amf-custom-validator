@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/best-practices/negative5.oas#/declarations/types/Customer/property/nested/nested/property/startDate/scalar/startDate"
+        "@id": "file://./test/data/production/best-practices/negative5.yaml#/declarations/types/Customer/property/nested/nested/property/startDate/scalar/startDate"
       },
       "resultMessage": "Use standard date formats: ISO8601\nUse UTC\n  2016-10-27T13:42:21+00:00    (+00:00 is the time zones hour offset)\n  2016-10-27T13:42:21Z     (Z is place holder for local time zone)\n",
       "resultSeverity": {
@@ -129,7 +129,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/best-practices/negative5.oas#/declarations/types/Customer/property/createdAt/scalar/createdAt"
+        "@id": "file://./test/data/production/best-practices/negative5.yaml#/declarations/types/Customer/property/createdAt/scalar/createdAt"
       },
       "resultMessage": "Use standard date formats: ISO8601\nUse UTC\n  2016-10-27T13:42:21+00:00    (+00:00 is the time zones hour offset)\n  2016-10-27T13:42:21Z     (Z is place holder for local time zone)\n",
       "resultSeverity": {

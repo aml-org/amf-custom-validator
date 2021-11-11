@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems"
+        "@id": "file://./test/data/production/spectral/negative15.yaml#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems"
       },
       "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "resultSeverity": {
@@ -116,7 +116,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems"
+        "@id": "file://./test/data/production/spectral/negative15.yaml#/web-api/end-points/%2Finvoices%2F%7B%7D%2Fitems"
       },
       "resultMessage": "Path parameter declarations cannot be empty, ex./given/{} is invalid.",
       "resultSeverity": {
@@ -142,7 +142,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative15.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7B%7D"
+        "@id": "file://./test/data/production/spectral/negative15.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%2F%7B%7D"
       },
       "resultMessage": "Path parameter declarations cannot be empty, ex./given/{} is invalid.",
       "resultSeverity": {

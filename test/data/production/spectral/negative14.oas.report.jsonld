@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative14.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/get"
+        "@id": "file://./test/data/production/spectral/negative14.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/get"
       },
       "resultMessage": "Operation should have non-empty tags array.",
       "resultSeverity": {
@@ -119,7 +119,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative14.oas#/web-api"
+        "@id": "file://./test/data/production/spectral/negative14.yaml#/web-api"
       },
       "resultMessage": "Operation tags should be defined in global tags.",
       "resultSeverity": {

@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative6.oas#/declarations/securitySchemes/OAuth2/settings/oauth2/password"
+        "@id": "file://./test/data/production/security/negative6.yaml#/declarations/securitySchemes/OAuth2/settings/oauth2/password"
       },
       "resultMessage": "OAuth2 implicit and resource owner password grant are insecure and should be avoided",
       "resultSeverity": {

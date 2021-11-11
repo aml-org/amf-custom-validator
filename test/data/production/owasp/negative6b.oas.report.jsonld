@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative6b.oas#/web-api"
+        "@id": "file://./test/data/production/owasp/negative6b.yaml#/web-api"
       },
       "resultMessage": "The purpose of an API host is unclear, and there are no explicit answers to the following questions:\n    Which environment is the API running in (e.g., production, staging, test, development)?\n    Who should have network access to the API (e.g., public, internal, partners)?\n",
       "resultSeverity": {
@@ -114,7 +114,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative6b.oas#/web-api/https%3A%2F%2Fproduction.test.com%2F"
+                  "@id": "file://./test/data/production/owasp/negative6b.yaml#/web-api/https%3A%2F%2Fproduction.test.com%2F"
                 },
                 "resultMessage": "error in nested nodes under apiContract.server",
                 "sourceShapeName": "nested",
@@ -145,7 +145,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative6b.oas#/web-api"
+        "@id": "file://./test/data/production/owasp/negative6b.yaml#/web-api"
       },
       "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "resultSeverity": {
@@ -181,7 +181,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative6b.oas#/web-api/end-points/%2Finvoices%2F/get"
+                  "@id": "file://./test/data/production/owasp/negative6b.yaml#/web-api/end-points/%2Finvoices%2F/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
                 "sourceShapeName": "nested",

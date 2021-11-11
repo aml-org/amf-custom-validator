@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/spectral/negative4.oas",
+    "@id": "file://./test/data/production/spectral/negative4.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/spectral/negative4.oas#/web-api",
+        "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -23,7 +23,7 @@
         ],
         "http://a.ml/vocabularies/core#provider": [
           {
-            "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/organization",
+            "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/organization",
             "@type": [
               "http://a.ml/vocabularies/core#Organization",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -42,7 +42,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
-            "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",
+            "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -54,7 +54,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
+                "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -66,7 +66,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200",
+                    "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -89,7 +89,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#payload": [
                       {
-                        "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson",
+                        "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Payload",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -101,7 +101,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/schema",
+                            "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/schema",
                             "@type": [
                               "http://www.w3.org/ns/shacl#NodeShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",
@@ -116,7 +116,7 @@
                             ],
                             "http://www.w3.org/ns/shacl#property": [
                               {
-                                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/schema/property/uuid",
+                                "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/schema/property/uuid",
                                 "@type": [
                                   "http://www.w3.org/ns/shacl#PropertyShape",
                                   "http://www.w3.org/ns/shacl#Shape",
@@ -130,7 +130,7 @@
                                 ],
                                 "http://a.ml/vocabularies/shapes#range": [
                                   {
-                                    "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/schema/property/uuid/scalar/uuid",
+                                    "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/schema/property/uuid/scalar/uuid",
                                     "@type": [
                                       "http://a.ml/vocabularies/shapes#ScalarShape",
                                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -182,7 +182,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#parameter": [
               {
-                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/path/id",
+                "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/path/id",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Parameter",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -224,7 +224,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/default-binding/id/scalar/id",
+                    "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/default-binding/id/scalar/id",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -246,7 +246,7 @@
                 ]
               },
               {
-                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/header/id",
+                "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/header/id",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Parameter",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -288,7 +288,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/default-binding/id/scalar/id",
+                    "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/default-binding/id/scalar/id",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -312,7 +312,7 @@
             ]
           },
           {
-            "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind",
+            "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -324,7 +324,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get",
+                "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/get",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -336,7 +336,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get/200",
+                    "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/get/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -359,7 +359,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#payload": [
                       {
-                        "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get/200/application%2Fjson",
+                        "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/get/200/application%2Fjson",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Payload",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -371,7 +371,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get/200/application%2Fjson/schema",
+                            "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/get/200/application%2Fjson/schema",
                             "@type": [
                               "http://www.w3.org/ns/shacl#NodeShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",
@@ -386,7 +386,7 @@
                             ],
                             "http://www.w3.org/ns/shacl#property": [
                               {
-                                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get/200/application%2Fjson/schema/property/uuid",
+                                "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/get/200/application%2Fjson/schema/property/uuid",
                                 "@type": [
                                   "http://www.w3.org/ns/shacl#PropertyShape",
                                   "http://www.w3.org/ns/shacl#Shape",
@@ -400,7 +400,7 @@
                                 ],
                                 "http://a.ml/vocabularies/shapes#range": [
                                   {
-                                    "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/get/200/application%2Fjson/schema/property/uuid/scalar/uuid",
+                                    "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/get/200/application%2Fjson/schema/property/uuid/scalar/uuid",
                                     "@type": [
                                       "http://a.ml/vocabularies/shapes#ScalarShape",
                                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -452,7 +452,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#parameter": [
               {
-                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/parameter/query/other",
+                "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/parameter/query/other",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Parameter",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -504,7 +504,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/parameter/default-binding/other/scalar/other",
+                    "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/parameter/default-binding/other/scalar/other",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -526,7 +526,7 @@
                 ]
               },
               {
-                "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/parameter/cookie/other",
+                "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/parameter/cookie/other",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Parameter",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -568,7 +568,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://./test/data/production/spectral/negative4.oas#/web-api/end-points/%2Fusers%2Ffind/parameter/default-binding/other/scalar/other",
+                    "@id": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/parameter/default-binding/other/scalar/other",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",

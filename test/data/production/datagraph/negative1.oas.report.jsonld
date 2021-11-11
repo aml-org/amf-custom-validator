@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get"
+        "@id": "file://./test/data/production/datagraph/negative1.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get"
       },
       "resultMessage": "Instead of inlining definition of schemas in HTTP responses,\nreferencing declared types is preferred since it provides descriptive names for the federated types\n",
       "resultSeverity": {
@@ -114,7 +114,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/datagraph/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fjson"
+                  "@id": "file://./test/data/production/datagraph/negative1.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fjson"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns / apiContract.payload",
                 "sourceShapeName": "nested",
@@ -169,7 +169,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fjson/schema"
+        "@id": "file://./test/data/production/datagraph/negative1.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fjson/schema"
       },
       "resultMessage": "Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema.\n",
       "resultSeverity": {
@@ -210,7 +210,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative1.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fjson/schema"
+        "@id": "file://./test/data/production/datagraph/negative1.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fjson/schema"
       },
       "resultMessage": "Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.\nConsider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.\nIf you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.\n",
       "resultSeverity": {

@@ -4,8 +4,8 @@ declare -i exitCode
 exitCode=0
 for profile in $profiles
 do
-  report=$(java -jar amf.jar validate -in "AML 1.0" -mime-in "application/yaml" -ds file://dialects/validation-profile.yaml "file://$profile")
-  if grep -q '"http://www.w3.org/ns/shacl#conforms": true' <<< "$report";
+  report=$(java -jar amf.jar validate "$profile")
+  if grep -q 'Conforms: true' <<< "$report";
   then
     echo -e "\033[32m$profile conforms \033[0m"
   else

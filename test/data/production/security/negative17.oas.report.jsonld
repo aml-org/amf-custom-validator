@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative17.oas#/web-api/requirement_1"
+        "@id": "file://./test/data/production/security/negative17.yaml#/web-api/requirement_1"
       },
       "resultMessage": "scopes in OAuth2 security scheme declarations must match application of the security scheme",
       "resultSeverity": {

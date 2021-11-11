@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/security/negative7.oas",
+    "@id": "file://./test/data/production/security/negative7.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/security/negative7.oas#/web-api",
+        "@id": "file://./test/data/production/security/negative7.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -23,7 +23,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#server": [
           {
-            "@id": "file://./test/data/production/security/negative7.oas#/web-api/https%3A%2F%2Fmy.api.server.com%2F",
+            "@id": "file://./test/data/production/security/negative7.yaml#/web-api/https%3A%2F%2Fmy.api.server.com%2F",
             "@type": [
               "http://a.ml/vocabularies/apiContract#Server",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -47,7 +47,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
-            "@id": "file://./test/data/production/security/negative7.oas#/web-api/end-points/%2Fusers",
+            "@id": "file://./test/data/production/security/negative7.yaml#/web-api/end-points/%2Fusers",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -59,7 +59,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/security/negative7.oas#/web-api/end-points/%2Fusers/get",
+                "@id": "file://./test/data/production/security/negative7.yaml#/web-api/end-points/%2Fusers/get",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -81,7 +81,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/security/negative7.oas#/web-api/end-points/%2Fusers/get/200",
+                    "@id": "file://./test/data/production/security/negative7.yaml#/web-api/end-points/%2Fusers/get/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -104,7 +104,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#payload": [
                       {
-                        "@id": "file://./test/data/production/security/negative7.oas#/web-api/end-points/%2Fusers/get/200/application%2Fjson",
+                        "@id": "file://./test/data/production/security/negative7.yaml#/web-api/end-points/%2Fusers/get/200/application%2Fjson",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Payload",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -116,7 +116,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/production/security/negative7.oas#/web-api/end-points/%2Fusers/get/200/application%2Fjson/array/schema",
+                            "@id": "file://./test/data/production/security/negative7.yaml#/web-api/end-points/%2Fusers/get/200/application%2Fjson/array/schema",
                             "@type": [
                               "http://a.ml/vocabularies/shapes#ArrayShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",
@@ -126,7 +126,7 @@
                             ],
                             "http://a.ml/vocabularies/shapes#items": [
                               {
-                                "@id": "file://./test/data/production/security/negative7.oas#/web-api/end-points/%2Fusers/get/200/application%2Fjson/array/schema/items/unresolved",
+                                "@id": "file://./test/data/production/security/negative7.yaml#/web-api/end-points/%2Fusers/get/200/application%2Fjson/array/schema/items/unresolved",
                                 "@type": [
                                   "http://a.ml/vocabularies/shapes#AnyShape",
                                   "http://www.w3.org/ns/shacl#Shape",
@@ -140,7 +140,7 @@
                                 ],
                                 "http://www.w3.org/ns/shacl#name": [
                                   {
-                                    "@value": "file://./test/data/production/security/negative7.oas#/components/schemas/Customer"
+                                    "@value": "file://./test/data/production/security/negative7.yaml#/components/schemas/Customer"
                                   }
                                 ]
                               }
@@ -158,7 +158,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#tag": [
                   {
-                    "@id": "file://./test/data/production/security/negative7.oas#/web-api/end-points/%2Fusers/get/tag/Invoice%20Items",
+                    "@id": "file://./test/data/production/security/negative7.yaml#/web-api/end-points/%2Fusers/get/tag/Invoice%20Items",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Tag",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -181,14 +181,14 @@
         ],
         "http://a.ml/vocabularies/security#security": [
           {
-            "@id": "file://./test/data/production/security/negative7.oas#/web-api/requirement_1",
+            "@id": "file://./test/data/production/security/negative7.yaml#/web-api/requirement_1",
             "@type": [
               "http://a.ml/vocabularies/security#SecurityRequirement",
               "http://a.ml/vocabularies/document#DomainElement"
             ],
             "http://a.ml/vocabularies/security#schemes": [
               {
-                "@id": "file://./test/data/production/security/negative7.oas#/web-api/requirement_1/apiKey",
+                "@id": "file://./test/data/production/security/negative7.yaml#/web-api/requirement_1/apiKey",
                 "@type": [
                   "http://a.ml/vocabularies/security#ParametrizedSecurityScheme",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -200,7 +200,7 @@
                 ],
                 "http://a.ml/vocabularies/security#scheme": [
                   {
-                    "@id": "file://./test/data/production/security/negative7.oas#/web-api/requirement_1/apiKey/apiKey",
+                    "@id": "file://./test/data/production/security/negative7.yaml#/web-api/requirement_1/apiKey/apiKey",
                     "@type": [
                       "http://a.ml/vocabularies/security#SecurityScheme",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -217,7 +217,7 @@
                     ],
                     "http://a.ml/vocabularies/security#settings": [
                       {
-                        "@id": "file://./test/data/production/security/negative7.oas#/declarations/securitySchemes/apiKey/settings/api-key",
+                        "@id": "file://./test/data/production/security/negative7.yaml#/declarations/securitySchemes/apiKey/settings/api-key",
                         "@type": [
                           "http://a.ml/vocabularies/security#ApiKeySettings",
                           "http://a.ml/vocabularies/security#Settings",
@@ -255,7 +255,7 @@
     ],
     "http://a.ml/vocabularies/document#declares": [
       {
-        "@id": "file://./test/data/production/security/negative7.oas#/web-api/requirement_1/apiKey/apiKey",
+        "@id": "file://./test/data/production/security/negative7.yaml#/web-api/requirement_1/apiKey/apiKey",
         "@type": [
           "http://a.ml/vocabularies/security#SecurityScheme",
           "http://a.ml/vocabularies/document#DomainElement"
@@ -272,7 +272,7 @@
         ],
         "http://a.ml/vocabularies/security#settings": [
           {
-            "@id": "file://./test/data/production/security/negative7.oas#/declarations/securitySchemes/apiKey/settings/api-key",
+            "@id": "file://./test/data/production/security/negative7.yaml#/declarations/securitySchemes/apiKey/settings/api-key",
             "@type": [
               "http://a.ml/vocabularies/security#ApiKeySettings",
               "http://a.ml/vocabularies/security#Settings",
@@ -292,7 +292,7 @@
         ]
       },
       {
-        "@id": "file://./test/data/production/security/negative7.oas#/declarations/securitySchemes/apiKey2",
+        "@id": "file://./test/data/production/security/negative7.yaml#/declarations/securitySchemes/apiKey2",
         "@type": [
           "http://a.ml/vocabularies/security#SecurityScheme",
           "http://a.ml/vocabularies/document#DomainElement"
@@ -309,7 +309,7 @@
         ],
         "http://a.ml/vocabularies/security#settings": [
           {
-            "@id": "file://./test/data/production/security/negative7.oas#/declarations/securitySchemes/apiKey2/settings/api-key",
+            "@id": "file://./test/data/production/security/negative7.yaml#/declarations/securitySchemes/apiKey2/settings/api-key",
             "@type": [
               "http://a.ml/vocabularies/security#ApiKeySettings",
               "http://a.ml/vocabularies/security#Settings",
@@ -329,7 +329,7 @@
         ]
       },
       {
-        "@id": "file://./test/data/production/security/negative7.oas#/declarations/securitySchemes/apiKey3",
+        "@id": "file://./test/data/production/security/negative7.yaml#/declarations/securitySchemes/apiKey3",
         "@type": [
           "http://a.ml/vocabularies/security#SecurityScheme",
           "http://a.ml/vocabularies/document#DomainElement"
@@ -346,7 +346,7 @@
         ],
         "http://a.ml/vocabularies/security#settings": [
           {
-            "@id": "file://./test/data/production/security/negative7.oas#/declarations/securitySchemes/apiKey3/settings/api-key",
+            "@id": "file://./test/data/production/security/negative7.yaml#/declarations/securitySchemes/apiKey3/settings/api-key",
             "@type": [
               "http://a.ml/vocabularies/security#ApiKeySettings",
               "http://a.ml/vocabularies/security#Settings",

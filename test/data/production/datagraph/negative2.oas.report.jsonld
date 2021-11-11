@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative2.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
+        "@id": "file://./test/data/production/datagraph/negative2.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
       },
       "resultMessage": "Operations without schemas cannot be federated, a schema must be provided\n",
       "resultSeverity": {
@@ -114,7 +114,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/datagraph/negative2.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson"
+                  "@id": "file://./test/data/production/datagraph/negative2.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns / apiContract.payload",
                 "sourceShapeName": "nested",

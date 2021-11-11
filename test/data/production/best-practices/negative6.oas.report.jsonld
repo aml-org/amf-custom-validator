@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/best-practices/negative6.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200"
+        "@id": "file://./test/data/production/best-practices/negative6.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200"
       },
       "resultMessage": "Use schemas or data types in the specification to determine the format of the responses.\n",
       "resultSeverity": {

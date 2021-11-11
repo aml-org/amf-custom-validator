@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D"
+        "@id": "file://./test/data/production/datagraph/negative5.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D"
       },
       "resultMessage": "Mandatory parameters for a resource should overlap with the required properties of the returned schema\nso they can be used as a key for the type\n",
       "resultSeverity": {

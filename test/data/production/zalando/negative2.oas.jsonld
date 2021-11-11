@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/zalando/negative2.oas",
+    "@id": "file://./test/data/production/zalando/negative2.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/zalando/negative2.oas#/web-api",
+        "@id": "file://./test/data/production/zalando/negative2.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -33,7 +33,7 @@
         ],
         "http://a.ml/vocabularies/core#provider": [
           {
-            "@id": "file://./test/data/production/zalando/negative2.oas#/web-api/organization",
+            "@id": "file://./test/data/production/zalando/negative2.yaml#/web-api/organization",
             "@type": [
               "http://a.ml/vocabularies/core#Organization",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -57,7 +57,7 @@
         ],
         "http://a.ml/vocabularies/core#license": [
           {
-            "@id": "file://./test/data/production/zalando/negative2.oas#/web-api/license",
+            "@id": "file://./test/data/production/zalando/negative2.yaml#/web-api/license",
             "@type": [
               "http://a.ml/vocabularies/core#License",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -76,7 +76,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
-            "@id": "file://./test/data/production/zalando/negative2.oas#/web-api/end-points/%2Fpath",
+            "@id": "file://./test/data/production/zalando/negative2.yaml#/web-api/end-points/%2Fpath",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -88,7 +88,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#parameter": [
               {
-                "@id": "file://./test/data/production/zalando/negative2.oas#/web-api/end-points/%2Fpath/parameter/header/Link",
+                "@id": "file://./test/data/production/zalando/negative2.yaml#/web-api/end-points/%2Fpath/parameter/header/Link",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Parameter",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -125,7 +125,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://./test/data/production/zalando/negative2.oas#/web-api/end-points/%2Fpath/parameter/default-binding/Link/scalar/Link",
+                    "@id": "file://./test/data/production/zalando/negative2.yaml#/web-api/end-points/%2Fpath/parameter/default-binding/Link/scalar/Link",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",

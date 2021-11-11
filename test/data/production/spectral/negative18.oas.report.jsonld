@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative18.oas#/declarations/types/TheBadModel/property/number_of_connectors/scalar/number_of_connectors"
+        "@id": "file://./test/data/production/spectral/negative18.yaml#/declarations/types/TheBadModel/property/number_of_connectors/scalar/number_of_connectors"
       },
       "resultMessage": "Each value of an enum must be different from one another.",
       "resultSeverity": {

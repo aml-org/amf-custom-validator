@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative1.oas#/web-api/end-points/%2Fpath/get"
+        "@id": "file://./test/data/production/spectral/negative1.yaml#/web-api/end-points/%2Fpath/get"
       },
       "resultMessage": "Operation must have at least one 2xx response. Any API operation (endpoint) can fail but presumably it is also\nmeant to do something constructive at some point. If you forget to write out a success case for this API, then\nthis rule will let you know.\n",
       "resultSeverity": {
@@ -115,7 +115,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/spectral/negative1.oas#/web-api/end-points/%2Fpath/get/418"
+                  "@id": "file://./test/data/production/spectral/negative1.yaml#/web-api/end-points/%2Fpath/get/418"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
                 "sourceShapeName": "nested",

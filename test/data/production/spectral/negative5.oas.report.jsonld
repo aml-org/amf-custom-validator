@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers"
+        "@id": "file://./test/data/production/spectral/negative5.yaml#/web-api/end-points/%2Fusers"
       },
       "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "resultSeverity": {
@@ -116,7 +116,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D"
+        "@id": "file://./test/data/production/spectral/negative5.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D"
       },
       "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "resultSeverity": {
@@ -141,7 +141,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative5.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D"
+        "@id": "file://./test/data/production/spectral/negative5.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D%2Fothers%2F%7Bother%7D"
       },
       "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
       "resultSeverity": {

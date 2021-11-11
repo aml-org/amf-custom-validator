@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative10.oas#/web-api"
+        "@id": "file://./test/data/production/spectral/negative10.yaml#/web-api"
       },
       "resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
       "resultSeverity": {
@@ -119,7 +119,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative10.oas#/web-api"
+        "@id": "file://./test/data/production/spectral/negative10.yaml#/web-api"
       },
       "resultMessage": "Operation tags should be defined in global tags.",
       "resultSeverity": {

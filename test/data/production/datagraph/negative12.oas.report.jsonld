@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative12.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/query/args"
+        "@id": "file://./test/data/production/datagraph/negative12.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/query/args"
       },
       "resultMessage": "Encoding complex objects into URL parameters is not a standardized way of passing information that cannot be\nautomatically processed. Complex information should be passed in the body of the HTTP request.\n",
       "resultSeverity": {

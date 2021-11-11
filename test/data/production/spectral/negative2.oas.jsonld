@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/spectral/negative2.oas",
+    "@id": "file://./test/data/production/spectral/negative2.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/spectral/negative2.oas#/web-api",
+        "@id": "file://./test/data/production/spectral/negative2.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -28,7 +28,7 @@
         ],
         "http://a.ml/vocabularies/core#provider": [
           {
-            "@id": "file://./test/data/production/spectral/negative2.oas#/web-api/organization",
+            "@id": "file://./test/data/production/spectral/negative2.yaml#/web-api/organization",
             "@type": [
               "http://a.ml/vocabularies/core#Organization",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -47,7 +47,7 @@
         ],
         "http://a.ml/vocabularies/core#license": [
           {
-            "@id": "file://./test/data/production/spectral/negative2.oas#/web-api/license",
+            "@id": "file://./test/data/production/spectral/negative2.yaml#/web-api/license",
             "@type": [
               "http://a.ml/vocabularies/core#License",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -66,7 +66,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
-            "@id": "file://./test/data/production/spectral/negative2.oas#/web-api/end-points/%2Fpath",
+            "@id": "file://./test/data/production/spectral/negative2.yaml#/web-api/end-points/%2Fpath",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -78,7 +78,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/spectral/negative2.oas#/web-api/end-points/%2Fpath/get",
+                "@id": "file://./test/data/production/spectral/negative2.yaml#/web-api/end-points/%2Fpath/get",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -101,7 +101,7 @@
                 "http://a.ml/vocabularies/apiContract#returns": [],
                 "http://a.ml/vocabularies/apiContract#tag": [
                   {
-                    "@id": "file://./test/data/production/spectral/negative2.oas#/web-api/end-points/%2Fpath/get/tag/tag",
+                    "@id": "file://./test/data/production/spectral/negative2.yaml#/web-api/end-points/%2Fpath/get/tag/tag",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Tag",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -124,7 +124,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#tag": [
           {
-            "@id": "file://./test/data/production/spectral/negative2.oas#/web-api/tag/tag",
+            "@id": "file://./test/data/production/spectral/negative2.yaml#/web-api/tag/tag",
             "@type": [
               "http://a.ml/vocabularies/apiContract#Tag",
               "http://a.ml/vocabularies/document#DomainElement"

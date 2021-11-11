@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative7.oas#/web-api/requirement_1/apiKey/apiKey"
+        "@id": "file://./test/data/production/security/negative7.yaml#/web-api/requirement_1/apiKey/apiKey"
       },
       "resultMessage": "The API accepts API keys that are transported in a header over the network. The credentials are sent over the\nnetwork on each API call, over and over again, and are exposed to attack attempts to retrieve them.\n",
       "resultSeverity": {
@@ -117,7 +117,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative7.oas#/declarations/securitySchemes/apiKey2"
+        "@id": "file://./test/data/production/security/negative7.yaml#/declarations/securitySchemes/apiKey2"
       },
       "resultMessage": "The API accepts API keys that are transported in query parameters over the network. The credentials are sent over\nthe network on each API call, over and over again, and are exposed to attack attempts to retrieve them. In addition,\nthe API key could end up being visible in the logs that web servers and proxies produce on URLs.\n",
       "resultSeverity": {
@@ -143,7 +143,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative7.oas#/declarations/securitySchemes/apiKey3"
+        "@id": "file://./test/data/production/security/negative7.yaml#/declarations/securitySchemes/apiKey3"
       },
       "resultMessage": "Your API accepts API keys sent in cleartext in a header over an unencrypted channel. Attackers can easily intercept\nAPI calls and retrieve the credentials. They can then use the credentials to make other API calls.\n",
       "resultSeverity": {

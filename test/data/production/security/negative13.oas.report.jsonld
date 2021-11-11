@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative13.oas#/declarations/securitySchemes/OAuth2/settings/oauth2/authorizationCode"
+        "@id": "file://./test/data/production/security/negative13.yaml#/declarations/securitySchemes/OAuth2/settings/oauth2/authorizationCode"
       },
       "resultMessage": "Oauth2 redirection flows use non encrypted transport",
       "resultSeverity": {

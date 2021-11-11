@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative4.oas#/web-api/end-points/%2Finvoices/head"
+        "@id": "file://./test/data/production/owasp/negative4.yaml#/web-api/end-points/%2Finvoices/head"
       },
       "resultMessage": "Ensure API can only be accessed by the specified HTTP verbs. All other HTTP verbs should be disabled (e.g. HEAD).\n",
       "resultSeverity": {
@@ -115,7 +115,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative4.oas#/web-api/end-points/%2Finvoices/head/429"
+                  "@id": "file://./test/data/production/owasp/negative4.yaml#/web-api/end-points/%2Finvoices/head/429"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
                 "sourceShapeName": "nested",
@@ -154,7 +154,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative4.oas#/web-api/end-points/%2Finvoices/head/429"
+                  "@id": "file://./test/data/production/owasp/negative4.yaml#/web-api/end-points/%2Finvoices/head/429"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
                 "sourceShapeName": "nested",
@@ -184,7 +184,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative4.oas#/web-api"
+        "@id": "file://./test/data/production/owasp/negative4.yaml#/web-api"
       },
       "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "resultSeverity": {
@@ -220,7 +220,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative4.oas#/web-api/end-points/%2Finvoices/get"
+                  "@id": "file://./test/data/production/owasp/negative4.yaml#/web-api/end-points/%2Finvoices/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
                 "sourceShapeName": "nested",
@@ -245,7 +245,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative4.oas#/web-api/end-points/%2Finvoices/head"
+                  "@id": "file://./test/data/production/owasp/negative4.yaml#/web-api/end-points/%2Finvoices/head"
                 },
                 "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
                 "sourceShapeName": "nested",

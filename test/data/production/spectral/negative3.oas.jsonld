@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/spectral/negative3.oas",
+    "@id": "file://./test/data/production/spectral/negative3.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api",
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -23,7 +23,7 @@
         ],
         "http://a.ml/vocabularies/core#provider": [
           {
-            "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/organization",
+            "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/organization",
             "@type": [
               "http://a.ml/vocabularies/core#Organization",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -42,7 +42,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
-            "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet",
+            "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -54,7 +54,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/patch",
+                "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet/patch",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -71,7 +71,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/patch/200",
+                    "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet/patch/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -101,7 +101,7 @@
                 ]
               },
               {
-                "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/put",
+                "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet/put",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -118,7 +118,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/put/200",
+                    "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet/put/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -150,7 +150,7 @@
             ]
           },
           {
-            "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother",
+            "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -162,7 +162,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/patch",
+                "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother/patch",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -179,7 +179,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/patch/200",
+                    "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother/patch/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -209,7 +209,7 @@
                 ]
               },
               {
-                "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/put",
+                "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother/put",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -226,7 +226,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/put/200",
+                    "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother/put/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",

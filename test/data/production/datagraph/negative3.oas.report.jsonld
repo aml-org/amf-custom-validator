@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get"
+        "@id": "file://./test/data/production/datagraph/negative3.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get"
       },
       "resultMessage": "Only JSON payloads are supported at the moment in DataGraph. This is the preferred media type format.\n",
       "resultSeverity": {
@@ -115,7 +115,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/datagraph/negative3.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fyaml"
+                  "@id": "file://./test/data/production/datagraph/negative3.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fyaml"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns / apiContract.payload",
                 "sourceShapeName": "nested",
@@ -144,7 +144,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative3.oas#/declarations/types/Invoice"
+        "@id": "file://./test/data/production/datagraph/negative3.yaml#/declarations/types/Invoice"
       },
       "resultMessage": "Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.\nConsider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.\nIf you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.\n",
       "resultSeverity": {

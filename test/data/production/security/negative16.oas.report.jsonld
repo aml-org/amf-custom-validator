@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative16.oas#/declarations/securitySchemes/OAuth2/settings/oauth2/authorizationCode"
+        "@id": "file://./test/data/production/security/negative16.yaml#/declarations/securitySchemes/OAuth2/settings/oauth2/authorizationCode"
       },
       "resultMessage": "The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all\nURLs in the API contract must be proper URLs in a valid format.\n",
       "resultSeverity": {

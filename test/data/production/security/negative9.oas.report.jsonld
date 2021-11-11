@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative9.oas#/web-api"
+        "@id": "file://./test/data/production/security/negative9.yaml#/web-api"
       },
       "resultMessage": "Your API accepts basic authentication credentials sent in cleartext over an unencrypted channel. Attackers can\neasily intercept API calls and retrieve the credentials. They can then use the credentials to make other API calls.\n",
       "resultSeverity": {

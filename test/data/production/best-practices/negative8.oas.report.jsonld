@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/best-practices/negative8.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fother"
+        "@id": "file://./test/data/production/best-practices/negative8.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fother"
       },
       "resultMessage": "If there is no standard media type and format, try to use as much as possible extensible formats such as JSON\n(application/json) and XML (application/xml), preferably JSON.\n",
       "resultSeverity": {

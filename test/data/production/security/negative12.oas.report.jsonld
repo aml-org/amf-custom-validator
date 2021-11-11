@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative12.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
+        "@id": "file://./test/data/production/security/negative12.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
       },
       "resultMessage": "The API operation accepts access tokens from authorization code grant flow that are transported in the clear over\nan unencrypted channel. Attackers can easily intercept API calls and retrieve the unencrypted tokens. They can\nthen use the tokens to make other API calls.\n",
       "resultSeverity": {

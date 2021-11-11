@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative7.oas#/declarations/types/InvoiceRequest"
+        "@id": "file://./test/data/production/datagraph/negative7.yaml#/declarations/types/InvoiceRequest"
       },
       "resultMessage": "Resource schemas should describe the information of the exposed resource, not a Request/Response RPC message wrapper\ncontaining the resource and out-of-band information.\n",
       "resultSeverity": {
@@ -117,7 +117,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative7.oas#/declarations/types/CustomerResponse"
+        "@id": "file://./test/data/production/datagraph/negative7.yaml#/declarations/types/CustomerResponse"
       },
       "resultMessage": "Resource schemas should describe the information of the exposed resource, not a Request/Response RPC message wrapper\ncontaining the resource and out-of-band information.\n",
       "resultSeverity": {

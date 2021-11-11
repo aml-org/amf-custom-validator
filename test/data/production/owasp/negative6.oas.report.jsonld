@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative6.oas#/web-api"
+        "@id": "file://./test/data/production/owasp/negative6.yaml#/web-api"
       },
       "resultMessage": "The purpose of an API host is unclear, and there are no explicit answers to the following questions:\n    Which environment is the API running in (e.g., production, staging, test, development)?\n    Who should have network access to the API (e.g., public, internal, partners)?\n",
       "resultSeverity": {
@@ -119,7 +119,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative6.oas#/web-api"
+        "@id": "file://./test/data/production/owasp/negative6.yaml#/web-api"
       },
       "resultMessage": "The login page and all subsequent authenticated pages must be exclusively accessed over TLS or other strong\ntransport. The initial login page referred to as the 'login landing page', must be served over TLS or other strong\ntransport. Failure to utilize TLS or other strong transport for the login landing page allows an attacker to\nmodify the login form action, causing the user's credentials to be posted to an arbitrary location. Failure to\nutilize TLS or other strong transport for authenticated pages after login enables an attacker to view the\nunencrypted session ID and compromise the user's authenticated session.\n",
       "resultSeverity": {
@@ -148,7 +148,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/owasp/negative6.oas#/web-api"
+        "@id": "file://./test/data/production/owasp/negative6.yaml#/web-api"
       },
       "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
       "resultSeverity": {
@@ -184,7 +184,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/owasp/negative6.oas#/web-api/end-points/%2Finvoices%2F/get"
+                  "@id": "file://./test/data/production/owasp/negative6.yaml#/web-api/end-points/%2Finvoices%2F/get"
                 },
                 "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
                 "sourceShapeName": "nested",

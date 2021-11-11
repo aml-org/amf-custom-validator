@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative8.oas#/declarations/types/any/Problematic"
+        "@id": "file://./test/data/production/datagraph/negative8.yaml#/declarations/types/any/Problematic"
       },
       "resultMessage": "Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object\nshapes with scalar flags/properties can be used as an alternative\n",
       "resultSeverity": {
@@ -116,7 +116,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative8.oas#/declarations/types/any/Problematic2"
+        "@id": "file://./test/data/production/datagraph/negative8.yaml#/declarations/types/any/Problematic2"
       },
       "resultMessage": "Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object\nshapes with scalar flags/properties can be used as an alternative\n",
       "resultSeverity": {

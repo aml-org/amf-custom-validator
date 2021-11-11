@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/zalando/negative1.oas#/web-api"
+        "@id": "file://./test/data/production/zalando/negative1.yaml#/web-api"
       },
       "resultMessage": "Title has to be provided",
       "resultSeverity": {
@@ -119,7 +119,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/zalando/negative1.oas#/web-api"
+        "@id": "file://./test/data/production/zalando/negative1.yaml#/web-api"
       },
       "resultMessage": "Description has to be provided",
       "resultSeverity": {
@@ -147,7 +147,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/zalando/negative1.oas#/web-api"
+        "@id": "file://./test/data/production/zalando/negative1.yaml#/web-api"
       },
       "resultMessage": "Version has to be provided",
       "resultSeverity": {
@@ -175,7 +175,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/zalando/negative1.oas#/web-api"
+        "@id": "file://./test/data/production/zalando/negative1.yaml#/web-api"
       },
       "resultMessage": "Contact name must be provided",
       "resultSeverity": {
@@ -203,7 +203,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/zalando/negative1.oas#/web-api"
+        "@id": "file://./test/data/production/zalando/negative1.yaml#/web-api"
       },
       "resultMessage": "Contact URL must be provided",
       "resultSeverity": {
@@ -231,7 +231,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/zalando/negative1.oas#/web-api"
+        "@id": "file://./test/data/production/zalando/negative1.yaml#/web-api"
       },
       "resultMessage": "Contact name must be provided",
       "resultSeverity": {

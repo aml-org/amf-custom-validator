@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative12.oas#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/get"
+        "@id": "file://./test/data/production/spectral/negative12.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems/get"
       },
       "resultMessage": "Operation must have a description explaining the operation functionality",
       "resultSeverity": {

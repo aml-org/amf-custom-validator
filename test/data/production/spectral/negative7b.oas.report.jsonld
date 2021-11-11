@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative7b.oas#/web-api/license"
+        "@id": "file://./test/data/production/spectral/negative7b.yaml#/web-api/license"
       },
       "resultMessage": "Mentioning a license is only useful if people know what the license means, so add a link to the full text for\nthose who need it.\n",
       "resultSeverity": {

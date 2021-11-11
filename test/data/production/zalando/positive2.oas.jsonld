@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/zalando/positive2.oas",
+    "@id": "file://./test/data/production/zalando/positive2.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/zalando/positive2.oas#/web-api",
+        "@id": "file://./test/data/production/zalando/positive2.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -33,7 +33,7 @@
         ],
         "http://a.ml/vocabularies/core#provider": [
           {
-            "@id": "file://./test/data/production/zalando/positive2.oas#/web-api/organization",
+            "@id": "file://./test/data/production/zalando/positive2.yaml#/web-api/organization",
             "@type": [
               "http://a.ml/vocabularies/core#Organization",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -57,7 +57,7 @@
         ],
         "http://a.ml/vocabularies/core#license": [
           {
-            "@id": "file://./test/data/production/zalando/positive2.oas#/web-api/license",
+            "@id": "file://./test/data/production/zalando/positive2.yaml#/web-api/license",
             "@type": [
               "http://a.ml/vocabularies/core#License",
               "http://a.ml/vocabularies/document#DomainElement"

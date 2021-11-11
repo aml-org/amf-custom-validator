@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/datagraph/negative10.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
+        "@id": "file://./test/data/production/datagraph/negative10.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get"
       },
       "resultMessage": "HTTP resources not returning a 2xx success response do not describe normal responses from the API and cannot federated.\n",
       "resultSeverity": {
@@ -126,7 +126,7 @@
                   "shacl:ValidationResult"
                 ],
                 "focusNode": {
-                  "@id": "file://./test/data/production/datagraph/negative10.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/500"
+                  "@id": "file://./test/data/production/datagraph/negative10.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/500"
                 },
                 "resultMessage": "error in nested nodes under apiContract.returns",
                 "sourceShapeName": "nested",

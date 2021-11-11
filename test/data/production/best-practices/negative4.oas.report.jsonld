@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer/property/nested/nested/property/nested-prop"
+        "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer/property/nested/nested/property/nested-prop"
       },
       "resultMessage": "Use camelCase for all the names (fields), preferably don’t use underscores.",
       "resultSeverity": {

@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative15.oas#/web-api"
+        "@id": "file://./test/data/production/security/negative15.yaml#/web-api"
       },
       "resultMessage": "Your API accepts basic authentication credentials sent in cleartext over an unencrypted channel. Attackers can\neasily intercept API calls and retrieve the credentials. They can then use the credentials to make other API calls.\n",
       "resultSeverity": {
@@ -130,7 +130,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative15.oas#/web-api/%3A%3A%3A4**production.test.com%2F"
+        "@id": "file://./test/data/production/security/negative15.yaml#/web-api/%3A%3A%3A4**production.test.com%2F"
       },
       "resultMessage": "The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all\nURLs in the API contract must be proper URLs in a valid format.\n",
       "resultSeverity": {
@@ -156,7 +156,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative15.oas#/web-api/https%3A%2F%2F**production.test.com%2F"
+        "@id": "file://./test/data/production/security/negative15.yaml#/web-api/https%3A%2F%2F**production.test.com%2F"
       },
       "resultMessage": "The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all\nURLs in the API contract must be proper URLs in a valid format.\n",
       "resultSeverity": {

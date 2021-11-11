@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/zalando/negative1.oas",
+    "@id": "file://./test/data/production/zalando/negative1.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/zalando/negative1.oas#/web-api",
+        "@id": "file://./test/data/production/zalando/negative1.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",

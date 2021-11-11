@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/spectral/negative7.oas",
+    "@id": "file://./test/data/production/spectral/negative7.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/spectral/negative7.oas#/web-api",
+        "@id": "file://./test/data/production/spectral/negative7.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -28,7 +28,7 @@
         ],
         "http://a.ml/vocabularies/core#provider": [
           {
-            "@id": "file://./test/data/production/spectral/negative7.oas#/web-api/organization",
+            "@id": "file://./test/data/production/spectral/negative7.yaml#/web-api/organization",
             "@type": [
               "http://a.ml/vocabularies/core#Organization",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -47,7 +47,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#tag": [
           {
-            "@id": "file://./test/data/production/spectral/negative7.oas#/web-api/tag/tag",
+            "@id": "file://./test/data/production/spectral/negative7.yaml#/web-api/tag/tag",
             "@type": [
               "http://a.ml/vocabularies/apiContract#Tag",
               "http://a.ml/vocabularies/document#DomainElement"

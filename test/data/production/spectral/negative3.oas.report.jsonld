@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api"
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api"
       },
       "resultMessage": "Every operation must have a unique operationId.\n\nWhy? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,\nall sorts of things like that.\n",
       "resultSeverity": {
@@ -116,7 +116,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api"
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api"
       },
       "resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
       "resultSeverity": {
@@ -144,7 +144,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api"
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api"
       },
       "resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
       "resultSeverity": {
@@ -172,7 +172,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api"
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api"
       },
       "resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
       "resultSeverity": {
@@ -200,7 +200,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/patch"
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother/patch"
       },
       "resultMessage": "Operation must have a description explaining the operation functionality",
       "resultSeverity": {
@@ -228,7 +228,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/put"
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother/put"
       },
       "resultMessage": "Operation must have a description explaining the operation functionality",
       "resultSeverity": {
@@ -256,7 +256,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/patch"
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet/patch"
       },
       "resultMessage": "Operation must have a description explaining the operation functionality",
       "resultSeverity": {
@@ -284,7 +284,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/put"
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet/put"
       },
       "resultMessage": "Operation must have a description explaining the operation functionality",
       "resultSeverity": {
@@ -312,7 +312,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/patch"
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother/patch"
       },
       "resultMessage": "Operation should have non-empty tags array.",
       "resultSeverity": {
@@ -340,7 +340,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fother/put"
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother/put"
       },
       "resultMessage": "Operation should have non-empty tags array.",
       "resultSeverity": {
@@ -368,7 +368,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/patch"
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet/patch"
       },
       "resultMessage": "Operation should have non-empty tags array.",
       "resultSeverity": {
@@ -396,7 +396,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/spectral/negative3.oas#/web-api/end-points/%2Fpet/put"
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet/put"
       },
       "resultMessage": "Operation should have non-empty tags array.",
       "resultSeverity": {

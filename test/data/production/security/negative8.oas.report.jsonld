@@ -91,7 +91,7 @@
         "shacl:ValidationResult"
       ],
       "focusNode": {
-        "@id": "file://./test/data/production/security/negative8.oas#/web-api/requirement_1/negotiateAuth/negotiateAuth"
+        "@id": "file://./test/data/production/security/negative8.yaml#/web-api/requirement_1/negotiateAuth/negotiateAuth"
       },
       "resultMessage": "- Description\n\nAPI negotiates authentication with a remote Simple And Protected Negotiate (SPNEGO) -based system.\n\n- Possible exploit scenario\n\nThe most common systems used in negotiating authentication are Kerberos and the now obsolete NTLM (New Technology LAN Manager). The severity of this risk heavily depends on the which system is used: while Kerberos is reasonably secure, NTLM is not.\nBecause your API cannot know which system it is negotiating with, the only safe option is to assume the worst and treat all negotiation as not being secure.\n\n- Remediation\n\nUse a more secure authentication method, like OAuth 2.0. It uses access tokens with limited lifetime and authorizations (the scopes) granted that the resource owner grants from an authorization server.\nAn API operation can be consumed only if the request includes an access token and the scopes of the token match the scopes that the API operation requires. Even if attackers successfully retrieved access tokens, they can only use the token on a subset of the API operation and for a limited time.\n",
       "resultSeverity": {

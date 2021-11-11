@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/best-practices/negative4.oas",
+    "@id": "file://./test/data/production/best-practices/negative4.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api",
+        "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -28,7 +28,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#server": [
           {
-            "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/https%3A%2F%2Fproduction.test.com%2Fapi%2Fv1",
+            "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/https%3A%2F%2Fproduction.test.com%2Fapi%2Fv1",
             "@type": [
               "http://a.ml/vocabularies/apiContract#Server",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -52,7 +52,7 @@
         ],
         "http://a.ml/vocabularies/core#documentation": [
           {
-            "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/creative-work/https%3A%2F%2Fexample.com",
+            "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/creative-work/https%3A%2F%2Fexample.com",
             "@type": [
               "http://a.ml/vocabularies/core#CreativeWork",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -71,7 +71,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
-            "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D",
+            "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -83,7 +83,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
+                "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -105,7 +105,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200",
+                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -128,7 +128,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#payload": [
                       {
-                        "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson",
+                        "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Payload",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -140,7 +140,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/schema",
+                            "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/schema",
                             "@type": [
                               "http://www.w3.org/ns/shacl#NodeShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",
@@ -150,7 +150,7 @@
                             ],
                             "http://a.ml/vocabularies/document#link-target": [
                               {
-                                "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer"
+                                "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer"
                               }
                             ],
                             "http://a.ml/vocabularies/document#link-label": [
@@ -172,7 +172,7 @@
                         ],
                         "http://a.ml/vocabularies/apiContract#examples": [
                           {
-                            "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/example/default-example",
+                            "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/example/default-example",
                             "@type": [
                               "http://a.ml/vocabularies/apiContract#Example",
                               "http://a.ml/vocabularies/document#DomainElement"
@@ -189,7 +189,7 @@
                             ],
                             "http://a.ml/vocabularies/document#structuredValue": [
                               {
-                                "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/object_1",
+                                "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/object_1",
                                 "@type": [
                                   "http://a.ml/vocabularies/data#Object",
                                   "http://a.ml/vocabularies/data#Node",
@@ -197,7 +197,7 @@
                                 ],
                                 "http://a.ml/vocabularies/data#id": [
                                   {
-                                    "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/object_1/scalar_2",
+                                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/object_1/scalar_2",
                                     "@type": [
                                       "http://a.ml/vocabularies/data#Scalar",
                                       "http://a.ml/vocabularies/data#Node",
@@ -234,21 +234,21 @@
                             ],
                             "http://a.ml/vocabularies/document-source-maps#sources": [
                               {
-                                "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/source-map",
+                                "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/source-map",
                                 "@type": [
                                   "http://a.ml/vocabularies/document-source-maps#SourceMap"
                                 ],
                                 "http://a.ml/vocabularies/document-source-maps#tracked-element": [
                                   {
-                                    "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/source-map/tracked-element/element_0",
+                                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/source-map/tracked-element/element_0",
                                     "http://a.ml/vocabularies/document-source-maps#element": [
                                       {
-                                        "@value": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/example/default-example"
+                                        "@value": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson/example/default-example"
                                       }
                                     ],
                                     "http://a.ml/vocabularies/document-source-maps#value": [
                                       {
-                                        "@value": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson"
+                                        "@value": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson"
                                       }
                                     ]
                                   }
@@ -261,7 +261,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#header": [
                       {
-                        "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/parameter/header/content-type",
+                        "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/parameter/header/content-type",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Parameter",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -293,7 +293,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/parameter/default-binding/content-type/scalar/schema",
+                            "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/parameter/default-binding/content-type/scalar/schema",
                             "@type": [
                               "http://a.ml/vocabularies/shapes#ScalarShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",
@@ -319,7 +319,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#tag": [
                   {
-                    "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/tag/Invoice%20Items",
+                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/tag/Invoice%20Items",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Tag",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -340,7 +340,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#parameter": [
               {
-                "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/path/id",
+                "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/path/id",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Parameter",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -382,7 +382,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/default-binding/id/scalar/id",
+                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/default-binding/id/scalar/id",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -404,7 +404,7 @@
                 ]
               },
               {
-                "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/header/accept",
+                "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/header/accept",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Parameter",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -446,7 +446,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/default-binding/accept/scalar/accept",
+                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/default-binding/accept/scalar/accept",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -470,7 +470,7 @@
             ]
           },
           {
-            "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D",
+            "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -482,7 +482,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get",
+                "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -504,7 +504,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200",
+                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -527,7 +527,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#payload": [
                       {
-                        "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson",
+                        "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Payload",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -539,7 +539,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/schema",
+                            "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/schema",
                             "@type": [
                               "http://www.w3.org/ns/shacl#NodeShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",
@@ -549,7 +549,7 @@
                             ],
                             "http://a.ml/vocabularies/document#link-target": [
                               {
-                                "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer"
+                                "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer"
                               }
                             ],
                             "http://a.ml/vocabularies/document#link-label": [
@@ -571,7 +571,7 @@
                         ],
                         "http://a.ml/vocabularies/apiContract#examples": [
                           {
-                            "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/example/default-example",
+                            "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/example/default-example",
                             "@type": [
                               "http://a.ml/vocabularies/apiContract#Example",
                               "http://a.ml/vocabularies/document#DomainElement"
@@ -588,7 +588,7 @@
                             ],
                             "http://a.ml/vocabularies/document#structuredValue": [
                               {
-                                "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/object_1",
+                                "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/object_1",
                                 "@type": [
                                   "http://a.ml/vocabularies/data#Object",
                                   "http://a.ml/vocabularies/data#Node",
@@ -596,7 +596,7 @@
                                 ],
                                 "http://a.ml/vocabularies/data#id": [
                                   {
-                                    "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/object_1/scalar_2",
+                                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/object_1/scalar_2",
                                     "@type": [
                                       "http://a.ml/vocabularies/data#Scalar",
                                       "http://a.ml/vocabularies/data#Node",
@@ -633,21 +633,21 @@
                             ],
                             "http://a.ml/vocabularies/document-source-maps#sources": [
                               {
-                                "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/source-map",
+                                "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/source-map",
                                 "@type": [
                                   "http://a.ml/vocabularies/document-source-maps#SourceMap"
                                 ],
                                 "http://a.ml/vocabularies/document-source-maps#tracked-element": [
                                   {
-                                    "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/source-map/tracked-element/element_0",
+                                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/example/default-example/source-map/tracked-element/element_0",
                                     "http://a.ml/vocabularies/document-source-maps#element": [
                                       {
-                                        "@value": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/example/default-example"
+                                        "@value": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson/example/default-example"
                                       }
                                     ],
                                     "http://a.ml/vocabularies/document-source-maps#value": [
                                       {
-                                        "@value": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson"
+                                        "@value": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fjson"
                                       }
                                     ]
                                   }
@@ -660,7 +660,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#header": [
                       {
-                        "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/parameter/header/content-type",
+                        "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/parameter/header/content-type",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Parameter",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -692,7 +692,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/parameter/default-binding/content-type/scalar/schema",
+                            "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/parameter/default-binding/content-type/scalar/schema",
                             "@type": [
                               "http://a.ml/vocabularies/shapes#ScalarShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",
@@ -718,7 +718,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#tag": [
                   {
-                    "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/tag/Invoice%20Items",
+                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/tag/Invoice%20Items",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Tag",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -739,7 +739,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#parameter": [
               {
-                "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/parameter/path/id",
+                "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/parameter/path/id",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Parameter",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -781,7 +781,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/parameter/default-binding/id/scalar/id",
+                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/parameter/default-binding/id/scalar/id",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -803,7 +803,7 @@
                 ]
               },
               {
-                "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/parameter/header/accept",
+                "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/parameter/header/accept",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Parameter",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -845,7 +845,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://./test/data/production/best-practices/negative4.oas#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/parameter/default-binding/accept/scalar/accept",
+                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/parameter/default-binding/accept/scalar/accept",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -883,7 +883,7 @@
     ],
     "http://a.ml/vocabularies/document#declares": [
       {
-        "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer",
+        "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer",
         "@type": [
           "http://www.w3.org/ns/shacl#NodeShape",
           "http://a.ml/vocabularies/shapes#AnyShape",
@@ -898,7 +898,7 @@
         ],
         "http://www.w3.org/ns/shacl#property": [
           {
-            "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer/property/id",
+            "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer/property/id",
             "@type": [
               "http://www.w3.org/ns/shacl#PropertyShape",
               "http://www.w3.org/ns/shacl#Shape",
@@ -912,7 +912,7 @@
             ],
             "http://a.ml/vocabularies/shapes#range": [
               {
-                "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer/property/id/scalar/id",
+                "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer/property/id/scalar/id",
                 "@type": [
                   "http://a.ml/vocabularies/shapes#ScalarShape",
                   "http://a.ml/vocabularies/shapes#AnyShape",
@@ -949,7 +949,7 @@
             ]
           },
           {
-            "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer/property/name",
+            "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer/property/name",
             "@type": [
               "http://www.w3.org/ns/shacl#PropertyShape",
               "http://www.w3.org/ns/shacl#Shape",
@@ -963,7 +963,7 @@
             ],
             "http://a.ml/vocabularies/shapes#range": [
               {
-                "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer/property/name/scalar/name",
+                "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer/property/name/scalar/name",
                 "@type": [
                   "http://a.ml/vocabularies/shapes#ScalarShape",
                   "http://a.ml/vocabularies/shapes#AnyShape",
@@ -1000,7 +1000,7 @@
             ]
           },
           {
-            "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer/property/streetAddress",
+            "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer/property/streetAddress",
             "@type": [
               "http://www.w3.org/ns/shacl#PropertyShape",
               "http://www.w3.org/ns/shacl#Shape",
@@ -1014,7 +1014,7 @@
             ],
             "http://a.ml/vocabularies/shapes#range": [
               {
-                "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer/property/streetAddress/scalar/streetAddress",
+                "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer/property/streetAddress/scalar/streetAddress",
                 "@type": [
                   "http://a.ml/vocabularies/shapes#ScalarShape",
                   "http://a.ml/vocabularies/shapes#AnyShape",
@@ -1051,7 +1051,7 @@
             ]
           },
           {
-            "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer/property/nested",
+            "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer/property/nested",
             "@type": [
               "http://www.w3.org/ns/shacl#PropertyShape",
               "http://www.w3.org/ns/shacl#Shape",
@@ -1065,7 +1065,7 @@
             ],
             "http://a.ml/vocabularies/shapes#range": [
               {
-                "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer/property/nested/nested",
+                "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer/property/nested/nested",
                 "@type": [
                   "http://www.w3.org/ns/shacl#NodeShape",
                   "http://a.ml/vocabularies/shapes#AnyShape",
@@ -1080,7 +1080,7 @@
                 ],
                 "http://www.w3.org/ns/shacl#property": [
                   {
-                    "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer/property/nested/nested/property/nested-prop",
+                    "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer/property/nested/nested/property/nested-prop",
                     "@type": [
                       "http://www.w3.org/ns/shacl#PropertyShape",
                       "http://www.w3.org/ns/shacl#Shape",
@@ -1094,7 +1094,7 @@
                     ],
                     "http://a.ml/vocabularies/shapes#range": [
                       {
-                        "@id": "file://./test/data/production/best-practices/negative4.oas#/declarations/types/Customer/property/nested/nested/property/nested-prop/scalar/nested-prop",
+                        "@id": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer/property/nested/nested/property/nested-prop/scalar/nested-prop",
                         "@type": [
                           "http://a.ml/vocabularies/shapes#ScalarShape",
                           "http://a.ml/vocabularies/shapes#AnyShape",

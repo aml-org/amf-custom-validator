@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/production/zalando/positive3.oas",
+    "@id": "file://./test/data/production/zalando/positive3.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/production/zalando/positive3.oas#/web-api",
+        "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -33,7 +33,7 @@
         ],
         "http://a.ml/vocabularies/core#provider": [
           {
-            "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/organization",
+            "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/organization",
             "@type": [
               "http://a.ml/vocabularies/core#Organization",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -57,7 +57,7 @@
         ],
         "http://a.ml/vocabularies/core#license": [
           {
-            "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/license",
+            "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/license",
             "@type": [
               "http://a.ml/vocabularies/core#License",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -76,7 +76,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
-            "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems",
+            "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -88,7 +88,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get",
+                "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -110,7 +110,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200",
+                    "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -133,7 +133,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#payload": [
                       {
-                        "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson",
+                        "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Payload",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -145,7 +145,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema",
+                            "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema",
                             "@type": [
                               "http://www.w3.org/ns/shacl#NodeShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",
@@ -160,7 +160,7 @@
                             ],
                             "http://www.w3.org/ns/shacl#property": [
                               {
-                                "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/id",
+                                "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/id",
                                 "@type": [
                                   "http://www.w3.org/ns/shacl#PropertyShape",
                                   "http://www.w3.org/ns/shacl#Shape",
@@ -174,7 +174,7 @@
                                 ],
                                 "http://a.ml/vocabularies/shapes#range": [
                                   {
-                                    "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/id/scalar/id",
+                                    "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/id/scalar/id",
                                     "@type": [
                                       "http://a.ml/vocabularies/shapes#ScalarShape",
                                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -206,7 +206,7 @@
                                 ]
                               },
                               {
-                                "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/created_at",
+                                "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/created_at",
                                 "@type": [
                                   "http://www.w3.org/ns/shacl#PropertyShape",
                                   "http://www.w3.org/ns/shacl#Shape",
@@ -220,7 +220,7 @@
                                 ],
                                 "http://a.ml/vocabularies/shapes#range": [
                                   {
-                                    "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/created_at/scalar/created_at",
+                                    "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/created_at/scalar/created_at",
                                     "@type": [
                                       "http://a.ml/vocabularies/shapes#ScalarShape",
                                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -262,7 +262,7 @@
                                 ]
                               },
                               {
-                                "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/type",
+                                "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/type",
                                 "@type": [
                                   "http://www.w3.org/ns/shacl#PropertyShape",
                                   "http://www.w3.org/ns/shacl#Shape",
@@ -276,7 +276,7 @@
                                 ],
                                 "http://a.ml/vocabularies/shapes#range": [
                                   {
-                                    "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/type/scalar/type",
+                                    "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/200/application%2Fjson/schema/property/type/scalar/type",
                                     "@type": [
                                       "http://a.ml/vocabularies/shapes#ScalarShape",
                                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -321,7 +321,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#tag": [
                   {
-                    "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/tag/Invoice%20Items",
+                    "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/get/tag/Invoice%20Items",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Tag",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -342,7 +342,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#parameter": [
               {
-                "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/path/invoice_id",
+                "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/path/invoice_id",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Parameter",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -384,7 +384,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/invoice_id",
+                    "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/invoice_id",
                     "@type": [
                       "http://www.w3.org/ns/shacl#NodeShape",
                       "http://a.ml/vocabularies/shapes#AnyShape",
@@ -399,7 +399,7 @@
                     ],
                     "http://www.w3.org/ns/shacl#property": [
                       {
-                        "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/invoice_id/property/ref",
+                        "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/invoice_id/property/ref",
                         "@type": [
                           "http://www.w3.org/ns/shacl#PropertyShape",
                           "http://www.w3.org/ns/shacl#Shape",
@@ -413,7 +413,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#range": [
                           {
-                            "@id": "file://./test/data/production/zalando/positive3.oas#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/invoice_id/property/ref/scalar/ref",
+                            "@id": "file://./test/data/production/zalando/positive3.yaml#/web-api/end-points/%2Finvoices%2F%7Binvoice_id%7D%2Fitems/parameter/default-binding/invoice_id/invoice_id/property/ref/scalar/ref",
                             "@type": [
                               "http://a.ml/vocabularies/shapes#ScalarShape",
                               "http://a.ml/vocabularies/shapes#AnyShape",
