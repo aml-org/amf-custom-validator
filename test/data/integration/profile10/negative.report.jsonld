@@ -1,145 +1,194 @@
-{
-  "@context": {
-    "actual": {
-      "@id": "http://a.ml/vocabularies/validation#actual"
-    },
-    "apiContract": "http://a.ml/vocabularies/apiContract#",
-    "argument": {
-      "@id": "http://a.ml/vocabularies/validation#argument"
-    },
-    "column": {
-      "@id": "http://a.ml/vocabularies/lexical#column"
-    },
-    "component": {
-      "@id": "http://a.ml/vocabularies/validation#component"
-    },
-    "condition": {
-      "@id": "http://a.ml/vocabularies/validation#condition"
-    },
-    "conforms": {
-      "@id": "http://www.w3.org/ns/shacl#conforms"
-    },
-    "core": "http://a.ml/vocabularies/core#",
-    "data": "http://a.ml/vocabularies/data#",
-    "doc": "http://a.ml/vocabularies/document#",
-    "end": {
-      "@id": "http://a.ml/vocabularies/lexical#end"
-    },
-    "expected": {
-      "@id": "http://a.ml/vocabularies/validation#expected"
-    },
-    "focusNode": {
-      "@id": "http://www.w3.org/ns/shacl#focusNode"
-    },
-    "istio": "http://mulesoft.com/models/istio#",
-    "lexical": "http://a.ml/vocabularies/lexical#",
-    "line": {
-      "@id": "http://a.ml/vocabularies/lexical#line"
-    },
-    "location": {
-      "@id": "http://a.ml/vocabularies/validation#location"
-    },
-    "negated": {
-      "@id": "http://a.ml/vocabularies/validation#negated"
-    },
-    "range": {
-      "@id": "http://a.ml/vocabularies/lexical#range"
-    },
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema",
-    "result": {
-      "@id": "http://www.w3.org/ns/shacl#result"
-    },
-    "resultMessage": {
-      "@id": "http://www.w3.org/ns/shacl#resultMessage"
-    },
-    "resultPath": {
-      "@id": "http://www.w3.org/ns/shacl#resultPath"
-    },
-    "resultSeverity": {
-      "@id": "http://www.w3.org/ns/shacl#resultSeverity"
-    },
-    "security": "http://a.ml/vocabularies/security#",
-    "shacl": "http://www.w3.org/ns/shacl#",
-    "shapes": "http://a.ml/vocabularies/shapes#",
-    "sourceShapeName": {
-      "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
-    },
-    "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
-    "start": {
-      "@id": "http://a.ml/vocabularies/lexical#start"
-    },
-    "subResult": {
-      "@id": "http://a.ml/vocabularies/validation#subResult"
-    },
-    "trace": {
-      "@id": "http://a.ml/vocabularies/validation#trace"
-    },
-    "traceValue": {
-      "@id": "http://www.w3.org/ns/shacl#traceValue"
-    },
-    "uri": {
-      "@id": "http://a.ml/vocabularies/lexical#uri"
-    },
-    "validation": "http://a.ml/vocabularies/validation#",
-    "xsd": "http://www.w3.org/2001/XMLSchema#"
-  },
-  "@type": "shacl:ValidationReport",
-  "conforms": false,
-  "result": [
-    {
-      "@type": [
-        "shacl:ValidationResult"
-      ],
+[
+  {
+    "@context": {
+      "actual": {
+        "@id": "http://a.ml/vocabularies/validation#actual"
+      },
+      "apiContract": "http://a.ml/vocabularies/apiContract#",
+      "argument": {
+        "@id": "http://a.ml/vocabularies/validation#argument"
+      },
+      "column": {
+        "@id": "http://a.ml/vocabularies/lexical#column"
+      },
+      "component": {
+        "@id": "http://a.ml/vocabularies/validation#component"
+      },
+      "condition": {
+        "@id": "http://a.ml/vocabularies/validation#condition"
+      },
+      "conforms": {
+        "@id": "http://www.w3.org/ns/shacl#conforms"
+      },
+      "core": "http://a.ml/vocabularies/core#",
+      "data": "http://a.ml/vocabularies/data#",
+      "doc": "http://a.ml/vocabularies/document#",
+      "end": {
+        "@id": "http://a.ml/vocabularies/lexical#end"
+      },
+      "expected": {
+        "@id": "http://a.ml/vocabularies/validation#expected"
+      },
       "focusNode": {
-        "@id": "http://a.ml/amf/default_document#/encodes/spec/http/0"
+        "@id": "http://www.w3.org/ns/shacl#focusNode"
       },
-      "resultMessage": "[KIA1104 - The weight is assumed to be 100 because there is only one route destination](https://kiali.io/documentation/latest/validations/#_kia1104_the_weight_is_assumed_to_be_100_because_there_is_only_one_route_destination)\nIstio assumes the weight to be 100 when there is only one HTTPRouteDestination or RouteDestination. The warning is present because there is one route with a weight less than 100.\n",
+      "istio": "http://mulesoft.com/models/istio#",
+      "lexical": "http://a.ml/vocabularies/lexical#",
+      "lexicalSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/lexical.yaml#/declarations/",
+      "line": {
+        "@id": "http://a.ml/vocabularies/lexical#line"
+      },
+      "location": {
+        "@id": "http://a.ml/vocabularies/validation#location"
+      },
+      "meta": "http://a.ml/vocabularies/meta#",
+      "negated": {
+        "@id": "http://a.ml/vocabularies/validation#negated"
+      },
+      "range": {
+        "@id": "http://a.ml/vocabularies/lexical#range"
+      },
+      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema",
+      "reportSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/",
+      "result": {
+        "@id": "http://www.w3.org/ns/shacl#result"
+      },
+      "resultMessage": {
+        "@id": "http://www.w3.org/ns/shacl#resultMessage"
+      },
+      "resultPath": {
+        "@id": "http://www.w3.org/ns/shacl#resultPath"
+      },
       "resultSeverity": {
-        "@id": "http://www.w3.org/ns/shacl#Violation"
+        "@id": "http://www.w3.org/ns/shacl#resultSeverity"
       },
-      "sourceShapeName": "kia1104-virtual-service-weight-assumed-100-percent",
-      "trace": [
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "maxCount",
-          "resultPath": "data.route",
-          "traceValue": {
-            "actual": 1,
-            "condition": "<=",
-            "expected": 1,
-            "negated": true
+      "security": "http://a.ml/vocabularies/security#",
+      "shacl": "http://www.w3.org/ns/shacl#",
+      "shapes": "http://a.ml/vocabularies/shapes#",
+      "sourceShapeName": {
+        "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
+      },
+      "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
+      "start": {
+        "@id": "http://a.ml/vocabularies/lexical#start"
+      },
+      "subResult": {
+        "@id": "http://a.ml/vocabularies/validation#subResult"
+      },
+      "trace": {
+        "@id": "http://a.ml/vocabularies/validation#trace"
+      },
+      "traceValue": {
+        "@id": "http://www.w3.org/ns/shacl#traceValue"
+      },
+      "uri": {
+        "@id": "http://a.ml/vocabularies/lexical#uri"
+      },
+      "validation": "http://a.ml/vocabularies/validation#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "@id": "dialect-instance",
+    "@type": [
+      "meta:DialectInstance",
+      "doc:Document",
+      "doc:Fragment",
+      "doc:Module",
+      "doc:Unit"
+    ],
+    "doc:encodes": [
+      {
+        "@id": "validation-report",
+        "@type": [
+          "reportSchema:ReportNode",
+          "shacl:ValidationReport"
+        ],
+        "conforms": false,
+        "result": [
+          {
+            "@id": "violation_0",
+            "@type": [
+              "reportSchema:ValidationResultNode",
+              "shacl:ValidationResult"
+            ],
+            "focusNode": "http://a.ml/amf/default_document#/encodes/spec/http/0",
+            "resultMessage": "[KIA1104 - The weight is assumed to be 100 because there is only one route destination](https://kiali.io/documentation/latest/validations/#_kia1104_the_weight_is_assumed_to_be_100_because_there_is_only_one_route_destination)\nIstio assumes the weight to be 100 when there is only one HTTPRouteDestination or RouteDestination. The warning is present because there is one route with a weight less than 100.\n",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "sourceShapeName": "kia1104-virtual-service-weight-assumed-100-percent",
+            "trace": [
+              {
+                "@id": "violation_0_0",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "maxCount",
+                "resultPath": "data.route",
+                "traceValue": {
+                  "@id": "violation_0_0_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "actual": 1,
+                  "condition": "<=",
+                  "expected": 1,
+                  "negated": true
+                }
+              },
+              {
+                "@id": "violation_0_1",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "minCount",
+                "resultPath": "data.route",
+                "traceValue": {
+                  "@id": "violation_0_1_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "actual": 1,
+                  "condition": ">=",
+                  "expected": 1,
+                  "negated": true
+                }
+              },
+              {
+                "@id": "violation_0_2",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "nested",
+                "resultPath": "data.route",
+                "traceValue": {
+                  "@id": "violation_0_2_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "failedNodes": 0,
+                  "negated": true,
+                  "subResult": [],
+                  "successfulNodes": 1
+                }
+              }
+            ]
           }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "minCount",
-          "resultPath": "data.route",
-          "traceValue": {
-            "actual": 1,
-            "condition": ">=",
-            "expected": 1,
-            "negated": true
-          }
-        },
-        {
-          "@type": [
-            "validation:TraceMessage"
-          ],
-          "component": "nested",
-          "resultPath": "data.route",
-          "traceValue": {
-            "failedNodes": 0,
-            "negated": true,
-            "subResult": [],
-            "successfulNodes": 1
-          }
-        }
-      ]
-    }
-  ]
-}
+        ]
+      }
+    ],
+    "doc:processingData": [
+      {
+        "@id": "processing-data",
+        "@type": [
+          "doc:DialectInstanceProcessingData"
+        ],
+        "doc:sourceSpec": "Validation Report 1.0"
+      }
+    ]
+  }
+]

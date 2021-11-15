@@ -26,7 +26,8 @@ func GeneratePattern(pattern profile.PatternRule) []SimpleRegoResult {
 		PathRules:  []RegoPathResult{pathResult},
 		Path:       pattern.Path.Source(),
 		TraceNode:  pattern.Variable.Name,
-		TraceValue: fmt.Sprintf("{\"negated\":%t,\"argument\": %s}", pattern.Negated, checkVariable),
+		TraceValue: BuildTraceValueNode(
+			fmt.Sprintf("\"negated\":%t,\"argument\": %s", pattern.Negated, checkVariable)),
 		Variable:   checkVariable,
 	}
 	return []SimpleRegoResult{r}

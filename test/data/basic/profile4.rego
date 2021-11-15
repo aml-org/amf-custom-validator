@@ -135,25 +135,25 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   uri := location["uri"]	
   range_parts := regex.find_n("\\d+", raw_range, 4)
   range := {
-	"@type": ["lexical:Range"],
+	"@type": ["lexicalSchema:RangeNode", "lexical:Range"],
     "start": {
-	  "@type": ["lexical:Position"],
+	  "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
   	  "line": to_number(range_parts[0]),
   	  "column": to_number(range_parts[1])
     },
     "end": {
-	  "@type": ["lexical:Position"],
+	  "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
   	  "line": to_number(range_parts[2]),
   	  "column": to_number(range_parts[3])
     }
   }
   t := {
-	"@type": ["validation:TraceMessage"],
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
     "component": constraint,
     "resultPath": resultPath,
     "traceValue": traceValue,
 	"location": {
-	  "@type": ["lexical:Location"],
+	  "@type": ["lexicalSchema:LocationNode", "lexical:Location"],
       "uri": uri,
       "range": range
 	}
@@ -164,7 +164,7 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   id := focusNode["@id"]
   not input["@lexical"][id]
   t := {
-	"@type": ["validation:TraceMessage"],
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
     "component": constraint,
     "resultPath": resultPath,
     "traceValue": traceValue
@@ -175,11 +175,9 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
 error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
   e := {
-	"@type": ["shacl:ValidationResult"],
+	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
-    "focusNode": {
-		"@id": id,
-	},
+    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
     "resultMessage": resultMessage,
     "trace": traceLog
   }
@@ -250,7 +248,7 @@ violation[matches] {
   #  querying path: raml-shapes.schema
   gen_propValues_1 = gen_path_rule_2 with data.sourceNode as x
   not count(gen_propValues_1) <= 3
-  _result_0 := trace("maxCount","raml-shapes.schema",x,{"negated":false,"condition":"<=","actual": count(gen_propValues_1),"expected": 3})
+  _result_0 := trace("maxCount","raml-shapes.schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<=","actual": count(gen_propValues_1),"expected": 3})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }
 
@@ -259,7 +257,7 @@ violation[matches] {
   #  querying path: raml-shapes.schema
   gen_propValues_3 = gen_path_rule_4 with data.sourceNode as x
   not count(gen_propValues_3) >= 1
-  _result_0 := trace("minCount","raml-shapes.schema",x,{"negated":false,"condition":">=","actual": count(gen_propValues_3),"expected": 1})
+  _result_0 := trace("minCount","raml-shapes.schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_3),"expected": 1})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }
 
@@ -273,7 +271,7 @@ violation[matches] {
     #  querying path: shacl.minLength
     gen_propValues_6 = gen_path_rule_7 with data.sourceNode as y
     not count(gen_propValues_6) >= 1
-    _result_0 := trace("minCount","shacl.minLength",y,{"negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
+    _result_0 := trace("minCount","shacl.minLength",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
     ys_br_0_inner_error := error("nested",y,"error in nested nodes under raml-shapes.schema",[_result_0])
     ys_br_0_error = [y["@id"],ys_br_0_inner_error]
   ]
@@ -284,6 +282,6 @@ violation[matches] {
   # let's accumulate results
   ys_error_node_variables_agg = ys_br_0_errors
   count(ys_error_node_variables_agg) > 0
-  _result_0 := trace("nested","raml-shapes.schema",x,{"negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)),"subResult": y_errorAcc})
+  _result_0 := trace("nested","raml-shapes.schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)),"subResult": y_errorAcc})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }

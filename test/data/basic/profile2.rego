@@ -135,25 +135,25 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   uri := location["uri"]	
   range_parts := regex.find_n("\\d+", raw_range, 4)
   range := {
-	"@type": ["lexical:Range"],
+	"@type": ["lexicalSchema:RangeNode", "lexical:Range"],
     "start": {
-	  "@type": ["lexical:Position"],
+	  "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
   	  "line": to_number(range_parts[0]),
   	  "column": to_number(range_parts[1])
     },
     "end": {
-	  "@type": ["lexical:Position"],
+	  "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
   	  "line": to_number(range_parts[2]),
   	  "column": to_number(range_parts[3])
     }
   }
   t := {
-	"@type": ["validation:TraceMessage"],
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
     "component": constraint,
     "resultPath": resultPath,
     "traceValue": traceValue,
 	"location": {
-	  "@type": ["lexical:Location"],
+	  "@type": ["lexicalSchema:LocationNode", "lexical:Location"],
       "uri": uri,
       "range": range
 	}
@@ -164,7 +164,7 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   id := focusNode["@id"]
   not input["@lexical"][id]
   t := {
-	"@type": ["validation:TraceMessage"],
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
     "component": constraint,
     "resultPath": resultPath,
     "traceValue": traceValue
@@ -175,11 +175,9 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
 error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
   e := {
-	"@type": ["shacl:ValidationResult"],
+	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
-    "focusNode": {
-		"@id": id,
-	},
+    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
     "resultMessage": resultMessage,
     "trace": traceLog
   }
@@ -281,14 +279,14 @@ violation[matches] {
   gen_x_check_2 = as_string(gen_x_check_2_scalar)
   gen_inValues_1 = { "get"}
   not gen_inValues_1[gen_x_check_2]
-  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_2,"expected": "[\"get\"]"})
+  _result_0 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"get\"]"})
   #  querying path: apiContract.method
   gen_x_check_7_array = gen_path_rule_8 with data.sourceNode as x
   gen_x_check_7_scalar = gen_x_check_7_array[_]
   gen_x_check_7 = as_string(gen_x_check_7_scalar)
   gen_inValues_6 = { "subscribe"}
   not gen_inValues_6[gen_x_check_7]
-  _result_1 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_7,"expected": "[\"subscribe\"]"})
+  _result_1 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_7,"expected": "[\"subscribe\"]"})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }
 
@@ -297,14 +295,14 @@ violation[matches] {
   #  querying path: apiContract.method
   gen_propValues_4 = gen_path_rule_5 with data.sourceNode as x
   not count(gen_propValues_4) >= 1
-  _result_0 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_4),"expected": 1})
+  _result_0 := trace("minCount","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_4),"expected": 1})
   #  querying path: apiContract.method
   gen_x_check_7_array = gen_path_rule_8 with data.sourceNode as x
   gen_x_check_7_scalar = gen_x_check_7_array[_]
   gen_x_check_7 = as_string(gen_x_check_7_scalar)
   gen_inValues_6 = { "subscribe"}
   not gen_inValues_6[gen_x_check_7]
-  _result_1 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_7,"expected": "[\"subscribe\"]"})
+  _result_1 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_7,"expected": "[\"subscribe\"]"})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }
 
@@ -316,11 +314,11 @@ violation[matches] {
   gen_x_check_2 = as_string(gen_x_check_2_scalar)
   gen_inValues_1 = { "get"}
   not gen_inValues_1[gen_x_check_2]
-  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_2,"expected": "[\"get\"]"})
+  _result_0 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"get\"]"})
   #  querying path: apiContract.method
   gen_propValues_9 = gen_path_rule_10 with data.sourceNode as x
   not count(gen_propValues_9) >= 1
-  _result_1 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_9),"expected": 1})
+  _result_1 := trace("minCount","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_9),"expected": 1})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }
 
@@ -329,10 +327,10 @@ violation[matches] {
   #  querying path: apiContract.method
   gen_propValues_4 = gen_path_rule_5 with data.sourceNode as x
   not count(gen_propValues_4) >= 1
-  _result_0 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_4),"expected": 1})
+  _result_0 := trace("minCount","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_4),"expected": 1})
   #  querying path: apiContract.method
   gen_propValues_9 = gen_path_rule_10 with data.sourceNode as x
   not count(gen_propValues_9) >= 1
-  _result_1 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_9),"expected": 1})
+  _result_1 := trace("minCount","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_9),"expected": 1})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }

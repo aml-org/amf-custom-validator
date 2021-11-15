@@ -135,25 +135,25 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   uri := location["uri"]	
   range_parts := regex.find_n("\\d+", raw_range, 4)
   range := {
-	"@type": ["lexical:Range"],
+	"@type": ["lexicalSchema:RangeNode", "lexical:Range"],
     "start": {
-	  "@type": ["lexical:Position"],
+	  "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
   	  "line": to_number(range_parts[0]),
   	  "column": to_number(range_parts[1])
     },
     "end": {
-	  "@type": ["lexical:Position"],
+	  "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
   	  "line": to_number(range_parts[2]),
   	  "column": to_number(range_parts[3])
     }
   }
   t := {
-	"@type": ["validation:TraceMessage"],
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
     "component": constraint,
     "resultPath": resultPath,
     "traceValue": traceValue,
 	"location": {
-	  "@type": ["lexical:Location"],
+	  "@type": ["lexicalSchema:LocationNode", "lexical:Location"],
       "uri": uri,
       "range": range
 	}
@@ -164,7 +164,7 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   id := focusNode["@id"]
   not input["@lexical"][id]
   t := {
-	"@type": ["validation:TraceMessage"],
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
     "component": constraint,
     "resultPath": resultPath,
     "traceValue": traceValue
@@ -175,11 +175,9 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
 error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
   e := {
-	"@type": ["shacl:ValidationResult"],
+	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
-    "focusNode": {
-		"@id": id,
-	},
+    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
     "resultMessage": resultMessage,
     "trace": traceLog
   }
@@ -312,7 +310,7 @@ violation[matches] {
     gen_gen_path_rule_2_node_3_array = gen_path_rule_2 with data.sourceNode as p
     gen_gen_path_rule_2_node_3 = gen_gen_path_rule_2_node_3_array[_]
     not regex.match("^4[0-9]{2}$",gen_gen_path_rule_2_node_3)
-    _result_0 := trace("pattern","apiContract.statusCode",p,{"negated":false,"argument": gen_gen_path_rule_2_node_3})
+    _result_0 := trace("pattern","apiContract.statusCode",p,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_rule_2_node_3})
     ps_br_0_inner_error := error("nested",p,"error in nested nodes under apiContract.returns",[_result_0])
     ps_br_0_error = [p["@id"],ps_br_0_inner_error]
   ]
@@ -323,14 +321,14 @@ violation[matches] {
   # let's accumulate results
   ps_error_node_variables_agg = ps_br_0_errors
   not count(ps) - count(ps_error_node_variables_agg) >= 1
-  _result_0 := trace("atLeast","apiContract.returns",x,{"negated":false, "failedNodes":count(ps_error_node_variables_agg), "successfulNodes":(count(ps)-count(ps_error_node_variables_agg)), "cardinality":1, "subResult": p_errorAcc})
+  _result_0 := trace("atLeast","apiContract.returns",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(ps_error_node_variables_agg), "successfulNodes":(count(ps)-count(ps_error_node_variables_agg)), "cardinality":1, "subResult": p_errorAcc})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
   gen_x_check_14 = as_string(gen_x_check_14_scalar)
   gen_inValues_13 = { "get"}
   gen_inValues_13[gen_x_check_14]
-  _result_1 := trace("in","apiContract.method",x,{"negated":true,"actual": gen_x_check_14,"expected": "[\"get\"]"})
+  _result_1 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"actual": gen_x_check_14,"expected": "[\"get\"]"})
   matches := error("and-or-not-rule",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0,_result_1])
 }
 
@@ -345,7 +343,7 @@ violation[matches] {
     gen_gen_path_rule_5_node_6_array = gen_path_rule_5 with data.sourceNode as q
     gen_gen_path_rule_5_node_6 = gen_gen_path_rule_5_node_6_array[_]
     not regex.match("^5[0-9]{2}$",gen_gen_path_rule_5_node_6)
-    _result_0 := trace("pattern","apiContract.statusCode",q,{"negated":false,"argument": gen_gen_path_rule_5_node_6})
+    _result_0 := trace("pattern","apiContract.statusCode",q,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_rule_5_node_6})
     qs_br_0_inner_error := error("nested",q,"error in nested nodes under apiContract.returns",[_result_0])
     qs_br_0_error = [q["@id"],qs_br_0_inner_error]
   ]
@@ -356,14 +354,14 @@ violation[matches] {
   # let's accumulate results
   qs_error_node_variables_agg = qs_br_0_errors
   not count(qs) - count(qs_error_node_variables_agg) >= 1
-  _result_0 := trace("atLeast","apiContract.returns",x,{"negated":false, "failedNodes":count(qs_error_node_variables_agg), "successfulNodes":(count(qs)-count(qs_error_node_variables_agg)), "cardinality":1, "subResult": q_errorAcc})
+  _result_0 := trace("atLeast","apiContract.returns",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(qs_error_node_variables_agg), "successfulNodes":(count(qs)-count(qs_error_node_variables_agg)), "cardinality":1, "subResult": q_errorAcc})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
   gen_x_check_14 = as_string(gen_x_check_14_scalar)
   gen_inValues_13 = { "get"}
   gen_inValues_13[gen_x_check_14]
-  _result_1 := trace("in","apiContract.method",x,{"negated":true,"actual": gen_x_check_14,"expected": "[\"get\"]"})
+  _result_1 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"actual": gen_x_check_14,"expected": "[\"get\"]"})
   matches := error("and-or-not-rule",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0,_result_1])
 }
 
@@ -378,7 +376,7 @@ violation[matches] {
     gen_gen_path_rule_8_node_9_array = gen_path_rule_8 with data.sourceNode as y
     gen_gen_path_rule_8_node_9 = gen_gen_path_rule_8_node_9_array[_]
     not regex.match("^201$",gen_gen_path_rule_8_node_9)
-    _result_0 := trace("pattern","apiContract.statusCode",y,{"negated":false,"argument": gen_gen_path_rule_8_node_9})
+    _result_0 := trace("pattern","apiContract.statusCode",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_rule_8_node_9})
     ys_br_0_inner_error := error("nested",y,"error in nested nodes under apiContract.returns",[_result_0])
     ys_br_0_error = [y["@id"],ys_br_0_inner_error]
   ]
@@ -389,14 +387,14 @@ violation[matches] {
   # let's accumulate results
   ys_error_node_variables_agg = ys_br_0_errors
   count(ys) - count(ys_error_node_variables_agg) >= 1
-  _result_0 := trace("atLeast","apiContract.returns",x,{"negated":true, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)), "cardinality":1, "subResult": y_errorAcc})
+  _result_0 := trace("atLeast","apiContract.returns",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)), "cardinality":1, "subResult": y_errorAcc})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
   gen_x_check_14 = as_string(gen_x_check_14_scalar)
   gen_inValues_13 = { "get"}
   gen_inValues_13[gen_x_check_14]
-  _result_1 := trace("in","apiContract.method",x,{"negated":true,"actual": gen_x_check_14,"expected": "[\"get\"]"})
+  _result_1 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"actual": gen_x_check_14,"expected": "[\"get\"]"})
   matches := error("and-or-not-rule",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0,_result_1])
 }
 
@@ -411,7 +409,7 @@ violation[matches] {
     gen_gen_path_rule_11_node_12_array = gen_path_rule_11 with data.sourceNode as z
     gen_gen_path_rule_11_node_12 = gen_gen_path_rule_11_node_12_array[_]
     not regex.match("^2[0-9]{2}$",gen_gen_path_rule_11_node_12)
-    _result_0 := trace("pattern","apiContract.statusCode",z,{"negated":false,"argument": gen_gen_path_rule_11_node_12})
+    _result_0 := trace("pattern","apiContract.statusCode",z,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_rule_11_node_12})
     zs_br_0_inner_error := error("nested",z,"error in nested nodes under apiContract.returns",[_result_0])
     zs_br_0_error = [z["@id"],zs_br_0_inner_error]
   ]
@@ -422,13 +420,13 @@ violation[matches] {
   # let's accumulate results
   zs_error_node_variables_agg = zs_br_0_errors
   not count(zs) - count(zs_error_node_variables_agg) >= 1
-  _result_0 := trace("atLeast","apiContract.returns",x,{"negated":false, "failedNodes":count(zs_error_node_variables_agg), "successfulNodes":(count(zs)-count(zs_error_node_variables_agg)), "cardinality":1, "subResult": z_errorAcc})
+  _result_0 := trace("atLeast","apiContract.returns",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(zs_error_node_variables_agg), "successfulNodes":(count(zs)-count(zs_error_node_variables_agg)), "cardinality":1, "subResult": z_errorAcc})
   #  querying path: apiContract.method
   gen_x_check_14_array = gen_path_rule_15 with data.sourceNode as x
   gen_x_check_14_scalar = gen_x_check_14_array[_]
   gen_x_check_14 = as_string(gen_x_check_14_scalar)
   gen_inValues_13 = { "get"}
   gen_inValues_13[gen_x_check_14]
-  _result_1 := trace("in","apiContract.method",x,{"negated":true,"actual": gen_x_check_14,"expected": "[\"get\"]"})
+  _result_1 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"actual": gen_x_check_14,"expected": "[\"get\"]"})
   matches := error("and-or-not-rule",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0,_result_1])
 }

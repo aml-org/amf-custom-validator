@@ -22,9 +22,6 @@ FROM openjdk:8u292-jre AS ci-java
 COPY . ./src
 WORKDIR ./src
 
-RUN pwd
-RUN ls -la
-
 # Install make
 RUN apt-get update && apt-get install make
 

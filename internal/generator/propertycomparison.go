@@ -36,7 +36,8 @@ func GeneratePropertyComparison(comparison profile.PropertyComparisonRule) []Sim
 		Path:       comparison.Path.Source(),
 		Variable:   comparison.Variable.Name,
 		TraceNode:  comparison.Variable.Name,
-		TraceValue: fmt.Sprintf("{\"negated\":%t, \"condition\":\"%s\",\"expected\":%s, \"actual\":%s}", comparison.Negated, comparison.Operator.String(), propVariable, altPropVariable),
+		TraceValue: BuildTraceValueNode(
+			fmt.Sprintf("\"negated\":%t, \"condition\":\"%s\",\"expected\":%s, \"actual\":%s", comparison.Negated, comparison.Operator.String(), propVariable, altPropVariable)),
 	}
 	return []SimpleRegoResult{r}
 }

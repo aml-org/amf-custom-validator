@@ -135,25 +135,25 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   uri := location["uri"]	
   range_parts := regex.find_n("\\d+", raw_range, 4)
   range := {
-	"@type": ["lexical:Range"],
+	"@type": ["lexicalSchema:RangeNode", "lexical:Range"],
     "start": {
-	  "@type": ["lexical:Position"],
+	  "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
   	  "line": to_number(range_parts[0]),
   	  "column": to_number(range_parts[1])
     },
     "end": {
-	  "@type": ["lexical:Position"],
+	  "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
   	  "line": to_number(range_parts[2]),
   	  "column": to_number(range_parts[3])
     }
   }
   t := {
-	"@type": ["validation:TraceMessage"],
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
     "component": constraint,
     "resultPath": resultPath,
     "traceValue": traceValue,
 	"location": {
-	  "@type": ["lexical:Location"],
+	  "@type": ["lexicalSchema:LocationNode", "lexical:Location"],
       "uri": uri,
       "range": range
 	}
@@ -164,7 +164,7 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   id := focusNode["@id"]
   not input["@lexical"][id]
   t := {
-	"@type": ["validation:TraceMessage"],
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
     "component": constraint,
     "resultPath": resultPath,
     "traceValue": traceValue
@@ -175,11 +175,9 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
 error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
   e := {
-	"@type": ["shacl:ValidationResult"],
+	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
-    "focusNode": {
-		"@id": id,
-	},
+    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
     "resultMessage": resultMessage,
     "trace": traceLog
   }
@@ -258,7 +256,7 @@ violation[matches] {
     gen_y_check_3 = as_string(gen_y_check_3_scalar)
     gen_inValues_2 = { "200"}
     not gen_inValues_2[gen_y_check_3]
-    _result_0 := trace("in","apiContract.statusCode",y,{"negated":false,"actual": gen_y_check_3,"expected": "[\"200\"]"})
+    _result_0 := trace("in","apiContract.statusCode",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_y_check_3,"expected": "[\"200\"]"})
     ys_br_0_inner_error := error("nested",y,"error in nested nodes under apiContract.returns",[_result_0])
     ys_br_0_error = [y["@id"],ys_br_0_inner_error]
   ]
@@ -269,7 +267,7 @@ violation[matches] {
   # let's accumulate results
   ys_error_node_variables_agg = ys_br_0_errors
   not count(ys) - count(ys_error_node_variables_agg) >= 1
-  _result_0 := trace("atLeast","apiContract.returns",x,{"negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)), "cardinality":1, "subResult": y_errorAcc})
+  _result_0 := trace("atLeast","apiContract.returns",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)), "cardinality":1, "subResult": y_errorAcc})
   #  querying path: apiContract.returns
   zs = gen_path_rule_5 with data.sourceNode as x
   z_errorAcc0 = []
@@ -281,7 +279,7 @@ violation[matches] {
     gen_z_check_7 = as_string(gen_z_check_7_scalar)
     gen_inValues_6 = { "429"}
     not gen_inValues_6[gen_z_check_7]
-    _result_0 := trace("in","apiContract.statusCode",z,{"negated":false,"actual": gen_z_check_7,"expected": "[\"429\"]"})
+    _result_0 := trace("in","apiContract.statusCode",z,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_z_check_7,"expected": "[\"429\"]"})
     zs_br_0_inner_error := error("nested",z,"error in nested nodes under apiContract.returns",[_result_0])
     zs_br_0_error = [z["@id"],zs_br_0_inner_error]
   ]
@@ -292,6 +290,6 @@ violation[matches] {
   # let's accumulate results
   zs_error_node_variables_agg = zs_br_0_errors
   not count(zs) - count(zs_error_node_variables_agg) >= 1
-  _result_1 := trace("atLeast","apiContract.returns",x,{"negated":false, "failedNodes":count(zs_error_node_variables_agg), "successfulNodes":(count(zs)-count(zs_error_node_variables_agg)), "cardinality":1, "subResult": z_errorAcc})
+  _result_1 := trace("atLeast","apiContract.returns",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(zs_error_node_variables_agg), "successfulNodes":(count(zs)-count(zs_error_node_variables_agg)), "cardinality":1, "subResult": z_errorAcc})
   matches := error("lack-of-resources-and-rate-limiting-too-many-requests",x,"Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n",[_result_0,_result_1])
 }

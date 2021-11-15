@@ -135,25 +135,25 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   uri := location["uri"]	
   range_parts := regex.find_n("\\d+", raw_range, 4)
   range := {
-	"@type": ["lexical:Range"],
+	"@type": ["lexicalSchema:RangeNode", "lexical:Range"],
     "start": {
-	  "@type": ["lexical:Position"],
+	  "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
   	  "line": to_number(range_parts[0]),
   	  "column": to_number(range_parts[1])
     },
     "end": {
-	  "@type": ["lexical:Position"],
+	  "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
   	  "line": to_number(range_parts[2]),
   	  "column": to_number(range_parts[3])
     }
   }
   t := {
-	"@type": ["validation:TraceMessage"],
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
     "component": constraint,
     "resultPath": resultPath,
     "traceValue": traceValue,
 	"location": {
-	  "@type": ["lexical:Location"],
+	  "@type": ["lexicalSchema:LocationNode", "lexical:Location"],
       "uri": uri,
       "range": range
 	}
@@ -164,7 +164,7 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   id := focusNode["@id"]
   not input["@lexical"][id]
   t := {
-	"@type": ["validation:TraceMessage"],
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
     "component": constraint,
     "resultPath": resultPath,
     "traceValue": traceValue
@@ -175,11 +175,9 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
 error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
   e := {
-	"@type": ["shacl:ValidationResult"],
+	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
-    "focusNode": {
-		"@id": id,
-	},
+    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
     "resultMessage": resultMessage,
     "trace": traceLog
   }
@@ -253,7 +251,7 @@ violation[matches] {
   gen_x_check_2 = as_string(gen_x_check_2_scalar)
   gen_inValues_1 = { "publish","subscribe","1","2"}
   not gen_inValues_1[gen_x_check_2]
-  _result_0 := trace("in","apiContract.method",x,{"negated":false,"actual": gen_x_check_2,"expected": "[\"publish\",\"subscribe\",\"1\",\"2\"]"})
+  _result_0 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"publish\",\"subscribe\",\"1\",\"2\"]"})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 
@@ -262,7 +260,7 @@ violation[matches] {
   #  querying path: shacl.name
   gen_propValues_4 = gen_path_rule_5 with data.sourceNode as x
   not count(gen_propValues_4) <= 1
-  _result_0 := trace("maxCount","shacl.name",x,{"negated":false,"condition":"<=","actual": count(gen_propValues_4),"expected": 1})
+  _result_0 := trace("maxCount","shacl.name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<=","actual": count(gen_propValues_4),"expected": 1})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 
@@ -271,7 +269,7 @@ violation[matches] {
   #  querying path: apiContract.method
   gen_propValues_6 = gen_path_rule_7 with data.sourceNode as x
   not count(gen_propValues_6) >= 1
-  _result_0 := trace("minCount","apiContract.method",x,{"negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
+  _result_0 := trace("minCount","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 
@@ -281,6 +279,6 @@ violation[matches] {
   gen_gen_path_rule_8_node_9_array = gen_path_rule_8 with data.sourceNode as x
   gen_gen_path_rule_8_node_9 = gen_gen_path_rule_8_node_9_array[_]
   not regex.match("^put|post$",gen_gen_path_rule_8_node_9)
-  _result_0 := trace("pattern","shacl.name",x,{"negated":false,"argument": gen_gen_path_rule_8_node_9})
+  _result_0 := trace("pattern","shacl.name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_rule_8_node_9})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
