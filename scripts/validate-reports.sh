@@ -4,8 +4,8 @@ declare -i exitCode
 exitCode=0
 for input_report in $input_reports
 do
-  output_report=$(java -jar amf.jar validate -in "AML 1.0" -mime-in "application/yaml" -ds file://dialects/validation-report.yaml "file://$input_report")
-  if grep -q '"http://www.w3.org/ns/shacl#conforms": true' <<< "$output_report";
+  output_report=$(java -jar amf.jar validate "$input_report")
+  if grep -q 'Conforms: true' <<< "$output_report";
   then
     echo -e "\033[32m $input_report conforms \033[0m"
   else

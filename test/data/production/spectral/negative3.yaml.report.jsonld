@@ -1,0 +1,423 @@
+{
+  "@context": {
+    "actual": {
+      "@id": "http://a.ml/vocabularies/validation#actual"
+    },
+    "apiContract": "http://a.ml/vocabularies/apiContract#",
+    "argument": {
+      "@id": "http://a.ml/vocabularies/validation#argument"
+    },
+    "column": {
+      "@id": "http://a.ml/vocabularies/lexical#column"
+    },
+    "component": {
+      "@id": "http://a.ml/vocabularies/validation#component"
+    },
+    "condition": {
+      "@id": "http://a.ml/vocabularies/validation#condition"
+    },
+    "conforms": {
+      "@id": "http://www.w3.org/ns/shacl#conforms"
+    },
+    "core": "http://a.ml/vocabularies/core#",
+    "data": "http://a.ml/vocabularies/data#",
+    "doc": "http://a.ml/vocabularies/document#",
+    "end": {
+      "@id": "http://a.ml/vocabularies/lexical#end"
+    },
+    "expected": {
+      "@id": "http://a.ml/vocabularies/validation#expected"
+    },
+    "focusNode": {
+      "@id": "http://www.w3.org/ns/shacl#focusNode"
+    },
+    "lexical": "http://a.ml/vocabularies/lexical#",
+    "line": {
+      "@id": "http://a.ml/vocabularies/lexical#line"
+    },
+    "location": {
+      "@id": "http://a.ml/vocabularies/validation#location"
+    },
+    "negated": {
+      "@id": "http://a.ml/vocabularies/validation#negated"
+    },
+    "range": {
+      "@id": "http://a.ml/vocabularies/lexical#range"
+    },
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema",
+    "result": {
+      "@id": "http://www.w3.org/ns/shacl#result"
+    },
+    "resultMessage": {
+      "@id": "http://www.w3.org/ns/shacl#resultMessage"
+    },
+    "resultPath": {
+      "@id": "http://www.w3.org/ns/shacl#resultPath"
+    },
+    "resultSeverity": {
+      "@id": "http://www.w3.org/ns/shacl#resultSeverity"
+    },
+    "security": "http://a.ml/vocabularies/security#",
+    "shacl": "http://www.w3.org/ns/shacl#",
+    "shapes": "http://a.ml/vocabularies/shapes#",
+    "sourceShapeName": {
+      "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
+    },
+    "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
+    "start": {
+      "@id": "http://a.ml/vocabularies/lexical#start"
+    },
+    "subResult": {
+      "@id": "http://a.ml/vocabularies/validation#subResult"
+    },
+    "trace": {
+      "@id": "http://a.ml/vocabularies/validation#trace"
+    },
+    "traceValue": {
+      "@id": "http://www.w3.org/ns/shacl#traceValue"
+    },
+    "uri": {
+      "@id": "http://a.ml/vocabularies/lexical#uri"
+    },
+    "validation": "http://a.ml/vocabularies/validation#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@type": "shacl:ValidationReport",
+  "conforms": false,
+  "result": [
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api"
+      },
+      "resultMessage": "Every operation must have a unique operationId.\n\nWhy? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,\nall sorts of things like that.\n",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "operation-operationId-unique",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "rego",
+          "resultPath": "",
+          "traceValue": {
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api"
+      },
+      "resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "info-description",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "core.description",
+          "traceValue": {
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api"
+      },
+      "resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "info-license",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "core.license",
+          "traceValue": {
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api"
+      },
+      "resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "openapi-tags",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "apiContract.tag",
+          "traceValue": {
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother/patch"
+      },
+      "resultMessage": "Operation must have a description explaining the operation functionality",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "operation-description",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "core.description",
+          "traceValue": {
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother/put"
+      },
+      "resultMessage": "Operation must have a description explaining the operation functionality",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "operation-description",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "core.description",
+          "traceValue": {
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet/patch"
+      },
+      "resultMessage": "Operation must have a description explaining the operation functionality",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "operation-description",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "core.description",
+          "traceValue": {
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet/put"
+      },
+      "resultMessage": "Operation must have a description explaining the operation functionality",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "operation-description",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "core.description",
+          "traceValue": {
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother/patch"
+      },
+      "resultMessage": "Operation should have non-empty tags array.",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "operation-tags",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "apiContract.tag",
+          "traceValue": {
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fother/put"
+      },
+      "resultMessage": "Operation should have non-empty tags array.",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "operation-tags",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "apiContract.tag",
+          "traceValue": {
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet/patch"
+      },
+      "resultMessage": "Operation should have non-empty tags array.",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "operation-tags",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "apiContract.tag",
+          "traceValue": {
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "shacl:ValidationResult"
+      ],
+      "focusNode": {
+        "@id": "file://./test/data/production/spectral/negative3.yaml#/web-api/end-points/%2Fpet/put"
+      },
+      "resultMessage": "Operation should have non-empty tags array.",
+      "resultSeverity": {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      },
+      "sourceShapeName": "operation-tags",
+      "trace": [
+        {
+          "@type": [
+            "validation:TraceMessage"
+          ],
+          "component": "minCount",
+          "resultPath": "apiContract.tag",
+          "traceValue": {
+            "actual": 0,
+            "condition": ">=",
+            "expected": 1,
+            "negated": false
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://./test/data/integration/profile16/negative.data.oas",
+    "@id": "file://./test/data/integration/profile16/negative.data.yaml",
     "@type": [
       "http://a.ml/vocabularies/document#Document",
       "http://a.ml/vocabularies/document#Fragment",
@@ -9,7 +9,7 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://./test/data/integration/profile16/negative.data.oas#/web-api",
+        "@id": "file://./test/data/integration/profile16/negative.data.yaml#/web-api",
         "@type": [
           "http://a.ml/vocabularies/apiContract#WebAPI",
           "http://a.ml/vocabularies/apiContract#API",
@@ -23,7 +23,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#server": [
           {
-            "@id": "file://./test/data/integration/profile16/negative.data.oas#/web-api/https%3A%2F%2Fproduction.test.com%2F",
+            "@id": "file://./test/data/integration/profile16/negative.data.yaml#/web-api/https%3A%2F%2Fproduction.test.com%2F",
             "@type": [
               "http://a.ml/vocabularies/apiContract#Server",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -47,7 +47,7 @@
         ],
         "http://a.ml/vocabularies/apiContract#endpoint": [
           {
-            "@id": "file://./test/data/integration/profile16/negative.data.oas#/web-api/end-points/%2Fusers",
+            "@id": "file://./test/data/integration/profile16/negative.data.yaml#/web-api/end-points/%2Fusers",
             "@type": [
               "http://a.ml/vocabularies/apiContract#EndPoint",
               "http://a.ml/vocabularies/document#DomainElement"
@@ -59,7 +59,7 @@
             ],
             "http://a.ml/vocabularies/apiContract#supportedOperation": [
               {
-                "@id": "file://./test/data/integration/profile16/negative.data.oas#/web-api/end-points/%2Fusers/get",
+                "@id": "file://./test/data/integration/profile16/negative.data.yaml#/web-api/end-points/%2Fusers/get",
                 "@type": [
                   "http://a.ml/vocabularies/apiContract#Operation",
                   "http://a.ml/vocabularies/document#DomainElement"
@@ -81,7 +81,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#returns": [
                   {
-                    "@id": "file://./test/data/integration/profile16/negative.data.oas#/web-api/end-points/%2Fusers/get/201",
+                    "@id": "file://./test/data/integration/profile16/negative.data.yaml#/web-api/end-points/%2Fusers/get/201",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Response",
                       "http://a.ml/vocabularies/apiContract#Message",
@@ -104,7 +104,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#payload": [
                       {
-                        "@id": "file://./test/data/integration/profile16/negative.data.oas#/web-api/end-points/%2Fusers/get/201/application%2Fjson",
+                        "@id": "file://./test/data/integration/profile16/negative.data.yaml#/web-api/end-points/%2Fusers/get/201/application%2Fjson",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Payload",
                           "http://a.ml/vocabularies/document#DomainElement"
@@ -116,7 +116,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://./test/data/integration/profile16/negative.data.oas#/web-api/end-points/%2Fusers/get/201/application%2Fjson/unresolved",
+                            "@id": "file://./test/data/integration/profile16/negative.data.yaml#/web-api/end-points/%2Fusers/get/201/application%2Fjson/unresolved",
                             "@type": [
                               "http://a.ml/vocabularies/shapes#AnyShape",
                               "http://www.w3.org/ns/shacl#Shape",
@@ -141,7 +141,7 @@
                 ],
                 "http://a.ml/vocabularies/apiContract#tag": [
                   {
-                    "@id": "file://./test/data/integration/profile16/negative.data.oas#/web-api/end-points/%2Fusers/get/tag/All%20users",
+                    "@id": "file://./test/data/integration/profile16/negative.data.yaml#/web-api/end-points/%2Fusers/get/tag/All%20users",
                     "@type": [
                       "http://a.ml/vocabularies/apiContract#Tag",
                       "http://a.ml/vocabularies/document#DomainElement"
@@ -176,7 +176,7 @@
     ],
     "http://a.ml/vocabularies/document#declares": [
       {
-        "@id": "file://./test/data/integration/profile16/negative.data.oas#/declarations/types/Customer",
+        "@id": "file://./test/data/integration/profile16/negative.data.yaml#/declarations/types/Customer",
         "@type": [
           "http://www.w3.org/ns/shacl#NodeShape",
           "http://a.ml/vocabularies/shapes#AnyShape",
@@ -191,7 +191,7 @@
         ],
         "http://www.w3.org/ns/shacl#property": [
           {
-            "@id": "file://./test/data/integration/profile16/negative.data.oas#/declarations/types/Customer/property/id",
+            "@id": "file://./test/data/integration/profile16/negative.data.yaml#/declarations/types/Customer/property/id",
             "@type": [
               "http://www.w3.org/ns/shacl#PropertyShape",
               "http://www.w3.org/ns/shacl#Shape",
@@ -205,7 +205,7 @@
             ],
             "http://a.ml/vocabularies/shapes#range": [
               {
-                "@id": "file://./test/data/integration/profile16/negative.data.oas#/declarations/types/Customer/property/id/scalar/id",
+                "@id": "file://./test/data/integration/profile16/negative.data.yaml#/declarations/types/Customer/property/id/scalar/id",
                 "@type": [
                   "http://a.ml/vocabularies/shapes#ScalarShape",
                   "http://a.ml/vocabularies/shapes#AnyShape",
@@ -242,7 +242,7 @@
             ]
           },
           {
-            "@id": "file://./test/data/integration/profile16/negative.data.oas#/declarations/types/Customer/property/name",
+            "@id": "file://./test/data/integration/profile16/negative.data.yaml#/declarations/types/Customer/property/name",
             "@type": [
               "http://www.w3.org/ns/shacl#PropertyShape",
               "http://www.w3.org/ns/shacl#Shape",
@@ -256,7 +256,7 @@
             ],
             "http://a.ml/vocabularies/shapes#range": [
               {
-                "@id": "file://./test/data/integration/profile16/negative.data.oas#/declarations/types/Customer/property/name/scalar/name",
+                "@id": "file://./test/data/integration/profile16/negative.data.yaml#/declarations/types/Customer/property/name/scalar/name",
                 "@type": [
                   "http://a.ml/vocabularies/shapes#ScalarShape",
                   "http://a.ml/vocabularies/shapes#AnyShape",
