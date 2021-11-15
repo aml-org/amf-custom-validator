@@ -11,7 +11,7 @@ parse () {
 
 for subdir in ./test/data/integration/*
 do
-  oas_30_files=$(grep -rw "$subdir" -e 'openapi: "3.0.0" *$' | cut -d ":" -f1 | grep .yaml | sed 's/.\/\///' | sed 's/$.\///')
+  oas_30_files=$(grep -rw "$subdir" -e 'openapi: .*$' | cut -d ":" -f1 | grep .yaml | sed 's/.\/\///' | sed 's/$.\///')
   for file in $oas_30_files
   do
     parse "$file"
