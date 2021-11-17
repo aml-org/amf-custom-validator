@@ -98,7 +98,7 @@ func generateNested(exp profile.NestedExpression) []GeneratedRegoResult {
 			rego = append(rego, fmt.Sprintf("count(%s) > 0", errorNodeVariable))
 		}
 		ruleName = "nested"
-		trace = fmt.Sprintf("{\"negated\":%t, \"failedNodes\":count(%s), \"successfulNodes\":(count(%s)-count(%s)),\"subResult\": %s}", exp.Negated, errorNodeVariable, variable, errorNodeVariable, errorAcc)
+		trace = fmt.Sprintf("\"negated\":%t, \"failedNodes\":count(%s), \"successfulNodes\":(count(%s)-count(%s)),\"subResult\": %s", exp.Negated, errorNodeVariable, variable, errorNodeVariable, errorAcc)
 	} else {
 		// quantified nested, we need to check for a particular number of failed nodes
 		if exp.Negated {
@@ -107,7 +107,7 @@ func generateNested(exp profile.NestedExpression) []GeneratedRegoResult {
 			rego = append(rego, fmt.Sprintf("not count(%s) - count(%s) %s", variable, errorNodeVariable, exp.Child.Cardinality.String()))
 		}
 		ruleName = exp.Child.Cardinality.RuleName()
-		trace = fmt.Sprintf("{\"negated\":%t, \"failedNodes\":count(%s), \"successfulNodes\":(count(%s)-count(%s)), \"cardinality\":%d, \"subResult\": %s}", exp.Negated, errorNodeVariable, variable, errorNodeVariable, exp.Child.Cardinality.Value, errorAcc)
+		trace = fmt.Sprintf("\"negated\":%t, \"failedNodes\":count(%s), \"successfulNodes\":(count(%s)-count(%s)), \"cardinality\":%d, \"subResult\": %s", exp.Negated, errorNodeVariable, variable, errorNodeVariable, exp.Child.Cardinality.Value, errorAcc)
 	}
 
 	// build result
@@ -121,7 +121,7 @@ func generateNested(exp profile.NestedExpression) []GeneratedRegoResult {
 					PathRules:  pathRules,
 					Path:       sharedGeneratorRego.Path,
 					TraceNode:  exp.Parent.Name,
-					TraceValue: trace,
+					TraceValue: BuildTraceValueNode(trace),
 					Variable:   fmt.Sprintf("%s", errorNodeVariable),
 				},
 			},

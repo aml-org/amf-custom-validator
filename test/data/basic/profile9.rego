@@ -135,25 +135,25 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   uri := location["uri"]	
   range_parts := regex.find_n("\\d+", raw_range, 4)
   range := {
-	"@type": ["lexical:Range"],
+	"@type": ["lexicalSchema:RangeNode", "lexical:Range"],
     "start": {
-	  "@type": ["lexical:Position"],
+	  "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
   	  "line": to_number(range_parts[0]),
   	  "column": to_number(range_parts[1])
     },
     "end": {
-	  "@type": ["lexical:Position"],
+	  "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
   	  "line": to_number(range_parts[2]),
   	  "column": to_number(range_parts[3])
     }
   }
   t := {
-	"@type": ["validation:TraceMessage"],
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
     "component": constraint,
     "resultPath": resultPath,
     "traceValue": traceValue,
 	"location": {
-	  "@type": ["lexical:Location"],
+	  "@type": ["lexicalSchema:LocationNode", "lexical:Location"],
       "uri": uri,
       "range": range
 	}
@@ -164,7 +164,7 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   id := focusNode["@id"]
   not input["@lexical"][id]
   t := {
-	"@type": ["validation:TraceMessage"],
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
     "component": constraint,
     "resultPath": resultPath,
     "traceValue": traceValue
@@ -175,11 +175,9 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
 error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
   e := {
-	"@type": ["shacl:ValidationResult"],
+	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
-    "focusNode": {
-		"@id": id,
-	},
+    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
     "resultMessage": resultMessage,
     "trace": traceLog
   }
@@ -226,7 +224,7 @@ violation[matches] {
   gen_rego_result_2 = (version != null)
   
   gen_rego_result_2 == true
-  _result_0 := trace("rego","",x,{"negated":true})
+  _result_0 := trace("rego","",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true})
   matches := error("simple-rego",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0])
 }
 # Path rules
@@ -242,7 +240,7 @@ violation[matches] {
   gen_rego_result_4 = (version != null)
   
   gen_rego_result_4 != true
-  _result_0 := trace("rego","",x,{"negated":false})
+  _result_0 := trace("rego","",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false})
   matches := error("simple-rego2",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0])
 }
 # Path rules
@@ -263,6 +261,6 @@ violation[matches] {
   gen_gen_path_rule_5_node_6 = gen_gen_path_rule_5_node_6_array
   gen_rego_result_7 = (gen_gen_path_rule_5_node_6 != null) # custom 3
   gen_rego_result_7 != true
-  _result_0 := trace("rego","apiContract.version",x,{"negated":false})
+  _result_0 := trace("rego","apiContract.version",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false})
   matches := error("simple-rego3",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0])
 }

@@ -52,7 +52,7 @@ func GenerateRegoRule(rule profile.RegoRule) []SimpleRegoResult {
 		Path:       rule.Path.Source(),
 		Variable:   checkVariable,
 		TraceNode:  rule.Variable.Name,
-		TraceValue: fmt.Sprintf("{\"negated\":%t}", rule.Negated),
+		TraceValue: BuildTraceValueNode(fmt.Sprintf("\"negated\":%t", rule.Negated)),
 	}
 	return []SimpleRegoResult{r}
 }

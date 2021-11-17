@@ -61,7 +61,8 @@ func generateNumericRule(num profile.NumericRule, rule string, op string) []Simp
 		Path:       num.Path.Source(),
 		Variable:   valueVariable,
 		TraceNode:  num.Variable.Name,
-		TraceValue: fmt.Sprintf("{\"negated\":%t,\"condition\":\"%s\",\"expected\":%s,\"actual\":%s}", num.Negated, op, num.StringArgument(), valueVariable),
+		TraceValue: BuildTraceValueNode(
+			fmt.Sprintf("\"negated\":%t,\"condition\":\"%s\",\"expected\":%s,\"actual\":%s", num.Negated, op, num.StringArgument(), valueVariable)),
 	}
 	return []SimpleRegoResult{r}
 }

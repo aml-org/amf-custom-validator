@@ -26,7 +26,8 @@ func GenerateDatatype(datatype profile.DatatypeRule) []SimpleRegoResult {
 		PathRules:  []RegoPathResult{pathResult},
 		Path:       datatype.Path.Source(),
 		TraceNode:  datatype.Variable.Name,
-		TraceValue: fmt.Sprintf("{\"negated\":%t,\"actual\": %s,\"expected\": \"%s\"}", datatype.Negated, valueVariable, datatype.Argument),
+		TraceValue: BuildTraceValueNode(
+			fmt.Sprintf("\"negated\":%t,\"actual\": %s,\"expected\": \"%s\"", datatype.Negated, valueVariable, datatype.Argument)),
 		Variable:   valueVariable,
 	}
 	return []SimpleRegoResult{r}

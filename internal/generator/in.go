@@ -34,7 +34,9 @@ func GenerateIn(in profile.InRule) []SimpleRegoResult {
 		PathRules:  []RegoPathResult{pathResult},
 		Path:       in.Path.Source(),
 		TraceNode:  in.Variable.Name,
-		TraceValue: fmt.Sprintf("{\"negated\":%t,\"actual\": %s,\"expected\": \"%s\"}", in.Negated, strings.ReplaceAll(inValuesTestVariable, "\"", "'"), in.JSONValues()),
+		TraceValue: BuildTraceValueNode(
+			fmt.Sprintf("\"negated\":%t,\"actual\": %s,\"expected\": \"%s\"", in.Negated, strings.ReplaceAll(inValuesTestVariable, "\"", "'"), in.JSONValues()),
+		),
 		Variable:   inValuesTestVariable,
 	}
 	return []SimpleRegoResult{r}

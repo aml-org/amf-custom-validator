@@ -40,7 +40,7 @@ ci-js: test-js
 ci-java:
 	./scripts/download-cli.sh
 	./scripts/validate-profiles.sh
-	#./scripts/validate-reports.sh
+	./scripts/validate-reports.sh
 
 
 ## Helpers ================================================================================

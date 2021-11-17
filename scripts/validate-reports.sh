@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-input_reports=$(grep -rw './' -e '"@type": "shacl:ValidationReport"' | cut -d ":" -f1 | grep .jsonld | sed 's/.\/\///' | sed 's/$.\///')
+input_reports=$(grep -rw './' -e '"shacl:ValidationReport"' | cut -d ":" -f1 | grep .jsonld | sed 's/.\/\///' | sed 's/$.\///')
 declare -i exitCode
 exitCode=0
 for input_report in $input_reports
