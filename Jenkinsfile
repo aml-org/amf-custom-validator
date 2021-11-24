@@ -1,6 +1,9 @@
 #!groovy
 pipeline {
     agent none
+    environment {
+        DOCKER_BUILDKIT='1' // optimizes target builds for multistage dockerfile
+    }
     stages {
         stage('Test validator (Go)') {
             agent {
