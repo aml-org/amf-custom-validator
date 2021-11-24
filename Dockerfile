@@ -10,12 +10,6 @@ RUN go mod tidy
 COPY . .
 RUN make ci-go
 
-FROM ci-go AS go-coverage
-RUN make go-coverage
-
-FROM sonarsource/sonar-scanner-cli as coverage
-COPY --from=go-coverage /go/src/coverage.out .
-
 FROM openjdk:8u292-jre AS ci-java
 #FROM openjdk/8u292-jdk AS ci-java
 # Copy content
@@ -40,6 +34,19 @@ COPY --from=ci-go /go/src/wrappers/js/lib/main.wasm.gz ./lib
 
 WORKDIR ../../
 RUN make ci-js
+
+FROM ci-go AS go-coverage
+RUN make go-coverage
+
+FROM sonarsource/sonar-scanner-cli as coverage
+COPY --from=go-coverage /go/src/coverage.out .
+
+FROM ci-go AS go-nexus-scan
+RUN make generate-list-file
+
+# image used by valkyr -> https://github.com/mulesoft/kilonova-nexusiq-cli
+FROM artifacts.msap.io/mulesoft/kilonova-nexusiq-cli:v107.0.2 as nexus-scan
+COPY --from=go-nexus-scan /go/src/go.list .
 
 FROM ci-js AS publish-snapshot
 

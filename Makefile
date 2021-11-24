@@ -55,3 +55,6 @@ validate:
 
 validate-profiles:
 	./scripts/validate-profiles.sh
+
+generate-list-file:
+	go list -m all > go.list

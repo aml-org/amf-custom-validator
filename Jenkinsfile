@@ -1,6 +1,9 @@
 #!groovy
 pipeline {
     agent none
+    environment {
+        DOCKER_BUILDKIT='1' // optimizes target builds for multistage dockerfile
+    }
     stages {
         stage('Test validator (Go)') {
             agent {
@@ -67,9 +70,9 @@ pipeline {
                 }
             }
             agent {
-                // image used by valkyr -> https://github.com/mulesoft/kilonova-nexusiq-cli
-                docker {
-                    image 'artifacts.msap.io/mulesoft/kilonova-nexusiq-cli:v107.0.2'
+                dockerfile {
+                    filename 'Dockerfile'
+                    additionalBuildArgs  '--target nexus-scan'
                     registryUrl 'https://artifacts.msap.io/'
                     registryCredentialsId 'harbor-docker-registry'
                 }
@@ -83,12 +86,12 @@ pipeline {
                         '--authentication "$NEXUS_USER:$NEXUS_PASS"',
                         "--server-url https://nexusiq.build.msap.io",
                         "--application-id amf-custom-validator",
-                        "--fail-on-policy-warnings true" // might have to remove this if all policies are taken into account
+                        "--fail-on-policy-warnings" // might have to remove this if all policies are taken into account
                      // "--stage $stage",
                     ]
-                    def result = sh(returnStatus: true, script: "java -jar /bin/nexusiq-cli ${args.join(' ')} go.sum")
+                    def result = sh(returnStatus: true, script: "java -jar /bin/nexusiq-cli ${args.join(' ')} /go.list")
                     if (result != 0) {
-                        unstable "Failed Nexus IQ policies"
+                        unstable "Failed Nexus IQ execution"
                     }
                 }
                 }
