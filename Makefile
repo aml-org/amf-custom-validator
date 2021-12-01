@@ -37,6 +37,9 @@ ci-go: test-go build-native build-js
 
 ci-js: test-js
 
+ci-browser:
+	cd ./wrappers/js-web && npm i && npm run build:dist && npm run build:test && cypress run
+
 ci-java:
 	./scripts/download-cli.sh
 	./scripts/validate-profiles.sh

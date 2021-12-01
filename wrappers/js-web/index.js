@@ -1,6 +1,7 @@
 require("../js/lib/wasm_exec");
 let wasm_gz = require("../js/lib/main.wasm.gz")
 const pako = require("pako");
+const Buffer = require("buffer").Buffer;
 
 let initialized = false
 let go = null;
