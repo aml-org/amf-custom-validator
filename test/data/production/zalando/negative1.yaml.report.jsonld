@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/zalando/negative1.yaml#/web-api",
+            "focusNode": "amf://id#3",
             "resultMessage": "Title has to be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-title-must-be-provided",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 9,
+                      "line": 3
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 1
+                    }
+                  },
+                  "uri": "file://./test/data/production/zalando/negative1.yaml"
+                },
                 "resultPath": "core.name",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -143,7 +176,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/zalando/negative1.yaml#/web-api",
+            "focusNode": "amf://id#3",
             "resultMessage": "Description has to be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-description-must-be-provided",
@@ -155,6 +188,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
+                "location": {
+                  "@id": "violation_1_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_1_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_1_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 9,
+                      "line": 3
+                    },
+                    "start": {
+                      "@id": "violation_1_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 1
+                    }
+                  },
+                  "uri": "file://./test/data/production/zalando/negative1.yaml"
+                },
                 "resultPath": "core.description",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
@@ -176,7 +242,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/zalando/negative1.yaml#/web-api",
+            "focusNode": "amf://id#3",
             "resultMessage": "Version has to be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-version-must-be-provided",
@@ -188,6 +254,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
+                "location": {
+                  "@id": "violation_2_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_2_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_2_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 9,
+                      "line": 3
+                    },
+                    "start": {
+                      "@id": "violation_2_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 1
+                    }
+                  },
+                  "uri": "file://./test/data/production/zalando/negative1.yaml"
+                },
                 "resultPath": "core.version",
                 "traceValue": {
                   "@id": "violation_2_0_traceValue",
@@ -209,7 +308,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/zalando/negative1.yaml#/web-api",
+            "focusNode": "amf://id#3",
             "resultMessage": "Contact name must be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-contact-name-must-be-provided",
@@ -221,6 +320,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
+                "location": {
+                  "@id": "violation_3_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_3_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_3_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 9,
+                      "line": 3
+                    },
+                    "start": {
+                      "@id": "violation_3_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 1
+                    }
+                  },
+                  "uri": "file://./test/data/production/zalando/negative1.yaml"
+                },
                 "resultPath": "core.provider / core.name",
                 "traceValue": {
                   "@id": "violation_3_0_traceValue",
@@ -242,7 +374,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/zalando/negative1.yaml#/web-api",
+            "focusNode": "amf://id#3",
             "resultMessage": "Contact URL must be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-contact-url-must-be-provided",
@@ -254,6 +386,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
+                "location": {
+                  "@id": "violation_4_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_4_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_4_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 9,
+                      "line": 3
+                    },
+                    "start": {
+                      "@id": "violation_4_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 1
+                    }
+                  },
+                  "uri": "file://./test/data/production/zalando/negative1.yaml"
+                },
                 "resultPath": "core.provider / core.url",
                 "traceValue": {
                   "@id": "violation_4_0_traceValue",
@@ -275,7 +440,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/zalando/negative1.yaml#/web-api",
+            "focusNode": "amf://id#3",
             "resultMessage": "Contact name must be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-contact-email-must-be-provided",
@@ -287,6 +452,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
+                "location": {
+                  "@id": "violation_5_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_5_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_5_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 9,
+                      "line": 3
+                    },
+                    "start": {
+                      "@id": "violation_5_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 1
+                    }
+                  },
+                  "uri": "file://./test/data/production/zalando/negative1.yaml"
+                },
                 "resultPath": "core.provider / core.email",
                 "traceValue": {
                   "@id": "violation_5_0_traceValue",

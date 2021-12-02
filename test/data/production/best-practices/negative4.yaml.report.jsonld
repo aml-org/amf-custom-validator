@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/best-practices/negative4.yaml#/declarations/types/Customer/property/nested/nested/property/nested-prop",
+            "focusNode": "amf://id#10",
             "resultMessage": "Use camelCase for all the names (fields), preferably don’t use underscores.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "camel-case-fields",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 36
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 12,
+                      "line": 34
+                    }
+                  },
+                  "uri": "file://./test/data/production/best-practices/negative4.yaml"
+                },
                 "resultPath": "shacl.name",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",

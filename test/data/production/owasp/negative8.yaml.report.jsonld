@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/owasp/negative8.yaml#/web-api",
+            "focusNode": "amf://id#3",
             "resultMessage": "The login page and all subsequent authenticated pages must be exclusively accessed over TLS or other strong\ntransport. The initial login page referred to as the 'login landing page', must be served over TLS or other strong\ntransport. Failure to utilize TLS or other strong transport for the login landing page allows an attacker to\nmodify the login form action, causing the user's credentials to be posted to an arbitrary location. Failure to\nutilize TLS or other strong transport for authenticated pages after login enables an attacker to view the\nunencrypted session ID and compromise the user's authenticated session.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "broken-user-authentication-use-tls",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "atLeast",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 28,
+                      "line": 29
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 1
+                    }
+                  },
+                  "uri": "file://./test/data/production/owasp/negative8.yaml"
+                },
                 "resultPath": "apiContract.server",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -139,7 +172,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://./test/data/production/owasp/negative8.yaml#/web-api/http%3A%2F%2Fproduction.test.com%2F",
+                      "focusNode": "amf://id#4",
                       "resultMessage": "error in nested nodes under apiContract.server",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -150,6 +183,39 @@
                             "validation:TraceMessage"
                           ],
                           "component": "pattern",
+                          "location": {
+                            "@id": "violation_0_0_traceValue_0_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_0_0_traceValue_0_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_0_traceValue_0_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 8
+                              },
+                              "start": {
+                                "@id": "violation_0_0_traceValue_0_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 4,
+                                "line": 6
+                              }
+                            },
+                            "uri": "file://./test/data/production/owasp/negative8.yaml"
+                          },
                           "resultPath": "core.urlTemplate",
                           "traceValue": {
                             "@id": "violation_0_0_traceValue_0_0_traceValue",
@@ -169,7 +235,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://./test/data/production/owasp/negative8.yaml#/web-api/http%3A%2F%2Ftest.test.com%2F",
+                      "focusNode": "amf://id#5",
                       "resultMessage": "error in nested nodes under apiContract.server",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -180,6 +246,39 @@
                             "validation:TraceMessage"
                           ],
                           "component": "pattern",
+                          "location": {
+                            "@id": "violation_0_0_traceValue_1_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_0_0_traceValue_1_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_0_traceValue_1_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 10
+                              },
+                              "start": {
+                                "@id": "violation_0_0_traceValue_1_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 4,
+                                "line": 8
+                              }
+                            },
+                            "uri": "file://./test/data/production/owasp/negative8.yaml"
+                          },
                           "resultPath": "core.urlTemplate",
                           "traceValue": {
                             "@id": "violation_0_0_traceValue_1_0_traceValue",
@@ -205,7 +304,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/owasp/negative8.yaml#/web-api",
+            "focusNode": "amf://id#7",
             "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "broken-user-authentication-authenticate-api",
@@ -217,6 +316,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
+                "location": {
+                  "@id": "violation_1_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_1_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_1_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 28,
+                      "line": 29
+                    },
+                    "start": {
+                      "@id": "violation_1_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 12
+                    }
+                  },
+                  "uri": "file://./test/data/production/owasp/negative8.yaml"
+                },
                 "resultPath": "security.security",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
@@ -228,59 +360,6 @@
                   "condition": ">=",
                   "expected": 1,
                   "negated": false
-                }
-              },
-              {
-                "@id": "violation_1_1",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "nested",
-                "resultPath": "apiContract.endpoint / apiContract.supportedOperation",
-                "traceValue": {
-                  "@id": "violation_1_1_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "failedNodes": 1,
-                  "negated": false,
-                  "subResult": [
-                    {
-                      "@id": "violation_1_1_traceValue_0",
-                      "@type": [
-                        "reportSchema:ValidationResultNode",
-                        "shacl:ValidationResult"
-                      ],
-                      "focusNode": "file://./test/data/production/owasp/negative8.yaml#/web-api/end-points/%2Finvoices%2F/get",
-                      "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
-                      "sourceShapeName": "nested",
-                      "trace": [
-                        {
-                          "@id": "violation_1_1_traceValue_0_0",
-                          "@type": [
-                            "reportSchema:TraceMessageNode",
-                            "validation:TraceMessage"
-                          ],
-                          "component": "minCount",
-                          "resultPath": "security.security",
-                          "traceValue": {
-                            "@id": "violation_1_1_traceValue_0_0_traceValue",
-                            "@type": [
-                              "reportSchema:TraceValueNode",
-                              "validation:TraceValue"
-                            ],
-                            "actual": 0,
-                            "condition": ">=",
-                            "expected": 1,
-                            "negated": false
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "successfulNodes": 0
                 }
               }
             ]

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request",
+            "focusNode": "amf://id#20",
             "resultMessage": "Scalars in parameters must have minLength defined",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -138,7 +138,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/request/parameter/default-binding/b/scalar/schema",
+                      "focusNode": "amf://id#26",
                       "resultMessage": "error in nested nodes under apiContract.parameter / shapes.schema",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -176,7 +176,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/put/request",
+            "focusNode": "amf://id#6",
             "resultMessage": "Scalars in parameters must have minLength defined",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -204,7 +204,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile7/negative.data.raml#/web-api/end-points/%2Fendpoint1/put/request/parameter/default-binding/g/scalar/schema",
+                      "focusNode": "amf://id#10",
                       "resultMessage": "error in nested nodes under apiContract.parameter / shapes.schema",
                       "sourceShapeName": "nested",
                       "trace": [

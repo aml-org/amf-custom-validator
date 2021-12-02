@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get",
+            "focusNode": "amf://id#11",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "and-or-not-rule",
@@ -139,7 +139,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get/201",
+                      "focusNode": "amf://id#12",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -194,7 +194,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get",
+            "focusNode": "amf://id#14",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "and-or-not-rule",
@@ -223,7 +223,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint2/get/200",
+                      "focusNode": "amf://id#15",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -278,7 +278,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/end-points/%2Fendpoint1/get",
+            "focusNode": "amf://id#11",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "and-or-not-rule",

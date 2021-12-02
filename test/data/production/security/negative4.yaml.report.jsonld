@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/security/negative4.yaml#/web-api",
+            "focusNode": "amf://id#11",
             "resultMessage": "Access tokens from authorization code grant flow are transported in the clear over an unencrypted channel.\nAttackers can easily intercept API calls and retrieve the unencrypted tokens. They can then use the tokens to make\nother API calls.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "access-tokens-oauth2-cleartext",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 29,
+                      "line": 36
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 29
+                    }
+                  },
+                  "uri": "file://./test/data/production/security/negative4.yaml"
+                },
                 "resultPath": "apiContract.server / core.urlTemplate",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -140,6 +173,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_0_1_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_1_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_1_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 29,
+                      "line": 36
+                    },
+                    "start": {
+                      "@id": "violation_0_1_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 29
+                    }
+                  },
+                  "uri": "file://./test/data/production/security/negative4.yaml"
+                },
                 "resultPath": "security.security / security.schemes / security.scheme / security.type",
                 "traceValue": {
                   "@id": "violation_0_1_traceValue",

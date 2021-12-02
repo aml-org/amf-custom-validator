@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/spectral/negative17.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%3F%7Btest%7D",
+            "focusNode": "amf://id#7",
             "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "path-params",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "rego",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 29,
+                      "line": 36
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 2,
+                      "line": 16
+                    }
+                  },
+                  "uri": "file://./test/data/production/spectral/negative17.yaml"
+                },
                 "resultPath": "",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -140,7 +173,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/spectral/negative17.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D%2Fitems%3F%7Btest%7D",
+            "focusNode": "amf://id#7",
             "resultMessage": "Don't put query string items in the path, they belong in parameters with in: query.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "path-not-include-query",
@@ -152,6 +185,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_1_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_1_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_1_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 29,
+                      "line": 36
+                    },
+                    "start": {
+                      "@id": "violation_1_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 2,
+                      "line": 16
+                    }
+                  },
+                  "uri": "file://./test/data/production/spectral/negative17.yaml"
+                },
                 "resultPath": "apiContract.path",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",

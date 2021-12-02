@@ -110,8 +110,8 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/datagraph/negative8.yaml#/declarations/types/any/Problematic",
-            "resultMessage": "Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object\nshapes with scalar flags/properties can be used as an alternative\n",
+            "focusNode": "amf://id#12",
+            "resultMessage": "Shapes containing unions of scalar and object types cannot be federated and are not a good design practice. Object\nshapes with scalar flags/properties can be used as an alternative\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "heterogeneous-union",
             "trace": [
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "rego",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 53
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 41
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative8.yaml"
+                },
                 "resultPath": "",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -140,8 +173,8 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/datagraph/negative8.yaml#/declarations/types/any/Problematic2",
-            "resultMessage": "Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object\nshapes with scalar flags/properties can be used as an alternative\n",
+            "focusNode": "amf://id#7",
+            "resultMessage": "Shapes containing unions of scalar and object types cannot be federated and are not a good design practice. Object\nshapes with scalar flags/properties can be used as an alternative\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "heterogeneous-union",
             "trace": [
@@ -152,6 +185,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "rego",
+                "location": {
+                  "@id": "violation_1_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_1_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_1_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 41
+                    },
+                    "start": {
+                      "@id": "violation_1_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 30
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative8.yaml"
+                },
                 "resultPath": "",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",

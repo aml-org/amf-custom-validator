@@ -1,70 +1,64 @@
-[
-  {
-    "@id": "file://test/data/integration/profile5/negative.data.raml",
-    "@type": [
-      "http://a.ml/vocabularies/document#Document",
-      "http://a.ml/vocabularies/document#Fragment",
-      "http://a.ml/vocabularies/document#Module",
-      "http://a.ml/vocabularies/document#Unit"
-    ],
-    "http://a.ml/vocabularies/document#encodes": [
-      {
-        "@id": "file://test/data/integration/profile5/negative.data.raml#/web-api",
-        "@type": [
-          "http://a.ml/vocabularies/apiContract#WebAPI",
-          "http://a.ml/vocabularies/apiContract#API",
-          "http://a.ml/vocabularies/document#RootDomainElement",
-          "http://a.ml/vocabularies/document#DomainElement"
-        ],
-        "http://a.ml/vocabularies/core#name": [
-          {
-            "@value": "Example API"
-          }
-        ]
+{
+  "@graph": [
+    {
+      "@id": "amf://id#2",
+      "@type": [
+        "http://a.ml/vocabularies/document#APIContractProcessingData"
+      ],
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.2.0",
+      "http://a.ml/vocabularies/document#transformed": true,
+      "http://a.ml/vocabularies/document#sourceSpec": "OAS 3.0"
+    },
+    {
+      "@id": "amf://id#4",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "http://a.ml/vocabularies/apiContract#API",
+        "http://a.ml/vocabularies/document#RootDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "Example API",
+      "http://a.ml/vocabularies/apiContract#endpoint": []
+    },
+    {
+      "@id": "amf://id",
+      "http://a.ml/vocabularies/document#declares": [
+        {
+          "@id": "amf://id#1"
+        }
+      ],
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "amf://id#4"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "amf://id#2"
       }
-    ],
-    "http://a.ml/vocabularies/document#version": [
-      {
-        "@value": "2.3.0"
-      }
-    ],
-    "http://a.ml/vocabularies/document#root": [
-      {
-        "@value": true
-      }
-    ],
-    "http://a.ml/vocabularies/document#declares": [
-      {
-        "@id": "file://test/data/integration/profile5/negative.data.raml#/declarations/types/scalar/name",
-        "@type": [
-          "http://a.ml/vocabularies/shapes#ScalarShape",
-          "http://a.ml/vocabularies/shapes#AnyShape",
-          "http://www.w3.org/ns/shacl#Shape",
-          "http://a.ml/vocabularies/shapes#Shape",
-          "http://a.ml/vocabularies/document#DomainElement"
-        ],
-        "http://www.w3.org/ns/shacl#datatype": [
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#string"
-          }
-        ],
-        "http://www.w3.org/ns/shacl#minLength": [
-          {
-            "@value": 500
-          }
-        ],
-        "http://www.w3.org/ns/shacl#maxLength": [
-          {
-            "@value": 100
-          }
-        ],
-        "http://www.w3.org/ns/shacl#name": [
-          {
-            "@value": "name"
-          }
-        ]
-      }
-    ]
-  }
-]
+    },
+    {
+      "@id": "amf://id#1",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#minLength": 500,
+      "http://www.w3.org/ns/shacl#maxLength": 100,
+      "http://www.w3.org/ns/shacl#name": "name"
+    }
+  ]
+}
 

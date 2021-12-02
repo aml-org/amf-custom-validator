@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/best-practices/negative8.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200/application%2Fother",
+            "focusNode": "amf://id#30",
             "resultMessage": "If there is no standard media type and format, try to use as much as possible extensible formats such as JSON\n(application/json) and XML (application/xml), preferably JSON.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "preferred-media-type-representations",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 25,
+                      "line": 136
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 12,
+                      "line": 130
+                    }
+                  },
+                  "uri": "file://./test/data/production/best-practices/negative8.yaml"
+                },
                 "resultPath": "core.mediaType",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",

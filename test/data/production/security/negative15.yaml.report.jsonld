@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/security/negative15.yaml#/web-api",
+            "focusNode": "amf://id#16",
             "resultMessage": "Your API accepts basic authentication credentials sent in cleartext over an unencrypted channel. Attackers can\neasily intercept API calls and retrieve the credentials. They can then use the credentials to make other API calls.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "insecure-basic-auth",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 53,
+                      "line": 64
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 53
+                    }
+                  },
+                  "uri": "file://./test/data/production/security/negative15.yaml"
+                },
                 "resultPath": "apiContract.server / core.urlTemplate",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -140,6 +173,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "nested",
+                "location": {
+                  "@id": "violation_0_1_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_1_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_1_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 53,
+                      "line": 64
+                    },
+                    "start": {
+                      "@id": "violation_0_1_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 53
+                    }
+                  },
+                  "uri": "file://./test/data/production/security/negative15.yaml"
+                },
                 "resultPath": "security.security / security.schemes / security.scheme",
                 "traceValue": {
                   "@id": "violation_0_1_traceValue",
@@ -161,7 +227,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/security/negative15.yaml#/web-api/%3A%3A%3A4**production.test.com%2F",
+            "focusNode": "amf://id#13",
             "resultMessage": "The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all\nURLs in the API contract must be proper URLs in a valid format.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "valid-server-urltemplate",
@@ -173,6 +239,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_1_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_1_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_1_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 10
+                    },
+                    "start": {
+                      "@id": "violation_1_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 8
+                    }
+                  },
+                  "uri": "file://./test/data/production/security/negative15.yaml"
+                },
                 "resultPath": "core.urlTemplate",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
@@ -180,7 +279,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": ":::4**production.test.com/",
+                  "argument": "https://**production.test.com/",
                   "negated": false
                 }
               }
@@ -192,7 +291,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/security/negative15.yaml#/web-api/https%3A%2F%2F**production.test.com%2F",
+            "focusNode": "amf://id#14",
             "resultMessage": "The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all\nURLs in the API contract must be proper URLs in a valid format.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "valid-server-urltemplate",
@@ -204,6 +303,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_2_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_2_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_2_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 13
+                    },
+                    "start": {
+                      "@id": "violation_2_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 10
+                    }
+                  },
+                  "uri": "file://./test/data/production/security/negative15.yaml"
+                },
                 "resultPath": "core.urlTemplate",
                 "traceValue": {
                   "@id": "violation_2_0_traceValue",
@@ -211,7 +343,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "https://**production.test.com/",
+                  "argument": ":::4**production.test.com/",
                   "negated": false
                 }
               }

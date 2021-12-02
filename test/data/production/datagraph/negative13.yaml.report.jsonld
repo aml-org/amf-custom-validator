@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/datagraph/negative13.yaml#/declarations/types/Customer",
+            "focusNode": "amf://id#1",
             "resultMessage": "Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.\nConsider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.\nIf you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "open-schemas-ignored",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 30
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 18
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative13.yaml"
+                },
                 "resultPath": "shacl.closed",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",

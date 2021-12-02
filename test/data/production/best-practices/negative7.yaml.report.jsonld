@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/best-practices/negative7.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson",
+            "focusNode": "amf://id#34",
             "resultMessage": "Always include examples in requests and responses",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "provide-examples",
@@ -121,37 +121,47 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "minCount",
-                "resultPath": "apiContract.examples",
+                "component": "rego",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 84
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 12,
+                      "line": 80
+                    }
+                  },
+                  "uri": "file://./test/data/production/best-practices/negative7.yaml"
+                },
+                "resultPath": "",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
-                }
-              },
-              {
-                "@id": "violation_0_1",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
-                "resultPath": "shapes.schema / apiContract.examples",
-                "traceValue": {
-                  "@id": "violation_0_1_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
                   "negated": false
                 }
               }
@@ -163,7 +173,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/best-practices/negative7.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/requestBody/application%2Fjson",
+            "focusNode": "amf://id#36",
             "resultMessage": "Always include examples in requests and responses",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "provide-examples",
@@ -174,37 +184,47 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "minCount",
-                "resultPath": "apiContract.examples",
+                "component": "rego",
+                "location": {
+                  "@id": "violation_1_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_1_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_1_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 71
+                    },
+                    "start": {
+                      "@id": "violation_1_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 10,
+                      "line": 67
+                    }
+                  },
+                  "uri": "file://./test/data/production/best-practices/negative7.yaml"
+                },
+                "resultPath": "",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
-                }
-              },
-              {
-                "@id": "violation_1_1",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
-                "resultPath": "shapes.schema / apiContract.examples",
-                "traceValue": {
-                  "@id": "violation_1_1_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
                   "negated": false
                 }
               }

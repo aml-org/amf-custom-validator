@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/security/negative13.yaml#/declarations/securitySchemes/OAuth2/settings/oauth2/authorizationCode",
+            "focusNode": "amf://id#9",
             "resultMessage": "Oauth2 redirection flows use non encrypted transport",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "oauth2-redirections-non-encrypted",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 23
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 8,
+                      "line": 17
+                    }
+                  },
+                  "uri": "file://./test/data/production/security/negative13.yaml"
+                },
                 "resultPath": "security.accessTokenUri",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",

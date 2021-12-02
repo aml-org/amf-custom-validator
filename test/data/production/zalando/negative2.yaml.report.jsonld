@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/zalando/negative2.yaml#/web-api/end-points/%2Fpath/parameter/header/Link",
+            "focusNode": "amf://id#7",
             "resultMessage": "Do Not Use Link Headers with JSON entities",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "166-do-not-use-link-headers",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 21
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 8,
+                      "line": 17
+                    }
+                  },
+                  "uri": "file://./test/data/production/zalando/negative2.yaml"
+                },
                 "resultPath": "apiContract.binding",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -141,6 +174,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
+                "location": {
+                  "@id": "violation_0_1_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_1_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_1_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 21
+                    },
+                    "start": {
+                      "@id": "violation_0_1_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 8,
+                      "line": 17
+                    }
+                  },
+                  "uri": "file://./test/data/production/zalando/negative2.yaml"
+                },
                 "resultPath": "core.name",
                 "traceValue": {
                   "@id": "violation_0_1_traceValue",

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/best-practices/negative6.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get/200",
+            "focusNode": "amf://id#40",
             "resultMessage": "Use schemas or data types in the specification to determine the format of the responses.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "use-schemas-responses",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 28,
+                      "line": 108
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 8,
+                      "line": 102
+                    }
+                  },
+                  "uri": "file://./test/data/production/best-practices/negative6.yaml"
+                },
                 "resultPath": "apiContract.payload / shapes.schema",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
