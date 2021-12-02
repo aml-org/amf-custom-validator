@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/datagraph/negative1.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get",
+            "focusNode": "amf://id#20",
             "resultMessage": "Instead of inlining definition of schemas in HTTP responses,\nreferencing declared types is preferred since it provides descriptive names for the federated types\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "not-anonymous-types",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "nested",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 28,
+                      "line": 65
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 53
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative1.yaml"
+                },
                 "resultPath": "apiContract.returns / apiContract.payload",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -138,7 +171,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://./test/data/production/datagraph/negative1.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fjson",
+                      "focusNode": "amf://id#23",
                       "resultMessage": "error in nested nodes under apiContract.returns / apiContract.payload",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -149,6 +182,39 @@
                             "validation:TraceMessage"
                           ],
                           "component": "minCount",
+                          "location": {
+                            "@id": "violation_0_0_traceValue_0_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_0_0_traceValue_0_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_0_traceValue_0_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 28,
+                                "line": 65
+                              },
+                              "start": {
+                                "@id": "violation_0_0_traceValue_0_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 12,
+                                "line": 62
+                              }
+                            },
+                            "uri": "file://./test/data/production/datagraph/negative1.yaml"
+                          },
                           "resultPath": "shapes.schema",
                           "traceValue": {
                             "@id": "violation_0_0_traceValue_0_0_traceValue",
@@ -169,6 +235,39 @@
                             "validation:TraceMessage"
                           ],
                           "component": "pattern",
+                          "location": {
+                            "@id": "violation_0_0_traceValue_0_1_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_0_0_traceValue_0_1_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_0_traceValue_0_1_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 28,
+                                "line": 65
+                              },
+                              "start": {
+                                "@id": "violation_0_0_traceValue_0_1_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 12,
+                                "line": 62
+                              }
+                            },
+                            "uri": "file://./test/data/production/datagraph/negative1.yaml"
+                          },
                           "resultPath": "core.mediaType",
                           "traceValue": {
                             "@id": "violation_0_0_traceValue_0_1_traceValue",
@@ -187,7 +286,40 @@
                             "validation:TraceMessage"
                           ],
                           "component": "minCount",
-                          "resultPath": "shapes.schema / doc.link-label",
+                          "location": {
+                            "@id": "violation_0_0_traceValue_0_2_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_0_0_traceValue_0_2_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_0_traceValue_0_2_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 28,
+                                "line": 65
+                              },
+                              "start": {
+                                "@id": "violation_0_0_traceValue_0_2_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 12,
+                                "line": 62
+                              }
+                            },
+                            "uri": "file://./test/data/production/datagraph/negative1.yaml"
+                          },
+                          "resultPath": "shapes.schema / sourcemaps.sources / sourcemaps.declared-element",
                           "traceValue": {
                             "@id": "violation_0_0_traceValue_0_2_traceValue",
                             "@type": [
@@ -214,10 +346,10 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/datagraph/negative1.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fjson/schema",
-            "resultMessage": "Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema.\n",
+            "focusNode": "amf://id#20",
+            "resultMessage": "Mandatory parameters for a resource should overlap with the required properties of the returned schema\nso they can be used as a key for the type\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "missing-type-description",
+            "sourceShapeName": "potential-key-parameters",
             "trace": [
               {
                 "@id": "violation_1_0",
@@ -225,30 +357,106 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "minCount",
-                "resultPath": "core.description",
+                "component": "rego",
+                "location": {
+                  "@id": "violation_1_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_1_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_1_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 28,
+                      "line": 65
+                    },
+                    "start": {
+                      "@id": "violation_1_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 53
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative1.yaml"
+                },
+                "resultPath": "",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
                   "negated": false
                 }
-              },
+              }
+            ]
+          },
+          {
+            "@id": "violation_2",
+            "@type": [
+              "reportSchema:ValidationResultNode",
+              "shacl:ValidationResult"
+            ],
+            "focusNode": "amf://id#24",
+            "resultMessage": "Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema.\n",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "sourceShapeName": "missing-type-description",
+            "trace": [
               {
-                "@id": "violation_1_1",
+                "@id": "violation_2_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
-                "resultPath": "doc.link-target",
+                "location": {
+                  "@id": "violation_2_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_2_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_2_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 28,
+                      "line": 65
+                    },
+                    "start": {
+                      "@id": "violation_2_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 14,
+                      "line": 64
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative1.yaml"
+                },
+                "resultPath": "core.description",
                 "traceValue": {
-                  "@id": "violation_1_1_traceValue",
+                  "@id": "violation_2_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -262,26 +470,59 @@
             ]
           },
           {
-            "@id": "violation_2",
+            "@id": "violation_3",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/datagraph/negative1.yaml#/web-api/end-points/%2Finvoices%2F%7Bid%7D/get/200/application%2Fjson/schema",
+            "focusNode": "amf://id#24",
             "resultMessage": "Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.\nConsider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.\nIf you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "open-schemas-ignored",
             "trace": [
               {
-                "@id": "violation_2_0",
+                "@id": "violation_3_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "in",
+                "location": {
+                  "@id": "violation_3_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_3_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_3_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 28,
+                      "line": 65
+                    },
+                    "start": {
+                      "@id": "violation_3_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 14,
+                      "line": 64
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative1.yaml"
+                },
                 "resultPath": "shacl.closed",
                 "traceValue": {
-                  "@id": "violation_2_0_traceValue",
+                  "@id": "violation_3_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"

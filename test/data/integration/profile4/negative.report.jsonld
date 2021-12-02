@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile4/negative.data.raml#/web-api/end-points/%2Fendpoint2",
+            "focusNode": "amf://id#9",
             "resultMessage": "Endpoints must have a POST method",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -139,7 +139,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile4/negative.data.raml#/web-api/end-points/%2Fendpoint2/get",
+                      "focusNode": "amf://id#10",
                       "resultMessage": "error in nested nodes under apiContract.supportedOperation",
                       "sourceShapeName": "nested",
                       "trace": [

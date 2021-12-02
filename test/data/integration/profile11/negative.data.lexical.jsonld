@@ -192,3 +192,411 @@
     }
   ]
 }
+{
+  "@graph": [
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#APIContractProcessingData"
+      ],
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.2.0",
+      "http://a.ml/vocabularies/document#sourceSpec": "RAML 1.0"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "http://a.ml/vocabularies/apiContract#API",
+        "http://a.ml/vocabularies/document#RootDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "Example API",
+      "http://a.ml/vocabularies/core#version": "1.0",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml/BaseUnitSourceInformation",
+      "@type": [
+        "http://a.ml/vocabularies/document#BaseUnitSourceInformation"
+      ],
+      "http://a.ml/vocabularies/document#rootLocation": "file://./test/data/integration/profile11/negative.data.raml"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map/lexical/element_2"
+        },
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map/lexical/element_0"
+        },
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map/lexical/element_1"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map/lexical/element_2",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/core#name",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(3,0)-(4,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/core#version",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(4,0)-(6,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile11/negative.data.raml#/web-api",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(3,0)-(9,17)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml",
+      "http://a.ml/vocabularies/document#declares": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails"
+        }
+      ],
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://./test/data/integration/profile11/negative.data.raml#/BaseUnitProcessingData"
+      },
+      "http://a.ml/vocabularies/document#sourceInformation": {
+        "@id": "file://./test/data/integration/profile11/negative.data.raml/BaseUnitSourceInformation"
+      }
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ArrayShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#items": {
+        "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 100,
+      "http://www.w3.org/ns/shacl#name": "Emails",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#declared-element": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/declared-element/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/lexical/element_2"
+        },
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/lexical/element_0"
+        },
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/lexical/element_1"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#type-property-lexical-info": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/type-property-lexical-info/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#type-expression": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any/source-map/type-expression/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/declared-element/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/lexical/element_2",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minCount",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(9,4)-(9,17)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#name",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(7,2)-(7,8)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(7,2)-(9,17)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/type-property-lexical-info/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(8,4)-(8,8)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any/source-map/type-expression/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any",
+      "http://a.ml/vocabularies/document-source-maps#value": "any"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(8,10)-(8,15)]"
+    }
+  ]
+}
+
+{
+  "@graph": [
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#APIContractProcessingData"
+      ],
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.2.0",
+      "http://a.ml/vocabularies/document#sourceSpec": "RAML 1.0"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "http://a.ml/vocabularies/apiContract#API",
+        "http://a.ml/vocabularies/document#RootDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "Example API",
+      "http://a.ml/vocabularies/core#version": "1.0",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml/BaseUnitSourceInformation",
+      "@type": [
+        "http://a.ml/vocabularies/document#BaseUnitSourceInformation"
+      ],
+      "http://a.ml/vocabularies/document#rootLocation": "file://./test/data/integration/profile11/negative.data.raml"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map/lexical/element_2"
+        },
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map/lexical/element_0"
+        },
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map/lexical/element_1"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map/lexical/element_2",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/core#name",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(3,0)-(4,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/core#version",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(4,0)-(6,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile11/negative.data.raml#/web-api",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(3,0)-(9,17)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml",
+      "http://a.ml/vocabularies/document#declares": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails"
+        }
+      ],
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://./test/data/integration/profile11/negative.data.raml#/web-api"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://./test/data/integration/profile11/negative.data.raml#/BaseUnitProcessingData"
+      },
+      "http://a.ml/vocabularies/document#sourceInformation": {
+        "@id": "file://./test/data/integration/profile11/negative.data.raml/BaseUnitSourceInformation"
+      }
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ArrayShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#items": {
+        "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 100,
+      "http://www.w3.org/ns/shacl#name": "Emails",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#declared-element": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/declared-element/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/lexical/element_2"
+        },
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/lexical/element_0"
+        },
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/lexical/element_1"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#type-property-lexical-info": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/type-property-lexical-info/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#type-expression": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any/source-map/type-expression/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/declared-element/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/lexical/element_2",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minCount",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(9,4)-(9,17)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#name",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(7,2)-(7,8)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(7,2)-(9,17)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/source-map/type-property-lexical-info/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(8,4)-(8,8)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any/source-map/type-expression/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any",
+      "http://a.ml/vocabularies/document-source-maps#value": "any"
+    },
+    {
+      "@id": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile11/negative.data.raml#/declares/array/Emails/any/default-any",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(8,10)-(8,15)]"
+    }
+  ]
+}
+

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/datagraph/negative7.yaml#/declarations/types/InvoiceRequest",
+            "focusNode": "amf://id#7",
             "resultMessage": "Resource schemas should describe the information of the exposed resource, not a Request/Response RPC message wrapper\ncontaining the resource and out-of-band information.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "request-response-antipattern",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 39
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 30
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative7.yaml"
+                },
                 "resultPath": "shacl.name",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -141,7 +174,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/datagraph/negative7.yaml#/declarations/types/CustomerResponse",
+            "focusNode": "amf://id#1",
             "resultMessage": "Resource schemas should describe the information of the exposed resource, not a Request/Response RPC message wrapper\ncontaining the resource and out-of-band information.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "request-response-antipattern",
@@ -153,6 +186,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_1_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_1_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_1_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 30
+                    },
+                    "start": {
+                      "@id": "violation_1_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 18
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative7.yaml"
+                },
                 "resultPath": "shacl.name",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",

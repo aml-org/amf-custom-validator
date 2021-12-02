@@ -120,13 +120,20 @@ validations:
   provide-examples:
     message: Always include examples in requests and responses
     targetClass: apiContract.Payload
-    or:
-      - propertyConstraints:
-          apiContract.examples:
-            minCount: 1
-      - propertyConstraints:
-          shapes.schema / apiContract.examples:
-            minCount: 1
+    rego: |
+      schema = find with data.link as $node["shapes:schema"]
+
+      nested_nodes[examples] with data.nodes as schema["apiContract:examples"]
+
+      examples_from_this_payload = { element |
+        example = examples[_]
+        sourcemap = find with data.link as object.get(example, "sourcemaps:sources", [])
+        tracked_element = find with data.link as object.get(sourcemap, "sourcemaps:tracked-element", [])
+        tracked_element["sourcemaps:value"] = $node["@id"]
+        element := example
+      }
+
+      $result := (count(examples_from_this_payload) > 0)
 
   api-must-have-title:
     message: Provide the title for the API
@@ -198,14 +205,14 @@ validations:
     message: Provide descriptions for data shapes
     targetClass: shapes.PropertyShape
     propertyConstraints:
-      shapes.range / (doc.link-target / core.description) | core.description:
+      shapes.range / core.description:
         minCount: 1
 
   payload-shapes-must-have-descriptions:
     message: Provide description for data shapes
     targetClass: shacl.NodeShape
     propertyConstraints:
-      core.description | (doc.link-target / core.description):
+      core.description:
         minCount: 1
 
   preferred-media-type-representations:

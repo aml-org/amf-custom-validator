@@ -39,7 +39,7 @@ validations:
                 minCount: 1
           then:
             propertyConstraints:
-              shapes.schema / doc.link-label:
+              shapes.schema / sourcemaps.sources / sourcemaps.declared-element:
                 minCount: 1
 
   missing-return-type:
@@ -96,7 +96,7 @@ validations:
   only-http-basic-security-supported:
     message: |
       Only basic authentication for clientId/Secret credentials or no authentication schemes are supported
-    targetClass: apiContract.WebAPI
+    targetClass: apiContract.Operation
     if:
       propertyConstraints:
         security.security:
@@ -115,58 +115,57 @@ validations:
     message: |
       Mandatory parameters for a resource should overlap with the required properties of the returned schema
       so they can be used as a key for the type
-    targetClass: apiContract.EndPoint
+    targetClass: apiContract.Operation
     rego: |
-      # navigate to the potential return schema
-      nested_nodes[parameters] with data.nodes as $node["apiContract:parameter"]
+      nested_nodes[requests] with data.nodes as $node["apiContract:expects"]
+      request = requests[_]
+
+      # extract mandatory parameters
+      nested_nodes[parameters] with data.nodes as object.get(request, "apiContract:parameter", [])
       mandatory_params = { mandatory_param |
         parameter = parameters[_]
         parameter["apiContract:required"] == true
+        parameter["apiContract:binding"] = "query"
         mandatory_param = parameter["core:name"]
       }
-      nested_nodes[ops] with data.nodes as x["apiContract:supportedOperation"]
-      op = ops[_]
-      nested_nodes[resps] with data.nodes as op["apiContract:returns"]
+
+      nested_nodes[uri_parameters] with data.nodes as object.get(request, "apiContract:uriParameter", [])
+      mandatory_uri_params = { mandatory_uri_param |
+        uri_parameter = uri_parameters[_]
+        uri_parameter["apiContract:required"] == true
+        uri_parameter["apiContract:binding"] = "path"
+        mandatory_uri_param = uri_parameter["core:name"]
+      }
+
+      all_mandatory_params := mandatory_params | mandatory_uri_params
+
+      # navigate to the potential return schema
+      nested_nodes[resps] with data.nodes as object.get($node, "apiContract:returns", [])
       resp = resps[_]
-      nested_nodes[payloads] with data.nodes as resp["apiContract:payload"]
+      nested_nodes[payloads] with data.nodes as object.get(resp, "apiContract:payload", [])
       payload = payloads[_]
       payload["core:mediaType"] == "application/json"
-      nested_nodes[schemas] with data.nodes as payload["shapes:schema"]
+      nested_nodes[schemas] with data.nodes as object.get(payload, "shapes:schema", [])
       schema = schemas[_]
 
-      # check for properties through linked targets
-      nested_nodes[linked_nodes] with data.nodes as object.get(schema,"doc:link-target",[{}])
-      linked_node = linked_nodes[_]
-      nested_nodes[linked_props] with data.nodes as object.get(linked_node,"shacl:property",[])
-      mandatory_linked_props = { mandatory_linked_prop |
-        linked_prop = linked_props[_]
-        linked_prop["shacl:minCount"] > 0
-        mandatory_linked_prop = linked_prop["shacl:name"]
+      # check for node shape properties
+      nested_nodes[props] with data.nodes as object.get(schema, "shacl:property",[])
+      mandatory_props = { mandatory_prop |
+        prop = props[_]
+        prop["shacl:minCount"] > 0
+        mandatory_prop = prop["shacl:name"]
       }
 
-      # check for node shapes with direct properties
-      nested_nodes[direct_props] with data.nodes as object.get(schema, "shacl:property",[])
-      mandatory_direct_props = { mandatory_direct_prop |
-        direct_prop = direct_props[_]
-        direct_prop["shacl:minCount"] > 0
-        mandatory_direct_prop = direct_prop["shacl:name"]
-      }
-
-      all_props := mandatory_linked_props | mandatory_direct_props
-      $result = count(mandatory_params - all_props) == 0
+      $result = count(all_mandatory_params - mandatory_props) == 0
 
   missing-type-description:
     message: |
       Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to
       understand your API and it will be reused as type descriptions in the federated API GraphQL schema.
     targetClass: shacl.NodeShape
-    or:
-      - propertyConstraints:
-          doc.link-target:
-            minCount: 1
-      - propertyConstraints:
-          core.description:
-            minCount: 1
+    propertyConstraints:
+      core.description:
+        minCount: 1
 
   missing-property-description:
     message: |
@@ -202,7 +201,7 @@ validations:
 
   heterogeneous-union:
     message: |
-      Shapes containing unions of scalar and oject types cannot be federated and are not a good design practice. Object
+      Shapes containing unions of scalar and object types cannot be federated and are not a good design practice. Object
       shapes with scalar flags/properties can be used as an alternative
     targetClass: shapes.AnyShape
     rego: |

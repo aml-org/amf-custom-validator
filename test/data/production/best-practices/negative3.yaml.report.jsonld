@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/best-practices/negative3.yaml#/web-api/https%3A%2F%2Fproduction.test.com",
+            "focusNode": "amf://id#19",
             "resultMessage": "Include the “api” word and the version of the API in the base Url (e.g. domain/api/v1)",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "base-url-pattern-server",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 9
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 7
+                    }
+                  },
+                  "uri": "file://./test/data/production/best-practices/negative3.yaml"
+                },
                 "resultPath": "core.urlTemplate",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -140,6 +173,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_0_1_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_1_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_1_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 9
+                    },
+                    "start": {
+                      "@id": "violation_0_1_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 7
+                    }
+                  },
+                  "uri": "file://./test/data/production/best-practices/negative3.yaml"
+                },
                 "resultPath": "core.urlTemplate",
                 "traceValue": {
                   "@id": "violation_0_1_traceValue",

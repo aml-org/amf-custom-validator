@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/integration/profile16/negative.data.yaml#/web-api/end-points/%2Fusers/get",
+            "focusNode": "amf://id#11",
             "resultMessage": "Resources should be coarse-grained not fine-grained",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "resource-should-be-coarse-grained",
@@ -139,7 +139,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://./test/data/integration/profile16/negative.data.yaml#/web-api/end-points/%2Fusers/get/201",
+                      "focusNode": "amf://id#13",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -185,7 +185,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "file://./test/data/integration/profile16/negative.data.yaml#/web-api/end-points/%2Fusers/get/201/application%2Fjson/unresolved",
+                                "focusNode": "amf://id#15",
                                 "resultMessage": "error in nested nodes under apiContract.payload / shapes.schema",
                                 "sourceShapeName": "nested",
                                 "trace": [

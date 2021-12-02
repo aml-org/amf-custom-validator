@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile5/negative.data.raml#/declarations/types/scalar/name",
+            "focusNode": "amf://id#1",
             "resultMessage": "Min length must be less than max length must match in scalar",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "test-min-length",

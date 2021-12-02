@@ -150,14 +150,7 @@ validations:
     message: |
       Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement
       one-click authentication/etc.)
-    targetClass: apiContract.WebAPI
-    or:
-      - propertyConstraints:
-          security.security:
-            minCount: 1
-      - propertyConstraints:
-          apiContract.endpoint / apiContract.supportedOperation:
-            nested:
-              propertyConstraints:
-                security.security:
-                  minCount: 1
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      security.security:
+        minCount: 1

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/security/negative3.yaml#/web-api",
+            "focusNode": "amf://id#15",
             "resultMessage": "Description\n\nThe security field of the operation has not been defined. This field specifies if your API operation requires the API consumer to authenticate to use it.\n\nFor more details, see the OpenAPI Specification.\nExample\n\nThe security field is tightly coupled with the securitySchemes objects. The security field could be missing because:\n\n    You forgot to define the securitySchemes field altogether, leaving the API completely unprotected.\n    You defined the securitySchemes field but not the security field. The definitions are not actually getting applied.\n    You defined the securitySchemes field and the operation-level security field for some of the API operations. However, you did not define the security field on the global level for the whole API.\n\nPossible exploit scenario\n\nIf you do not set the global security field, the API does not require any authentication by default. Anyone can use the API operations that do not have a security field defined. All they need to know is the URL for the API operation and how to invoke it.\n\nThis sometimes happens to internal APIs. These are often created only to be used inside the company web pages and mobile applications. No one expects any outsiders to know that the API exists, so developers do not spend time implementing security.\n\nBut attackers can look at the code of the mobile or web application, or listen to the API traffic, and reverse engineer how the API works. Once the attackers have figured this out, they can start using the API because it does not require any authentication.\n\nRelying on defining security only on each operation individually is an error-prone approach. It is very easy to forget to set security when you add a new method to the API. If there is no global default security defined, the operation is left wide open for an attacker to invoke without any authentication required.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "security-fields-operation-empty",
@@ -121,7 +121,40 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "maxCount",
+                "component": "minCount",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 44
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 30
+                    }
+                  },
+                  "uri": "file://./test/data/production/security/negative3.yaml"
+                },
                 "resultPath": "security.security",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -130,62 +163,9 @@
                     "validation:TraceValue"
                   ],
                   "actual": 0,
-                  "condition": "<=",
-                  "expected": 0,
-                  "negated": true
-                }
-              },
-              {
-                "@id": "violation_0_1",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "nested",
-                "resultPath": "apiContract.endpoint / apiContract.supportedOperation",
-                "traceValue": {
-                  "@id": "violation_0_1_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "failedNodes": 1,
-                  "negated": false,
-                  "subResult": [
-                    {
-                      "@id": "violation_0_1_traceValue_0",
-                      "@type": [
-                        "reportSchema:ValidationResultNode",
-                        "shacl:ValidationResult"
-                      ],
-                      "focusNode": "file://./test/data/production/security/negative3.yaml#/web-api/end-points/%2Fusers/get",
-                      "resultMessage": "error in nested nodes under apiContract.endpoint / apiContract.supportedOperation",
-                      "sourceShapeName": "nested",
-                      "trace": [
-                        {
-                          "@id": "violation_0_1_traceValue_0_0",
-                          "@type": [
-                            "reportSchema:TraceMessageNode",
-                            "validation:TraceMessage"
-                          ],
-                          "component": "minCount",
-                          "resultPath": "security.security",
-                          "traceValue": {
-                            "@id": "violation_0_1_traceValue_0_0_traceValue",
-                            "@type": [
-                              "reportSchema:TraceValueNode",
-                              "validation:TraceValue"
-                            ],
-                            "actual": 0,
-                            "condition": ">=",
-                            "expected": 1,
-                            "negated": false
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "successfulNodes": 1
+                  "condition": ">=",
+                  "expected": 1,
+                  "negated": false
                 }
               }
             ]

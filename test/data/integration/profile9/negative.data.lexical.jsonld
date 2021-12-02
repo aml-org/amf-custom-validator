@@ -1172,3 +1172,2467 @@
     }
   ]
 }
+{
+  "@graph": [
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#APIContractProcessingData"
+      ],
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.2.0",
+      "http://a.ml/vocabularies/document#sourceSpec": "RAML 1.0"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "http://a.ml/vocabularies/apiContract#API",
+        "http://a.ml/vocabularies/document#RootDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "Test API",
+      "http://a.ml/vocabularies/apiContract#endpoint": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml/BaseUnitSourceInformation",
+      "@type": [
+        "http://a.ml/vocabularies/document#BaseUnitSourceInformation"
+      ],
+      "http://a.ml/vocabularies/document#rootLocation": "file://./test/data/integration/profile9/negative.data.raml"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/endpoint1",
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/endpoint2",
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/endpoint3",
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/endpoint4",
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "get",
+      "http://a.ml/vocabularies/apiContract#expects": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "get",
+      "http://a.ml/vocabularies/apiContract#expects": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "get",
+      "http://a.ml/vocabularies/apiContract#expects": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "get",
+      "http://a.ml/vocabularies/apiContract#expects": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(3,0)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/core#name",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(3,0)-(5,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Request",
+        "http://a.ml/vocabularies/apiContract#Message",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#payload": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(5,0)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#path",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(5,0)-(5,10)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Request",
+        "http://a.ml/vocabularies/apiContract#Message",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(14,0)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#path",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(14,0)-(14,10)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Request",
+        "http://a.ml/vocabularies/apiContract#Message",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(19,0)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#path",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(19,0)-(19,10)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Request",
+        "http://a.ml/vocabularies/apiContract#Message",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(24,0)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#path",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(24,0)-(24,10)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "a",
+      "http://a.ml/vocabularies/apiContract#paramName": "a",
+      "http://a.ml/vocabularies/apiContract#required": true,
+      "http://a.ml/vocabularies/apiContract#binding": "query",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Payload",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#mediaType": "application/json",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(6,2)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "c",
+      "http://a.ml/vocabularies/apiContract#paramName": "c",
+      "http://a.ml/vocabularies/apiContract#required": true,
+      "http://a.ml/vocabularies/apiContract#binding": "query",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(15,2)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "c",
+      "http://a.ml/vocabularies/apiContract#paramName": "c",
+      "http://a.ml/vocabularies/apiContract#required": true,
+      "http://a.ml/vocabularies/apiContract#binding": "query",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(20,2)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "c",
+      "http://a.ml/vocabularies/apiContract#paramName": "c",
+      "http://a.ml/vocabularies/apiContract#required": true,
+      "http://a.ml/vocabularies/apiContract#binding": "query",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(25,2)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#minLength": 10,
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#closed": false,
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#parameter",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(7,4)-(10,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#payload",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(10,4)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#minLength": 5,
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#parameter",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(16,4)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#minLength": 5,
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#parameter",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(21,4)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#minLength": 5,
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#parameter",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(26,4)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/lexical/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#default-node": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/default-node/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#binding",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(8,6)-(10,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/shapes#schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(8,6)-(10,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#b"
+        }
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#name": "b",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/lexical/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#auto-generated-name": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/auto-generated-name/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(11,6)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#default-node": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/default-node/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#binding",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(17,6)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/shapes#schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(17,6)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#default-node": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/default-node/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#binding",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(22,6)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/shapes#schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(22,6)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#default-node": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/default-node/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#binding",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(27,6)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/shapes#schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(27,6)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#datatype",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(8,6)-(10,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minLength",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(9,8)-(10,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/default-node/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "b",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/synthesized-field/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#closed",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(11,6)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#property",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(12,19)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/auto-generated-name/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#datatype",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(17,6)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minLength",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(18,8)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/default-node/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#datatype",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(22,6)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minLength",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(23,8)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/default-node/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#datatype",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(27,6)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minLength",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(28,8)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/default-node/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/synthesized-field/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#path",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minCount",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(13,10)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/shapes#range",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(13,12)-(13,12)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(13,10)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml",
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/BaseUnitProcessingData"
+      },
+      "http://a.ml/vocabularies/document#sourceInformation": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml/BaseUnitSourceInformation"
+      }
+    }
+  ]
+}
+
+{
+  "@graph": [
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#APIContractProcessingData"
+      ],
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.2.0",
+      "http://a.ml/vocabularies/document#sourceSpec": "RAML 1.0"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "http://a.ml/vocabularies/apiContract#API",
+        "http://a.ml/vocabularies/document#RootDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "Test API",
+      "http://a.ml/vocabularies/apiContract#endpoint": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml/BaseUnitSourceInformation",
+      "@type": [
+        "http://a.ml/vocabularies/document#BaseUnitSourceInformation"
+      ],
+      "http://a.ml/vocabularies/document#rootLocation": "file://./test/data/integration/profile9/negative.data.raml"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/endpoint1",
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/endpoint2",
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/endpoint3",
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/endpoint4",
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "get",
+      "http://a.ml/vocabularies/apiContract#expects": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "get",
+      "http://a.ml/vocabularies/apiContract#expects": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "get",
+      "http://a.ml/vocabularies/apiContract#expects": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "get",
+      "http://a.ml/vocabularies/apiContract#expects": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(3,0)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/core#name",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(3,0)-(5,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Request",
+        "http://a.ml/vocabularies/apiContract#Message",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#payload": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(5,0)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#path",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(5,0)-(5,10)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Request",
+        "http://a.ml/vocabularies/apiContract#Message",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(14,0)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#path",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(14,0)-(14,10)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Request",
+        "http://a.ml/vocabularies/apiContract#Message",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(19,0)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#path",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(19,0)-(19,10)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Request",
+        "http://a.ml/vocabularies/apiContract#Message",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(24,0)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#path",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(24,0)-(24,10)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "a",
+      "http://a.ml/vocabularies/apiContract#paramName": "a",
+      "http://a.ml/vocabularies/apiContract#required": true,
+      "http://a.ml/vocabularies/apiContract#binding": "query",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Payload",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#mediaType": "application/json",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(6,2)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "c",
+      "http://a.ml/vocabularies/apiContract#paramName": "c",
+      "http://a.ml/vocabularies/apiContract#required": true,
+      "http://a.ml/vocabularies/apiContract#binding": "query",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(15,2)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "c",
+      "http://a.ml/vocabularies/apiContract#paramName": "c",
+      "http://a.ml/vocabularies/apiContract#required": true,
+      "http://a.ml/vocabularies/apiContract#binding": "query",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(20,2)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "c",
+      "http://a.ml/vocabularies/apiContract#paramName": "c",
+      "http://a.ml/vocabularies/apiContract#required": true,
+      "http://a.ml/vocabularies/apiContract#binding": "query",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(25,2)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#minLength": 10,
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#closed": false,
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#parameter",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(7,4)-(10,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#payload",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(10,4)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#minLength": 5,
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#parameter",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(16,4)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#minLength": 5,
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#parameter",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(21,4)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#minLength": 5,
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#parameter",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(26,4)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/lexical/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#default-node": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/default-node/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#binding",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(8,6)-(10,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/shapes#schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(8,6)-(10,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#b"
+        }
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#name": "b",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/lexical/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#auto-generated-name": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/auto-generated-name/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(11,6)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#default-node": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/default-node/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#binding",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(17,6)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/shapes#schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(17,6)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#default-node": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/default-node/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#binding",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(22,6)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/shapes#schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(22,6)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#default-node": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/default-node/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#binding",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(27,6)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/shapes#schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(27,6)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#datatype",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(8,6)-(10,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minLength",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(9,8)-(10,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema/source-map/default-node/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "b",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/synthesized-field/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#closed",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(11,6)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#property",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(12,19)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/source-map/auto-generated-name/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#datatype",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(17,6)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minLength",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(18,8)-(19,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/default-node/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#datatype",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(22,6)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minLength",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(23,8)-(24,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/default-node/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#datatype",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(27,6)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minLength",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(28,8)-(28,20)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema/source-map/default-node/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint4/supportedOperation/get/expects/request/parameter/parameter/query/c/scalar/schema",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#synthesized-field": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b/source-map/synthesized-field/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/synthesized-field/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#path",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minCount",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(13,10)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/shapes#range",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(13,12)-(13,12)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b/source-map/synthesized-field/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile9/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/payload/application%2Fjson/shape/schema/property/property/b/scalar/b",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(13,10)-(14,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile9/negative.data.raml",
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/web-api"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml#/BaseUnitProcessingData"
+      },
+      "http://a.ml/vocabularies/document#sourceInformation": {
+        "@id": "file://./test/data/integration/profile9/negative.data.raml/BaseUnitSourceInformation"
+      }
+    }
+  ]
+}
+

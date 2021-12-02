@@ -5,7 +5,7 @@ profile: Spectral Base
 violation:
   - operation-2xx-response
   - operation-operationId-unique
-  - operation-parameters
+#  - operation-parameters
   - path-params
   - info-contact
   - info-description
@@ -62,8 +62,11 @@ validations:
 
   # automatically enforced by AMF
   operation-parameters:
+    # https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rulesundefined#operation-parameters
+    # This rule is automatically enforced by AMF in transformation.
+    # To enable this rule we should use the parsed Unit (instead of the transformed)
     message: Operation parameters are unique and non-repeating.
-    targetClass: apiContract.EndPoint
+    targetClass: apiContract.Operation
     rego: |
       nested_nodes[parameters] with data.nodes as $node["apiContract:parameter"]
       keys = [ desc |
@@ -88,7 +91,14 @@ validations:
       path = $node["apiContract:path"]
       pathVariables = {v | ms = regex.find_all_string_submatch_n("{([a-z0-9_]+)}", path, -1); m = ms[_]; v = m[1] }
 
-      nested_nodes[parameters] with data.nodes as object.get($node,"apiContract:parameter",[])
+      nested_nodes[operations] with data.nodes as $node["apiContract:supportedOperation"]
+      operation = operations[_]
+
+      nested_nodes[requests] with data.nodes as object.get(operation, "apiContract:expects", [])
+      request = requests[_]
+
+      nested_nodes[parameters] with data.nodes as object.get(request, "apiContract:uriParameter", [])
+
       declaredPathVariables = { desc |
         parameter = parameters[_]
         name = parameter["core:name"]

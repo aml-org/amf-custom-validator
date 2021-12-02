@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/datagraph/negative12.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/parameter/query/args",
+            "focusNode": "amf://id#21",
             "resultMessage": "Encoding complex objects into URL parameters is not a standardized way of passing information that cannot be\nautomatically processed. Complex information should be passed in the body of the HTTP request.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "non-scalar-url-parameters",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 54
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 8,
+                      "line": 39
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative12.yaml"
+                },
                 "resultPath": "shapes.schema / shacl.datatype",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -142,6 +175,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
+                "location": {
+                  "@id": "violation_0_1_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_1_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_1_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 54
+                    },
+                    "start": {
+                      "@id": "violation_0_1_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 8,
+                      "line": 39
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative12.yaml"
+                },
                 "resultPath": "shapes.schema / shapes.items / shacl.datatype",
                 "traceValue": {
                   "@id": "violation_0_1_traceValue",
@@ -162,6 +228,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_0_2_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_2_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_2_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 54
+                    },
+                    "start": {
+                      "@id": "violation_0_2_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 8,
+                      "line": 39
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative12.yaml"
+                },
                 "resultPath": "apiContract.binding",
                 "traceValue": {
                   "@id": "violation_0_2_traceValue",

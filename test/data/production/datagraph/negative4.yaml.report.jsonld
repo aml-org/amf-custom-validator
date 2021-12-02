@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/datagraph/negative4.yaml#/web-api",
+            "focusNode": "amf://id#21",
             "resultMessage": "Only basic authentication for clientId/Secret credentials or no authentication schemes are supported\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "only-http-basic-security-supported",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 67
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 55
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative4.yaml"
+                },
                 "resultPath": "security.security",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -142,6 +175,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "atLeast",
+                "location": {
+                  "@id": "violation_0_1_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_1_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_1_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 67
+                    },
+                    "start": {
+                      "@id": "violation_0_1_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 55
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative4.yaml"
+                },
                 "resultPath": "security.security / security.schemes / security.scheme",
                 "traceValue": {
                   "@id": "violation_0_1_traceValue",
@@ -159,7 +225,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://./test/data/production/datagraph/negative4.yaml#/web-api/requirement_1/oAuth/oAuth",
+                      "focusNode": "amf://id#11",
                       "resultMessage": "error in nested nodes under security.security / security.schemes / security.scheme",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -170,9 +236,226 @@
                             "validation:TraceMessage"
                           ],
                           "component": "pattern",
+                          "location": {
+                            "@id": "violation_0_1_traceValue_0_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_0_1_traceValue_0_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_1_traceValue_0_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 24
+                              },
+                              "start": {
+                                "@id": "violation_0_1_traceValue_0_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 4,
+                                "line": 16
+                              }
+                            },
+                            "uri": "file://./test/data/production/datagraph/negative4.yaml"
+                          },
                           "resultPath": "security.type",
                           "traceValue": {
                             "@id": "violation_0_1_traceValue_0_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "argument": "OAuth 2.0",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "successfulNodes": 0
+                }
+              }
+            ]
+          },
+          {
+            "@id": "violation_1",
+            "@type": [
+              "reportSchema:ValidationResultNode",
+              "shacl:ValidationResult"
+            ],
+            "focusNode": "amf://id#35",
+            "resultMessage": "Only basic authentication for clientId/Secret credentials or no authentication schemes are supported\n",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "sourceShapeName": "only-http-basic-security-supported",
+            "trace": [
+              {
+                "@id": "violation_1_0",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "minCount",
+                "location": {
+                  "@id": "violation_1_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_1_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_1_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 53,
+                      "line": 90
+                    },
+                    "start": {
+                      "@id": "violation_1_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 75
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative4.yaml"
+                },
+                "resultPath": "security.security",
+                "traceValue": {
+                  "@id": "violation_1_0_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "actual": 1,
+                  "condition": ">=",
+                  "expected": 1,
+                  "negated": true
+                }
+              },
+              {
+                "@id": "violation_1_1",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "atLeast",
+                "location": {
+                  "@id": "violation_1_1_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_1_1_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_1_1_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 53,
+                      "line": 90
+                    },
+                    "start": {
+                      "@id": "violation_1_1_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 75
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative4.yaml"
+                },
+                "resultPath": "security.security / security.schemes / security.scheme",
+                "traceValue": {
+                  "@id": "violation_1_1_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "cardinality": 1,
+                  "failedNodes": 1,
+                  "negated": false,
+                  "subResult": [
+                    {
+                      "@id": "violation_1_1_traceValue_0",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#11",
+                      "resultMessage": "error in nested nodes under security.security / security.schemes / security.scheme",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_1_1_traceValue_0_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "pattern",
+                          "location": {
+                            "@id": "violation_1_1_traceValue_0_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_1_1_traceValue_0_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_1_1_traceValue_0_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 24
+                              },
+                              "start": {
+                                "@id": "violation_1_1_traceValue_0_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 4,
+                                "line": 16
+                              }
+                            },
+                            "uri": "file://./test/data/production/datagraph/negative4.yaml"
+                          },
+                          "resultPath": "security.type",
+                          "traceValue": {
+                            "@id": "violation_1_1_traceValue_0_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"

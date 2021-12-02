@@ -1,0 +1,183 @@
+{
+  "@graph": [
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#APIContractProcessingData"
+      ],
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.2.0",
+      "http://a.ml/vocabularies/document#sourceSpec": "OAS 3.0"
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/web-api",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "http://a.ml/vocabularies/apiContract#API",
+        "http://a.ml/vocabularies/document#RootDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "Example API",
+      "http://a.ml/vocabularies/apiContract#endpoint": [],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/web-api/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml/BaseUnitSourceInformation",
+      "@type": [
+        "http://a.ml/vocabularies/document#BaseUnitSourceInformation"
+      ],
+      "http://a.ml/vocabularies/document#rootLocation": "file://./test/data/integration/profile5/negative.data.yaml"
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/web-api/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/web-api/source-map/lexical/element_2"
+        },
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/web-api/source-map/lexical/element_0"
+        },
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/web-api/source-map/lexical/element_1"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/web-api/source-map/lexical/element_2",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/core#name",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(4,2)-(6,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/web-api/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/apiContract#endpoint",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(13,0)-(13,9)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/web-api/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile5/negative.data.yaml#/web-api",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(1,0)-(13,9)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml",
+      "http://a.ml/vocabularies/document#declares": [
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name"
+        }
+      ],
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://./test/data/integration/profile5/negative.data.yaml#/web-api"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://./test/data/integration/profile5/negative.data.yaml#/BaseUnitProcessingData"
+      },
+      "http://a.ml/vocabularies/document#sourceInformation": {
+        "@id": "file://./test/data/integration/profile5/negative.data.yaml/BaseUnitSourceInformation"
+      }
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#minLength": 500,
+      "http://www.w3.org/ns/shacl#maxLength": 100,
+      "http://www.w3.org/ns/shacl#name": "name",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#declared-element": [
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/declared-element/element_0"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/lexical/element_4"
+        },
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/lexical/element_2"
+        },
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/lexical/element_0"
+        },
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/lexical/element_1"
+        },
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/lexical/element_3"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#type-property-lexical-info": [
+        {
+          "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/type-property-lexical-info/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/declared-element/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name",
+      "http://a.ml/vocabularies/document-source-maps#value": ""
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/lexical/element_4",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#maxLength",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(11,6)-(13,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/lexical/element_2",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(8,4)-(13,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#name",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(8,4)-(8,8)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/lexical/element_1",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#minLength",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(10,6)-(11,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/lexical/element_3",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://www.w3.org/ns/shacl#datatype",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(9,6)-(10,0)]"
+    },
+    {
+      "@id": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name/source-map/type-property-lexical-info/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/integration/profile5/negative.data.yaml#/declares/scalar/name",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(9,6)-(9,10)]"
+    }
+  ]
+}
+

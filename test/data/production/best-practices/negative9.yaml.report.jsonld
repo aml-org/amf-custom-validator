@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/best-practices/negative9.yaml#/web-api/end-points/%2Fusers-list%2F%7Bid%7D/get",
+            "focusNode": "amf://id#52",
             "resultMessage": "These response codes [200,204,304,400,401,403,404,405,406,408,410,412,415,429,500,502,503,504,509,510,511,550,598,\n599]should be used as standard for GET operations, the use of not defined return codes is discouraged and should\nonly be done in exceptional circumstances.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "standard-get-status-codes",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 25,
+                      "line": 136
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 114
+                    }
+                  },
+                  "uri": "file://./test/data/production/best-practices/negative9.yaml"
+                },
                 "resultPath": "apiContract.returns / apiContract.statusCode",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -141,6 +174,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_0_1_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_1_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_1_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 25,
+                      "line": 136
+                    },
+                    "start": {
+                      "@id": "violation_0_1_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 114
+                    }
+                  },
+                  "uri": "file://./test/data/production/best-practices/negative9.yaml"
+                },
                 "resultPath": "apiContract.method",
                 "traceValue": {
                   "@id": "violation_0_1_traceValue",

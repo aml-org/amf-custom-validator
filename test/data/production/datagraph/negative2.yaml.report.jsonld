@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/datagraph/negative2.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
+            "focusNode": "amf://id#11",
             "resultMessage": "Operations without schemas cannot be federated, a schema must be provided\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "missing-return-type",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "nested",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 20,
+                      "line": 45
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 33
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative2.yaml"
+                },
                 "resultPath": "apiContract.returns / apiContract.payload",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -138,7 +171,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://./test/data/production/datagraph/negative2.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/200/application%2Fjson",
+                      "focusNode": "amf://id#14",
                       "resultMessage": "error in nested nodes under apiContract.returns / apiContract.payload",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -149,6 +182,39 @@
                             "validation:TraceMessage"
                           ],
                           "component": "minCount",
+                          "location": {
+                            "@id": "violation_0_0_traceValue_0_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_0_0_traceValue_0_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_0_traceValue_0_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 20,
+                                "line": 45
+                              },
+                              "start": {
+                                "@id": "violation_0_0_traceValue_0_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 12,
+                                "line": 42
+                              }
+                            },
+                            "uri": "file://./test/data/production/datagraph/negative2.yaml"
+                          },
                           "resultPath": "shapes.schema",
                           "traceValue": {
                             "@id": "violation_0_0_traceValue_0_0_traceValue",
@@ -169,6 +235,39 @@
                             "validation:TraceMessage"
                           ],
                           "component": "pattern",
+                          "location": {
+                            "@id": "violation_0_0_traceValue_0_1_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_0_0_traceValue_0_1_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_0_traceValue_0_1_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 20,
+                                "line": 45
+                              },
+                              "start": {
+                                "@id": "violation_0_0_traceValue_0_1_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 12,
+                                "line": 42
+                              }
+                            },
+                            "uri": "file://./test/data/production/datagraph/negative2.yaml"
+                          },
                           "resultPath": "core.mediaType",
                           "traceValue": {
                             "@id": "violation_0_0_traceValue_0_1_traceValue",

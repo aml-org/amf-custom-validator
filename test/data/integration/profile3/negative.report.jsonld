@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint1",
+            "focusNode": "amf://id#21",
             "resultMessage": "Endpoints must have a POST method",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -139,7 +139,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint1/get",
+                      "focusNode": "amf://id#30",
                       "resultMessage": "error in nested nodes under apiContract.supportedOperation",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -176,7 +176,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint2",
+            "focusNode": "amf://id#38",
             "resultMessage": "Endpoints must have a POST method",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -196,7 +196,7 @@
                     "validation:TraceValue"
                   ],
                   "cardinality": 2,
-                  "failedNodes": 1,
+                  "failedNodes": 2,
                   "negated": false,
                   "subResult": [
                     {
@@ -205,7 +205,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint2/get",
+                      "focusNode": "amf://id#39",
                       "resultMessage": "error in nested nodes under apiContract.supportedOperation",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -229,9 +229,40 @@
                           }
                         }
                       ]
+                    },
+                    {
+                      "@id": "violation_1_0_traceValue_1",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#47",
+                      "resultMessage": "error in nested nodes under apiContract.supportedOperation",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_1_0_traceValue_1_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "in",
+                          "resultPath": "apiContract.method",
+                          "traceValue": {
+                            "@id": "violation_1_0_traceValue_1_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "post",
+                            "expected": "[\"put\",\"patch\"]",
+                            "negated": false
+                          }
+                        }
+                      ]
                     }
                   ],
-                  "successfulNodes": 1
+                  "successfulNodes": 0
                 }
               }
             ]
@@ -242,7 +273,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3",
+            "focusNode": "amf://id#4",
             "resultMessage": "Endpoints must have a POST method",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -262,7 +293,7 @@
                     "validation:TraceValue"
                   ],
                   "cardinality": 2,
-                  "failedNodes": 2,
+                  "failedNodes": 1,
                   "negated": false,
                   "subResult": [
                     {
@@ -271,7 +302,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3/get",
+                      "focusNode": "amf://id#13",
                       "resultMessage": "error in nested nodes under apiContract.supportedOperation",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -295,40 +326,9 @@
                           }
                         }
                       ]
-                    },
-                    {
-                      "@id": "violation_2_0_traceValue_1",
-                      "@type": [
-                        "reportSchema:ValidationResultNode",
-                        "shacl:ValidationResult"
-                      ],
-                      "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/end-points/%2Fendpoint3/post",
-                      "resultMessage": "error in nested nodes under apiContract.supportedOperation",
-                      "sourceShapeName": "nested",
-                      "trace": [
-                        {
-                          "@id": "violation_2_0_traceValue_1_0",
-                          "@type": [
-                            "reportSchema:TraceMessageNode",
-                            "validation:TraceMessage"
-                          ],
-                          "component": "in",
-                          "resultPath": "apiContract.method",
-                          "traceValue": {
-                            "@id": "violation_2_0_traceValue_1_0_traceValue",
-                            "@type": [
-                              "reportSchema:TraceValueNode",
-                              "validation:TraceValue"
-                            ],
-                            "actual": "post",
-                            "expected": "[\"put\",\"patch\"]",
-                            "negated": false
-                          }
-                        }
-                      ]
                     }
                   ],
-                  "successfulNodes": 0
+                  "successfulNodes": 1
                 }
               }
             ]

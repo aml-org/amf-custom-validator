@@ -110,10 +110,10 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/spectral/negative4.yaml#/web-api",
-            "resultMessage": "Every operation must have a unique operationId.\n\nWhy? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,\nall sorts of things like that.\n",
+            "focusNode": "amf://id#3",
+            "resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-operationId-unique",
+            "sourceShapeName": "info-description",
             "trace": [
               {
                 "@id": "violation_0_0",
@@ -121,14 +121,50 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "rego",
-                "resultPath": "",
+                "component": "minCount",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 32,
+                      "line": 74
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 1
+                    }
+                  },
+                  "uri": "file://./test/data/production/spectral/negative4.yaml"
+                },
+                "resultPath": "core.description",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
+                  "actual": 0,
+                  "condition": ">=",
+                  "expected": 1,
                   "negated": false
                 }
               }
@@ -140,10 +176,10 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D",
-            "resultMessage": "Operation parameters are unique and non-repeating.",
+            "focusNode": "amf://id#3",
+            "resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-parameters",
+            "sourceShapeName": "info-license",
             "trace": [
               {
                 "@id": "violation_1_0",
@@ -151,334 +187,43 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "rego",
-                "resultPath": "",
-                "traceValue": {
-                  "@id": "violation_1_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_2",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind",
-            "resultMessage": "Operation parameters are unique and non-repeating.",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-parameters",
-            "trace": [
-              {
-                "@id": "violation_2_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "rego",
-                "resultPath": "",
-                "traceValue": {
-                  "@id": "violation_2_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_3",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "file://./test/data/production/spectral/negative4.yaml#/web-api",
-            "resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "info-description",
-            "trace": [
-              {
-                "@id": "violation_3_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
                 "component": "minCount",
-                "resultPath": "core.description",
-                "traceValue": {
-                  "@id": "violation_3_0_traceValue",
+                "location": {
+                  "@id": "violation_1_0_location",
                   "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
                   ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_4",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "file://./test/data/production/spectral/negative4.yaml#/web-api",
-            "resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "info-license",
-            "trace": [
-              {
-                "@id": "violation_4_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
+                  "range": {
+                    "@id": "violation_1_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_1_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 32,
+                      "line": 74
+                    },
+                    "start": {
+                      "@id": "violation_1_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 1
+                    }
+                  },
+                  "uri": "file://./test/data/production/spectral/negative4.yaml"
+                },
                 "resultPath": "core.license",
                 "traceValue": {
-                  "@id": "violation_4_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_5",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "file://./test/data/production/spectral/negative4.yaml#/web-api",
-            "resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "openapi-tags",
-            "trace": [
-              {
-                "@id": "violation_5_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
-                "resultPath": "apiContract.tag",
-                "traceValue": {
-                  "@id": "violation_5_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_6",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
-            "resultMessage": "Operation must have a description explaining the operation functionality",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-description",
-            "trace": [
-              {
-                "@id": "violation_6_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
-                "resultPath": "core.description",
-                "traceValue": {
-                  "@id": "violation_6_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_7",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/get",
-            "resultMessage": "Operation must have a description explaining the operation functionality",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-description",
-            "trace": [
-              {
-                "@id": "violation_7_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
-                "resultPath": "core.description",
-                "traceValue": {
-                  "@id": "violation_7_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_8",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
-            "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-operationId",
-            "trace": [
-              {
-                "@id": "violation_8_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
-                "resultPath": "apiContract.operationId",
-                "traceValue": {
-                  "@id": "violation_8_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_9",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/get",
-            "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-operationId",
-            "trace": [
-              {
-                "@id": "violation_9_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
-                "resultPath": "apiContract.operationId",
-                "traceValue": {
-                  "@id": "violation_9_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_10",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
-            "resultMessage": "Operation should have non-empty tags array.",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-tags",
-            "trace": [
-              {
-                "@id": "violation_10_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
-                "resultPath": "apiContract.tag",
-                "traceValue": {
-                  "@id": "violation_10_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_11",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "file://./test/data/production/spectral/negative4.yaml#/web-api/end-points/%2Fusers%2Ffind/get",
-            "resultMessage": "Operation should have non-empty tags array.",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-tags",
-            "trace": [
-              {
-                "@id": "violation_11_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
-                "resultPath": "apiContract.tag",
-                "traceValue": {
-                  "@id": "violation_11_0_traceValue",
+                  "@id": "violation_1_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"

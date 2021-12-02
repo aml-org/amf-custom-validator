@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/production/datagraph/negative10.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get",
+            "focusNode": "amf://id#14",
             "resultMessage": "HTTP resources not returning a 2xx success response do not describe normal responses from the API and cannot federated.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "no-2xx-response",
@@ -122,6 +122,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 53,
+                      "line": 50
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 39
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative10.yaml"
+                },
                 "resultPath": "apiContract.method",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -140,6 +173,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "atLeast",
+                "location": {
+                  "@id": "violation_0_1_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_1_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_1_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 53,
+                      "line": 50
+                    },
+                    "start": {
+                      "@id": "violation_0_1_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 39
+                    }
+                  },
+                  "uri": "file://./test/data/production/datagraph/negative10.yaml"
+                },
                 "resultPath": "apiContract.returns",
                 "traceValue": {
                   "@id": "violation_0_1_traceValue",
@@ -157,7 +223,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://./test/data/production/datagraph/negative10.yaml#/web-api/end-points/%2Fusers%2F%7Bid%7D/get/500",
+                      "focusNode": "amf://id#16",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -168,6 +234,39 @@
                             "validation:TraceMessage"
                           ],
                           "component": "pattern",
+                          "location": {
+                            "@id": "violation_0_1_traceValue_0_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_0_1_traceValue_0_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_1_traceValue_0_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 53,
+                                "line": 50
+                              },
+                              "start": {
+                                "@id": "violation_0_1_traceValue_0_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 8,
+                                "line": 45
+                              }
+                            },
+                            "uri": "file://./test/data/production/datagraph/negative10.yaml"
+                          },
                           "resultPath": "apiContract.statusCode",
                           "traceValue": {
                             "@id": "violation_0_1_traceValue_0_0_traceValue",
