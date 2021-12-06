@@ -42,6 +42,18 @@ pipeline {
                 echo "Success" // Tests are actually run when building the agent in the Dockerfile
             }
         }
+        stage('Test generated WASM (JS Browser)') {
+            agent {
+                dockerfile {
+                    filename 'Dockerfile'
+                    additionalBuildArgs  '--target ci-browser'
+                    registryCredentialsId 'dockerhub-pro-credentials'
+                }
+            }
+            steps {
+                echo "Success" // Tests are actually run when building the agent in the Dockerfile
+            }
+        }
         stage('Coverage') {
             agent {
                 dockerfile {

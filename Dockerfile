@@ -29,11 +29,22 @@ COPY . ./src
 WORKDIR ./src/wrappers/js
 RUN npm install
 
+# JS-WEB
+WORKDIR ../js-web
+RUN npm install
+
+WORKDIR ../js
+
 # Copy generated WASM
 COPY --from=ci-go /go/src/wrappers/js/lib/main.wasm.gz ./lib
 
 WORKDIR ../../
 RUN make ci-js
+
+FROM cypress/included:3.4.0 as ci-browser
+COPY --from=ci-js /src ./src
+WORKDIR ./src
+RUN make ci-browser
 
 FROM ci-go AS go-coverage
 RUN make go-coverage
