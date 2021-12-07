@@ -72,6 +72,17 @@ func validateAndCompareDirectory(directory relativePath, t *testing.T) {
 	}
 }
 
+func validateAndCompare(profile, data, expected string, t *testing.T) {
+	actualText := validate(profile, data)
+	if config.Override {
+		write(actualText, expected)
+	} else {
+		if !compare(actualText, expected) {
+			t.Errorf("Failed %s. Actual did not match expexted", data)
+		}
+	}
+}
+
 func ignoreDirectory(directory relativePath, t *testing.T) {
 	t.Skipf("Ignored %s", directory)
 }
