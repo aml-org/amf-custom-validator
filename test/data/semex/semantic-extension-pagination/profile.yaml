@@ -1,0 +1,18 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: aml.Pagination
+    propertyConstraints:
+      aml.PageSize:
+        minExclusive: 5
+
+
+prefixes:
+  aml: http://a.ml/vocab#
+
