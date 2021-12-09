@@ -136,7 +136,7 @@ pipeline {
                         npm publish --access public
                         cd ../js-web
                         npm-snapshot $BUILD_NUMBER
-                        npm publish --access public
+                        npm publish --access public --tag snapshot
                         URL="https://${GITHUB_USR}:${GITHUB_PSW}@github.com/aml-org/amf-custom-validator"
                         git tag v$VERSION
                         git push $URL v$VERSION
