@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint1",
+            "focusNode": "amf://id#20",
             "resultMessage": "Endpoints must have a POST method",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -141,7 +141,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 22
+                      "line": 40
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -150,10 +150,10 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 5
+                      "line": 22
                     }
                   },
-                  "uri": "file://test/data/integration/profile3/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile3/negative.data.raml"
                 },
                 "resultPath": "apiContract.supportedOperation",
                 "traceValue": {
@@ -172,7 +172,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get",
+                      "focusNode": "amf://id#29",
                       "resultMessage": "error in nested nodes under apiContract.supportedOperation",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -202,7 +202,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 22
+                                "line": 40
                               },
                               "start": {
                                 "@id": "violation_0_0_traceValue_0_0_location_range_start",
@@ -211,10 +211,10 @@
                                   "lexical:Position"
                                 ],
                                 "column": 2,
-                                "line": 14
+                                "line": 31
                               }
                             },
-                            "uri": "file://test/data/integration/profile3/negative.data.raml"
+                            "uri": "file://./test/data/integration/profile3/negative.data.raml"
                           },
                           "resultPath": "apiContract.method",
                           "traceValue": {
@@ -242,7 +242,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint2",
+            "focusNode": "amf://id#3",
             "resultMessage": "Endpoints must have a POST method",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -273,7 +273,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 40
+                      "line": 22
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -282,10 +282,10 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 22
+                      "line": 5
                     }
                   },
-                  "uri": "file://test/data/integration/profile3/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile3/negative.data.raml"
                 },
                 "resultPath": "apiContract.supportedOperation",
                 "traceValue": {
@@ -304,7 +304,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get",
+                      "focusNode": "amf://id#12",
                       "resultMessage": "error in nested nodes under apiContract.supportedOperation",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -334,7 +334,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 40
+                                "line": 22
                               },
                               "start": {
                                 "@id": "violation_1_0_traceValue_0_0_location_range_start",
@@ -343,10 +343,10 @@
                                   "lexical:Position"
                                 ],
                                 "column": 2,
-                                "line": 31
+                                "line": 14
                               }
                             },
-                            "uri": "file://test/data/integration/profile3/negative.data.raml"
+                            "uri": "file://./test/data/integration/profile3/negative.data.raml"
                           },
                           "resultPath": "apiContract.method",
                           "traceValue": {
@@ -374,7 +374,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint3",
+            "focusNode": "amf://id#37",
             "resultMessage": "Endpoints must have a POST method",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -417,7 +417,7 @@
                       "line": 40
                     }
                   },
-                  "uri": "file://test/data/integration/profile3/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile3/negative.data.raml"
                 },
                 "resultPath": "apiContract.supportedOperation",
                 "traceValue": {
@@ -436,7 +436,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/get",
+                      "focusNode": "amf://id#38",
                       "resultMessage": "error in nested nodes under apiContract.supportedOperation",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -478,7 +478,7 @@
                                 "line": 41
                               }
                             },
-                            "uri": "file://test/data/integration/profile3/negative.data.raml"
+                            "uri": "file://./test/data/integration/profile3/negative.data.raml"
                           },
                           "resultPath": "apiContract.method",
                           "traceValue": {
@@ -500,7 +500,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile3/negative.data.raml#/web-api/endpoint/%2Fendpoint3/supportedOperation/post",
+                      "focusNode": "amf://id#46",
                       "resultMessage": "error in nested nodes under apiContract.supportedOperation",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -542,7 +542,7 @@
                                 "line": 49
                               }
                             },
-                            "uri": "file://test/data/integration/profile3/negative.data.raml"
+                            "uri": "file://./test/data/integration/profile3/negative.data.raml"
                           },
                           "resultPath": "apiContract.method",
                           "traceValue": {

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#11",
+            "focusNode": "amf://id#10",
             "resultMessage": "Operations without schemas cannot be federated, a schema must be provided\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "missing-return-type",
@@ -171,7 +171,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#14",
+                      "focusNode": "amf://id#13",
                       "resultMessage": "error in nested nodes under apiContract.returns / apiContract.payload",
                       "sourceShapeName": "nested",
                       "trace": [

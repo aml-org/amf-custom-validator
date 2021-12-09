@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "This rule protects against a potential hack, for anyone bringing in description documents from third parties then\ngenerating HTML documentation. If one of those third parties does something shady like inject <script> tags, they\ncould easily execute arbitrary code on your domain, which if it's the same as your main application could be all\nsorts of terrible.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "no-script-tags-in-markdown",

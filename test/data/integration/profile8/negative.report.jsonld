@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "simple-rego",
@@ -140,7 +140,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "simple-rego2",

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile2/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request",
+            "focusNode": "amf://id#5",
             "resultMessage": "Scalars in parameters must have minLength defined",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "scalar-parameters",
@@ -138,7 +138,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile2/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a",
+                      "focusNode": "amf://id#6",
                       "resultMessage": "error in nested nodes under apiContract.parameter",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -180,7 +180,7 @@
                                 "line": 8
                               }
                             },
-                            "uri": "file://test/data/integration/profile2/negative.data.raml"
+                            "uri": "file://./test/data/integration/profile2/negative.data.raml"
                           },
                           "resultPath": "shapes.schema",
                           "traceValue": {
@@ -198,7 +198,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "file://test/data/integration/profile2/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a/scalar/schema",
+                                "focusNode": "amf://id#7",
                                 "resultMessage": "error in nested nodes under shapes.schema",
                                 "sourceShapeName": "nested",
                                 "trace": [
@@ -240,7 +240,7 @@
                                           "line": 8
                                         }
                                       },
-                                      "uri": "file://test/data/integration/profile2/negative.data.raml"
+                                      "uri": "file://./test/data/integration/profile2/negative.data.raml"
                                     },
                                     "resultPath": "shacl.minLength",
                                     "traceValue": {

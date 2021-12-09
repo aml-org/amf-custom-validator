@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#14",
+            "focusNode": "amf://id#13",
             "resultMessage": "Bearer tokens from OAuth 2.0 authorization flows are transported in the clear over an unencrypted channel.\nAttackers can easily intercept API calls and retrieve the unencrypted tokens. They can then use the tokens to\nmake other API calls.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "bearer-token-cleartext",

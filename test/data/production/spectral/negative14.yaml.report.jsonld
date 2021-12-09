@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#8",
+            "focusNode": "amf://id#7",
             "resultMessage": "Operation should have non-empty tags array.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operation-tags",
@@ -176,7 +176,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "Operation tags should be defined in global tags.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operation-tag-defined",

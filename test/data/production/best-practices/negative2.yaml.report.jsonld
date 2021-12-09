@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#35",
+            "focusNode": "amf://id#34",
             "resultMessage": "- For the response: use ‘content-type’ header\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "media-type-headers-response",

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#14",
+            "focusNode": "amf://id#13",
             "resultMessage": "HTTP resources not returning a 2xx success response do not describe normal responses from the API and cannot federated.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "no-2xx-response",
@@ -223,7 +223,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#16",
+                      "focusNode": "amf://id#15",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [

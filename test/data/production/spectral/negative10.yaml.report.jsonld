@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "OpenAPI object should have non-empty tags array.\nWhy? Well, you can reference tags arbitrarily in operations, and definition is optional...\nDefining tags allows you to add more information like a description.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "openapi-tags",
@@ -176,7 +176,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "Operation tags should be defined in global tags.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operation-tag-defined",

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#21",
+            "focusNode": "amf://id#20",
             "resultMessage": "Encoding complex objects into URL parameters is not a standardized way of passing information that cannot be\nautomatically processed. Complex information should be passed in the body of the HTTP request.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "non-scalar-url-parameters",

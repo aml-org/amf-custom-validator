@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#18",
+            "focusNode": "amf://id#17",
             "resultMessage": "Mandatory parameters for a resource should overlap with the required properties of the returned schema\nso they can be used as a key for the type\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "potential-key-parameters",

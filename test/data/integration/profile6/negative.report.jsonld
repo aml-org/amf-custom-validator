@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#11",
+            "focusNode": "amf://id#10",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "and-or-not-rule",
@@ -139,7 +139,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#12",
+                      "focusNode": "amf://id#11",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -194,7 +194,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#14",
+            "focusNode": "amf://id#13",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "and-or-not-rule",
@@ -223,7 +223,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#15",
+                      "focusNode": "amf://id#14",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -278,7 +278,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#11",
+            "focusNode": "amf://id#10",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "and-or-not-rule",

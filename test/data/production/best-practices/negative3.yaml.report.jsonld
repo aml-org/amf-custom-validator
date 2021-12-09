@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#19",
+            "focusNode": "amf://id#18",
             "resultMessage": "Include the “api” word and the version of the API in the base Url (e.g. domain/api/v1)",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "base-url-pattern-server",

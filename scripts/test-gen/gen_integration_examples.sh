@@ -3,9 +3,8 @@ parse () {
   local file=$1
   echo "Processing $file"
   target=$(echo $file | sed 's/.raml//' | sed 's/.yaml//')
-  rm "$target.jsonld"
-  java -jar amf.jar parse "$file" >> "$target.jsonld"
-  java -jar amf.jar parse "$file" --with-lexical >> "$target.lexical.jsonld"
+  java -jar amf.jar parse "$file" > "$target.jsonld"
+  java -jar amf.jar parse "$file" --with-lexical > "$target.lexical.jsonld"
 }
 
 

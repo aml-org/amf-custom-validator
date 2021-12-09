@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#20",
+            "focusNode": "amf://id#19",
             "resultMessage": "Scalars in parameters must have minLength defined",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -138,7 +138,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#26",
+                      "focusNode": "amf://id#25",
                       "resultMessage": "error in nested nodes under apiContract.parameter / shapes.schema",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -176,7 +176,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#6",
+            "focusNode": "amf://id#5",
             "resultMessage": "Scalars in parameters must have minLength defined",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -204,7 +204,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#10",
+                      "focusNode": "amf://id#9",
                       "resultMessage": "error in nested nodes under apiContract.parameter / shapes.schema",
                       "sourceShapeName": "nested",
                       "trace": [

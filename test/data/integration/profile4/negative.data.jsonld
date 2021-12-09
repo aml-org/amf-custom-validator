@@ -10,7 +10,7 @@
       "http://a.ml/vocabularies/document#sourceSpec": "RAML 1.0"
     },
     {
-      "@id": "amf://id#3",
+      "@id": "amf://id#2",
       "@type": [
         "http://a.ml/vocabularies/apiContract#WebAPI",
         "http://a.ml/vocabularies/apiContract#API",
@@ -20,24 +20,68 @@
       "http://a.ml/vocabularies/core#name": "Test API",
       "http://a.ml/vocabularies/apiContract#endpoint": [
         {
-          "@id": "amf://id#4"
+          "@id": "amf://id#3"
         },
         {
-          "@id": "amf://id#9"
+          "@id": "amf://id#8"
         },
         {
-          "@id": "amf://id#14"
+          "@id": "amf://id#13"
         }
       ]
     },
     {
-      "@id": "amf://id#4",
+      "@id": "amf://id#3",
       "@type": [
         "http://a.ml/vocabularies/apiContract#EndPoint",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/apiContract#path": "/endpoint1",
       "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "amf://id#4"
+        }
+      ]
+    },
+    {
+      "@id": "amf://id#8",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/endpoint2",
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "amf://id#9"
+        }
+      ]
+    },
+    {
+      "@id": "amf://id#13",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/endpoint3/{a}",
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "amf://id#14"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "amf://id#18"
+        }
+      ]
+    },
+    {
+      "@id": "amf://id#4",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "patch",
+      "http://a.ml/vocabularies/apiContract#expects": [
         {
           "@id": "amf://id#5"
         }
@@ -46,11 +90,11 @@
     {
       "@id": "amf://id#9",
       "@type": [
-        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "http://a.ml/vocabularies/apiContract#Operation",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
-      "http://a.ml/vocabularies/apiContract#path": "/endpoint2",
-      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+      "http://a.ml/vocabularies/apiContract#method": "get",
+      "http://a.ml/vocabularies/apiContract#expects": [
         {
           "@id": "amf://id#10"
         }
@@ -59,62 +103,18 @@
     {
       "@id": "amf://id#14",
       "@type": [
-        "http://a.ml/vocabularies/apiContract#EndPoint",
-        "http://a.ml/vocabularies/document#DomainElement"
-      ],
-      "http://a.ml/vocabularies/apiContract#path": "/endpoint3/{a}",
-      "http://a.ml/vocabularies/apiContract#supportedOperation": [
-        {
-          "@id": "amf://id#15"
-        }
-      ],
-      "http://a.ml/vocabularies/apiContract#parameter": [
-        {
-          "@id": "amf://id#19"
-        }
-      ]
-    },
-    {
-      "@id": "amf://id#5",
-      "@type": [
-        "http://a.ml/vocabularies/apiContract#Operation",
-        "http://a.ml/vocabularies/document#DomainElement"
-      ],
-      "http://a.ml/vocabularies/apiContract#method": "patch",
-      "http://a.ml/vocabularies/apiContract#expects": [
-        {
-          "@id": "amf://id#6"
-        }
-      ]
-    },
-    {
-      "@id": "amf://id#10",
-      "@type": [
-        "http://a.ml/vocabularies/apiContract#Operation",
-        "http://a.ml/vocabularies/document#DomainElement"
-      ],
-      "http://a.ml/vocabularies/apiContract#method": "get",
-      "http://a.ml/vocabularies/apiContract#expects": [
-        {
-          "@id": "amf://id#11"
-        }
-      ]
-    },
-    {
-      "@id": "amf://id#15",
-      "@type": [
         "http://a.ml/vocabularies/apiContract#Operation",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/apiContract#method": "put",
       "http://a.ml/vocabularies/apiContract#returns": [
         {
-          "@id": "amf://id#16"
+          "@id": "amf://id#15"
         }
       ]
     },
     {
-      "@id": "amf://id#19",
+      "@id": "amf://id#18",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Parameter",
         "http://a.ml/vocabularies/document#DomainElement"
@@ -124,11 +124,11 @@
       "http://a.ml/vocabularies/apiContract#required": true,
       "http://a.ml/vocabularies/apiContract#binding": "path",
       "http://a.ml/vocabularies/shapes#schema": {
-        "@id": "amf://id#20"
+        "@id": "amf://id#19"
       }
     },
     {
-      "@id": "amf://id#6",
+      "@id": "amf://id#5",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Request",
         "http://a.ml/vocabularies/apiContract#Message",
@@ -136,12 +136,12 @@
       ],
       "http://a.ml/vocabularies/apiContract#parameter": [
         {
-          "@id": "amf://id#7"
+          "@id": "amf://id#6"
         }
       ]
     },
     {
-      "@id": "amf://id#11",
+      "@id": "amf://id#10",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Request",
         "http://a.ml/vocabularies/apiContract#Message",
@@ -149,12 +149,12 @@
       ],
       "http://a.ml/vocabularies/apiContract#parameter": [
         {
-          "@id": "amf://id#12"
+          "@id": "amf://id#11"
         }
       ]
     },
     {
-      "@id": "amf://id#16",
+      "@id": "amf://id#15",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Response",
         "http://a.ml/vocabularies/apiContract#Message",
@@ -164,12 +164,12 @@
       "http://a.ml/vocabularies/core#name": "200",
       "http://a.ml/vocabularies/apiContract#payload": [
         {
-          "@id": "amf://id#17"
+          "@id": "amf://id#16"
         }
       ]
     },
     {
-      "@id": "amf://id#20",
+      "@id": "amf://id#19",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "http://a.ml/vocabularies/shapes#AnyShape",
@@ -185,7 +185,7 @@
       "http://www.w3.org/ns/shacl#name": "a"
     },
     {
-      "@id": "amf://id#7",
+      "@id": "amf://id#6",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Parameter",
         "http://a.ml/vocabularies/document#DomainElement"
@@ -195,11 +195,11 @@
       "http://a.ml/vocabularies/apiContract#required": true,
       "http://a.ml/vocabularies/apiContract#binding": "query",
       "http://a.ml/vocabularies/shapes#schema": {
-        "@id": "amf://id#8"
+        "@id": "amf://id#7"
       }
     },
     {
-      "@id": "amf://id#12",
+      "@id": "amf://id#11",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Parameter",
         "http://a.ml/vocabularies/document#DomainElement"
@@ -209,22 +209,22 @@
       "http://a.ml/vocabularies/apiContract#required": true,
       "http://a.ml/vocabularies/apiContract#binding": "query",
       "http://a.ml/vocabularies/shapes#schema": {
-        "@id": "amf://id#13"
+        "@id": "amf://id#12"
       }
     },
     {
-      "@id": "amf://id#17",
+      "@id": "amf://id#16",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Payload",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/core#mediaType": "application/json",
       "http://a.ml/vocabularies/shapes#schema": {
-        "@id": "amf://id#18"
+        "@id": "amf://id#17"
       }
     },
     {
-      "@id": "amf://id#8",
+      "@id": "amf://id#7",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "http://a.ml/vocabularies/shapes#AnyShape",
@@ -241,7 +241,7 @@
       "http://www.w3.org/ns/shacl#name": "schema"
     },
     {
-      "@id": "amf://id#13",
+      "@id": "amf://id#12",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "http://a.ml/vocabularies/shapes#AnyShape",
@@ -258,7 +258,7 @@
       "http://www.w3.org/ns/shacl#name": "schema"
     },
     {
-      "@id": "amf://id#18",
+      "@id": "amf://id#17",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "http://a.ml/vocabularies/shapes#AnyShape",
@@ -282,7 +282,7 @@
         "http://a.ml/vocabularies/document#Unit"
       ],
       "http://a.ml/vocabularies/document#encodes": {
-        "@id": "amf://id#3"
+        "@id": "amf://id#2"
       },
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#processingData": {

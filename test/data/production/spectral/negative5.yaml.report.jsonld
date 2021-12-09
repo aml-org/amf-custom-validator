@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#25",
+            "focusNode": "amf://id#24",
             "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "path-params",

@@ -10,7 +10,7 @@
       "http://a.ml/vocabularies/document#sourceSpec": "OAS 3.0"
     },
     {
-      "@id": "amf://id#4",
+      "@id": "amf://id#3",
       "@type": [
         "http://a.ml/vocabularies/apiContract#WebAPI",
         "http://a.ml/vocabularies/apiContract#API",
@@ -34,7 +34,7 @@
         "http://a.ml/vocabularies/document#Unit"
       ],
       "http://a.ml/vocabularies/document#encodes": {
-        "@id": "amf://id#4"
+        "@id": "amf://id#3"
       },
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#processingData": {

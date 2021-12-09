@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#40",
+            "focusNode": "amf://id#39",
             "resultMessage": "Use schemas or data types in the specification to determine the format of the responses.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "use-schemas-responses",

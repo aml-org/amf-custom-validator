@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#21",
+            "focusNode": "amf://id#20",
             "resultMessage": "Only basic authentication for clientId/Secret credentials or no authentication schemes are supported\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "only-http-basic-security-supported",
@@ -294,7 +294,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#35",
+            "focusNode": "amf://id#34",
             "resultMessage": "Only basic authentication for clientId/Secret credentials or no authentication schemes are supported\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "only-http-basic-security-supported",

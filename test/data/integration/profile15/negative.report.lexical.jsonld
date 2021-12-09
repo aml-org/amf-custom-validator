@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://./test/data/integration/profile15/negative.data.yaml#/web-api/endpoint/%2Fusers/supportedOperation/get/users",
+            "focusNode": "amf://id#11",
             "resultMessage": "Resources should be coarse-grained not fine-grained",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "resource-should-be-coarse-grained",
@@ -172,7 +172,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://./test/data/integration/profile15/negative.data.yaml#/web-api/endpoint/%2Fusers/supportedOperation/get/users/returns/resp/201",
+                      "focusNode": "amf://id#17",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -235,7 +235,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://./test/data/integration/profile15/negative.data.yaml#/web-api/endpoint/%2Fusers/supportedOperation/get/users/returns/resp/200",
+                      "focusNode": "amf://id#13",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -296,7 +296,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "file://./test/data/integration/profile15/negative.data.yaml#/web-api/endpoint/%2Fusers/supportedOperation/get/users/returns/resp/200/payload/application%2Fjson/array/schema",
+                                "focusNode": "amf://id#15",
                                 "resultMessage": "error in nested nodes under apiContract.payload / shapes.schema",
                                 "sourceShapeName": "nested",
                                 "trace": [

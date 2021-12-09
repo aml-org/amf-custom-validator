@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#16",
+            "focusNode": "amf://id#15",
             "resultMessage": "Naming conventions for resources:\n- Use lower case (example: /accounts)\n- For resources with more than 2 words\n    - use lowercase for both words (example: /lineitems) or\n    - use kebab-case (aka spinal-case) (example: /line-items)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "resource-use-lowercase",

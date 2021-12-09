@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#23",
+            "focusNode": "amf://id#22",
             "resultMessage": "Only JSON payloads are supported at the moment in DataGraph. This is the preferred media type format.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "not-json-response",
@@ -172,7 +172,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#26",
+                      "focusNode": "amf://id#25",
                       "resultMessage": "error in nested nodes under apiContract.returns / apiContract.payload",
                       "sourceShapeName": "nested",
                       "trace": [
