@@ -3,7 +3,7 @@ parse () {
   local file=$1
   echo "Processing $file"
   rm "$file.jsonld"
-  java -jar amf.jar parse "$file" --with-lexical >> "$file.jsonld"
+  java -jar amf.jar parse "$file" --with-lexical > "$file.jsonld"
 }
 
 

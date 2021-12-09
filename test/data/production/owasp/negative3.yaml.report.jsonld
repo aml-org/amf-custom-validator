@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#6",
+            "focusNode": "amf://id#5",
             "resultMessage": "Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "lack-of-resources-and-rate-limiting-too-many-requests",
@@ -226,7 +226,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#7",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -296,7 +296,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#11",
+            "focusNode": "amf://id#10",
             "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "broken-user-authentication-authenticate-api",
@@ -362,7 +362,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#6",
+            "focusNode": "amf://id#5",
             "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "broken-user-authentication-authenticate-api",

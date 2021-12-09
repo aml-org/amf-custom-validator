@@ -174,7 +174,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#10",
+            "focusNode": "amf://id#8",
             "resultMessage": "Provide the description for the API",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "api-must-have-description",
@@ -240,7 +240,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#10",
+            "focusNode": "amf://id#8",
             "resultMessage": "Provide the documentation for the API",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "api-must-have-documentation",
@@ -415,7 +415,7 @@
                       "line": 4
                     }
                   },
-                  "uri": "file://./test/data/production/best-practices/negative1.raml"
+                  "uri": "file://./test/data/production/best-practices/lib.raml"
                 },
                 "resultPath": "core.description",
                 "traceValue": {

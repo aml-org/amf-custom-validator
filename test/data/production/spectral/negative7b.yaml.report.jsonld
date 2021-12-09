@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#5",
+            "focusNode": "amf://id#4",
             "resultMessage": "Mentioning a license is only useful if people know what the license means, so add a link to the full text for\nthose who need it.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "license-url",

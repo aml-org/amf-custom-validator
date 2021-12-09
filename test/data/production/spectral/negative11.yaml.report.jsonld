@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#11",
+            "focusNode": "amf://id#10",
             "resultMessage": "Don't use default responses, provide a valid status code",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operation-default-response",

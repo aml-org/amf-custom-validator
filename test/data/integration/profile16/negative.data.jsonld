@@ -10,7 +10,7 @@
       "http://a.ml/vocabularies/document#sourceSpec": "OAS 3.0"
     },
     {
-      "@id": "amf://id#8",
+      "@id": "amf://id#7",
       "@type": [
         "http://a.ml/vocabularies/apiContract#WebAPI",
         "http://a.ml/vocabularies/apiContract#API",
@@ -20,18 +20,18 @@
       "http://a.ml/vocabularies/core#name": "Awesome API",
       "http://a.ml/vocabularies/apiContract#server": [
         {
-          "@id": "amf://id#9"
+          "@id": "amf://id#8"
         }
       ],
       "http://a.ml/vocabularies/core#version": "1.0",
       "http://a.ml/vocabularies/apiContract#endpoint": [
         {
-          "@id": "amf://id#10"
+          "@id": "amf://id#9"
         }
       ]
     },
     {
-      "@id": "amf://id#9",
+      "@id": "amf://id#8",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Server",
         "http://a.ml/vocabularies/document#DomainElement"
@@ -40,7 +40,7 @@
       "http://a.ml/vocabularies/core#description": "production environment"
     },
     {
-      "@id": "amf://id#10",
+      "@id": "amf://id#9",
       "@type": [
         "http://a.ml/vocabularies/apiContract#EndPoint",
         "http://a.ml/vocabularies/document#DomainElement"
@@ -48,17 +48,17 @@
       "http://a.ml/vocabularies/apiContract#path": "/users",
       "http://a.ml/vocabularies/apiContract#supportedOperation": [
         {
-          "@id": "amf://id#11"
+          "@id": "amf://id#10"
         }
       ],
       "http://a.ml/vocabularies/apiContract#server": [
         {
-          "@id": "amf://id#9"
+          "@id": "amf://id#8"
         }
       ]
     },
     {
-      "@id": "amf://id#11",
+      "@id": "amf://id#10",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Operation",
         "http://a.ml/vocabularies/document#DomainElement"
@@ -68,23 +68,23 @@
       "http://a.ml/vocabularies/core#description": "op-description-users",
       "http://a.ml/vocabularies/apiContract#returns": [
         {
-          "@id": "amf://id#13"
+          "@id": "amf://id#12"
         }
       ],
       "http://a.ml/vocabularies/apiContract#tag": [
         {
-          "@id": "amf://id#12"
+          "@id": "amf://id#11"
         }
       ],
       "http://a.ml/vocabularies/apiContract#server": [
         {
-          "@id": "amf://id#9"
+          "@id": "amf://id#8"
         }
       ],
       "http://a.ml/vocabularies/apiContract#operationId": "users"
     },
     {
-      "@id": "amf://id#13",
+      "@id": "amf://id#12",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Response",
         "http://a.ml/vocabularies/apiContract#Message",
@@ -95,12 +95,12 @@
       "http://a.ml/vocabularies/core#description": "teapot",
       "http://a.ml/vocabularies/apiContract#payload": [
         {
-          "@id": "amf://id#14"
+          "@id": "amf://id#13"
         }
       ]
     },
     {
-      "@id": "amf://id#12",
+      "@id": "amf://id#11",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Tag",
         "http://a.ml/vocabularies/document#DomainElement"
@@ -108,18 +108,18 @@
       "http://a.ml/vocabularies/core#name": "All users"
     },
     {
-      "@id": "amf://id#14",
+      "@id": "amf://id#13",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Payload",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/core#mediaType": "application/json",
       "http://a.ml/vocabularies/shapes#schema": {
-        "@id": "amf://id#15"
+        "@id": "amf://id#14"
       }
     },
     {
-      "@id": "amf://id#15",
+      "@id": "amf://id#14",
       "@type": [
         "http://a.ml/vocabularies/shapes#AnyShape",
         "http://www.w3.org/ns/shacl#Shape",
@@ -143,7 +143,7 @@
         "http://a.ml/vocabularies/document#Unit"
       ],
       "http://a.ml/vocabularies/document#encodes": {
-        "@id": "amf://id#8"
+        "@id": "amf://id#7"
       },
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#processingData": {

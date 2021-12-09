@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#13",
+            "focusNode": "amf://id#12",
             "resultMessage": "ID field with string type expected",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "174-common-field-types-id",
@@ -226,7 +226,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#20",
+            "focusNode": "amf://id#19",
             "resultMessage": "ID field with string type expected",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "174-common-field-types-id",
@@ -342,7 +342,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#15",
+            "focusNode": "amf://id#14",
             "resultMessage": "Created-at fields must be date-times",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "174-common-field-types-created-at",

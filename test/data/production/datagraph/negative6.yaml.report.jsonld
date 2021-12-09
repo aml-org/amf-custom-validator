@@ -242,7 +242,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#27",
+            "focusNode": "amf://id#26",
             "resultMessage": "Providing a description of API parameters is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema field arguments.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "missing-parameter-description",

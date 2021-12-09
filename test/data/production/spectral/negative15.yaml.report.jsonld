@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#7",
+            "focusNode": "amf://id#6",
             "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "path-params",
@@ -173,7 +173,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#14",
+            "focusNode": "amf://id#13",
             "resultMessage": "Path parameter declarations cannot be empty, ex./given/{} is invalid.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "path-declarations-must-exist",
@@ -237,7 +237,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#7",
+            "focusNode": "amf://id#6",
             "resultMessage": "Path parameter declarations cannot be empty, ex./given/{} is invalid.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "path-declarations-must-exist",

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "The purpose of an API host is unclear, and there are no explicit answers to the following questions:\n    Which API version is running?\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "improper-assets-management-version",
@@ -176,7 +176,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#6",
+            "focusNode": "amf://id#5",
             "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "broken-user-authentication-authenticate-api",

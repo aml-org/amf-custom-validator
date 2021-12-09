@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "info-license",

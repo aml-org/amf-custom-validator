@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "Info object should contain contact object.\n\nHopefully your API description document is so good that nobody ever needs to contact you with questions, but that\nis rarely the case. The contact object has a few different options for contact details.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "info-contact",

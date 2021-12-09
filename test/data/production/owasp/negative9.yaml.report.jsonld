@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#9",
+            "focusNode": "amf://id#8",
             "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "broken-user-authentication-authenticate-api",

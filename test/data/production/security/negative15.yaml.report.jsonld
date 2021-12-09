@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#16",
+            "focusNode": "amf://id#15",
             "resultMessage": "Your API accepts basic authentication credentials sent in cleartext over an unencrypted channel. Attackers can\neasily intercept API calls and retrieve the credentials. They can then use the credentials to make other API calls.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "insecure-basic-auth",
@@ -227,7 +227,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#13",
+            "focusNode": "amf://id#12",
             "resultMessage": "The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all\nURLs in the API contract must be proper URLs in a valid format.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "valid-server-urltemplate",
@@ -291,7 +291,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#14",
+            "focusNode": "amf://id#13",
             "resultMessage": "The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all\nURLs in the API contract must be proper URLs in a valid format.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "valid-server-urltemplate",

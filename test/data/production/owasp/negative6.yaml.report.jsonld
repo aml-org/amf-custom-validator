@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "The purpose of an API host is unclear, and there are no explicit answers to the following questions:\n    Which environment is the API running in (e.g., production, staging, test, development)?\n    Who should have network access to the API (e.g., public, internal, partners)?\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "improper-assets-management-environment-info",
@@ -176,7 +176,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "The login page and all subsequent authenticated pages must be exclusively accessed over TLS or other strong\ntransport. The initial login page referred to as the 'login landing page', must be served over TLS or other strong\ntransport. Failure to utilize TLS or other strong transport for the login landing page allows an attacker to\nmodify the login form action, causing the user's credentials to be posted to an arbitrary location. Failure to\nutilize TLS or other strong transport for authenticated pages after login enables an attacker to view the\nunencrypted session ID and compromise the user's authenticated session.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "broken-user-authentication-use-tls",
@@ -243,7 +243,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#5",
+            "focusNode": "amf://id#4",
             "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "broken-user-authentication-authenticate-api",

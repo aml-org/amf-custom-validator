@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "Every operation must have a unique operationId.\n\nWhy? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,\nall sorts of things like that.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operation-operationId-unique",
@@ -173,7 +173,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "Info object should contain contact object.\n\nHopefully your API description document is so good that nobody ever needs to contact you with questions, but that\nis rarely the case. The contact object has a few different options for contact details.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "info-contact",
@@ -239,7 +239,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "info-description",
@@ -305,7 +305,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "info-license",
@@ -371,7 +371,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#9",
+            "focusNode": "amf://id#8",
             "resultMessage": "Operation should have non-empty tags array.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operation-tags",

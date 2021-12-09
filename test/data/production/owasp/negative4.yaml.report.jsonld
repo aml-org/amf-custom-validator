@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#14",
+            "focusNode": "amf://id#13",
             "resultMessage": "Ensure API can only be accessed by the specified HTTP verbs. All other HTTP verbs should be disabled (e.g. HEAD).\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "security-misconfiguration-disabled-http-methods-disabled-or-2xx",
@@ -172,7 +172,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#15",
+                      "focusNode": "amf://id#14",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -291,7 +291,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#15",
+                      "focusNode": "amf://id#14",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -361,7 +361,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#14",
+            "focusNode": "amf://id#13",
             "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "broken-user-authentication-authenticate-api",
@@ -427,7 +427,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#6",
+            "focusNode": "amf://id#5",
             "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "broken-user-authentication-authenticate-api",

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#52",
+            "focusNode": "amf://id#51",
             "resultMessage": "These response codes [200,204,304,400,401,403,404,405,406,408,410,412,415,429,500,502,503,504,509,510,511,550,598,\n599]should be used as standard for GET operations, the use of not defined return codes is discouraged and should\nonly be done in exceptional circumstances.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "standard-get-status-codes",

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile1/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/expects/request/parameter/parameter/query/a",
+            "focusNode": "amf://id#17",
             "resultMessage": "Scalars in parameters must have minLength defined",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "scalar-parameters",
@@ -140,8 +140,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 9
+                      "column": 8,
+                      "line": 18
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -150,10 +150,10 @@
                         "lexical:Position"
                       ],
                       "column": 6,
-                      "line": 8
+                      "line": 18
                     }
                   },
-                  "uri": "file://test/data/integration/profile1/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile1/negative.data.raml"
                 },
                 "resultPath": "shapes.schema / shacl.minLength",
                 "traceValue": {
@@ -176,7 +176,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile1/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/expects/request/parameter/parameter/query/d",
+            "focusNode": "amf://id#6",
             "resultMessage": "Scalars in parameters must have minLength defined",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "scalar-parameters",
@@ -206,8 +206,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 8,
-                      "line": 18
+                      "column": 0,
+                      "line": 9
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -216,10 +216,10 @@
                         "lexical:Position"
                       ],
                       "column": 6,
-                      "line": 18
+                      "line": 8
                     }
                   },
-                  "uri": "file://test/data/integration/profile1/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile1/negative.data.raml"
                 },
                 "resultPath": "shapes.schema / shacl.minLength",
                 "traceValue": {

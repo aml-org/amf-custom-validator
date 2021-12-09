@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#8",
+            "focusNode": "amf://id#7",
             "resultMessage": "Operation must have at least one 2xx response. Any API operation (endpoint) can fail but presumably it is also\nmeant to do something constructive at some point. If you forget to write out a success case for this API, then\nthis rule will let you know.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operation-2xx-response",

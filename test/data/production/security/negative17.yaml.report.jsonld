@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#17",
+            "focusNode": "amf://id#16",
             "resultMessage": "scopes in OAuth2 security scheme declarations must match application of the security scheme",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "matching-oauth2-scopes",

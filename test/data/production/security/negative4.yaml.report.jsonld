@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#11",
+            "focusNode": "amf://id#10",
             "resultMessage": "Access tokens from authorization code grant flow are transported in the clear over an unencrypted channel.\nAttackers can easily intercept API calls and retrieve the unencrypted tokens. They can then use the tokens to make\nother API calls.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "access-tokens-oauth2-cleartext",

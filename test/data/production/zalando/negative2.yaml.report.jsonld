@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#7",
+            "focusNode": "amf://id#6",
             "resultMessage": "Do Not Use Link Headers with JSON entities",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "166-do-not-use-link-headers",

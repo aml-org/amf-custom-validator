@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "maximum number of endpoints test",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "max-endpoints",

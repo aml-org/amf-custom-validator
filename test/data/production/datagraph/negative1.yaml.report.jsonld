@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#20",
+            "focusNode": "amf://id#19",
             "resultMessage": "Instead of inlining definition of schemas in HTTP responses,\nreferencing declared types is preferred since it provides descriptive names for the federated types\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "not-anonymous-types",
@@ -171,7 +171,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#23",
+                      "focusNode": "amf://id#22",
                       "resultMessage": "error in nested nodes under apiContract.returns / apiContract.payload",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -346,7 +346,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#20",
+            "focusNode": "amf://id#19",
             "resultMessage": "Mandatory parameters for a resource should overlap with the required properties of the returned schema\nso they can be used as a key for the type\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "potential-key-parameters",
@@ -409,7 +409,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#24",
+            "focusNode": "amf://id#23",
             "resultMessage": "Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "missing-type-description",
@@ -475,7 +475,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#24",
+            "focusNode": "amf://id#23",
             "resultMessage": "Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.\nConsider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.\nIf you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "open-schemas-ignored",

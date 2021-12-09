@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get",
+            "focusNode": "amf://id#10",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "and-or-not-rule",
@@ -153,7 +153,7 @@
                       "line": 13
                     }
                   },
-                  "uri": "file://test/data/integration/profile6/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile6/negative.data.raml"
                 },
                 "resultPath": "apiContract.returns",
                 "traceValue": {
@@ -172,7 +172,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get/returns/resp/201",
+                      "focusNode": "amf://id#11",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -214,7 +214,7 @@
                                 "line": 15
                               }
                             },
-                            "uri": "file://test/data/integration/profile6/negative.data.raml"
+                            "uri": "file://./test/data/integration/profile6/negative.data.raml"
                           },
                           "resultPath": "apiContract.statusCode",
                           "traceValue": {
@@ -271,7 +271,7 @@
                       "line": 13
                     }
                   },
-                  "uri": "file://test/data/integration/profile6/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile6/negative.data.raml"
                 },
                 "resultPath": "apiContract.method",
                 "traceValue": {
@@ -293,7 +293,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get",
+            "focusNode": "amf://id#13",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "and-or-not-rule",
@@ -336,7 +336,7 @@
                       "line": 18
                     }
                   },
-                  "uri": "file://test/data/integration/profile6/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile6/negative.data.raml"
                 },
                 "resultPath": "apiContract.returns",
                 "traceValue": {
@@ -355,7 +355,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/endpoint/%2Fendpoint2/supportedOperation/get/returns/resp/200",
+                      "focusNode": "amf://id#14",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -397,7 +397,7 @@
                                 "line": 20
                               }
                             },
-                            "uri": "file://test/data/integration/profile6/negative.data.raml"
+                            "uri": "file://./test/data/integration/profile6/negative.data.raml"
                           },
                           "resultPath": "apiContract.statusCode",
                           "traceValue": {
@@ -454,7 +454,7 @@
                       "line": 18
                     }
                   },
-                  "uri": "file://test/data/integration/profile6/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile6/negative.data.raml"
                 },
                 "resultPath": "apiContract.method",
                 "traceValue": {
@@ -476,7 +476,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile6/negative.data.raml#/web-api/endpoint/%2Fendpoint1/supportedOperation/get",
+            "focusNode": "amf://id#10",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "and-or-not-rule",
@@ -519,7 +519,7 @@
                       "line": 13
                     }
                   },
-                  "uri": "file://test/data/integration/profile6/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile6/negative.data.raml"
                 },
                 "resultPath": "apiContract.returns",
                 "traceValue": {
@@ -573,7 +573,7 @@
                       "line": 13
                     }
                   },
-                  "uri": "file://test/data/integration/profile6/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile6/negative.data.raml"
                 },
                 "resultPath": "apiContract.method",
                 "traceValue": {

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile8/negative.data.raml/web-api",
+            "focusNode": "amf://id#2",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "simple-rego",
@@ -153,7 +153,7 @@
                       "line": 3
                     }
                   },
-                  "uri": "file://test/data/integration/profile8/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile8/negative.data.raml"
                 },
                 "resultPath": "",
                 "traceValue": {
@@ -173,7 +173,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "file://test/data/integration/profile8/negative.data.raml/web-api",
+            "focusNode": "amf://id#2",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "simple-rego2",
@@ -216,7 +216,7 @@
                       "line": 3
                     }
                   },
-                  "uri": "file://test/data/integration/profile8/negative.data.raml"
+                  "uri": "file://./test/data/integration/profile8/negative.data.raml"
                 },
                 "resultPath": "",
                 "traceValue": {

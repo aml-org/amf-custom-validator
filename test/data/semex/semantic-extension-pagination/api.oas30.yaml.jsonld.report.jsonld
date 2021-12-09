@@ -111,7 +111,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#7",
+            "focusNode": "amf://id#6",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",

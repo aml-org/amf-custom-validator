@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "Title has to be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-title-must-be-provided",
@@ -176,7 +176,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "Description has to be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-description-must-be-provided",
@@ -242,7 +242,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "Version has to be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-version-must-be-provided",
@@ -308,7 +308,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "Contact name must be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-contact-name-must-be-provided",
@@ -374,7 +374,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "Contact URL must be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-contact-url-must-be-provided",
@@ -440,7 +440,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "resultMessage": "Contact name must be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-contact-email-must-be-provided",
