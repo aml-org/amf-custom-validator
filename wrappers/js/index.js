@@ -5,7 +5,7 @@ let wasm_gz
 let wasm
 
 let initialized = false
-let go = null;
+let go = undefined;
 
 const run = function(profile, data, debug) {
     let before = new Date()
@@ -18,14 +18,14 @@ const run = function(profile, data, debug) {
 const validateCustomProfile = function(profile, data, debug, cb) {
     if (initialized) {
         let res = run(profile, data, debug);
-        cb(res,null);
+        cb(res,undefined);
     } else {
-        cb(null,new Error("WASM/GO not initialized"))
+        cb(undefined,new Error("WASM/GO not initialized"))
     }
 }
 const initialize = function(cb) {
     if (initialized === true) {
-        cb(null)
+        cb(undefined)
     }
     go = new Go();
     if(!wasm_gz || !wasm) {
@@ -36,7 +36,7 @@ const initialize = function(cb) {
         WebAssembly.instantiate(wasm, go.importObject).then((result) => {
             go.run(result.instance);
             initialized = true;
-            cb(null);
+            cb(undefined);
         });
     } else {
         cb(new Error("WebAssembly is not supported in your JS environment"));
