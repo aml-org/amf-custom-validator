@@ -1,0 +1,23 @@
+#%RAML 1.0
+title: ZEncoder API
+baseUri: https://app.zencoder.com/api/v1/
+description: desc
+documentation:
+  - title: Home
+    content: content
+
+types:
+  Location:
+    description: Location Data Type
+    type: object
+    properties:
+      id:
+        required: true
+        description: Location Identifier
+        type: integer
+
+  InheritedDescription: # no description, inherited from parent type
+    type: Location
+    properties:
+      id: string
+

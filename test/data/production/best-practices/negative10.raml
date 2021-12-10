@@ -1,0 +1,15 @@
+#%RAML 1.0
+title: invalid camel case for type defined in external trait
+description: desc
+documentation:
+ - title: Home
+   content: some content
+uses:
+  lib: lib-with-extensions.raml
+
+/invalid-type-defined-in-trait:
+  put:
+    is: [ lib.someTrait ]
+
+/invalid-type-defined-in-rt:
+  type: lib.someRt

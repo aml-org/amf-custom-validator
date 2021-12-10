@@ -1,0 +1,9 @@
+#%RAML 1.0 Overlay
+extends: positive2.raml
+
+types:
+  IncorrectType:
+    description: type with incorrect camel-case property
+    type: object
+    properties:
+      no-camel-case: string
