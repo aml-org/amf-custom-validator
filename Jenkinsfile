@@ -130,14 +130,19 @@ pipeline {
                 sh '''  #!/bin/bash
                         cd /src
                         npm-cli-login -u $NPM_USR -p $NPM_PSW -e als-amf-team@mulesoft.com
+
                         cd ./wrappers/js
                         npm-snapshot $BUILD_NUMBER
                         VERSION=$(node -pe "require('./package.json').version")
                         npm publish --access public
+                        npm dist-tag add @aml-org/amf-custom-validator@${VERSION} snapshot
+
                         cd ../js-web
                         npm-snapshot $BUILD_NUMBER
-                        npm publish --access public --tag snapshot
+                        npm publish --access public
+                        npm dist-tag add @aml-org/amf-custom-validator-web@${VERSION} snapshot
                         URL="https://${GITHUB_USR}:${GITHUB_PSW}@github.com/aml-org/amf-custom-validator"
+
                         git tag v$VERSION
                         git push $URL v$VERSION
                 '''

@@ -1,0 +1,35 @@
+#%RAML 1.0 Library
+
+traits:
+  someTrait:
+    description: asdf
+    responses:
+      200:
+        description: some description
+        headers:
+          content-type:
+            description: a header
+            type: string
+        body:
+          type: object
+          description: some description
+          properties:
+            no-camel-case: string
+
+resourceTypes:
+  someRt:
+    get:
+      description: asdf
+      responses:
+        200:
+          description: some description
+          headers:
+            content-type:
+              description: a header
+              type: string
+          body:
+            type: object
+            description: some description
+            properties:
+              no-camel-case: string
+

@@ -39,4 +39,18 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Customer"
+                  type: object
+    put:
+      description: op-description
+      operationId: opid-put
+      tags:
+        - other
+      responses:
+        "200":
+          description: teapot
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
