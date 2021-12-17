@@ -1,0 +1,430 @@
+#%Validation Profile 1.0
+
+profile: JSON-API
+
+violation:
+  - json-api-media-type-request
+  - json-api-media-type-response
+  - 406-mandatory-response
+  - 415-mandatory-response
+  - json-object-top-level-request-response
+  - json-object-required-fields
+  - json-object-no-error-and-data
+  - json-object-top-level-fields
+  - json-object-no-included-without-data
+  - json-object-links-field
+  - json-object-primary-data
+  - resource-object-required-fields
+  - resource-object-fields
+  - resource-object-namespaced-fields
+
+validations:
+
+  json-api-media-type-request:
+    message: |
+      Clients MUST send all JSON:API data in request documents with the header Content-Type: application/vnd.api+json
+      without any media type parameters.
+      Clients that include the JSON:API media type in their Accept header MUST specify the media type there at least once
+      without any media type parameters.
+      Clients MUST ignore any parameters for the application/vnd.api+json media type received in the Content-Type header
+      of response documents.
+    targetClass: apiContract.Request
+    propertyConstraints:
+      apiContract.payload / core.mediaType:
+        in:
+          - application/vnd.api+json
+
+  json-api-media-type-response:
+    message: |
+      Servers MUST send all JSON:API data in response documents with the header Content-Type: application/vnd.api+json
+      without any media type parameters.
+    targetClass: apiContract.Response
+    propertyConstraints:
+      apiContract.payload / core.mediaType:
+        in:
+          - application/vnd.api+json
+
+  406-mandatory-response:
+    message: |
+      Servers MUST respond with a 406 Not Acceptable status code if a request’s Accept header contains the JSON:API media
+      type and all instances of that media type are modified with media type parameters.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.returns:
+        atLeast:
+          count: 1
+          validation:
+            propertyConstraints:
+              apiContract.statusCode:
+                in:
+                  - 406
+
+  415-mandatory-response:
+    message: |
+      Servers MUST respond with a 415 Unsupported Media Type status code if a request specifies the header Content-Type:
+      application/vnd.api+json with any media type parameters.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.returns:
+        atLeast:
+          count: 1
+          validation:
+            propertyConstraints:
+              apiContract.statusCode:
+                in:
+                  - 415
+
+  json-object-top-level-request-response:
+    message: |
+      JSON object MUST be at the root of every JSON:API request and response containing data. This object defines a document’s “top level”.
+    targetClass: apiContract.Payload
+    propertyConstraints:
+      shapes.schema:
+        nested:
+          rego: |
+            types = object.get($node, "@type", [])
+            nodeshapes = [ r |
+              e = types[_]
+              e == "shacl:NodeShape"
+              r = e
+            ]
+            $result = (count(nodeshapes) == 1)
+
+
+  json-object-required-fields:
+    message: |
+      A document MUST contain at least one of the following top-level members:
+
+          data: the document’s “primary data”
+          errors: an array of error objects
+          meta: a meta object that contains non-standard meta-information.
+    targetClass: apiContract.Payload
+    propertyConstraints:
+      shapes.schema:
+        atLeast:
+          count: 1
+          validation:
+            propertyConstraints:
+              shacl.property:
+                atLeast:
+                  count: 1
+                  validation:
+                    propertyConstraints:
+                      shacl.name:
+                        in:
+                          - data
+                          - errors
+                          - meta
+
+  json-object-no-error-and-data:
+    messge: |
+      The members data and errors MUST NOT coexist in the same document.
+    targetClass: apiContract.Payload
+    not:
+      and:
+        - propertyConstraints:
+            shapes.schema:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    shacl.property:
+                      atLeast:
+                        count: 1
+                        validation:
+                          propertyConstraints:
+                            shacl.name:
+                              in:
+                                - data
+        - propertyConstraints:
+            shapes.schema:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    shacl.property:
+                      atLeast:
+                        count: 1
+                        validation:
+                          propertyConstraints:
+                            shacl.name:
+                              in:
+                                - errors
+
+  json-object-top-level-fields:
+    message: |
+      A document MUST contain at least one of the following top-level members:
+
+          data: the document’s “primary data”
+          errors: an array of error objects
+          meta: a meta object that contains non-standard meta-information.
+
+      A document MAY contain any of these top-level members:
+
+          jsonapi: an object describing the server’s implementation
+          links: a links object related to the primary data.
+          included: an array of resource objects that are related to the primary data and/or each other (“included resources”).
+    targetClass: apiContract.Payload
+    propertyConstraints:
+      shapes.schema / shacl.property / shacl.name:
+        in:
+          - data
+          - errors
+          - meta
+          - jsonapi
+          - links
+          - included
+
+  json-object-no-included-without-data:
+    message: If a document does not contain a top-level data key, the included member MUST NOT be present either.
+    targetClass: apiContract.Payload
+    not:
+      and:
+        - propertyConstraints:
+            shapes.schema:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    shacl.property:
+                      atMost:
+                        count: 0
+                        validation:
+                          propertyConstraints:
+                            shacl.name:
+                              in:
+                                - data
+        - propertyConstraints:
+            shapes.schema:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    shacl.property:
+                      atLeast:
+                        count: 1
+                        validation:
+                          propertyConstraints:
+                            shacl.name:
+                              in:
+                                - included
+
+  json-object-links-field:
+    message: |
+      The top-level links object MAY contain the following members:
+
+          self: the link that generated the current response document.
+          related: a related resource link when the primary data represents a resource relationship.
+          pagination links for the primary data.
+    targetClass: apiContract.Payload
+    if:
+      propertyConstraints:
+        shapes.schema / shacl.property:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                shacl.name:
+                  in:
+                    - links
+    then:
+      propertyConstraints:
+        shapes.schema / shacl.property :
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                shacl.name:
+                  in:
+                    - links
+                shapes.range:
+                  nested:
+                    propertyConstraints:
+                      shacl.property / shacl.name:
+                        in:
+                          - self
+                          - related
+
+
+  json-object-primary-data:
+    message: |
+      The document’s “primary data” is a representation of the resource or collection of resources targeted by a request.
+
+      Primary data MUST be either:
+
+      a single resource object, a single resource identifier object, or null, for requests that target single resources
+      an array of resource objects, an array of resource identifier objects, or an empty array ([]), for requests that target resource collections
+
+      For example, the following primary data is a single resource object:
+
+      {
+         "data": {
+           "type": "articles",
+           "id": "1",
+           "attributes": {
+              // ... this article's attributes
+           },
+           "relationships": {
+             // ... this article's relationships
+           }
+         }
+      }
+
+      The following primary data is a single resource identifier object that references the same resource:
+
+      {
+        "data": {
+          "type": "articles",
+          "id": "1"
+        }
+      }
+
+      A logical collection of resources MUST be represented as an array, even if it only contains one item or is empty.
+    targetClass: apiContract.Payload
+    if:
+      propertyConstraints:
+        shapes.schema / shacl.property:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                shacl.name:
+                  in:
+                    - data
+    then:
+      propertyConstraints:
+        shapes.schema / shacl.property :
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                shacl.name:
+                  in:
+                    - data
+                shapes.range:
+                  nested:
+                    rego: |
+                      types = object.get($node, "@type", [])
+                      nodeshapes = [ r |
+                        e = types[_]
+                        {"shacl:NodeShape", "shapes:ArrayShape","shapes:NilShape"}[e]
+                        r = e
+                      ]
+                      $result = (count(nodeshapes) == 1)
+
+
+  resource-object-required-fields:
+    message: |
+      A resource object MUST contain at least the following top-level members:
+
+          id
+          type
+
+      Exception: The id member is not required when the resource object originates at the client and represents a new resource to be created on the server.
+    targetClass: apiContract.Response
+    if:
+      propertyConstraints:
+        apiContract.payload / shapes.schema / shacl.property:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                shacl.name:
+                  in:
+                    - data
+                shapes.range:
+                  nested:
+                    rego: |
+                      types = object.get($node, "@type", [])
+                      nodeshapes = [ r |
+                        e = types[_]
+                        e == "shacl:NodeShape"
+                        r = e
+                      ]
+                      $result = (count(nodeshapes) == 1)
+    then:
+      propertyConstraints:
+        apiContract.payload / shapes.schema / shacl.property:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                shacl.name :
+                  in:
+                    - data
+                shapes.range:
+                  nested:
+                    propertyConstraints:
+                      shacl.property:
+                        atLeast:
+                          count: 2
+                          validation:
+                            propertyConstraints:
+                              shacl.name:
+                                in:
+                                  - id
+                                  - type
+
+
+    resource-object-fields:
+      message: |
+        A resource object MUST contain at least the following top-level members:
+            id
+            type
+        Exception: The id member is not required when the resource object originates at the client and represents a new resource to be created on the server.
+        In addition, a resource object MAY contain any of these top-level members:
+            attributes: an attributes object representing some of the resource’s data.
+            relationships: a relationships object describing relationships between the resource and other JSON:API resources.
+            links: a links object containing links related to the resource.
+            meta: a meta object containing non-standard meta-information about a resource that can not be represented as an attribute or relationship.
+      targetClass: apiContract.Payload
+      if:
+        propertyConstraints:
+          shapes.schema / shacl.property:
+            atLeast:
+              count: 1
+              validation:
+                propertyConstraints:
+                  shacl.name:
+                    in:
+                      - data
+                  shapes.range:
+                    nested:
+                      rego: |
+                        types = object.get($node, "@type", [])
+                        nodeshapes = [ r |
+                          e = types[_]
+                          e == "shacl:NodeShape"
+                          r = e
+                        ]
+                        $result = (count(nodeshapes) == 1)
+      then:
+        propertyConstraints:
+          shapes.schema / shacl.property:
+            atLeast:
+              count: 1
+              validation:
+                propertyConstraints:
+                  shacl.name:
+                    in:
+                      - data
+                  shapes.range:
+                    nested:
+                      propertyConstraints:
+                        shacl.property:
+                          shacl.name:
+                            in:
+                              - id
+                              - type
+                              - attributes
+                              - relationships
+                              - links
+                              - meta
+
+  resource-object-namespaced-fields:
+    message: |
+      Fields for a resource object MUST share a common namespace with each other and with type and id. In other words,
+      a resource can not have an attribute and relationship with the same name, nor can it have an attribute or
+      relationship named type or id.
+    targetClass: shacl.NodeShape
+    rego: |

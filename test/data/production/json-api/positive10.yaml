@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  title: Positive Example 10
+  description: |
+    checking: resource-object-required-fields
+    description: Checking that a data object without id but with type is still a valid object in the case o a request
+  version: 1.0.0
+servers:
+  - url: 'https://myapp.com'
+components:
+  schemas:
+    ValidObject:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+            id:
+              type: string
+        meta:
+          type: object
+        included:
+          type: object
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+            related:
+              type: string
+paths:
+  /Users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: the user identifier, as is
+        schema:
+          type: string
+    get:
+      description: op-description
+      operationId: opid
+      tags:
+        - Invoice Items
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+      responses:
+        "415":
+          description: Unsupported media type
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: "#/components/schemas/ValidObject"
+        "406":
+          description: Not acceptable
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: "#/components/schemas/ValidObject"
+        "200":
+          description: teapot
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: "#/components/schemas/ValidObject"
