@@ -206,8 +206,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 29,
-                      "line": 28
+                      "column": 23,
+                      "line": 25
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -215,8 +215,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 1
+                      "column": 10,
+                      "line": 25
                     }
                   },
                   "uri": "file://./test/data/production/spectral/negative10.yaml"
