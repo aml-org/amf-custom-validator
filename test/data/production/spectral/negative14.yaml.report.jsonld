@@ -206,8 +206,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 29,
-                      "line": 54
+                      "column": 14,
+                      "line": 32
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -215,8 +215,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 1
+                      "column": 10,
+                      "line": 32
                     }
                   },
                   "uri": "file://./test/data/production/spectral/negative14.yaml"
@@ -224,6 +224,69 @@
                 "resultPath": "",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "negated": false
+                }
+              }
+            ]
+          },
+          {
+            "@id": "violation_2",
+            "@type": [
+              "reportSchema:ValidationResultNode",
+              "shacl:ValidationResult"
+            ],
+            "focusNode": "amf://id#2",
+            "resultMessage": "Operation tags should be defined in global tags.",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "sourceShapeName": "operation-tag-defined",
+            "trace": [
+              {
+                "@id": "violation_2_0",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "rego",
+                "location": {
+                  "@id": "violation_2_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_2_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_2_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 14,
+                      "line": 51
+                    },
+                    "start": {
+                      "@id": "violation_2_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 10,
+                      "line": 51
+                    }
+                  },
+                  "uri": "file://./test/data/production/spectral/negative14.yaml"
+                },
+                "resultPath": "",
+                "traceValue": {
+                  "@id": "violation_2_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
