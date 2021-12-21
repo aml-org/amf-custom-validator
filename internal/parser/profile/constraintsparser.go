@@ -11,19 +11,29 @@ import (
 func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint *y.Yaml, varGenerator *VarGenerator) ([]Rule, error) {
 	var acc []Rule
 
-	min, err := constraint.Get("minCount").Int()
+	minCount, err := constraint.Get("minCount").Int()
 	if err == nil {
-		acc = append(acc, newMinCount(false, variable, path, min))
+		acc = append(acc, newMinCount(false, variable, path, minCount))
 	}
 
-	max, err := constraint.Get("maxCount").Int()
+	maxCount, err := constraint.Get("maxCount").Int()
 	if err == nil {
-		acc = append(acc, newMaxCount(false, variable, path, max))
+		acc = append(acc, newMaxCount(false, variable, path, maxCount))
 	}
 
-	exact, err := constraint.Get("exactCount").Int()
+	exactCount, err := constraint.Get("exactCount").Int()
 	if err == nil {
-		acc = append(acc, newExactCount(false, variable, path, exact))
+		acc = append(acc, newExactCount(false, variable, path, exactCount))
+	}
+
+	minLength, err := constraint.Get("minLength").Int()
+	if err == nil {
+		acc = append(acc, newMinLength(false, variable, path, minLength))
+	}
+
+	maxLength, err := constraint.Get("maxLength").Int()
+	if err == nil {
+		acc = append(acc, newMaxLength(false, variable, path, maxLength))
 	}
 
 	pattern, err := constraint.Get("pattern").String()
