@@ -1,0 +1,25 @@
+{
+  "@graph" : [ {
+    "@id" : "ex:InvalidMalePerson",
+    "gender" : "female",
+    "@type" : "ex:MalePerson",
+    "label" : "Invalid male person"
+  }, {
+    "@id" : "ex:ValidMalePerson1",
+    "gender" : "male",
+    "@type" : "ex:MalePerson"
+  }, {
+    "@id" : "ex:ValidMalePerson2",
+    "gender" : [ "male", "female" ],
+    "@type" : "ex:MalePerson"
+  } ],
+  "@context" : {
+    "gender" : {
+      "@id" : "http://datashapes.org/sh/tests/core/property/hasValue-001.test#gender"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "ex" : "http://datashapes.org/sh/tests/core/property/hasValue-001.test#"
+  }
+}

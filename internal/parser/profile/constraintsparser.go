@@ -55,6 +55,15 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, newIn(false, variable, path, l))
 	}
 
+	hasValue, err := constraint.GetOrError("hasValue")
+	if err == nil {
+		stringValue, err :=stringifyNode(hasValue)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, newHasValue(false, variable, path, stringValue))
+	}
+
 	otherProp, err := constraint.Get("lessThanProperty").String()
 	if err == nil {
 		compPath, err := pathParser.ParsePath(otherProp)
@@ -267,35 +276,41 @@ func parseQualifiedNestedExpression(qNested *y.Yaml, negated bool, variable Vari
 }
 
 // We are always stringifying the value to be able to compare it easily in Rego
+func stringifyNode(node *y.Yaml) (string, error) {
+	s, nok := node.String()
+	if nok == nil {
+		return s, nil
+	}
+
+	i, nok := node.Int()
+	if nok == nil {
+		return strconv.Itoa(i), nil
+	}
+
+	f, nok := node.Float()
+	if nok == nil {
+		return strconv.FormatFloat(f, 'f', 6, 64), nil
+	}
+
+	b, nok := node.Bool()
+	if nok == nil {
+		return strconv.FormatBool(b), nil
+	}
+
+	l, c := node.Pos()
+	return "", errors.New(fmt.Sprintf("expected scalars, found %v at [%d,%d]", node, l, c))
+}
+
 func scalarList(in []*y.Yaml) ([]string, error) {
 	var acc []string
 	for _, e := range in {
-		s, nok := e.String()
+		s, nok := stringifyNode(e)
 		if nok == nil {
 			acc = append(acc, s)
 			continue
+		} else {
+			return nil, nok
 		}
-
-		i, nok := e.Int()
-		if nok == nil {
-			acc = append(acc, strconv.Itoa(i))
-			continue
-		}
-
-		f, nok := e.Float()
-		if nok == nil {
-			acc = append(acc, strconv.FormatFloat(f, 'f', 6, 64))
-			continue
-		}
-
-		b, nok := e.Bool()
-		if nok == nil {
-			acc = append(acc, strconv.FormatBool(b))
-			continue
-		}
-
-		l, c := e.Pos()
-		return nil, errors.New(fmt.Sprintf("expected scalars in 'in' constraint, found %v at [%d,%d]", e, l, c))
 
 	}
 
