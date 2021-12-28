@@ -113,3 +113,8 @@ func newMaxLength(negated bool, variable Variable, path path.PropertyPath, argum
 	return c
 }
 
+func newExactLength(negated bool, variable Variable, path path.PropertyPath, argument int) CountRule {
+	c := newCount(negated, Exact, StringLength, variable, path, argument)
+	c.Name = "exactLength"
+	return c
+}

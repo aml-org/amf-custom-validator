@@ -1,0 +1,19 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1:
+    targetClass: ex.Person
+    propertyConstraints:
+      ex.firstName:
+        exactCount: 2
+        datatype: xsd.string
+
+
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/property/exactCount.test#
+

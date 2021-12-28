@@ -36,6 +36,11 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, newMaxLength(false, variable, path, maxLength))
 	}
 
+	exactLength, err := constraint.Get("exactLength").Int()
+	if err == nil {
+		acc = append(acc, newExactLength(false, variable, path, exactLength))
+	}
+
 	pattern, err := constraint.Get("pattern").String()
 	if err == nil {
 		acc = append(acc, newPattern(false, variable, path, pattern))
