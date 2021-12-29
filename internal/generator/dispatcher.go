@@ -14,6 +14,8 @@ func Dispatch(r profile.Rule) []GeneratedRegoResult {
 		return simpleAsGeneratedRegoResult(GenerateCount(e))
 	case profile.InRule:
 		return simpleAsGeneratedRegoResult(GenerateIn(e))
+	case profile.HasValueRule:
+		return simpleAsGeneratedRegoResult(GenerateHasValue(e))
 	case profile.PatternRule:
 		return simpleAsGeneratedRegoResult(GeneratePattern(e))
 	case profile.PropertyComparisonRule:

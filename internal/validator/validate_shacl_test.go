@@ -77,6 +77,14 @@ func TestPropertyEquals001(t *testing.T) {
 	ignoreShaclCase("property/equals-001", t)
 }
 
+func TestPropertyHasValue001(t *testing.T) {
+	testShaclCase("property/hasValue-001", t)
+}
+
+func TestPropertyHasValueNumeric(t *testing.T) {
+	testShaclCase("property/hasValue-numeric", t)
+}
+
 func TestPropertyIn001(t *testing.T) {
 	testShaclCase("property/in-001", t)
 }
