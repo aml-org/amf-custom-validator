@@ -1,0 +1,37 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/exactCount.test#InvalidPerson",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Invalid person"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/property/exactCount.test#firstName": [
+      {
+        "@value": "Only one name"
+      }
+    ],
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/exactCount.test#Person"
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/exactCount.test#ValidResource",
+    "http://datashapes.org/sh/tests/core/property/exactCount.test#firstName": [
+      {
+        "@value": "John"
+      },
+      {
+        "@value": "Doe"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Valid resource"
+      }
+    ],
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/exactCount.test#Person"
+    ]
+  }
+]

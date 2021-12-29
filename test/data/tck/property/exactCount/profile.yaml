@@ -7,13 +7,13 @@ violation:
 validations:
 
   validation1:
-    targetClass: ex.TestShape
+    targetClass: ex.Person
     propertyConstraints:
-      ex.testProperty:
+      ex.firstName:
+        exactCount: 2
         datatype: xsd.string
-        minLength: 2
 
 
 prefixes:
-  ex: http://datashapes.org/sh/tests/core/property/minLength-001.test#
+  ex: http://datashapes.org/sh/tests/core/property/exactCount.test#
 

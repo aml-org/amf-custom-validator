@@ -11,9 +11,9 @@ validations:
     propertyConstraints:
       ex.testProperty:
         datatype: xsd.string
-        minLength: 2
+        exactLength: 2
 
 
 prefixes:
-  ex: http://datashapes.org/sh/tests/core/property/minLength-001.test#
+  ex: http://datashapes.org/sh/tests/core/property/exactLength.test#
 

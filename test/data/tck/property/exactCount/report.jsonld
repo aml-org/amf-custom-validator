@@ -26,7 +26,7 @@
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
       },
-      "ex": "http://datashapes.org/sh/tests/core/property/minLength-001.test#",
+      "ex": "http://datashapes.org/sh/tests/core/property/exactCount.test#",
       "expected": {
         "@id": "http://a.ml/vocabularies/validation#expected"
       },
@@ -111,7 +111,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "ex:InvalidInstance1",
+            "focusNode": "ex:InvalidPerson",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -122,8 +122,8 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "minLength",
-                "resultPath": "ex.testProperty",
+                "component": "exactCount",
+                "resultPath": "ex.firstName",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
@@ -131,7 +131,7 @@
                     "validation:TraceValue"
                   ],
                   "actual": 1,
-                  "condition": ">=",
+                  "condition": "==",
                   "expected": 2,
                   "negated": false
                 }

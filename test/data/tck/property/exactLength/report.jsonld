@@ -26,7 +26,7 @@
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
       },
-      "ex": "http://datashapes.org/sh/tests/core/property/minLength-001.test#",
+      "ex": "http://datashapes.org/sh/tests/core/property/exactLength.test#",
       "expected": {
         "@id": "http://a.ml/vocabularies/validation#expected"
       },
@@ -122,7 +122,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "minLength",
+                "component": "exactLength",
                 "resultPath": "ex.testProperty",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -131,7 +131,40 @@
                     "validation:TraceValue"
                   ],
                   "actual": 1,
-                  "condition": ">=",
+                  "condition": "==",
+                  "expected": 2,
+                  "negated": false
+                }
+              }
+            ]
+          },
+          {
+            "@id": "violation_1",
+            "@type": [
+              "reportSchema:ValidationResultNode",
+              "shacl:ValidationResult"
+            ],
+            "focusNode": "ex:InvalidInstance1",
+            "resultMessage": "Validation error",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "sourceShapeName": "validation1",
+            "trace": [
+              {
+                "@id": "violation_1_0",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "exactLength",
+                "resultPath": "ex.testProperty",
+                "traceValue": {
+                  "@id": "violation_1_0_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "actual": 3,
+                  "condition": "==",
                   "expected": 2,
                   "negated": false
                 }
