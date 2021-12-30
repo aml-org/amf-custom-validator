@@ -165,3 +165,7 @@ func TestPropertyExactCount(t *testing.T) {
 func TestPropertyHasValues(t *testing.T) {
 	testTckCase("property/hasValues", t)
 }
+
+func TestPropertyOnlyValue(t *testing.T) {
+	testTckCase("property/onlyValue", t)
+}

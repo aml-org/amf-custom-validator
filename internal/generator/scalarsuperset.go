@@ -29,7 +29,7 @@ func GenerateScalarSuperSetRule(in profile.ScalarSetRule) []SimpleRegoResult {
 	}
 
 	r := SimpleRegoResult{
-		Constraint: "in",
+		Constraint: in.Name,
 		Rego:       rego,
 		PathRules:  []RegoPathResult{pathResult},
 		Path:       in.Path.Source(),

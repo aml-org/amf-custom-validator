@@ -1,0 +1,24 @@
+{
+  "@graph" : [ {
+    "@id" : "ex:ValidPerson1",
+    "sports" : "football",
+    "@type" : "ex:Person"
+  }, {
+    "@id" : "ex:ValidPerson2",
+    "sports" : ["football", "football"],
+    "@type" : "ex:Person"
+  }, {
+    "@id" : "ex:ValidPerson3",
+    "@type" : "ex:Person"
+  },{
+    "@id" : "ex:InvalidPerson1",
+    "sports" : ["tenis", "football"],
+    "@type" : "ex:Person"
+  } ],
+  "@context" : {
+    "sports" : {
+      "@id" : "http://datashapes.org/sh/tests/core/property/onlyValue.test#sports"
+    },
+    "ex" : "http://datashapes.org/sh/tests/core/property/onlyValue.test#"
+  }
+}

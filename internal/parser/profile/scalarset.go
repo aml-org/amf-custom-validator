@@ -115,3 +115,18 @@ func newIn(negated bool, variable Variable, path path.PropertyPath, argument []s
 		SetCriteria: SuperSet,
 	}
 }
+
+func newOnlyValue(negated bool, variable Variable, path path.PropertyPath, argument string) ScalarSetRule {
+	return ScalarSetRule{
+		AtomicStatement: AtomicStatement{
+			BaseStatement: BaseStatement{
+				Negated: negated,
+				Name:    "onlyValue",
+			},
+			Variable: variable,
+			Path:     path,
+		},
+		Argument: []string{argument},
+		SetCriteria: SuperSet,
+	}
+}
