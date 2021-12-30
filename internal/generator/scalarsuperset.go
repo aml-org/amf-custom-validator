@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func GenerateIn(in profile.InRule) []SimpleRegoResult {
+func GenerateScalarSuperSetRule(in profile.ScalarSetRule) []SimpleRegoResult {
 
 	path := in.Path
 	var rego []string
@@ -29,7 +29,7 @@ func GenerateIn(in profile.InRule) []SimpleRegoResult {
 	}
 
 	r := SimpleRegoResult{
-		Constraint: "in",
+		Constraint: in.Name,
 		Rego:       rego,
 		PathRules:  []RegoPathResult{pathResult},
 		Path:       in.Path.Source(),

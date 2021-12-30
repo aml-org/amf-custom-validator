@@ -207,14 +207,16 @@
                                       "reportSchema:TraceMessageNode",
                                       "validation:TraceMessage"
                                     ],
-                                    "component": "rego",
-                                    "resultPath": "",
+                                    "component": "hasValue",
+                                    "resultPath": "@type",
                                     "traceValue": {
                                       "@id": "violation_0_0_traceValue_1_0_traceValue_0_0_traceValue",
                                       "@type": [
                                         "reportSchema:TraceValueNode",
                                         "validation:TraceValue"
                                       ],
+                                      "actual": "[\"shapes:ArrayShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                                      "expected": "[\"shacl:NodeShape\"]",
                                       "negated": false
                                     }
                                   }

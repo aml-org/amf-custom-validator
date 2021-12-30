@@ -26,7 +26,7 @@
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
       },
-      "ex": "http://datashapes.org/sh/tests/core/property/hasValue-001.test#",
+      "ex": "http://datashapes.org/sh/tests/core/property/hasValues.test#",
       "expected": {
         "@id": "http://a.ml/vocabularies/validation#expected"
       },
@@ -111,7 +111,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "ex:InvalidPerson",
+            "focusNode": "ex:InvalidPerson1",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -122,16 +122,16 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "hasValue",
-                "resultPath": "ex.someId",
+                "component": "hasValues",
+                "resultPath": "ex.sports",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "[\"12\", \"5\"]",
-                  "expected": "[\"20\"]",
+                  "actual": "[\"tenis\"]",
+                  "expected": "[\"football\",\"tenis\"]",
                   "negated": false
                 }
               }

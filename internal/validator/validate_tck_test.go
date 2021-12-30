@@ -152,7 +152,7 @@ func TestNestedNot(t *testing.T) {
 	testTckCase("nested/nested-not", t)
 }
 
-// exact property constraints (are not natively defined in shacl)
+// property constraints (are not natively defined in shacl)
 
 func TestPropertyExactLength(t *testing.T) {
 	testTckCase("property/exactLength", t)
@@ -160,4 +160,12 @@ func TestPropertyExactLength(t *testing.T) {
 
 func TestPropertyExactCount(t *testing.T) {
 	testTckCase("property/exactCount", t)
+}
+
+func TestPropertyHasValues(t *testing.T) {
+	testTckCase("property/hasValues", t)
+}
+
+func TestPropertyOnlyValue(t *testing.T) {
+	testTckCase("property/onlyValue", t)
 }

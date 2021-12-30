@@ -1,0 +1,20 @@
+{
+  "@graph" : [ {
+    "@id" : "ex:ValidPerson1",
+    "sports" : ["pingpong", "tenis", "football"],
+    "@type" : "ex:Person"
+  }, {
+    "@id" : "ex:ValidPerson2",
+    "@type" : "ex:Person"
+  }, {
+    "@id" : "ex:InvalidPerson1",
+    "sports" : "tenis",
+    "@type" : "ex:Person"
+  } ],
+  "@context" : {
+    "sports" : {
+      "@id" : "http://datashapes.org/sh/tests/core/property/hasValues.test#sports"
+    },
+    "ex" : "http://datashapes.org/sh/tests/core/property/hasValues.test#"
+  }
+}

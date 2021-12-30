@@ -12,10 +12,12 @@ func Dispatch(r profile.Rule) []GeneratedRegoResult {
 		return GenerateNestedExpression(e)
 	case profile.CountRule:
 		return simpleAsGeneratedRegoResult(GenerateCount(e))
-	case profile.InRule:
-		return simpleAsGeneratedRegoResult(GenerateIn(e))
-	case profile.HasValueRule:
-		return simpleAsGeneratedRegoResult(GenerateHasValue(e))
+	case profile.ScalarSetRule:
+		if e.SetCriteria == profile.SubSet {
+			return simpleAsGeneratedRegoResult(GenerateScalarSubSetRule(e))
+		} else {
+			return simpleAsGeneratedRegoResult(GenerateScalarSuperSetRule(e))
+		}
 	case profile.PatternRule:
 		return simpleAsGeneratedRegoResult(GeneratePattern(e))
 	case profile.PropertyComparisonRule:
