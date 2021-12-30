@@ -1,14 +1,14 @@
 {
   "@graph" : [ {
-    "@id" : "ex:ValidPerson",
+    "@id" : "ex:ValidPerson1",
     "sports" : ["pingpong", "tenis", "football"],
+    "@type" : "ex:Person"
+  }, {
+    "@id" : "ex:ValidPerson2",
     "@type" : "ex:Person"
   }, {
     "@id" : "ex:InvalidPerson1",
     "sports" : "tenis",
-    "@type" : "ex:Person"
-  }, {
-    "@id" : "ex:InvalidPerson2",
     "@type" : "ex:Person"
   } ],
   "@context" : {

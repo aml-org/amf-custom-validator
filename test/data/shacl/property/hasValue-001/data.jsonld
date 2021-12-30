@@ -12,7 +12,10 @@
     "@id" : "ex:ValidMalePerson2",
     "gender" : [ "male", "female" ],
     "@type" : "ex:MalePerson"
-  } ],
+  }, {
+    "@id" : "ex:ValidMalePerson3",
+    "@type" : "ex:MalePerson"
+  }],
   "@context" : {
     "gender" : {
       "@id" : "http://datashapes.org/sh/tests/core/property/hasValue-001.test#gender"

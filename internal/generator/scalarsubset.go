@@ -19,6 +19,7 @@ func GenerateScalarSubSetRule(hasValue profile.ScalarSetRule) []SimpleRegoResult
 	rego = append(rego, "#  querying path: "+path.Source())
 	pathResult := GeneratePropertyArray(path, hasValue.Variable.Name, "in_"+hasValue.ValueHash())
 	rego = append(rego, fmt.Sprintf("%s_array = %s with data.sourceNode as %s", actualValuesVariable, pathResult.rule, hasValue.Variable.Name))
+	rego = append(rego, fmt.Sprintf("count(%s_array) != 0 # validation applies if property was defined", actualValuesVariable))
 	rego_convert_to_string_set := "%s_string_set = {\n" +
 								  "  mapped |\n" +
 		                          "    original := %s_array[_]\n" +
