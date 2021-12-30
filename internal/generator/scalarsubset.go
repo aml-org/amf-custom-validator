@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func GenerateHasValue(hasValue profile.HasValueRule) []SimpleRegoResult {
+func GenerateScalarSubSetRule(hasValue profile.ScalarSetRule) []SimpleRegoResult {
 
 	path := hasValue.Path
 	var rego []string

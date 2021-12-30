@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func GenerateIn(in profile.InRule) []SimpleRegoResult {
+func GenerateScalarSuperSetRule(in profile.ScalarSetRule) []SimpleRegoResult {
 
 	path := in.Path
 	var rego []string
