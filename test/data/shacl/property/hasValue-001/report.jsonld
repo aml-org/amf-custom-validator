@@ -130,8 +130,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "[ female ]",
-                  "expected": "male",
+                  "actual": "[\"female\"]",
+                  "expected": "[\"male\"]",
                   "negated": false
                 }
               }

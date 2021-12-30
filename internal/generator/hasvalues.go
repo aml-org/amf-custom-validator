@@ -3,6 +3,7 @@ package generator
 import (
 	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"strings"
 )
 
 func GenerateHasValue(hasValue profile.HasValueRule) []SimpleRegoResult {
@@ -12,6 +13,8 @@ func GenerateHasValue(hasValue profile.HasValueRule) []SimpleRegoResult {
 
 	// Let's get the path computed and stored hasValue the inValuesVariable
 	actualValuesVariable := profile.Genvar(fmt.Sprintf("%s_check", hasValue.Variable.Name))
+	hasValuesVariable := profile.Genvar("hasValues")
+
 
 	rego = append(rego, "#  querying path: "+path.Source())
 	pathResult := GeneratePropertyArray(path, hasValue.Variable.Name, "in_"+hasValue.ValueHash())
@@ -22,25 +25,27 @@ func GenerateHasValue(hasValue profile.HasValueRule) []SimpleRegoResult {
 		                          "    mapped := as_string(original)\n}" // cast value to string for matching with argument value
 	rego = append(rego, fmt.Sprintf(rego_convert_to_string_set, actualValuesVariable, actualValuesVariable))
 
-	// used for actual value in trace
-	rego = append(rego, fmt.Sprintf("%s_string = concat(\"\", [\"[ \", concat(\", \",%s_string_set), \" ]\"])", actualValuesVariable, actualValuesVariable))
+	rego = append(rego, fmt.Sprintf("%s = { \"%s\"}", hasValuesVariable, strings.Join(hasValue.Argument, "\",\"")))
 
-	// assert that hasValue string value is contained within queried values
+	// assert that all hasValues are contained in actualValues
 	if hasValue.Negated {
-		rego = append(rego, fmt.Sprintf("%s_string_set[\"%s\"]", actualValuesVariable, hasValue.Argument))
+		rego = append(rego, fmt.Sprintf("count(%s - %s_string_set) == 0", hasValuesVariable, actualValuesVariable))
 	} else {
-		rego = append(rego, fmt.Sprintf("not %s_string_set[\"%s\"]", actualValuesVariable, hasValue.Argument))
+		rego = append(rego, fmt.Sprintf("count(%s - %s_string_set) != 0", hasValuesVariable, actualValuesVariable))
 	}
 
+	// used for actual value in trace
+	rego = append(rego, fmt.Sprintf("%s_quoted = [concat(\"\", [\"\\\"\", res, \"\\\"\"]) |  res := %s_string_set[_]]", actualValuesVariable, actualValuesVariable))
+	rego = append(rego, fmt.Sprintf("%s_string = concat(\"\", [\"[\", concat(\", \",%s_quoted), \"]\"])", actualValuesVariable, actualValuesVariable))
 
 	r := SimpleRegoResult{
-		Constraint: "hasValue",
+		Constraint: hasValue.Name,
 		Rego:       rego,
 		PathRules:  []RegoPathResult{pathResult},
 		Path:       hasValue.Path.Source(),
 		TraceNode:  hasValue.Variable.Name,
 		TraceValue: BuildTraceValueNode(
-			fmt.Sprintf("\"negated\":%t,\"actual\": %s,\"expected\": \"%s\"", hasValue.Negated, fmt.Sprintf("%s_string", actualValuesVariable), hasValue.Argument),
+			fmt.Sprintf("\"negated\":%t,\"actual\": %s,\"expected\": \"%s\"", hasValue.Negated, fmt.Sprintf("%s_string", actualValuesVariable), hasValue.JSONValues()),
 		),
 		Variable: actualValuesVariable,
 	}

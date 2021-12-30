@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
+	"strings"
 )
 
 type HasValueRule struct {
 	AtomicStatement
-	Argument string
+	Argument []string
 }
 
 func (r HasValueRule) Clone() Rule {
@@ -40,6 +41,15 @@ func (r HasValueRule) ValueHash() string {
 	return internal.HashString(v)
 }
 
+func (r HasValueRule) JSONValues() string {
+	var acc []string
+	for _, v := range r.Argument {
+		acc = append(acc, fmt.Sprintf("\\\"%s\\\"", v))
+	}
+
+	return fmt.Sprintf("[%s]", strings.Join(acc, ","))
+}
+
 func (r HasValueRule) String() string {
 	var negation = ""
 	if r.Negated {
@@ -54,6 +64,20 @@ func newHasValue(negated bool, variable Variable, path path.PropertyPath, argume
 			BaseStatement: BaseStatement{
 				Negated: negated,
 				Name:    "hasValue",
+			},
+			Variable: variable,
+			Path:     path,
+		},
+		Argument: []string{argument},
+	}
+}
+
+func newHasValues(negated bool, variable Variable, path path.PropertyPath, argument []string) HasValueRule {
+	return HasValueRule{
+		AtomicStatement: AtomicStatement{
+			BaseStatement: BaseStatement{
+				Negated: negated,
+				Name:    "hasValues",
 			},
 			Variable: variable,
 			Path:     path,
