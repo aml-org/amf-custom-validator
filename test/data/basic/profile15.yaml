@@ -14,11 +14,11 @@ validations:
           minExclusive: 0
     then:
       propertyConstraints:
-        ex.isValid:
+        ex.someProp:
           in: [false]
     else:
       propertyConstraints:
-        ex.isValid:
+        ex.otherProp:
           in: [true]
 
 prefixes:

@@ -55,8 +55,8 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, newIn(false, variable, path, l))
 	}
 
-	onlyValue, err := constraint.GetOrError("onlyValue")
-	if err == nil {
+	onlyValue := constraint.Get("onlyValue")
+	if onlyValue.IsFound() {
 		stringValue, err :=stringifyNode(onlyValue)
 		if err != nil {
 			return nil, err
@@ -73,8 +73,8 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, newHasValues(false, variable, path, l))
 	}
 
-	hasValue, err := constraint.GetOrError("hasValue")
-	if err == nil {
+	hasValue := constraint.Get("hasValue")
+	if hasValue.IsFound() {
 		stringValue, err :=stringifyNode(hasValue)
 		if err != nil {
 			return nil, err
