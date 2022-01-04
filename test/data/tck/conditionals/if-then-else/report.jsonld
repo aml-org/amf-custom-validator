@@ -156,6 +156,58 @@
                 }
               }
             ]
+          },
+          {
+            "@id": "violation_1",
+            "@type": [
+              "reportSchema:ValidationResultNode",
+              "shacl:ValidationResult"
+            ],
+            "focusNode": "ex:InvalidResource2",
+            "resultMessage": "Validation error",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "sourceShapeName": "validation1",
+            "trace": [
+              {
+                "@id": "violation_1_0",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "in",
+                "resultPath": "ex.isValid",
+                "traceValue": {
+                  "@id": "violation_1_0_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "actual": "false",
+                  "expected": "[\"true\"]",
+                  "negated": false
+                }
+              },
+              {
+                "@id": "violation_1_1",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "minimumExclusive",
+                "resultPath": "ex.errorCount",
+                "traceValue": {
+                  "@id": "violation_1_1_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "actual": 0,
+                  "condition": ">",
+                  "expected": 0,
+                  "negated": false
+                }
+              }
+            ]
           }
         ]
       }

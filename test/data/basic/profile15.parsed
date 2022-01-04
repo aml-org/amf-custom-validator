@@ -1,0 +1,14 @@
+validation1[violation] :=  ∀x[Class(ex.Test)] : 
+  (
+  (
+    minExclusive(x,'ex.errorCount',0)
+  →
+    in(x,'ex.someProp',false)
+  )
+  ∧
+  (
+  ¬  minExclusive(x,'ex.errorCount',0)
+  →
+    in(x,'ex.otherProp',true)
+  )
+  )

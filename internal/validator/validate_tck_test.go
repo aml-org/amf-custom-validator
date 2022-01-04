@@ -56,9 +56,8 @@ func TestConditionalsIfThen(t *testing.T) {
 }
 
 func TestConditionalsIfThenElse(t *testing.T) {
-	ignoreTckCase("conditionals/if-then-else", t) // else not implemented
+	testTckCase("conditionals/if-then-else", t)
 }
-
 
 func TestConditionalsIfAndThenAnd(t *testing.T) {
 	testTckCase("conditionals/if-and-then-and", t)
