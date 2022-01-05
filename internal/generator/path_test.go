@@ -20,7 +20,8 @@ func TestGeneratePathPropertyArray(t *testing.T) {
   init_x_0__test = data.sourceNode
   nodes_tmp = object.get(init_x_0__test,"core:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__test = nodes_tmp2[_]
+  nodes = x_0__test
 }`
 	actual := strings.Join(result.rego, "\n")
 
@@ -46,7 +47,8 @@ func TestGenerateAndPropertyArray(t *testing.T) {
   x_2__test = tmp_x_2__test[_][_]
   nodes_tmp = object.get(x_2__test,"x:c",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_3__test = nodes_tmp2[_]
+  nodes = x_3__test
 }`
 	actual := strings.Join(result.rego, "\n")
 
@@ -72,7 +74,8 @@ func TestGenerateOrPropertyArray(t *testing.T) {
   x_2__test = tmp_x_2__test[_][_]
   nodes_tmp = object.get(x_2__test,"x:d",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_3__test = nodes_tmp2[_]
+  nodes = x_3__test
 } {
   init_x_0__test = data.sourceNode
   tmp_x_0__test = nested_nodes with data.nodes as init_x_0__test["x:a"]
@@ -81,7 +84,8 @@ func TestGenerateOrPropertyArray(t *testing.T) {
   x_2__test = tmp_x_2__test[_][_]
   nodes_tmp = object.get(x_2__test,"x:d",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_3__test = nodes_tmp2[_]
+  nodes = x_3__test
 }`
 	actual := strings.Join(result.rego, "\n")
 

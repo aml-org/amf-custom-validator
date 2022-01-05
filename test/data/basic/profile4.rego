@@ -217,28 +217,31 @@ gen_path_rule_2[nodes] {
   init_x_0__maxCount_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__maxCount_,"raml-shapes:schema",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__maxCount_ = nodes_tmp2[_]
+  nodes = x_0__maxCount_
 }
 
 gen_path_rule_4[nodes] {
   init_x_0__minCount_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__minCount_,"raml-shapes:schema",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__minCount_ = nodes_tmp2[_]
+  nodes = x_0__minCount_
 }
 
 gen_path_rule_5[nodes] {
   init_x_0__nested_ = data.sourceNode
-  tmp_x = nested_nodes with data.nodes as init_x_0__nested_["raml-shapes:schema"]
-  x = tmp_x[_][_]
-  nodes = x
+  tmp_x_0__nested_ = nested_nodes with data.nodes as init_x_0__nested_["raml-shapes:schema"]
+  x_0__nested_ = tmp_x_0__nested_[_][_]
+  nodes = x_0__nested_
 }
 
 gen_path_rule_7[nodes] {
   init_y_0__minCount_ = data.sourceNode
   nodes_tmp = object.get(init_y_0__minCount_,"shacl:minLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  y_0__minCount_ = nodes_tmp2[_]
+  nodes = y_0__minCount_
 }
 
 # Constraint rules

@@ -217,56 +217,64 @@ gen_path_rule_3[nodes] {
   init_x_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__in_ = nodes_tmp2[_]
+  nodes = x_0__in_
 }
 
 gen_path_rule_8[nodes] {
   init_x_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__in_ = nodes_tmp2[_]
+  nodes = x_0__in_
 }
 
 gen_path_rule_5[nodes] {
   init_x_0__minCount_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__minCount_ = nodes_tmp2[_]
+  nodes = x_0__minCount_
 }
 
 gen_path_rule_8[nodes] {
   init_x_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__in_ = nodes_tmp2[_]
+  nodes = x_0__in_
 }
 
 gen_path_rule_3[nodes] {
   init_x_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__in_ = nodes_tmp2[_]
+  nodes = x_0__in_
 }
 
 gen_path_rule_10[nodes] {
   init_x_0__minCount_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__minCount_ = nodes_tmp2[_]
+  nodes = x_0__minCount_
 }
 
 gen_path_rule_5[nodes] {
   init_x_0__minCount_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__minCount_ = nodes_tmp2[_]
+  nodes = x_0__minCount_
 }
 
 gen_path_rule_10[nodes] {
   init_x_0__minCount_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__minCount_ = nodes_tmp2[_]
+  nodes = x_0__minCount_
 }
 
 # Constraint rules

@@ -249,7 +249,8 @@ gen_path_rule_5[nodes] {
   init_x_0__code_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__code_,"apiContract:version",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__code_ = nodes_tmp2[_]
+  nodes = x_0__code_
 }
 
 # Constraint rules

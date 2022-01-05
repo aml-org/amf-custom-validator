@@ -217,14 +217,16 @@ gen_path_rule_1[nodes] {
   init_x_0__prop_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__prop_,"shacl:minLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__prop_ = nodes_tmp2[_]
+  nodes = x_0__prop_
 }
 
 gen_path_rule_2[nodes] {
   init_x_0__alt_prop_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__alt_prop_,"shacl:maxLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__alt_prop_ = nodes_tmp2[_]
+  nodes = x_0__alt_prop_
 }
 
 # Constraint rules

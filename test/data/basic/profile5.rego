@@ -215,16 +215,17 @@ default info = []
 
 gen_path_rule_1[nodes] {
   init_x_0__nested_ = data.sourceNode
-  tmp_x = nested_nodes with data.nodes as init_x_0__nested_["apiContract:supportedOperation"]
-  x = tmp_x[_][_]
-  nodes = x
+  tmp_x_0__nested_ = nested_nodes with data.nodes as init_x_0__nested_["apiContract:supportedOperation"]
+  x_0__nested_ = tmp_x_0__nested_[_][_]
+  nodes = x_0__nested_
 }
 
 gen_path_rule_4[nodes] {
   init_y_0__in_ = data.sourceNode
   nodes_tmp = object.get(init_y_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  y_0__in_ = nodes_tmp2[_]
+  nodes = y_0__in_
 }
 
 # Constraint rules
