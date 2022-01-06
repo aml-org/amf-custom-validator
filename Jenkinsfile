@@ -113,6 +113,7 @@ pipeline {
             when {
                 anyOf {
                     branch 'develop'
+                    branch 'apimf-3610'
                 }
             }
             agent {
