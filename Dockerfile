@@ -64,5 +64,4 @@ FROM ci-js AS publish-snapshot
 COPY . .
 RUN chmod -R 777 ./
 RUN npm install -g npm-snapshot
-RUN npm install -g npm-cli-login
 RUN make bundle-web-js
