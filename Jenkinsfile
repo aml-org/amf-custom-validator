@@ -123,14 +123,23 @@ pipeline {
                 }
             }
             environment {
-                NPM = credentials('aml-org-bot-npm')
+                NPM_TOKEN = credentials('aml-org-bot-npm-token')
                 GITHUB = credentials('github-salt')
             }
             steps {
                 sh '''  #!/bin/bash
                         cd /src
-                        npm-cli-login -u $NPM_USR -p $NPM_PSW -e als-amf-team@mulesoft.com
 
+                        # Login
+                        npmrc=$HOME/.npmrc
+                        cat $npmrc || touch $npmrc # create ~/.npmrc if not exists
+
+                        echo //registry.npmjs.org/:_authToken=${env.NPM_TOKEN} >> $npmrc
+                        echo @aml-org:registry=https://registry.npmjs.org/ >> $npmrc
+                        npm config set registry https://registry.npmjs.org/
+                        npm whoami
+
+                        # Publish
                         cd ./wrappers/js
                         npm-snapshot $BUILD_NUMBER
                         VERSION=$(node -pe "require('./package.json').version")
@@ -139,7 +148,7 @@ pipeline {
 
                         cd ../js-web
                         npm-snapshot $BUILD_NUMBER
-                        npm publish --access public
+                        npm publish --verbose --access public
                         npm dist-tag add @aml-org/amf-custom-validator-web@${VERSION} snapshot
                         URL="https://${GITHUB_USR}:${GITHUB_PSW}@github.com/aml-org/amf-custom-validator"
 
