@@ -26,7 +26,7 @@
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
       },
-      "ex": "http://datashapes.org/sh/tests/core/path/path-inverse-001.test#",
+      "ex": "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#",
       "expected": {
         "@id": "http://a.ml/vocabularies/validation#expected"
       },
@@ -111,7 +111,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "ex:InvalidResource2",
+            "focusNode": "ex:InvalidChild",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -122,50 +122,16 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "maxCount",
-                "resultPath": "ex.child^",
+                "component": "onlyValue",
+                "resultPath": "ex.child^ / ex.surname",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": 3,
-                  "condition": "<=",
-                  "expected": 2,
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_1",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "ex:InvalidResource1",
-            "resultMessage": "Validation error",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "validation1",
-            "trace": [
-              {
-                "@id": "violation_1_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
-                "resultPath": "ex.child^",
-                "traceValue": {
-                  "@id": "violation_1_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "actual": 1,
-                  "condition": ">=",
-                  "expected": 2,
+                  "actual": "Other",
+                  "expected": "[\"Maradona\"]",
                   "negated": false
                 }
               }

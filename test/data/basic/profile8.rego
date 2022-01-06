@@ -33,6 +33,18 @@ nested_values[nested_values] {
   nested_values := {value | n = data.nodes[_]; value := n[data.property]}
 }
 
+# Fetches all the subject nodes that have certain predicate and object
+search_subjects[valid_subject] {
+  predicate = data.predicate
+  object = data.object
+  
+  node = input["@ids"][_]
+  node_predicate_values = nodes_array with data.nodes as object.get(node,predicate,[])
+  node_predicate_value = node_predicate_values[_]
+  node_predicate_value["@id"] == object["@id"]
+  valid_subject = node
+}
+
 # collection functions
 
 # collect next set of nodes
@@ -219,7 +231,8 @@ gen_path_rule_3[nodes] {
   x_0__in_ = tmp_x_0__in_[_][_]
   nodes_tmp = object.get(x_0__in_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_2__in_ = nodes_tmp2[_]
+  nodes = x_2__in_
 }
 
 gen_path_rule_5[nodes] {
@@ -228,14 +241,16 @@ gen_path_rule_5[nodes] {
   x_0__minCount_ = tmp_x_0__minCount_[_][_]
   nodes_tmp = object.get(x_0__minCount_,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_2__minCount_ = nodes_tmp2[_]
+  nodes = x_2__minCount_
 }
 
 gen_path_rule_6[nodes] {
   init_x_0__pattern_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__pattern_,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__pattern_ = nodes_tmp2[_]
+  nodes = x_0__pattern_
 }
 
 # Constraint rules
@@ -282,7 +297,8 @@ gen_path_rule_9[nodes] {
   x_3__minCount_ = tmp_x_3__minCount_[_][_]
   nodes_tmp = object.get(x_3__minCount_,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_4__minCount_ = nodes_tmp2[_]
+  nodes = x_4__minCount_
 } {
   init_x_0__minCount_ = data.sourceNode
   tmp_x_0__minCount_ = nested_nodes with data.nodes as init_x_0__minCount_["apiContract:expects"]
@@ -293,7 +309,8 @@ gen_path_rule_9[nodes] {
   x_3__minCount_ = tmp_x_3__minCount_[_][_]
   nodes_tmp = object.get(x_3__minCount_,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_4__minCount_ = nodes_tmp2[_]
+  nodes = x_4__minCount_
 }
 
 # Constraint rules

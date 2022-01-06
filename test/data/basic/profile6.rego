@@ -33,6 +33,18 @@ nested_values[nested_values] {
   nested_values := {value | n = data.nodes[_]; value := n[data.property]}
 }
 
+# Fetches all the subject nodes that have certain predicate and object
+search_subjects[valid_subject] {
+  predicate = data.predicate
+  object = data.object
+  
+  node = input["@ids"][_]
+  node_predicate_values = nodes_array with data.nodes as object.get(node,predicate,[])
+  node_predicate_value = node_predicate_values[_]
+  node_predicate_value["@id"] == object["@id"]
+  valid_subject = node
+}
+
 # collection functions
 
 # collect next set of nodes
@@ -217,14 +229,16 @@ gen_path_rule_1[nodes] {
   init_x_0__prop_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__prop_,"shacl:minLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__prop_ = nodes_tmp2[_]
+  nodes = x_0__prop_
 }
 
 gen_path_rule_2[nodes] {
   init_x_0__alt_prop_ = data.sourceNode
   nodes_tmp = object.get(init_x_0__alt_prop_,"shacl:maxLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0__alt_prop_ = nodes_tmp2[_]
+  nodes = x_0__alt_prop_
 }
 
 # Constraint rules

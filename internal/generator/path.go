@@ -65,42 +65,21 @@ func internalResultToTraversal(p traversal, r regoPathResultInternal) traversal 
 
 // Traversed the path path, starting at the provided variable and returns an array of reached values
 func GeneratePropertyArray(path path.PropertyPath, variable string, hint string) RegoPathResult {
-	t := newTraversal(path.Source(), variable, hint)
-	var acc []regoPathResultInternal
-	for _, tr := range traverse(path, t) {
-		effectiveRego := tr.rego[0 : len(tr.rego)-2] // we remove the last element so we can get the array of values instead
-
-		previousBinding := tr.pathVariables[len(tr.pathVariables)-2]
-
-		nextPath := tr.paths[len(tr.paths)-1]
-		effectiveRego = append(effectiveRego, fmt.Sprintf("nodes_tmp = object.get(%s,\"%s\",[])", previousBinding, nextPath))
-		effectiveRego = append(effectiveRego, "nodes_tmp2 = nodes_array with data.nodes as nodes_tmp") // this returns and array
-		effectiveRego = append(effectiveRego, "nodes = nodes_tmp2[_]")                                 // I need to iterate to each element in the array so it can be wrapped in the rule result
-		tr.rego = effectiveRego
-		acc = append(acc, tr)
-	}
-
-	regoResult := accumulatePaths(acc)
-	regoResult.source = path.Source()
-	regoResult.variable = variable
-
-	return regoResult
+	return generateArray(path, variable, hint, false)
 }
 
 // Traverses the path but just returns a generator of nodes instead of a set of values
 func GenerateNodeArray(path path.PropertyPath, variable string, hint string) RegoPathResult {
+	return generateArray(path, variable, hint, true)
+}
+
+// nodeValues defines if the path result will fetch resulting nodes (fething each @id reference) or simple return the values.
+func generateArray(path path.PropertyPath, variable string, hint string, nodeValues bool) RegoPathResult {
 	t := newTraversal(path.Source(), variable, hint)
 	var acc []regoPathResultInternal
-	for _, tr := range traverse(path, t) {
-		effectiveRego := tr.rego[0 : len(tr.rego)-2] // we remove the last element so we can get the array of values instead
-		previousBinding := variable
-		previousBinding = tr.pathVariables[len(tr.pathVariables)-2]
-		nextPath := tr.paths[len(tr.paths)-1]
-		// we just get the nested nodes and return a comprehension over them
-		effectiveRego = append(effectiveRego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as %s[\"%s\"]", variable, previousBinding, nextPath))
-		effectiveRego = append(effectiveRego, fmt.Sprintf("%s = tmp_%s[_][_]", variable, variable))
-		effectiveRego = append(effectiveRego, fmt.Sprintf("nodes = %s", variable))
-
+	for _, tr := range traverse(path, t, nodeValues) {
+		effectiveRego := tr.rego
+		effectiveRego = append(effectiveRego, fmt.Sprintf("nodes = %s", tr.variable))
 		tr.rego = effectiveRego
 		acc = append(acc, tr)
 	}
@@ -141,24 +120,24 @@ func accumulatePaths(paths []regoPathResultInternal) RegoPathResult {
 }
 
 // Different traversals based on the type of path element
-func traverse(propPath path.PropertyPath, traversed traversal) []regoPathResultInternal {
+func traverse(propPath path.PropertyPath, traversed traversal, nodeValues bool) []regoPathResultInternal {
 	switch p := propPath.(type) {
 	case path.Property:
-		return traverseProperty(p, traversed)
+		return traverseProperty(p, traversed, nodeValues)
 	case path.AndPath:
-		return traverseAnd(p, traversed)
+		return traverseAnd(p, traversed, nodeValues)
 	case path.OrPath:
-		return traverseOr(p, traversed)
+		return traverseOr(p, traversed, nodeValues)
 	default:
 		return make([]regoPathResultInternal, 0)
 	}
 }
 
 // Traverses in parallel each of the elements in the OR path, creating new branches for each one
-func traverseOr(or path.OrPath, t traversal) []regoPathResultInternal {
+func traverseOr(or path.OrPath, t traversal, nodeValues bool) []regoPathResultInternal {
 	acc := make([]regoPathResultInternal, 0)
 	for _, p := range or.Or {
-		traversed := traverse(p, t)
+		traversed := traverse(p, t, nodeValues)
 		for _, tr := range traversed {
 			acc = append(acc, tr)
 		}
@@ -169,29 +148,29 @@ func traverseOr(or path.OrPath, t traversal) []regoPathResultInternal {
 // Traverses an AND branch in the property path.
 // it sequentially traverses the path until all the elements of the AND
 // has been traversed and the variables accumulated.
-func traverseAnd(and path.AndPath, t traversal) []regoPathResultInternal {
+func traverseAnd(and path.AndPath, t traversal, nodeValues bool) []regoPathResultInternal {
 	first := and.And[0]
-	firstTraversed := traverse(first, t)
 	if len(and.And) > 1 {
+		firstTraversed := traverse(first, t, true)
 		remaining := and.And[1:len(and.And)]
 		acc := make([]regoPathResultInternal, 0)
 		for _, tr := range firstTraversed {
 			next := path.AndPath{
 				And: remaining,
 			}
-			for _, ntr := range traverse(next, internalResultToTraversal(t, tr)) {
+			for _, ntr := range traverse(next, internalResultToTraversal(t, tr), nodeValues) {
 				acc = append(acc, ntr)
 			}
 		}
 		return acc
 	} else {
-		return firstTraversed
+		return traverse(first, t, nodeValues)
 	}
 }
 
 // Traverses the leaf components of the path expression, always a property.
 // TODO: We don't take into account inverse or transitive paths yet.
-func traverseProperty(property path.Property, t traversal) []regoPathResultInternal {
+func traverseProperty(property path.Property, t traversal, nodeValues bool) []regoPathResultInternal {
 
 	// We use IDX go generate a unique property for the Rego computation
 	idx := fmt.Sprintf("%d", len(t.pathVariables))
@@ -205,13 +184,20 @@ func traverseProperty(property path.Property, t traversal) []regoPathResultInter
 		// to the path generator, usually a classTarget.
 		t.rego = append(t.rego, fmt.Sprintf("init_%s = data.sourceNode", binding)) // this is the connection to the variable past to the generator
 		t.pathVariables = append(t.pathVariables, fmt.Sprintf("init_%s", binding)) // initial value
-		t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as init_%s[\"%s\"]", binding, binding, property.Iri))
-		t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))
+	}
+	source := t.pathVariables[len(t.pathVariables)-1]
+	if property.Inverse {
+		t.rego = append(t.rego, fmt.Sprintf("search_subjects[%s] with data.predicate as \"%s\" with data.object as %s",binding, property.Iri, source))
 	} else {
-		// Internal path element, we generate the next set of values from the previous bound property
-		previousBinding := t.pathVariables[len(t.pathVariables)-1]
-		t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as %s[\"%s\"]", binding, previousBinding, property.Iri))
-		t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))
+		// fetch resulting nodes (fething each @id reference) or simply return the array values
+		if nodeValues {
+			t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as %s[\"%s\"]", binding, source, property.Iri))
+			t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))
+		} else {
+			t.rego = append(t.rego, fmt.Sprintf("nodes_tmp = object.get(%s,\"%s\",[])", source, property.Iri))
+			t.rego = append(t.rego, "nodes_tmp2 = nodes_array with data.nodes as nodes_tmp") // this returns and array
+			t.rego = append(t.rego, fmt.Sprintf("%s = nodes_tmp2[_]", binding))
+		}
 	}
 
 	r := regoPathResultInternal{
