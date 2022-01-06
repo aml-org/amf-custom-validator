@@ -186,14 +186,18 @@ func traverseProperty(property path.Property, t traversal, nodeValues bool) []re
 		t.pathVariables = append(t.pathVariables, fmt.Sprintf("init_%s", binding)) // initial value
 	}
 	source := t.pathVariables[len(t.pathVariables)-1]
-	// fetch resulting nodes (fething each @id reference) or simple return the array values
-	if nodeValues {
-		t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as %s[\"%s\"]", binding, source, property.Iri))
-		t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))
+	if property.Inverse {
+		t.rego = append(t.rego, fmt.Sprintf("search_subjects[%s] with data.predicate as \"%s\" with data.object as %s",binding, property.Iri, source))
 	} else {
-		t.rego = append(t.rego, fmt.Sprintf("nodes_tmp = object.get(%s,\"%s\",[])", source, property.Iri))
-		t.rego = append(t.rego, "nodes_tmp2 = nodes_array with data.nodes as nodes_tmp") // this returns and array
-		t.rego = append(t.rego, fmt.Sprintf("%s = nodes_tmp2[_]", binding))
+		// fetch resulting nodes (fething each @id reference) or simply return the array values
+		if nodeValues {
+			t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as %s[\"%s\"]", binding, source, property.Iri))
+			t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))
+		} else {
+			t.rego = append(t.rego, fmt.Sprintf("nodes_tmp = object.get(%s,\"%s\",[])", source, property.Iri))
+			t.rego = append(t.rego, "nodes_tmp2 = nodes_array with data.nodes as nodes_tmp") // this returns and array
+			t.rego = append(t.rego, fmt.Sprintf("%s = nodes_tmp2[_]", binding))
+		}
 	}
 
 	r := regoPathResultInternal{
