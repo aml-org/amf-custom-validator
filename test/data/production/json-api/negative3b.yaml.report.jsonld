@@ -110,8 +110,8 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#18",
-            "resultMessage": "Validation error",
+            "focusNode": "amf://id#22",
+            "resultMessage": "Servers MUST send all JSON:API data in response documents with the header Content-Type: application/vnd.api+json\nwithout any media type parameters.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-api-media-type-response",
             "trace": [
@@ -141,7 +141,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 54
+                      "line": 64
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -150,7 +150,7 @@
                         "lexical:Position"
                       ],
                       "column": 8,
-                      "line": 45
+                      "line": 50
                     }
                   },
                   "uri": "file://./test/data/production/json-api/negative3b.yaml"

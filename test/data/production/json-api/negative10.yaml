@@ -1,7 +1,10 @@
 openapi: 3.0.3
 info:
-  title: Positive Example 1
-  description: Positive Example 1
+  title: Negative Example 10
+  description: |
+    checking: resource-object-required-fields
+    description: properties in a root JSON API object must have key and id, except if it is a request payload, where
+    only type is acceptable
   version: 1.0.0
 servers:
   - url: 'https://myapp.com'
@@ -13,12 +16,19 @@ components:
         data:
           type: object
           properties:
-            type:
-              type: string
             id:
               type: string
         meta:
           type: object
+        included:
+          type: object
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+            related:
+              type: string
 paths:
   /Users/{id}:
     parameters:
@@ -34,6 +44,12 @@ paths:
       tags:
         - Invoice Items
       responses:
+        "415":
+          description: Unsupported media type
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: "#/components/schemas/ValidObject"
         "406":
           description: Not acceptable
           content:

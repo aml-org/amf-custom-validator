@@ -12,6 +12,11 @@ components:
       properties:
         data:
           type: object
+          properties:
+            type:
+              type: string
+            id:
+              type: string
         meta:
           type: object
 paths:

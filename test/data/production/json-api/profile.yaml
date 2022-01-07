@@ -13,11 +13,15 @@ violation:
   - json-object-top-level-fields
   - json-object-no-included-without-data
   - json-object-links-field
+  - json-object-primary-data
+  - resource-object-required-fields
+  - resource-object-fields
+  - resource-object-namespaced-fields
 
 validations:
 
   json-api-media-type-request:
-    messge: |
+    message: |
       Clients MUST send all JSON:API data in request documents with the header Content-Type: application/vnd.api+json
       without any media type parameters.
       Clients that include the JSON:API media type in their Accept header MUST specify the media type there at least once
@@ -31,7 +35,7 @@ validations:
           - application/vnd.api+json
 
   json-api-media-type-response:
-    messge: |
+    message: |
       Servers MUST send all JSON:API data in response documents with the header Content-Type: application/vnd.api+json
       without any media type parameters.
     targetClass: apiContract.Response
@@ -85,6 +89,7 @@ validations:
               r = e
             ]
             $result = (count(nodeshapes) == 1)
+
 
   json-object-required-fields:
     message: |
@@ -214,9 +219,14 @@ validations:
     targetClass: apiContract.Payload
     if:
       propertyConstraints:
-        shapes.schema / shacl.property / shacl.name:
-          in:
-            - links
+        shapes.schema / shacl.property:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                shacl.name:
+                  in:
+                    - links
     then:
       propertyConstraints:
         shapes.schema / shacl.property :
@@ -234,3 +244,187 @@ validations:
                         in:
                           - self
                           - related
+
+
+  json-object-primary-data:
+    message: |
+      The document’s “primary data” is a representation of the resource or collection of resources targeted by a request.
+
+      Primary data MUST be either:
+
+      a single resource object, a single resource identifier object, or null, for requests that target single resources
+      an array of resource objects, an array of resource identifier objects, or an empty array ([]), for requests that target resource collections
+
+      For example, the following primary data is a single resource object:
+
+      {
+         "data": {
+           "type": "articles",
+           "id": "1",
+           "attributes": {
+              // ... this article's attributes
+           },
+           "relationships": {
+             // ... this article's relationships
+           }
+         }
+      }
+
+      The following primary data is a single resource identifier object that references the same resource:
+
+      {
+        "data": {
+          "type": "articles",
+          "id": "1"
+        }
+      }
+
+      A logical collection of resources MUST be represented as an array, even if it only contains one item or is empty.
+    targetClass: apiContract.Payload
+    if:
+      propertyConstraints:
+        shapes.schema / shacl.property:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                shacl.name:
+                  in:
+                    - data
+    then:
+      propertyConstraints:
+        shapes.schema / shacl.property :
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                shacl.name:
+                  in:
+                    - data
+                shapes.range:
+                  nested:
+                    rego: |
+                      types = object.get($node, "@type", [])
+                      nodeshapes = [ r |
+                        e = types[_]
+                        {"shacl:NodeShape", "shapes:ArrayShape","shapes:NilShape"}[e]
+                        r = e
+                      ]
+                      $result = (count(nodeshapes) == 1)
+
+
+  resource-object-required-fields:
+    message: |
+      A resource object MUST contain at least the following top-level members:
+
+          id
+          type
+
+      Exception: The id member is not required when the resource object originates at the client and represents a new resource to be created on the server.
+    targetClass: apiContract.Response
+    if:
+      propertyConstraints:
+        apiContract.payload / shapes.schema / shacl.property:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                shacl.name:
+                  in:
+                    - data
+                shapes.range:
+                  nested:
+                    rego: |
+                      types = object.get($node, "@type", [])
+                      nodeshapes = [ r |
+                        e = types[_]
+                        e == "shacl:NodeShape"
+                        r = e
+                      ]
+                      $result = (count(nodeshapes) == 1)
+    then:
+      propertyConstraints:
+        apiContract.payload / shapes.schema / shacl.property:
+          atLeast:
+            count: 1
+            validation:
+              propertyConstraints:
+                shacl.name :
+                  in:
+                    - data
+                shapes.range:
+                  nested:
+                    propertyConstraints:
+                      shacl.property:
+                        atLeast:
+                          count: 2
+                          validation:
+                            propertyConstraints:
+                              shacl.name:
+                                in:
+                                  - id
+                                  - type
+
+
+    resource-object-fields:
+      message: |
+        A resource object MUST contain at least the following top-level members:
+            id
+            type
+        Exception: The id member is not required when the resource object originates at the client and represents a new resource to be created on the server.
+        In addition, a resource object MAY contain any of these top-level members:
+            attributes: an attributes object representing some of the resource’s data.
+            relationships: a relationships object describing relationships between the resource and other JSON:API resources.
+            links: a links object containing links related to the resource.
+            meta: a meta object containing non-standard meta-information about a resource that can not be represented as an attribute or relationship.
+      targetClass: apiContract.Payload
+      if:
+        propertyConstraints:
+          shapes.schema / shacl.property:
+            atLeast:
+              count: 1
+              validation:
+                propertyConstraints:
+                  shacl.name:
+                    in:
+                      - data
+                  shapes.range:
+                    nested:
+                      rego: |
+                        types = object.get($node, "@type", [])
+                        nodeshapes = [ r |
+                          e = types[_]
+                          e == "shacl:NodeShape"
+                          r = e
+                        ]
+                        $result = (count(nodeshapes) == 1)
+      then:
+        propertyConstraints:
+          shapes.schema / shacl.property:
+            atLeast:
+              count: 1
+              validation:
+                propertyConstraints:
+                  shacl.name:
+                    in:
+                      - data
+                  shapes.range:
+                    nested:
+                      propertyConstraints:
+                        shacl.property:
+                          shacl.name:
+                            in:
+                              - id
+                              - type
+                              - attributes
+                              - relationships
+                              - links
+                              - meta
+
+  resource-object-namespaced-fields:
+    message: |
+      Fields for a resource object MUST share a common namespace with each other and with type and id. In other words,
+      a resource can not have an attribute and relationship with the same name, nor can it have an attribute or
+      relationship named type or id.
+    targetClass: shacl.NodeShape
+    rego: |

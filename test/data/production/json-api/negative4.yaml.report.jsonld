@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#12",
+            "focusNode": "amf://id#16",
             "resultMessage": "Servers MUST respond with a 415 Unsupported Media Type status code if a request specifies the header Content-Type:\napplication/vnd.api+json with any media type parameters.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "415-mandatory-response",
@@ -141,7 +141,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 44
+                      "line": 49
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -150,7 +150,7 @@
                         "lexical:Position"
                       ],
                       "column": 4,
-                      "line": 26
+                      "line": 31
                     }
                   },
                   "uri": "file://./test/data/production/json-api/negative4.yaml"
@@ -172,7 +172,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#14",
+                      "focusNode": "amf://id#18",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -202,7 +202,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 38
+                                "line": 43
                               },
                               "start": {
                                 "@id": "violation_0_0_traceValue_0_0_location_range_start",
@@ -211,7 +211,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 32
+                                "line": 37
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative4.yaml"
@@ -236,7 +236,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#16",
+                      "focusNode": "amf://id#20",
                       "resultMessage": "error in nested nodes under apiContract.returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -266,7 +266,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 44
+                                "line": 49
                               },
                               "start": {
                                 "@id": "violation_0_0_traceValue_1_0_location_range_start",
@@ -275,7 +275,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 38
+                                "line": 43
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative4.yaml"

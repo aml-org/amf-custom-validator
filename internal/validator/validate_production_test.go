@@ -9,7 +9,7 @@ import (
 )
 
 func TestProduction(t *testing.T) {
-	filter := ""
+	filter := "json-api"
 	for _, fixture := range test.ProductionFixtures("../../test/data/production", &filter) {
 		profile := fixture.Profile()
 		for _, example := range fixture.Examples() {

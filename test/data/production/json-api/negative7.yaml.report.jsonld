@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#19",
+            "focusNode": "amf://id#23",
             "resultMessage": "If a document does not contain a top-level data key, the included member MUST NOT be present either.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-object-no-included-without-data",
@@ -141,7 +141,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 56
+                      "line": 61
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -150,7 +150,7 @@
                         "lexical:Position"
                       ],
                       "column": 12,
-                      "line": 47
+                      "line": 52
                     }
                   },
                   "uri": "file://./test/data/production/json-api/negative7.yaml"
@@ -195,7 +195,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 56
+                      "line": 61
                     },
                     "start": {
                       "@id": "violation_0_1_location_range_start",
@@ -204,7 +204,7 @@
                         "lexical:Position"
                       ],
                       "column": 12,
-                      "line": 47
+                      "line": 52
                     }
                   },
                   "uri": "file://./test/data/production/json-api/negative7.yaml"

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#22",
+            "focusNode": "amf://id#26",
             "resultMessage": "JSON object MUST be at the root of every JSON:API request and response containing data. This object defines a document’s “top level”.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-object-top-level-request-response",
@@ -141,7 +141,7 @@
                         "lexical:Position"
                       ],
                       "column": 26,
-                      "line": 55
+                      "line": 60
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -150,7 +150,7 @@
                         "lexical:Position"
                       ],
                       "column": 10,
-                      "line": 53
+                      "line": 58
                     }
                   },
                   "uri": "file://./test/data/production/json-api/negative2b.yaml"
@@ -171,7 +171,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#23",
+                      "focusNode": "amf://id#27",
                       "resultMessage": "error in nested nodes under shapes.schema",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -201,7 +201,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 26,
-                                "line": 55
+                                "line": 60
                               },
                               "start": {
                                 "@id": "violation_0_0_traceValue_0_0_location_range_start",
@@ -210,7 +210,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 12,
-                                "line": 54
+                                "line": 59
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative2b.yaml"
@@ -239,7 +239,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#19",
+            "focusNode": "amf://id#23",
             "resultMessage": "A document MUST contain at least one of the following top-level members:\n\n    data: the document’s “primary data”\n    errors: an array of error objects\n    meta: a meta object that contains non-standard meta-information.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-object-required-fields",
@@ -270,7 +270,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 51
+                      "line": 56
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -279,7 +279,7 @@
                         "lexical:Position"
                       ],
                       "column": 12,
-                      "line": 47
+                      "line": 52
                     }
                   },
                   "uri": "file://./test/data/production/json-api/negative2b.yaml"
@@ -301,7 +301,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#20",
+                      "focusNode": "amf://id#24",
                       "resultMessage": "error in nested nodes under shapes.schema",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -331,7 +331,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 51
+                                "line": 56
                               },
                               "start": {
                                 "@id": "violation_1_0_traceValue_0_0_location_range_start",
@@ -340,7 +340,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 14,
-                                "line": 49
+                                "line": 54
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative2b.yaml"
@@ -373,7 +373,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#22",
+            "focusNode": "amf://id#26",
             "resultMessage": "A document MUST contain at least one of the following top-level members:\n\n    data: the document’s “primary data”\n    errors: an array of error objects\n    meta: a meta object that contains non-standard meta-information.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-object-required-fields",
@@ -404,7 +404,7 @@
                         "lexical:Position"
                       ],
                       "column": 26,
-                      "line": 55
+                      "line": 60
                     },
                     "start": {
                       "@id": "violation_2_0_location_range_start",
@@ -413,7 +413,7 @@
                         "lexical:Position"
                       ],
                       "column": 10,
-                      "line": 53
+                      "line": 58
                     }
                   },
                   "uri": "file://./test/data/production/json-api/negative2b.yaml"
@@ -435,7 +435,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#23",
+                      "focusNode": "amf://id#27",
                       "resultMessage": "error in nested nodes under shapes.schema",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -465,7 +465,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 26,
-                                "line": 55
+                                "line": 60
                               },
                               "start": {
                                 "@id": "violation_2_0_traceValue_0_0_location_range_start",
@@ -474,7 +474,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 12,
-                                "line": 54
+                                "line": 59
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative2b.yaml"

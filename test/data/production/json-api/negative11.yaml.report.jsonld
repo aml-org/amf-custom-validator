@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#20",
+            "focusNode": "amf://id#30",
             "resultMessage": "A document MUST contain at least one of the following top-level members:\n\n    data: the document’s “primary data”\n    errors: an array of error objects\n    meta: a meta object that contains non-standard meta-information.\n\nA document MAY contain any of these top-level members:\n\n    jsonapi: an object describing the server’s implementation\n    links: a links object related to the primary data.\n    included: an array of resource objects that are related to the primary data and/or each other (“included resources”).\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-object-top-level-fields",
@@ -141,7 +141,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 43
+                      "line": 67
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -150,10 +150,10 @@
                         "lexical:Position"
                       ],
                       "column": 12,
-                      "line": 40
+                      "line": 64
                     }
                   },
-                  "uri": "file://./test/data/production/json-api/negative6.yaml"
+                  "uri": "file://./test/data/production/json-api/negative11.yaml"
                 },
                 "resultPath": "shapes.schema / shacl.property / shacl.name",
                 "traceValue": {
@@ -162,7 +162,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "other",
+                  "actual": "lala",
                   "expected": "[\"data\",\"errors\",\"meta\",\"jsonapi\",\"links\",\"included\"]",
                   "negated": false
                 }
@@ -175,7 +175,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#22",
+            "focusNode": "amf://id#32",
             "resultMessage": "A document MUST contain at least one of the following top-level members:\n\n    data: the document’s “primary data”\n    errors: an array of error objects\n    meta: a meta object that contains non-standard meta-information.\n\nA document MAY contain any of these top-level members:\n\n    jsonapi: an object describing the server’s implementation\n    links: a links object related to the primary data.\n    included: an array of resource objects that are related to the primary data and/or each other (“included resources”).\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-object-top-level-fields",
@@ -206,7 +206,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 49
+                      "line": 73
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -215,10 +215,10 @@
                         "lexical:Position"
                       ],
                       "column": 12,
-                      "line": 46
+                      "line": 70
                     }
                   },
-                  "uri": "file://./test/data/production/json-api/negative6.yaml"
+                  "uri": "file://./test/data/production/json-api/negative11.yaml"
                 },
                 "resultPath": "shapes.schema / shacl.property / shacl.name",
                 "traceValue": {
@@ -227,7 +227,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "other",
+                  "actual": "lala",
                   "expected": "[\"data\",\"errors\",\"meta\",\"jsonapi\",\"links\",\"included\"]",
                   "negated": false
                 }
@@ -240,7 +240,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#24",
+            "focusNode": "amf://id#34",
             "resultMessage": "A document MUST contain at least one of the following top-level members:\n\n    data: the document’s “primary data”\n    errors: an array of error objects\n    meta: a meta object that contains non-standard meta-information.\n\nA document MAY contain any of these top-level members:\n\n    jsonapi: an object describing the server’s implementation\n    links: a links object related to the primary data.\n    included: an array of resource objects that are related to the primary data and/or each other (“included resources”).\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-object-top-level-fields",
@@ -271,7 +271,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 55
+                      "line": 79
                     },
                     "start": {
                       "@id": "violation_2_0_location_range_start",
@@ -280,10 +280,10 @@
                         "lexical:Position"
                       ],
                       "column": 12,
-                      "line": 52
+                      "line": 76
                     }
                   },
-                  "uri": "file://./test/data/production/json-api/negative6.yaml"
+                  "uri": "file://./test/data/production/json-api/negative11.yaml"
                 },
                 "resultPath": "shapes.schema / shacl.property / shacl.name",
                 "traceValue": {
@@ -292,7 +292,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "other",
+                  "actual": "lala",
                   "expected": "[\"data\",\"errors\",\"meta\",\"jsonapi\",\"links\",\"included\"]",
                   "negated": false
                 }
