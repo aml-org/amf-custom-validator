@@ -5,31 +5,6 @@ pipeline {
         DOCKER_BUILDKIT='1' // optimizes target builds for multistage dockerfile
     }
     stages {
-        stage('Test validator (Go)') {
-            agent {
-                dockerfile {
-                    filename 'Dockerfile'
-                    additionalBuildArgs  '--target ci-go'
-                    registryCredentialsId 'dockerhub-pro-credentials'
-                }
-            }
-            steps {
-                echo "Success" // Tests are actually run when building the agent in the Dockerfile
-            }
-        }
-        stage ('Validate reports and profiles') {
-            agent {
-                dockerfile {
-                    filename 'Dockerfile'
-                    additionalBuildArgs  '--target ci-java'
-                    registryCredentialsId 'dockerhub-pro-credentials'
-                }
-            }
-            steps {
-                echo "Success" // Tests are actually run when building the agent in the Dockerfile
-            }
-
-        }
         stage('Test generated WASM (JS)') {
             agent {
                 dockerfile {
@@ -52,61 +27,6 @@ pipeline {
             }
             steps {
                 echo "Success" // Tests are actually run when building the agent in the Dockerfile
-            }
-        }
-        stage('Coverage') {
-            agent {
-                dockerfile {
-                    filename 'Dockerfile'
-                    additionalBuildArgs  '--target coverage'
-                    registryCredentialsId 'dockerhub-pro-credentials'
-                }
-            }
-            steps {
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'sonarqube-official', passwordVariable: 'SONAR_SERVER_TOKEN', usernameVariable: 'SONAR_SERVER_URL']]) {
-                    sh '''  #!/bin/bash
-                            cp /usr/src/coverage.out ./
-                            echo sonar.host.url=${SONAR_SERVER_URL} >> sonar-project.properties
-                            echo sonar.login=${SONAR_SERVER_TOKEN} >> sonar-project.properties
-                            sonar-scanner
-                    '''
-                }
-
-            }
-        }
-        stage('Nexus IQ') {
-            when {
-                anyOf {
-                    branch 'develop'
-                    branch 'master'
-                }
-            }
-            agent {
-                dockerfile {
-                    filename 'Dockerfile'
-                    additionalBuildArgs  '--target nexus-scan'
-                    registryUrl 'https://artifacts.msap.io/'
-                    registryCredentialsId 'harbor-docker-registry'
-                }
-            }
-            steps {
-                withCredentials([
-                    [$class: 'UsernamePasswordMultiBinding', credentialsId: 'nexus-iq', passwordVariable: 'NEXUS_PASS', usernameVariable: 'NEXUS_USER'],
-                ]) {
-                script {
-                    def args = [
-                        '--authentication "$NEXUS_USER:$NEXUS_PASS"',
-                        "--server-url https://nexusiq.build.msap.io",
-                        "--application-id amf-custom-validator",
-                        "--fail-on-policy-warnings" // might have to remove this if all policies are taken into account
-                     // "--stage $stage",
-                    ]
-                    def result = sh(returnStatus: true, script: "java -jar /bin/nexusiq-cli ${args.join(' ')} /go.list")
-                    if (result != 0) {
-                        unstable "Failed Nexus IQ execution"
-                    }
-                }
-                }
             }
         }
         stage('Publish snapshot') {
@@ -132,11 +52,8 @@ pipeline {
                         cd /src
 
                         # Login
-                        npmrc=$HOME/.npmrc
-                        cat $npmrc || touch $npmrc # create ~/.npmrc if not exists
-
-                        echo //registry.npmjs.org/:_authToken=${env.NPM_TOKEN} >> $npmrc
-                        echo @aml-org:registry=https://registry.npmjs.org/ >> $npmrc
+                        echo //registry.npmjs.org/:_authToken=${env.NPM_TOKEN} >> ~/.npmrc
+                        echo @aml-org:registry=https://registry.npmjs.org/ >> ~/.npmrc
                         npm config set registry https://registry.npmjs.org/
                         npm whoami
 
