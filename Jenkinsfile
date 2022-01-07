@@ -52,9 +52,13 @@ pipeline {
                         cd /src
 
                         # Login
-                        echo //registry.npmjs.org/:_authToken=${env.NPM_TOKEN} >> ~/.npmrc
+                        echo "[Info]: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} >> ~/.npmrc"
+                        echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} >> ~/.npmrc
+                        echo "[Info]: echo @aml-org:registry=https://registry.npmjs.org/ >> ~/.npmrc"
                         echo @aml-org:registry=https://registry.npmjs.org/ >> ~/.npmrc
+                        echo "[Info]: npm config set registry https://registry.npmjs.org/"
                         npm config set registry https://registry.npmjs.org/
+                        echo "[Info]: npm whoami"
                         npm whoami
 
                         # Publish
