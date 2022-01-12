@@ -102,7 +102,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "http://datashapes.org/sh/tests/core/property/hasValue-001.test#InvalidMalePerson",
+            "focusNode": "http://datashapes.org/sh/tests/core/property/containsAll.test#InvalidPerson1",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -113,16 +113,16 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "hasValue",
-                "resultPath": "http://datashapes.org/sh/tests/core/property/hasValue-001.test#gender",
+                "component": "containsSome",
+                "resultPath": "http://datashapes.org/sh/tests/core/property/containsAll.test#sports",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "[\"female\"]",
-                  "expected": "[\"male\"]",
+                  "actual": "[\"fencing\"]",
+                  "expected": "[\"football\",\"tenis\"]",
                   "negated": false
                 }
               }

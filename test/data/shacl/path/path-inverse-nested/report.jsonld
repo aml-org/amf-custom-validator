@@ -113,7 +113,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "onlyValue",
+                "component": "in",
                 "resultPath": "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#child^ / http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#surname",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",

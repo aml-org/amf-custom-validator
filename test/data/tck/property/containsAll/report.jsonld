@@ -102,7 +102,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "http://datashapes.org/sh/tests/core/property/hasValues.test#InvalidPerson1",
+            "focusNode": "http://datashapes.org/sh/tests/core/property/containsAll.test#InvalidPerson1",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -113,8 +113,8 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "hasValues",
-                "resultPath": "http://datashapes.org/sh/tests/core/property/hasValues.test#sports",
+                "component": "containsAll",
+                "resultPath": "http://datashapes.org/sh/tests/core/property/containsAll.test#sports",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [

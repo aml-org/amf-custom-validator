@@ -4,7 +4,6 @@
       "actual": {
         "@id": "http://a.ml/vocabularies/validation#actual"
       },
-      "apiContract": "http://a.ml/vocabularies/apiContract#",
       "argument": {
         "@id": "http://a.ml/vocabularies/validation#argument"
       },
@@ -20,8 +19,6 @@
       "conforms": {
         "@id": "http://www.w3.org/ns/shacl#conforms"
       },
-      "core": "http://a.ml/vocabularies/core#",
-      "data": "http://a.ml/vocabularies/data#",
       "doc": "http://a.ml/vocabularies/document#",
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
@@ -47,8 +44,6 @@
       "range": {
         "@id": "http://a.ml/vocabularies/lexical#range"
       },
-      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-      "rdfs": "http://www.w3.org/2000/01/rdf-schema",
       "reportSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/",
       "result": {
         "@id": "http://www.w3.org/ns/shacl#result"
@@ -62,13 +57,10 @@
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#resultSeverity"
       },
-      "security": "http://a.ml/vocabularies/security#",
       "shacl": "http://www.w3.org/ns/shacl#",
-      "shapes": "http://a.ml/vocabularies/shapes#",
       "sourceShapeName": {
         "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
       },
-      "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
       "start": {
         "@id": "http://a.ml/vocabularies/lexical#start"
       },
@@ -84,8 +76,7 @@
       "uri": {
         "@id": "http://a.ml/vocabularies/lexical#uri"
       },
-      "validation": "http://a.ml/vocabularies/validation#",
-      "xsd": "http://www.w3.org/2001/XMLSchema#"
+      "validation": "http://a.ml/vocabularies/validation#"
     },
     "@id": "dialect-instance",
     "@type": [
@@ -103,6 +94,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "JSON-API",
         "result": [
           {
             "@id": "violation_0",
@@ -111,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#23",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 60
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 12,
+                  "line": 52
+                }
+              },
+              "uri": "file://./test/data/production/json-api/negative5.yaml"
+            },
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-object-no-error-and-data",
@@ -155,7 +180,7 @@
                   },
                   "uri": "file://./test/data/production/json-api/negative5.yaml"
                 },
-                "resultPath": "shapes.schema",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
@@ -209,7 +234,7 @@
                   },
                   "uri": "file://./test/data/production/json-api/negative5.yaml"
                 },
-                "resultPath": "shapes.schema",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema",
                 "traceValue": {
                   "@id": "violation_0_1_traceValue",
                   "@type": [
@@ -232,6 +257,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#22",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 60
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 8,
+                  "line": 49
+                }
+              },
+              "uri": "file://./test/data/production/json-api/negative5.yaml"
+            },
             "resultMessage": "A resource object MUST contain at least the following top-level members:\n\n    id\n    type\n\nException: The id member is not required when the resource object originates at the client and represents a new resource to be created on the server.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "resource-object-required-fields",
@@ -276,7 +334,7 @@
                   },
                   "uri": "file://./test/data/production/json-api/negative5.yaml"
                 },
-                "resultPath": "apiContract.payload / shapes.schema / shacl.property",
+                "resultPath": "http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#property",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [
@@ -294,7 +352,40 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#27",
-                      "resultMessage": "error in nested nodes under apiContract.payload / shapes.schema / shacl.property",
+                      "location": {
+                        "@id": "violation_1_0_traceValue_0_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_1_0_traceValue_0_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_1_0_traceValue_0_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 0,
+                            "line": 60
+                          },
+                          "start": {
+                            "@id": "violation_1_0_traceValue_0_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 18,
+                            "line": 58
+                          }
+                        },
+                        "uri": "file://./test/data/production/json-api/negative5.yaml"
+                      },
+                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#property",
                       "sourceShapeName": "nested",
                       "trace": [
                         {
@@ -337,7 +428,7 @@
                             },
                             "uri": "file://./test/data/production/json-api/negative5.yaml"
                           },
-                          "resultPath": "shacl.name",
+                          "resultPath": "http://www.w3.org/ns/shacl#name",
                           "traceValue": {
                             "@id": "violation_1_0_traceValue_0_0_traceValue",
                             "@type": [
@@ -358,7 +449,40 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#25",
-                      "resultMessage": "error in nested nodes under apiContract.payload / shapes.schema / shacl.property",
+                      "location": {
+                        "@id": "violation_1_0_traceValue_1_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_1_0_traceValue_1_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_1_0_traceValue_1_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 0,
+                            "line": 58
+                          },
+                          "start": {
+                            "@id": "violation_1_0_traceValue_1_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 18,
+                            "line": 56
+                          }
+                        },
+                        "uri": "file://./test/data/production/json-api/negative5.yaml"
+                      },
+                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#property",
                       "sourceShapeName": "nested",
                       "trace": [
                         {
@@ -401,7 +525,7 @@
                             },
                             "uri": "file://./test/data/production/json-api/negative5.yaml"
                           },
-                          "resultPath": "shapes.range",
+                          "resultPath": "http://a.ml/vocabularies/shapes#range",
                           "traceValue": {
                             "@id": "violation_1_0_traceValue_1_0_traceValue",
                             "@type": [
@@ -418,7 +542,40 @@
                                   "shacl:ValidationResult"
                                 ],
                                 "focusNode": "amf://id#26",
-                                "resultMessage": "error in nested nodes under shapes.range",
+                                "location": {
+                                  "@id": "violation_1_0_traceValue_1_0_traceValue_0_location",
+                                  "@type": [
+                                    "lexicalSchema:LocationNode",
+                                    "lexical:Location"
+                                  ],
+                                  "range": {
+                                    "@id": "violation_1_0_traceValue_1_0_traceValue_0_location_range",
+                                    "@type": [
+                                      "lexicalSchema:RangeNode",
+                                      "lexical:Range"
+                                    ],
+                                    "end": {
+                                      "@id": "violation_1_0_traceValue_1_0_traceValue_0_location_range_end",
+                                      "@type": [
+                                        "lexicalSchema:PositionNode",
+                                        "lexical:Position"
+                                      ],
+                                      "column": 0,
+                                      "line": 58
+                                    },
+                                    "start": {
+                                      "@id": "violation_1_0_traceValue_1_0_traceValue_0_location_range_start",
+                                      "@type": [
+                                        "lexicalSchema:PositionNode",
+                                        "lexical:Position"
+                                      ],
+                                      "column": 18,
+                                      "line": 56
+                                    }
+                                  },
+                                  "uri": "file://./test/data/production/json-api/negative5.yaml"
+                                },
+                                "resultMessage": "error in nested nodes under http://a.ml/vocabularies/shapes#range",
                                 "sourceShapeName": "nested",
                                 "trace": [
                                   {
@@ -461,7 +618,7 @@
                                       },
                                       "uri": "file://./test/data/production/json-api/negative5.yaml"
                                     },
-                                    "resultPath": "shacl.property",
+                                    "resultPath": "http://www.w3.org/ns/shacl#property",
                                     "traceValue": {
                                       "@id": "violation_1_0_traceValue_1_0_traceValue_0_0_traceValue",
                                       "@type": [
@@ -490,7 +647,40 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#27",
-                      "resultMessage": "error in nested nodes under apiContract.payload / shapes.schema / shacl.property",
+                      "location": {
+                        "@id": "violation_1_0_traceValue_2_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_1_0_traceValue_2_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_1_0_traceValue_2_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 0,
+                            "line": 60
+                          },
+                          "start": {
+                            "@id": "violation_1_0_traceValue_2_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 18,
+                            "line": 58
+                          }
+                        },
+                        "uri": "file://./test/data/production/json-api/negative5.yaml"
+                      },
+                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#property",
                       "sourceShapeName": "nested",
                       "trace": [
                         {
@@ -533,7 +723,7 @@
                             },
                             "uri": "file://./test/data/production/json-api/negative5.yaml"
                           },
-                          "resultPath": "shapes.range",
+                          "resultPath": "http://a.ml/vocabularies/shapes#range",
                           "traceValue": {
                             "@id": "violation_1_0_traceValue_2_0_traceValue",
                             "@type": [
@@ -550,7 +740,40 @@
                                   "shacl:ValidationResult"
                                 ],
                                 "focusNode": "amf://id#28",
-                                "resultMessage": "error in nested nodes under shapes.range",
+                                "location": {
+                                  "@id": "violation_1_0_traceValue_2_0_traceValue_0_location",
+                                  "@type": [
+                                    "lexicalSchema:LocationNode",
+                                    "lexical:Location"
+                                  ],
+                                  "range": {
+                                    "@id": "violation_1_0_traceValue_2_0_traceValue_0_location_range",
+                                    "@type": [
+                                      "lexicalSchema:RangeNode",
+                                      "lexical:Range"
+                                    ],
+                                    "end": {
+                                      "@id": "violation_1_0_traceValue_2_0_traceValue_0_location_range_end",
+                                      "@type": [
+                                        "lexicalSchema:PositionNode",
+                                        "lexical:Position"
+                                      ],
+                                      "column": 0,
+                                      "line": 60
+                                    },
+                                    "start": {
+                                      "@id": "violation_1_0_traceValue_2_0_traceValue_0_location_range_start",
+                                      "@type": [
+                                        "lexicalSchema:PositionNode",
+                                        "lexical:Position"
+                                      ],
+                                      "column": 18,
+                                      "line": 58
+                                    }
+                                  },
+                                  "uri": "file://./test/data/production/json-api/negative5.yaml"
+                                },
+                                "resultMessage": "error in nested nodes under http://a.ml/vocabularies/shapes#range",
                                 "sourceShapeName": "nested",
                                 "trace": [
                                   {
@@ -593,7 +816,7 @@
                                       },
                                       "uri": "file://./test/data/production/json-api/negative5.yaml"
                                     },
-                                    "resultPath": "shacl.property",
+                                    "resultPath": "http://www.w3.org/ns/shacl#property",
                                     "traceValue": {
                                       "@id": "violation_1_0_traceValue_2_0_traceValue_0_0_traceValue",
                                       "@type": [
@@ -659,7 +882,7 @@
                   },
                   "uri": "file://./test/data/production/json-api/negative5.yaml"
                 },
-                "resultPath": "apiContract.payload / shapes.schema / shacl.property",
+                "resultPath": "http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#property",
                 "traceValue": {
                   "@id": "violation_1_1_traceValue",
                   "@type": [
@@ -677,7 +900,40 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#27",
-                      "resultMessage": "error in nested nodes under apiContract.payload / shapes.schema / shacl.property",
+                      "location": {
+                        "@id": "violation_1_1_traceValue_0_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_1_1_traceValue_0_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_1_1_traceValue_0_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 0,
+                            "line": 60
+                          },
+                          "start": {
+                            "@id": "violation_1_1_traceValue_0_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 18,
+                            "line": 58
+                          }
+                        },
+                        "uri": "file://./test/data/production/json-api/negative5.yaml"
+                      },
+                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#property",
                       "sourceShapeName": "nested",
                       "trace": [
                         {
@@ -720,7 +976,7 @@
                             },
                             "uri": "file://./test/data/production/json-api/negative5.yaml"
                           },
-                          "resultPath": "shacl.name",
+                          "resultPath": "http://www.w3.org/ns/shacl#name",
                           "traceValue": {
                             "@id": "violation_1_1_traceValue_0_0_traceValue",
                             "@type": [

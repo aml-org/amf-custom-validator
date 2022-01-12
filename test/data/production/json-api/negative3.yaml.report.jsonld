@@ -4,7 +4,6 @@
       "actual": {
         "@id": "http://a.ml/vocabularies/validation#actual"
       },
-      "apiContract": "http://a.ml/vocabularies/apiContract#",
       "argument": {
         "@id": "http://a.ml/vocabularies/validation#argument"
       },
@@ -20,8 +19,6 @@
       "conforms": {
         "@id": "http://www.w3.org/ns/shacl#conforms"
       },
-      "core": "http://a.ml/vocabularies/core#",
-      "data": "http://a.ml/vocabularies/data#",
       "doc": "http://a.ml/vocabularies/document#",
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
@@ -47,8 +44,6 @@
       "range": {
         "@id": "http://a.ml/vocabularies/lexical#range"
       },
-      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-      "rdfs": "http://www.w3.org/2000/01/rdf-schema",
       "reportSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/",
       "result": {
         "@id": "http://www.w3.org/ns/shacl#result"
@@ -62,13 +57,10 @@
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#resultSeverity"
       },
-      "security": "http://a.ml/vocabularies/security#",
       "shacl": "http://www.w3.org/ns/shacl#",
-      "shapes": "http://a.ml/vocabularies/shapes#",
       "sourceShapeName": {
         "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
       },
-      "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
       "start": {
         "@id": "http://a.ml/vocabularies/lexical#start"
       },
@@ -84,8 +76,7 @@
       "uri": {
         "@id": "http://a.ml/vocabularies/lexical#uri"
       },
-      "validation": "http://a.ml/vocabularies/validation#",
-      "xsd": "http://www.w3.org/2001/XMLSchema#"
+      "validation": "http://a.ml/vocabularies/validation#"
     },
     "@id": "dialect-instance",
     "@type": [
@@ -103,6 +94,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "JSON-API",
         "result": [
           {
             "@id": "violation_0",
@@ -111,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#31",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 34,
+                  "line": 75
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 6,
+                  "line": 63
+                }
+              },
+              "uri": "file://./test/data/production/json-api/negative3.yaml"
+            },
             "resultMessage": "Clients MUST send all JSON:API data in request documents with the header Content-Type: application/vnd.api+json\nwithout any media type parameters.\nClients that include the JSON:API media type in their Accept header MUST specify the media type there at least once\nwithout any media type parameters.\nClients MUST ignore any parameters for the application/vnd.api+json media type received in the Content-Type header\nof response documents.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-api-media-type-request",
@@ -155,7 +180,7 @@
                   },
                   "uri": "file://./test/data/production/json-api/negative3.yaml"
                 },
-                "resultPath": "apiContract.payload / core.mediaType",
+                "resultPath": "http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/core#mediaType",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [

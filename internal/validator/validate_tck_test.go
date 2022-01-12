@@ -161,10 +161,10 @@ func TestPropertyExactCount(t *testing.T) {
 	testTckCase("property/exactCount", t)
 }
 
-func TestPropertyHasValues(t *testing.T) {
-	testTckCase("property/hasValues", t)
+func TestPropertyContainsAll(t *testing.T) {
+	testTckCase("property/containsAll", t)
 }
 
-func TestPropertyOnlyValue(t *testing.T) {
-	testTckCase("property/onlyValue", t)
+func TestPropertyContainsSome(t *testing.T) {
+	testTckCase("property/containsSome", t)
 }

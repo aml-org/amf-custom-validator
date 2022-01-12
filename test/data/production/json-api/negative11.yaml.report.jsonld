@@ -4,7 +4,6 @@
       "actual": {
         "@id": "http://a.ml/vocabularies/validation#actual"
       },
-      "apiContract": "http://a.ml/vocabularies/apiContract#",
       "argument": {
         "@id": "http://a.ml/vocabularies/validation#argument"
       },
@@ -20,8 +19,6 @@
       "conforms": {
         "@id": "http://www.w3.org/ns/shacl#conforms"
       },
-      "core": "http://a.ml/vocabularies/core#",
-      "data": "http://a.ml/vocabularies/data#",
       "doc": "http://a.ml/vocabularies/document#",
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
@@ -47,8 +44,6 @@
       "range": {
         "@id": "http://a.ml/vocabularies/lexical#range"
       },
-      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-      "rdfs": "http://www.w3.org/2000/01/rdf-schema",
       "reportSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/",
       "result": {
         "@id": "http://www.w3.org/ns/shacl#result"
@@ -62,13 +57,10 @@
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#resultSeverity"
       },
-      "security": "http://a.ml/vocabularies/security#",
       "shacl": "http://www.w3.org/ns/shacl#",
-      "shapes": "http://a.ml/vocabularies/shapes#",
       "sourceShapeName": {
         "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
       },
-      "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
       "start": {
         "@id": "http://a.ml/vocabularies/lexical#start"
       },
@@ -84,8 +76,7 @@
       "uri": {
         "@id": "http://a.ml/vocabularies/lexical#uri"
       },
-      "validation": "http://a.ml/vocabularies/validation#",
-      "xsd": "http://www.w3.org/2001/XMLSchema#"
+      "validation": "http://a.ml/vocabularies/validation#"
     },
     "@id": "dialect-instance",
     "@type": [
@@ -103,6 +94,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "JSON-API",
         "result": [
           {
             "@id": "violation_0",
@@ -111,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#30",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 67
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 12,
+                  "line": 64
+                }
+              },
+              "uri": "file://./test/data/production/json-api/negative11.yaml"
+            },
             "resultMessage": "A document MUST contain at least one of the following top-level members:\n\n    data: the document’s “primary data”\n    errors: an array of error objects\n    meta: a meta object that contains non-standard meta-information.\n\nA document MAY contain any of these top-level members:\n\n    jsonapi: an object describing the server’s implementation\n    links: a links object related to the primary data.\n    included: an array of resource objects that are related to the primary data and/or each other (“included resources”).\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-object-top-level-fields",
@@ -155,7 +180,7 @@
                   },
                   "uri": "file://./test/data/production/json-api/negative11.yaml"
                 },
-                "resultPath": "shapes.schema / shacl.property / shacl.name",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#property / http://www.w3.org/ns/shacl#name",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
@@ -176,6 +201,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#32",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 73
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 12,
+                  "line": 70
+                }
+              },
+              "uri": "file://./test/data/production/json-api/negative11.yaml"
+            },
             "resultMessage": "A document MUST contain at least one of the following top-level members:\n\n    data: the document’s “primary data”\n    errors: an array of error objects\n    meta: a meta object that contains non-standard meta-information.\n\nA document MAY contain any of these top-level members:\n\n    jsonapi: an object describing the server’s implementation\n    links: a links object related to the primary data.\n    included: an array of resource objects that are related to the primary data and/or each other (“included resources”).\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-object-top-level-fields",
@@ -220,7 +278,7 @@
                   },
                   "uri": "file://./test/data/production/json-api/negative11.yaml"
                 },
-                "resultPath": "shapes.schema / shacl.property / shacl.name",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#property / http://www.w3.org/ns/shacl#name",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [
@@ -241,6 +299,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#34",
+            "location": {
+              "@id": "violation_2_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_2_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_2_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 79
+                },
+                "start": {
+                  "@id": "violation_2_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 12,
+                  "line": 76
+                }
+              },
+              "uri": "file://./test/data/production/json-api/negative11.yaml"
+            },
             "resultMessage": "A document MUST contain at least one of the following top-level members:\n\n    data: the document’s “primary data”\n    errors: an array of error objects\n    meta: a meta object that contains non-standard meta-information.\n\nA document MAY contain any of these top-level members:\n\n    jsonapi: an object describing the server’s implementation\n    links: a links object related to the primary data.\n    included: an array of resource objects that are related to the primary data and/or each other (“included resources”).\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-object-top-level-fields",
@@ -285,7 +376,7 @@
                   },
                   "uri": "file://./test/data/production/json-api/negative11.yaml"
                 },
-                "resultPath": "shapes.schema / shacl.property / shacl.name",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#property / http://www.w3.org/ns/shacl#name",
                 "traceValue": {
                   "@id": "violation_2_0_traceValue",
                   "@type": [

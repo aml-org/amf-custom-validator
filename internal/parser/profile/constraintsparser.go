@@ -55,31 +55,22 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, newIn(false, variable, path, l))
 	}
 
-	onlyValue := constraint.Get("onlyValue")
-	if onlyValue.IsFound() {
-		stringValue, err :=stringifyNode(onlyValue)
-		if err != nil {
-			return nil, err
-		}
-		acc = append(acc, newOnlyValue(false, variable, path, stringValue))
-	}
-
-	hasValues, err := constraint.Get("hasValues").Array()
+	containsAll, err := constraint.Get("containsAll").Array()
 	if err == nil {
-		l, err := scalarList(hasValues)
+		l, err := scalarList(containsAll)
 		if err != nil {
 			return nil, err
 		}
-		acc = append(acc, newHasValues(false, variable, path, l))
+		acc = append(acc, newContainsAll(false, variable, path, l))
 	}
 
-	hasValue := constraint.Get("hasValue")
-	if hasValue.IsFound() {
-		stringValue, err :=stringifyNode(hasValue)
+	containsSome, err := constraint.Get("containsSome").Array()
+	if err == nil {
+		l, err := scalarList(containsSome)
 		if err != nil {
 			return nil, err
 		}
-		acc = append(acc, newHasValue(false, variable, path, stringValue))
+		acc = append(acc, newContainsSome(false, variable, path, l))
 	}
 
 	otherProp, err := constraint.Get("lessThanProperty").String()
