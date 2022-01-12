@@ -15,6 +15,10 @@ func Dispatch(r profile.Rule) []GeneratedRegoResult {
 	case profile.ScalarSetRule:
 		if e.SetCriteria == profile.SubSet {
 			return simpleAsGeneratedRegoResult(GenerateScalarSubSetRule(e))
+		} else if e.SetCriteria == profile.InsersectSet {
+			return simpleAsGeneratedRegoResult(GenerateScalarIntersectSetRule(e))
+		} else if e.SetCriteria == profile.EqualsSet {
+			return simpleAsGeneratedRegoResult(GenerateScalarIsSetRule(e))
 		} else {
 			return simpleAsGeneratedRegoResult(GenerateScalarSuperSetRule(e))
 		}

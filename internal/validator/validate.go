@@ -90,6 +90,7 @@ func Generate(profileText string, debug bool, eventChan *chan e.Event) (error, g
 	return err, module
 }
 
+
 func dispatch(event e.Event, eventChan *chan e.Event) {
 	if eventChan != nil {
 		*eventChan <- event

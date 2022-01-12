@@ -122,7 +122,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "onlyValue",
+                "component": "isRule",
                 "resultPath": "ex.child^ / ex.surname",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -130,8 +130,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "Other",
-                  "expected": "[\"Maradona\"]",
+                  "argument": "Other",
                   "negated": false
                 }
               }

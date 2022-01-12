@@ -10,8 +10,10 @@ import (
 type SetCriteria int
 
 const (
-	SuperSet SetCriteria = iota // onlyValue/in
-	SubSet                      // hasValue/hasValues
+	SuperSet SetCriteria = iota // in
+	SubSet                      // containsAll
+	InsersectSet                // containsSome
+	EqualsSet                   // is
 )
 
 type ScalarSetRule struct {
@@ -71,33 +73,33 @@ func (r ScalarSetRule) String() string {
 	return fmt.Sprintf("%s%s(%s,'%s',%s)", negation, r.Name, r.Variable.Name, r.Path.Source(), strings.Join(acc, ","))
 }
 
-func newHasValue(negated bool, variable Variable, path path.PropertyPath, argument string) ScalarSetRule {
+func newContainsAll(negated bool, variable Variable, path path.PropertyPath, argument []string) ScalarSetRule {
 	return ScalarSetRule{
 		AtomicStatement: AtomicStatement{
 			BaseStatement: BaseStatement{
 				Negated: negated,
-				Name:    "hasValue",
-			},
-			Variable: variable,
-			Path:     path,
-		},
-		Argument: []string{argument},
-		SetCriteria: SubSet,
-	}
-}
-
-func newHasValues(negated bool, variable Variable, path path.PropertyPath, argument []string) ScalarSetRule {
-	return ScalarSetRule{
-		AtomicStatement: AtomicStatement{
-			BaseStatement: BaseStatement{
-				Negated: negated,
-				Name:    "hasValues",
+				Name:    "containsAll",
 			},
 			Variable: variable,
 			Path:     path,
 		},
 		Argument: argument,
 		SetCriteria: SubSet,
+	}
+}
+
+func newContainsSome(negated bool, variable Variable, path path.PropertyPath, argument []string) ScalarSetRule {
+	return ScalarSetRule{
+		AtomicStatement: AtomicStatement{
+			BaseStatement: BaseStatement{
+				Negated: negated,
+				Name:    "containsSome",
+			},
+			Variable: variable,
+			Path:     path,
+		},
+		Argument: argument,
+		SetCriteria: InsersectSet,
 	}
 }
 
@@ -116,17 +118,17 @@ func newIn(negated bool, variable Variable, path path.PropertyPath, argument []s
 	}
 }
 
-func newOnlyValue(negated bool, variable Variable, path path.PropertyPath, argument string) ScalarSetRule {
+func newIsValue(negated bool, variable Variable, path path.PropertyPath, argument string) ScalarSetRule {
 	return ScalarSetRule{
 		AtomicStatement: AtomicStatement{
 			BaseStatement: BaseStatement{
 				Negated: negated,
-				Name:    "onlyValue",
+				Name:    "is",
 			},
 			Variable: variable,
 			Path:     path,
 		},
 		Argument: []string{argument},
-		SetCriteria: SuperSet,
+		SetCriteria: EqualsSet,
 	}
 }

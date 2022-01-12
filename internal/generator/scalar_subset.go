@@ -13,26 +13,25 @@ func GenerateScalarSubSetRule(hasValue profile.ScalarSetRule) []SimpleRegoResult
 
 	// Let's get the path computed and stored hasValue the inValuesVariable
 	actualValuesVariable := profile.Genvar(fmt.Sprintf("%s_check", hasValue.Variable.Name))
-	hasValuesVariable := profile.Genvar("hasValues")
+	containsAllVariable := profile.Genvar("containsAll")
 
 
 	rego = append(rego, "#  querying path: "+path.Source())
 	pathResult := GeneratePropertyArray(path, hasValue.Variable.Name, "in_"+hasValue.ValueHash())
 	rego = append(rego, fmt.Sprintf("%s_array = %s with data.sourceNode as %s", actualValuesVariable, pathResult.rule, hasValue.Variable.Name))
 	rego = append(rego, fmt.Sprintf("count(%s_array) != 0 # validation applies if property was defined", actualValuesVariable))
-	rego_convert_to_string_set := "%s_string_set = {\n" +
-								  "  mapped |\n" +
+	rego_convert_to_string_set := "%s_string_set = { mapped |\n" +
 		                          "    original := %s_array[_]\n" +
-		                          "    mapped := as_string(original)\n}" // cast value to string for matching with argument value
+		                          "    mapped := as_string(original)\n}\n" // cast value to string for matching with argument value
 	rego = append(rego, fmt.Sprintf(rego_convert_to_string_set, actualValuesVariable, actualValuesVariable))
 
-	rego = append(rego, fmt.Sprintf("%s = { \"%s\"}", hasValuesVariable, strings.Join(hasValue.Argument, "\",\"")))
+	rego = append(rego, fmt.Sprintf("%s = { \"%s\"}", containsAllVariable, strings.Join(hasValue.Argument, "\",\"")))
 
-	// assert that all hasValues are contained in actualValues
+	// assert that all containsAll are contained in actualValues
 	if hasValue.Negated {
-		rego = append(rego, fmt.Sprintf("count(%s - %s_string_set) == 0", hasValuesVariable, actualValuesVariable))
+		rego = append(rego, fmt.Sprintf("count(%s - %s_string_set) == 0", containsAllVariable, actualValuesVariable))
 	} else {
-		rego = append(rego, fmt.Sprintf("count(%s - %s_string_set) != 0", hasValuesVariable, actualValuesVariable))
+		rego = append(rego, fmt.Sprintf("count(%s - %s_string_set) != 0", containsAllVariable, actualValuesVariable))
 	}
 
 	// used for actual value in trace

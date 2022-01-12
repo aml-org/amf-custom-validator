@@ -17,8 +17,8 @@
   } ],
   "@context" : {
     "sports" : {
-      "@id" : "http://datashapes.org/sh/tests/core/property/onlyValue.test#sports"
+      "@id" : "http://datashapes.org/sh/tests/core/property/value.test#sports"
     },
-    "ex" : "http://datashapes.org/sh/tests/core/property/onlyValue.test#"
+    "ex" : "http://datashapes.org/sh/tests/core/property/value.test#"
   }
 }

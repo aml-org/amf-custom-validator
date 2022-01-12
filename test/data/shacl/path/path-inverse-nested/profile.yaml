@@ -10,7 +10,7 @@ validations:
     targetClass: ex.Person
     propertyConstraints:
       ex.child^ / ex.surname:
-        onlyValue: "Maradona"
+        is: "Maradona"
 
 
 prefixes:

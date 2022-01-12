@@ -79,17 +79,10 @@ validations:
       JSON object MUST be at the root of every JSON:API request and response containing data. This object defines a document’s “top level”.
     targetClass: apiContract.Payload
     propertyConstraints:
-      shapes.schema:
-        nested:
-          rego: |
-            types = object.get($node, "@type", [])
-            nodeshapes = [ r |
-              e = types[_]
-              e == "shacl:NodeShape"
-              r = e
-            ]
-            $result = (count(nodeshapes) == 1)
-
+      shapes.schema / @type:
+        minCount: 1
+        containsAll:
+          - "shacl:NodeShape"
 
   json-object-required-fields:
     message: |
@@ -301,17 +294,11 @@ validations:
                 shacl.name:
                   in:
                     - data
-                shapes.range:
-                  nested:
-                    rego: |
-                      types = object.get($node, "@type", [])
-                      nodeshapes = [ r |
-                        e = types[_]
-                        {"shacl:NodeShape", "shapes:ArrayShape","shapes:NilShape"}[e]
-                        r = e
-                      ]
-                      $result = (count(nodeshapes) == 1)
-
+                shapes.range / @type:
+                  containsSome:
+                    - "shacl:NodeShape"
+                    - "shapes:ArrayShape"
+                    - "shapes:NilShape"
 
   resource-object-required-fields:
     message: |
@@ -421,10 +408,10 @@ validations:
                               - links
                               - meta
 
-  resource-object-namespaced-fields:
-    message: |
-      Fields for a resource object MUST share a common namespace with each other and with type and id. In other words,
-      a resource can not have an attribute and relationship with the same name, nor can it have an attribute or
-      relationship named type or id.
-    targetClass: shacl.NodeShape
-    rego: |
+#  resource-object-namespaced-fields:
+#    message: |
+#      Fields for a resource object MUST share a common namespace with each other and with type and id. In other words,
+#      a resource can not have an attribute and relationship with the same name, nor can it have an attribute or
+#      relationship named type or id.
+#    targetClass: shacl.NodeShape
+#    rego: |

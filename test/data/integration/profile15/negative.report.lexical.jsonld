@@ -306,7 +306,7 @@
                                       "reportSchema:TraceMessageNode",
                                       "validation:TraceMessage"
                                     ],
-                                    "component": "hasValue",
+                                    "component": "containsAll",
                                     "location": {
                                       "@id": "violation_0_0_traceValue_1_0_traceValue_0_0_location",
                                       "@type": [

@@ -419,7 +419,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#4",
+                      "focusNode": "amf://id#2",
                       "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -429,7 +429,7 @@
                             "reportSchema:TraceMessageNode",
                             "validation:TraceMessage"
                           ],
-                          "component": "in",
+                          "component": "containsAll",
                           "location": {
                             "@id": "violation_0_1_traceValue_0_0_location",
                             "@type": [
@@ -449,7 +449,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 17
+                                "line": 15
                               },
                               "start": {
                                 "@id": "violation_0_1_traceValue_0_0_location_range_start",
@@ -458,20 +458,20 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 15
+                                "line": 13
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative9.yaml"
                           },
-                          "resultPath": "shacl.name",
+                          "resultPath": "shapes.range / @type",
                           "traceValue": {
                             "@id": "violation_0_1_traceValue_0_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "meta",
-                            "expected": "[\"data\"]",
+                            "actual": "[\"shapes:ScalarShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                            "expected": "[\"shacl:NodeShape\",\"shapes:ArrayShape\",\"shapes:NilShape\"]",
                             "negated": false
                           }
                         }
@@ -483,7 +483,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#6",
+                      "focusNode": "amf://id#4",
                       "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -493,7 +493,7 @@
                             "reportSchema:TraceMessageNode",
                             "validation:TraceMessage"
                           ],
-                          "component": "in",
+                          "component": "containsAll",
                           "location": {
                             "@id": "violation_0_1_traceValue_1_0_location",
                             "@type": [
@@ -513,7 +513,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 19
+                                "line": 17
                               },
                               "start": {
                                 "@id": "violation_0_1_traceValue_1_0_location_range_start",
@@ -522,20 +522,20 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 17
+                                "line": 15
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative9.yaml"
                           },
-                          "resultPath": "shacl.name",
+                          "resultPath": "shapes.range / @type",
                           "traceValue": {
                             "@id": "violation_0_1_traceValue_1_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "included",
-                            "expected": "[\"data\"]",
+                            "actual": "[\"shacl:NodeShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                            "expected": "[\"shacl:NodeShape\",\"shapes:ArrayShape\",\"shapes:NilShape\"]",
                             "negated": false
                           }
                         }
@@ -547,7 +547,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#6",
                       "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -557,7 +557,7 @@
                             "reportSchema:TraceMessageNode",
                             "validation:TraceMessage"
                           ],
-                          "component": "in",
+                          "component": "containsAll",
                           "location": {
                             "@id": "violation_0_1_traceValue_2_0_location",
                             "@type": [
@@ -577,7 +577,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 26
+                                "line": 19
                               },
                               "start": {
                                 "@id": "violation_0_1_traceValue_2_0_location_range_start",
@@ -586,20 +586,20 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 19
+                                "line": 17
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative9.yaml"
                           },
-                          "resultPath": "shacl.name",
+                          "resultPath": "shapes.range / @type",
                           "traceValue": {
                             "@id": "violation_0_1_traceValue_2_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "links",
-                            "expected": "[\"data\"]",
+                            "actual": "[\"shacl:NodeShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                            "expected": "[\"shacl:NodeShape\",\"shapes:ArrayShape\",\"shapes:NilShape\"]",
                             "negated": false
                           }
                         }
@@ -611,7 +611,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#2",
+                      "focusNode": "amf://id#8",
                       "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -621,7 +621,7 @@
                             "reportSchema:TraceMessageNode",
                             "validation:TraceMessage"
                           ],
-                          "component": "nested",
+                          "component": "containsAll",
                           "location": {
                             "@id": "violation_0_1_traceValue_3_0_location",
                             "@type": [
@@ -641,7 +641,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 15
+                                "line": 26
                               },
                               "start": {
                                 "@id": "violation_0_1_traceValue_3_0_location_range_start",
@@ -650,85 +650,213 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 13
+                                "line": 19
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative9.yaml"
                           },
-                          "resultPath": "shapes.range",
+                          "resultPath": "shapes.range / @type",
                           "traceValue": {
                             "@id": "violation_0_1_traceValue_3_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "failedNodes": 1,
-                            "negated": false,
-                            "subResult": [
-                              {
-                                "@id": "violation_0_1_traceValue_3_0_traceValue_0",
-                                "@type": [
-                                  "reportSchema:ValidationResultNode",
-                                  "shacl:ValidationResult"
-                                ],
-                                "focusNode": "amf://id#3",
-                                "resultMessage": "error in nested nodes under shapes.range",
-                                "sourceShapeName": "nested",
-                                "trace": [
-                                  {
-                                    "@id": "violation_0_1_traceValue_3_0_traceValue_0_0",
-                                    "@type": [
-                                      "reportSchema:TraceMessageNode",
-                                      "validation:TraceMessage"
-                                    ],
-                                    "component": "rego",
-                                    "location": {
-                                      "@id": "violation_0_1_traceValue_3_0_traceValue_0_0_location",
-                                      "@type": [
-                                        "lexicalSchema:LocationNode",
-                                        "lexical:Location"
-                                      ],
-                                      "range": {
-                                        "@id": "violation_0_1_traceValue_3_0_traceValue_0_0_location_range",
-                                        "@type": [
-                                          "lexicalSchema:RangeNode",
-                                          "lexical:Range"
-                                        ],
-                                        "end": {
-                                          "@id": "violation_0_1_traceValue_3_0_traceValue_0_0_location_range_end",
-                                          "@type": [
-                                            "lexicalSchema:PositionNode",
-                                            "lexical:Position"
-                                          ],
-                                          "column": 0,
-                                          "line": 15
-                                        },
-                                        "start": {
-                                          "@id": "violation_0_1_traceValue_3_0_traceValue_0_0_location_range_start",
-                                          "@type": [
-                                            "lexicalSchema:PositionNode",
-                                            "lexical:Position"
-                                          ],
-                                          "column": 8,
-                                          "line": 13
-                                        }
-                                      },
-                                      "uri": "file://./test/data/production/json-api/negative9.yaml"
-                                    },
-                                    "resultPath": "",
-                                    "traceValue": {
-                                      "@id": "violation_0_1_traceValue_3_0_traceValue_0_0_traceValue",
-                                      "@type": [
-                                        "reportSchema:TraceValueNode",
-                                        "validation:TraceValue"
-                                      ],
-                                      "negated": false
-                                    }
-                                  }
-                                ]
-                              }
+                            "actual": "[\"shacl:NodeShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                            "expected": "[\"shacl:NodeShape\",\"shapes:ArrayShape\",\"shapes:NilShape\"]",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "@id": "violation_0_1_traceValue_4",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#4",
+                      "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_0_1_traceValue_4_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "in",
+                          "location": {
+                            "@id": "violation_0_1_traceValue_4_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
                             ],
-                            "successfulNodes": 0
+                            "range": {
+                              "@id": "violation_0_1_traceValue_4_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_1_traceValue_4_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 17
+                              },
+                              "start": {
+                                "@id": "violation_0_1_traceValue_4_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 8,
+                                "line": 15
+                              }
+                            },
+                            "uri": "file://./test/data/production/json-api/negative9.yaml"
+                          },
+                          "resultPath": "shacl.name",
+                          "traceValue": {
+                            "@id": "violation_0_1_traceValue_4_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "meta",
+                            "expected": "[\"data\"]",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "@id": "violation_0_1_traceValue_5",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#6",
+                      "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_0_1_traceValue_5_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "in",
+                          "location": {
+                            "@id": "violation_0_1_traceValue_5_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_0_1_traceValue_5_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_1_traceValue_5_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 19
+                              },
+                              "start": {
+                                "@id": "violation_0_1_traceValue_5_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 8,
+                                "line": 17
+                              }
+                            },
+                            "uri": "file://./test/data/production/json-api/negative9.yaml"
+                          },
+                          "resultPath": "shacl.name",
+                          "traceValue": {
+                            "@id": "violation_0_1_traceValue_5_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "included",
+                            "expected": "[\"data\"]",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "@id": "violation_0_1_traceValue_6",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#8",
+                      "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_0_1_traceValue_6_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "in",
+                          "location": {
+                            "@id": "violation_0_1_traceValue_6_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_0_1_traceValue_6_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_1_traceValue_6_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 26
+                              },
+                              "start": {
+                                "@id": "violation_0_1_traceValue_6_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 8,
+                                "line": 19
+                              }
+                            },
+                            "uri": "file://./test/data/production/json-api/negative9.yaml"
+                          },
+                          "resultPath": "shacl.name",
+                          "traceValue": {
+                            "@id": "violation_0_1_traceValue_6_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "links",
+                            "expected": "[\"data\"]",
+                            "negated": false
                           }
                         }
                       ]
@@ -1054,7 +1182,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#4",
+                      "focusNode": "amf://id#2",
                       "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -1064,7 +1192,7 @@
                             "reportSchema:TraceMessageNode",
                             "validation:TraceMessage"
                           ],
-                          "component": "in",
+                          "component": "containsAll",
                           "location": {
                             "@id": "violation_1_1_traceValue_0_0_location",
                             "@type": [
@@ -1084,7 +1212,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 17
+                                "line": 15
                               },
                               "start": {
                                 "@id": "violation_1_1_traceValue_0_0_location_range_start",
@@ -1093,20 +1221,20 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 15
+                                "line": 13
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative9.yaml"
                           },
-                          "resultPath": "shacl.name",
+                          "resultPath": "shapes.range / @type",
                           "traceValue": {
                             "@id": "violation_1_1_traceValue_0_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "meta",
-                            "expected": "[\"data\"]",
+                            "actual": "[\"shapes:ScalarShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                            "expected": "[\"shacl:NodeShape\",\"shapes:ArrayShape\",\"shapes:NilShape\"]",
                             "negated": false
                           }
                         }
@@ -1118,7 +1246,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#6",
+                      "focusNode": "amf://id#4",
                       "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -1128,7 +1256,7 @@
                             "reportSchema:TraceMessageNode",
                             "validation:TraceMessage"
                           ],
-                          "component": "in",
+                          "component": "containsAll",
                           "location": {
                             "@id": "violation_1_1_traceValue_1_0_location",
                             "@type": [
@@ -1148,7 +1276,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 19
+                                "line": 17
                               },
                               "start": {
                                 "@id": "violation_1_1_traceValue_1_0_location_range_start",
@@ -1157,20 +1285,20 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 17
+                                "line": 15
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative9.yaml"
                           },
-                          "resultPath": "shacl.name",
+                          "resultPath": "shapes.range / @type",
                           "traceValue": {
                             "@id": "violation_1_1_traceValue_1_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "included",
-                            "expected": "[\"data\"]",
+                            "actual": "[\"shacl:NodeShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                            "expected": "[\"shacl:NodeShape\",\"shapes:ArrayShape\",\"shapes:NilShape\"]",
                             "negated": false
                           }
                         }
@@ -1182,7 +1310,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#6",
                       "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -1192,7 +1320,7 @@
                             "reportSchema:TraceMessageNode",
                             "validation:TraceMessage"
                           ],
-                          "component": "in",
+                          "component": "containsAll",
                           "location": {
                             "@id": "violation_1_1_traceValue_2_0_location",
                             "@type": [
@@ -1212,7 +1340,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 26
+                                "line": 19
                               },
                               "start": {
                                 "@id": "violation_1_1_traceValue_2_0_location_range_start",
@@ -1221,20 +1349,20 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 19
+                                "line": 17
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative9.yaml"
                           },
-                          "resultPath": "shacl.name",
+                          "resultPath": "shapes.range / @type",
                           "traceValue": {
                             "@id": "violation_1_1_traceValue_2_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "links",
-                            "expected": "[\"data\"]",
+                            "actual": "[\"shacl:NodeShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                            "expected": "[\"shacl:NodeShape\",\"shapes:ArrayShape\",\"shapes:NilShape\"]",
                             "negated": false
                           }
                         }
@@ -1246,7 +1374,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#2",
+                      "focusNode": "amf://id#8",
                       "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -1256,7 +1384,7 @@
                             "reportSchema:TraceMessageNode",
                             "validation:TraceMessage"
                           ],
-                          "component": "nested",
+                          "component": "containsAll",
                           "location": {
                             "@id": "violation_1_1_traceValue_3_0_location",
                             "@type": [
@@ -1276,7 +1404,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 15
+                                "line": 26
                               },
                               "start": {
                                 "@id": "violation_1_1_traceValue_3_0_location_range_start",
@@ -1285,85 +1413,213 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 13
+                                "line": 19
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative9.yaml"
                           },
-                          "resultPath": "shapes.range",
+                          "resultPath": "shapes.range / @type",
                           "traceValue": {
                             "@id": "violation_1_1_traceValue_3_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "failedNodes": 1,
-                            "negated": false,
-                            "subResult": [
-                              {
-                                "@id": "violation_1_1_traceValue_3_0_traceValue_0",
-                                "@type": [
-                                  "reportSchema:ValidationResultNode",
-                                  "shacl:ValidationResult"
-                                ],
-                                "focusNode": "amf://id#3",
-                                "resultMessage": "error in nested nodes under shapes.range",
-                                "sourceShapeName": "nested",
-                                "trace": [
-                                  {
-                                    "@id": "violation_1_1_traceValue_3_0_traceValue_0_0",
-                                    "@type": [
-                                      "reportSchema:TraceMessageNode",
-                                      "validation:TraceMessage"
-                                    ],
-                                    "component": "rego",
-                                    "location": {
-                                      "@id": "violation_1_1_traceValue_3_0_traceValue_0_0_location",
-                                      "@type": [
-                                        "lexicalSchema:LocationNode",
-                                        "lexical:Location"
-                                      ],
-                                      "range": {
-                                        "@id": "violation_1_1_traceValue_3_0_traceValue_0_0_location_range",
-                                        "@type": [
-                                          "lexicalSchema:RangeNode",
-                                          "lexical:Range"
-                                        ],
-                                        "end": {
-                                          "@id": "violation_1_1_traceValue_3_0_traceValue_0_0_location_range_end",
-                                          "@type": [
-                                            "lexicalSchema:PositionNode",
-                                            "lexical:Position"
-                                          ],
-                                          "column": 0,
-                                          "line": 15
-                                        },
-                                        "start": {
-                                          "@id": "violation_1_1_traceValue_3_0_traceValue_0_0_location_range_start",
-                                          "@type": [
-                                            "lexicalSchema:PositionNode",
-                                            "lexical:Position"
-                                          ],
-                                          "column": 8,
-                                          "line": 13
-                                        }
-                                      },
-                                      "uri": "file://./test/data/production/json-api/negative9.yaml"
-                                    },
-                                    "resultPath": "",
-                                    "traceValue": {
-                                      "@id": "violation_1_1_traceValue_3_0_traceValue_0_0_traceValue",
-                                      "@type": [
-                                        "reportSchema:TraceValueNode",
-                                        "validation:TraceValue"
-                                      ],
-                                      "negated": false
-                                    }
-                                  }
-                                ]
-                              }
+                            "actual": "[\"shacl:NodeShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                            "expected": "[\"shacl:NodeShape\",\"shapes:ArrayShape\",\"shapes:NilShape\"]",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "@id": "violation_1_1_traceValue_4",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#4",
+                      "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_1_1_traceValue_4_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "in",
+                          "location": {
+                            "@id": "violation_1_1_traceValue_4_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
                             ],
-                            "successfulNodes": 0
+                            "range": {
+                              "@id": "violation_1_1_traceValue_4_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_1_1_traceValue_4_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 17
+                              },
+                              "start": {
+                                "@id": "violation_1_1_traceValue_4_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 8,
+                                "line": 15
+                              }
+                            },
+                            "uri": "file://./test/data/production/json-api/negative9.yaml"
+                          },
+                          "resultPath": "shacl.name",
+                          "traceValue": {
+                            "@id": "violation_1_1_traceValue_4_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "meta",
+                            "expected": "[\"data\"]",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "@id": "violation_1_1_traceValue_5",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#6",
+                      "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_1_1_traceValue_5_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "in",
+                          "location": {
+                            "@id": "violation_1_1_traceValue_5_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_1_1_traceValue_5_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_1_1_traceValue_5_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 19
+                              },
+                              "start": {
+                                "@id": "violation_1_1_traceValue_5_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 8,
+                                "line": 17
+                              }
+                            },
+                            "uri": "file://./test/data/production/json-api/negative9.yaml"
+                          },
+                          "resultPath": "shacl.name",
+                          "traceValue": {
+                            "@id": "violation_1_1_traceValue_5_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "included",
+                            "expected": "[\"data\"]",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "@id": "violation_1_1_traceValue_6",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#8",
+                      "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_1_1_traceValue_6_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "in",
+                          "location": {
+                            "@id": "violation_1_1_traceValue_6_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_1_1_traceValue_6_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_1_1_traceValue_6_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 26
+                              },
+                              "start": {
+                                "@id": "violation_1_1_traceValue_6_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 8,
+                                "line": 19
+                              }
+                            },
+                            "uri": "file://./test/data/production/json-api/negative9.yaml"
+                          },
+                          "resultPath": "shacl.name",
+                          "traceValue": {
+                            "@id": "violation_1_1_traceValue_6_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "links",
+                            "expected": "[\"data\"]",
+                            "negated": false
                           }
                         }
                       ]
@@ -1689,7 +1945,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#4",
+                      "focusNode": "amf://id#2",
                       "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -1699,7 +1955,7 @@
                             "reportSchema:TraceMessageNode",
                             "validation:TraceMessage"
                           ],
-                          "component": "in",
+                          "component": "containsAll",
                           "location": {
                             "@id": "violation_2_1_traceValue_0_0_location",
                             "@type": [
@@ -1719,7 +1975,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 17
+                                "line": 15
                               },
                               "start": {
                                 "@id": "violation_2_1_traceValue_0_0_location_range_start",
@@ -1728,20 +1984,20 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 15
+                                "line": 13
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative9.yaml"
                           },
-                          "resultPath": "shacl.name",
+                          "resultPath": "shapes.range / @type",
                           "traceValue": {
                             "@id": "violation_2_1_traceValue_0_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "meta",
-                            "expected": "[\"data\"]",
+                            "actual": "[\"shapes:ScalarShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                            "expected": "[\"shacl:NodeShape\",\"shapes:ArrayShape\",\"shapes:NilShape\"]",
                             "negated": false
                           }
                         }
@@ -1753,7 +2009,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#6",
+                      "focusNode": "amf://id#4",
                       "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -1763,7 +2019,7 @@
                             "reportSchema:TraceMessageNode",
                             "validation:TraceMessage"
                           ],
-                          "component": "in",
+                          "component": "containsAll",
                           "location": {
                             "@id": "violation_2_1_traceValue_1_0_location",
                             "@type": [
@@ -1783,7 +2039,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 19
+                                "line": 17
                               },
                               "start": {
                                 "@id": "violation_2_1_traceValue_1_0_location_range_start",
@@ -1792,20 +2048,20 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 17
+                                "line": 15
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative9.yaml"
                           },
-                          "resultPath": "shacl.name",
+                          "resultPath": "shapes.range / @type",
                           "traceValue": {
                             "@id": "violation_2_1_traceValue_1_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "included",
-                            "expected": "[\"data\"]",
+                            "actual": "[\"shacl:NodeShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                            "expected": "[\"shacl:NodeShape\",\"shapes:ArrayShape\",\"shapes:NilShape\"]",
                             "negated": false
                           }
                         }
@@ -1817,7 +2073,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#6",
                       "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -1827,7 +2083,7 @@
                             "reportSchema:TraceMessageNode",
                             "validation:TraceMessage"
                           ],
-                          "component": "in",
+                          "component": "containsAll",
                           "location": {
                             "@id": "violation_2_1_traceValue_2_0_location",
                             "@type": [
@@ -1847,7 +2103,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 26
+                                "line": 19
                               },
                               "start": {
                                 "@id": "violation_2_1_traceValue_2_0_location_range_start",
@@ -1856,20 +2112,20 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 19
+                                "line": 17
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative9.yaml"
                           },
-                          "resultPath": "shacl.name",
+                          "resultPath": "shapes.range / @type",
                           "traceValue": {
                             "@id": "violation_2_1_traceValue_2_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "links",
-                            "expected": "[\"data\"]",
+                            "actual": "[\"shacl:NodeShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                            "expected": "[\"shacl:NodeShape\",\"shapes:ArrayShape\",\"shapes:NilShape\"]",
                             "negated": false
                           }
                         }
@@ -1881,7 +2137,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#2",
+                      "focusNode": "amf://id#8",
                       "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -1891,7 +2147,7 @@
                             "reportSchema:TraceMessageNode",
                             "validation:TraceMessage"
                           ],
-                          "component": "nested",
+                          "component": "containsAll",
                           "location": {
                             "@id": "violation_2_1_traceValue_3_0_location",
                             "@type": [
@@ -1911,7 +2167,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 15
+                                "line": 26
                               },
                               "start": {
                                 "@id": "violation_2_1_traceValue_3_0_location_range_start",
@@ -1920,85 +2176,213 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 13
+                                "line": 19
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative9.yaml"
                           },
-                          "resultPath": "shapes.range",
+                          "resultPath": "shapes.range / @type",
                           "traceValue": {
                             "@id": "violation_2_1_traceValue_3_0_traceValue",
                             "@type": [
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "failedNodes": 1,
-                            "negated": false,
-                            "subResult": [
-                              {
-                                "@id": "violation_2_1_traceValue_3_0_traceValue_0",
-                                "@type": [
-                                  "reportSchema:ValidationResultNode",
-                                  "shacl:ValidationResult"
-                                ],
-                                "focusNode": "amf://id#3",
-                                "resultMessage": "error in nested nodes under shapes.range",
-                                "sourceShapeName": "nested",
-                                "trace": [
-                                  {
-                                    "@id": "violation_2_1_traceValue_3_0_traceValue_0_0",
-                                    "@type": [
-                                      "reportSchema:TraceMessageNode",
-                                      "validation:TraceMessage"
-                                    ],
-                                    "component": "rego",
-                                    "location": {
-                                      "@id": "violation_2_1_traceValue_3_0_traceValue_0_0_location",
-                                      "@type": [
-                                        "lexicalSchema:LocationNode",
-                                        "lexical:Location"
-                                      ],
-                                      "range": {
-                                        "@id": "violation_2_1_traceValue_3_0_traceValue_0_0_location_range",
-                                        "@type": [
-                                          "lexicalSchema:RangeNode",
-                                          "lexical:Range"
-                                        ],
-                                        "end": {
-                                          "@id": "violation_2_1_traceValue_3_0_traceValue_0_0_location_range_end",
-                                          "@type": [
-                                            "lexicalSchema:PositionNode",
-                                            "lexical:Position"
-                                          ],
-                                          "column": 0,
-                                          "line": 15
-                                        },
-                                        "start": {
-                                          "@id": "violation_2_1_traceValue_3_0_traceValue_0_0_location_range_start",
-                                          "@type": [
-                                            "lexicalSchema:PositionNode",
-                                            "lexical:Position"
-                                          ],
-                                          "column": 8,
-                                          "line": 13
-                                        }
-                                      },
-                                      "uri": "file://./test/data/production/json-api/negative9.yaml"
-                                    },
-                                    "resultPath": "",
-                                    "traceValue": {
-                                      "@id": "violation_2_1_traceValue_3_0_traceValue_0_0_traceValue",
-                                      "@type": [
-                                        "reportSchema:TraceValueNode",
-                                        "validation:TraceValue"
-                                      ],
-                                      "negated": false
-                                    }
-                                  }
-                                ]
-                              }
+                            "actual": "[\"shacl:NodeShape\", \"shapes:AnyShape\", \"shacl:Shape\", \"shapes:Shape\", \"doc:DomainElement\"]",
+                            "expected": "[\"shacl:NodeShape\",\"shapes:ArrayShape\",\"shapes:NilShape\"]",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "@id": "violation_2_1_traceValue_4",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#4",
+                      "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_2_1_traceValue_4_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "in",
+                          "location": {
+                            "@id": "violation_2_1_traceValue_4_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
                             ],
-                            "successfulNodes": 0
+                            "range": {
+                              "@id": "violation_2_1_traceValue_4_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_2_1_traceValue_4_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 17
+                              },
+                              "start": {
+                                "@id": "violation_2_1_traceValue_4_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 8,
+                                "line": 15
+                              }
+                            },
+                            "uri": "file://./test/data/production/json-api/negative9.yaml"
+                          },
+                          "resultPath": "shacl.name",
+                          "traceValue": {
+                            "@id": "violation_2_1_traceValue_4_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "meta",
+                            "expected": "[\"data\"]",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "@id": "violation_2_1_traceValue_5",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#6",
+                      "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_2_1_traceValue_5_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "in",
+                          "location": {
+                            "@id": "violation_2_1_traceValue_5_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_2_1_traceValue_5_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_2_1_traceValue_5_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 19
+                              },
+                              "start": {
+                                "@id": "violation_2_1_traceValue_5_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 8,
+                                "line": 17
+                              }
+                            },
+                            "uri": "file://./test/data/production/json-api/negative9.yaml"
+                          },
+                          "resultPath": "shacl.name",
+                          "traceValue": {
+                            "@id": "violation_2_1_traceValue_5_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "included",
+                            "expected": "[\"data\"]",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "@id": "violation_2_1_traceValue_6",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#8",
+                      "resultMessage": "error in nested nodes under shapes.schema / shacl.property",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_2_1_traceValue_6_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "in",
+                          "location": {
+                            "@id": "violation_2_1_traceValue_6_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_2_1_traceValue_6_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_2_1_traceValue_6_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 26
+                              },
+                              "start": {
+                                "@id": "violation_2_1_traceValue_6_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 8,
+                                "line": 19
+                              }
+                            },
+                            "uri": "file://./test/data/production/json-api/negative9.yaml"
+                          },
+                          "resultPath": "shacl.name",
+                          "traceValue": {
+                            "@id": "violation_2_1_traceValue_6_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "links",
+                            "expected": "[\"data\"]",
+                            "negated": false
                           }
                         }
                       ]

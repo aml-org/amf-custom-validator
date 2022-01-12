@@ -10,9 +10,9 @@ validations:
     targetClass: ex.Person
     propertyConstraints:
       ex.sports:
-        onlyValue: "football"
+        containsSome: ["football", "tenis"]
 
 
 prefixes:
-  ex: http://datashapes.org/sh/tests/core/property/onlyValue.test#
+  ex: http://datashapes.org/sh/tests/core/property/containsAll.test#
 
