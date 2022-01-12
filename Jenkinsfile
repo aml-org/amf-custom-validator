@@ -146,12 +146,14 @@ pipeline {
                       cd ./wrappers/js
                       if [ "$IS_SNAPSHOT" = true ]; then
                           npm-snapshot $BUILD_NUMBER
+                      fi
                       VERSION=$(node -pe "require('./package.json').version")
                       npm publish --access public
 
                       cd ../js-web
                       if [ "$IS_SNAPSHOT" = true ]; then
                           npm-snapshot $BUILD_NUMBER
+                      fi
                       npm publish --access public
 
                       if [ "$IS_SNAPSHOT" = true ]; then
