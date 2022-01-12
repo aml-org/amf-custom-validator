@@ -109,10 +109,11 @@ pipeline {
                 }
             }
         }
-        stage('Publish snapshot') {
+        stage('Publish artifacts') {
             when {
                 anyOf {
                     branch 'develop'
+                    branch 'master'
                 }
             }
             agent {
@@ -123,28 +124,49 @@ pipeline {
                 }
             }
             environment {
-                NPM = credentials('aml-org-bot-npm')
+                NPM_TOKEN = credentials('aml-org-bot-npm-token')
                 GITHUB = credentials('github-salt')
             }
             steps {
-                sh '''  #!/bin/bash
-                        cd /src
-                        npm-cli-login -u $NPM_USR -p $NPM_PSW -e als-amf-team@mulesoft.com
+                sh '''#!/bin/bash
+                      cd /src
+                      if [ ${BRANCH_NAME} = "master" ]; then
+                          IS_SNAPSHOT=false
+                      else
+                          IS_SNAPSHOT=true
+                      fi
 
-                        cd ./wrappers/js
-                        npm-snapshot $BUILD_NUMBER
-                        VERSION=$(node -pe "require('./package.json').version")
-                        npm publish --access public
-                        npm dist-tag add @aml-org/amf-custom-validator@${VERSION} snapshot
+                      # Login
+                      echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} >> ~/.npmrc
+                      echo @aml-org:registry=https://registry.npmjs.org/ >> ~/.npmrc
+                      npm config set registry https://registry.npmjs.org/
+                      npm whoami
 
-                        cd ../js-web
-                        npm-snapshot $BUILD_NUMBER
-                        npm publish --access public
-                        npm dist-tag add @aml-org/amf-custom-validator-web@${VERSION} snapshot
-                        URL="https://${GITHUB_USR}:${GITHUB_PSW}@github.com/aml-org/amf-custom-validator"
+                      # Publish
+                      cd ./wrappers/js
+                      if [ "$IS_SNAPSHOT" = true ]; then
+                          npm-snapshot $BUILD_NUMBER
+                      fi
+                      VERSION=$(node -pe "require('./package.json').version")
+                      npm publish --access public
 
-                        git tag v$VERSION
-                        git push $URL v$VERSION
+                      cd ../js-web
+                      if [ "$IS_SNAPSHOT" = true ]; then
+                          npm-snapshot $BUILD_NUMBER
+                      fi
+                      npm publish --access public
+
+                      if [ "$IS_SNAPSHOT" = true ]; then
+                          npm dist-tag add @aml-org/amf-custom-validator-web@${VERSION} snapshot
+                          npm dist-tag add @aml-org/amf-custom-validator@${VERSION} snapshot
+                      else
+                          npm dist-tag add @aml-org/amf-custom-validator-web@${VERSION} release
+                          npm dist-tag add @aml-org/amf-custom-validator@${VERSION} release
+                      fi
+
+                      git tag v$VERSION
+                      URL="https://${GITHUB_USR}:${GITHUB_PSW}@github.com/aml-org/amf-custom-validator"
+                      git push $URL v$VERSION
                 '''
             }
         }
