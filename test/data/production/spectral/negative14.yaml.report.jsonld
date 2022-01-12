@@ -105,37 +105,37 @@
         "conforms": false,
         "result": [
           {
-            "@id": "violation_0",
+            "@id": "warning_0",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#7",
             "resultMessage": "Operation should have non-empty tags array.",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "operation-tags",
             "trace": [
               {
-                "@id": "violation_0_0",
+                "@id": "warning_0_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_0_0_location",
+                  "@id": "warning_0_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_0_0_location_range",
+                    "@id": "warning_0_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_0_0_location_range_end",
+                      "@id": "warning_0_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -144,7 +144,7 @@
                       "line": 30
                     },
                     "start": {
-                      "@id": "violation_0_0_location_range_start",
+                      "@id": "warning_0_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -157,7 +157,7 @@
                 },
                 "resultPath": "apiContract.tag",
                 "traceValue": {
-                  "@id": "violation_0_0_traceValue",
+                  "@id": "warning_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -171,37 +171,37 @@
             ]
           },
           {
-            "@id": "violation_1",
+            "@id": "warning_1",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
             "resultMessage": "Operation tags should be defined in global tags.",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "operation-tag-defined",
             "trace": [
               {
-                "@id": "violation_1_0",
+                "@id": "warning_1_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "rego",
                 "location": {
-                  "@id": "violation_1_0_location",
+                  "@id": "warning_1_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_1_0_location_range",
+                    "@id": "warning_1_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_1_0_location_range_end",
+                      "@id": "warning_1_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -210,7 +210,7 @@
                       "line": 32
                     },
                     "start": {
-                      "@id": "violation_1_0_location_range_start",
+                      "@id": "warning_1_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -223,7 +223,7 @@
                 },
                 "resultPath": "",
                 "traceValue": {
-                  "@id": "violation_1_0_traceValue",
+                  "@id": "warning_1_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -234,37 +234,37 @@
             ]
           },
           {
-            "@id": "violation_2",
+            "@id": "warning_2",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
             "resultMessage": "Operation tags should be defined in global tags.",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "operation-tag-defined",
             "trace": [
               {
-                "@id": "violation_2_0",
+                "@id": "warning_2_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "rego",
                 "location": {
-                  "@id": "violation_2_0_location",
+                  "@id": "warning_2_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_2_0_location_range",
+                    "@id": "warning_2_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_2_0_location_range_end",
+                      "@id": "warning_2_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -273,7 +273,7 @@
                       "line": 51
                     },
                     "start": {
-                      "@id": "violation_2_0_location_range_start",
+                      "@id": "warning_2_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -286,7 +286,7 @@
                 },
                 "resultPath": "",
                 "traceValue": {
-                  "@id": "violation_2_0_traceValue",
+                  "@id": "warning_2_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"

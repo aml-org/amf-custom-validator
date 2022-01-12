@@ -169,37 +169,37 @@
             ]
           },
           {
-            "@id": "violation_1",
+            "@id": "warning_0",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#8",
             "resultMessage": "Provide the description for the API",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "api-must-have-description",
             "trace": [
               {
-                "@id": "violation_1_0",
+                "@id": "warning_0_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_1_0_location",
+                  "@id": "warning_0_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_1_0_location_range",
+                    "@id": "warning_0_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_1_0_location_range_end",
+                      "@id": "warning_0_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -208,7 +208,7 @@
                       "line": 7
                     },
                     "start": {
-                      "@id": "violation_1_0_location_range_start",
+                      "@id": "warning_0_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -221,7 +221,7 @@
                 },
                 "resultPath": "core.description",
                 "traceValue": {
-                  "@id": "violation_1_0_traceValue",
+                  "@id": "warning_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -235,37 +235,37 @@
             ]
           },
           {
-            "@id": "violation_2",
+            "@id": "warning_1",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#8",
             "resultMessage": "Provide the documentation for the API",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "api-must-have-documentation",
             "trace": [
               {
-                "@id": "violation_2_0",
+                "@id": "warning_1_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_2_0_location",
+                  "@id": "warning_1_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_2_0_location_range",
+                    "@id": "warning_1_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_2_0_location_range_end",
+                      "@id": "warning_1_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -274,7 +274,7 @@
                       "line": 7
                     },
                     "start": {
-                      "@id": "violation_2_0_location_range_start",
+                      "@id": "warning_1_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -287,7 +287,7 @@
                 },
                 "resultPath": "core.documentation",
                 "traceValue": {
-                  "@id": "violation_2_0_traceValue",
+                  "@id": "warning_1_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -301,37 +301,37 @@
             ]
           },
           {
-            "@id": "violation_3",
+            "@id": "warning_2",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
             "resultMessage": "Provide description for data shapes",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "payload-shapes-must-have-descriptions",
             "trace": [
               {
-                "@id": "violation_3_0",
+                "@id": "warning_2_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_3_0_location",
+                  "@id": "warning_2_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_3_0_location_range",
+                    "@id": "warning_2_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_3_0_location_range_end",
+                      "@id": "warning_2_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -340,7 +340,7 @@
                       "line": 7
                     },
                     "start": {
-                      "@id": "violation_3_0_location_range_start",
+                      "@id": "warning_2_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -353,7 +353,7 @@
                 },
                 "resultPath": "core.description",
                 "traceValue": {
-                  "@id": "violation_3_0_traceValue",
+                  "@id": "warning_2_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -367,37 +367,37 @@
             ]
           },
           {
-            "@id": "violation_4",
+            "@id": "warning_3",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#6",
             "resultMessage": "Provide description for data shapes",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "payload-shapes-must-have-descriptions",
             "trace": [
               {
-                "@id": "violation_4_0",
+                "@id": "warning_3_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_4_0_location",
+                  "@id": "warning_3_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_4_0_location_range",
+                    "@id": "warning_3_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_4_0_location_range_end",
+                      "@id": "warning_3_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -406,7 +406,7 @@
                       "line": 7
                     },
                     "start": {
-                      "@id": "violation_4_0_location_range_start",
+                      "@id": "warning_3_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -419,7 +419,7 @@
                 },
                 "resultPath": "core.description",
                 "traceValue": {
-                  "@id": "violation_4_0_traceValue",
+                  "@id": "warning_3_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"

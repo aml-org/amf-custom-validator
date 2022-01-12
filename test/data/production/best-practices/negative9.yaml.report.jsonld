@@ -105,37 +105,37 @@
         "conforms": false,
         "result": [
           {
-            "@id": "violation_0",
+            "@id": "warning_0",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#51",
             "resultMessage": "These response codes [200,204,304,400,401,403,404,405,406,408,410,412,415,429,500,502,503,504,509,510,511,550,598,\n599]should be used as standard for GET operations, the use of not defined return codes is discouraged and should\nonly be done in exceptional circumstances.\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "standard-get-status-codes",
             "trace": [
               {
-                "@id": "violation_0_0",
+                "@id": "warning_0_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "in",
                 "location": {
-                  "@id": "violation_0_0_location",
+                  "@id": "warning_0_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_0_0_location_range",
+                    "@id": "warning_0_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_0_0_location_range_end",
+                      "@id": "warning_0_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -144,7 +144,7 @@
                       "line": 136
                     },
                     "start": {
-                      "@id": "violation_0_0_location_range_start",
+                      "@id": "warning_0_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -157,7 +157,7 @@
                 },
                 "resultPath": "apiContract.returns / apiContract.statusCode",
                 "traceValue": {
-                  "@id": "violation_0_0_traceValue",
+                  "@id": "warning_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -168,26 +168,26 @@
                 }
               },
               {
-                "@id": "violation_0_1",
+                "@id": "warning_0_1",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "pattern",
                 "location": {
-                  "@id": "violation_0_1_location",
+                  "@id": "warning_0_1_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_0_1_location_range",
+                    "@id": "warning_0_1_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_0_1_location_range_end",
+                      "@id": "warning_0_1_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -196,7 +196,7 @@
                       "line": 136
                     },
                     "start": {
-                      "@id": "violation_0_1_location_range_start",
+                      "@id": "warning_0_1_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -209,7 +209,7 @@
                 },
                 "resultPath": "apiContract.method",
                 "traceValue": {
-                  "@id": "violation_0_1_traceValue",
+                  "@id": "warning_0_1_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"

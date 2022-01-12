@@ -4,21 +4,11 @@ profile: Spectral Base
 
 violation:
   - operation-2xx-response
-  - operation-operationId-unique
-#  - operation-parameters
   - path-params
-  - info-contact
-  - info-description
-  - info-license
-  - license-url
   - no-eval-in-markdown
   - no-script-tags-in-markdown
-  - openapi-tags
   - operation-default-response
-  - operation-description
   - operation-operationId
-  - operation-tags
-  - operation-tag-defined
   - path-declarations-must-exist
   - path-keys-no-trailing-slash
   - path-not-include-query
@@ -27,7 +17,15 @@ violation:
 warning:
   - operation-singular-tag
   - tag-description
-
+  - info-contact
+  - info-description
+  - info-license
+  - license-url
+  - openapi-tags
+  - operation-description
+  - operation-tags
+  - operation-tag-defined
+  
 validations:
 
   operation-2xx-response:
@@ -44,40 +42,6 @@ validations:
             propertyConstraints:
               apiContract.statusCode:
                 pattern: "2[0-9][0-9]"
-
-  # automatically enforced by AMF
-  operation-operationId-unique:
-    message: |
-      Every operation must have a unique operationId.
-
-      Why? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,
-      all sorts of things like that.
-    targetClass: apiContract.WebAPI
-    rego: |
-        o1 = collect with data.nodes as [$node] with data.property as "apiContract:endpoint"
-        operations = collect with data.nodes as o1 with data.property as "apiContract:supportedOperation"
-        operationIds = collect_values with data.nodes as operations with data.property as "apiContract:operationId"
-
-        $result = (count(operations) == count(operationIds))
-
-  # automatically enforced by AMF
-  operation-parameters:
-    # https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rulesundefined#operation-parameters
-    # This rule is automatically enforced by AMF in transformation.
-    # To enable this rule we should use the parsed Unit (instead of the transformed)
-    message: Operation parameters are unique and non-repeating.
-    targetClass: apiContract.Operation
-    rego: |
-      nested_nodes[parameters] with data.nodes as $node["apiContract:parameter"]
-      keys = [ desc |
-        parameter = parameters[_]
-        name = parameter["core:name"]
-        binding = parameter["apiContract:binding"]
-        desc = [name,binding]
-      ]
-      key_set = { e | e = keys[_] }
-      $result = (count(keys) == count(key_set))
-
 
   path-params:
     message: |
