@@ -9,7 +9,7 @@ func GenerateNested(nested profile.NestedExpression) SimpleRegoResult {
 	path := nested.Path
 	var rego []string
 
-	pathResult := GenerateNodeArray(nested.Path, nested.Parent.Name, "nested_")
+	pathResult := GenerateNodeArray(nested.Path, nested.Parent.Name)
 	pluralName := fmt.Sprintf("%ss", nested.Child.Name)
 
 	rego = append(rego, "#  querying path: "+path.Source())

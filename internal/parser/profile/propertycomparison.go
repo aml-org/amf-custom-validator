@@ -2,7 +2,6 @@ package profile
 
 import (
 	"fmt"
-	"github.com/aml-org/amf-custom-validator/internal"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 )
 
@@ -17,11 +16,6 @@ func (r PropertyComparisonRule) Negate() Rule {
 	negated := r
 	negated.Negated = !r.Negated
 	return negated
-}
-
-func (r PropertyComparisonRule) ValueHash() string {
-	v := fmt.Sprintf("%s%s%d", r.Name, r.Operator, r.Argument)
-	return internal.HashString(v)
 }
 
 func (r PropertyComparisonRule) String() string {

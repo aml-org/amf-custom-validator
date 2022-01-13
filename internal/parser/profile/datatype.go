@@ -2,7 +2,6 @@ package profile
 
 import (
 	"fmt"
-	"github.com/aml-org/amf-custom-validator/internal"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
 	"strings"
@@ -17,11 +16,6 @@ func (r DatatypeRule) Negate() Rule {
 	negated := r
 	negated.Negated = !r.Negated
 	return negated
-}
-
-func (r DatatypeRule) ValueHash() string {
-	v := fmt.Sprintf("%s%s", r.Name, r.Argument)
-	return internal.HashString(v)
 }
 
 func (r DatatypeRule) String() string {

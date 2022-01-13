@@ -226,35 +226,35 @@ default info = []
 # Path rules
 
 gen_path_rule_3[nodes] {
-  init_x_0__in_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__in_,"ex:someProp",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"ex:someProp",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__in_ = nodes_tmp2[_]
-  nodes = x_0__in_
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 gen_path_rule_4[nodes] {
-  init_x_0__ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__,"ex:errorCount",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"ex:errorCount",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__ = nodes_tmp2[_]
-  nodes = x_0__
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 gen_path_rule_8[nodes] {
-  init_x_0__in_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__in_,"ex:otherProp",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"ex:otherProp",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__in_ = nodes_tmp2[_]
-  nodes = x_0__in_
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 gen_path_rule_9[nodes] {
-  init_x_0__ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__,"ex:errorCount",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"ex:errorCount",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__ = nodes_tmp2[_]
-  nodes = x_0__
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 # Constraint rules

@@ -26,7 +26,7 @@ func generateNumericRule(num profile.NumericRule, rule string, op string) []Simp
 
 	// Let's get the path computed and stored in the inValuesVariable
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertyArray(path, num.Variable.Name, num.ValueHash())
+	pathResult := GeneratePropertyArray(path, num.Variable.Name)
 	valueVariable := profile.Genvar("numeric_comparison")
 	rego = append(rego, fmt.Sprintf("%s_elem = %s with data.sourceNode as %s", valueVariable, pathResult.rule, num.Variable.Name))
 	rego = append(rego, fmt.Sprintf("%s = %s_elem[_]", valueVariable, valueVariable))

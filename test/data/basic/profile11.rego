@@ -226,11 +226,11 @@ default info = []
 # Path rules
 
 gen_path_rule_1[nodes] {
-  init_x_0__ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__,"apiContract:scheme",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"apiContract:scheme",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__ = nodes_tmp2[_]
-  nodes = x_0__
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 # Constraint rules

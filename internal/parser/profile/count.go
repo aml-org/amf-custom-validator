@@ -2,7 +2,6 @@ package profile
 
 import (
 	"fmt"
-	"github.com/aml-org/amf-custom-validator/internal"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 )
 
@@ -33,11 +32,6 @@ func (r CountRule) Negate() Rule {
 	negated := r
 	negated.Negated = !r.Negated
 	return negated
-}
-
-func (r CountRule) ValueHash() string {
-	v := fmt.Sprintf("%s%d", r.Name, r.Argument)
-	return internal.HashString(v)
 }
 
 func (r CountRule) String() string {

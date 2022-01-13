@@ -40,10 +40,6 @@ type AtomicStatement struct {
 	Path     path.PropertyPath
 }
 
-type Hashable interface {
-	ValueHash() string
-}
-
 type Profile struct {
 	Name        string
 	Description *string

@@ -16,7 +16,7 @@ func GenerateScalarSuperSetRule(in profile.ScalarSetRule) []SimpleRegoResult {
 	inValuesTestVariable := profile.Genvar(fmt.Sprintf("%s_check", in.Variable.Name))
 
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertyArray(path, in.Variable.Name, "in_"+in.ValueHash())
+	pathResult := GeneratePropertyArray(path, in.Variable.Name)
 	rego = append(rego, fmt.Sprintf("%s_array = %s with data.sourceNode as %s", inValuesTestVariable, pathResult.rule, in.Variable.Name))
 	rego = append(rego, fmt.Sprintf("%s_scalar = %s_array[_]", inValuesTestVariable, inValuesTestVariable))
 	rego = append(rego, fmt.Sprintf("%s = as_string(%s_scalar)", inValuesTestVariable, inValuesTestVariable))

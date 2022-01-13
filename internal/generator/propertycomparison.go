@@ -11,11 +11,11 @@ func GeneratePropertyComparison(comparison profile.PropertyComparisonRule) []Sim
 	altPath := comparison.Argument
 
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertyArray(path, comparison.Variable.Name, "prop_"+comparison.ValueHash())
+	pathResult := GeneratePropertyArray(path, comparison.Variable.Name)
 	propVariable := fmt.Sprintf("%sA", pathResult.rule)
 	rego = append(rego, fmt.Sprintf("%ss = %s with data.sourceNode as %s", propVariable, pathResult.rule, comparison.Variable.Name))
 	rego = append(rego, "#  querying path: "+altPath.Source())
-	altPathResult := GeneratePropertyArray(altPath, comparison.Variable.Name, "alt_prop_"+comparison.ValueHash())
+	altPathResult := GeneratePropertyArray(altPath, comparison.Variable.Name)
 	altPropVariable := fmt.Sprintf("%sB", altPathResult.rule)
 	rego = append(rego, fmt.Sprintf("%ss = %s with data.sourceNode as %s", altPropVariable, altPathResult.rule, comparison.Variable.Name))
 

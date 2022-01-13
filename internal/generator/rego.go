@@ -15,7 +15,7 @@ func GenerateRegoRule(rule profile.RegoRule) []SimpleRegoResult {
 
 	// let's try generate the path rule for the constraint.
 	// This can be a null path if is an inline-rego block at the top-level of a validation
-	pathResult := GeneratePropertyArray(path, rule.Variable.Name, "code_"+rule.ValueHash())
+	pathResult := GeneratePropertyArray(path, rule.Variable.Name)
 
 	// If this is not a top-level rego rule (the path generates code), we use the bind the check variable for the path computation result
 	if len(pathResult.rego) > 0 {

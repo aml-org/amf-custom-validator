@@ -3,7 +3,6 @@ package profile
 import (
 	"errors"
 	"fmt"
-	"github.com/aml-org/amf-custom-validator/internal"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
 )
@@ -18,11 +17,6 @@ func (r NumericRule) Negate() Rule {
 	negated := r
 	negated.Negated = !r.Negated
 	return negated
-}
-
-func (r NumericRule) ValueHash() string {
-	v := fmt.Sprintf("%s %s %s", r.Name, r.Operation.String(), r.StringArgument())
-	return internal.HashString(v)
 }
 
 func (r NumericRule) String() string {
