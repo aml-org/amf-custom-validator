@@ -21,30 +21,10 @@ func newTopLevelExpression(negated bool, name string, message string, level stri
 	return exp
 }
 
-func (exp TopLevelExpression) Clone() Rule {
-	cloned := TopLevelExpression{
-		Expression: Expression{
-			BaseStatement: BaseStatement{
-				Negated: exp.Negated,
-				Name:    exp.Name,
-			},
-			Variable: exp.Variable,
-		},
-		Message:        exp.Message,
-		Level:          exp.Level,
-		ClassGenerator: exp.ClassGenerator,
-	}
-	return cloned
-}
-
 func (exp TopLevelExpression) Negate() Rule {
-	cloned := exp.Clone()
-	switch tl := cloned.(type) {
-	case TopLevelExpression:
-		tl.Negated = !exp.Negated
-		return tl
-	}
-	return cloned
+	negated := exp
+	negated.Negated = !exp.Negated
+	return negated
 }
 
 func (exp TopLevelExpression) String() string {

@@ -12,29 +12,10 @@ type RegoRule struct {
 	Argument string
 }
 
-func (r RegoRule) Clone() Rule {
-	return RegoRule{
-		AtomicStatement: AtomicStatement{
-			BaseStatement: BaseStatement{
-				Negated: r.Negated,
-				Name:    r.Name,
-			},
-			Variable: r.Variable,
-			Path:     r.Path,
-		},
-		Message:  r.Message,
-		Argument: r.Argument,
-	}
-}
-
 func (r RegoRule) Negate() Rule {
-	cloned := r.Clone()
-	switch c := cloned.(type) {
-	case RegoRule:
-		c.Negated = !r.Negated
-		return c
-	}
-	return cloned
+	negated := r
+	negated.Negated = !r.Negated
+	return negated
 }
 
 func (r RegoRule) ValueHash() string {

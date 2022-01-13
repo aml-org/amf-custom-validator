@@ -8,7 +8,6 @@ import (
 type Rule interface {
 	Negate() Rule
 	String() string
-	Clone() Rule
 }
 
 type BaseStatement struct {

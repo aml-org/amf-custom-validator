@@ -12,29 +12,11 @@ type PropertyComparisonRule struct {
 	Argument path.PropertyPath
 }
 
-func (r PropertyComparisonRule) Clone() Rule {
-	return PropertyComparisonRule{
-		AtomicStatement: AtomicStatement{
-			BaseStatement: BaseStatement{
-				Negated: r.Negated,
-				Name:    r.Name,
-			},
-			Variable: r.Variable,
-			Path:     r.Path,
-		},
-		Operator: r.Operator,
-		Argument: r.Argument,
-	}
-}
 
 func (r PropertyComparisonRule) Negate() Rule {
-	cloned := r.Clone()
-	switch c := cloned.(type) {
-	case PropertyComparisonRule:
-		c.Negated = !r.Negated
-		return c
-	}
-	return cloned
+	negated := r
+	negated.Negated = !r.Negated
+	return negated
 }
 
 func (r PropertyComparisonRule) ValueHash() string {
