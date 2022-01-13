@@ -169,7 +169,7 @@ func traverseAnd(and path.AndPath, t traversal, nodeValues bool) []regoPathResul
 }
 
 // Traverses the leaf components of the path expression, always a property.
-// TODO: We don't take into account inverse or transitive paths yet.
+// TODO: We don't take into transitive paths yet.
 func traverseProperty(property path.Property, t traversal, nodeValues bool) []regoPathResultInternal {
 
 	// We use IDX go generate a unique property for the Rego computation
