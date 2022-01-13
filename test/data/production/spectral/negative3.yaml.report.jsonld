@@ -105,100 +105,37 @@
         "conforms": false,
         "result": [
           {
-            "@id": "violation_0",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "amf://id#2",
-            "resultMessage": "Every operation must have a unique operationId.\n\nWhy? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,\nall sorts of things like that.\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-operationId-unique",
-            "trace": [
-              {
-                "@id": "violation_0_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "rego",
-                "location": {
-                  "@id": "violation_0_0_location",
-                  "@type": [
-                    "lexicalSchema:LocationNode",
-                    "lexical:Location"
-                  ],
-                  "range": {
-                    "@id": "violation_0_0_location_range",
-                    "@type": [
-                      "lexicalSchema:RangeNode",
-                      "lexical:Range"
-                    ],
-                    "end": {
-                      "@id": "violation_0_0_location_range_end",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 25,
-                      "line": 42
-                    },
-                    "start": {
-                      "@id": "violation_0_0_location_range_start",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 0,
-                      "line": 1
-                    }
-                  },
-                  "uri": "file://./test/data/production/spectral/negative3.yaml"
-                },
-                "resultPath": "",
-                "traceValue": {
-                  "@id": "violation_0_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_1",
+            "@id": "warning_0",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
             "resultMessage": "Info object should contain contact object.\n\nHopefully your API description document is so good that nobody ever needs to contact you with questions, but that\nis rarely the case. The contact object has a few different options for contact details.\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "info-contact",
             "trace": [
               {
-                "@id": "violation_1_0",
+                "@id": "warning_0_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_1_0_location",
+                  "@id": "warning_0_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_1_0_location_range",
+                    "@id": "warning_0_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_1_0_location_range_end",
+                      "@id": "warning_0_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -207,7 +144,7 @@
                       "line": 42
                     },
                     "start": {
-                      "@id": "violation_1_0_location_range_start",
+                      "@id": "warning_0_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -220,7 +157,7 @@
                 },
                 "resultPath": "core.provider",
                 "traceValue": {
-                  "@id": "violation_1_0_traceValue",
+                  "@id": "warning_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -234,37 +171,37 @@
             ]
           },
           {
-            "@id": "violation_2",
+            "@id": "warning_1",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
             "resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "info-description",
             "trace": [
               {
-                "@id": "violation_2_0",
+                "@id": "warning_1_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_2_0_location",
+                  "@id": "warning_1_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_2_0_location_range",
+                    "@id": "warning_1_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_2_0_location_range_end",
+                      "@id": "warning_1_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -273,7 +210,7 @@
                       "line": 42
                     },
                     "start": {
-                      "@id": "violation_2_0_location_range_start",
+                      "@id": "warning_1_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -286,7 +223,7 @@
                 },
                 "resultPath": "core.description",
                 "traceValue": {
-                  "@id": "violation_2_0_traceValue",
+                  "@id": "warning_1_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -300,37 +237,37 @@
             ]
           },
           {
-            "@id": "violation_3",
+            "@id": "warning_2",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
             "resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "info-license",
             "trace": [
               {
-                "@id": "violation_3_0",
+                "@id": "warning_2_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_3_0_location",
+                  "@id": "warning_2_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_3_0_location_range",
+                    "@id": "warning_2_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_3_0_location_range_end",
+                      "@id": "warning_2_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -339,7 +276,7 @@
                       "line": 42
                     },
                     "start": {
-                      "@id": "violation_3_0_location_range_start",
+                      "@id": "warning_2_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -352,7 +289,7 @@
                 },
                 "resultPath": "core.license",
                 "traceValue": {
-                  "@id": "violation_3_0_traceValue",
+                  "@id": "warning_2_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -366,37 +303,37 @@
             ]
           },
           {
-            "@id": "violation_4",
+            "@id": "warning_3",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#8",
             "resultMessage": "Operation should have non-empty tags array.",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "operation-tags",
             "trace": [
               {
-                "@id": "violation_4_0",
+                "@id": "warning_3_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_4_0_location",
+                  "@id": "warning_3_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_4_0_location_range",
+                    "@id": "warning_3_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_4_0_location_range_end",
+                      "@id": "warning_3_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -405,7 +342,7 @@
                       "line": 26
                     },
                     "start": {
-                      "@id": "violation_4_0_location_range_start",
+                      "@id": "warning_3_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -418,7 +355,7 @@
                 },
                 "resultPath": "apiContract.tag",
                 "traceValue": {
-                  "@id": "violation_4_0_traceValue",
+                  "@id": "warning_3_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"

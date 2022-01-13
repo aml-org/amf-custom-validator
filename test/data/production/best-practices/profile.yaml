@@ -12,9 +12,11 @@ violation:
   - use-schemas-requests
   - provide-examples
   - api-must-have-title
+  - operations-must-have-identifiers
+
+warning:
   - api-must-have-description
   - api-must-have-documentation
-  - operations-must-have-identifiers
   - operations-must-have-descriptions
   - responses-must-have-descriptions
   - headers-must-have-descriptions
@@ -26,6 +28,7 @@ violation:
   - standard-post-status-codes
   - standard-put-status-codes
   - standard-delete-status-codes
+
 
 validations:
 
