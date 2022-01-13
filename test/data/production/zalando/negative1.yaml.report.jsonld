@@ -441,7 +441,7 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
-            "resultMessage": "Contact name must be provided",
+            "resultMessage": "Contact email must be provided",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "218-contact-email-must-be-provided",
             "trace": [

@@ -110,7 +110,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#33",
+            "focusNode": "amf://id#34",
             "resultMessage": "Always include examples in requests and responses",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "provide-examples",
@@ -173,7 +173,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#35",
+            "focusNode": "amf://id#36",
             "resultMessage": "Always include examples in requests and responses",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "provide-examples",

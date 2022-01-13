@@ -8,6 +8,7 @@ violation:
   - base-url-pattern-server
   - camel-case-fields
   - date-time-representation
+  - date-only-representation
   - use-schemas-responses
   - use-schemas-requests
   - provide-examples
@@ -91,15 +92,29 @@ validations:
         - propertyConstraints:
             shacl.name:
               pattern: "updatedAt"
-        - propertyConstraints:
-            shacl.name:
-              pattern: "^.*[dD]ate.*$"
     then:
       propertyConstraints:
         shacl.datatype:
           minCount: 1
           in:
             - xsd:dateTime
+
+  date-only-representation:
+    message: |
+      Use standard date formats: ISO8601
+      Use calendar date:
+        2016-10-27
+    targetClass: shapes.ScalarShape
+    if:
+        propertyConstraints:
+          shacl.name:
+            pattern: "^.*[dD]ate.*$"
+    then:
+      propertyConstraints:
+        shacl.datatype:
+          minCount: 1
+          in:
+            - xsd:date
 
   use-schemas-responses:
     message: |
