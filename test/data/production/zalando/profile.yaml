@@ -54,7 +54,7 @@ validations:
         minCount: 1
 
   218-contact-email-must-be-provided:
-    message: Contact name must be provided
+    message: Contact email must be provided
     targetClass: apiContract.WebAPI
     propertyConstraints:
       core.provider / core.email:
