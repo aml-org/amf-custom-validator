@@ -48,14 +48,6 @@ func (r OrRule) String() string {
 
 }
 
-func (r AndRule) Clone() Rule {
-	return NewAnd(r.Negated, r.Body)
-}
-
-func (r OrRule) Clone() Rule {
-	return NewOr(r.Negated, r.Body)
-}
-
 func (r AndRule) Negate() Rule {
 	negatedBody := make([]Rule, len(r.Body))
 	for i, br := range r.Body {

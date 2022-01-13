@@ -226,35 +226,35 @@ default info = []
 # Path rules
 
 gen_path_rule_3[nodes] {
-  init_x_0__in_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__in_ = nodes_tmp2[_]
-  nodes = x_0__in_
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 gen_path_rule_5[nodes] {
-  init_x_0__maxCount_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__maxCount_,"shacl:name",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__maxCount_ = nodes_tmp2[_]
-  nodes = x_0__maxCount_
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 gen_path_rule_7[nodes] {
-  init_x_0__minCount_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__minCount_,"apiContract:method",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__minCount_ = nodes_tmp2[_]
-  nodes = x_0__minCount_
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 gen_path_rule_8[nodes] {
-  init_x_0__pattern_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__pattern_,"shacl:name",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__pattern_ = nodes_tmp2[_]
-  nodes = x_0__pattern_
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 # Constraint rules

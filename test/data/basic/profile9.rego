@@ -258,11 +258,11 @@ violation[matches] {
 # Path rules
 
 gen_path_rule_5[nodes] {
-  init_x_0__code_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__code_,"apiContract:version",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"apiContract:version",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__code_ = nodes_tmp2[_]
-  nodes = x_0__code_
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 # Constraint rules

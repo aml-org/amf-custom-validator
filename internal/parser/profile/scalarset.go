@@ -2,7 +2,6 @@ package profile
 
 import (
 	"fmt"
-	"github.com/aml-org/amf-custom-validator/internal"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 	"strings"
 )
@@ -20,34 +19,11 @@ type ScalarSetRule struct {
 	SetCriteria
 }
 
-func (r ScalarSetRule) Clone() Rule {
-	return ScalarSetRule{
-		AtomicStatement: AtomicStatement{
-			BaseStatement: BaseStatement{
-				Negated: r.Negated,
-				Name:    r.Name,
-			},
-			Variable: r.Variable,
-			Path:     r.Path,
-		},
-		Argument: r.Argument,
-		SetCriteria: r.SetCriteria,
-	}
-}
 
 func (r ScalarSetRule) Negate() Rule {
-	cloned := r.Clone()
-	switch c := cloned.(type) {
-	case ScalarSetRule:
-		c.Negated = !r.Negated
-		return c
-	}
-	return cloned
-}
-
-func (r ScalarSetRule) ValueHash() string {
-	v := fmt.Sprintf("%s%s", r.Name, r.Argument)
-	return internal.HashString(v)
+	negated := r
+	negated.Negated = !r.Negated
+	return negated
 }
 
 func (r ScalarSetRule) JSONValues() string {

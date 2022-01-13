@@ -2,7 +2,6 @@ package profile
 
 import (
 	"fmt"
-	"github.com/aml-org/amf-custom-validator/internal"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 )
 
@@ -12,34 +11,10 @@ type RegoRule struct {
 	Argument string
 }
 
-func (r RegoRule) Clone() Rule {
-	return RegoRule{
-		AtomicStatement: AtomicStatement{
-			BaseStatement: BaseStatement{
-				Negated: r.Negated,
-				Name:    r.Name,
-			},
-			Variable: r.Variable,
-			Path:     r.Path,
-		},
-		Message:  r.Message,
-		Argument: r.Argument,
-	}
-}
-
 func (r RegoRule) Negate() Rule {
-	cloned := r.Clone()
-	switch c := cloned.(type) {
-	case RegoRule:
-		c.Negated = !r.Negated
-		return c
-	}
-	return cloned
-}
-
-func (r RegoRule) ValueHash() string {
-	v := fmt.Sprintf("%s", r.Name)
-	return internal.HashString(v)
+	negated := r
+	negated.Negated = !r.Negated
+	return negated
 }
 
 func (r RegoRule) String() string {

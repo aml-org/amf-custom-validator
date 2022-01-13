@@ -2,10 +2,8 @@ package generator
 
 import (
 	"fmt"
-	"github.com/aml-org/amf-custom-validator/internal"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
-	"strings"
 )
 
 type RegoPathResult struct {
@@ -24,21 +22,17 @@ type regoPathResultInternal struct {
 }
 
 type traversal struct {
-	id            string
 	variable      string
-	hint          string
 	counter       *int
 	rego          []string
 	pathVariables []string
 	paths         []string
 }
 
-func newTraversal(source string, variable string, hint string) traversal {
+func newTraversal(variable string) traversal {
 	c := 0
 	return traversal{
-		id:            valueHash(source),
 		variable:      variable,
-		hint:          hint,
 		counter:       &c,
 		rego:          make([]string, 0),
 		pathVariables: make([]string, 0),
@@ -46,16 +40,9 @@ func newTraversal(source string, variable string, hint string) traversal {
 	}
 }
 
-func valueHash(source string) string {
-	s := strings.ToLower(source)
-	return internal.HashString(s)
-}
-
 func internalResultToTraversal(p traversal, r regoPathResultInternal) traversal {
 	return traversal{
-		id:            p.id,
 		variable:      p.variable,
-		hint:          p.hint,
 		counter:       r.counter,
 		rego:          r.rego,
 		pathVariables: r.pathVariables,
@@ -63,19 +50,19 @@ func internalResultToTraversal(p traversal, r regoPathResultInternal) traversal 
 	}
 }
 
-// Traversed the path path, starting at the provided variable and returns an array of reached values
-func GeneratePropertyArray(path path.PropertyPath, variable string, hint string) RegoPathResult {
-	return generateArray(path, variable, hint, false)
+// GeneratePropertyArray Traversed the path, starting at the provided variable and returns an array of reached values
+func GeneratePropertyArray(path path.PropertyPath, variable string) RegoPathResult {
+	return generateArray(path, variable, false)
 }
 
-// Traverses the path but just returns a generator of nodes instead of a set of values
-func GenerateNodeArray(path path.PropertyPath, variable string, hint string) RegoPathResult {
-	return generateArray(path, variable, hint, true)
+// GenerateNodeArray Traverses the path but just returns a generator of nodes instead of a set of values
+func GenerateNodeArray(path path.PropertyPath, variable string) RegoPathResult {
+	return generateArray(path, variable, true)
 }
 
-// nodeValues defines if the path result will fetch resulting nodes (fething each @id reference) or simple return the values.
-func generateArray(path path.PropertyPath, variable string, hint string, nodeValues bool) RegoPathResult {
-	t := newTraversal(path.Source(), variable, hint)
+// nodeValues defines if the path result will fetch resulting nodes (fetching each @id reference) or simple return the values.
+func generateArray(path path.PropertyPath, variable string, nodeValues bool) RegoPathResult {
+	t := newTraversal(variable)
 	var acc []regoPathResultInternal
 	for _, tr := range traverse(path, t, nodeValues) {
 		effectiveRego := tr.rego
@@ -177,7 +164,7 @@ func traverseProperty(property path.Property, t traversal, nodeValues bool) []re
 	if *t.counter > 0 {
 		idx = fmt.Sprintf("%s_%d", idx, t.counter)
 	}
-	binding := fmt.Sprintf("%s_%s_%s_%s", t.variable, idx, t.id, t.hint)
+	binding := fmt.Sprintf("%s_%s", t.variable, idx)
 
 	if len(t.pathVariables) == 0 {
 		// If this is the first element in the path, we start computing the path from the previous variable passed
@@ -189,7 +176,7 @@ func traverseProperty(property path.Property, t traversal, nodeValues bool) []re
 	if property.Inverse {
 		t.rego = append(t.rego, fmt.Sprintf("search_subjects[%s] with data.predicate as \"%s\" with data.object as %s",binding, property.Iri, source))
 	} else {
-		// fetch resulting nodes (fething each @id reference) or simply return the array values
+		// fetch resulting nodes (fetching each @id reference) or simply return the array values
 		if nodeValues {
 			t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as %s[\"%s\"]", binding, source, property.Iri))
 			t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))

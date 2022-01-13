@@ -8,7 +8,6 @@ import (
 type Rule interface {
 	Negate() Rule
 	String() string
-	Clone() Rule
 }
 
 type BaseStatement struct {
@@ -39,10 +38,6 @@ type AtomicStatement struct {
 	BaseStatement
 	Variable Variable
 	Path     path.PropertyPath
-}
-
-type Hashable interface {
-	ValueHash() string
 }
 
 type Profile struct {

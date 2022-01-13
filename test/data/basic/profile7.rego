@@ -226,95 +226,95 @@ default info = []
 # Path rules
 
 gen_path_rule_1[nodes] {
-  init_x_0__nested_ = data.sourceNode
-  tmp_x_0__nested_ = nested_nodes with data.nodes as init_x_0__nested_["apiContract:returns"]
-  x_0__nested_ = tmp_x_0__nested_[_][_]
-  nodes = x_0__nested_
+  init_x_0 = data.sourceNode
+  tmp_x_0 = nested_nodes with data.nodes as init_x_0["apiContract:returns"]
+  x_0 = tmp_x_0[_][_]
+  nodes = x_0
 }
 
 gen_path_rule_2[nodes] {
-  init_p_0__pattern_ = data.sourceNode
-  nodes_tmp = object.get(init_p_0__pattern_,"apiContract:statusCode",[])
+  init_p_0 = data.sourceNode
+  nodes_tmp = object.get(init_p_0,"apiContract:statusCode",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  p_0__pattern_ = nodes_tmp2[_]
-  nodes = p_0__pattern_
+  p_0 = nodes_tmp2[_]
+  nodes = p_0
 }
 
 gen_path_rule_15[nodes] {
-  init_x_0__in_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__in_ = nodes_tmp2[_]
-  nodes = x_0__in_
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 gen_path_rule_4[nodes] {
-  init_x_0__nested_ = data.sourceNode
-  tmp_x_0__nested_ = nested_nodes with data.nodes as init_x_0__nested_["apiContract:returns"]
-  x_0__nested_ = tmp_x_0__nested_[_][_]
-  nodes = x_0__nested_
+  init_x_0 = data.sourceNode
+  tmp_x_0 = nested_nodes with data.nodes as init_x_0["apiContract:returns"]
+  x_0 = tmp_x_0[_][_]
+  nodes = x_0
 }
 
 gen_path_rule_5[nodes] {
-  init_q_0__pattern_ = data.sourceNode
-  nodes_tmp = object.get(init_q_0__pattern_,"apiContract:statusCode",[])
+  init_q_0 = data.sourceNode
+  nodes_tmp = object.get(init_q_0,"apiContract:statusCode",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  q_0__pattern_ = nodes_tmp2[_]
-  nodes = q_0__pattern_
+  q_0 = nodes_tmp2[_]
+  nodes = q_0
 }
 
 gen_path_rule_15[nodes] {
-  init_x_0__in_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__in_ = nodes_tmp2[_]
-  nodes = x_0__in_
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 gen_path_rule_7[nodes] {
-  init_x_0__nested_ = data.sourceNode
-  tmp_x_0__nested_ = nested_nodes with data.nodes as init_x_0__nested_["apiContract:returns"]
-  x_0__nested_ = tmp_x_0__nested_[_][_]
-  nodes = x_0__nested_
+  init_x_0 = data.sourceNode
+  tmp_x_0 = nested_nodes with data.nodes as init_x_0["apiContract:returns"]
+  x_0 = tmp_x_0[_][_]
+  nodes = x_0
 }
 
 gen_path_rule_8[nodes] {
-  init_y_0__pattern_ = data.sourceNode
-  nodes_tmp = object.get(init_y_0__pattern_,"apiContract:statusCode",[])
+  init_y_0 = data.sourceNode
+  nodes_tmp = object.get(init_y_0,"apiContract:statusCode",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  y_0__pattern_ = nodes_tmp2[_]
-  nodes = y_0__pattern_
+  y_0 = nodes_tmp2[_]
+  nodes = y_0
 }
 
 gen_path_rule_15[nodes] {
-  init_x_0__in_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__in_ = nodes_tmp2[_]
-  nodes = x_0__in_
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 gen_path_rule_10[nodes] {
-  init_x_0__nested_ = data.sourceNode
-  tmp_x_0__nested_ = nested_nodes with data.nodes as init_x_0__nested_["apiContract:returns"]
-  x_0__nested_ = tmp_x_0__nested_[_][_]
-  nodes = x_0__nested_
+  init_x_0 = data.sourceNode
+  tmp_x_0 = nested_nodes with data.nodes as init_x_0["apiContract:returns"]
+  x_0 = tmp_x_0[_][_]
+  nodes = x_0
 }
 
 gen_path_rule_11[nodes] {
-  init_z_0__pattern_ = data.sourceNode
-  nodes_tmp = object.get(init_z_0__pattern_,"apiContract:statusCode",[])
+  init_z_0 = data.sourceNode
+  nodes_tmp = object.get(init_z_0,"apiContract:statusCode",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  z_0__pattern_ = nodes_tmp2[_]
-  nodes = z_0__pattern_
+  z_0 = nodes_tmp2[_]
+  nodes = z_0
 }
 
 gen_path_rule_15[nodes] {
-  init_x_0__in_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__in_ = nodes_tmp2[_]
-  nodes = x_0__in_
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 # Constraint rules

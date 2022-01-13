@@ -11,7 +11,7 @@ func GenerateDatatype(datatype profile.DatatypeRule) []SimpleRegoResult {
 
 	// Let's get the path computed and stored in the inValuesVariable
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertyArray(path, datatype.Variable.Name, datatype.ValueHash())
+	pathResult := GeneratePropertyArray(path, datatype.Variable.Name)
 	valueVariable := profile.Genvar("datatype_check")
 	rego = append(rego, fmt.Sprintf("%s_elem = %s with data.sourceNode as %s", valueVariable, pathResult.rule, datatype.Variable.Name))
 	rego = append(rego, fmt.Sprintf("%s = %s_elem[_]", valueVariable, valueVariable))

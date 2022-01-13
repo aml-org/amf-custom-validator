@@ -226,31 +226,31 @@ default info = []
 # Path rules
 
 gen_path_rule_3[nodes] {
-  init_x_0__in_ = data.sourceNode
-  tmp_x_0__in_ = nested_nodes with data.nodes as init_x_0__in_["apiContract:supportedOperation"]
-  x_0__in_ = tmp_x_0__in_[_][_]
-  nodes_tmp = object.get(x_0__in_,"apiContract:method",[])
+  init_x_0 = data.sourceNode
+  tmp_x_0 = nested_nodes with data.nodes as init_x_0["apiContract:supportedOperation"]
+  x_0 = tmp_x_0[_][_]
+  nodes_tmp = object.get(x_0,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_2__in_ = nodes_tmp2[_]
-  nodes = x_2__in_
+  x_2 = nodes_tmp2[_]
+  nodes = x_2
 }
 
 gen_path_rule_5[nodes] {
-  init_x_0__minCount_ = data.sourceNode
-  tmp_x_0__minCount_ = nested_nodes with data.nodes as init_x_0__minCount_["apiContract:supportedOperation"]
-  x_0__minCount_ = tmp_x_0__minCount_[_][_]
-  nodes_tmp = object.get(x_0__minCount_,"apiContract:method",[])
+  init_x_0 = data.sourceNode
+  tmp_x_0 = nested_nodes with data.nodes as init_x_0["apiContract:supportedOperation"]
+  x_0 = tmp_x_0[_][_]
+  nodes_tmp = object.get(x_0,"apiContract:method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_2__minCount_ = nodes_tmp2[_]
-  nodes = x_2__minCount_
+  x_2 = nodes_tmp2[_]
+  nodes = x_2
 }
 
 gen_path_rule_6[nodes] {
-  init_x_0__pattern_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__pattern_,"shacl:name",[])
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0__pattern_ = nodes_tmp2[_]
-  nodes = x_0__pattern_
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 # Constraint rules
@@ -288,29 +288,29 @@ violation[matches] {
 # Path rules
 
 gen_path_rule_9[nodes] {
-  init_x_0__minCount_ = data.sourceNode
-  tmp_x_0__minCount_ = nested_nodes with data.nodes as init_x_0__minCount_["apiContract:expects"]
-  x_0__minCount_ = tmp_x_0__minCount_[_][_]
-  tmp_x_2__minCount_ = nested_nodes with data.nodes as x_0__minCount_["apiContract:parameter"]
-  x_2__minCount_ = tmp_x_2__minCount_[_][_]
-  tmp_x_3__minCount_ = nested_nodes with data.nodes as x_2__minCount_["shapes:schema"]
-  x_3__minCount_ = tmp_x_3__minCount_[_][_]
-  nodes_tmp = object.get(x_3__minCount_,"shacl:name",[])
+  init_x_0 = data.sourceNode
+  tmp_x_0 = nested_nodes with data.nodes as init_x_0["apiContract:expects"]
+  x_0 = tmp_x_0[_][_]
+  tmp_x_2 = nested_nodes with data.nodes as x_0["apiContract:parameter"]
+  x_2 = tmp_x_2[_][_]
+  tmp_x_3 = nested_nodes with data.nodes as x_2["shapes:schema"]
+  x_3 = tmp_x_3[_][_]
+  nodes_tmp = object.get(x_3,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_4__minCount_ = nodes_tmp2[_]
-  nodes = x_4__minCount_
+  x_4 = nodes_tmp2[_]
+  nodes = x_4
 } {
-  init_x_0__minCount_ = data.sourceNode
-  tmp_x_0__minCount_ = nested_nodes with data.nodes as init_x_0__minCount_["apiContract:expects"]
-  x_0__minCount_ = tmp_x_0__minCount_[_][_]
-  tmp_x_2__minCount_ = nested_nodes with data.nodes as x_0__minCount_["apiContract:payload"]
-  x_2__minCount_ = tmp_x_2__minCount_[_][_]
-  tmp_x_3__minCount_ = nested_nodes with data.nodes as x_2__minCount_["shapes:schema"]
-  x_3__minCount_ = tmp_x_3__minCount_[_][_]
-  nodes_tmp = object.get(x_3__minCount_,"shacl:name",[])
+  init_x_0 = data.sourceNode
+  tmp_x_0 = nested_nodes with data.nodes as init_x_0["apiContract:expects"]
+  x_0 = tmp_x_0[_][_]
+  tmp_x_2 = nested_nodes with data.nodes as x_0["apiContract:payload"]
+  x_2 = tmp_x_2[_][_]
+  tmp_x_3 = nested_nodes with data.nodes as x_2["shapes:schema"]
+  x_3 = tmp_x_3[_][_]
+  nodes_tmp = object.get(x_3,"shacl:name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_4__minCount_ = nodes_tmp2[_]
-  nodes = x_4__minCount_
+  x_4 = nodes_tmp2[_]
+  nodes = x_4
 }
 
 # Constraint rules
