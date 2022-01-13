@@ -40,7 +40,7 @@ components:
             startDate:
               description: desc
               type: string
-              format: date-time
+              format: date
       required: ["id"]
 
 paths:
