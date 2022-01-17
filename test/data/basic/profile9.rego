@@ -69,22 +69,22 @@ collect_values[r] {
 # helper to check datatype constraints
 
 check_datatype(x,dt) = true {
-  dt == "xsd:string"
+  dt == "http://www.w3.org/2001/XMLSchema#string"
   is_string(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:integer"
+  dt == "http://www.w3.org/2001/XMLSchema#integer"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:float"
+  dt == "http://www.w3.org/2001/XMLSchema#float"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:boolean"
+  dt == "http://www.w3.org/2001/XMLSchema#boolean"
   is_boolean(x)
 }
 
@@ -96,10 +96,10 @@ check_datatype(x,dt) = true {
 
 check_datatype(x,dt) = false {
   not is_object(x)
-  dt != "xsd:string"
-  dt != "xsd:integer"
-  dt != "xsd:float"
-  dt != "xsd:boolean"
+  dt != "http://www.w3.org/2001/XMLSchema#string"
+  dt != "http://www.w3.org/2001/XMLSchema#integer"
+  dt != "http://www.w3.org/2001/XMLSchema#float"
+  dt != "http://www.w3.org/2001/XMLSchema#boolean"
 }
 
 # Fetches all the nodes for a given RDF class
@@ -230,9 +230,9 @@ default info = []
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:WebAPI"
+  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#WebAPI"
   # custom1
-  version = object.get(x, "apiContract:version", null)
+  version = object.get(x, "http://a.ml/vocabularies/apiContract#version", null)
   gen_rego_result_2 = (version != null)
   
   gen_rego_result_2 == true
@@ -246,9 +246,9 @@ violation[matches] {
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:WebAPI"
+  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#WebAPI"
   # custom2
-  version = object.get(x, "apiContract:version", null)
+  version = object.get(x, "http://a.ml/vocabularies/apiContract#version", null)
   gen_rego_result_4 = (version != null)
   
   gen_rego_result_4 != true
@@ -259,7 +259,7 @@ violation[matches] {
 
 gen_path_rule_5[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"apiContract:version",[])
+  nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#version",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -268,12 +268,12 @@ gen_path_rule_5[nodes] {
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:WebAPI"
+  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#WebAPI"
   #  querying path: apiContract.version
   gen_gen_path_rule_5_node_6_array = gen_path_rule_5 with data.sourceNode as x
   gen_gen_path_rule_5_node_6 = gen_gen_path_rule_5_node_6_array
   gen_rego_result_7 = (gen_gen_path_rule_5_node_6 != null) # custom 3
   gen_rego_result_7 != true
-  _result_0 := trace("rego","apiContract.version",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false})
+  _result_0 := trace("rego","http://a.ml/vocabularies/apiContract#version",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false})
   matches := error("simple-rego3",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0])
 }

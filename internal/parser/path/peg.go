@@ -382,7 +382,7 @@ func (p *parser) callonFactor11() (interface{}, error) {
 
 func (c *current) onIri1(ns, prop, mod interface{}) (interface{}, error) {
 
-	iri := eval(ns) + ":" + eval(prop)
+	iri := eval(ns) + "." + eval(prop)
 	res := IRI{
 		Value:      iri,
 		Inverse:    false,

@@ -2,7 +2,10 @@ package generator
 
 import (
 	"fmt"
+	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/aml-org/amf-custom-validator/internal/types"
+	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
 	"regexp"
 	"strings"
 )
@@ -14,13 +17,25 @@ type RegoUnit struct {
 	Prefixes   profile.ProfileContext
 }
 
-// Main entry point generating a valid Rego unit from a parsed profile.
+func IriExpanderFrom(profile profile.Profile) *misc.IriExpander {
+	context := make(types.ObjectMap)
+	types.MergeObjectMap(&context, &contexts.DefaultAMFContext)
+	for n, p := range profile.Prefixes {
+		context[n] = p
+	}
+	return &misc.IriExpander{
+		Context: context,
+	}
+}
+
+// Generate Main entry point generating a valid Rego unit from a parsed profile.
 // It uses the encoded Rego preamble code to provide all the library
 // code to execute the profile.
 func Generate(profile profile.Profile) RegoUnit {
+	iriExpander := IriExpanderFrom(profile)
 	acc := []string{pkg(profile), preamble(profile)}
 	for _, r := range ruleSet(profile) {
-		acc = append(acc, GenerateTopLevelExpression(r))
+		acc = append(acc, GenerateTopLevelExpression(r, iriExpander))
 	}
 	return RegoUnit{
 		Name:       packageName(profile),
@@ -149,22 +164,22 @@ collect_values[r] {
 # helper to check datatype constraints
 
 check_datatype(x,dt) = true {
-  dt == "xsd:string"
+  dt == "http://www.w3.org/2001/XMLSchema#string"
   is_string(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:integer"
+  dt == "http://www.w3.org/2001/XMLSchema#integer"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:float"
+  dt == "http://www.w3.org/2001/XMLSchema#float"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:boolean"
+  dt == "http://www.w3.org/2001/XMLSchema#boolean"
   is_boolean(x)
 }
 
@@ -176,10 +191,10 @@ check_datatype(x,dt) = true {
 
 check_datatype(x,dt) = false {
   not is_object(x)
-  dt != "xsd:string"
-  dt != "xsd:integer"
-  dt != "xsd:float"
-  dt != "xsd:boolean"
+  dt != "http://www.w3.org/2001/XMLSchema#string"
+  dt != "http://www.w3.org/2001/XMLSchema#integer"
+  dt != "http://www.w3.org/2001/XMLSchema#float"
+  dt != "http://www.w3.org/2001/XMLSchema#boolean"
 }
 
 # Fetches all the nodes for a given RDF class

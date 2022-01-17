@@ -12,7 +12,7 @@ validations:
     message: Resources should be coarse-grained not fine-grained
     targetClass: apiContract.Operation
     propertyConstraints:
-      apicContract.method:
+      apiContract.method:
         pattern: get
       apiContract.returns:
         atLeast:
@@ -28,7 +28,7 @@ validations:
                     and:
                       - propertyConstraints:
                           '@type':
-                            hasValue: "shacl:NodeShape"
+                            hasValue: "http://www.w3.org/ns/shacl#NodeShape"
                       - propertyConstraints:
                           shacl.name:
                             minCount: 1

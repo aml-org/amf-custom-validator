@@ -9,13 +9,7 @@ import (
 )
 
 func main() {
-	profilePath := os.Args[1]
-	dataPath := os.Args[2]
-
-	profile, err := ioutil.ReadFile(profilePath)
-	if err != nil {
-		panic(err)
-	}
+	dataPath := os.Args[1]
 
 	data, err := ioutil.ReadFile(dataPath)
 	if err != nil {
@@ -23,16 +17,15 @@ func main() {
 	}
 
 	debug := false
-	if len(os.Args) > 3 {
+	if len(os.Args) > 2 {
 		parsedDebug, ok := strconv.ParseBool(os.Args[3])
 		if ok != nil {
-			panic("usage normalize PROFILE_PATH FILE_PATH [DEBUG=true|false]")
+			panic("usage normalize FILE_PATH [DEBUG=true|false]")
 		}
 		debug = parsedDebug
 	}
 
-	err, module := validator.Generate(string(profile), debug, nil)
-	res := validator.Normalize_(string(data), module, debug, nil)
+	res := validator.Normalize_(string(data), debug, nil)
 	if err != nil {
 		panic(err)
 	}

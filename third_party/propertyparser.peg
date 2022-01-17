@@ -94,7 +94,7 @@ Factor
 
 Iri "iri" <- ns:[a-zA-Z0-9_-]+ "." prop:[a-zA-Z0-9_-]+ _ mod:["^","*"]? {
 
-   iri := eval(ns) + ":" + eval(prop)
+   iri := eval(ns) + "." + eval(prop)
    res := IRI{
      Value: iri,
      Inverse: false,

@@ -2,11 +2,22 @@ package generator
 
 import (
 	"fmt"
-	"strings"
+	"github.com/aml-org/amf-custom-validator/internal/misc"
 )
 
-func GenerateClassTarget(variable string, class string) SimpleRegoResult {
-	rego := fmt.Sprintf("target_class[%s] with data.class as \"%s\"", variable, strings.ReplaceAll(class, ".", ":"))
+func GenerateClassTarget(variable string, class string, iriExpander *misc.IriExpander) SimpleRegoResult {
+	var classIri string
+	if iriExpander != nil {
+		var err error
+		classIri, err = iriExpander.Expand(class)
+		if err != nil {
+			panic(err)
+		}
+	} else {
+		classIri = class
+	}
+
+	rego := fmt.Sprintf("target_class[%s] with data.class as \"%s\"", variable, classIri)
 	return SimpleRegoResult{
 		Constraint: "classTarget",
 		Rego:       []string{rego},
@@ -14,7 +25,7 @@ func GenerateClassTarget(variable string, class string) SimpleRegoResult {
 		Variable:   variable,
 		TraceValue: BuildTraceValueNode(
 			fmt.Sprintf("\"classTarget\":\"%s\"", class)),
-		TraceNode:  variable,
-		PathRules:  []RegoPathResult{},
+		TraceNode: variable,
+		PathRules: []RegoPathResult{},
 	}
 }

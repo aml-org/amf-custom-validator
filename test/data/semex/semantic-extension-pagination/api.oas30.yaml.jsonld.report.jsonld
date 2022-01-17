@@ -4,8 +4,6 @@
       "actual": {
         "@id": "http://a.ml/vocabularies/validation#actual"
       },
-      "aml": "http://a.ml/vocab#",
-      "apiContract": "http://a.ml/vocabularies/apiContract#",
       "argument": {
         "@id": "http://a.ml/vocabularies/validation#argument"
       },
@@ -21,8 +19,6 @@
       "conforms": {
         "@id": "http://www.w3.org/ns/shacl#conforms"
       },
-      "core": "http://a.ml/vocabularies/core#",
-      "data": "http://a.ml/vocabularies/data#",
       "doc": "http://a.ml/vocabularies/document#",
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
@@ -48,8 +44,6 @@
       "range": {
         "@id": "http://a.ml/vocabularies/lexical#range"
       },
-      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-      "rdfs": "http://www.w3.org/2000/01/rdf-schema",
       "reportSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/",
       "result": {
         "@id": "http://www.w3.org/ns/shacl#result"
@@ -63,13 +57,10 @@
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#resultSeverity"
       },
-      "security": "http://a.ml/vocabularies/security#",
       "shacl": "http://www.w3.org/ns/shacl#",
-      "shapes": "http://a.ml/vocabularies/shapes#",
       "sourceShapeName": {
         "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
       },
-      "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
       "start": {
         "@id": "http://a.ml/vocabularies/lexical#start"
       },
@@ -85,8 +76,7 @@
       "uri": {
         "@id": "http://a.ml/vocabularies/lexical#uri"
       },
-      "validation": "http://a.ml/vocabularies/validation#",
-      "xsd": "http://www.w3.org/2001/XMLSchema#"
+      "validation": "http://a.ml/vocabularies/validation#"
     },
     "@id": "dialect-instance",
     "@type": [
@@ -156,7 +146,7 @@
                   },
                   "uri": "file://./test/data/semex/semantic-extension-pagination/api.oas30.yaml"
                 },
-                "resultPath": "aml.PageSize",
+                "resultPath": "http://a.ml/vocab#PageSize",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [

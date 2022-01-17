@@ -30,7 +30,7 @@ validations:
                         and:
                           - propertyConstraints:
                               '@type':
-                                hasValue: "shacl:NodeShape"
+                                hasValue: "http://www.w3.org/ns/shacl#NodeShape"
                           - propertyConstraints:
                               shacl.name:
                                 minCount: 1

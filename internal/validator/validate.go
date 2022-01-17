@@ -12,7 +12,7 @@ import (
 
 func Validate(profileText string, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
 	err, module := Generate(profileText, debug, eventChan)
-	normalizedInput := Normalize_(jsonldText, module, debug, eventChan)
+	normalizedInput := Normalize_(jsonldText, debug, eventChan)
 
 	dispatch(e.NewEvent(e.OpaValidationStart), eventChan)
 	validator := rego.New(
@@ -29,14 +29,14 @@ func Validate(profileText string, jsonldText string, debug bool, eventChan *chan
 		return "", err
 	} else {
 		dispatch(e.NewEvent(e.BuildReportStart), eventChan)
-		report, err := BuildReport(result, module.Prefixes)
+		report, err := BuildReport(result)
 		dispatch(e.NewEvent(e.BuildReportDone), eventChan)
 		closeIfNotNil(eventChan)
 		return report, err
 	}
 }
 
-func Normalize_(jsonldText string, module generator.RegoUnit, debug bool, receiver *chan e.Event) interface{} {
+func Normalize_(jsonldText string, debug bool, receiver *chan e.Event) interface{} {
 	dispatch(e.NewEvent(e.InputDataParsingStart), receiver)
 	decoder := json.NewDecoder(bytes.NewBuffer([]byte(jsonldText)))
 	decoder.UseNumber()
@@ -48,7 +48,7 @@ func Normalize_(jsonldText string, module generator.RegoUnit, debug bool, receiv
 	dispatch(e.NewEvent(e.InputDataParsingDone), receiver)
 
 	dispatch(e.NewEvent(e.InputDataNormalizationStart), receiver)
-	normalizedInput := Index(Normalize(input, module.Prefixes))
+	normalizedInput := Index(Normalize(input))
 	dispatch(e.NewEvent(e.InputDataNormalizationDone), receiver)
 
 	if debug {

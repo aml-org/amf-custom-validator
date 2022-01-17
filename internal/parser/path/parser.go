@@ -1,51 +1,8 @@
 package path
 
-import "errors"
-
-type PropertyPath interface {
-	Source() string
-}
-
-type BasePath struct {
-	source string
-}
-
-type Property struct {
-	BasePath
-	Iri        string
-	Inverse    bool
-	Transitive bool
-}
-
-func (p Property) Source() string {
-	return p.source
-}
-
-type AndPath struct {
-	BasePath
-	And []PropertyPath
-}
-
-func (p AndPath) Source() string {
-	return p.source
-}
-
-type OrPath struct {
-	BasePath
-	Or []PropertyPath
-}
-
-func (p OrPath) Source() string {
-	return p.source
-}
-
-type NullPath struct {
-	BasePath
-}
-
-func (p NullPath) Source() string {
-	return p.source
-}
+import (
+	"errors"
+)
 
 func build(source string, parsed interface{}) PropertyPath {
 	switch v := parsed.(type) {

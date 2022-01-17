@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"github.com/aml-org/amf-custom-validator/internal/types"
 	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
 	"github.com/open-policy-agent/opa/rego"
@@ -13,7 +12,7 @@ import (
 	"strings"
 )
 
-func BuildReport(result rego.ResultSet, profileContext profile.ProfileContext) (string, error) {
+func BuildReport(result rego.ResultSet) (string, error) {
 	if len(result) == 0 {
 		return "", errors.New("empty result from evaluation")
 	}
@@ -25,7 +24,7 @@ func BuildReport(result rego.ResultSet, profileContext profile.ProfileContext) (
 	infos := m["info"].([]interface{})
 	results := buildResults(violations, warnings, infos)
 
-	context := buildContext(len(results) == 0, profileContext)
+	context := buildContext(len(results) == 0)
 	reportNode := ValidationReportNode(results)
 	instance := DialectInstance(&reportNode, &context)
 	return Encode(instance), nil
@@ -71,22 +70,12 @@ func defineIdRecursively(node *types.ObjectMap, id string) {
 	}
 }
 
-func buildContext(emptyReport bool, profileContext profile.ProfileContext) types.ObjectMap {
+func buildContext(emptyReport bool) types.ObjectMap {
 	if emptyReport {
 		return contexts.ConformsContext
 	} else {
-		return buildFullContext(profileContext)
+		return contexts.DefaultValidationContext
 	}
-}
-
-func buildFullContext(profileContext profile.ProfileContext) types.ObjectMap {
-	context := make(types.ObjectMap)
-	types.MergeObjectMap(&context, &contexts.DefaultValidationContext)
-	types.MergeObjectMap(&context, &contexts.DefaultAMFContext)
-	for k, v := range profileContext {
-		context[k] = v
-	}
-	return context
 }
 
 func Encode(data interface{}) string {
