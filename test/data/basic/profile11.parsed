@@ -1,2 +1,2 @@
 allowed-protocols[violation] :=  ∀x[Class(apiContract.WebAPI)] : 
-  Datatype(x,'apiContract.scheme','xsd:string')
+  Datatype(x,'apiContract.scheme','xsd.string')

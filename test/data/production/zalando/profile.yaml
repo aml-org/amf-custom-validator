@@ -91,7 +91,7 @@ validations:
       propertyConstraints:
         shacl.datatype:
           in:
-            - xsd:string
+            - http://www.w3.org/2001/XMLSchema#string
 
   174-common-field-types-created-at:
     message: Created-at fields must be date-times
@@ -105,7 +105,7 @@ validations:
       propertyConstraints:
         shacl.datatype:
           in:
-            - xsd:dateTime
+            - http://www.w3.org/2001/XMLSchema#dateTime
 
   174-common-field-types-modified-at:
     message: Modified-at fields must be date-times
@@ -119,7 +119,7 @@ validations:
       propertyConstraints:
         shacl.datatype:
           in:
-            - xsd:dateTime
+            - http://www.w3.org/2001/XMLSchema#dateTime
 
   174-common-field-types-type:
     message: Type fields must be strings
@@ -133,4 +133,4 @@ validations:
       propertyConstraints:
         shacl.datatype:
           in:
-            - xsd:string
+            - http://www.w3.org/2001/XMLSchema#string

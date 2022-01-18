@@ -69,22 +69,22 @@ collect_values[r] {
 # helper to check datatype constraints
 
 check_datatype(x,dt) = true {
-  dt == "xsd:string"
+  dt == "http://www.w3.org/2001/XMLSchema#string"
   is_string(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:integer"
+  dt == "http://www.w3.org/2001/XMLSchema#integer"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:float"
+  dt == "http://www.w3.org/2001/XMLSchema#float"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:boolean"
+  dt == "http://www.w3.org/2001/XMLSchema#boolean"
   is_boolean(x)
 }
 
@@ -96,10 +96,10 @@ check_datatype(x,dt) = true {
 
 check_datatype(x,dt) = false {
   not is_object(x)
-  dt != "xsd:string"
-  dt != "xsd:integer"
-  dt != "xsd:float"
-  dt != "xsd:boolean"
+  dt != "http://www.w3.org/2001/XMLSchema#string"
+  dt != "http://www.w3.org/2001/XMLSchema#integer"
+  dt != "http://www.w3.org/2001/XMLSchema#float"
+  dt != "http://www.w3.org/2001/XMLSchema#boolean"
 }
 
 # Fetches all the nodes for a given RDF class
@@ -227,7 +227,7 @@ default info = []
 
 gen_path_rule_3[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"shacl:datatype",[])
+  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#datatype",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -235,7 +235,7 @@ gen_path_rule_3[nodes] {
 
 gen_path_rule_6[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"shacl:name",[])
+  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -244,20 +244,20 @@ gen_path_rule_6[nodes] {
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "shapes:Shape"
+  target_class[x] with data.class as "http://a.ml/vocabularies/shapes#Shape"
   #  querying path: shacl.datatype
   gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
   gen_x_check_2_scalar = gen_x_check_2_array[_]
   gen_x_check_2 = as_string(gen_x_check_2_scalar)
-  gen_inValues_1 = { "xsd:string"}
+  gen_inValues_1 = { "http://www.w3.org/2001/XMLSchema#string"}
   not gen_inValues_1[gen_x_check_2]
-  _result_0 := trace("in","shacl.datatype",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"xsd:string\"]"})
+  _result_0 := trace("in","http://www.w3.org/ns/shacl#datatype",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"http://www.w3.org/2001/XMLSchema#string\"]"})
   #  querying path: shacl.name
   gen_x_check_5_array = gen_path_rule_6 with data.sourceNode as x
   gen_x_check_5_scalar = gen_x_check_5_array[_]
   gen_x_check_5 = as_string(gen_x_check_5_scalar)
   gen_inValues_4 = { "string"}
   gen_inValues_4[gen_x_check_5]
-  _result_1 := trace("in","shacl.name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"actual": gen_x_check_5,"expected": "[\"string\"]"})
+  _result_1 := trace("in","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"actual": gen_x_check_5,"expected": "[\"string\"]"})
   matches := error("174-common-field-types-type",x,"Type fields must be strings",[_result_0,_result_1])
 }

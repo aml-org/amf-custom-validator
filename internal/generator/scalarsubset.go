@@ -2,11 +2,12 @@ package generator
 
 import (
 	"fmt"
+	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"strings"
 )
 
-func GenerateScalarSubSetRule(hasValue profile.ScalarSetRule) []SimpleRegoResult {
+func GenerateScalarSubSetRule(hasValue profile.ScalarSetRule, iriExpander *misc.IriExpander) []SimpleRegoResult {
 
 	path := hasValue.Path
 	var rego []string
@@ -17,7 +18,7 @@ func GenerateScalarSubSetRule(hasValue profile.ScalarSetRule) []SimpleRegoResult
 
 
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertyArray(path, hasValue.Variable.Name)
+	pathResult := GeneratePropertyArray(path, hasValue.Variable.Name, iriExpander)
 	rego = append(rego, fmt.Sprintf("%s_array = %s with data.sourceNode as %s", actualValuesVariable, pathResult.rule, hasValue.Variable.Name))
 	rego = append(rego, fmt.Sprintf("count(%s_array) != 0 # validation applies if property was defined", actualValuesVariable))
 	rego_convert_to_string_set := "%s_string_set = {\n" +
@@ -39,11 +40,15 @@ func GenerateScalarSubSetRule(hasValue profile.ScalarSetRule) []SimpleRegoResult
 	rego = append(rego, fmt.Sprintf("%s_quoted = [concat(\"\", [\"\\\"\", res, \"\\\"\"]) |  res := %s_string_set[_]]", actualValuesVariable, actualValuesVariable))
 	rego = append(rego, fmt.Sprintf("%s_string = concat(\"\", [\"[\", concat(\", \",%s_quoted), \"]\"])", actualValuesVariable, actualValuesVariable))
 
+	tracePath, err := hasValue.Path.Trace(iriExpander)
+	if err != nil {
+		panic(err)
+	}
 	r := SimpleRegoResult{
 		Constraint: hasValue.Name,
 		Rego:       rego,
 		PathRules:  []RegoPathResult{pathResult},
-		Path:       hasValue.Path.Source(),
+		Path:       tracePath,
 		TraceNode:  hasValue.Variable.Name,
 		TraceValue: BuildTraceValueNode(
 			fmt.Sprintf("\"negated\":%t,\"actual\": %s,\"expected\": \"%s\"", hasValue.Negated, fmt.Sprintf("%s_string", actualValuesVariable), hasValue.JSONValues()),

@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
-	"strings"
 )
 
 type DatatypeRule struct {
@@ -41,7 +40,7 @@ func parseDatatype(negated bool, variable Variable, path path.PropertyPath, argu
 			Variable: variable,
 			Path:     path,
 		},
-		Argument: strings.ReplaceAll(dt, ".", ":"),
+		Argument: dt,
 	}
 	return r, nil
 }

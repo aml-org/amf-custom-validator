@@ -69,22 +69,22 @@ collect_values[r] {
 # helper to check datatype constraints
 
 check_datatype(x,dt) = true {
-  dt == "xsd:string"
+  dt == "http://www.w3.org/2001/XMLSchema#string"
   is_string(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:integer"
+  dt == "http://www.w3.org/2001/XMLSchema#integer"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:float"
+  dt == "http://www.w3.org/2001/XMLSchema#float"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:boolean"
+  dt == "http://www.w3.org/2001/XMLSchema#boolean"
   is_boolean(x)
 }
 
@@ -96,10 +96,10 @@ check_datatype(x,dt) = true {
 
 check_datatype(x,dt) = false {
   not is_object(x)
-  dt != "xsd:string"
-  dt != "xsd:integer"
-  dt != "xsd:float"
-  dt != "xsd:boolean"
+  dt != "http://www.w3.org/2001/XMLSchema#string"
+  dt != "http://www.w3.org/2001/XMLSchema#integer"
+  dt != "http://www.w3.org/2001/XMLSchema#float"
+  dt != "http://www.w3.org/2001/XMLSchema#boolean"
 }
 
 # Fetches all the nodes for a given RDF class
@@ -227,7 +227,7 @@ default info = []
 
 gen_path_rule_3[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"ex:someProp",[])
+  nodes_tmp = object.get(init_x_0,"https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#someProp",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -235,7 +235,7 @@ gen_path_rule_3[nodes] {
 
 gen_path_rule_4[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"ex:errorCount",[])
+  nodes_tmp = object.get(init_x_0,"https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -243,7 +243,7 @@ gen_path_rule_4[nodes] {
 
 gen_path_rule_8[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"ex:otherProp",[])
+  nodes_tmp = object.get(init_x_0,"https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#otherProp",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -251,7 +251,7 @@ gen_path_rule_8[nodes] {
 
 gen_path_rule_9[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"ex:errorCount",[])
+  nodes_tmp = object.get(init_x_0,"https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -260,35 +260,35 @@ gen_path_rule_9[nodes] {
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "ex:Test"
+  target_class[x] with data.class as "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#Test"
   #  querying path: ex.someProp
   gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
   gen_x_check_2_scalar = gen_x_check_2_array[_]
   gen_x_check_2 = as_string(gen_x_check_2_scalar)
   gen_inValues_1 = { "false"}
   not gen_inValues_1[gen_x_check_2]
-  _result_0 := trace("in","ex.someProp",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"false\"]"})
+  _result_0 := trace("in","https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#someProp",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"false\"]"})
   #  querying path: ex.errorCount
   gen_numeric_comparison_5_elem = gen_path_rule_4 with data.sourceNode as x
   gen_numeric_comparison_5 = gen_numeric_comparison_5_elem[_]
   gen_numeric_comparison_5 > 0
-  _result_1 := trace("minimumExclusive","ex.errorCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"condition":">","expected":0,"actual":gen_numeric_comparison_5})
+  _result_1 := trace("minimumExclusive","https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"condition":">","expected":0,"actual":gen_numeric_comparison_5})
   matches := error("validation1",x,"Validation error",[_result_0,_result_1])
 }
 
 violation[matches] {
-  target_class[x] with data.class as "ex:Test"
+  target_class[x] with data.class as "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#Test"
   #  querying path: ex.otherProp
   gen_x_check_7_array = gen_path_rule_8 with data.sourceNode as x
   gen_x_check_7_scalar = gen_x_check_7_array[_]
   gen_x_check_7 = as_string(gen_x_check_7_scalar)
   gen_inValues_6 = { "true"}
   not gen_inValues_6[gen_x_check_7]
-  _result_0 := trace("in","ex.otherProp",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_7,"expected": "[\"true\"]"})
+  _result_0 := trace("in","https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#otherProp",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_7,"expected": "[\"true\"]"})
   #  querying path: ex.errorCount
   gen_numeric_comparison_10_elem = gen_path_rule_9 with data.sourceNode as x
   gen_numeric_comparison_10 = gen_numeric_comparison_10_elem[_]
   not gen_numeric_comparison_10 > 0
-  _result_1 := trace("minimumExclusive","ex.errorCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">","expected":0,"actual":gen_numeric_comparison_10})
+  _result_1 := trace("minimumExclusive","https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">","expected":0,"actual":gen_numeric_comparison_10})
   matches := error("validation1",x,"Validation error",[_result_0,_result_1])
 }

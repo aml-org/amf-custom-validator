@@ -2,5 +2,5 @@
   (
     in(x,'shacl.name',string)
   →
-    in(x,'shacl.datatype',xsd:string)
+    in(x,'shacl.datatype',http://www.w3.org/2001/XMLSchema#string)
   )

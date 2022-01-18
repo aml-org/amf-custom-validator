@@ -117,43 +117,43 @@ validations:
       so they can be used as a key for the type
     targetClass: apiContract.Operation
     rego: |
-      nested_nodes[requests] with data.nodes as $node["apiContract:expects"]
+      nested_nodes[requests] with data.nodes as $node["http://a.ml/vocabularies/apiContract#expects"]
       request = requests[_]
 
       # extract mandatory parameters
-      nested_nodes[parameters] with data.nodes as object.get(request, "apiContract:parameter", [])
+      nested_nodes[parameters] with data.nodes as object.get(request, "http://a.ml/vocabularies/apiContract#parameter", [])
       mandatory_params = { mandatory_param |
         parameter = parameters[_]
-        parameter["apiContract:required"] == true
-        parameter["apiContract:binding"] = "query"
-        mandatory_param = parameter["core:name"]
+        parameter["http://a.ml/vocabularies/apiContract#required"] == true
+        parameter["http://a.ml/vocabularies/apiContract#binding"] = "query"
+        mandatory_param = parameter["http://a.ml/vocabularies/core#name"]
       }
 
-      nested_nodes[uri_parameters] with data.nodes as object.get(request, "apiContract:uriParameter", [])
+      nested_nodes[uri_parameters] with data.nodes as object.get(request, "http://a.ml/vocabularies/apiContract#uriParameter", [])
       mandatory_uri_params = { mandatory_uri_param |
         uri_parameter = uri_parameters[_]
-        uri_parameter["apiContract:required"] == true
-        uri_parameter["apiContract:binding"] = "path"
-        mandatory_uri_param = uri_parameter["core:name"]
+        uri_parameter["http://a.ml/vocabularies/apiContract#required"] == true
+        uri_parameter["http://a.ml/vocabularies/apiContract#binding"] = "path"
+        mandatory_uri_param = uri_parameter["http://a.ml/vocabularies/core#name"]
       }
 
       all_mandatory_params := mandatory_params | mandatory_uri_params
 
       # navigate to the potential return schema
-      nested_nodes[resps] with data.nodes as object.get($node, "apiContract:returns", [])
+      nested_nodes[resps] with data.nodes as object.get($node, "http://a.ml/vocabularies/apiContract#returns", [])
       resp = resps[_]
-      nested_nodes[payloads] with data.nodes as object.get(resp, "apiContract:payload", [])
+      nested_nodes[payloads] with data.nodes as object.get(resp, "http://a.ml/vocabularies/apiContract#payload", [])
       payload = payloads[_]
-      payload["core:mediaType"] == "application/json"
-      nested_nodes[schemas] with data.nodes as object.get(payload, "shapes:schema", [])
+      payload["http://a.ml/vocabularies/core#mediaType"] == "application/json"
+      nested_nodes[schemas] with data.nodes as object.get(payload, "http://a.ml/vocabularies/shapes#schema", [])
       schema = schemas[_]
 
       # check for node shape properties
-      nested_nodes[props] with data.nodes as object.get(schema, "shacl:property",[])
+      nested_nodes[props] with data.nodes as object.get(schema, "http://www.w3.org/ns/shacl#property",[])
       mandatory_props = { mandatory_prop |
         prop = props[_]
-        prop["shacl:minCount"] > 0
-        mandatory_prop = prop["shacl:name"]
+        prop["http://www.w3.org/ns/shacl#minCount"] > 0
+        mandatory_prop = prop["http://www.w3.org/ns/shacl#name"]
       }
 
       $result = count(all_mandatory_params - mandatory_props) == 0
@@ -205,18 +205,18 @@ validations:
       shapes with scalar flags/properties can be used as an alternative
     targetClass: shapes.AnyShape
     rego: |
-      nested_nodes[members_xone] with data.nodes as object.get($node,"shacl:xone",[])
-      nested_nodes[members_or] with data.nodes as object.get($node,"shacl:or",[])
-      nested_nodes[members_anyof] with data.nodes as object.get($node,"shapes:anyOf",[])
+      nested_nodes[members_xone] with data.nodes as object.get($node,"http://www.w3.org/ns/shacl#xone",[])
+      nested_nodes[members_or] with data.nodes as object.get($node,"http://www.w3.org/ns/shacl#or",[])
+      nested_nodes[members_anyof] with data.nodes as object.get($node,"http://a.ml/vocabularies/shapes#anyOf",[])
       members = array.concat(members_xone, array.concat(members_or, members_anyof))
       types := { type |
         member := members[_]
         member_types := member["@type"]
         maybe_type = member_types[_]
-        maybe_type != "shapes:Shape"
-        maybe_type != "shacl:Shape"
-        maybe_type != "shapes:AnyShape"
-        maybe_type != "doc:DomainElement"
+        maybe_type != "http://a.ml/vocabularies/shapes#Shape"
+        maybe_type != "http://www.w3.org/ns/shacl#Shape"
+        maybe_type != "http://a.ml/vocabularies/shapes#AnyShape"
+        maybe_type != "http://a.ml/vocabularies/document#DomainElement"
         type = maybe_type
       }
       $result = (count(types) <= 1) # 0 if there is no xone,or,anyof at all
@@ -228,23 +228,23 @@ validations:
       properties should be used instead.
     targetClass: shapes.AnyShape
     rego: |
-      nested_nodes[members_xone] with data.nodes as object.get($node,"shacl:xone",[])
-      nested_nodes[members_or] with data.nodes as object.get($node,"shacl:or",[])
-      nested_nodes[members_anyof] with data.nodes as object.get($node,"shapes:anyOf",[])
+      nested_nodes[members_xone] with data.nodes as object.get($node,"http://www.w3.org/ns/shacl#xone",[])
+      nested_nodes[members_or] with data.nodes as object.get($node,"http://www.w3.org/ns/shacl#or",[])
+      nested_nodes[members_anyof] with data.nodes as object.get($node,"http://a.ml/vocabularies/shapes#anyOf",[])
       members = array.concat(members_xone, array.concat(members_or, members_anyof))
       count(members) == 2
       types := { type |
         member := members[_]
         member_types := member["@type"]
         maybe_type = member_types[_]
-        maybe_type != "shapes:Shape"
-        maybe_type != "shacl:Shape"
-        maybe_type != "shapes:AnyShape"
-        maybe_type != "doc:DomainElement"
+        maybe_type != "http://a.ml/vocabularies/shapes#Shape"
+        maybe_type != "http://www.w3.org/ns/shacl#Shape"
+        maybe_type != "http://a.ml/vocabularies/shapes#AnyShape"
+        maybe_type != "http://a.ml/vocabularies/document#DomainElement"
         type = maybe_type
       }
       count(types) > 1
-      $result = types["shapes:NilShape"]
+      $result = types["http://a.ml/vocabularies/shapes#NilShape"]
 
   unsupported-response-schema-shapes:
     message: |
@@ -254,16 +254,16 @@ validations:
       or:
         - propertyConstraints:
             "@type":
-              pattern: ".*:MatrixShape"
+              pattern: ".*MatrixShape"
         - propertyConstraints:
             "@type":
-              pattern: ".*:SchemaShape"
+              pattern: ".*SchemaShape"
         - propertyConstraints:
             "@type":
-              pattern: ".*:FileShape"
+              pattern: ".*FileShape"
         - propertyConstraints:
             "@type":
-              pattern: ".*:TupleShape"
+              pattern: ".*TupleShape"
 
   non-scalar-url-parameters:
     message: |

@@ -1,20 +1,14 @@
 package validator
 
 import (
-	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"github.com/aml-org/amf-custom-validator/internal/types"
-	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
 	"github.com/piprate/json-gold/ld"
 )
 
-func Normalize(json interface{}, prefixes profile.ProfileContext) interface{} {
+func Normalize(json interface{}) interface{} {
 	proc := ld.NewJsonLdProcessor()
 	options := ld.NewJsonLdOptions("")
 	context := make(types.ObjectMap)
-	types.MergeObjectMap(&context, &contexts.DefaultAMFContext)
-	for n, p := range prefixes {
-		context[n] = p
-	}
 	flattened, err := proc.Flatten(json, context, options)
 	if err != nil {
 		panic(err)
@@ -56,13 +50,13 @@ func Index(json interface{}) interface{} {
 		}
 	}
 
-	var locationIndex *LocationIndex = createLocationIndex(&nodeIndex, &classIndex)
+	var locationIndex = createLocationIndex(&nodeIndex, &classIndex)
 
 	// Build lexical index
 	lexicalIndex := make(types.ObjectMap)
-	for _, sourceMapId := range classIndex["sourcemaps:SourceMap"] {
+	for _, sourceMapId := range classIndex["http://a.ml/vocabularies/document-source-maps#SourceMap"] {
 		sourceMap := nodeIndex[sourceMapId].(types.ObjectMap)
-		lexicalContainer := sourceMap["sourcemaps:lexical"] // can be map or array of maps
+		lexicalContainer := sourceMap["http://a.ml/vocabularies/document-source-maps#lexical"] // can be map or array of maps
 		handleSingleOrMultipleNodes(&lexicalContainer, func(node *types.ObjectMap) {
 			addLexicalEntryFrom(node, &nodeIndex, &lexicalIndex, locationIndex)
 		})
@@ -77,8 +71,8 @@ func Index(json interface{}) interface{} {
 
 func addLexicalEntryFrom(node, nodeIndex, lexicalIndex *types.ObjectMap, locIndex *LocationIndex) {
 	lexicalEntry := (*nodeIndex)[(*node)["@id"].(string)].(types.ObjectMap)
-	id := lexicalEntry["sourcemaps:element"].(string)
-	value := lexicalEntry["sourcemaps:value"]
+	id := lexicalEntry["http://a.ml/vocabularies/document-source-maps#element"].(string)
+	value := lexicalEntry["http://a.ml/vocabularies/document-source-maps#value"]
 
 	/**
 	Index:
@@ -96,11 +90,11 @@ func addLexicalEntryFrom(node, nodeIndex, lexicalIndex *types.ObjectMap, locInde
 }
 
 func createLocationIndex(nodeIndex *types.ObjectMap, classIndex *map[string][]string) *LocationIndex {
-	sourceInformation := (*classIndex)["doc:BaseUnitSourceInformation"]
+	sourceInformation := (*classIndex)["http://a.ml/vocabularies/document#BaseUnitSourceInformation"]
 	if len(sourceInformation) > 0 {
 		sourceInformationNode := (*nodeIndex)[sourceInformation[0]].(types.ObjectMap)
-		defaultLocation := sourceInformationNode["doc:rootLocation"].(string)
-		additionalLocations := sourceInformationNode["doc:additionalLocations"]
+		defaultLocation := sourceInformationNode["http://a.ml/vocabularies/document#rootLocation"].(string)
+		additionalLocations := sourceInformationNode["http://a.ml/vocabularies/document#additionalLocations"]
 		idToLocation := make(types.StringMap)
 		handleSingleOrMultipleNodes(&additionalLocations, func(node *types.ObjectMap) {
 			addElementsOfLoc(node, nodeIndex, &idToLocation)
@@ -114,8 +108,8 @@ func createLocationIndex(nodeIndex *types.ObjectMap, classIndex *map[string][]st
 
 func addElementsOfLoc(node *types.ObjectMap, nodeIndex *types.ObjectMap, idToLocation *types.StringMap) {
 	locationNode := (*nodeIndex)[(*node)["@id"].(string)].(types.ObjectMap)
-	locationValue := locationNode["doc:location"].(string)
-	elementIds := locationNode["doc:elements"]
+	locationValue := locationNode["http://a.ml/vocabularies/document#location"].(string)
+	elementIds := locationNode["http://a.ml/vocabularies/document#elements"]
 	handleSingleOrMultipleNodes(&elementIds, func(node *types.ObjectMap) {
 		(*idToLocation)[(*node)["@id"].(string)] = locationValue
 	})

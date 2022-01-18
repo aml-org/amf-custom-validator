@@ -69,22 +69,22 @@ collect_values[r] {
 # helper to check datatype constraints
 
 check_datatype(x,dt) = true {
-  dt == "xsd:string"
+  dt == "http://www.w3.org/2001/XMLSchema#string"
   is_string(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:integer"
+  dt == "http://www.w3.org/2001/XMLSchema#integer"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:float"
+  dt == "http://www.w3.org/2001/XMLSchema#float"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:boolean"
+  dt == "http://www.w3.org/2001/XMLSchema#boolean"
   is_boolean(x)
 }
 
@@ -96,10 +96,10 @@ check_datatype(x,dt) = true {
 
 check_datatype(x,dt) = false {
   not is_object(x)
-  dt != "xsd:string"
-  dt != "xsd:integer"
-  dt != "xsd:float"
-  dt != "xsd:boolean"
+  dt != "http://www.w3.org/2001/XMLSchema#string"
+  dt != "http://www.w3.org/2001/XMLSchema#integer"
+  dt != "http://www.w3.org/2001/XMLSchema#float"
+  dt != "http://www.w3.org/2001/XMLSchema#boolean"
 }
 
 # Fetches all the nodes for a given RDF class
@@ -227,7 +227,7 @@ default info = []
 
 gen_path_rule_3[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"apiContract:method",[])
+  nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -235,7 +235,7 @@ gen_path_rule_3[nodes] {
 
 gen_path_rule_6[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"apiContract:method",[])
+  nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -244,20 +244,20 @@ gen_path_rule_6[nodes] {
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Operation"
+  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
   #  querying path: apiContract.method
   gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
   gen_x_check_2_scalar = gen_x_check_2_array[_]
   gen_x_check_2 = as_string(gen_x_check_2_scalar)
   gen_inValues_1 = { "get"}
   not gen_inValues_1[gen_x_check_2]
-  _result_0 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"get\"]"})
+  _result_0 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"get\"]"})
   #  querying path: apiContract.method
   gen_x_check_5_array = gen_path_rule_6 with data.sourceNode as x
   gen_x_check_5_scalar = gen_x_check_5_array[_]
   gen_x_check_5 = as_string(gen_x_check_5_scalar)
   gen_inValues_4 = { "subscribe"}
   not gen_inValues_4[gen_x_check_5]
-  _result_1 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_5,"expected": "[\"subscribe\"]"})
+  _result_1 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_5,"expected": "[\"subscribe\"]"})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }

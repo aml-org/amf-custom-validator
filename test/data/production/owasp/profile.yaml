@@ -99,7 +99,7 @@ validations:
         shapes.schema / shacl.datatype:
           minCount: 1
           in:
-            - "xsd:string"
+            - "http://www.w3.org/2001/XMLSchema#string"
     then:
       propertyConstraints:
         shapes.schema / shacl.pattern:

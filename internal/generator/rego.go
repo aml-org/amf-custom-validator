@@ -2,11 +2,12 @@ package generator
 
 import (
 	"fmt"
+	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"strings"
 )
 
-func GenerateRegoRule(rule profile.RegoRule) []SimpleRegoResult {
+func GenerateRegoRule(rule profile.RegoRule, iriExpander *misc.IriExpander) []SimpleRegoResult {
 	path := rule.Path
 	var rego []string
 
@@ -15,7 +16,7 @@ func GenerateRegoRule(rule profile.RegoRule) []SimpleRegoResult {
 
 	// let's try generate the path rule for the constraint.
 	// This can be a null path if is an inline-rego block at the top-level of a validation
-	pathResult := GeneratePropertyArray(path, rule.Variable.Name)
+	pathResult := GeneratePropertyArray(path, rule.Variable.Name, iriExpander)
 
 	// If this is not a top-level rego rule (the path generates code), we use the bind the check variable for the path computation result
 	if len(pathResult.rego) > 0 {
@@ -55,11 +56,15 @@ func GenerateRegoRule(rule profile.RegoRule) []SimpleRegoResult {
 		rego = append(rego, fmt.Sprintf("%s != true", resultVariable))
 	}
 
+	tracePath, err := rule.Path.Trace(iriExpander)
+	if err != nil {
+		panic(err)
+	}
 	r := SimpleRegoResult{
 		Constraint: "rego",
 		Rego:       rego,
 		PathRules:  []RegoPathResult{pathResult}, // this can be an empty path result
-		Path:       rule.Path.Source(),
+		Path:       tracePath,
 		Variable:   checkVariable,
 		TraceNode:  traceNode,
 		TraceValue: BuildTraceValueNode(fmt.Sprintf("\"negated\":%t", rule.Negated)),

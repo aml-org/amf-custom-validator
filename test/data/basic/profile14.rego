@@ -69,22 +69,22 @@ collect_values[r] {
 # helper to check datatype constraints
 
 check_datatype(x,dt) = true {
-  dt == "xsd:string"
+  dt == "http://www.w3.org/2001/XMLSchema#string"
   is_string(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:integer"
+  dt == "http://www.w3.org/2001/XMLSchema#integer"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:float"
+  dt == "http://www.w3.org/2001/XMLSchema#float"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:boolean"
+  dt == "http://www.w3.org/2001/XMLSchema#boolean"
   is_boolean(x)
 }
 
@@ -96,10 +96,10 @@ check_datatype(x,dt) = true {
 
 check_datatype(x,dt) = false {
   not is_object(x)
-  dt != "xsd:string"
-  dt != "xsd:integer"
-  dt != "xsd:float"
-  dt != "xsd:boolean"
+  dt != "http://www.w3.org/2001/XMLSchema#string"
+  dt != "http://www.w3.org/2001/XMLSchema#integer"
+  dt != "http://www.w3.org/2001/XMLSchema#float"
+  dt != "http://www.w3.org/2001/XMLSchema#boolean"
 }
 
 # Fetches all the nodes for a given RDF class
@@ -227,7 +227,7 @@ default info = []
 
 gen_path_rule_3[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"apiContract:method",[])
+  nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -235,7 +235,7 @@ gen_path_rule_3[nodes] {
 
 gen_path_rule_5[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"shacl:name",[])
+  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -243,7 +243,7 @@ gen_path_rule_5[nodes] {
 
 gen_path_rule_7[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"apiContract:method",[])
+  nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -251,7 +251,7 @@ gen_path_rule_7[nodes] {
 
 gen_path_rule_8[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"shacl:name",[])
+  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -260,41 +260,41 @@ gen_path_rule_8[nodes] {
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Operation"
+  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
   #  querying path: apiContract.method
   gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
   gen_x_check_2_scalar = gen_x_check_2_array[_]
   gen_x_check_2 = as_string(gen_x_check_2_scalar)
   gen_inValues_1 = { "publish","subscribe","1","2"}
   not gen_inValues_1[gen_x_check_2]
-  _result_0 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"publish\",\"subscribe\",\"1\",\"2\"]"})
+  _result_0 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"publish\",\"subscribe\",\"1\",\"2\"]"})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Operation"
+  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
   #  querying path: shacl.name
   gen_propValues_4 = gen_path_rule_5 with data.sourceNode as x
   not count(gen_propValues_4) <= 1
-  _result_0 := trace("maxCount","shacl.name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<=","actual": count(gen_propValues_4),"expected": 1})
+  _result_0 := trace("maxCount","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<=","actual": count(gen_propValues_4),"expected": 1})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Operation"
+  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
   #  querying path: apiContract.method
   gen_propValues_6 = gen_path_rule_7 with data.sourceNode as x
   not count(gen_propValues_6) >= 1
-  _result_0 := trace("minCount","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
+  _result_0 := trace("minCount","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Operation"
+  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
   #  querying path: shacl.name
   gen_gen_path_rule_8_node_9_array = gen_path_rule_8 with data.sourceNode as x
   gen_gen_path_rule_8_node_9 = gen_gen_path_rule_8_node_9_array[_]
   not regex.match("^put|post$",gen_gen_path_rule_8_node_9)
-  _result_0 := trace("pattern","shacl.name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_rule_8_node_9})
+  _result_0 := trace("pattern","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_rule_8_node_9})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
