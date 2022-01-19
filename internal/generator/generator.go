@@ -33,7 +33,7 @@ func IriExpanderFrom(profile profile.Profile) *misc.IriExpander {
 // code to execute the profile.
 func Generate(profile profile.Profile) RegoUnit {
 	iriExpander := IriExpanderFrom(profile)
-	acc := []string{pkg(profile), preamble(profile)}
+	acc := []string{pkg(profile), profileName(profile), preamble(profile)}
 	for _, r := range ruleSet(profile) {
 		acc = append(acc, GenerateTopLevelExpression(r, iriExpander))
 	}
@@ -71,6 +71,10 @@ func packageName(profile profile.Profile) string {
 	}
 	sanitizedName := reg.ReplaceAllString(strings.ToLower(profile.Name), "_")
 	return fmt.Sprintf("profile_%s", sanitizedName)
+}
+
+func profileName(profile profile.Profile) string {
+	return fmt.Sprintf("report[\"profile\"] = \"%s\"", profile.Name)
 }
 
 func entrypoint(profile profile.Profile) string {

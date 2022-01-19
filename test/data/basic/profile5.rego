@@ -1,5 +1,6 @@
 package profile_test_profile_5
 
+report["profile"] = "Test profile 5"
 
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {

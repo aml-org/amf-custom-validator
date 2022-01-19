@@ -94,6 +94,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "Zalando",
         "result": [
           {
             "@id": "violation_0",
