@@ -1,4 +1,4 @@
-.PHONY: test
+.PHONY: test performance
 
 all: build test
 
@@ -14,6 +14,12 @@ go-coverage:
 # must run build-js first
 test-js:
 	cd ./wrappers/js && npm install && npm test
+
+## PERFORMANCE ============================================================================
+performance:
+	time (go run ./performance/main/performance.go)
+	time (go run ./performance/main/performance.go "--pre-compiled")
+
 
 ## BUILD ==================================================================================
 

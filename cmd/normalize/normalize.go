@@ -25,7 +25,7 @@ func main() {
 		debug = parsedDebug
 	}
 
-	res := validator.Normalize_(string(data), debug, nil)
+	res := validator.processInput(string(data), debug, nil)
 	if err != nil {
 		panic(err)
 	}

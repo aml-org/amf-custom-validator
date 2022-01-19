@@ -13,6 +13,8 @@ const (
 	InputDataNormalizationDone
 	RegoGenerationStart
 	RegoGenerationDone
+	RegoCompilationStart
+	RegoCompilationDone
 	OpaValidationStart
 	OpaValidationDone
 	BuildReportStart
