@@ -94,6 +94,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "Test11",
         "result": [
           {
             "@id": "violation_0",

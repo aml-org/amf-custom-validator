@@ -94,6 +94,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "Spectral Base",
         "result": [
           {
             "@id": "violation_0",

@@ -94,6 +94,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "Anypoint Security Best Practices",
         "result": [
           {
             "@id": "violation_0",

@@ -94,6 +94,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "Kiali",
         "result": [
           {
             "@id": "violation_0",

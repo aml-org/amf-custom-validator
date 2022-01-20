@@ -24,7 +24,8 @@
           "reportSchema:ReportNode",
           "shacl:ValidationReport"
         ],
-        "conforms": true
+        "conforms": true,
+        "profileName": "Test1"
       }
     ],
     "doc:processingData": [

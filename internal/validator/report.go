@@ -19,13 +19,14 @@ func BuildReport(result rego.ResultSet) (string, error) {
 	raw := result[0]
 	m := raw.Expressions[0].Value.(types.ObjectMap)
 
+	profileName := m["profile"].(string)
 	violations := m["violation"].([]interface{})
 	warnings := m["warning"].([]interface{})
 	infos := m["info"].([]interface{})
 	results := buildResults(violations, warnings, infos)
 
 	context := buildContext(len(results) == 0)
-	reportNode := ValidationReportNode(results)
+	reportNode := ValidationReportNode(profileName, results)
 	instance := DialectInstance(&reportNode, &context)
 	return Encode(instance), nil
 }

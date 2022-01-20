@@ -1,5 +1,6 @@
 package profile_name_with_3_non_alphanumeric_characters_like_
 
+report["profile"] = "name with 3 non-alphanumeric characters like %, ^ & *"
 
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {

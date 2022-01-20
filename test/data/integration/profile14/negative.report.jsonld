@@ -94,6 +94,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "lowRatingAndReview",
         "result": [
           {
             "@id": "violation_0",
