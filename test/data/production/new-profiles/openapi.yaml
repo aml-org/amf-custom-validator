@@ -1,0 +1,149 @@
+#%Validation Profile 1.0
+
+profile: Open API
+
+violation:
+  - operation-default-response
+  - operation-operationId
+
+warning:
+  - operation-singular-tag
+  - tag-description
+  - info-contact
+  - info-description
+  - info-license
+  - license-url
+  - openapi-tags
+  - operation-description
+  - operation-tags
+  - operation-tag-defined
+
+validations:
+
+  info-contact:
+    message: |
+      Info object should contain contact object.
+
+      Hopefully your API description document is so good that nobody ever needs to contact you with questions, but that
+      is rarely the case. The contact object has a few different options for contact details.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.provider:
+        minCount: 1
+
+  info-description:
+    message: |
+      OpenAPI object info description must be present and non-empty string.
+      Examples can contain Markdown so you can really go to town with them, implementing getting started information
+      like where to find authentication keys, and how to use them.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  info-license:
+    message: |
+      The info object should have a license key.
+      It can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License
+      to help give you an idea.
+      How useful this is in court is not entirely known, but having a license is better than not having a license.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.license:
+        minCount: 1
+
+  license-url:
+    message: |
+      Mentioning a license is only useful if people know what the license means, so add a link to the full text for
+      those who need it.
+    targetClass: core.License
+    propertyConstraints:
+      core.url:
+        minCount: 1
+
+  openapi-tags:
+    message: |
+      OpenAPI object should have non-empty tags array.
+      Why? Well, you can reference tags arbitrarily in operations, and definition is optional...
+      Defining tags allows you to add more information like a description.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiContract.tag:
+        minCount: 1
+
+  operation-default-response:
+    message: Don't use default responses, provide a valid status code
+    targetClass: apiContract.Response
+    not:
+      propertyConstraints:
+        apiContract.statusCode:
+          pattern: "default"
+
+  operation-description:
+    message: Operation must have a description explaining the operation functionality
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  operation-operationId:
+    message: |
+      This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection
+      to other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the
+      URL in some documentation systems.
+      Make the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP
+      message. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.operationId:
+        minCount: 1
+        pattern: "^[a-z0-9\\\\-]+$"
+
+  operation-singular-tag:
+    message: |
+      Use just one tag for an operation, which is helpful for some documentation systems which use tags to avoid
+      duplicate content.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.tag:
+        maxCount: 1
+
+  operation-tags:
+    message: Operation should have non-empty tags array.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.tag:
+        minCount: 1
+
+  operation-tag-defined:
+    message: Operation tags should be defined in global tags.
+    targetClass: apiContract.WebAPI
+    rego: |
+      o1 = collect with data.nodes as [$node] with data.property as "apiContract:tag"
+      top_level_tag_names = collect_values with data.nodes as o1 with data.property as "core:name"
+
+      p1 = collect with data.nodes as [$node] with data.property as "apiContract:endpoint"
+      p2 = collect with data.nodes as p1 with data.property as  "apiContract:supportedOperation"
+      op_tags = collect with data.nodes as p2 with data.property as "apiContract:tag"
+      operation_tag_names = collect_values with data.nodes as op_tags with data.property as "core:name"
+
+      invalid_tag_names = operation_tag_names - top_level_tag_names
+
+      invalid_tag_name = invalid_tag_names[_]
+      invalid_tag = [op_tag | op_tag := op_tags[_]; object.get(op_tag,"core:name","") == invalid_tag_name][_]
+      $result = false
+      $traceNode = invalid_tag
+
+  tag-description:
+    message: |
+      Tags alone are not very descriptive. Give folks a bit more information to work with.
+      If your tags are business objects then you can use the term to explain them a bit. An 'Account' could be a user
+      account, company information, bank account, potential sales lead, anything. What is clear to the folks writing
+      the document is probably not as clear to others.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiContract.tag:
+        nested:
+          propertyConstraints:
+            core.description:
+              minCount: 1
