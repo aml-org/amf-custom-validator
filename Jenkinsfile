@@ -114,6 +114,7 @@ pipeline {
                 anyOf {
                     branch 'develop'
                     branch 'master'
+                    branch 'support/1.0.0'
                 }
             }
             agent {
@@ -130,7 +131,7 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                       cd /src
-                      if [ ${BRANCH_NAME} = "master" ]; then
+                      if [ ${BRANCH_NAME} = "support/1.0.0" ]; then
                           IS_SNAPSHOT=false
                       else
                           IS_SNAPSHOT=true
