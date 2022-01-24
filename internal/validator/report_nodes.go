@@ -13,27 +13,18 @@ func DialectInstance(report *types.ObjectMap, context *types.ObjectMap) []types.
 	return []types.ObjectMap{dialectInstance}
 }
 
-func ValidationReportNode(profileName string, results []interface{}) types.ObjectMap {
+func ValidationReportNode(profileName string, results []interface{}, conforms bool) types.ObjectMap {
 	reportTypes := []string{"reportSchema:ReportNode", "shacl:ValidationReport"}
-	commonReport := types.ObjectMap{
+	report := types.ObjectMap{
 		"@id": "validation-report",
 		"@type":    reportTypes,
 		"profileName": profileName,
+		"conforms": conforms,
 	}
-	if len(results) == 0 { // TODO: conforms does not take into account severities!
-		result := types.ObjectMap{
-			"conforms": true,
-		}
-		types.MergeObjectMap(&result, &commonReport)
-		return result
-	} else {
-		result := types.ObjectMap{
-			"conforms": false,
-			"result":   results,
-		}
-		types.MergeObjectMap(&result, &commonReport)
-		return result
+	if len(results) != 0 {
+		report["result"] = results
 	}
+	return report
 }
 
 var processingDataNode = types.ObjectMap{
