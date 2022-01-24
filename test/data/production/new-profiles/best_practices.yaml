@@ -4,17 +4,17 @@ profile: Anypoint Best Practices
 
 violation:
   - resource-use-lowercase
-  - media-type-headers-response
+  - media-type-headers-response # Re-implement: rewrite content-type as Content-Type to match standard & ALS suggestion
   - base-url-pattern-server
   - camel-case-fields
   - date-time-representation
   - use-schemas-responses
-  - use-schemas-requests
-  - provide-examples
+  - use-schemas-requests # TODO: Not triggered in RAML
+  - provide-examples # TODO: Not triggered in RAML nor OAS
   - api-must-have-title
-  - operations-must-have-identifiers
+  - operations-must-have-identifiers # Reword message
   - no-2xx-response
-  - path-params
+  - path-params # TODO: Not working in RAML, URI parameters are correctly detected with {id} but cannot be fixed adding uriParameters field
   - no-eval-in-markdown
   - no-script-tags-in-markdown
   - path-declarations-must-exist
@@ -27,15 +27,15 @@ warning:
   - operations-must-have-descriptions
   - responses-must-have-descriptions
   - headers-must-have-descriptions
-  - query-params-must-have-descriptions
-  - property-shape-ranges-must-have-descriptions
-  - payload-shapes-must-have-descriptions
+  - query-params-must-have-descriptions (ALS does not suggest description)
+  - property-shape-ranges-must-have-descriptions # Reword message. TODO: Not triggered in RAML nor OAS
+  - node-shapes-must-have-descriptions # Rename rule
   - preferred-media-type-representations
   - standard-get-status-codes
   - standard-post-status-codes
   - standard-put-status-codes
   - standard-delete-status-codes
-  - not-anonymous-types
+  - not-anonymous-types # Re-implement: this validation gets triggered with all non-get operations
   - request-response-antipattern
   - heterogeneous-union
   - nil-union-antipattern
@@ -122,7 +122,7 @@ validations:
 
   media-type-headers-response:
     message: |
-      - For the response: use ‘content-type’ header
+      - For the response: use ‘Content-Type’ header
     targetClass: apiContract.Response
     propertyConstraints:
       apiContract.header:
@@ -132,7 +132,7 @@ validations:
             propertyConstraints:
               core.name:
                 in:
-                  - content-type
+                  - Content-Type
 
   base-url-pattern-server:
     message: Include the “api” word and the version of the API in the base Url (e.g. domain/api/v1)
@@ -236,7 +236,7 @@ validations:
         minCount: 1
 
   operations-must-have-identifiers:
-    message: Provide identifiers for the operations
+    message: Provide identifiers or display names for the operations
     targetClass: apiContract.Operation
     propertyConstraints:
       core.name:
@@ -281,13 +281,13 @@ validations:
           minCount: 1
 
   property-shape-ranges-must-have-descriptions:
-    message: Provide descriptions for data shapes
+    message: Provide descriptions for properties
     targetClass: shapes.PropertyShape
     propertyConstraints:
       shapes.range / core.description:
         minCount: 1
 
-  payload-shapes-must-have-descriptions:
+  node-shapes-must-have-descriptions:
     message: Provide description for data shapes
     targetClass: shacl.NodeShape
     propertyConstraints:
@@ -465,21 +465,24 @@ validations:
       Instead of inlining definition of schemas in HTTP responses,
       referencing declared types is preferred since it provides descriptive names for the federated types
     targetClass: apiContract.Operation
-    propertyConstraints:
-      apiContract.method:
-        pattern: "get"
-      apiContract.returns / apiContract.payload:
-        nested:
-          if:
-            propertyConstraints:
-              core.mediaType:
-                pattern: "application/json"
-              shapes.schema:
-                minCount: 1
-          then:
-            propertyConstraints:
-              shapes.schema / sourcemaps.sources / sourcemaps.declared-element:
-                minCount: 1
+    if:
+      propertyConstraints:
+        apiContract.method:
+          pattern: "get"
+    then:
+      propertyConstraints:
+        apiContract.returns / apiContract.payload:
+          nested:
+            if:
+              propertyConstraints:
+                core.mediaType:
+                  pattern: "application/json"
+                shapes.schema:
+                  minCount: 1
+            then:
+              propertyConstraints:
+                shapes.schema / sourcemaps.sources / sourcemaps.declared-element:
+                  minCount: 1
 
   path-params:
     message: |
