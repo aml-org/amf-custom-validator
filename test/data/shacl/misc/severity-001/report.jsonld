@@ -103,7 +103,7 @@
           "reportSchema:ReportNode",
           "shacl:ValidationReport"
         ],
-        "conforms": false,
+        "conforms": true,
         "result": [
           {
             "@id": "warning_0",

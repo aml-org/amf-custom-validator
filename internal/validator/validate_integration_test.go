@@ -19,10 +19,6 @@ func TestIntegrationPositiveData(t *testing.T) {
 			t.Errorf("%s > Positive case > Failed with error %v", fixture, err)
 		}
 
-		if !conforms(report) {
-			t.Errorf("%s > Positive case > Should conform", fixture)
-		}
-
 		if config.Override {
 			test.ForceWrite(string(fixture)+"/positive.report.jsonld", strings.TrimSpace(report))
 		} else {
@@ -42,9 +38,6 @@ func TestIntegrationNegativeData(t *testing.T) {
 		report, err := Validate(prof, fixture.ReadFixtureNegativeData(), config.Debug, nil)
 		if err != nil {
 			t.Errorf("%s > Negative case > Failed with error %v", fixture, err)
-		}
-		if conforms(report) {
-			t.Errorf("%s > Negative case > Should not conform", fixture)
 		}
 
 		if config.Override {
@@ -69,10 +62,6 @@ func TestIntegrationNegativeDataWithLexical(t *testing.T) {
 			report, err := Validate(prof, lexicalFixture, config.Debug, nil)
 			if err != nil {
 				t.Errorf("%s > Negative case with lexical > Failed with error %v", fixture, err)
-			}
-
-			if conforms(report) {
-				t.Errorf("%s > Negative case with lexical > Should not conform", fixture)
 			}
 
 			if config.Override {

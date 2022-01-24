@@ -19,9 +19,6 @@ func TestProduction(t *testing.T) {
 				if err != nil {
 					t.Errorf("Validation failed %v", err)
 				}
-				if conforms(report) != example.Positive {
-					t.Errorf(fmt.Sprintf("%s, %s expected conforms: %t got conforms %t\n", string(fixture), example.File, example.Positive, conforms(report)))
-				}
 
 				if config.Override {
 					test.ForceWrite(example.Reportfile(), report)
