@@ -24,9 +24,10 @@ func BuildReport(result rego.ResultSet) (string, error) {
 	warnings := m["warning"].([]interface{})
 	infos := m["info"].([]interface{})
 	results := buildResults(violations, warnings, infos)
+	conforms := len(violations) == 0
 
 	context := buildContext(len(results) == 0)
-	reportNode := ValidationReportNode(profileName, results)
+	reportNode := ValidationReportNode(profileName, results, conforms)
 	instance := DialectInstance(&reportNode, &context)
 	return Encode(instance), nil
 }
