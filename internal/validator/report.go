@@ -12,7 +12,8 @@ import (
 	"strings"
 )
 
-func BuildReport(result rego.ResultSet) (string, error) {
+func BuildReport(resultPtr *rego.ResultSet) (string, error) {
+	result := *resultPtr
 	if len(result) == 0 {
 		return "", errors.New("empty result from evaluation")
 	}
@@ -35,13 +36,13 @@ func BuildReport(result rego.ResultSet) (string, error) {
 func buildResults(violations []interface{}, warnings []interface{}, infos []interface{}) []interface{} {
 	var results []interface{}
 	for i, r := range violations {
-		results = append(results, buildValidation("violation", "violation_" + strconv.Itoa(i), r))
+		results = append(results, buildValidation("violation", "violation_"+strconv.Itoa(i), r))
 	}
 	for i, r := range warnings {
-		results = append(results, buildValidation("warning","warning_" + strconv.Itoa(i), r))
+		results = append(results, buildValidation("warning", "warning_"+strconv.Itoa(i), r))
 	}
 	for i, r := range infos {
-		results = append(results, buildValidation("info", "info_" + strconv.Itoa(i), r))
+		results = append(results, buildValidation("info", "info_"+strconv.Itoa(i), r))
 	}
 	return results
 }
@@ -55,15 +56,15 @@ func buildValidation(level string, id string, raw interface{}) types.ObjectMap {
 func defineIdRecursively(node *types.ObjectMap, id string) {
 	if _, isTypeNode := (*node)["@type"]; isTypeNode {
 		(*node)["@id"] = id
-		for k, v := range (*node) {
+		for k, v := range *node {
 			switch v := (v).(type) {
 			case types.ObjectMap:
-				defineIdRecursively(&v, fmt.Sprintf("%s_%s",id, k))
+				defineIdRecursively(&v, fmt.Sprintf("%s_%s", id, k))
 			case []interface{}:
 				for index, e := range v {
 					switch vv := e.(type) {
 					case types.ObjectMap:
-						defineIdRecursively(&vv, fmt.Sprintf("%s_%d",id, index))
+						defineIdRecursively(&vv, fmt.Sprintf("%s_%d", id, index))
 					}
 				}
 			default:

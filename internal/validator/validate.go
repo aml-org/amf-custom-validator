@@ -1,103 +1,61 @@
 package validator
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
-	"github.com/aml-org/amf-custom-validator/internal/generator"
-	"github.com/aml-org/amf-custom-validator/internal/parser"
 	e "github.com/aml-org/amf-custom-validator/pkg/events"
 	"github.com/open-policy-agent/opa/rego"
 )
 
+// Note: Only exported functions should be able to close channels. Otherwise, we would try to close an already closed channel
+// These should not even be closed here, but in the `pkg` module. Closing here because we have internal function calls
+// directly to `internal.Validate` rather than `pkg.Validate`
+
 func Validate(profileText string, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
-	err, module := Generate(profileText, debug, eventChan)
-	normalizedInput := Normalize_(jsonldText, debug, eventChan)
-
-	dispatch(e.NewEvent(e.OpaValidationStart), eventChan)
-	validator := rego.New(
-		rego.Query("data."+module.Name+"."+module.Entrypoint),
-		rego.Module(module.Name+".rego", module.Code),
-		rego.Input(normalizedInput),
-	)
-	ctx := context.Background()
-	result, err := validator.Eval(ctx)
-	dispatch(e.NewEvent(e.OpaValidationDone), eventChan)
+	// Generate and compile Rego code
+	compiledRego, err := ProcessProfile(profileText, debug, eventChan)
 
 	if err != nil {
-		closeIfNotNil(eventChan)
+		CloseEventChan(eventChan)
 		return "", err
-	} else {
-		dispatch(e.NewEvent(e.BuildReportStart), eventChan)
-		report, err := BuildReport(result)
-		dispatch(e.NewEvent(e.BuildReportDone), eventChan)
-		closeIfNotNil(eventChan)
-		return report, err
 	}
+
+	return ValidateCompiled(compiledRego, jsonldText, debug, eventChan)
 }
 
-func Normalize_(jsonldText string, debug bool, receiver *chan e.Event) interface{} {
-	dispatch(e.NewEvent(e.InputDataParsingStart), receiver)
-	decoder := json.NewDecoder(bytes.NewBuffer([]byte(jsonldText)))
-	decoder.UseNumber()
+func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
+	compiledRego := *compiledRegoPtr
 
-	var input interface{}
-	if err := decoder.Decode(&input); err != nil {
-		panic(err)
-	}
-	dispatch(e.NewEvent(e.InputDataParsingDone), receiver)
+	// Normalize input
+	normalizedInput, err := processInput(jsonldText, debug, eventChan)
 
-	dispatch(e.NewEvent(e.InputDataNormalizationStart), receiver)
-	normalizedInput := Index(Normalize(input))
-	dispatch(e.NewEvent(e.InputDataNormalizationDone), receiver)
-
-	if debug {
-		println("Input data")
-		println("-------------------------------")
-		var b bytes.Buffer
-		enc := json.NewEncoder(&b)
-		enc.SetIndent("", "  ")
-		err := enc.Encode(normalizedInput)
-		if err != nil {
-			panic(err)
-		}
-		println(b.String())
-	}
-	return normalizedInput
-}
-
-func Generate(profileText string, debug bool, eventChan *chan e.Event) (error, generator.RegoUnit) {
-	dispatch(e.NewEvent(e.ProfileParsingStart), eventChan)
-	parsed, err := parser.Parse(profileText)
-	dispatch(e.NewEvent(e.ProfileParsingDone), eventChan)
 	if err != nil {
-		panic(err)
+		CloseEventChan(eventChan)
+		return "", err
 	}
 
-	if debug {
-		println("Logic translation")
-		println("-------------------------------")
-		println(parsed.String())
+	// Execute validation
+	validationResult, err := executeValidation(eventChan, err, compiledRego, normalizedInput)
+
+	if err != nil {
+		CloseEventChan(eventChan)
+		return "", err
 	}
-	dispatch(e.NewEvent(e.RegoGenerationStart), eventChan)
-	module := generator.Generate(*parsed)
-	dispatch(e.NewEvent(e.RegoGenerationDone), eventChan)
-	if debug {
-		println("Generated profile")
-		println("-------------------------------")
-		println(module.Code)
+
+	// Build report
+	report, err := processResult(validationResult, eventChan)
+
+	if err != nil {
+		CloseEventChan(eventChan)
+		return "", err
 	}
-	return err, module
+
+	CloseEventChan(eventChan)
+	return report, err
 }
 
-func dispatch(event e.Event, eventChan *chan e.Event) {
-	if eventChan != nil {
-		*eventChan <- event
-	}
-}
-
-func closeIfNotNil(eventChan *chan e.Event) {
-	if eventChan != nil {
-		close(*eventChan)
-	}
+func executeValidation(eventChan *chan e.Event, err error, compiledRego rego.PreparedEvalQuery, normalizedInput interface{}) (*rego.ResultSet, error) {
+	dispatchEvent(e.NewEvent(e.OpaValidationStart), eventChan)
+	validationResult, err := compiledRego.Eval(context.Background(), rego.EvalInput(normalizedInput))
+	dispatchEvent(e.NewEvent(e.OpaValidationDone), eventChan)
+	return &validationResult, err
 }

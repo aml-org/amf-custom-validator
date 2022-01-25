@@ -25,7 +25,7 @@ func main() {
 		debug = parsedDebug
 	}
 
-	err, module := validator.Generate(string(profile), debug, nil)
+	module, err := validator.GenerateRego(string(profile), debug, nil)
 	if err != nil {
 		panic(err)
 	}
