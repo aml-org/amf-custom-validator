@@ -16,7 +16,7 @@ warning:
   - openapi-tags
   - operation-description
   - operation-tags
-  - operation-tag-defined
+  - operation-tag-defined # Removed $traceNode, feature not supported in Beta
 
 validations:
 
@@ -131,8 +131,7 @@ validations:
 
       invalid_tag_name = invalid_tag_names[_]
       invalid_tag = [op_tag | op_tag := op_tags[_]; object.get(op_tag,"core:name","") == invalid_tag_name][_]
-      $result = false
-      $traceNode = invalid_tag
+      $result = false      
 
   tag-description:
     message: |
