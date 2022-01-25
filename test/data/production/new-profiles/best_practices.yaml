@@ -4,7 +4,7 @@ profile: Anypoint Best Practices
 
 violation:
   - resource-use-lowercase
-  - media-type-headers-response # Re-implement: rewrite content-type as Content-Type to match standard & ALS suggestion
+  - media-type-headers-response # Re-implement: add Content-Type to match standard & ALS suggestion
   - base-url-pattern-server
   - camel-case-fields
   - date-time-representation
@@ -28,7 +28,7 @@ warning:
   - responses-must-have-descriptions
   - headers-must-have-descriptions
   - query-params-must-have-descriptions (ALS does not suggest description)
-  - property-shape-ranges-must-have-descriptions # Reword message. TODO: Not triggered in RAML nor OAS
+  - property-shape-ranges-must-have-descriptions # Re-implement: using wrong targetClass
   - node-shapes-must-have-descriptions # Rename rule
   - preferred-media-type-representations
   - standard-get-status-codes
@@ -133,6 +133,7 @@ validations:
               core.name:
                 in:
                   - Content-Type
+                  - content-type
 
   base-url-pattern-server:
     message: Include the “api” word and the version of the API in the base Url (e.g. domain/api/v1)
@@ -282,7 +283,7 @@ validations:
 
   property-shape-ranges-must-have-descriptions:
     message: Provide descriptions for properties
-    targetClass: shapes.PropertyShape
+    targetClass: shacl.PropertyShape
     propertyConstraints:
       shapes.range / core.description:
         minCount: 1
