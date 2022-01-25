@@ -17,49 +17,31 @@ description: |
   can override the global component and provide a specific exception to the behavior.
 
 violation:
-  - security-fields-operation-empty
-  - access-tokens-oauth2-cleartext
-  - insecure-oauth2-grants
+  - security-fields-operation-empty #working for both
+  - access-tokens-oauth2-cleartext # TODO: not working for raml when defining invalid base Uri
+  - insecure-oauth2-grants # TODO: not working for raml when using insecure grants
   - api-keys-in-cookie
   - api-keys-in-query
-  - api-keys-in-header
-  - api-negotiates-authentication
-  - insecure-basic-auth
-  - bearer-token-cleartext
+  - api-keys-in-header # would unecrypted channel imply checking for https in server also?
+  - api-negotiates-authentication # can be revisited, only checks name of security scheme
+  - insecure-basic-auth # TODO not working for raml, raml does not have server in operation
+  - bearer-token-cleartext # for the validations checking cleartext, if server is not defined validation is not triggered.
   - http-token-cleartext
-  - oauth1-deprecated
-  - oauth2-redirections-non-encrypted
+  - oauth1-deprecated # TODO is not triggered in raml
+  - oauth2-redirections-non-encrypted #working for both
   - unknown-security-scheme
-  - valid-server-urltemplate
-  - valid-oauth2-redirection-urls
-  - matching-oauth2-scopes
+  - valid-server-urltemplate # working for both (can improve location for raml)
+  - valid-oauth2-redirection-urls # working for both
+  #- matching-oauth2-scopes is validated by amf
 
 validations:
 
   security-fields-operation-empty:
     message: |
-      Description
-
       The security field of the operation has not been defined. This field specifies if your API operation requires the API consumer to authenticate to use it.
+      Possible exploit scenario:
+      Anyone can use the API operations that do not have a security field defined. All they need to know is the URL for the API operation and how to invoke it.
 
-      For more details, see the OpenAPI Specification.
-      Example
-
-      The security field is tightly coupled with the securitySchemes objects. The security field could be missing because:
-
-          You forgot to define the securitySchemes field altogether, leaving the API completely unprotected.
-          You defined the securitySchemes field but not the security field. The definitions are not actually getting applied.
-          You defined the securitySchemes field and the operation-level security field for some of the API operations. However, you did not define the security field on the global level for the whole API.
-
-      Possible exploit scenario
-
-      If you do not set the global security field, the API does not require any authentication by default. Anyone can use the API operations that do not have a security field defined. All they need to know is the URL for the API operation and how to invoke it.
-
-      This sometimes happens to internal APIs. These are often created only to be used inside the company web pages and mobile applications. No one expects any outsiders to know that the API exists, so developers do not spend time implementing security.
-
-      But attackers can look at the code of the mobile or web application, or listen to the API traffic, and reverse engineer how the API works. Once the attackers have figured this out, they can start using the API because it does not require any authentication.
-
-      Relying on defining security only on each operation individually is an error-prone approach. It is very easy to forget to set security when you add a new method to the API. If there is no global default security defined, the operation is left wide open for an attacker to invoke without any authentication required.
     targetClass: apiContract.Operation
     propertyConstraints:
       security.security:
@@ -77,7 +59,7 @@ validations:
           pattern: "OAuth 2.0"
     then:
       propertyConstraints:
-        apiContract.server / core.urlTemplate :
+        apiContract.server / core.urlTemplate:
           pattern: "^https:.*$"
 
   insecure-oauth2-grants:
@@ -86,9 +68,9 @@ validations:
     not:
       propertyConstraints:
         security.flow:
-              in:
-                - implicit
-                - password
+          in:
+            - implicit
+            - password
 
   api-keys-in-cookie:
     message: |
@@ -123,19 +105,12 @@ validations:
 
   api-negotiates-authentication:
     message: |
-      - Description
-
       API negotiates authentication with a remote Simple And Protected Negotiate (SPNEGO) -based system.
-
-      - Possible exploit scenario
 
       The most common systems used in negotiating authentication are Kerberos and the now obsolete NTLM (New Technology LAN Manager). The severity of this risk heavily depends on the which system is used: while Kerberos is reasonably secure, NTLM is not.
       Because your API cannot know which system it is negotiating with, the only safe option is to assume the worst and treat all negotiation as not being secure.
 
-      - Remediation
-
       Use a more secure authentication method, like OAuth 2.0. It uses access tokens with limited lifetime and authorizations (the scopes) granted that the resource owner grants from an authorization server.
-      An API operation can be consumed only if the request includes an access token and the scopes of the token match the scopes that the API operation requires. Even if attackers successfully retrieved access tokens, they can only use the token on a subset of the API operation and for a limited time.
     targetClass: security.SecurityScheme
     not:
       propertyConstraints:
@@ -244,7 +219,7 @@ validations:
           security.accessTokenUri:
             pattern: "^https:.*$"
       - propertyConstraints:
-          security.authorizeUri:
+          security.authorizationUri:
             pattern: "^https:.*$"
 
   unknown-security-scheme:
@@ -279,8 +254,7 @@ validations:
 
   valid-server-urltemplate:
     message: |
-      The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all
-      URLs in the API contract must be proper URLs in a valid format.
+      The API accepts basic credentials transported over the network. All URLs in the API contract must be proper URLs in a valid format.
     targetClass: apiContract.Server
     propertyConstraints:
       core.urlTemplate:
@@ -288,8 +262,7 @@ validations:
 
   valid-oauth2-redirection-urls:
     message: |
-      The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all
-      URLs in the API contract must be proper URLs in a valid format.
+      The API accepts basic credentials transported over the network. All URLs in the API contract must be proper URLs in a valid format.
     targetClass: security.OAuth2Flow
     and:
       - propertyConstraints:
@@ -298,41 +271,3 @@ validations:
       - propertyConstraints:
           security.authorizationUri:
             pattern: "^(https?:\\\\/\\\\/)?[-A-Za-z0-9+&@#\\\\/%?=~_|!:,.;]+[-A-Za-z0-9+&@#\\\\/%=~_|]$"
-
-  matching-oauth2-scopes:
-    message: scopes in OAuth2 security scheme declarations must match application of the security scheme
-    targetClass: security.SecurityRequirement
-    rego: |
-      nested_nodes[schemesArray] with data.nodes as $node["security:schemes"]
-      scheme = schemesArray[0]
-
-      # compute set of declared scopes
-      nested_nodes[securitySchemesArray] with data.nodes as scheme["security:scheme"]
-      securityScheme = securitySchemesArray[0]
-      secType = securityScheme["security:type"]
-      secType == "OAuth 2.0"
-      nested_nodes[settingsArray] with data.nodes as securityScheme["security:settings"]
-      settings = settingsArray[0]
-      nested_nodes[flowsArray] with data.nodes as settings["security:flows"]
-      flow = flowsArray[_]
-      flow["security:flow"] == "authorizationCode"
-      nested_nodes[scopesArray] with data.nodes as flow["security:scope"]
-      scopesSet = {name |
-        scope = scopesArray[_]
-        name = scope["core:name"]
-      }
-
-      # compute of used scopes
-      nested_nodes[appliedSettingsArray] with data.nodes as scheme["security:settings"]
-      appliedSettings = appliedSettingsArray[0]
-      nested_nodes[appliedSettingsFlowsArray] with data.nodes as appliedSettings["security:flows"]
-      appliedSettingsFlows = appliedSettingsFlowsArray[0]
-      nested_nodes[appliedScopesArray] with data.nodes as appliedSettingsFlows["security:scope"]
-      appliedScopesSet = { name |
-        settingsScope = appliedScopesArray[_]
-        name = settingsScope["core:name"]
-      }
-
-      # check inclusion of sets
-      notPresent = appliedScopesSet - scopesSet
-      $result = (count(notPresent) == 0)
