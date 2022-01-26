@@ -1,22 +1,22 @@
 #%Validation Profile 1.0
 
-profile: OWasp 2019 API Security
+profile: Owasp 2019 API Security
 
 violation:
-  - broken-object-level-authorization-use-guids
-  - excessive-data-exposure-mandatory-schema
-  - lack-of-resources-and-rate-limiting-too-many-requests
-  - security-misconfiguration-disabled-http-methods-disabled-or-2xx
-  - injection-pattern-on-string-parameters
-  - improper-assets-management-environment-info
-  - improper-assets-management-version
-  - broken-user-authentication-use-tls
-  - broken-user-authentication-authenticate-api
+  - broken-object-level-authorization-use-guids # TODO: pattern is not valid for raml, (seems very hard to enforce)
+  - excessive-data-exposure-mandatory-schema # works for both
+  - lack-of-resources-and-rate-limiting-too-many-requests # works for both
+  - security-misconfiguration-disabled-http-methods-disabled-or-2xx # works for both (message is very unclear)
+  - injection-pattern-on-string-parameters # works for both
+  - improper-assets-management-environment-info # works for both (was fixed)
+  - improper-assets-management-version # working for both
+  - broken-user-authentication-use-tls # working for both
+  - broken-user-authentication-authenticate-api # works for both
 
 validations:
 
   broken-object-level-authorization-use-guids:
-    message: Prefer to use random and unpredictable values as GUIDs for records’ IDs.
+    message: Prefer to use random and unpredictable values as GUIDs for records’ IDs. Must define string pattern "(?im)^[{(]?[0-9A-F]{8}[-]?(?:[0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$"
     targetClass: apiContract.Parameter
     if:
       propertyConstraints:
@@ -32,7 +32,7 @@ validations:
   excessive-data-exposure-mandatory-schema:
     message: |
       Implement a schema-based response validation mechanism as an extra layer of security. As part of this mechanism
-      define and enforce data returned by all API methods, including errors
+      define and enforce data returned by all API methods, including errors.
     targetClass: apiContract.Response
     propertyConstraints:
       apiContract.payload / shapes.schema:
@@ -40,8 +40,8 @@ validations:
 
   lack-of-resources-and-rate-limiting-too-many-requests:
     message: |
-      Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will
-      be reset.
+      Notify the client when the rate limit is exceeded by providing the limit number and the time at which the limit will
+      be reset. Make sure to define an approriate '429' status code response.
     targetClass: apiContract.Operation
     if:
       propertyConstraints:
@@ -91,7 +91,7 @@ validations:
                     - "403"
 
   injection-pattern-on-string-parameters:
-    message: Define data types and strict patterns for all string parameters
+    message: Define strict patterns for all string parameters
     targetClass: apiContract.Parameter
     if:
       propertyConstraints:
@@ -110,13 +110,17 @@ validations:
           Which environment is the API running in (e.g., production, staging, test, development)?
           Who should have network access to the API (e.g., public, internal, partners)?
     targetClass: apiContract.WebAPI
-    propertyConstraints:
-      apiContract.server:
-        minCount: 1
-        nested:
-          propertyConstraints:
-            core.description:
-              minCount: 1
+    or:
+      - propertyConstraints:
+          apiContract.server:
+            minCount: 1
+            nested:
+              propertyConstraints:
+                core.description:
+                  minCount: 1
+      - propertyConstraints:
+          core.description:
+            minCount: 1
 
   improper-assets-management-version:
     message: |
@@ -130,10 +134,7 @@ validations:
   broken-user-authentication-use-tls:
     message: |
       The login page and all subsequent authenticated pages must be exclusively accessed over TLS or other strong
-      transport. The initial login page referred to as the "login landing page", must be served over TLS or other strong
-      transport. Failure to utilize TLS or other strong transport for the login landing page allows an attacker to
-      modify the login form action, causing the user's credentials to be posted to an arbitrary location. Failure to
-      utilize TLS or other strong transport for authenticated pages after login enables an attacker to view the
+      transport.  Failure to utilize TLS or other strong transport for authenticated pages after login enables an attacker to view the
       unencrypted session ID and compromise the user's authenticated session.
     targetClass: apiContract.WebAPI
     propertyConstraints:
@@ -148,7 +149,7 @@ validations:
   broken-user-authentication-authenticate-api:
     message: |
       Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement
-      one-click authentication/etc.)
+      one-click authentication/etc.). Security scheme must be applied at global or operation level.
     targetClass: apiContract.Operation
     propertyConstraints:
       security.security:
