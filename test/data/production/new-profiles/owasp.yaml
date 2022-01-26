@@ -6,7 +6,6 @@ violation:
   - broken-object-level-authorization-use-guids # TODO: pattern is not valid for raml, (seems very hard to enforce)
   - excessive-data-exposure-mandatory-schema # works for both
   - lack-of-resources-and-rate-limiting-too-many-requests # works for both
-  - security-misconfiguration-disabled-http-methods-disabled-or-2xx # works for both (message is very unclear)
   - injection-pattern-on-string-parameters # works for both
   - improper-assets-management-environment-info # works for both (was fixed)
   - improper-assets-management-version # working for both
@@ -16,7 +15,7 @@ violation:
 validations:
 
   broken-object-level-authorization-use-guids:
-    message: Prefer to use random and unpredictable values as GUIDs for records’ IDs. Must define string pattern "(?im)^[{(]?[0-9A-F]{8}[-]?(?:[0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$"
+    message: Prefer to use random and unpredictable values as GUIDs for records’ IDs. Must define string pattern "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$"
     targetClass: apiContract.Parameter
     if:
       propertyConstraints:
@@ -27,7 +26,7 @@ validations:
         shapes.schema / shacl.pattern:
           minCount: 1
           in:
-            - "(?im)^[{(]?[0-9A-F]{8}[-]?(?:[0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$"
+            - "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$"
 
   excessive-data-exposure-mandatory-schema:
     message: |
@@ -63,32 +62,6 @@ validations:
                 apiContract.statusCode:
                   in:
                     - "429"
-
-  security-misconfiguration-disabled-http-methods-disabled-or-2xx:
-    message: |
-      Ensure API can only be accessed by the specified HTTP verbs. All other HTTP verbs should be disabled (e.g. HEAD).
-    targetClass: apiContract.Operation
-    if:
-      not:
-        propertyConstraints:
-          apiContract.returns:
-            atLeast:
-              count: 1
-              validation:
-                propertyConstraints:
-                  apiContract.statusCode:
-                    in:
-                      - "200"
-    then:
-      propertyConstraints:
-        apiContract.returns:
-          atLeast:
-            count: 1
-            validation:
-              propertyConstraints:
-                apiContract.statusCode:
-                  in:
-                    - "403"
 
   injection-pattern-on-string-parameters:
     message: Define strict patterns for all string parameters

@@ -22,8 +22,8 @@ violation:
   - insecure-oauth2-grants # TODO: not working for raml when using insecure grants
   - api-keys-in-cookie
   - api-keys-in-query
-  - api-keys-in-header # would unecrypted channel imply checking for https in server also?
-  - api-negotiates-authentication # can be revisited, only checks name of security scheme
+  - api-keys-in-header
+  - api-negotiates-authentication
   - insecure-basic-auth # TODO not working for raml, raml does not have server in operation
   - bearer-token-cleartext # for the validations checking cleartext, if server is not defined validation is not triggered.
   - http-token-cleartext
@@ -97,11 +97,15 @@ validations:
     message: |
       Your API accepts API keys sent in cleartext in a header over an unencrypted channel. Attackers can easily intercept
       API calls and retrieve the credentials. They can then use the credentials to make other API calls.
-    targetClass: security.SecurityScheme
-    not:
+    targetClass: apiContract.Operation
+    if:
       propertyConstraints:
-        security.settings / security.in:
+        security.security / security.schemes / security.scheme / security.settings / security.in:
           pattern: header
+    then:
+      propertyConstraints:
+        apiContract.server / core.urlTemplate:
+          pattern: "^https:.*$"
 
   api-negotiates-authentication:
     message: |
@@ -114,8 +118,8 @@ validations:
     targetClass: security.SecurityScheme
     not:
       propertyConstraints:
-        core.name:
-          pattern: negotiateAuth
+        security.settings / security.scheme:
+          pattern: negotiate
 
   insecure-basic-auth:
     message: |
