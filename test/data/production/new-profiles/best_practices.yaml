@@ -9,12 +9,12 @@ violation:
   - camel-case-fields
   - date-time-representation
   - use-schemas-responses
-  - use-schemas-requests # TODO: Not triggered in RAML
-  - provide-examples # TODO: Not triggered in RAML nor OAS
+  - use-schemas-requests # Re-implement: in RAML we are always adding an AnyShape so minCount won't work needed to use custom Rego
+  - provide-examples # Re-implement: only triggered when example facet is not empty
   - api-must-have-title
   - operations-must-have-identifiers # Reword message
   - no-2xx-response
-  - path-params # TODO: Not working in RAML, URI parameters are correctly detected with {id} but cannot be fixed adding uriParameters field
+  - path-params # Re-implement: path params do not get pushed to the operation level in RAML resolution, checking both endpoint and operation params. Raml automatically generates parametes when declared on path {id}
   - no-eval-in-markdown
   - no-script-tags-in-markdown
   - path-declarations-must-exist
@@ -190,12 +190,27 @@ validations:
     message: |
       Use schemas or data types in the specification to determine the format of the requests.
     targetClass: apiContract.Request
-    propertyConstraints:
-      apiContract.payload:
-        nested:
-          propertyConstraints:
-            shapes.schema:
-              minCount: 1
+    rego: |
+      nested_nodes[payloads] with data.nodes as object.get($node,"apiContract:payload",[])
+      
+      payload = payloads[_]
+      
+      nested_nodes[schemas] with data.nodes as payload["shapes:schema"]
+      
+      count(schemas) > 0
+      
+      types := { type |
+        schema := schemas[_]
+        schema_types := schema["@type"]
+        maybe_type = schema_types[_]
+        maybe_type != "shapes:Shape"
+        maybe_type != "shacl:Shape"
+        maybe_type != "shapes:AnyShape"
+        maybe_type != "doc:DomainElement"
+        type = maybe_type
+      }
+      
+      $result = count(types) > 0
 
   provide-examples:
     message: Always include examples in requests and responses
@@ -203,7 +218,7 @@ validations:
     rego: |
       schema = find with data.link as $node["shapes:schema"]
 
-      nested_nodes[examples] with data.nodes as schema["apiContract:examples"]
+      nested_nodes[examples] with data.nodes as object.get(schema, "apiContract:examples", [])
 
       examples_from_this_payload = { element |
         example = examples[_]
@@ -497,21 +512,34 @@ validations:
       path = $node["apiContract:path"]
       pathVariables = {v | ms = regex.find_all_string_submatch_n("{([a-z0-9_]+)}", path, -1); m = ms[_]; v = m[1] }
 
-      nested_nodes[operations] with data.nodes as $node["apiContract:supportedOperation"]
+      nested_nodes[endpointParameters] with data.nodes as object.get($node, "apiContract:parameter", [])
+      
+      endpointParameterNames = { desc |
+        parameter = endpointParameters[_]
+        name = parameter["core:name"]
+        parameter["apiContract:binding"] = "path"
+        desc = name
+      }
+      
+      nested_nodes[operations] with data.nodes as object.get($node, "apiContract:supportedOperation", [])
       operation = operations[_]
 
       nested_nodes[requests] with data.nodes as object.get(operation, "apiContract:expects", [])
       request = requests[_]
 
-      nested_nodes[parameters] with data.nodes as object.get(request, "apiContract:uriParameter", [])
+      nested_nodes[operationParameters] with data.nodes as object.get(request, "apiContract:uriParameter", [])
 
-      declaredPathVariables = { desc |
-        parameter = parameters[_]
+      operationParameterNames = { desc |
+        parameter = operationParameters[_]
         name = parameter["core:name"]
         parameter["apiContract:binding"] = "path"
         desc = name
       }
-      $result = (pathVariables == declaredPathVariables)
+
+      parameterNames := endpointParameterNames | operationParameterNames
+
+      $result = (pathVariables == parameterNames)
+
 
   no-2xx-response:
     message: |
