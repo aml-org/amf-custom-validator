@@ -18,16 +18,16 @@ description: |
 
 violation:
   - security-fields-operation-empty #working for both
-  - access-tokens-oauth2-cleartext # TODO: not working for raml when defining invalid base Uri
-  - insecure-oauth2-grants # TODO: not working for raml when using insecure grants
+  - access-tokens-oauth2-cleartext # not working for raml when defining invalid base Uri
+  - insecure-oauth2-grants # working for both
   - api-keys-in-cookie
   - api-keys-in-query
   - api-keys-in-header
   - api-negotiates-authentication
-  - insecure-basic-auth # TODO not working for raml, raml does not have server in operation
+  - insecure-basic-auth # not working for raml, raml does not have server in operation
   - bearer-token-cleartext # for the validations checking cleartext, if server is not defined validation is not triggered.
   - http-token-cleartext
-  - oauth1-deprecated # TODO is not triggered in raml
+  - oauth1-deprecated # working for both
   - oauth2-redirections-non-encrypted #working for both
   - unknown-security-scheme
   - valid-server-urltemplate # working for both (can improve location for raml)
@@ -64,13 +64,20 @@ validations:
 
   insecure-oauth2-grants:
     message: OAuth2 implicit and resource owner password grant are insecure and should be avoided
-    targetClass: security.OAuth2Flow
-    not:
-      propertyConstraints:
-        security.flow:
-          in:
-            - implicit
-            - password
+    targetClass: security.OAuth2Settings
+    and:
+      - not:
+          propertyConstraints:
+            security.flows / security.flow:
+              in:
+                - implicit
+                - password
+      - not:
+          propertyConstraints:
+            security.authorizationGrant:
+              in:
+                - implicit
+                - password
 
   api-keys-in-cookie:
     message: |
@@ -210,10 +217,15 @@ validations:
       This is a potential risk, because the definition is in security schemes. However, it easily turns into an actual
       risk when the unsafe method is used in a security requirement.
     targetClass: security.SecurityScheme
-    not:
-      propertyConstraints:
-        security.settings / security.scheme:
-          pattern: oauth
+    and:
+      - not:
+          propertyConstraints:
+            security.settings / security.scheme:
+              pattern: oauth
+      - not:
+          propertyConstraints:
+            security.type:
+              pattern: OAuth 1.0
 
   oauth2-redirections-non-encrypted:
     message: Oauth2 redirection flows use non encrypted transport
