@@ -20,14 +20,13 @@ performance:
 	time (go run ./performance/main/performance.go)
 	time (go run ./performance/main/performance.go "--pre-compiled")
 
-
 ## BUILD ==================================================================================
 
 build: build-native build-js bundle-web-js
 
 build-native:
-	rm -f amf-opa-validator
-	go build -o amf-opa-validator ./cmd/validate/validate.go
+	rm -f acv
+	go build -o acv ./cmd/main.go
 
 build-js:
 	./scripts/gen_js_package.sh
@@ -51,19 +50,12 @@ ci-java:
 	./scripts/validate-profiles.sh
 	./scripts/validate-reports.sh
 
-
-## Helpers ================================================================================
-generate:
-	go run cmd/generate/generate.go $(profile) >> $(out)
-
-normalize:
-	go run cmd/normalize/normalize.go $(data) >> $(out)
-
-validate:
-	go run cmd/validate/validate.go $(profile) $(data) >> $(out)
-
+## Helpers ==========================================================================
 validate-profiles:
 	./scripts/validate-profiles.sh
 
 generate-list-file:
 	go list -m all > go.list
+
+install:
+	go build -o ${GOPATH}/bin/acv ./cmd/main.go
