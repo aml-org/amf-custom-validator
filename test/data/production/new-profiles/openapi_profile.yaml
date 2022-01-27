@@ -16,7 +16,7 @@ warning:
   - openapi-tags
   - operation-description
   - operation-tags
-  - operation-tag-defined # Removed $traceNode, feature not supported in Beta
+  - operation-tag-defined
 
 validations:
 

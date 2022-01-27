@@ -4,17 +4,17 @@ profile: Anypoint Best Practices
 
 violation:
   - resource-use-lowercase
-  - media-type-headers-response # Re-implement: add Content-Type to match standard & ALS suggestion
+  - media-type-headers-response
   - base-url-pattern-server
   - camel-case-fields
   - date-time-representation
   - use-schemas-responses
-  - use-schemas-requests # Re-implement: in RAML we are always adding an AnyShape so minCount won't work needed to use custom Rego
-  - provide-examples # Re-implement: only triggered when example facet is not empty
+  - use-schemas-requests
+  - provide-examples
   - api-must-have-title
-  - operations-must-have-identifiers # Reword message
+  - operations-must-have-identifiers
   - no-2xx-response
-  - path-params # Re-implement: path params do not get pushed to the operation level in RAML resolution, checking both endpoint and operation params. Raml automatically generates parametes when declared on path {id}
+  - path-params
   - no-eval-in-markdown
   - no-script-tags-in-markdown
   - path-declarations-must-exist
@@ -28,14 +28,14 @@ warning:
   - responses-must-have-descriptions
   - headers-must-have-descriptions
   - query-params-must-have-descriptions (ALS does not suggest description)
-  - property-shape-ranges-must-have-descriptions # Re-implement: using wrong targetClass
-  - node-shapes-must-have-descriptions # Rename rule
+  - property-shape-ranges-must-have-descriptions
+  - node-shapes-must-have-descriptions
   - preferred-media-type-representations
   - standard-get-status-codes
   - standard-post-status-codes
   - standard-put-status-codes
   - standard-delete-status-codes
-  - not-anonymous-types # Re-implement: this validation gets triggered with all non-get operations
+  - not-anonymous-types
   - request-response-antipattern
   - heterogeneous-union
   - nil-union-antipattern
