@@ -3,14 +3,14 @@
 profile: Owasp 2019 API Security
 
 violation:
-  - broken-object-level-authorization-use-guids # TODO: pattern is not valid for raml, (seems very hard to enforce)
-  - excessive-data-exposure-mandatory-schema # works for both
-  - lack-of-resources-and-rate-limiting-too-many-requests # works for both
-  - injection-pattern-on-string-parameters # works for both
-  - improper-assets-management-environment-info # works for both (was fixed)
-  - improper-assets-management-version # working for both
-  - broken-user-authentication-use-tls # working for both
-  - broken-user-authentication-authenticate-api # works for both
+  - broken-object-level-authorization-use-guids
+  - excessive-data-exposure-mandatory-schema
+  - lack-of-resources-and-rate-limiting-too-many-requests
+  - injection-pattern-on-string-parameters
+  - improper-assets-management-environment-info
+  - improper-assets-management-version
+  - broken-user-authentication-use-tls
+  - broken-user-authentication-authenticate-api
 
 validations:
 

@@ -17,22 +17,21 @@ description: |
   can override the global component and provide a specific exception to the behavior.
 
 violation:
-  - security-fields-operation-empty #working for both
-  - access-tokens-oauth2-cleartext # not working for raml when defining invalid base Uri
-  - insecure-oauth2-grants # working for both
+  - security-fields-operation-empty
+  - access-tokens-oauth2-cleartext
+  - insecure-oauth2-grants
   - api-keys-in-cookie
   - api-keys-in-query
   - api-keys-in-header
   - api-negotiates-authentication
-  - insecure-basic-auth # not working for raml, raml does not have server in operation
-  - bearer-token-cleartext # for the validations checking cleartext, if server is not defined validation is not triggered.
+  - insecure-basic-auth
+  - bearer-token-cleartext
   - http-token-cleartext
-  - oauth1-deprecated # working for both
-  - oauth2-redirections-non-encrypted #working for both
+  - oauth1-deprecated
+  - oauth2-redirections-non-encrypted
   - unknown-security-scheme
-  - valid-server-urltemplate # working for both (can improve location for raml)
-  - valid-oauth2-redirection-urls # working for both
-  #- matching-oauth2-scopes is validated by amf
+  - valid-server-urltemplate
+  - valid-oauth2-redirection-urls
 
 validations:
 
