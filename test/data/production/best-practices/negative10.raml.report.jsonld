@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#46",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 33,
+                  "line": 17
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 12,
+                  "line": 17
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/lib-with-extensions.raml"
+            },
             "resultMessage": "Use camelCase for all the names (fields), preferably don’t use underscores.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "camel-case-fields",
@@ -167,6 +200,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#56",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 35,
+                  "line": 34
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 14,
+                  "line": 34
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/lib-with-extensions.raml"
+            },
             "resultMessage": "Use camelCase for all the names (fields), preferably don’t use underscores.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "camel-case-fields",
@@ -231,6 +297,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#39",
+            "location": {
+              "@id": "violation_2_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_2_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_2_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 14
+                },
+                "start": {
+                  "@id": "violation_2_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 2,
+                  "line": 11
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/negative10.raml"
+            },
             "resultMessage": "Provide identifiers for the operations",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operations-must-have-identifiers",
@@ -297,6 +396,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#50",
+            "location": {
+              "@id": "violation_3_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_3_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_3_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 35,
+                  "line": 34
+                },
+                "start": {
+                  "@id": "violation_3_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 21
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/lib-with-extensions.raml"
+            },
             "resultMessage": "Provide identifiers for the operations",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operations-must-have-identifiers",

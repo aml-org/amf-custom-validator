@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
+            "location": {
+              "@id": "warning_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "warning_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "warning_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 9,
+                  "line": 12
+                },
+                "start": {
+                  "@id": "warning_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 1
+                }
+              },
+              "uri": "file://./test/data/production/spectral/negative7.yaml"
+            },
             "resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "info-license",

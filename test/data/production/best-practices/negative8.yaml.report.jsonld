@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#30",
+            "location": {
+              "@id": "warning_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "warning_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "warning_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 25,
+                  "line": 136
+                },
+                "start": {
+                  "@id": "warning_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 12,
+                  "line": 130
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/negative8.yaml"
+            },
             "resultMessage": "If there is no standard media type and format, try to use as much as possible extensible formats such as JSON\n(application/json) and XML (application/xml), preferably JSON.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "preferred-media-type-representations",

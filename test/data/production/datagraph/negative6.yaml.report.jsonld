@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#7",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 37
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 29
+                }
+              },
+              "uri": "file://./test/data/production/datagraph/negative6.yaml"
+            },
             "resultMessage": "Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "missing-type-description",
@@ -169,6 +202,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 25
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 8,
+                  "line": 23
+                }
+              },
+              "uri": "file://./test/data/production/datagraph/negative6.yaml"
+            },
             "resultMessage": "Providing a description of schema properties is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema fields.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "missing-property-description",
@@ -235,6 +301,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#26",
+            "location": {
+              "@id": "violation_2_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_2_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_2_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 45
+                },
+                "start": {
+                  "@id": "violation_2_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 8,
+                  "line": 40
+                }
+              },
+              "uri": "file://./test/data/production/datagraph/negative6.yaml"
+            },
             "resultMessage": "Providing a description of API parameters is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema field arguments.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "missing-parameter-description",

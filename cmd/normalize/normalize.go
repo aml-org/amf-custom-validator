@@ -25,7 +25,7 @@ func main() {
 		debug = parsedDebug
 	}
 
-	res := validator.processInput(string(data), debug, nil)
+	res, err := validator.ProcessInput(string(data), debug, nil)
 	if err != nil {
 		panic(err)
 	}

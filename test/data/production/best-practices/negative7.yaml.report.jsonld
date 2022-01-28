@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#34",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 84
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 12,
+                  "line": 80
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/negative7.yaml"
+            },
             "resultMessage": "Always include examples in requests and responses",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "provide-examples",
@@ -166,6 +199,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#36",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 71
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 10,
+                  "line": 67
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/negative7.yaml"
+            },
             "resultMessage": "Always include examples in requests and responses",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "provide-examples",

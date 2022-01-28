@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#22",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 20,
+                  "line": 72
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 60
+                }
+              },
+              "uri": "file://./test/data/production/datagraph/negative3.yaml"
+            },
             "resultMessage": "Only JSON payloads are supported at the moment in DataGraph. This is the preferred media type format.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "not-json-response",
@@ -165,6 +198,39 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#25",
+                      "location": {
+                        "@id": "violation_0_0_traceValue_0_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_0_0_traceValue_0_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_0_0_traceValue_0_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 20,
+                            "line": 72
+                          },
+                          "start": {
+                            "@id": "violation_0_0_traceValue_0_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 12,
+                            "line": 69
+                          }
+                        },
+                        "uri": "file://./test/data/production/datagraph/negative3.yaml"
+                      },
                       "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns / http://a.ml/vocabularies/apiContract#payload",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -234,6 +300,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#7",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 31
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 23
+                }
+              },
+              "uri": "file://./test/data/production/datagraph/negative3.yaml"
+            },
             "resultMessage": "Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.\nConsider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.\nIf you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "open-schemas-ignored",

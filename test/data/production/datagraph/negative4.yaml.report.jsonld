@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#20",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 67
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 55
+                }
+              },
+              "uri": "file://./test/data/production/datagraph/negative4.yaml"
+            },
             "resultMessage": "Only basic authentication for clientId/Secret credentials or no authentication schemes are supported\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "only-http-basic-security-supported",
@@ -218,6 +251,39 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#11",
+                      "location": {
+                        "@id": "violation_0_1_traceValue_0_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_0_1_traceValue_0_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_0_1_traceValue_0_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 0,
+                            "line": 24
+                          },
+                          "start": {
+                            "@id": "violation_0_1_traceValue_0_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 4,
+                            "line": 16
+                          }
+                        },
+                        "uri": "file://./test/data/production/datagraph/negative4.yaml"
+                      },
                       "resultMessage": "error in nested nodes under http://a.ml/vocabularies/security#security / http://a.ml/vocabularies/security#schemes / http://a.ml/vocabularies/security#scheme",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -287,6 +353,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#34",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 53,
+                  "line": 90
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 75
+                }
+              },
+              "uri": "file://./test/data/production/datagraph/negative4.yaml"
+            },
             "resultMessage": "Only basic authentication for clientId/Secret credentials or no authentication schemes are supported\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "only-http-basic-security-supported",
@@ -402,6 +501,39 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#11",
+                      "location": {
+                        "@id": "violation_1_1_traceValue_0_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_1_1_traceValue_0_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_1_1_traceValue_0_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 0,
+                            "line": 24
+                          },
+                          "start": {
+                            "@id": "violation_1_1_traceValue_0_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 4,
+                            "line": 16
+                          }
+                        },
+                        "uri": "file://./test/data/production/datagraph/negative4.yaml"
+                      },
                       "resultMessage": "error in nested nodes under http://a.ml/vocabularies/security#security / http://a.ml/vocabularies/security#schemes / http://a.ml/vocabularies/security#scheme",
                       "sourceShapeName": "nested",
                       "trace": [

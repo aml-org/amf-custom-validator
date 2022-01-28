@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#11",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 53,
+                  "line": 45
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 26
+                }
+              },
+              "uri": "file://./test/data/integration/profile15/negative.data.yaml"
+            },
             "resultMessage": "Resources should be coarse-grained not fine-grained",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "resource-should-be-coarse-grained",
@@ -165,6 +198,39 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#17",
+                      "location": {
+                        "@id": "violation_0_0_traceValue_0_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_0_0_traceValue_0_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_0_0_traceValue_0_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 53,
+                            "line": 45
+                          },
+                          "start": {
+                            "@id": "violation_0_0_traceValue_0_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 8,
+                            "line": 40
+                          }
+                        },
+                        "uri": "file://./test/data/integration/profile15/negative.data.yaml"
+                      },
                       "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -228,6 +294,39 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#13",
+                      "location": {
+                        "@id": "violation_0_0_traceValue_1_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_0_0_traceValue_1_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_0_0_traceValue_1_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 0,
+                            "line": 40
+                          },
+                          "start": {
+                            "@id": "violation_0_0_traceValue_1_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 8,
+                            "line": 32
+                          }
+                        },
+                        "uri": "file://./test/data/integration/profile15/negative.data.yaml"
+                      },
                       "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -289,6 +388,39 @@
                                   "shacl:ValidationResult"
                                 ],
                                 "focusNode": "amf://id#15",
+                                "location": {
+                                  "@id": "violation_0_0_traceValue_1_0_traceValue_0_location",
+                                  "@type": [
+                                    "lexicalSchema:LocationNode",
+                                    "lexical:Location"
+                                  ],
+                                  "range": {
+                                    "@id": "violation_0_0_traceValue_1_0_traceValue_0_location_range",
+                                    "@type": [
+                                      "lexicalSchema:RangeNode",
+                                      "lexical:Range"
+                                    ],
+                                    "end": {
+                                      "@id": "violation_0_0_traceValue_1_0_traceValue_0_location_range_end",
+                                      "@type": [
+                                        "lexicalSchema:PositionNode",
+                                        "lexical:Position"
+                                      ],
+                                      "column": 0,
+                                      "line": 40
+                                    },
+                                    "start": {
+                                      "@id": "violation_0_0_traceValue_1_0_traceValue_0_location_range_start",
+                                      "@type": [
+                                        "lexicalSchema:PositionNode",
+                                        "lexical:Position"
+                                      ],
+                                      "column": 14,
+                                      "line": 36
+                                    }
+                                  },
+                                  "uri": "file://./test/data/integration/profile15/negative.data.yaml"
+                                },
                                 "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/shapes#schema",
                                 "sourceShapeName": "nested",
                                 "trace": [
