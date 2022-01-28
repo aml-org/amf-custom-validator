@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#7",
+            "location": {
+              "@id": "warning_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "warning_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "warning_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 29,
+                  "line": 30
+                },
+                "start": {
+                  "@id": "warning_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 24
+                }
+              },
+              "uri": "file://./test/data/production/spectral/negative12.yaml"
+            },
             "resultMessage": "Operation must have a description explaining the operation functionality",
             "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "operation-description",

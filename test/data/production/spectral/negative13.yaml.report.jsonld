@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#7",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 31
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 24
+                }
+              },
+              "uri": "file://./test/data/production/spectral/negative13.yaml"
+            },
             "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operation-operationId",
@@ -169,6 +202,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#14",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 47
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 39
+                }
+              },
+              "uri": "file://./test/data/production/spectral/negative13.yaml"
+            },
             "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operation-operationId",
@@ -233,6 +299,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#21",
+            "location": {
+              "@id": "violation_2_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_2_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_2_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 29,
+                  "line": 62
+                },
+                "start": {
+                  "@id": "violation_2_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 55
+                }
+              },
+              "uri": "file://./test/data/production/spectral/negative13.yaml"
+            },
             "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operation-operationId",

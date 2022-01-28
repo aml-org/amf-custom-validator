@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#4",
+            "location": {
+              "@id": "warning_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "warning_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "warning_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 7
+                },
+                "start": {
+                  "@id": "warning_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 6
+                }
+              },
+              "uri": "file://./test/data/production/spectral/negative7b.yaml"
+            },
             "resultMessage": "Mentioning a license is only useful if people know what the license means, so add a link to the full text for\nthose who need it.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "license-url",

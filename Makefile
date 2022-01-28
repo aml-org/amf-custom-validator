@@ -57,7 +57,7 @@ generate:
 	go run cmd/generate/generate.go $(profile) >> $(out)
 
 normalize:
-	go run cmd/normalize/normalize.go $(profile) $(data) >> $(out)
+	go run cmd/normalize/normalize.go $(data) >> $(out)
 
 validate:
 	go run cmd/validate/validate.go $(profile) $(data) >> $(out)

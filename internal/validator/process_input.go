@@ -6,7 +6,7 @@ import (
 	e "github.com/aml-org/amf-custom-validator/pkg/events"
 )
 
-func processInput(jsonldText string, debug bool, receiver *chan e.Event) (interface{}, error) {
+func ProcessInput(jsonldText string, debug bool, receiver *chan e.Event) (interface{}, error) {
 	dispatchEvent(e.NewEvent(e.InputDataParsingStart), receiver)
 	decoder := json.NewDecoder(bytes.NewBuffer([]byte(jsonldText)))
 	decoder.UseNumber()

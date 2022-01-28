@@ -26,7 +26,7 @@ func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string
 	compiledRego := *compiledRegoPtr
 
 	// Normalize input
-	normalizedInput, err := processInput(jsonldText, debug, eventChan)
+	normalizedInput, err := ProcessInput(jsonldText, debug, eventChan)
 
 	if err != nil {
 		CloseEventChan(eventChan)

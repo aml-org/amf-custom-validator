@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#20",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 40
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 22
+                }
+              },
+              "uri": "file://./test/data/integration/profile3/negative.data.raml"
+            },
             "resultMessage": "Endpoints must have a POST method",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -165,6 +198,39 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#29",
+                      "location": {
+                        "@id": "violation_0_0_traceValue_0_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_0_0_traceValue_0_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_0_0_traceValue_0_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 0,
+                            "line": 40
+                          },
+                          "start": {
+                            "@id": "violation_0_0_traceValue_0_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 2,
+                            "line": 31
+                          }
+                        },
+                        "uri": "file://./test/data/integration/profile3/negative.data.raml"
+                      },
                       "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#supportedOperation",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -235,6 +301,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#3",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 22
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 5
+                }
+              },
+              "uri": "file://./test/data/integration/profile3/negative.data.raml"
+            },
             "resultMessage": "Endpoints must have a POST method",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -297,6 +396,39 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#12",
+                      "location": {
+                        "@id": "violation_1_0_traceValue_0_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_1_0_traceValue_0_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_1_0_traceValue_0_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 0,
+                            "line": 22
+                          },
+                          "start": {
+                            "@id": "violation_1_0_traceValue_0_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 2,
+                            "line": 14
+                          }
+                        },
+                        "uri": "file://./test/data/integration/profile3/negative.data.raml"
+                      },
                       "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#supportedOperation",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -367,6 +499,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#37",
+            "location": {
+              "@id": "violation_2_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_2_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_2_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 12,
+                  "line": 56
+                },
+                "start": {
+                  "@id": "violation_2_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 40
+                }
+              },
+              "uri": "file://./test/data/integration/profile3/negative.data.raml"
+            },
             "resultMessage": "Endpoints must have a POST method",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -429,6 +594,39 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#38",
+                      "location": {
+                        "@id": "violation_2_0_traceValue_0_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_2_0_traceValue_0_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_2_0_traceValue_0_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 0,
+                            "line": 49
+                          },
+                          "start": {
+                            "@id": "violation_2_0_traceValue_0_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 2,
+                            "line": 41
+                          }
+                        },
+                        "uri": "file://./test/data/integration/profile3/negative.data.raml"
+                      },
                       "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#supportedOperation",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -493,6 +691,39 @@
                         "shacl:ValidationResult"
                       ],
                       "focusNode": "amf://id#46",
+                      "location": {
+                        "@id": "violation_2_0_traceValue_1_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_2_0_traceValue_1_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_2_0_traceValue_1_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 12,
+                            "line": 56
+                          },
+                          "start": {
+                            "@id": "violation_2_0_traceValue_1_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 2,
+                            "line": 49
+                          }
+                        },
+                        "uri": "file://./test/data/integration/profile3/negative.data.raml"
+                      },
                       "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#supportedOperation",
                       "sourceShapeName": "nested",
                       "trace": [

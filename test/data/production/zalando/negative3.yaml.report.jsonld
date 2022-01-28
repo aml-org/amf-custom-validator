@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#12",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 39
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 18,
+                  "line": 37
+                }
+              },
+              "uri": "file://./test/data/production/zalando/negative3.yaml"
+            },
             "resultMessage": "ID field with string type expected",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "174-common-field-types-id",
@@ -219,6 +252,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#19",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 24
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 8,
+                  "line": 22
+                }
+              },
+              "uri": "file://./test/data/production/zalando/negative3.yaml"
+            },
             "resultMessage": "ID field with string type expected",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "174-common-field-types-id",
@@ -335,6 +401,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#14",
+            "location": {
+              "@id": "violation_2_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_2_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_2_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 42
+                },
+                "start": {
+                  "@id": "violation_2_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 18,
+                  "line": 39
+                }
+              },
+              "uri": "file://./test/data/production/zalando/negative3.yaml"
+            },
             "resultMessage": "Created-at fields must be date-times",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "174-common-field-types-created-at",

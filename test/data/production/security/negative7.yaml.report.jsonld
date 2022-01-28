@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#1",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 16
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 12
+                }
+              },
+              "uri": "file://./test/data/production/security/negative7.yaml"
+            },
             "resultMessage": "The API accepts API keys that are transported in a header over the network. The credentials are sent over the\nnetwork on each API call, over and over again, and are exposed to attack attempts to retrieve them.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "api-keys-in-cookie",
@@ -167,6 +200,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#3",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 20
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 16
+                }
+              },
+              "uri": "file://./test/data/production/security/negative7.yaml"
+            },
             "resultMessage": "The API accepts API keys that are transported in query parameters over the network. The credentials are sent over\nthe network on each API call, over and over again, and are exposed to attack attempts to retrieve them. In addition,\nthe API key could end up being visible in the logs that web servers and proxies produce on URLs.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "api-keys-in-query",
@@ -231,6 +297,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#5",
+            "location": {
+              "@id": "violation_2_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_2_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_2_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 25
+                },
+                "start": {
+                  "@id": "violation_2_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 20
+                }
+              },
+              "uri": "file://./test/data/production/security/negative7.yaml"
+            },
             "resultMessage": "Your API accepts API keys sent in cleartext in a header over an unencrypted channel. Attackers can easily intercept\nAPI calls and retrieve the credentials. They can then use the credentials to make other API calls.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "api-keys-in-header",

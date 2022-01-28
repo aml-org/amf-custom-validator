@@ -103,6 +103,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#3",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 27,
+                  "line": 7
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 6,
+                  "line": 7
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/lib.raml"
+            },
             "resultMessage": "Use camelCase for all the names (fields), preferably don’t use underscores.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "camel-case-fields",
@@ -167,6 +200,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#8",
+            "location": {
+              "@id": "warning_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "warning_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "warning_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 36,
+                  "line": 7
+                },
+                "start": {
+                  "@id": "warning_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 2
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/negative1.raml"
+            },
             "resultMessage": "Provide the description for the API",
             "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "api-must-have-description",
@@ -233,6 +299,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#8",
+            "location": {
+              "@id": "warning_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "warning_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "warning_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 36,
+                  "line": 7
+                },
+                "start": {
+                  "@id": "warning_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 2
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/negative1.raml"
+            },
             "resultMessage": "Provide the documentation for the API",
             "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "api-must-have-documentation",
@@ -299,6 +398,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
+            "location": {
+              "@id": "warning_2_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "warning_2_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "warning_2_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 27,
+                  "line": 7
+                },
+                "start": {
+                  "@id": "warning_2_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 2,
+                  "line": 4
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/lib.raml"
+            },
             "resultMessage": "Provide description for data shapes",
             "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "payload-shapes-must-have-descriptions",
@@ -365,6 +497,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#6",
+            "location": {
+              "@id": "warning_3_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "warning_3_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "warning_3_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 27,
+                  "line": 7
+                },
+                "start": {
+                  "@id": "warning_3_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 2,
+                  "line": 4
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/lib.raml"
+            },
             "resultMessage": "Provide description for data shapes",
             "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "payload-shapes-must-have-descriptions",
