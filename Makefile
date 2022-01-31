@@ -15,6 +15,13 @@ go-coverage:
 test-js:
 	cd ./wrappers/js && npm install && npm test
 
+# must have a downloaded AMF CLI
+test-profiles:
+	./scripts/validate-profiles.sh
+
+test-reports:
+	./scripts/validate-reports.sh
+
 ## PERFORMANCE ============================================================================
 performance:
 	time (go run ./performance/main/performance.go)
@@ -46,7 +53,7 @@ ci-browser:
 	cd ./wrappers/js-web && npm i && npm run build:dist && npm run build:test && cypress run
 
 ci-java:
-	./scripts/download-cli.sh
+	./scripts/download-amf-cli.sh
 	./scripts/validate-profiles.sh
 	./scripts/validate-reports.sh
 
