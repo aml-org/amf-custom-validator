@@ -15,8 +15,8 @@ violation:
   - json-object-links-field
   - json-object-primary-data
   - resource-object-required-fields
-  - resource-object-fields
-  - resource-object-namespaced-fields
+#  - resource-object-fields
+#  - resource-object-namespaced-fields
 
 validations:
 
@@ -110,7 +110,7 @@ validations:
                           - meta
 
   json-object-no-error-and-data:
-    messge: |
+    message: |
       The members data and errors MUST NOT coexist in the same document.
     targetClass: apiContract.Payload
     not:
@@ -353,60 +353,60 @@ validations:
                                   - type
 
 
-    resource-object-fields:
-      message: |
-        A resource object MUST contain at least the following top-level members:
-            id
-            type
-        Exception: The id member is not required when the resource object originates at the client and represents a new resource to be created on the server.
-        In addition, a resource object MAY contain any of these top-level members:
-            attributes: an attributes object representing some of the resource’s data.
-            relationships: a relationships object describing relationships between the resource and other JSON:API resources.
-            links: a links object containing links related to the resource.
-            meta: a meta object containing non-standard meta-information about a resource that can not be represented as an attribute or relationship.
-      targetClass: apiContract.Payload
-      if:
-        propertyConstraints:
-          shapes.schema / shacl.property:
-            atLeast:
-              count: 1
-              validation:
-                propertyConstraints:
-                  shacl.name:
-                    in:
-                      - data
-                  shapes.range:
-                    nested:
-                      rego: |
-                        types = object.get($node, "@type", [])
-                        nodeshapes = [ r |
-                          e = types[_]
-                          e == "http://www.w3.org/ns/shacl#NodeShape"
-                          r = e
-                        ]
-                        $result = (count(nodeshapes) == 1)
-      then:
-        propertyConstraints:
-          shapes.schema / shacl.property:
-            atLeast:
-              count: 1
-              validation:
-                propertyConstraints:
-                  shacl.name:
-                    in:
-                      - data
-                  shapes.range:
-                    nested:
-                      propertyConstraints:
-                        shacl.property:
-                          shacl.name:
-                            in:
-                              - id
-                              - type
-                              - attributes
-                              - relationships
-                              - links
-                              - meta
+#  resource-object-fields:
+#    message: |
+#      A resource object MUST contain at least the following top-level members:
+#          id
+#          type
+#      Exception: The id member is not required when the resource object originates at the client and represents a new resource to be created on the server.
+#      In addition, a resource object MAY contain any of these top-level members:
+#          attributes: an attributes object representing some of the resource’s data.
+#          relationships: a relationships object describing relationships between the resource and other JSON:API resources.
+#          links: a links object containing links related to the resource.
+#          meta: a meta object containing non-standard meta-information about a resource that can not be represented as an attribute or relationship.
+#    targetClass: apiContract.Payload
+#    if:
+#      propertyConstraints:
+#        shapes.schema / shacl.property:
+#          atLeast:
+#            count: 1
+#            validation:
+#              propertyConstraints:
+#                shacl.name:
+#                  in:
+#                    - data
+#                shapes.range:
+#                  nested:
+#                    rego: |
+#                      types = object.get($node, "@type", [])
+#                      nodeshapes = [ r |
+#                        e = types[_]
+#                        e == "http://www.w3.org/ns/shacl#NodeShape"
+#                        r = e
+#                      ]
+#                      $result = (count(nodeshapes) == 1)
+#    then:
+#      propertyConstraints:
+#        shapes.schema / shacl.property:
+#          atLeast:
+#            count: 1
+#            validation:
+#              propertyConstraints:
+#                shacl.name:
+#                  in:
+#                    - data
+#                shapes.range:
+#                  nested:
+#                    propertyConstraints:
+#                      shacl.property:
+#                        shacl.name: this constraint is not well defined
+#                          in:
+#                            - id
+#                            - type
+#                            - attributes
+#                            - relationships
+#                            - links
+#                            - meta
 
 #  resource-object-namespaced-fields:
 #    message: |

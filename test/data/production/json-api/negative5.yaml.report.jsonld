@@ -136,7 +136,7 @@
               },
               "uri": "file://./test/data/production/json-api/negative5.yaml"
             },
-            "resultMessage": "Validation error",
+            "resultMessage": "The members data and errors MUST NOT coexist in the same document.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "json-object-no-error-and-data",
             "trace": [
