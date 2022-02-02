@@ -1,0 +1,54 @@
+openapi: 3.0.3
+info:
+  title: Positive Example 1
+  description: Positive Example 1
+  version: 1.0.0
+servers:
+  - url: 'https://myapp.com'
+components:
+  schemas:
+    ValidObject:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+            id:
+              type: string
+        other:
+          type: object
+paths:
+  /Users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: the user identifier, as is
+        schema:
+          type: string
+    get:
+      description: op-description
+      operationId: opid
+      tags:
+        - Invoice Items
+      responses:
+        "415":
+          description: Unsupported media type
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: "#/components/schemas/ValidObject"
+        "406":
+          description: Not acceptable
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: "#/components/schemas/ValidObject"
+        "200":
+          description: teapot
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: "#/components/schemas/ValidObject"

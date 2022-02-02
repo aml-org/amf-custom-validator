@@ -94,7 +94,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
-        "profileName": "test",
+        "profileName": "JSON-API",
         "result": [
           {
             "@id": "violation_0",
@@ -102,10 +102,43 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#InvalidChild",
-            "resultMessage": "Validation error",
+            "focusNode": "amf://id#31",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 34,
+                  "line": 75
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 6,
+                  "line": 63
+                }
+              },
+              "uri": "file://./test/data/production/json-api/negative3.yaml"
+            },
+            "resultMessage": "Clients MUST send all JSON:API data in request documents with the header Content-Type: application/vnd.api+json\nwithout any media type parameters.\nClients that include the JSON:API media type in their Accept header MUST specify the media type there at least once\nwithout any media type parameters.\nClients MUST ignore any parameters for the application/vnd.api+json media type received in the Content-Type header\nof response documents.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "validation1",
+            "sourceShapeName": "json-api-media-type-request",
             "trace": [
               {
                 "@id": "violation_0_0",
@@ -114,15 +147,48 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#child^ / http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#surname",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 34,
+                      "line": 75
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 6,
+                      "line": 63
+                    }
+                  },
+                  "uri": "file://./test/data/production/json-api/negative3.yaml"
+                },
+                "resultPath": "http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/core#mediaType",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "Other",
-                  "expected": "[\"Maradona\"]",
+                  "actual": "application/json",
+                  "expected": "[\"application/vnd.api+json\"]",
                   "negated": false
                 }
               }

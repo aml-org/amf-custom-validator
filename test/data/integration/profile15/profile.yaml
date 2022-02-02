@@ -28,7 +28,8 @@ validations:
                     and:
                       - propertyConstraints:
                           '@type':
-                            hasValue: "http://www.w3.org/ns/shacl#NodeShape"
+                            containsAll:
+                              - "http://www.w3.org/ns/shacl#NodeShape"
                       - propertyConstraints:
                           shacl.name:
                             minCount: 1

@@ -270,7 +270,9 @@ There is a number of property constraints over scalar properties that can be def
 - `minInclusive`:Validates the minimum or equal value that a value in a property of the target node can have
 - `maxInclusive`: Validates the maximum or equal value that a value in a property of the target node can have
 - `datatype`: Validates the type of scalar value (integer, string, float, etc.) a value for a property of the target node must have
-- `in`: Validates that the value for a property in a target node matches one of the values provided as an array in the validation rule
+- `in`: Validates that the set of values for a property in a target node is a subset of the values provided as an array in the validation rule
+- `containsAll`: Validates that the set of matched input values is equal or a superset of the values provided as arguments in the constraint
+- `containsSome`: Validates that the intersection of the set of matched input values and the values provided as arguments in the constraint is not empty
 
 All these validations must be associated to a particular property under the `propertyConstraints` property in a validation
 profile rule. The key of the `propertyConstraints` node must be a namespaced version of the property URI.
@@ -619,8 +621,7 @@ instead of a string. They are also used internally to define the standard valida
 We will got back to this constraint when reviewing how override default validations, changing the default validation profiles
 associated to the different standards.
 
-
-### 2.5 in
+### 2.6 in
 
 `in` makes it possible to specify an enumeration of values that constraint the possible values for a certain property in
 a node. Values can be booleans, numeric values or strings.
@@ -667,6 +668,63 @@ Level: Violation
   Position: Some(LexicalInformation([(7,2)-(10,3)]))
   Location: file://documentation/validation_tutorial/examples/example2/api.json
 ```
+
+### 2.7 containsAll
+
+`in` makes sure that the set of matching values in the input data is a subset or equal to the set of values provided
+in the constraint.
+Sometimes we want to assert that the matching values must be a superset or equal to a different set of values.
+`containsAll` can be used in these situations to indicate the values that must be extended by the values in the input data.
+
+In the following example, we assert that the operations for any `apiContract:EndPoint` in an API must include at least the GET and POST
+operations using `containsAll`
+
+```yaml
+#%Validation Profile 1.0
+
+profile: Test5
+
+violation:
+  - mandatory-operations
+
+validations:
+
+ mandatory-operations:
+    targetClass: apiContract.EndPoint
+    propertyConstraints:
+      apiContract.supportedOperation / apiContract.method:
+        containsAll: [ get, post ]
+``` 
+
+
+### 2.8 containsSome
+
+`containsSome` is an alternative to `containsAll` where instead of checking that the input selected values are equal or 
+a superset of the provided values, we are checking that the interesection between the values is not empty.
+
+In other words we are checking that at least one of the provided values is actually contained in the set of matching input
+values.
+
+the previous example could be rewritten using `containsSome` and in this case, instead of checking that the operations GET and
+POST are included, we would be checking that at least the GET or the POST operation are defined for each `apiContract:EndPoint`.
+
+```yaml
+#%Validation Profile 1.0
+
+profile: Test5
+
+violation:
+  - mandatory-operations
+
+validations:
+
+  mandatory-operations:
+    targetClass: apiContract.EndPoint
+    propertyConstraints:
+      apiContract.supportedOperation / apiContract.method:
+        containsSome: [ http, https ]
+``` 
+
 
 ## 3. Property pairs validations
 
@@ -2358,7 +2416,7 @@ info:
 If we generate the SHACL validation report, we will see how the validation has now been reported as a simple info notification:
 
 ```bash
- $ java -jar amf-4.1.0-SNAPSHOT.jar validate --compacted true -in "RAML 1.0" -mime-in "application/yaml" -cp file://documentation/validation_tutorial/examples/example15/profile3.yaml documentation/validation_tutorial/examples/example15/api.raml | jq .
+ $ java -jar amf-4.1.0-SNAPSHOT.jar validate --compacted true -in "RAML 1.0" -mime-in "application/yaml" -cp file://documentation/validation_tutorial/examples/example15/profile2.yaml documentation/validation_tutorial/examples/example15/api.raml | jq .
 ```
 
 ```json
