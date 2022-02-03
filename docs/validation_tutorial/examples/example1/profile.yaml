@@ -11,4 +11,4 @@ validations:
     targetClass: apiContract.WebAPI
     propertyConstraints:
       core.version:
-        pattern: ^v[0-9]+\.[0-9]+\.[0-9]+$
+        pattern: ^v[0-9]+$

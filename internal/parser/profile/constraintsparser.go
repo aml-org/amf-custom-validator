@@ -109,7 +109,7 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, newDisjoint(false, variable, path, compPath))
 	}
 
-	otherProp, err = constraint.Get("moreThanProperty").String()
+	otherProp, err = constraint.Get("moreThanProperty").String() // TODO: not defined in dialect or tested
 	if err == nil {
 		compPath, err := pathParser.ParsePath(otherProp)
 		if err != nil {
@@ -118,7 +118,7 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, newMoreThan(false, variable, path, compPath))
 	}
 
-	otherProp, err = constraint.Get("moreThanOrEqualsToProperty").String()
+	otherProp, err = constraint.Get("moreThanOrEqualsToProperty").String() // TODO: not defined in dialect or tested
 	if err == nil {
 		compPath, err := pathParser.ParsePath(otherProp)
 		if err != nil {
@@ -145,7 +145,7 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, rule)
 	}
 
-	exactly := constraint.Get("exactly")
+	exactly := constraint.Get("exactly") // TODO: not defined in dialect or tested
 	if exactly.IsFound() {
 		rule, err := parseQualifiedNestedExpression(exactly, false, variable, path, varGenerator, EQ)
 		if err != nil {
