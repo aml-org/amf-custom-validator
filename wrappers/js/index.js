@@ -1,56 +1,32 @@
-require(__dirname + "/lib/wasm_exec");
-const fs = require("fs");
-const pako = require("pako");
-let wasm_gz
-let wasm
+require("./lib/wasm_exec")
+const fs = require("fs")
+const pako = require("pako")
 
-let initialized = false
-let go = undefined;
+let go = new Go()
+let wasmCompilation = compileWasm()
 
-const run = function(profile, data, debug) {
-    let before = new Date()
-    const res = __AMF__validateCustomProfile(profile,data, debug);
-    let after = new Date();
-    if (debug) console.log("Elapsed : " + (after - before))
-    return res;
-}
-
-const validateCustomProfile = function(profile, data, debug, cb) {
-    if (initialized) {
-        let res = run(profile, data, debug);
-        cb(res,undefined);
-    } else {
-        cb(undefined,new Error("WASM/GO not initialized"))
-    }
-}
-const initialize = function(cb) {
-    if (initialized === true) {
-        cb(undefined)
-    }
-    go = new Go();
-    if(!wasm_gz || !wasm) {
-        wasm_gz = fs.readFileSync(__dirname + "/lib/main.wasm.gz")
-        wasm = pako.ungzip(wasm_gz)
-    }
+function compileWasm() {
     if (WebAssembly) {
-        WebAssembly.instantiate(wasm, go.importObject).then((result) => {
-            go.run(result.instance);
-            initialized = true;
-            cb(undefined);
-        });
+        let wasmGz = fs.readFileSync(__dirname + "/lib/main.wasm.gz")
+        let wasm = pako.ungzip(wasmGz)
+        return WebAssembly.compile(wasm)
     } else {
-        cb(new Error("WebAssembly is not supported in your JS environment"));
+        throw new Error("WebAssembly is not supported in your JS environment")
     }
 }
 
-const exit = function() {
-    if(initialized) {
-        __AMF__terminateValidator()
-        go.exit(0)
-        initialized = false;
-    }
+function validate(profile, data, debug) {
+    return global._acv_validate(profile, data, debug)
 }
 
-module.exports.initialize = initialize;
-module.exports.validate = validateCustomProfile;
-module.exports.exit = exit;
+function evaluate(callback) {
+    return wasmCompilation
+        .then(module => WebAssembly.instantiate(module, go.importObject))
+        .then(instance => {
+            global._acv_user_callback = callback
+            return go.run(instance)
+        })
+}
+
+module.exports.evaluate = evaluate
+module.exports.validate = validate
