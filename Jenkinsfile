@@ -17,19 +17,19 @@ pipeline {
                 echo "Success" // Tests are actually run when building the agent in the Dockerfile
             }
         }
-//         stage ('Validate reports and profiles') {
-//             agent {
-//                 dockerfile {
-//                     filename 'Dockerfile'
-//                     additionalBuildArgs  '--target ci-java'
-//                     registryCredentialsId 'dockerhub-pro-credentials'
-//                 }
-//             }
-//             steps {
-//                 echo "Success" // Tests are actually run when building the agent in the Dockerfile
-//             }
-//
-//         }
+        stage ('Validate reports and profiles') {
+            agent {
+                dockerfile {
+                    filename 'Dockerfile'
+                    additionalBuildArgs  '--target ci-java'
+                    registryCredentialsId 'dockerhub-pro-credentials'
+                }
+            }
+            steps {
+                echo "Success" // Tests are actually run when building the agent in the Dockerfile
+            }
+
+        }
         stage('Test generated WASM (JS)') {
             agent {
                 dockerfile {
