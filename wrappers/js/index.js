@@ -7,28 +7,48 @@ let wasm
 let initialized = false
 let go = undefined;
 
-const run = function(profile, data, debug) {
-    let before = new Date()
-    const res = __AMF__validateCustomProfile(profile,data, debug);
-    let after = new Date();
-    if (debug) console.log("Elapsed : " + (after - before))
-    return res;
-}
-
-const validateCustomProfile = function(profile, data, debug, cb) {
+const validate = function (profile, data, debug, cb) {
     if (initialized) {
-        let res = run(profile, data, debug);
-        cb(res,undefined);
+        let before = new Date()
+        const res = __AMF__validate(profile, data, debug);
+        let after = new Date();
+        if (debug) console.log("Elapsed : " + (after - before))
+        cb(res, undefined);
     } else {
-        cb(undefined,new Error("WASM/GO not initialized"))
+        cb(undefined, new Error("WASM/GO not initialized"))
     }
 }
-const initialize = function(cb) {
+
+const validateCompiled = function (compiledProfile, data, debug, cb) {
+    if (initialized) {
+        let before = new Date()
+        const res = __AMF__validateCompiled(compiledProfile, data, debug);
+        let after = new Date();
+        if (debug) console.log("Elapsed : " + (after - before))
+        cb(res, undefined);
+    } else {
+        cb(undefined, new Error("WASM/GO not initialized"))
+    }
+}
+
+const compileProfile = function (profile, debug, cb) {
+    if (initialized) {
+        let before = new Date()
+        const res = __AMF__compileProfile(profile, debug);
+        let after = new Date();
+        if (debug) console.log("Elapsed : " + (after - before))
+        cb(res, undefined);
+    } else {
+        cb(undefined, new Error("WASM/GO not initialized"))
+    }
+}
+
+const initialize = function (cb) {
     if (initialized === true) {
         cb(undefined)
     }
     go = new Go();
-    if(!wasm_gz || !wasm) {
+    if (!wasm_gz || !wasm) {
         wasm_gz = fs.readFileSync(__dirname + "/lib/main.wasm.gz")
         wasm = pako.ungzip(wasm_gz)
     }
@@ -43,14 +63,16 @@ const initialize = function(cb) {
     }
 }
 
-const exit = function() {
-    if(initialized) {
-        __AMF__terminateValidator()
+const exit = function () {
+    if (initialized) {
+        __AMF__exit()
         go.exit(0)
         initialized = false;
     }
 }
 
 module.exports.initialize = initialize;
-module.exports.validate = validateCustomProfile;
+module.exports.validate = validate;
+module.exports.validateCompiled = validateCompiled;
+module.exports.compileProfile = compileProfile;
 module.exports.exit = exit;

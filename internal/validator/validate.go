@@ -23,8 +23,6 @@ func Validate(profileText string, jsonldText string, debug bool, eventChan *chan
 }
 
 func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
-	compiledRego := *compiledRegoPtr
-
 	// Normalize input
 	normalizedInput, err := ProcessInput(jsonldText, debug, eventChan)
 
@@ -34,7 +32,7 @@ func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string
 	}
 
 	// Execute validation
-	validationResult, err := executeValidation(eventChan, err, compiledRego, normalizedInput)
+	validationResult, err := executeValidation(eventChan, err, compiledRegoPtr, normalizedInput)
 
 	if err != nil {
 		CloseEventChan(eventChan)
@@ -53,8 +51,9 @@ func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string
 	return report, err
 }
 
-func executeValidation(eventChan *chan e.Event, err error, compiledRego rego.PreparedEvalQuery, normalizedInput interface{}) (*rego.ResultSet, error) {
+func executeValidation(eventChan *chan e.Event, err error, compiledRego *rego.PreparedEvalQuery, normalizedInput interface{}) (*rego.ResultSet, error) {
 	dispatchEvent(e.NewEvent(e.OpaValidationStart), eventChan)
+	//fmt.Println("hello")
 	validationResult, err := compiledRego.Eval(context.Background(), rego.EvalInput(normalizedInput))
 	dispatchEvent(e.NewEvent(e.OpaValidationDone), eventChan)
 	return &validationResult, err

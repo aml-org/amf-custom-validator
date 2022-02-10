@@ -7,17 +7,36 @@ let initialized = false
 let go = undefined;
 let wasm;
 
-const run = function(profile, data, debug) {
-    let before = new Date()
-    const res = __AMF__validateCustomProfile(profile,data, debug);
-    let after = new Date();
-    if (debug) console.log("Elapsed : " + (after - before))
-    return res;
+const validate = function (profile, data, debug, cb) {
+    if (initialized) {
+        let before = new Date()
+        const res = __AMF__validate(profile, data, debug);
+        let after = new Date();
+        if (debug) console.log("Elapsed : " + (after - before))
+        cb(res, undefined);
+    } else {
+        cb(undefined, new Error("WASM/GO not initialized"))
+    }
 }
 
-const validateCustomProfile = function(profile, data, debug, cb) {
+const validateCompiled = function (compiledProfile, data, debug, cb) {
     if (initialized) {
-        let res = run(profile, data, debug);
+        let before = new Date()
+        const res = __AMF__validateCompiled(compiledProfile, data, debug);
+        let after = new Date();
+        if (debug) console.log("Elapsed : " + (after - before))
+        cb(res, undefined);
+    } else {
+        cb(undefined, new Error("WASM/GO not initialized"))
+    }
+}
+
+const compileProfile = function (profile, debug, cb) {
+    if (initialized) {
+        let before = new Date()
+        const res = __AMF__compileProfile(profile, debug);
+        let after = new Date();
+        if (debug) console.log("Elapsed : " + (after - before))
         cb(res, undefined);
     } else {
         cb(undefined, new Error("WASM/GO not initialized"))
@@ -46,12 +65,14 @@ const initialize = function(cb) {
 
 const exit = function() {
     if(initialized) {
-        __AMF__terminateValidator()
+        __AMF__exit()
         go.exit(0)
         initialized = false;
     }
 }
 
 module.exports.initialize = initialize;
-module.exports.validate = validateCustomProfile;
+module.exports.validate = validate;
+module.exports.validateCompiled = validateCompiled;
+module.exports.compileProfile = compileProfile;
 module.exports.exit = exit;
