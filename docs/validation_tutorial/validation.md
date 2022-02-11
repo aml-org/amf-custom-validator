@@ -33,7 +33,7 @@ validations:
     targetClass: apiContract.WebAPI
     propertyConstraints:
       core.version:
-        pattern: ^v[0-9]+$
+        pattern: ^v[0-9]+\.[0-9]+\.[0-9]+$
 ```
 
 This profile defines a new profile `Test1` with a single validation rule called `version-format`.
@@ -263,7 +263,7 @@ Let's unpack each of these validations.
 
 ### 2.1 Pattern
 
-We already explained the way pattern works. It allows you to defined a regular expression that will constraint any property
+We already explained the way pattern works. It allows you to define a regular expression that will constraint any property
 in any node holding a string value. If the property has multiple values, all of them will be validated.
 
 For example, the following profile will constraint the possible values for the protocols associated to the API using a 
@@ -365,6 +365,12 @@ If now we try to validate using the profile we have just defined we will obtain 
 
 Notice how in this case the `pattern` validation constraint has been applied to both values of the `apiContract.scheme`
 property.
+
+**Escape character usage**: when using escape characters in your regular expression make sure to avoid double quotes so that the special character conserves its raw value when parsed in yaml.
+
+```pattern: ".*\?.*"``` will fail with a parse error when processing the yaml document.
+
+```pattern: '.*\?.*'``` or ```pattern: .*\?.*``` will work as expected.
 
 ### 2.2 minCount, maxCount and exactCount
 

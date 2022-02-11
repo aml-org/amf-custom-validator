@@ -16,9 +16,9 @@ func GeneratePattern(pattern profile.PatternRule, iriExpander *misc.IriExpander)
 	rego = append(rego, fmt.Sprintf("%s = %s_array[_]", checkVariable, checkVariable))
 	// Add the validation
 	if pattern.Negated {
-		rego = append(rego, fmt.Sprintf("regex.match(\"%s\",%s)", pattern.Argument, checkVariable))
+		rego = append(rego, fmt.Sprintf("regex.match(`%s`,%s)", pattern.Argument, checkVariable))
 	} else {
-		rego = append(rego, fmt.Sprintf("not regex.match(\"%s\",%s)", pattern.Argument, checkVariable))
+		rego = append(rego, fmt.Sprintf("not regex.match(`%s`,%s)", pattern.Argument, checkVariable))
 	}
 
 	tracePath, err := pattern.Path.Trace(iriExpander)

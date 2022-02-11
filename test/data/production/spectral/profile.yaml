@@ -122,7 +122,7 @@ validations:
     not:
       propertyConstraints:
         core.description:
-          pattern: "eval\\\\("
+          pattern: 'eval\('
 
   no-script-tags-in-markdown:
     message: |
@@ -228,7 +228,7 @@ validations:
     not:
       propertyConstraints:
         apiContract.path:
-          pattern: "\\\\/$"
+          pattern: '\/$'
 
   path-not-include-query:
     message: "Don't put query string items in the path, they belong in parameters with in: query."
@@ -236,7 +236,7 @@ validations:
     not:
       propertyConstraints:
         apiContract.path:
-          pattern: ".*\\\\?.*"
+          pattern: '.*\?.*'
 
   tag-description:
     message: |
