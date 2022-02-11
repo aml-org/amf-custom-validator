@@ -34,7 +34,7 @@
         "@id": "http://www.w3.org/ns/shacl#focusNode"
       },
       "lexical": "http://a.ml/vocabularies/lexical#",
-      "lexicalSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/lexical.yaml#/declarations/",
+      "lexicalSchema": "file:///dialects/lexical.yaml#/declarations/",
       "line": {
         "@id": "http://a.ml/vocabularies/lexical#line"
       },
@@ -50,7 +50,7 @@
       },
       "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
       "rdfs": "http://www.w3.org/2000/01/rdf-schema",
-      "reportSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/",
+      "reportSchema": "file:///dialects/validation-report.yaml#/declarations/",
       "result": {
         "@id": "http://www.w3.org/ns/shacl#result"
       },

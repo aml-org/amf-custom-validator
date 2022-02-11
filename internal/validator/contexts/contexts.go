@@ -97,8 +97,8 @@ var DefaultValidationContext = types.ObjectMap{
 	"lexicalSchema": lexicalPath,
 }
 
-var reportPath = "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/"
-var lexicalPath = "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/lexical.yaml#/declarations/"
+var reportPath = "file:///dialects/validation-report.yaml#/declarations/"
+var lexicalPath = "file:///dialects/lexical.yaml#/declarations/"
 
 var ConformsContext = types.ObjectMap{
 	"conforms": types.StringMap{
