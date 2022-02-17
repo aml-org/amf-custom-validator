@@ -1,10 +1,10 @@
 package generator
 
 import (
-"fmt"
+	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
-"strings"
+	"strings"
 )
 
 func GenerateScalarIntersectSetRule(containsSome profile.ScalarSetRule, iriExpander *misc.IriExpander) []SimpleRegoResult {
@@ -16,9 +16,8 @@ func GenerateScalarIntersectSetRule(containsSome profile.ScalarSetRule, iriExpan
 	actualValuesVariable := profile.Genvar(fmt.Sprintf("%s_check", containsSome.Variable.Name))
 	containsSomeVariable := profile.Genvar("containsSome")
 
-
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertyArray(path, containsSome.Variable.Name, iriExpander)
+	pathResult := GeneratePropertySet(path, containsSome.Variable.Name, iriExpander)
 	rego = append(rego, fmt.Sprintf("%s_array = %s with data.sourceNode as %s", actualValuesVariable, pathResult.rule, containsSome.Variable.Name))
 	rego = append(rego, fmt.Sprintf("count(%s_array) != 0 # validation applies if property was defined", actualValuesVariable))
 	rego_convert_to_string_set := "%s_string_set = { mapped |\n" +
@@ -56,4 +55,3 @@ func GenerateScalarIntersectSetRule(containsSome profile.ScalarSetRule, iriExpan
 	}
 	return []SimpleRegoResult{r}
 }
-

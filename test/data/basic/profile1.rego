@@ -246,7 +246,7 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_3[nodes] {
+gen_path_set_rule_3[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -254,7 +254,7 @@ gen_path_rule_3[nodes] {
   nodes = x_0
 }
 
-gen_path_rule_5[nodes] {
+gen_path_set_rule_5[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -262,7 +262,7 @@ gen_path_rule_5[nodes] {
   nodes = x_0
 }
 
-gen_path_rule_7[nodes] {
+gen_path_set_rule_7[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -270,7 +270,7 @@ gen_path_rule_7[nodes] {
   nodes = x_0
 }
 
-gen_path_rule_8[nodes] {
+gen_path_set_rule_8[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -283,7 +283,7 @@ gen_path_rule_8[nodes] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
   #  querying path: apiContract.method
-  gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
+  gen_x_check_2_array = gen_path_set_rule_3 with data.sourceNode as x
   gen_x_check_2_scalar = gen_x_check_2_array[_]
   gen_x_check_2 = as_string(gen_x_check_2_scalar)
   gen_inValues_1 = { "publish","subscribe","1","2"}
@@ -295,7 +295,7 @@ violation[matches] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
   #  querying path: shacl.name
-  gen_propValues_4 = gen_path_rule_5 with data.sourceNode as x
+  gen_propValues_4 = gen_path_set_rule_5 with data.sourceNode as x
   not count(gen_propValues_4) <= 1
   _result_0 := trace("maxCount","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<=","actual": count(gen_propValues_4),"expected": 1})
   matches := error("validation1",x,"This is the message",[_result_0])
@@ -304,7 +304,7 @@ violation[matches] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
   #  querying path: apiContract.method
-  gen_propValues_6 = gen_path_rule_7 with data.sourceNode as x
+  gen_propValues_6 = gen_path_set_rule_7 with data.sourceNode as x
   not count(gen_propValues_6) >= 1
   _result_0 := trace("minCount","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
   matches := error("validation1",x,"This is the message",[_result_0])
@@ -313,9 +313,9 @@ violation[matches] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
   #  querying path: shacl.name
-  gen_gen_path_rule_8_node_9_array = gen_path_rule_8 with data.sourceNode as x
-  gen_gen_path_rule_8_node_9 = gen_gen_path_rule_8_node_9_array[_]
-  not regex.match(`^put|post$`,gen_gen_path_rule_8_node_9)
-  _result_0 := trace("pattern","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_rule_8_node_9})
+  gen_gen_path_set_rule_8_node_9_array = gen_path_set_rule_8 with data.sourceNode as x
+  gen_gen_path_set_rule_8_node_9 = gen_gen_path_set_rule_8_node_9_array[_]
+  not regex.match(`^put|post$`,gen_gen_path_set_rule_8_node_9)
+  _result_0 := trace("pattern","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_set_rule_8_node_9})
   matches := error("validation1",x,"This is the message",[_result_0])
 }

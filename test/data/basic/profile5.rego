@@ -246,14 +246,14 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_1[nodes] {
+gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/apiContract#supportedOperation"]
   x_0 = tmp_x_0[_][_]
   nodes = x_0
 }
 
-gen_path_rule_4[nodes] {
+gen_path_set_rule_4[nodes] {
   init_y_0 = data.sourceNode
   nodes_tmp = object.get(init_y_0,"http://a.ml/vocabularies/apiContract#method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -266,12 +266,12 @@ gen_path_rule_4[nodes] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#EndPoint"
   #  querying path: apiContract.supportedOperation
-  ys = gen_path_rule_1 with data.sourceNode as x
+  ys = gen_path_set_rule_1 with data.sourceNode as x
   y_errorAcc0 = []
   ys_br_0 = [ ys_br_0_error|
     y = ys[_]
     #  querying path: apiContract.method
-    gen_y_check_3_array = gen_path_rule_4 with data.sourceNode as y
+    gen_y_check_3_array = gen_path_set_rule_4 with data.sourceNode as y
     gen_y_check_3_scalar = gen_y_check_3_array[_]
     gen_y_check_3 = as_string(gen_y_check_3_scalar)
     gen_inValues_2 = { "post"}

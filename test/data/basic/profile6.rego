@@ -246,7 +246,7 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_1[nodes] {
+gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#minLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -254,7 +254,7 @@ gen_path_rule_1[nodes] {
   nodes = x_0
 }
 
-gen_path_rule_2[nodes] {
+gen_path_set_rule_2[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#maxLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -267,12 +267,12 @@ gen_path_rule_2[nodes] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/shapes#ScalarShape"
   #  querying path: shacl.minLength
-  gen_path_rule_1As = gen_path_rule_1 with data.sourceNode as x
+  gen_path_set_rule_1As = gen_path_set_rule_1 with data.sourceNode as x
   #  querying path: shacl.maxLength
-  gen_path_rule_2Bs = gen_path_rule_2 with data.sourceNode as x
-  gen_path_rule_1A = gen_path_rule_1As[_]
-  gen_path_rule_2B = gen_path_rule_2Bs[_]
-  not gen_path_rule_1A < gen_path_rule_2B
-  _result_0 := trace("lessThan","http://www.w3.org/ns/shacl#minLength",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "condition":"<","expected":gen_path_rule_1A, "actual":gen_path_rule_2B})
+  gen_path_set_rule_2Bs = gen_path_set_rule_2 with data.sourceNode as x
+  gen_path_set_rule_1A = gen_path_set_rule_1As[_]
+  gen_path_set_rule_2B = gen_path_set_rule_2Bs[_]
+  not gen_path_set_rule_1A < gen_path_set_rule_2B
+  _result_0 := trace("lessThan","http://www.w3.org/ns/shacl#minLength",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "condition":"<","expected":gen_path_set_rule_1A, "actual":gen_path_set_rule_2B})
   matches := error("test-min-length",x,"Min length must be less than max length must match in scalar",[_result_0])
 }

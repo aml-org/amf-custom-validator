@@ -16,14 +16,13 @@ func GenerateScalarSubSetRule(containsAll profile.ScalarSetRule, iriExpander *mi
 	actualValuesVariable := profile.Genvar(fmt.Sprintf("%s_check", containsAll.Variable.Name))
 	containsAllVariable := profile.Genvar("containsAll")
 
-
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertyArray(path, containsAll.Variable.Name, iriExpander)
+	pathResult := GeneratePropertySet(path, containsAll.Variable.Name, iriExpander)
 	rego = append(rego, fmt.Sprintf("%s_array = %s with data.sourceNode as %s", actualValuesVariable, pathResult.rule, containsAll.Variable.Name))
 	rego = append(rego, fmt.Sprintf("count(%s_array) != 0 # validation applies if property was defined", actualValuesVariable))
 	rego_convert_to_string_set := "%s_string_set = { mapped |\n" +
-		                          "    original := %s_array[_]\n" +
-		                          "    mapped := as_string(original)\n}\n" // cast value to string for matching with argument value
+		"    original := %s_array[_]\n" +
+		"    mapped := as_string(original)\n}\n" // cast value to string for matching with argument value
 	rego = append(rego, fmt.Sprintf(rego_convert_to_string_set, actualValuesVariable, actualValuesVariable))
 
 	rego = append(rego, fmt.Sprintf("%s = { \"%s\"}", containsAllVariable, strings.Join(containsAll.Argument, "\",\"")))

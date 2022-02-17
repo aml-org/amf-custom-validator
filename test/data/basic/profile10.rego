@@ -246,7 +246,7 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_1[nodes] {
+gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#minCount",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -254,7 +254,7 @@ gen_path_rule_1[nodes] {
   nodes = x_0
 }
 
-gen_path_rule_3[nodes] {
+gen_path_set_rule_3[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#minCount",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -267,7 +267,7 @@ gen_path_rule_3[nodes] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/shapes#ArrayShape"
   #  querying path: shacl.minCount
-  gen_numeric_comparison_2_elem = gen_path_rule_1 with data.sourceNode as x
+  gen_numeric_comparison_2_elem = gen_path_set_rule_1 with data.sourceNode as x
   gen_numeric_comparison_2 = gen_numeric_comparison_2_elem[_]
   not gen_numeric_comparison_2 < 50.450000
   _result_0 := trace("maximumExclusive","http://www.w3.org/ns/shacl#minCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<","expected":50.450000,"actual":gen_numeric_comparison_2})
@@ -277,7 +277,7 @@ violation[matches] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/shapes#ArrayShape"
   #  querying path: shacl.minCount
-  gen_numeric_comparison_4_elem = gen_path_rule_3 with data.sourceNode as x
+  gen_numeric_comparison_4_elem = gen_path_set_rule_3 with data.sourceNode as x
   gen_numeric_comparison_4 = gen_numeric_comparison_4_elem[_]
   not gen_numeric_comparison_4 >= 25
   _result_0 := trace("minimumInclusive","http://www.w3.org/ns/shacl#minCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","expected":25,"actual":gen_numeric_comparison_4})
