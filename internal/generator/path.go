@@ -53,23 +53,33 @@ func internalResultToTraversal(p traversal, r regoPathResultInternal) traversal 
 
 // GeneratePropertySet Traversed the path, starting at the provided variable and returns a set of reached values
 func GeneratePropertySet(path path.PropertyPath, variable string, iriExpander *misc.IriExpander) RegoPathResult {
-	return generateSet(path, variable, false, iriExpander)
+	return generateResult(path, variable, false, iriExpander, aggregateResultsIntoSet)
 }
 
 // GenerateNodeSet Traverses the path but just returns a generator of nodes instead of a set of values
 func GenerateNodeSet(path path.PropertyPath, variable string, iriExpander *misc.IriExpander) RegoPathResult {
-	return generateSet(path, variable, true, iriExpander)
+	return generateResult(path, variable, true, iriExpander, aggregateResultsIntoSet)
+}
+
+// GeneratePropertyArray Traversed the path, starting at the provided variable and returns an array of reached values (allows duplicate values)
+func GeneratePropertyArray(path path.PropertyPath, variable string, iriExpander *misc.IriExpander) RegoPathResult {
+	return generateResult(path, variable, false, iriExpander, aggregateResultsIntoArray)
+}
+
+// GenerateNodeArray Traverses the path but just returns a generator of nodes instead of an array of values (allows duplicate values)
+func GenerateNodeArray(path path.PropertyPath, variable string, iriExpander *misc.IriExpander) RegoPathResult {
+	return generateResult(path, variable, false, iriExpander, aggregateResultsIntoArray)
 }
 
 // fetchNodes defines if the path result will fetch resulting nodes (fetching each @id reference) or simple return the values.
-func generateSet(path path.PropertyPath, variable string, fetchNodes bool, iriExpander *misc.IriExpander) RegoPathResult {
+func generateResult(path path.PropertyPath, variable string, fetchNodes bool, iriExpander *misc.IriExpander, resultAggregator func([]regoPathResultInternal) RegoPathResult) RegoPathResult {
 	source, err := path.Expanded(iriExpander)
 	if err != nil {
 		panic(err)
 	}
 
 	acc := traversePath(path, variable, fetchNodes, iriExpander)
-	regoResult := accumulatePathIntoSet(acc)
+	regoResult := resultAggregator(acc)
 
 	regoResult.source = source
 	regoResult.variable = variable
@@ -91,7 +101,7 @@ func traversePath(path path.PropertyPath, variable string, fetchNodes bool, iriE
 
 // Since there are many alternative paths to reach the nodes, we need to provide a single
 // collection of nodes of the rest of the checks.
-func accumulatePathIntoSet(paths []regoPathResultInternal) RegoPathResult {
+func aggregateResultsIntoSet(paths []regoPathResultInternal) RegoPathResult {
 	// Let's generate a rule that will return the flat list of nodes in the path
 	// If there are more than one path (because of ORs) a rule with multiple clauses
 	// will be generated and the final list of nodes will be the UNION of all the clauses
@@ -109,6 +119,29 @@ func accumulatePathIntoSet(paths []regoPathResultInternal) RegoPathResult {
 	}
 	if len(rego) > 0 {
 		rego = append(rego, "}")
+	}
+
+	return RegoPathResult{
+		rego: rego,
+		rule: ruleName,
+	}
+}
+
+func aggregateResultsIntoArray(paths []regoPathResultInternal) RegoPathResult {
+	rego := make([]string, 0)
+	ruleName := profile.Genvar("path_array_rule")
+	for i, p := range paths {
+		if i == 0 {
+			rego = append(rego, fmt.Sprintf("%s = [ nodes | ", ruleName)) // header of the rule
+		} else {
+			rego = append(rego, "} {") // add another clause to the rule // TODO ?
+		}
+		for _, r := range p.rego {
+			rego = append(rego, "  "+r) // add the rego code to the final rule
+		}
+	}
+	if len(rego) > 0 {
+		rego = append(rego, "]")
 	}
 
 	return RegoPathResult{

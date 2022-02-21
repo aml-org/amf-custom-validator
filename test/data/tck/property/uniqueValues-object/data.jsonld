@@ -1,0 +1,79 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/uniqueValues-object.test#InvalidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/uniqueValues-object.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/uniqueValues-object.test#firstProperty": [
+      {"@id": "http://a.ml/first#A0"},
+      {"@id": "http://a.ml/first#A1"},
+      {"@id": "http://a.ml/first#B"}
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/uniqueValues-object.test#ValidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/uniqueValues-object.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/uniqueValues-object.test#firstProperty": [
+      {"@id": "http://a.ml/first#A0"},
+      {"@id": "http://a.ml/first#B"}
+    ]
+  },
+  {
+    "@id": "http://a.ml/first#A0",
+    "@type": [
+      "http://a.ml#FirstNestingNode"
+    ],
+    "http://datashapes.org/sh/tests/core/property/uniqueValues-object.test#secondProperty": [
+      {
+        "@id": "http://a.ml/second#A"
+      }
+    ]
+  },
+  {
+    "@id": "http://a.ml/first#A1",
+    "@type": [
+      "http://a.ml#FirstNestingNode"
+    ],
+    "http://datashapes.org/sh/tests/core/property/uniqueValues-object.test#secondProperty": [
+      {
+        "@id": "http://a.ml/second#A"
+      }
+    ]
+  },
+  {
+    "@id": "http://a.ml/first#B",
+    "@type": [
+      "http://a.ml#FirstNestingNode"
+    ],
+    "http://datashapes.org/sh/tests/core/property/uniqueValues-object.test#secondProperty": [
+      {
+        "@id": "http://a.ml/second#B"
+      }
+    ]
+  },
+  {
+    "@id": "http://a.ml/second#A",
+    "@type": [
+      "http://a.ml#SecondNestingNode"
+    ],
+    "http://a.ml#someProp": [
+      {
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://a.ml/second#B",
+    "@type": [
+      "http://a.ml#SecondNestingNode"
+    ],
+    "http://a.ml#someProp": [
+      {
+        "@value": "B"
+      }
+    ]
+  }
+
+]
