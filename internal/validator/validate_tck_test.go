@@ -168,3 +168,11 @@ func TestPropertyContainsAll(t *testing.T) {
 func TestPropertyContainsSome(t *testing.T) {
 	testTckCase("property/containsSome", t)
 }
+
+func TestPropertyUniqueValuesScalar(t *testing.T) {
+	testTckCase("property/uniqueValues-scalar", t)
+}
+
+func TestPropertyUniqueValuesObject(t *testing.T) {
+	testTckCase("property/uniqueValues-object", t)
+}

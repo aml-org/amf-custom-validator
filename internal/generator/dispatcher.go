@@ -23,6 +23,8 @@ func Dispatch(r profile.Rule, iriExpander *misc.IriExpander) []GeneratedRegoResu
 		}
 	case profile.PatternRule:
 		return simpleAsGeneratedRegoResult(GeneratePattern(e, iriExpander))
+	case profile.UniqueValuesRule:
+		return simpleAsGeneratedRegoResult(GenerateUniqueValues(e, iriExpander))
 	case profile.PropertyComparisonRule:
 		return simpleAsGeneratedRegoResult(GeneratePropertyComparison(e, iriExpander))
 	case profile.AndRule:

@@ -246,7 +246,7 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_1[nodes] {
+gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#scheme",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -259,7 +259,7 @@ gen_path_rule_1[nodes] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#WebAPI"
   #  querying path: apiContract.scheme
-  gen_datatype_check_2_elem = gen_path_rule_1 with data.sourceNode as x
+  gen_datatype_check_2_elem = gen_path_set_rule_1 with data.sourceNode as x
   gen_datatype_check_2 = gen_datatype_check_2_elem[_]
   not check_datatype(gen_datatype_check_2,"http://www.w3.org/2001/XMLSchema#string")
   _result_0 := trace("datatype","http://a.ml/vocabularies/apiContract#scheme",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_datatype_check_2,"expected": "http://www.w3.org/2001/XMLSchema#string"})

@@ -10,7 +10,7 @@ func GenerateNested(nested profile.NestedExpression, iriExpander *misc.IriExpand
 	path := nested.Path
 	var rego []string
 
-	pathResult := GenerateNodeArray(nested.Path, nested.Parent.Name, iriExpander)
+	pathResult := GenerateNodeSet(nested.Path, nested.Parent.Name, iriExpander)
 	pluralName := fmt.Sprintf("%ss", nested.Child.Name)
 
 	rego = append(rego, "#  querying path: "+path.Source())

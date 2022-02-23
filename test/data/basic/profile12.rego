@@ -246,14 +246,14 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_1[nodes] {
+gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/apiContract#returns"]
   x_0 = tmp_x_0[_][_]
   nodes = x_0
 }
 
-gen_path_rule_4[nodes] {
+gen_path_set_rule_4[nodes] {
   init_y_0 = data.sourceNode
   nodes_tmp = object.get(init_y_0,"http://a.ml/vocabularies/apiContract#statusCode",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -261,14 +261,14 @@ gen_path_rule_4[nodes] {
   nodes = y_0
 }
 
-gen_path_rule_5[nodes] {
+gen_path_set_rule_5[nodes] {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/apiContract#returns"]
   x_0 = tmp_x_0[_][_]
   nodes = x_0
 }
 
-gen_path_rule_8[nodes] {
+gen_path_set_rule_8[nodes] {
   init_z_0 = data.sourceNode
   nodes_tmp = object.get(init_z_0,"http://a.ml/vocabularies/apiContract#statusCode",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -281,12 +281,12 @@ gen_path_rule_8[nodes] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
   #  querying path: apiContract.returns
-  ys = gen_path_rule_1 with data.sourceNode as x
+  ys = gen_path_set_rule_1 with data.sourceNode as x
   y_errorAcc0 = []
   ys_br_0 = [ ys_br_0_error|
     y = ys[_]
     #  querying path: apiContract.statusCode
-    gen_y_check_3_array = gen_path_rule_4 with data.sourceNode as y
+    gen_y_check_3_array = gen_path_set_rule_4 with data.sourceNode as y
     gen_y_check_3_scalar = gen_y_check_3_array[_]
     gen_y_check_3 = as_string(gen_y_check_3_scalar)
     gen_inValues_2 = { "200"}
@@ -304,12 +304,12 @@ violation[matches] {
   not count(ys) - count(ys_error_node_variables_agg) >= 1
   _result_0 := trace("atLeast","http://a.ml/vocabularies/apiContract#returns",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)), "cardinality":1, "subResult": y_errorAcc})
   #  querying path: apiContract.returns
-  zs = gen_path_rule_5 with data.sourceNode as x
+  zs = gen_path_set_rule_5 with data.sourceNode as x
   z_errorAcc0 = []
   zs_br_0 = [ zs_br_0_error|
     z = zs[_]
     #  querying path: apiContract.statusCode
-    gen_z_check_7_array = gen_path_rule_8 with data.sourceNode as z
+    gen_z_check_7_array = gen_path_set_rule_8 with data.sourceNode as z
     gen_z_check_7_scalar = gen_z_check_7_array[_]
     gen_z_check_7 = as_string(gen_z_check_7_scalar)
     gen_inValues_6 = { "429"}

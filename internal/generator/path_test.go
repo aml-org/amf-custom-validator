@@ -12,7 +12,7 @@ import (
 
 func TestGeneratePathPropertyArray(t *testing.T) {
 	expander := misc.IriExpander{Context: contexts.DefaultAMFContext}
-	expected := `gen_path_rule_1[nodes] {
+	expected := `gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/core#name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -28,7 +28,7 @@ func TestGenerateAndPropertyArray(t *testing.T) {
 			"x": "http://x.org#",
 		},
 	}
-	expected := `gen_path_rule_1[nodes] {
+	expected := `gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://x.org#a"]
   x_0 = tmp_x_0[_][_]
@@ -48,7 +48,7 @@ func TestGenerateAndOrPropertyArray(t *testing.T) {
 			"x": "http://x.org#",
 		},
 	}
-	expected := `gen_path_rule_1[nodes] {
+	expected := `gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://x.org#a"]
   x_0 = tmp_x_0[_][_]
@@ -78,7 +78,7 @@ func TestGenerateAndOrParenthesisPropertyArray(t *testing.T) {
 			"x": "http://x.org#",
 		},
 	}
-	expected := `gen_path_rule_1[nodes] {
+	expected := `gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://x.org#a"]
   x_0 = tmp_x_0[_][_]
@@ -100,7 +100,7 @@ func TestGenerateAndOrParenthesisPropertyArray(t *testing.T) {
 
 func TestGenerateInversePathPropertyArray(t *testing.T) {
 	expander := misc.IriExpander{Context: contexts.DefaultAMFContext}
-	expected := `gen_path_rule_1[nodes] {
+	expected := `gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
   search_subjects[x_0] with data.predicate as "http://a.ml/vocabularies/core#name" with data.object as init_x_0
   nodes = x_0
@@ -114,7 +114,7 @@ func TestGenerateAndInversePathPropertyArray(t *testing.T) {
 			"x": "http://x.org#",
 		},
 	}
-	expected := `gen_path_rule_1[nodes] {
+	expected := `gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://x.org#a"]
   x_0 = tmp_x_0[_][_]
@@ -133,7 +133,7 @@ func TestGenerateOrInversePathPropertyArray(t *testing.T) {
 			"x": "http://x.org#",
 		},
 	}
-	expected := `gen_path_rule_1[nodes] {
+	expected := `gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
   search_subjects[x_0] with data.predicate as "http://x.org#a" with data.object as init_x_0
   nodes = x_0
@@ -151,7 +151,7 @@ func testGeneratePropertyArray(pathString string, expected string, iriExpander *
 	if err != nil {
 		t.Errorf("error parsing path %v", err)
 	}
-	result := GeneratePropertyArray(p, "x", iriExpander)
+	result := GeneratePropertySet(p, "x", iriExpander)
 	actual := strings.Join(result.rego, "\n")
 	if strings.TrimSpace(expected) != strings.TrimSpace(actual) {
 		t.Errorf("unexpected rego code, expected:\n%s----actual:\n%s", expected, actual)

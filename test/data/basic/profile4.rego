@@ -246,7 +246,7 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_2[nodes] {
+gen_path_set_rule_2[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/shapes#schema",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -254,7 +254,7 @@ gen_path_rule_2[nodes] {
   nodes = x_0
 }
 
-gen_path_rule_4[nodes] {
+gen_path_set_rule_4[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/shapes#schema",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -262,14 +262,14 @@ gen_path_rule_4[nodes] {
   nodes = x_0
 }
 
-gen_path_rule_5[nodes] {
+gen_path_set_rule_5[nodes] {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/shapes#schema"]
   x_0 = tmp_x_0[_][_]
   nodes = x_0
 }
 
-gen_path_rule_7[nodes] {
+gen_path_set_rule_7[nodes] {
   init_y_0 = data.sourceNode
   nodes_tmp = object.get(init_y_0,"http://www.w3.org/ns/shacl#minLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -282,7 +282,7 @@ gen_path_rule_7[nodes] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Parameter"
   #  querying path: raml-shapes.schema
-  gen_propValues_1 = gen_path_rule_2 with data.sourceNode as x
+  gen_propValues_1 = gen_path_set_rule_2 with data.sourceNode as x
   not count(gen_propValues_1) <= 3
   _result_0 := trace("maxCount","http://a.ml/vocabularies/shapes#schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<=","actual": count(gen_propValues_1),"expected": 3})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
@@ -291,7 +291,7 @@ violation[matches] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Parameter"
   #  querying path: raml-shapes.schema
-  gen_propValues_3 = gen_path_rule_4 with data.sourceNode as x
+  gen_propValues_3 = gen_path_set_rule_4 with data.sourceNode as x
   not count(gen_propValues_3) >= 1
   _result_0 := trace("minCount","http://a.ml/vocabularies/shapes#schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_3),"expected": 1})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
@@ -300,12 +300,12 @@ violation[matches] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Parameter"
   #  querying path: raml-shapes.schema
-  ys = gen_path_rule_5 with data.sourceNode as x
+  ys = gen_path_set_rule_5 with data.sourceNode as x
   y_errorAcc0 = []
   ys_br_0 = [ ys_br_0_error|
     y = ys[_]
     #  querying path: shacl.minLength
-    gen_propValues_6 = gen_path_rule_7 with data.sourceNode as y
+    gen_propValues_6 = gen_path_set_rule_7 with data.sourceNode as y
     not count(gen_propValues_6) >= 1
     _result_0 := trace("minCount","http://www.w3.org/ns/shacl#minLength",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
     ys_br_0_inner_error := error("nested",y,"error in nested nodes under http://a.ml/vocabularies/shapes#schema",[_result_0])

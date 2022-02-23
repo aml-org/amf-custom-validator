@@ -246,7 +246,7 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_3[nodes] {
+gen_path_set_rule_3[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#datatype",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -254,7 +254,7 @@ gen_path_rule_3[nodes] {
   nodes = x_0
 }
 
-gen_path_rule_6[nodes] {
+gen_path_set_rule_6[nodes] {
   init_x_0 = data.sourceNode
   nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#name",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
@@ -267,14 +267,14 @@ gen_path_rule_6[nodes] {
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/shapes#Shape"
   #  querying path: shacl.datatype
-  gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
+  gen_x_check_2_array = gen_path_set_rule_3 with data.sourceNode as x
   gen_x_check_2_scalar = gen_x_check_2_array[_]
   gen_x_check_2 = as_string(gen_x_check_2_scalar)
   gen_inValues_1 = { "http://www.w3.org/2001/XMLSchema#string"}
   not gen_inValues_1[gen_x_check_2]
   _result_0 := trace("in","http://www.w3.org/ns/shacl#datatype",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"http://www.w3.org/2001/XMLSchema#string\"]"})
   #  querying path: shacl.name
-  gen_x_check_5_array = gen_path_rule_6 with data.sourceNode as x
+  gen_x_check_5_array = gen_path_set_rule_6 with data.sourceNode as x
   gen_x_check_5_scalar = gen_x_check_5_array[_]
   gen_x_check_5 = as_string(gen_x_check_5_scalar)
   gen_inValues_4 = { "string"}

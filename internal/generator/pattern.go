@@ -10,7 +10,7 @@ func GeneratePattern(pattern profile.PatternRule, iriExpander *misc.IriExpander)
 	path := pattern.Path
 	var rego []string
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertyArray(path, pattern.Variable.Name, iriExpander)
+	pathResult := GeneratePropertySet(path, pattern.Variable.Name, iriExpander)
 	checkVariable := profile.Genvar(fmt.Sprintf("%s_node", pathResult.rule))
 	rego = append(rego, fmt.Sprintf("%s_array = %s with data.sourceNode as %s", checkVariable, pathResult.rule, pattern.Variable.Name))
 	rego = append(rego, fmt.Sprintf("%s = %s_array[_]", checkVariable, checkVariable))

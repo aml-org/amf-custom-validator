@@ -55,6 +55,11 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, newIn(false, variable, path, l))
 	}
 
+	unique, err := constraint.Get("uniqueValues").Bool()
+	if err == nil {
+		acc = append(acc, newUniqueValues(false, variable, path, unique))
+	}
+
 	containsAll, err := constraint.Get("containsAll").Array()
 	if err == nil {
 		l, err := scalarList(containsAll)

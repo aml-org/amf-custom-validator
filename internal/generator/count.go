@@ -33,7 +33,7 @@ func generateCountRule(count profile.CountRule, condition string, iriExpander *m
 	singleValueVariable := fmt.Sprintf("%s_elem", arrayVariable)
 
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertyArray(path, count.Variable.Name, iriExpander)
+	pathResult := GeneratePropertySet(path, count.Variable.Name, iriExpander)
 	rego = append(rego, fmt.Sprintf("%s = %s with data.sourceNode as %s", arrayVariable, pathResult.rule, count.Variable.Name))
 
 	var targetValueVariable string

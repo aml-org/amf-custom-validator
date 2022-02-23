@@ -1,0 +1,56 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/uniqueValues-scalar.test#InvalidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/uniqueValues-scalar.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/uniqueValues-scalar.test#firstProperty": [
+      {"@id": "http://a.ml#A0"},
+      {"@id": "http://a.ml#A1"},
+      {"@id": "http://a.ml#B"}
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/uniqueValues-scalar.test#ValidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/uniqueValues-scalar.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/uniqueValues-scalar.test#firstProperty": [
+      {"@id": "http://a.ml#A0"},
+      {"@id": "http://a.ml#B"}
+    ]
+  },
+  {
+    "@id": "http://a.ml#A0",
+    "@type": [
+      "http://a.ml#IntermediateNode"
+    ],
+    "http://datashapes.org/sh/tests/core/property/uniqueValues-scalar.test#secondProperty": [
+      {
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://a.ml#A1",
+    "@type": [
+      "http://a.ml#IntermediateNode"
+    ],
+    "http://datashapes.org/sh/tests/core/property/uniqueValues-scalar.test#secondProperty": [
+      {
+        "@value": "A"
+      }
+    ]
+  },
+  {
+    "@id": "http://a.ml#B",
+    "@type": [
+      "http://a.ml#IntermediateNode"
+    ],
+    "http://datashapes.org/sh/tests/core/property/uniqueValues-scalar.test#secondProperty": [
+      {
+        "@value": "B"
+      }
+    ]
+  }
+]
