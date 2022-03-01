@@ -1,0 +1,465 @@
+{
+  "@graph": [
+    {
+      "@id": "null/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#BaseUnitProcessingData"
+      ],
+      "http://a.ml/vocabularies/document#transformed": false
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/web-api",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "http://a.ml/vocabularies/apiContract#API",
+        "http://a.ml/vocabularies/document#RootDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "negative2.graphql"
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql",
+      "http://a.ml/vocabularies/document#declares": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page"
+        },
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection"
+        }
+      ],
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://./test/data/production/graphql/negative2.graphql#/web-api"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "null/BaseUnitProcessingData"
+      }
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor"
+        },
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "Page",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes"
+        },
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "ConstellationConnection",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor/scalar/default-scalar"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 0,
+      "http://www.w3.org/ns/shacl#name": "endCursor",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor/scalar/default-scalar"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 0,
+      "http://www.w3.org/ns/shacl#name": "startCursor",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/array/default-array"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 0,
+      "http://www.w3.org/ns/shacl#name": "nodes",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount/scalar/default-scalar"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#name": "totalCount",
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor/scalar/default-scalar",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor/scalar/default-scalar/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor/scalar/default-scalar",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor/scalar/default-scalar/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/production/graphql/negative2.graphql#/shape/Page",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(1,0)-(4,0)]"
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/array/default-array",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ArrayShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#items": {
+        "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/array/default-array/items/union/default-union"
+      },
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/array/default-array/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount/scalar/default-scalar",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#integer"
+        }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount/scalar/default-scalar/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(5,0)-(8,0)]"
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor/scalar/default-scalar/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor/scalar/default-scalar/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(2,2)-(2,13)]"
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor/scalar/default-scalar/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor/scalar/default-scalar/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(3,2)-(3,15)]"
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/array/default-array/items/union/default-union",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#UnionShape",
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#anyOf": [
+        {
+          "@id": "null/nullwrapper/nil/default-nil"
+        },
+        {
+          "@id": "null/nullwrapper/unresolved"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/array/default-array/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/array/default-array/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(6,2)-(6,23)]"
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount/scalar/default-scalar/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount/scalar/default-scalar/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(7,2)-(7,17)]"
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor/scalar/default-scalar/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/endCursor/scalar/default-scalar",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(2,13)-(2,13)]"
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor/scalar/default-scalar/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/production/graphql/negative2.graphql#/shape/Page/property/startCursor/scalar/default-scalar",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(3,15)-(3,15)]"
+    },
+    {
+      "@id": "null/nullwrapper/nil/default-nil",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#NilShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ]
+    },
+    {
+      "@id": "null/nullwrapper/unresolved",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "http://www.w3.org/ns/shacl#Shape",
+        "http://a.ml/vocabularies/shapes#Shape",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#sources": [
+        {
+          "@id": "null/nullwrapper/unresolved/source-map"
+        }
+      ]
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/array/default-array/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/nodes/array/default-array",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(6,9)-(6,23)]"
+    },
+    {
+      "@id": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount/scalar/default-scalar/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "file://./test/data/production/graphql/negative2.graphql#/shape/ConstellationConnection/property/totalCount/scalar/default-scalar",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(7,14)-(7,17)]"
+    },
+    {
+      "@id": "null/nullwrapper/unresolved/source-map",
+      "@type": [
+        "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#lexical": [
+        {
+          "@id": "null/nullwrapper/unresolved/source-map/lexical/element_0"
+        }
+      ]
+    },
+    {
+      "@id": "null/nullwrapper/unresolved/source-map/lexical/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "null/nullwrapper/unresolved",
+      "http://a.ml/vocabularies/document-source-maps#value": "[(6,10)-(6,10)]"
+    }
+  ]
+}
+

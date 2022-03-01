@@ -1,0 +1,21 @@
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+type Planet {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  name: String
+  description: String
+  planetType: PlanetTypeEnum
+  galaxy: Galaxy!
+}
+
+type Galaxy {
+  id: ID!
+  name: String
+}

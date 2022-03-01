@@ -1,0 +1,8 @@
+type Page {
+  endCursor: String
+  startCursor: String
+}
+type ConstellationConnection {
+  nodes: [Constellation]
+  totalCount: Int!
+}

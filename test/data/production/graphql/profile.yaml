@@ -1,0 +1,125 @@
+#%Validation Profile 1.0
+profile: GraphQL Best Practices
+
+violation:
+  - mutations-must-have-input-object-types
+  - page-info-type-defined
+  - connection-schema-defined
+  - consistent-mutation-naming
+  - connect-all-objects-by-nesting
+
+validations:
+
+  mutations-must-have-input-object-types:
+    message: |
+      Mutations must accept non-nullabel input objects to make it easy to evolve the schema of the mutation without
+      breaking backwards compatibility
+    targetClass: apiContract.Operation
+    if:
+      propertyConstraints:
+        apiContract.method:
+          in:
+            - "post"
+    then:
+      propertyConstraints:
+        apiContract.expects / apiContract.parameter:
+          nested:
+            propertyConstraints:
+              apiContract.required:
+                in:
+                  - true
+              shapes.schema / @type:
+                containsAll:
+                  - "http://www.w3.org/ns/shacl#NodeShape"
+
+  connection-schema-defined:
+    message: |
+      Use the standard Relation style connection schema with all the default fields
+    targetClass: shacl.NodeShape
+    if:
+      propertyConstraints:
+        shacl.name:
+          pattern: .*Connection
+    then:
+      and:
+        - propertyConstraints:
+            shacl.property:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    shacl.name:
+                      in:
+                        - nodes
+        - propertyConstraints:
+            shacl.property:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    shacl.name:
+                      in:
+                        - totalCount
+                    shacl.minCount:
+                      in:
+                        - 1
+        - propertyConstraints:
+            shacl.property:
+              atLeast:
+                count: 1
+                validation:
+                  propertyConstraints:
+                    shacl.name:
+                      in:
+                        - pageInfo
+                    shacl.minCount:
+                      in:
+                        - 1
+
+  page-info-type-defined:
+    message: |
+      Use the standard Relay style PageInfo pagination information
+    targetClass: doc.Document
+    propertyConstraints:
+      doc.declares:
+        atLeast:
+          count: 1
+          validation:
+            propertyConstraints:
+              shacl.name:
+                in:
+                  - PageInfo
+
+  consistent-mutation-naming:
+    message: |
+      Mutations must be named consistently following the "(action)(type)Input" convention where (action) is Create, 
+      Update or Delete and (type) is the name of the type or entity, which is being updated. We also need to ensure 
+      that some common patterns like pagination are named in the same manner.
+    targetClass: apiContract.Operation
+    if:
+      propertyConstraints:
+        apiContract.method:
+          in:
+            - "post"
+    then:
+      propertyConstraints:
+        apiContract.expects / apiContract.parameter / shapes.schema / doc.link-label:
+          pattern: ^(Create|Update|Delete)(.*)Input$
+
+  connect-all-objects-by-nesting:
+    message: |
+      Objects must be nested instead of storing just IDs to maximize the data that can be fetched in a single request.
+    targetClass: shacl.NodeShape
+    propertyConstraints:
+      shacl.property:
+        atMost:
+          count: 1
+          validation:
+            rego: |
+              ranges = nested_nodes with data.nodes as $node["http://a.ml/vocabularies/shapes#range"]
+              formats = [ r |
+                range = ranges[_][_]
+                format = object.get(range,"http://a.ml/vocabularies/shapes#format","")
+                r = format
+              ]
+              $result = (formats == ["ID"])
