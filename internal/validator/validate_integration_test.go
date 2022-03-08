@@ -5,17 +5,17 @@ import (
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"github.com/aml-org/amf-custom-validator/test"
 	"github.com/stretchr/testify/assert"
-	"os"
+	"io/ioutil"
 	"regexp"
 	"strings"
 	"testing"
 )
 
 func TestBuiltInHttpDisabled(t *testing.T) {
-	prof, err := os.ReadFile("../../test/data/integration/built-in-security/http-block.yaml")
+	prof, err := ioutil.ReadFile("../../test/data/integration/built-in-security/http-block.yaml")
 	assert.Empty(t, err)
 	assert.NotEqual(t, len(prof), 0)
-	jsonldText, err := os.ReadFile("../../test/data/integration/built-in-security/positive.data.jsonld")
+	jsonldText, err := ioutil.ReadFile("../../test/data/integration/built-in-security/positive.data.jsonld")
 	assert.NotEqual(t, len(jsonldText), 0)
 	assert.Empty(t, err)
 	_, err = Validate(string(prof), string(jsonldText), false, nil)
