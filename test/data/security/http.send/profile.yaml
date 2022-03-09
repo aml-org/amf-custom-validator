@@ -1,0 +1,17 @@
+#%Validation Profile 1.0
+
+profile: TestBlock
+
+violation:
+  - testblock
+
+
+validations:
+
+  testblock:
+    message: Some message
+    targetClass: apiContract.WebAPI
+    not:
+      rego: |
+        http.send({"method": "get", "url": "https://www.google.com", "tls_use_system_certs": true })
+        $result = (null == null)
