@@ -52,7 +52,8 @@ func GenerateRego(profileText string, debug bool, eventChan *chan e.Event) (*gen
 }
 
 // unsafeBuiltinsMap When updating to 0.35 ast.NetLookupIPAddr will be available and needs to be added and blocked too
-var unsafeBuiltinsMap = map[string]struct{}{ast.HTTPSend.Name: {},
+var unsafeBuiltinsMap = map[string]struct{}{
+	ast.HTTPSend.Name:    {},
 	ast.WalkBuiltin.Name: {},
 	ast.OPARuntime.Name:  {},
 }
