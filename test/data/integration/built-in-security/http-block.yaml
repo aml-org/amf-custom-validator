@@ -17,4 +17,5 @@ validations:
         # net.lookup_ip_addr("https://www.google.com")
         http.send({"method": "get", "url": "https://www.google.com", "tls_use_system_certs": true })
         opa.runtime()
+        walk("", [[], ""])
         $result = (null == null)

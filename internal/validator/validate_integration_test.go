@@ -27,7 +27,10 @@ func TestBuiltInHttpDisabled(t *testing.T) {
 
 		split := re.Split(strings.ReplaceAll(err.Error(), "\n", ""), -1)
 
-		expected := []string{"2 errors occurred:", "unsafe built-in function calls in expression: http.send", "unsafe built-in function calls in expression: opa.runtime"}
+		expected := []string{"3 errors occurred:",
+			"unsafe built-in function calls in expression: http.send",
+			"unsafe built-in function calls in expression: opa.runtime",
+			"unsafe built-in function calls in expression: walk"}
 
 		assert.Equal(t, expected, split, "Expected validation to fail due to security violations")
 	}
