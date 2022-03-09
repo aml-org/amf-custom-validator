@@ -23,11 +23,11 @@ func TestBuiltInHttpDisabled(t *testing.T) {
 		assert.Fail(t, "Expected built-in security error")
 	} else {
 
-		re := regexp.MustCompile(" profile_testblock.rego:[0-9]+: rego_type_error: ")
+		re := regexp.MustCompile("profile_testblock.rego:[0-9]+: rego_type_error: ")
 
-		split := re.Split(err.Error(), -1)
+		split := re.Split(strings.ReplaceAll(err.Error(), "\n", ""), -1)
 
-		expected := []string{"1 error occurred:", "unsafe built-in function calls in expression: http.send"}
+		expected := []string{"2 errors occurred:", "unsafe built-in function calls in expression: http.send", "unsafe built-in function calls in expression: opa.runtime"}
 
 		assert.Equal(t, expected, split, "Expected validation to fail due to security violations")
 	}
