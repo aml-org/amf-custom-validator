@@ -1,0 +1,17 @@
+#%Validation Profile 1.0
+
+profile: TestBlock
+
+violation:
+  - testblock
+
+
+validations:
+
+  testblock:
+    message: Some message
+    targetClass: apiContract.WebAPI
+    not:
+      rego: |
+        opa.runtime()
+        $result = (null == null)
