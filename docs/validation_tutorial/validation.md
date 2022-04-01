@@ -360,7 +360,7 @@ java -jar amf.jar parse ./docs/validation_tutorial/examples/example2/api.json
 }
 ```
 
-If we now try to validate using the profile we have just defined, we will obtain a validation constraint pointing at the
+If we now try to validate using the profile we have just defined, we will obtain a validation constraint that points to the
 `ws` protocol.
 
 Notice how in this case the `pattern` validation constraint has been applied to both values of the `apiContract.scheme`
@@ -376,7 +376,7 @@ property.
 
 Validation constraints `minCount`, `maxCount`, and `exactCount` can be used to limit how many values a property in any target node can have.
 
-`minCount` is specially interesting since it can be used to make part of the spec optional, if set with a `minCount` value
+`minCount` is especially interesting since it can be used to make part of the spec optional, if set with a `minCount` value
 of zero or mandatory if `minCount` has a value major than zero.
 
 For example, the following profile makes it mandatory to provide the name of an operation, parsed as a node of class 
@@ -400,7 +400,7 @@ validations:
         minCount: 1
 ```
 
-In OAS 3.0 names for operations are provided through the `operationId` property, so the following API should trigger a
+In OAS 3.0, names for operations are provided through the `operationId` property, so the following API should trigger a
 validation error:
 
 ```yaml
@@ -420,7 +420,7 @@ If we provide the `operationId` value for the `get` operation in the `/test` end
 `maxCount` can be used to limit the maximum number of values a property can have in the parsed graph.
 
 For example we could modify the profile discussed in section 2.1 to limit not only the value of the protocol schemes but
-also the number of protocols that can defined o a single one:
+also the number of protocols that can defined on a single one:
 
 File: *./examples/example3/profile2.yaml*
 ```yaml
@@ -441,7 +441,7 @@ validations:
         maxCount: 1
 ```
 
-Now validating the previous OAS 2.0 spec defined in section 2.1 should produce two errors, one about the value of the
+After these changes, validating the previous OAS 2.0 spec defined in section 2.1 should produce two errors, one about the value of the
 schemes and another one about the maximum number of schemes defined.
 
 ### 2.3 minLength, maxLength and exactLength
@@ -468,7 +468,7 @@ validations:
     maxLength: 100
  ```
 
-Providing the following api we should obtain a validation error due to the length of the string provided in the description of our api.
+If we validate the following API, we should obtain a validation error due to the length of the string provided in the description of our API.
 
 ```yaml
 #%RAML 1.0
@@ -483,7 +483,7 @@ description: short description
 This set of constraints makes it possible to control the ranges of numeric values in the parsed graph.
 
 For example, the following profile uses these constraints to limit the range of values that are valid for the elements
- a defined for a RAML Array type:
+defined for a RAML Array type:
  
  File: *./examples/example4/profile.yaml*
  ```yaml
@@ -504,10 +504,10 @@ validations:
         maxExclusive: 50
  ```
 
-In this `array-limits` validaion rule, targetting all RAML arrays, parsed as `raml-shapes.ArrayShape` nodes, we have setup
-two constraints `minInclusive` and `maxExclusive` constraining the possible values for the elements in the array, parsed
+In this `array-limits` validation rule, we want to target all RAML arrays, parsed as `raml-shapes.ArrayShape` nodes. We have set up
+two constraints, `minInclusive` and `maxExclusive`, to constrain the possible values for the elements in the array, parsed
 by AMF as `shacl.minCount` properties in the output graph.
-The values are constrained betweeen the values 25 (included) and 50.
+The values are constrained betweeen the values 25 (inclusive) and 50.
 
 Provided a simple API defining some array types:
 
@@ -523,23 +523,23 @@ types:
     minItems: 100
 ```
 
-If we try to parse it using the previous validation profile we should obtain a validation error, since the `minItems` for
+If we try to parse it using the previous validation profile, we should obtain a validation error, since the `minItems` value for
 the defined array (100) does not fall between the [25,50) range.
 
 ### 2.5 datatype
 
 `datatype` is a constraint that limits the valid scalar value for a property in the parsed graph. This constraint is not
-specially useful in custom validations, since RAML, OAS and AsyncAPI have well defined types for all the properties, but
-it can still used to modify standard type definitions, for example, making it mandatory for a version to be an integer, 
+particularly useful in custom validations, since RAML, OAS and AsyncAPI have well defined types for all the properties. However, 
+it can still used to modify standard type definitions, such as making it mandatory for a version to be an integer
 instead of a string.
 
 ### 2.6 in
 
-`in` makes it possible to specify an enumeration of values that constraint the possible values for a certain property in
-a node. Values can be booleans, numeric values or strings.
+`in` makes it possible to specify an enumeration of values that constrain the possible values for a certain property in
+a node. Values can be booleans, numeric values, or strings.
 
-The following example rewrites the profile used as an example in section 2.1 to use a `in` constraint instead of `pattern`
-to constrain the possible values for the `schemes` defined by default in an API spec:
+The following example rewrites the profile used as an example in section 2.1. It uses an `in` constraint instead of `pattern`
+to constrain the possible values for the default `schemes` in an API spec:
 
 ```yaml
 #%Validation Profile 1.0
@@ -558,17 +558,17 @@ validations:
         in: [ http, https ]
 ``` 
 
-If we try to validate the same OAS 2 API defined in section 2.1 with this profile we wil obtain an equivalent violation.
+If we try to validate the OAS 2 API defined in section 2.1 with this profile we will obtain an equivalent violation.
 
 ### 2.7 containsAll
 
 `in` makes sure that the set of matching values in the input data is a subset or equal to the set of values provided
 in the constraint.
-Sometimes we want to assert that the matching values must be a superset or equal to a different set of values.
+Sometimes we want to require that the matching values must be a superset or equal to a different set of values.
 `containsAll` can be used in these situations to indicate the values that must be extended by the values in the input data.
 
-In the following example, we assert that the operations for any `apiContract:EndPoint` in an API must include at least the GET and POST
-operations using `containsAll`
+In the following example, we require that the operations for any `apiContract:EndPoint` in an API must include at least the GET and POST
+operations using `containsAll`.
 
 ```yaml
 #%Validation Profile 1.0
@@ -593,11 +593,11 @@ validations:
 `containsSome` is an alternative to `containsAll` where instead of checking that the input selected values are equal or 
 a superset of the provided values, we are checking that the interesection between the values is not empty.
 
-In other words we are checking that at least one of the provided values is actually contained in the set of matching input
+In other words we are checking that at least one of the provided values is in the set of matching input
 values.
 
-the previous example could be rewritten using `containsSome` and in this case, instead of checking that the operations GET and
-POST are included, we would be checking that at least the GET or the POST operation are defined for each `apiContract:EndPoint`.
+The previous example could be rewritten using `containsSome` and in this case, instead of checking that both of the operations GET and
+POST are included, we would be checking that either the GET or the POST operation are defined for each `apiContract:EndPoint`.
 
 ```yaml
 #%Validation Profile 1.0
@@ -622,16 +622,16 @@ validations:
 Validation constraints discussed in section 2 are all validations over a single scalar property. In this section we will
 review validations constraining pairs of scalar properties:
 
-- *lessThanProperty*: establishes a less than constraint over the values of two scalar properties in a noe
-- *lessThanOrEqualsToProperty*: establishes a more than constraint over the values of two scalar properties in a noe
-- *equalsToProperty*: establishes an equality constraint over tha values of two scalar properties in a node
-- *disjointWithProperty*: establishes an inequality constraint over the values of two scalar properties in a node
+- *lessThanProperty*: Establishes a less than constraint over the values of two scalar properties in a node
+- *lessThanOrEqualsToProperty*: Establishes a more than constraint over the values of two scalar properties in a noe
+- *equalsToProperty*: Establishes an equality constraint over tha values of two scalar properties in a node
+- *disjointWithProperty*: Establishes an inequality constraint over the values of two scalar properties in a node
 
 The rest of this section will review and provide examples of these constraints.
 
 ### 3.1 lessThanProperty, lessThanOrEqualsToProperty
 
-`lessThanProperty` and `lessThanOrEqualsToProperty` makes it possible to define that the values in one property of a node
+`lessThanProperty` and `lessThanOrEqualsToProperty` make it possible to define that the values in one property of a node
 must be less than or less than or equal to the values in another property of the same node.
 
 The following OAS 3.0.0 API spec defines maximum and minimum length for a string schema called `name`:
@@ -701,13 +701,13 @@ violation:
 validations:
   test-min-length:
     targetClass: shapes.ScalarShape
-    message: Min length must be less than max length must match in scalar
+    message: Min length must be less than max length and must match in scalar
     propertyConstraints:
       shacl.minLength:
        lessThanProperty: shacl.maxLength
 ```
 
-Notice how the value fot the `lessThanProperty` is another property that is the target of the comparison, in this case `shacl.maxLength`.
+Notice how the value for the `lessThanProperty` is another property that is the target of the comparison, in this case `shacl.maxLength`.
 
 
 ### 3.2 equalsToProperty, disjointWithProperty
@@ -715,8 +715,8 @@ Notice how the value fot the `lessThanProperty` is another property that is the 
 `equalsToProperty` and `disjointWithProperty` makes it possible to state that the values in two properties of the same
 node must have the same or different values.
 
-The following profile will define two validation rules one stating that `minLength` and `maxLength` for a string as shown
-in example 3.1 must be equal or different:
+The following profile will define two validation rules, one stating that `minLength` and `maxLength` for a string, as shown
+in example 3.1, must be equal or different:
 
 File: *./examples/example7/profile.yaml*
 ```yaml
@@ -747,8 +747,8 @@ validations:
 If we try to validate the example API spec in section 3.1 with this new profile, the validation about values being the
 same will fail.
 
-If we modify the spec to provide the same value and we re-validate, two new errors will be shown now for the complementary
-validation about values being disjoint.
+If we modify the spec to provide the same value and we re-validate, two new errors will now be shown for the complementary
+validation about values being disjointed.
 
 ```yaml
 openapi: 3.0.0
