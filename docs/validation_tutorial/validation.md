@@ -768,21 +768,21 @@ paths: {}
 
 ## 4. Nested node validations and property paths
 
-So far we have discussed examples where constraints were set over properties for a single node.
+So far we have discussed examples where constraints were set for properties for a single node.
 
-The custom validation mechanism also supports defining validations over multiple nodes in the same validation rules,
+The custom validation mechanism also supports defining validations for multiple nodes in the same validation rules,
 connecting them with nesting constraints:
 
-- *nested*: constrains all nested nodes connected to the target node through some property
+- *nested*: Constrains all nested nodes connected to the target node through some property
 
-As an alternative, the properties for constraints can be defined as a property paths that make it possible to express
-nesting traversing the output graph into a simple an efficient way
+As an alternative, the properties for constraints can be defined as property paths that make it possible to express
+nesting traversing the output graph in a simple and efficient way.
 
 The following sections review each of these constraints.
 
 ### 4.1 nested
 
-`nested` can be used to add additional constraints to nodes nested under the target node and connected through some
+`nested` can be used to add additional constraints to nodes nested under the target node and connected through a
 specific property.
 
 Consider the following simple RAML API:
@@ -803,12 +803,12 @@ title: Test API
           b:
 ```
 
-In this API spec, two scalar RAML types are defined `a` and `b`. `a` is defined as the schema for a `queryParameter` while
+In this API spec, two scalar RAML types are defined, `a` and `b`. `a` is defined as the schema for a `queryParameter` while
 `b` is defined as the schema for a property in the request payload.
 
 We could use the `nested` constraint to define a validation only for scalar RAML types defined as schema for parameters. 
 In the parsed graph, `apiContract:Parameter` nodes are connected to the `raml-shapes:ScalarShape` used in parameters through
-the `raml-shapes:schema` property so that is the property we need to connect the nested validation.
+the `raml-shapes:schema` property, so that is the property we need to connect the nested validation.
 
 File: *./examples/example8/profile.yaml*
 ```yaml
@@ -832,8 +832,8 @@ validations:
               minCount: 1
 ```
 
-With this profile, if we try to validate the API we will obtain one validation violation for the scalar of parameter `a`
-while the scalar `b` validates correctly:
+With this profile, if we try to validate the API, we will obtain a validation violation for the scalar of parameter `a`
+while the scalar `b` validates correctly.
 
 Nested can be applied multiple times in a validation rule definition. For example the previous rule could be rewritten
 targeting the `apiContract:Request` node that is the parent of the `apiContract:Parameter` node:
@@ -866,11 +866,11 @@ validations:
 
 ### 4.2 Property paths
 
-At the end of section 4.1 we have seen how multiple nested clauses can be used to describe a path of validations through
+At the end of section 4.1 we saw how multiple nested clauses can be used to describe a path of validations through
 the parsed output graph.
 
-This can be useful if defining additional constraints at the different nodes being traversed is required, however, as a
-mechanism to reach a target nested node can be too verbose and error prone.
+This way can be useful if we want to define additional constraints at different nodes that are being traversed, but as a
+mechanism to reach a target nested node, this way is too verbose and error prone.
 
 Property paths are a simple way of expressing traversals through the graph being validated to reach the target node.
 
@@ -889,10 +889,10 @@ Let's review each of these types of path expressions.
 
 #### 4.2.1 Sequence paths
 
-Sequence paths are just concatenation of properties from one node to a set of target nodes.
+Sequence paths are a concatenation of properties from one node to a set of target nodes.
 
 The last example of section 4.1 could be rewritten to simply use a path `apiContract.parameter / raml-shapes.schema` 
-instead of two nested clauses.
+instead of two nested clauses:
 
 File: *./examples/example9/profile.yaml*
 ```yaml
@@ -917,11 +917,11 @@ validations:
 
 #### 4.2.2 Alternate paths
 
-Alternate paths makes it possible to reach target nodes in different parts of the output graph that must be validated in
+Alternate paths make it possible to reach target nodes in different parts of the output graph that must be validated in
 the same way.
 
-For example, in the API spec used as example in section 4.1 scalar RAML types could appear in parameters but also as
-properties in the payload. If we wanted to constrain both types of scalar types, and only the ones at those positions, 
+For example, in the API spec used as example in section 4.1, scalar RAML types are used in parameters and also as
+properties in the payload. If we want to constrain both types of scalar types, and only the ones at those positions, 
 with the same constraint for `minLength`, we could use an `alterante path` to apply it in both cases:
 
 File: *./examples/example9/profile2.yaml*
@@ -951,17 +951,17 @@ expression `apiContract.expects / (apiContract.parameter / raml-shapes.schema | 
 
 Once the target nodes have been selected we validate the `shacl.minLength` property in the node through the `nested` constraint.
 
-If we try to parse the example in section 4.1 with this profile we will obtain two validation errors, one for the parameter, 
+If we try to parse the example in section 4.1 with this profile we will obtain two validation errors, one for the parameter and 
 another one for the body.
 
 #### 4.2.3 Inverse paths
 
-Inverse paths traverse the graph in the opposite direction from target node to parent node, instead of from target node
+Inverse paths traverse the graph in the opposite direction from target node to parent node instead of from target node
 to nested node.
 
 ## 5. Qualified constraints
 
-Qualified constraints makes it possible to express validation rules that match only a minimum or maximum number of the target
+Qualified constraints make it possible to express validation rules that match only a minimum or maximum number of the target
 nodes selected by a particular constraint.
 
 These are the qualified constraints supported:
@@ -969,7 +969,7 @@ These are the qualified constraints supported:
 - *atLeast*: Makes it possible to check that a particular validation rule matches a minimum number of the target nodes
 - *atMost*: Makes it possible to check that a particular validation rule matches a maximum number of the target nodes
 
-The following API describes a RAML API with different endpoints supporting each a different set of HTTP operations:
+The following API describes a RAML API with different endpoints supporting each different set of HTTP operations:
 
 File: *./examples/example10/api.raml*
 ```yaml
@@ -1070,10 +1070,10 @@ java -jar amf.jar parse ./docs/validation_tutorial/examples/example10/api.raml
 }
 ```
 
-Notice how each parsed `apiContract:EndPoint` has an associated `apiContrat.Operation` each with a number of defined 
+Notice how each parsed `apiContract:EndPoint` has an associated `apiContrat.Operation`, each with a number of defined 
 `apiContract:method` (`get` or `post`).
 
-We could define a profile to check that each endpoint hast *at least* one POST operation:
+We could define a profile to check that each endpoint has *at least* one POST operation:
 
 File: *./examples/example10/profile.yaml*
 ```yaml
@@ -1099,9 +1099,9 @@ validations:
                 in: [ post ]
 ```
 
-If we try to validate the API against this profile we will get one error about the endpoints without the post operation.
+If we try to validate the API against this profile, we will get an error about the endpoints without the post operation.
 
-In the same way we could generate a profile validating that an API is read-only by validating that no endpoint has a 
+In the same way, we could generate a profile validating that an API is read-only by validating that no endpoint has a 
 put, patch, post or delete methods using a `atMost` qualified constraint with value `0`:
 
 File: *./examples/example10/profile2.yaml*
@@ -1128,11 +1128,11 @@ validations:
                 in: [ post, put, patch, delete ]
 ```
 
-Trying to parse with this new profile will raise a validation error for the endpoint with a `post` method.
+Trying to parse with this new profile will result in a validation error for the endpoint with a `post` method.
 
 ## 6. Logical constraints
 
-Logical constraints makes it possible to combine set of constraints using basic boolean logic operators like: `and`, `or` and
+Logical constraints make it possible to combine set of constraints using basic boolean logic operators like: `and`, `or` and
 `not`.
 
 - *and*: Combines a set of validation rules using a logical and
@@ -1142,7 +1142,7 @@ Logical constraints makes it possible to combine set of constraints using basic 
 Logical constraints are introduced at the top level definition of a validation rule and can be combined and nested to achieve
 complex validation logic.
 
-In the following sections we will review each of this constraints with some examples.
+In the following sections we will review each of these constraints with some examples.
 
 ### 6.1 and
 
@@ -1167,9 +1167,9 @@ title: Test API
       401:
 ```
 
-The AMF model uses a single operation with multiple Response nodes for each status code that is defined.
+The AMF model uses a single operation with multiple response nodes for each status code that is defined.
 
-We could write a simple validation profile to check that every get operation has defined documentation for status codes 
+We could write a simple validation profile to check that every get operation has  documentation defined for status codes 
  in the ranges 2XX, 4XX and 5XX.
  
  File: *./examples/example11/profile.yaml*
@@ -1213,11 +1213,11 @@ validations:
                     pattern: ^5[0-9]{2}$
 ```
 
-If we validate the API spec with this profile an error will be reported for the missing error in the 5XX range.
+If we validate the API spec with this profile, an error will be reported for the missing error in the 5XX range.
 
 ### 6.2 or
 
-In section 6.1 we have defined a validation profile with a rule to validate that all operation has status codes defined
+In section 6.1 we have defined a validation profile with a rule to validate that all operations have status codes defined
 in the ranges 2XX, 3XX and 5XX.
 
 However sometimes we would like to express conditions for certain target nodes to validate. `or` logical constraints can
@@ -1359,8 +1359,8 @@ validations:
 
 ### 6.5 conditionals
 
-Sometimes constraints must be expressed as conditional statements, for example, in the following profile we are checking that
-if a field is named `created_at` must have a schema of type `dateTime`:
+Sometimes constraints must be expressed as conditional statements. For example, in the following profile we are verifying that
+if a field is named `created_at`, it has a schema of type `dateTime`:
 
 ```yaml
 #%Validation Profile 1.0
@@ -1388,7 +1388,7 @@ validations:
 In the example we are using [material implication](https://en.wikipedia.org/wiki/Material_implication_(rule_of_inference)) to express the condition
 using an `or` constraint.
 
-The same constraint can be rewritten to use directly the `if` / `then` conditional constraint:
+The same constraint can be rewritten to use the `if` / `then` conditional constraint directly:
 
 ```yaml
 #%Validation Profile 1.0
@@ -1420,13 +1420,13 @@ Optionally, the `else` clause can also be used to define a constraint for the ca
 
 Validation can be written directly using the [Rego policy language](https://www.openpolicyagent.org/docs/latest/policy-language/) provided by the [Open Policy Agent](https://www.openpolicyagent.org/) initiative.
 
-Rego rules are defined as a template aht work over a provided node in the input JSON-LD document, perform some kind of validation and returns a result.
+Rego rules are defined as a template that works over a provided node in the input JSON-LD document, performs some kind of validation, and returns a result.
 The input node is passed to the Rego template code through the `$node` variable and the positive result of the check must be stored 
 in the `$result` variable.
 
 The code must contain a validation that holds true for all nodes in the spec being selected by the validation containing the Rego rule.
 
-The following profile writes a simple rule to check if the version of the apiContract.WebAPI spec is defined:
+The following profile writes a simple rule to check whether the version of the apiContract.WebAPI spec is defined:
 
 ```yaml
 #%Validation Profile 1.0
@@ -1454,12 +1454,12 @@ validations:
       $result = (count(common_tags) == count(operation_tags))
 ```
 
-As you can see the snippet is checking that the provided `$node` storing the top level API node in this case, as selected
-by the `targetClass: apiContract.WebAPI` validation target in the validation matches a particular condition over the 
-declared tags in the API and thags being used in all the operations.
+As you can see, the snippet is checking that the provided `$node`, which stores the top level API node in this case, as selected
+by the `targetClass: apiContract.WebAPI` validation target in the validation, matches a particular condition in the 
+declared tags in the API and in the tags being used in all of the operations.
 
 The final result is being stored in the `$result` variable. 
 
-To write the Rego rule, a set of auxiliary Rego rules to navigate the JSON-LD graph can be used like the `collect` and `collect_values` one used in the example.
+To write the Rego rule, a set of auxiliary Rego rules to navigate the JSON-LD graph can be used, such as the `collect` and `collect_values` rules used in the example.
 
-Rego constraints can be used in any place where a regular constrain will be used. They can be nested in other complex constraints.
+Rego constraints can be used anywhere a regular constraint can be used. They can be nested in other complex constraints.
