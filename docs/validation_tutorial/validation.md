@@ -420,7 +420,7 @@ If we provide the `operationId` value for the `get` operation in the `/test` end
 `maxCount` can be used to limit the maximum number of values a property can have in the parsed graph.
 
 For example we could modify the profile discussed in section 2.1 to limit not only the value of the protocol schemes but
-also the number of protocols that can defined on a single one:
+also the number of protocols that can defined on a single Web API:
 
 File: *./examples/example3/profile2.yaml*
 ```yaml
@@ -701,7 +701,7 @@ violation:
 validations:
   test-min-length:
     targetClass: shapes.ScalarShape
-    message: Min length must be less than max length and must match in scalar
+    message: Min length must be less than max length
     propertyConstraints:
       shacl.minLength:
        lessThanProperty: shacl.maxLength
@@ -806,7 +806,7 @@ title: Test API
 In this API spec, two scalar RAML types are defined, `a` and `b`. `a` is defined as the schema for a `queryParameter` while
 `b` is defined as the schema for a property in the request payload.
 
-We could use the `nested` constraint to define a validation only for scalar RAML types defined as schema for parameters. 
+The `nested` constraint can be used to define validations for scalar RAML types that are used as schemas for parameters. 
 In the parsed graph, `apiContract:Parameter` nodes are connected to the `raml-shapes:ScalarShape` used in parameters through
 the `raml-shapes:schema` property, so that is the property we need to connect the nested validation.
 
@@ -872,7 +872,7 @@ the parsed output graph.
 This way can be useful if we want to define additional constraints at different nodes that are being traversed, but as a
 mechanism to reach a target nested node, this way is too verbose and error prone.
 
-Property paths are a simple way of expressing traversals through the graph being validated to reach the target node.
+Property paths are a simple way to traverse and reach the target node of the graph that is being validated.
 
 Property paths are built using a simple subset of SPARQL property path syntax:
 
@@ -1101,7 +1101,7 @@ validations:
 
 If we try to validate the API against this profile, we will get an error about the endpoints without the post operation.
 
-In the same way, we could generate a profile validating that an API is read-only by validating that no endpoint has a 
+In the same way as the preceding example, we could generate a profile validating that an API is read-only by validating that no endpoint has a 
 put, patch, post or delete methods using a `atMost` qualified constraint with value `0`:
 
 File: *./examples/example10/profile2.yaml*
@@ -1169,7 +1169,7 @@ title: Test API
 
 The AMF model uses a single operation with multiple response nodes for each status code that is defined.
 
-We could write a simple validation profile to check that every get operation has  documentation defined for status codes 
+We could write a simple validation profile to check that every get operation has documentation defined for status codes 
  in the ranges 2XX, 4XX and 5XX.
  
  File: *./examples/example11/profile.yaml*
@@ -1454,9 +1454,9 @@ validations:
       $result = (count(common_tags) == count(operation_tags))
 ```
 
-As you can see, the snippet is checking that the provided `$node`, which stores the top level API node in this case, as selected
-by the `targetClass: apiContract.WebAPI` validation target in the validation, matches a particular condition in the 
-declared tags in the API and in the tags being used in all of the operations.
+In the preceding example, the `targetClass: apiContract.WebAPI` validation target selects the top level API node, which is 
+referenced as `$node` in the Repo snippet. The snippet verifies that the provided `$node` (top level API node) declares all 
+the tags that are being used in each operation.
 
 The final result is being stored in the `$result` variable. 
 
