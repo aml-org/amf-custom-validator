@@ -1,5 +1,6 @@
 package profile_test_3
 
+report["profile"] = "Test 3"
 
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {
@@ -33,6 +34,18 @@ nested_values[nested_values] {
   nested_values := {value | n = data.nodes[_]; value := n[data.property]}
 }
 
+# Fetches all the subject nodes that have certain predicate and object
+search_subjects[valid_subject] {
+  predicate = data.predicate
+  object = data.object
+  
+  node = input["@ids"][_]
+  node_predicate_values = nodes_array with data.nodes as object.get(node,predicate,[])
+  node_predicate_value = node_predicate_values[_]
+  node_predicate_value["@id"] == object["@id"]
+  valid_subject = node
+}
+
 # collection functions
 
 # collect next set of nodes
@@ -57,22 +70,22 @@ collect_values[r] {
 # helper to check datatype constraints
 
 check_datatype(x,dt) = true {
-  dt == "xsd:string"
+  dt == "http://www.w3.org/2001/XMLSchema#string"
   is_string(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:integer"
+  dt == "http://www.w3.org/2001/XMLSchema#integer"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:float"
+  dt == "http://www.w3.org/2001/XMLSchema#float"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:boolean"
+  dt == "http://www.w3.org/2001/XMLSchema#boolean"
   is_boolean(x)
 }
 
@@ -84,10 +97,10 @@ check_datatype(x,dt) = true {
 
 check_datatype(x,dt) = false {
   not is_object(x)
-  dt != "xsd:string"
-  dt != "xsd:integer"
-  dt != "xsd:float"
-  dt != "xsd:boolean"
+  dt != "http://www.w3.org/2001/XMLSchema#string"
+  dt != "http://www.w3.org/2001/XMLSchema#integer"
+  dt != "http://www.w3.org/2001/XMLSchema#float"
+  dt != "http://www.w3.org/2001/XMLSchema#boolean"
 }
 
 # Fetches all the nodes for a given RDF class
@@ -129,6 +142,28 @@ as_string(x) = json.marshal(x) {
 
 # Traces one evaluation of a constraint
 trace(constraint, resultPath, focusNode, traceValue) = t {
+  l := location(focusNode)  
+  t := {
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue,
+	"location": l
+  }
+}
+
+# Generates trace when lexical info is not available
+trace(constraint, resultPath, focusNode, traceValue) = t {
+  not location(focusNode)
+  t := {
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue
+  }
+}
+
+location(focusNode) = l {
   id := focusNode["@id"]
   location := input["@lexical"][id]
   raw_range := location["range"]
@@ -147,33 +182,31 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   	  "column": to_number(range_parts[3])
     }
   }
-  t := {
-	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
-    "component": constraint,
-    "resultPath": resultPath,
-    "traceValue": traceValue,
-	"location": {
-	  "@type": ["lexicalSchema:LocationNode", "lexical:Location"],
-      "uri": uri,
-      "range": range
-	}
-  }
-}
-
-trace(constraint, resultPath, focusNode, traceValue) = t {
-  id := focusNode["@id"]
-  not input["@lexical"][id]
-  t := {
-	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
-    "component": constraint,
-    "resultPath": resultPath,
-    "traceValue": traceValue
+  l := {
+  	"@type": ["lexicalSchema:LocationNode", "lexical:Location"],
+  	"uri": uri,
+  	"range": range
   }
 }
 
 # Builds an error message that can be returned to the calling client software
 error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
+  locationNode := location(focusNode)
+  e := {
+	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
+    "sourceShapeName": sourceShapeName,
+    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
+    "resultMessage": resultMessage,
+	"location": locationNode,	
+    "trace": traceLog
+  }
+}
+
+# Builds error message when lexical info is not available
+error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
+  id := focusNode["@id"]
+  not location(focusNode)
   e := {
 	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
@@ -213,37 +246,39 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_3[nodes] {
-  init_x_0__in_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
+gen_path_set_rule_3[nodes] {
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
-gen_path_rule_6[nodes] {
-  init_x_0__in_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__in_,"apiContract:method",[])
+gen_path_set_rule_6[nodes] {
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#method",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Operation"
+  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
   #  querying path: apiContract.method
-  gen_x_check_2_array = gen_path_rule_3 with data.sourceNode as x
+  gen_x_check_2_array = gen_path_set_rule_3 with data.sourceNode as x
   gen_x_check_2_scalar = gen_x_check_2_array[_]
   gen_x_check_2 = as_string(gen_x_check_2_scalar)
   gen_inValues_1 = { "get"}
   not gen_inValues_1[gen_x_check_2]
-  _result_0 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"get\"]"})
+  _result_0 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"get\"]"})
   #  querying path: apiContract.method
-  gen_x_check_5_array = gen_path_rule_6 with data.sourceNode as x
+  gen_x_check_5_array = gen_path_set_rule_6 with data.sourceNode as x
   gen_x_check_5_scalar = gen_x_check_5_array[_]
   gen_x_check_5 = as_string(gen_x_check_5_scalar)
   gen_inValues_4 = { "subscribe"}
   not gen_inValues_4[gen_x_check_5]
-  _result_1 := trace("in","apiContract.method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_5,"expected": "[\"subscribe\"]"})
+  _result_1 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_5,"expected": "[\"subscribe\"]"})
   matches := error("validation1",x,"This is the message",[_result_0,_result_1])
 }

@@ -130,7 +130,7 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                       cd /src
-                      if [ ${BRANCH_NAME} = "master" ]; then
+                      if [[ ${BRANCH_NAME} = "master" || ${BRANCH_NAME} =~ "release/*" ]]; then
                           IS_SNAPSHOT=false
                       else
                           IS_SNAPSHOT=true

@@ -2,10 +2,8 @@ package profile
 
 import (
 	"fmt"
-	"github.com/aml-org/amf-custom-validator/internal"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
-	"strings"
 )
 
 type DatatypeRule struct {
@@ -13,33 +11,10 @@ type DatatypeRule struct {
 	Argument string
 }
 
-func (r DatatypeRule) Clone() Rule {
-	return DatatypeRule{
-		AtomicStatement: AtomicStatement{
-			BaseStatement: BaseStatement{
-				Negated: r.Negated,
-				Name:    r.Name,
-			},
-			Variable: r.Variable,
-			Path:     r.Path,
-		},
-		Argument: r.Argument,
-	}
-}
-
 func (r DatatypeRule) Negate() Rule {
-	cloned := r.Clone()
-	switch c := cloned.(type) {
-	case DatatypeRule:
-		c.Negated = !r.Negated
-		return c
-	}
-	return cloned
-}
-
-func (r DatatypeRule) ValueHash() string {
-	v := fmt.Sprintf("%s%s", r.Name, r.Argument)
-	return internal.HashString(v)
+	negated := r
+	negated.Negated = !r.Negated
+	return negated
 }
 
 func (r DatatypeRule) String() string {
@@ -65,7 +40,7 @@ func parseDatatype(negated bool, variable Variable, path path.PropertyPath, argu
 			Variable: variable,
 			Path:     path,
 		},
-		Argument: strings.ReplaceAll(dt, ".", ":"),
+		Argument: dt,
 	}
 	return r, nil
 }

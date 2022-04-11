@@ -1,59 +1,166 @@
-# AMF OPA Validator
+# AMF Custom Validator
 
-Implementation of a validator for the AMF validation profile syntax backed by a rego translation.
+AMF Custom Validator is a tool for writing and validating semantic graphs.
 
-## Evironment
+It takes two inputs, data and constraints, and produces a validation report as output. The data input is a semantic
+graph written in JSON-LD syntax. The constraints input is called a _validation profile_ (or _ruleset_) which contains a
+series of constraints written in YAML syntax with a custom vocabulary.
 
-In order for the build and test process the following environment variales must be
-defined:
+AMF Custom Validator is implemented in Go and can be consumed as:
 
-- _GO_: path to the go binary going to be used to compile and run tests
-- _AMF_JAR_: path to an AMF fat jar going to be used to parse examples and validate the validation profile dialect
+* A Go library
+* A JS library, using a JS runtime with WASM support
+* A standalone CLI
 
-## Test
+# Getting stared
 
-`make test`
+Requirements:
 
+* Go 1.15
+* Make
 
-## Directory structure
+## Using the CLI
 
-- `cmd`
+To install the CLI run:
 
-Executable commands, currently only the validator entrypoint
+```shell
+make install
+```
 
-- `internal/parser`
+This will compile and add `acv` to your compiled Go binaries.
 
-Internal logic to parse validation profiles encoded in YAML.
+After installing run:
 
-- `internal/generator`
+```shell
+acv help
+acv validate PROFILE DATA
+```
 
-Transformation of a parsed validtion profile into a Rego module
+## Using the Go library
 
-- `internal/validator`
+To add the library to your Go project run in a shell:
 
-Evaluation of the generated Rego code against a JSON-LD payload. It includes the
-code to normalize and index the JSON-LD before evaluation.
+```shell
+go get github.com/aml-org/amf-custom-validator
+```
 
-- `pkg/validator`
+Using the validator in your project
 
-Code specific to generate the WebAssembly binary for JS. It requires to have enabled the
-JS build profile since it is using experimental `syscall/js` features
+```go
+package validation
 
-- `scripts`
+import (
+	acv "github.com/aml-org/amf-custom-validator/pkg"
+)
 
-Auxiliary scripts:
+func Validate() (string, error) {
+	// Read validation profile YAML file
+	var profile string = ""
 
-`gen_js_package`: generates the node WASM package
+	// Read data JSON-LD file
+	var data string = ""
 
-`gen_production_examples`: regenerates the JSON-LD for the RAML/OAS examples in the production tests. 
-The `AMF_JAR` environment variable pointing to the AMF jar file must be defined
+	// Call validation
+	report, err := acv.Validate(profile, data, false, nil)
+	
+	return report, err
+}
+```
 
-`gen_property_parser`: parsed the PEG grammar for the property path parser and generates the module in the `internal/parser` package.
+## Using the JS library
 
-- `third_party`
+The add the library to your JS project run in a shell:
 
-Dependencies with other tools including the AML dialect for the custom validation profile and the grammar for the property path parser
+```shell
+npm i @aml-org/amf-custom-validator
+```
 
-- `test`
+Using the validator in your project
 
-Test data for the project including `basic`, `integration` and `production` fixtures.
+```js
+var acv = require('@aml-org/amf-custom-validator')
+
+// Validator must be explicitly initialized
+acv.initialize(() => {
+
+    // Validation must be called after initialization in a callback
+    acv.validate(profile, data, false, (report, err) => {
+
+        // Validator must be exited on the last validator call
+        acv.exit();
+    });
+}); 
+```
+
+# How does it work
+
+The AMF Custom Validator is based on OPA (https://www.openpolicyagent.org/). OPA is the core validation engine which
+executes Rego code, a DSL for writing policies. The AMF Custom Validator works by:
+
+* Generating Rego code from validation profiles that OPA can execute
+* Normalizing input data to facilitate how the Rego code manages data
+
+After executing the validation, the AMF Custom Validator produces a validation report in JSON-LD syntax.
+
+---
+
+To obtain the outputs from the data normalization and rego code generation processes you can run:
+
+Data normalization
+
+```shell
+acv normalize DATA
+```
+
+Rego code generation
+
+```shell
+acv generate PROFILE
+```
+
+# Relation with AMF
+
+AMF is a framework capable of producing semantic graphs in JSON-LD syntax from API specification documents or arbitrary
+YAML/JSON documents thought AML. The AMF output can be used as the data input for the AMF Custom Validator. You can also
+check validation profile definitions with AMF.
+
+For more information on AMF check:
+* The [AMF GitHub repository](https://github.com/aml-org/amf)
+* The [AMF Documentation](https://a.ml/docs/)
+
+To integrate with AMF you can download an AMF CLI JAR with the following script
+
+```shell
+./scripts/download-amf-cli.sh
+```
+
+## Obtaining semantic data from API specs with AMF
+
+To run the CLI (Java 8 required) run:
+
+```shell
+# Simple parse
+java -jar amf.jar parse API_SPEC_FILE
+
+# Parse with lexical information to be used in validation report
+java -jar amf.jar parse API_SPEC_FILE --with-lexical
+
+# Parse with semantic extensions for parsing
+java -jar amf.jar parse API_SPEC_FILE --extensions SEMANTIC_EXTENSION_FILE
+```
+
+## Validating validation profile definitions with AMF
+
+For a complete guide on how to write validation profiles read
+the [validation tutorial](docs/validation_tutorial/validation.md).
+
+To validate your validation profile definition run:
+
+```shell
+java -jar amf.jar validate PROFILE
+```
+
+# Contributing
+
+For details on how to develop & contribute please refer to [contributing guide](docs/contributing.md)
+

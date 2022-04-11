@@ -4,21 +4,11 @@ profile: Spectral Base
 
 violation:
   - operation-2xx-response
-  - operation-operationId-unique
-#  - operation-parameters
   - path-params
-  - info-contact
-  - info-description
-  - info-license
-  - license-url
   - no-eval-in-markdown
   - no-script-tags-in-markdown
-  - openapi-tags
   - operation-default-response
-  - operation-description
   - operation-operationId
-  - operation-tags
-  - operation-tag-defined
   - path-declarations-must-exist
   - path-keys-no-trailing-slash
   - path-not-include-query
@@ -27,6 +17,14 @@ violation:
 warning:
   - operation-singular-tag
   - tag-description
+  - info-contact
+  - info-description
+  - info-license
+  - license-url
+  - openapi-tags
+  - operation-description
+  - operation-tags
+  - operation-tag-defined
 
 validations:
 
@@ -45,40 +43,6 @@ validations:
               apiContract.statusCode:
                 pattern: "2[0-9][0-9]"
 
-  # automatically enforced by AMF
-  operation-operationId-unique:
-    message: |
-      Every operation must have a unique operationId.
-
-      Why? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,
-      all sorts of things like that.
-    targetClass: apiContract.WebAPI
-    rego: |
-        o1 = collect with data.nodes as [$node] with data.property as "apiContract:endpoint"
-        operations = collect with data.nodes as o1 with data.property as "apiContract:supportedOperation"
-        operationIds = collect_values with data.nodes as operations with data.property as "apiContract:operationId"
-
-        $result = (count(operations) == count(operationIds))
-
-  # automatically enforced by AMF
-  operation-parameters:
-    # https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rulesundefined#operation-parameters
-    # This rule is automatically enforced by AMF in transformation.
-    # To enable this rule we should use the parsed Unit (instead of the transformed)
-    message: Operation parameters are unique and non-repeating.
-    targetClass: apiContract.Operation
-    rego: |
-      nested_nodes[parameters] with data.nodes as $node["apiContract:parameter"]
-      keys = [ desc |
-        parameter = parameters[_]
-        name = parameter["core:name"]
-        binding = parameter["apiContract:binding"]
-        desc = [name,binding]
-      ]
-      key_set = { e | e = keys[_] }
-      $result = (count(keys) == count(key_set))
-
-
   path-params:
     message: |
       Path parameters are correct and valid.
@@ -88,21 +52,21 @@ validations:
         2. Every path.parameters and operation.parameters parameter must be used in the path string.
     targetClass: apiContract.EndPoint
     rego: |
-      path = $node["apiContract:path"]
+      path = $node["http://a.ml/vocabularies/apiContract#path"]
       pathVariables = {v | ms = regex.find_all_string_submatch_n("{([a-z0-9_]+)}", path, -1); m = ms[_]; v = m[1] }
 
-      nested_nodes[operations] with data.nodes as $node["apiContract:supportedOperation"]
+      nested_nodes[operations] with data.nodes as $node["http://a.ml/vocabularies/apiContract#supportedOperation"]
       operation = operations[_]
 
-      nested_nodes[requests] with data.nodes as object.get(operation, "apiContract:expects", [])
+      nested_nodes[requests] with data.nodes as object.get(operation, "http://a.ml/vocabularies/apiContract#expects", [])
       request = requests[_]
 
-      nested_nodes[parameters] with data.nodes as object.get(request, "apiContract:uriParameter", [])
+      nested_nodes[parameters] with data.nodes as object.get(request, "http://a.ml/vocabularies/apiContract#uriParameter", [])
 
       declaredPathVariables = { desc |
         parameter = parameters[_]
-        name = parameter["core:name"]
-        parameter["apiContract:binding"] = "path"
+        name = parameter["http://a.ml/vocabularies/core#name"]
+        parameter["http://a.ml/vocabularies/apiContract#binding"] = "path"
         desc = name
       }
       $result = (pathVariables == declaredPathVariables)
@@ -158,7 +122,7 @@ validations:
     not:
       propertyConstraints:
         core.description:
-          pattern: "eval\\\\("
+          pattern: 'eval\('
 
   no-script-tags-in-markdown:
     message: |
@@ -230,16 +194,20 @@ validations:
     message: Operation tags should be defined in global tags.
     targetClass: apiContract.WebAPI
     rego: |
-      o1 = collect with data.nodes as [$node] with data.property as "apiContract:tag"
-      top_level_tags = collect_values with data.nodes as o1 with data.property as "core:name"
+      o1 = collect with data.nodes as [$node] with data.property as "http://a.ml/vocabularies/apiContract#tag"
+      top_level_tag_names = collect_values with data.nodes as o1 with data.property as "http://a.ml/vocabularies/core#name"
 
-      p1 = collect with data.nodes as [$node] with data.property as "apiContract:endpoint"
-      p2 = collect with data.nodes as p1 with data.property as  "apiContract:supportedOperation"
-      p3 = collect with data.nodes as p2 with data.property as "apiContract:tag"
-      operation_tags = collect_values with data.nodes as p3 with data.property as "core:name"
+      p1 = collect with data.nodes as [$node] with data.property as "http://a.ml/vocabularies/apiContract#endpoint"
+      p2 = collect with data.nodes as p1 with data.property as  "http://a.ml/vocabularies/apiContract#supportedOperation"
+      op_tags = collect with data.nodes as p2 with data.property as "http://a.ml/vocabularies/apiContract#tag"
+      operation_tag_names = collect_values with data.nodes as op_tags with data.property as "http://a.ml/vocabularies/core#name"
 
-      common_tags = operation_tags & top_level_tags
-      $result = (count(common_tags) == count(operation_tags))
+      invalid_tag_names = operation_tag_names - top_level_tag_names
+
+      invalid_tag_name = invalid_tag_names[_]
+      invalid_tag = [op_tag | op_tag := op_tags[_]; object.get(op_tag,"http://a.ml/vocabularies/core#name","") == invalid_tag_name][_]
+      $result = false
+      $traceNode = invalid_tag
 
   path-declarations-must-exist:
     message: Path parameter declarations cannot be empty, ex./given/{} is invalid.
@@ -260,7 +228,7 @@ validations:
     not:
       propertyConstraints:
         apiContract.path:
-          pattern: "\\\\/$"
+          pattern: '\/$'
 
   path-not-include-query:
     message: "Don't put query string items in the path, they belong in parameters with in: query."
@@ -268,7 +236,7 @@ validations:
     not:
       propertyConstraints:
         apiContract.path:
-          pattern: ".*\\\\?.*"
+          pattern: '.*\?.*'
 
   tag-description:
     message: |
@@ -288,8 +256,8 @@ validations:
     message: Each value of an enum must be different from one another.
     targetClass: shapes.ScalarShape
     rego: |
-      enum = object.get($node, "shacl:in",[])
+      enum = object.get($node, "http://www.w3.org/ns/shacl#in",[])
       enumValues = find with data.link as enum
-      props = [r | d = enumValues[_]; is_object(d); n=find with data.link as d; r=n["data:value"] ]
+      props = [r | d = enumValues[_]; is_object(d); n=find with data.link as d; r=n["http://a.ml/vocabularies/data#value"] ]
       propsSet = {r | v = props[_]; r=v}
       $result = (count(props) == count(propsSet))

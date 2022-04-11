@@ -3,14 +3,15 @@ package generator
 import (
 	"errors"
 	"fmt"
+	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"strings"
 )
 
-func GenerateTopLevelExpression(exp profile.Rule) string {
+func GenerateTopLevelExpression(exp profile.Rule, iriExpander *misc.IriExpander) string {
 	switch e := exp.(type) {
 	case profile.TopLevelExpression:
-		return generateTopLevel(e)
+		return generateTopLevel(e, iriExpander)
 	case profile.NestedExpression:
 		panic(errors.New("nested expressions cannot be generated as a top level expression"))
 	default:
@@ -18,33 +19,33 @@ func GenerateTopLevelExpression(exp profile.Rule) string {
 	}
 }
 
-func GenerateNestedExpression(exp profile.Rule) []GeneratedRegoResult {
+func GenerateNestedExpression(exp profile.Rule, iriExpander *misc.IriExpander) []GeneratedRegoResult {
 	switch e := exp.(type) {
 	case profile.TopLevelExpression:
 		panic(errors.New("nested expressions not supported yet"))
 	case profile.NestedExpression:
-		return generateNested(e)
+		return generateNested(e, iriExpander)
 	default:
 		panic(errors.New(fmt.Sprintf("expected expression or top-level expression, got %v", exp)))
 	}
 }
 
-func generateTopLevel(exp profile.TopLevelExpression) string {
+func generateTopLevel(exp profile.TopLevelExpression, iriExpander *misc.IriExpander) string {
 	v := exp.Value
 	if exp.Negated {
 		v = exp.Value.Negate()
 	}
-	results := Dispatch(v)
-	return wrapTopLevelRegoResult(exp, results)
+	results := Dispatch(v, iriExpander)
+	return wrapTopLevelRegoResult(exp, results, iriExpander)
 }
 
-func generateNested(exp profile.NestedExpression) []GeneratedRegoResult {
+func generateNested(exp profile.NestedExpression, iriExpander *misc.IriExpander) []GeneratedRegoResult {
 	v := exp.Value
 
-	var rego[] string
+	var rego []string
 
 	// we extract the same node for all the checks in the related branches
-	sharedGeneratorRego := GenerateNested(exp)
+	sharedGeneratorRego := GenerateNested(exp, iriExpander)
 	rego = append(rego, sharedGeneratorRego.Rego...)
 	var variable = sharedGeneratorRego.Variable
 
@@ -54,14 +55,14 @@ func generateNested(exp profile.NestedExpression) []GeneratedRegoResult {
 		pathRules = append(pathRules, pr)
 	}
 
-	results := Dispatch(v)
+	results := Dispatch(v, iriExpander)
 	var branchErrors []string
 	var errorAcc = fmt.Sprintf("%s_errorAcc", exp.Child.Name)
-	rego = append(rego, fmt.Sprintf("%s0 = []",errorAcc))
-	for i,b := range results {
+	rego = append(rego, fmt.Sprintf("%s0 = []", errorAcc))
+	for i, b := range results {
 		switch r := b.(type) {
 		case BranchRegoResult:
-			rego = append(rego, wrapNestedRegoResult(variable, i, errorAcc, exp.Child.Name, sharedGeneratorRego, r, &branchErrors)...)
+			rego = append(rego, wrapNestedRegoResult(variable, i, errorAcc, exp.Child.Name, sharedGeneratorRego, r, &branchErrors, iriExpander)...)
 			// accumulate paths
 			for _, r := range r.Branch {
 				for _, pr := range r.PathRules {
@@ -70,7 +71,7 @@ func generateNested(exp profile.NestedExpression) []GeneratedRegoResult {
 			}
 		case SimpleRegoResult:
 			var wrappedBranch = BranchRegoResult{Branch: []SimpleRegoResult{r}}
-			rego = append(rego, wrapNestedRegoResult(variable, i, errorAcc, exp.Child.Name, sharedGeneratorRego, wrappedBranch, &branchErrors)...)
+			rego = append(rego, wrapNestedRegoResult(variable, i, errorAcc, exp.Child.Name, sharedGeneratorRego, wrappedBranch, &branchErrors, iriExpander)...)
 			// accumulate paths
 			for _, pr := range r.PathRules {
 				pathRules = append(pathRules, pr)
@@ -78,7 +79,6 @@ func generateNested(exp profile.NestedExpression) []GeneratedRegoResult {
 		}
 	}
 	rego = append(rego, fmt.Sprintf("%s = %s%d", errorAcc, errorAcc, len(results)))
-
 
 	rego = append(rego, "# let's accumulate results")
 	errorNodeVariable := fmt.Sprintf("%s_error_node_variables_agg", variable)
@@ -129,8 +129,8 @@ func generateNested(exp profile.NestedExpression) []GeneratedRegoResult {
 	}
 }
 
-func wrapNestedRegoResult(variable string, i int, errorAcc string, nodeVariable string, sharedGeneratorRego SimpleRegoResult, branchRego BranchRegoResult, branchErrors *[]string) []string {
-	branchResultVariable := fmt.Sprintf("%s_br_%d",variable, i)
+func wrapNestedRegoResult(variable string, i int, errorAcc string, nodeVariable string, sharedGeneratorRego SimpleRegoResult, branchRego BranchRegoResult, branchErrors *[]string, iriExpander *misc.IriExpander) []string {
+	branchResultVariable := fmt.Sprintf("%s_br_%d", variable, i)
 	branchResultError := fmt.Sprintf("%s_br_%d_errors", variable, i)
 	*branchErrors = append(*branchErrors, branchResultError)
 
@@ -140,10 +140,10 @@ func wrapNestedRegoResult(variable string, i int, errorAcc string, nodeVariable 
 	// constraint validates multiple value of a property inside a single nested node
 	innerErrorVariable := fmt.Sprintf("%s_inner_error", branchResultVariable)
 	// let's create a comprehension for the conditions over the nested nodes
-	rego = append(rego, fmt.Sprintf("%s = [ %s|", branchResultVariable, errorVariable)) // report errors using this variable
-	rego = append(rego, fmt.Sprintf("  %s = %s[_]", nodeVariable, sharedGeneratorRego.Variable))    // the underlying rules expect the quantified variable that was passed on profile parsing
+	rego = append(rego, fmt.Sprintf("%s = [ %s|", branchResultVariable, errorVariable))          // report errors using this variable
+	rego = append(rego, fmt.Sprintf("  %s = %s[_]", nodeVariable, sharedGeneratorRego.Variable)) // the underlying rules expect the quantified variable that was passed on profile parsing
 	// note we are passing innerErrorVariable here
-	for _, l := range wrapBranch("nested", fmt.Sprintf("error in nested nodes under %s", sharedGeneratorRego.Path), branchRego, innerErrorVariable, nodeVariable) {
+	for _, l := range wrapBranch("nested", fmt.Sprintf("error in nested nodes under %s", sharedGeneratorRego.Path), branchRego, innerErrorVariable, nodeVariable, iriExpander) {
 		rego = append(rego, l)
 	}
 	rego = append(rego, fmt.Sprintf("  %s = [%s[\"@id\"],%s]", errorVariable, nodeVariable, innerErrorVariable))
@@ -152,13 +152,13 @@ func wrapNestedRegoResult(variable string, i int, errorAcc string, nodeVariable 
 	// let's now split the collected tuples into set of failing nodes for cardinality checks
 	rego = append(rego, fmt.Sprintf("%s = { nodeId | n = %s[_]; nodeId = n[0] }", branchResultError, branchResultVariable))
 	rego = append(rego, fmt.Sprintf("%s_errors = [ node | n = %s[_]; node = n[1] ]", branchResultError, branchResultVariable))
-	rego = append(rego, fmt.Sprintf("%s%d = array.concat(%s%d,%s_errors)",errorAcc, i+1, errorAcc, i, branchResultError))
+	rego = append(rego, fmt.Sprintf("%s%d = array.concat(%s%d,%s_errors)", errorAcc, i+1, errorAcc, i, branchResultError))
 
 	return rego
 }
 
-func wrapTopLevelRegoResult(e profile.TopLevelExpression, results []GeneratedRegoResult) string {
-	classTargetResult := GenerateClassTarget(e.Variable.Name, e.ClassGenerator)
+func wrapTopLevelRegoResult(e profile.TopLevelExpression, results []GeneratedRegoResult, iriExpander *misc.IriExpander) string {
+	classTargetResult := GenerateClassTarget(e.Variable.Name, e.ClassGenerator, iriExpander)
 	classTargetVariable := classTargetResult.Variable
 
 	var branches []BranchRegoResult
@@ -190,7 +190,7 @@ func wrapTopLevelRegoResult(e profile.TopLevelExpression, results []GeneratedReg
 		for _, r := range classTargetResult.Rego {
 			acc = append(acc, "  "+r)
 		}
-		for _, l := range wrapBranch(e.Name, e.Message, branch, "matches", classTargetVariable) {
+		for _, l := range wrapBranch(e.Name, e.Message, branch, "matches", classTargetVariable, iriExpander) {
 			acc = append(acc, l)
 		}
 		acc = append(acc, "}")
@@ -202,14 +202,18 @@ func wrapTopLevelRegoResult(e profile.TopLevelExpression, results []GeneratedReg
 	return strings.Join(total, "\n\n")
 }
 
-func wrapBranch(name string, message string, branch BranchRegoResult, matchesVariable string, mappingVariable string) []string {
+func wrapBranch(name string, message string, branch BranchRegoResult, matchesVariable string, mappingVariable string, iriExpander *misc.IriExpander) []string {
 	var acc []string
 	resultBindings := make([]string, 0)
 
 	for i, r := range branch.Branch {
 		bindingResult := fmt.Sprintf("_result_%d", i)
 		resultBindings = append(resultBindings, bindingResult)
-		matchesLine := fmt.Sprintf("  %s := trace(\"%s\",\"%s\",%s,%s)", bindingResult, r.ConstraintId(), r.Path, r.TraceNode, r.TraceValue)
+		traceResultPath := r.Path
+		if iriExpander != nil {
+			traceResultPath, _ = iriExpander.Expand(r.Path)
+		}
+		matchesLine := fmt.Sprintf("  %s := trace(\"%s\",\"%s\",%s,%s)", bindingResult, r.ConstraintId(), traceResultPath, r.TraceNode, r.TraceValue)
 		for _, l := range r.Rego {
 			acc = append(acc, "  "+l)
 		}

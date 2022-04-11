@@ -1,0 +1,32 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#InvalidChild",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#Person"
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#ValidChild",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#Person"
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#Maradona",
+    "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#child": [
+      {
+        "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#ValidChild"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#surname": "Maradona"
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#OtherParent",
+    "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#child": [
+      {
+        "@id": "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#InvalidChild"
+      }
+    ],
+    "http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#surname": "Other"
+  }
+]

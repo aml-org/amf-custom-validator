@@ -3,7 +3,6 @@ package profile
 import (
 	"errors"
 	"fmt"
-	"github.com/aml-org/amf-custom-validator/internal"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
 )
@@ -14,34 +13,10 @@ type NumericRule struct {
 	Argument  *y.Yaml
 }
 
-func (r NumericRule) Clone() Rule {
-	return NumericRule{
-		AtomicStatement: AtomicStatement{
-			BaseStatement: BaseStatement{
-				Negated: r.Negated,
-				Name:    r.Name,
-			},
-			Variable: r.Variable,
-			Path:     r.Path,
-		},
-		Operation: r.Operation,
-		Argument:  r.Argument,
-	}
-}
-
 func (r NumericRule) Negate() Rule {
-	cloned := r.Clone()
-	switch c := cloned.(type) {
-	case NumericRule:
-		c.Negated = !r.Negated
-		return c
-	}
-	return cloned
-}
-
-func (r NumericRule) ValueHash() string {
-	v := fmt.Sprintf("%s %s %s", r.Name, r.Operation.String(), r.StringArgument())
-	return internal.HashString(v)
+	negated := r
+	negated.Negated = !r.Negated
+	return negated
 }
 
 func (r NumericRule) String() string {

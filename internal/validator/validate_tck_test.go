@@ -56,9 +56,8 @@ func TestConditionalsIfThen(t *testing.T) {
 }
 
 func TestConditionalsIfThenElse(t *testing.T) {
-	ignoreTckCase("conditionals/if-then-else", t) // else not implemented
+	testTckCase("conditionals/if-then-else", t)
 }
-
 
 func TestConditionalsIfAndThenAnd(t *testing.T) {
 	testTckCase("conditionals/if-and-then-and", t)
@@ -150,4 +149,30 @@ func TestNestedOr(t *testing.T) {
 
 func TestNestedNot(t *testing.T) {
 	testTckCase("nested/nested-not", t)
+}
+
+// property constraints (are not natively defined in shacl)
+
+func TestPropertyExactLength(t *testing.T) {
+	testTckCase("property/exactLength", t)
+}
+
+func TestPropertyExactCount(t *testing.T) {
+	testTckCase("property/exactCount", t)
+}
+
+func TestPropertyContainsAll(t *testing.T) {
+	testTckCase("property/containsAll", t)
+}
+
+func TestPropertyContainsSome(t *testing.T) {
+	testTckCase("property/containsSome", t)
+}
+
+func TestPropertyUniqueValuesScalar(t *testing.T) {
+	testTckCase("property/uniqueValues-scalar", t)
+}
+
+func TestPropertyUniqueValuesObject(t *testing.T) {
+	testTckCase("property/uniqueValues-object", t)
 }

@@ -28,13 +28,10 @@ validations:
                       count: 1
                       validation:
                         and:
-                          - rego: |
-                              types := [ type |
-                                t = $node["@type"][_]
-                                t == "shacl:NodeShape"
-                                type = t
-                              ]
-                              $result = count(types) == 1
+                          - propertyConstraints:
+                              '@type':
+                                containsAll:
+                                  - "http://www.w3.org/ns/shacl#NodeShape"
                           - propertyConstraints:
                               shacl.name:
                                 minCount: 1

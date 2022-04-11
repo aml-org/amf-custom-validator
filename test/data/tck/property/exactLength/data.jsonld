@@ -1,0 +1,36 @@
+[
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/exactLength.test#InvalidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/exactLength.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/exactLength.test#testProperty": [
+      {
+        "@value": "A"
+      },
+      {
+        "@value": "ABC"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/exactLength.test#ValidInstance1",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/exactLength.test#TestShape"
+    ],
+    "http://datashapes.org/sh/tests/core/property/exactLength.test#testProperty": [
+      {
+        "@value": "AB"
+      },
+      {
+        "@value": "AC"
+      }
+    ]
+  },
+  {
+    "@id": "http://datashapes.org/sh/tests/core/property/exactLength.test#ValidInstance2",
+    "@type": [
+      "http://datashapes.org/sh/tests/core/property/exactLength.test#TestShape"
+    ]
+  }
+]

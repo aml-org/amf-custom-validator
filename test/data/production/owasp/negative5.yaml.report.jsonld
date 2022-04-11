@@ -4,7 +4,6 @@
       "actual": {
         "@id": "http://a.ml/vocabularies/validation#actual"
       },
-      "apiContract": "http://a.ml/vocabularies/apiContract#",
       "argument": {
         "@id": "http://a.ml/vocabularies/validation#argument"
       },
@@ -20,8 +19,6 @@
       "conforms": {
         "@id": "http://www.w3.org/ns/shacl#conforms"
       },
-      "core": "http://a.ml/vocabularies/core#",
-      "data": "http://a.ml/vocabularies/data#",
       "doc": "http://a.ml/vocabularies/document#",
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
@@ -33,7 +30,7 @@
         "@id": "http://www.w3.org/ns/shacl#focusNode"
       },
       "lexical": "http://a.ml/vocabularies/lexical#",
-      "lexicalSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/lexical.yaml#/declarations/",
+      "lexicalSchema": "file:///dialects/lexical.yaml#/declarations/",
       "line": {
         "@id": "http://a.ml/vocabularies/lexical#line"
       },
@@ -44,12 +41,13 @@
       "negated": {
         "@id": "http://a.ml/vocabularies/validation#negated"
       },
+      "profileName": {
+        "@id": "http://a.ml/vocabularies/validation#profileName"
+      },
       "range": {
         "@id": "http://a.ml/vocabularies/lexical#range"
       },
-      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-      "rdfs": "http://www.w3.org/2000/01/rdf-schema",
-      "reportSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/",
+      "reportSchema": "file:///dialects/validation-report.yaml#/declarations/",
       "result": {
         "@id": "http://www.w3.org/ns/shacl#result"
       },
@@ -62,13 +60,10 @@
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#resultSeverity"
       },
-      "security": "http://a.ml/vocabularies/security#",
       "shacl": "http://www.w3.org/ns/shacl#",
-      "shapes": "http://a.ml/vocabularies/shapes#",
       "sourceShapeName": {
         "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
       },
-      "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
       "start": {
         "@id": "http://a.ml/vocabularies/lexical#start"
       },
@@ -84,8 +79,7 @@
       "uri": {
         "@id": "http://a.ml/vocabularies/lexical#uri"
       },
-      "validation": "http://a.ml/vocabularies/validation#",
-      "xsd": "http://www.w3.org/2001/XMLSchema#"
+      "validation": "http://a.ml/vocabularies/validation#"
     },
     "@id": "dialect-instance",
     "@type": [
@@ -103,6 +97,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "OWasp 2019 API Security",
         "result": [
           {
             "@id": "violation_0",
@@ -111,6 +106,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#14",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 26
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 8,
+                  "line": 19
+                }
+              },
+              "uri": "file://./test/data/production/owasp/negative5.yaml"
+            },
             "resultMessage": "Define data types and strict patterns for all string parameters",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "injection-pattern-on-string-parameters",
@@ -155,15 +183,15 @@
                   },
                   "uri": "file://./test/data/production/owasp/negative5.yaml"
                 },
-                "resultPath": "shapes.schema / shacl.datatype",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#datatype",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "xsd:string",
-                  "expected": "[\"xsd:string\"]",
+                  "actual": "http://www.w3.org/2001/XMLSchema#string",
+                  "expected": "[\"http://www.w3.org/2001/XMLSchema#string\"]",
                   "negated": true
                 }
               },
@@ -207,7 +235,7 @@
                   },
                   "uri": "file://./test/data/production/owasp/negative5.yaml"
                 },
-                "resultPath": "shapes.schema / shacl.datatype",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#datatype",
                 "traceValue": {
                   "@id": "violation_0_1_traceValue",
                   "@type": [
@@ -260,7 +288,7 @@
                   },
                   "uri": "file://./test/data/production/owasp/negative5.yaml"
                 },
-                "resultPath": "shapes.schema / shacl.pattern",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#pattern",
                 "traceValue": {
                   "@id": "violation_0_2_traceValue",
                   "@type": [
@@ -282,6 +310,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#5",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 28,
+                  "line": 43
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 26
+                }
+              },
+              "uri": "file://./test/data/production/owasp/negative5.yaml"
+            },
             "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "broken-user-authentication-authenticate-api",
@@ -326,7 +387,7 @@
                   },
                   "uri": "file://./test/data/production/owasp/negative5.yaml"
                 },
-                "resultPath": "security.security",
+                "resultPath": "http://a.ml/vocabularies/security#security",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [

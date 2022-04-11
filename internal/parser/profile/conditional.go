@@ -4,14 +4,6 @@ import "fmt"
 
 type ConditionalRule ComplexStatement
 
-func (r ConditionalRule) Head() Rule {
-	return r.Body[0]
-}
-
-func (r ConditionalRule) Tail() Rule {
-	return r.Body[1]
-}
-
 func (r ConditionalRule) String() string {
 	negation := ""
 	if r.Negated {
@@ -24,32 +16,64 @@ func (r ConditionalRule) String() string {
 	}
 	if len(body) == 2 {
 		return fmt.Sprintf("%s(\n%s\n→\n%s\n)", negation, Indent(body[0]), Indent(body[1]))
+	} else if len(body) == 3 { // defines else rule
+		return fmt.Sprintf("%s(\n(\n%s\n→\n%s\n)\n∧\n(\n¬%s\n→\n%s\n)\n)", negation, Indent(body[0]), Indent(body[1]),Indent(body[0]), Indent(body[2]))
 	} else {
-		panic("Conditional expression must have head and tail")
+		panic("Conditional expression must have if/then rules")
 	}
 }
 
-func (r ConditionalRule) Clone() Rule {
-	return NewConditional(r.Negated, r.Head(), r.Tail())
-}
-
 func (r ConditionalRule) Negate() Rule {
-	return NewConditional(!r.Negated, r.Head(), r.Tail())
+	return NewConditional(!r.Negated, r.IfRule(), r.ThenRule())
 }
 
-func (r ConditionalRule) MaterialImplication() OrRule {
+
+// ifRule -> thenRule <==> ¬ifRule ∨ thenRule
+func (r ConditionalRule) ThenMaterialImplication() OrRule {
 	return NewOr(r.Negated, []Rule{
-		r.Head().Negate(),
-		r.Tail(),
+		r.IfRule().Negate(),
+		r.ThenRule(),
 	})
 }
 
-func NewConditional(negated bool, head Rule, tail Rule) ConditionalRule {
+// ¬ifRule -> elseRule <==> ifRule ∨ thenRule
+func (r ConditionalRule) ElseMaterialImplication() OrRule {
+	return NewOr(r.Negated, []Rule{
+		r.IfRule(),
+		r.ElseRule(),
+	})
+}
+
+func (r ConditionalRule) IfRule() Rule {
+	return r.Body[0]
+}
+
+func (r ConditionalRule) ThenRule() Rule {
+	return r.Body[1]
+}
+
+func (r ConditionalRule) ElseRule() Rule {
+	return r.Body[2]
+}
+
+func (r ConditionalRule) ElseIsDefined() bool {
+	return r.Body.Len() > 2
+}
+
+func newConditional(negated bool, rules *[]Rule) ConditionalRule {
 	return ConditionalRule{
 		BaseStatement: BaseStatement{
 			Negated: negated,
 			Name:    "conditional",
 		},
-		Body: []Rule{head, tail},
+		Body: *rules,
 	}
+}
+
+func NewIfThenElseConditional(negated bool, ifRule Rule, thenRule Rule, elseRule Rule) ConditionalRule {
+	return newConditional(negated, &[]Rule{ifRule, thenRule, elseRule})
+}
+
+func NewConditional(negated bool, ifRule Rule, thenRule Rule) ConditionalRule {
+	return newConditional(negated, &[]Rule{ifRule, thenRule})
 }

@@ -15,7 +15,7 @@ validations:
     not:
       rego: |
         # custom1
-        version = object.get($node, "apiContract:version", null)
+        version = object.get($node, "http://a.ml/vocabularies/apiContract#version", null)
         $result = (version != null)
 
   simple-rego2:
@@ -25,7 +25,7 @@ validations:
       message: api without version
       code: |
         # custom2
-        version = object.get($node, "apiContract:version", null)
+        version = object.get($node, "http://a.ml/vocabularies/apiContract#version", null)
         $result = (version != null)
 
   simple-rego3:

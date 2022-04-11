@@ -8,13 +8,16 @@ violation:
   - base-url-pattern-server
   - camel-case-fields
   - date-time-representation
+  - date-only-representation
   - use-schemas-responses
   - use-schemas-requests
   - provide-examples
   - api-must-have-title
+  - operations-must-have-identifiers
+
+warning:
   - api-must-have-description
   - api-must-have-documentation
-  - operations-must-have-identifiers
   - operations-must-have-descriptions
   - responses-must-have-descriptions
   - headers-must-have-descriptions
@@ -26,6 +29,7 @@ violation:
   - standard-post-status-codes
   - standard-put-status-codes
   - standard-delete-status-codes
+
 
 validations:
 
@@ -88,15 +92,29 @@ validations:
         - propertyConstraints:
             shacl.name:
               pattern: "updatedAt"
-        - propertyConstraints:
-            shacl.name:
-              pattern: "^.*[dD]ate.*$"
     then:
       propertyConstraints:
         shacl.datatype:
           minCount: 1
           in:
-            - xsd:dateTime
+            - http://www.w3.org/2001/XMLSchema#dateTime
+
+  date-only-representation:
+    message: |
+      Use standard date formats: ISO8601
+      Use calendar date:
+        2016-10-27
+    targetClass: shapes.ScalarShape
+    if:
+        propertyConstraints:
+          shacl.name:
+            pattern: "^.*[dD]ate.*$"
+    then:
+      propertyConstraints:
+        shacl.datatype:
+          minCount: 1
+          in:
+            - http://www.w3.org/2001/XMLSchema#date
 
   use-schemas-responses:
     message: |
@@ -121,15 +139,15 @@ validations:
     message: Always include examples in requests and responses
     targetClass: apiContract.Payload
     rego: |
-      schema = find with data.link as $node["shapes:schema"]
+      schema = find with data.link as $node["http://a.ml/vocabularies/shapes#schema"]
 
-      nested_nodes[examples] with data.nodes as schema["apiContract:examples"]
+      nested_nodes[examples] with data.nodes as schema["http://a.ml/vocabularies/apiContract#examples"]
 
       examples_from_this_payload = { element |
         example = examples[_]
-        sourcemap = find with data.link as object.get(example, "sourcemaps:sources", [])
-        tracked_element = find with data.link as object.get(sourcemap, "sourcemaps:tracked-element", [])
-        tracked_element["sourcemaps:value"] = $node["@id"]
+        sourcemap = find with data.link as object.get(example, "http://a.ml/vocabularies/document-source-maps#sources", [])
+        tracked_element = find with data.link as object.get(sourcemap, "http://a.ml/vocabularies/document-source-maps#tracked-element", [])
+        tracked_element["http://a.ml/vocabularies/document-source-maps#value"] = $node["@id"]
         element := example
       }
 

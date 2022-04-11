@@ -1,5 +1,6 @@
 package profile_test10
 
+report["profile"] = "Test10"
 
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {
@@ -33,6 +34,18 @@ nested_values[nested_values] {
   nested_values := {value | n = data.nodes[_]; value := n[data.property]}
 }
 
+# Fetches all the subject nodes that have certain predicate and object
+search_subjects[valid_subject] {
+  predicate = data.predicate
+  object = data.object
+  
+  node = input["@ids"][_]
+  node_predicate_values = nodes_array with data.nodes as object.get(node,predicate,[])
+  node_predicate_value = node_predicate_values[_]
+  node_predicate_value["@id"] == object["@id"]
+  valid_subject = node
+}
+
 # collection functions
 
 # collect next set of nodes
@@ -57,22 +70,22 @@ collect_values[r] {
 # helper to check datatype constraints
 
 check_datatype(x,dt) = true {
-  dt == "xsd:string"
+  dt == "http://www.w3.org/2001/XMLSchema#string"
   is_string(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:integer"
+  dt == "http://www.w3.org/2001/XMLSchema#integer"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:float"
+  dt == "http://www.w3.org/2001/XMLSchema#float"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:boolean"
+  dt == "http://www.w3.org/2001/XMLSchema#boolean"
   is_boolean(x)
 }
 
@@ -84,10 +97,10 @@ check_datatype(x,dt) = true {
 
 check_datatype(x,dt) = false {
   not is_object(x)
-  dt != "xsd:string"
-  dt != "xsd:integer"
-  dt != "xsd:float"
-  dt != "xsd:boolean"
+  dt != "http://www.w3.org/2001/XMLSchema#string"
+  dt != "http://www.w3.org/2001/XMLSchema#integer"
+  dt != "http://www.w3.org/2001/XMLSchema#float"
+  dt != "http://www.w3.org/2001/XMLSchema#boolean"
 }
 
 # Fetches all the nodes for a given RDF class
@@ -129,6 +142,28 @@ as_string(x) = json.marshal(x) {
 
 # Traces one evaluation of a constraint
 trace(constraint, resultPath, focusNode, traceValue) = t {
+  l := location(focusNode)  
+  t := {
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue,
+	"location": l
+  }
+}
+
+# Generates trace when lexical info is not available
+trace(constraint, resultPath, focusNode, traceValue) = t {
+  not location(focusNode)
+  t := {
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue
+  }
+}
+
+location(focusNode) = l {
   id := focusNode["@id"]
   location := input["@lexical"][id]
   raw_range := location["range"]
@@ -147,33 +182,31 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   	  "column": to_number(range_parts[3])
     }
   }
-  t := {
-	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
-    "component": constraint,
-    "resultPath": resultPath,
-    "traceValue": traceValue,
-	"location": {
-	  "@type": ["lexicalSchema:LocationNode", "lexical:Location"],
-      "uri": uri,
-      "range": range
-	}
-  }
-}
-
-trace(constraint, resultPath, focusNode, traceValue) = t {
-  id := focusNode["@id"]
-  not input["@lexical"][id]
-  t := {
-	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
-    "component": constraint,
-    "resultPath": resultPath,
-    "traceValue": traceValue
+  l := {
+  	"@type": ["lexicalSchema:LocationNode", "lexical:Location"],
+  	"uri": uri,
+  	"range": range
   }
 }
 
 # Builds an error message that can be returned to the calling client software
 error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
+  locationNode := location(focusNode)
+  e := {
+	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
+    "sourceShapeName": sourceShapeName,
+    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
+    "resultMessage": resultMessage,
+	"location": locationNode,	
+    "trace": traceLog
+  }
+}
+
+# Builds error message when lexical info is not available
+error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
+  id := focusNode["@id"]
+  not location(focusNode)
   e := {
 	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
@@ -213,38 +246,40 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_1[nodes] {
-  init_x_0__ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__,"shacl:minCount",[])
+gen_path_set_rule_1[nodes] {
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#minCount",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
-gen_path_rule_3[nodes] {
-  init_x_0__ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__,"shacl:minCount",[])
+gen_path_set_rule_3[nodes] {
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#minCount",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "raml-shapes:ArrayShape"
+  target_class[x] with data.class as "http://a.ml/vocabularies/shapes#ArrayShape"
   #  querying path: shacl.minCount
-  gen_numeric_comparison_2_elem = gen_path_rule_1 with data.sourceNode as x
+  gen_numeric_comparison_2_elem = gen_path_set_rule_1 with data.sourceNode as x
   gen_numeric_comparison_2 = gen_numeric_comparison_2_elem[_]
   not gen_numeric_comparison_2 < 50.450000
-  _result_0 := trace("maximumExclusive","shacl.minCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<","expected":50.450000,"actual":gen_numeric_comparison_2})
+  _result_0 := trace("maximumExclusive","http://www.w3.org/ns/shacl#minCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<","expected":50.450000,"actual":gen_numeric_comparison_2})
   matches := error("array-limits",x,"Validation error",[_result_0])
 }
 
 violation[matches] {
-  target_class[x] with data.class as "raml-shapes:ArrayShape"
+  target_class[x] with data.class as "http://a.ml/vocabularies/shapes#ArrayShape"
   #  querying path: shacl.minCount
-  gen_numeric_comparison_4_elem = gen_path_rule_3 with data.sourceNode as x
+  gen_numeric_comparison_4_elem = gen_path_set_rule_3 with data.sourceNode as x
   gen_numeric_comparison_4 = gen_numeric_comparison_4_elem[_]
   not gen_numeric_comparison_4 >= 25
-  _result_0 := trace("minimumInclusive","shacl.minCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","expected":25,"actual":gen_numeric_comparison_4})
+  _result_0 := trace("minimumInclusive","http://www.w3.org/ns/shacl#minCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","expected":25,"actual":gen_numeric_comparison_4})
   matches := error("array-limits",x,"Validation error",[_result_0])
 }

@@ -4,7 +4,6 @@
       "actual": {
         "@id": "http://a.ml/vocabularies/validation#actual"
       },
-      "apiContract": "http://a.ml/vocabularies/apiContract#",
       "argument": {
         "@id": "http://a.ml/vocabularies/validation#argument"
       },
@@ -20,8 +19,6 @@
       "conforms": {
         "@id": "http://www.w3.org/ns/shacl#conforms"
       },
-      "core": "http://a.ml/vocabularies/core#",
-      "data": "http://a.ml/vocabularies/data#",
       "doc": "http://a.ml/vocabularies/document#",
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
@@ -33,7 +30,7 @@
         "@id": "http://www.w3.org/ns/shacl#focusNode"
       },
       "lexical": "http://a.ml/vocabularies/lexical#",
-      "lexicalSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/lexical.yaml#/declarations/",
+      "lexicalSchema": "file:///dialects/lexical.yaml#/declarations/",
       "line": {
         "@id": "http://a.ml/vocabularies/lexical#line"
       },
@@ -44,12 +41,13 @@
       "negated": {
         "@id": "http://a.ml/vocabularies/validation#negated"
       },
+      "profileName": {
+        "@id": "http://a.ml/vocabularies/validation#profileName"
+      },
       "range": {
         "@id": "http://a.ml/vocabularies/lexical#range"
       },
-      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-      "rdfs": "http://www.w3.org/2000/01/rdf-schema",
-      "reportSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/",
+      "reportSchema": "file:///dialects/validation-report.yaml#/declarations/",
       "result": {
         "@id": "http://www.w3.org/ns/shacl#result"
       },
@@ -62,13 +60,10 @@
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#resultSeverity"
       },
-      "security": "http://a.ml/vocabularies/security#",
       "shacl": "http://www.w3.org/ns/shacl#",
-      "shapes": "http://a.ml/vocabularies/shapes#",
       "sourceShapeName": {
         "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
       },
-      "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
       "start": {
         "@id": "http://a.ml/vocabularies/lexical#start"
       },
@@ -84,8 +79,7 @@
       "uri": {
         "@id": "http://a.ml/vocabularies/lexical#uri"
       },
-      "validation": "http://a.ml/vocabularies/validation#",
-      "xsd": "http://www.w3.org/2001/XMLSchema#"
+      "validation": "http://a.ml/vocabularies/validation#"
     },
     "@id": "dialect-instance",
     "@type": [
@@ -103,6 +97,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "Anypoint Security Best Practices",
         "result": [
           {
             "@id": "violation_0",
@@ -111,6 +106,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#14",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 44
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 30
+                }
+              },
+              "uri": "file://./test/data/production/security/negative3.yaml"
+            },
             "resultMessage": "Description\n\nThe security field of the operation has not been defined. This field specifies if your API operation requires the API consumer to authenticate to use it.\n\nFor more details, see the OpenAPI Specification.\nExample\n\nThe security field is tightly coupled with the securitySchemes objects. The security field could be missing because:\n\n    You forgot to define the securitySchemes field altogether, leaving the API completely unprotected.\n    You defined the securitySchemes field but not the security field. The definitions are not actually getting applied.\n    You defined the securitySchemes field and the operation-level security field for some of the API operations. However, you did not define the security field on the global level for the whole API.\n\nPossible exploit scenario\n\nIf you do not set the global security field, the API does not require any authentication by default. Anyone can use the API operations that do not have a security field defined. All they need to know is the URL for the API operation and how to invoke it.\n\nThis sometimes happens to internal APIs. These are often created only to be used inside the company web pages and mobile applications. No one expects any outsiders to know that the API exists, so developers do not spend time implementing security.\n\nBut attackers can look at the code of the mobile or web application, or listen to the API traffic, and reverse engineer how the API works. Once the attackers have figured this out, they can start using the API because it does not require any authentication.\n\nRelying on defining security only on each operation individually is an error-prone approach. It is very easy to forget to set security when you add a new method to the API. If there is no global default security defined, the operation is left wide open for an attacker to invoke without any authentication required.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "security-fields-operation-empty",
@@ -155,7 +183,7 @@
                   },
                   "uri": "file://./test/data/production/security/negative3.yaml"
                 },
-                "resultPath": "security.security",
+                "resultPath": "http://a.ml/vocabularies/security#security",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [

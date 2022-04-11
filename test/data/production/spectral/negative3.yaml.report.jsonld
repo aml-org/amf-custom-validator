@@ -4,7 +4,6 @@
       "actual": {
         "@id": "http://a.ml/vocabularies/validation#actual"
       },
-      "apiContract": "http://a.ml/vocabularies/apiContract#",
       "argument": {
         "@id": "http://a.ml/vocabularies/validation#argument"
       },
@@ -20,8 +19,6 @@
       "conforms": {
         "@id": "http://www.w3.org/ns/shacl#conforms"
       },
-      "core": "http://a.ml/vocabularies/core#",
-      "data": "http://a.ml/vocabularies/data#",
       "doc": "http://a.ml/vocabularies/document#",
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
@@ -33,7 +30,7 @@
         "@id": "http://www.w3.org/ns/shacl#focusNode"
       },
       "lexical": "http://a.ml/vocabularies/lexical#",
-      "lexicalSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/lexical.yaml#/declarations/",
+      "lexicalSchema": "file:///dialects/lexical.yaml#/declarations/",
       "line": {
         "@id": "http://a.ml/vocabularies/lexical#line"
       },
@@ -44,12 +41,13 @@
       "negated": {
         "@id": "http://a.ml/vocabularies/validation#negated"
       },
+      "profileName": {
+        "@id": "http://a.ml/vocabularies/validation#profileName"
+      },
       "range": {
         "@id": "http://a.ml/vocabularies/lexical#range"
       },
-      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-      "rdfs": "http://www.w3.org/2000/01/rdf-schema",
-      "reportSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/",
+      "reportSchema": "file:///dialects/validation-report.yaml#/declarations/",
       "result": {
         "@id": "http://www.w3.org/ns/shacl#result"
       },
@@ -62,13 +60,10 @@
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#resultSeverity"
       },
-      "security": "http://a.ml/vocabularies/security#",
       "shacl": "http://www.w3.org/ns/shacl#",
-      "shapes": "http://a.ml/vocabularies/shapes#",
       "sourceShapeName": {
         "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
       },
-      "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
       "start": {
         "@id": "http://a.ml/vocabularies/lexical#start"
       },
@@ -84,8 +79,7 @@
       "uri": {
         "@id": "http://a.ml/vocabularies/lexical#uri"
       },
-      "validation": "http://a.ml/vocabularies/validation#",
-      "xsd": "http://www.w3.org/2001/XMLSchema#"
+      "validation": "http://a.ml/vocabularies/validation#"
     },
     "@id": "dialect-instance",
     "@type": [
@@ -102,103 +96,74 @@
           "reportSchema:ReportNode",
           "shacl:ValidationReport"
         ],
-        "conforms": false,
+        "conforms": true,
+        "profileName": "Spectral Base",
         "result": [
           {
-            "@id": "violation_0",
+            "@id": "warning_0",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
-            "resultMessage": "Every operation must have a unique operationId.\n\nWhy? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,\nall sorts of things like that.\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-operationId-unique",
-            "trace": [
-              {
-                "@id": "violation_0_0",
+            "location": {
+              "@id": "warning_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "warning_0_location_range",
                 "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
                 ],
-                "component": "rego",
-                "location": {
-                  "@id": "violation_0_0_location",
+                "end": {
+                  "@id": "warning_0_location_range_end",
                   "@type": [
-                    "lexicalSchema:LocationNode",
-                    "lexical:Location"
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
                   ],
-                  "range": {
-                    "@id": "violation_0_0_location_range",
-                    "@type": [
-                      "lexicalSchema:RangeNode",
-                      "lexical:Range"
-                    ],
-                    "end": {
-                      "@id": "violation_0_0_location_range_end",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 25,
-                      "line": 42
-                    },
-                    "start": {
-                      "@id": "violation_0_0_location_range_start",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 0,
-                      "line": 1
-                    }
-                  },
-                  "uri": "file://./test/data/production/spectral/negative3.yaml"
+                  "column": 25,
+                  "line": 42
                 },
-                "resultPath": "",
-                "traceValue": {
-                  "@id": "violation_0_0_traceValue",
+                "start": {
+                  "@id": "warning_0_location_range_start",
                   "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
                   ],
-                  "negated": false
+                  "column": 0,
+                  "line": 1
                 }
-              }
-            ]
-          },
-          {
-            "@id": "violation_1",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "amf://id#2",
+              },
+              "uri": "file://./test/data/production/spectral/negative3.yaml"
+            },
             "resultMessage": "Info object should contain contact object.\n\nHopefully your API description document is so good that nobody ever needs to contact you with questions, but that\nis rarely the case. The contact object has a few different options for contact details.\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "info-contact",
             "trace": [
               {
-                "@id": "violation_1_0",
+                "@id": "warning_0_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_1_0_location",
+                  "@id": "warning_0_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_1_0_location_range",
+                    "@id": "warning_0_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_1_0_location_range_end",
+                      "@id": "warning_0_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -207,7 +172,7 @@
                       "line": 42
                     },
                     "start": {
-                      "@id": "violation_1_0_location_range_start",
+                      "@id": "warning_0_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -218,9 +183,9 @@
                   },
                   "uri": "file://./test/data/production/spectral/negative3.yaml"
                 },
-                "resultPath": "core.provider",
+                "resultPath": "http://a.ml/vocabularies/core#provider",
                 "traceValue": {
-                  "@id": "violation_1_0_traceValue",
+                  "@id": "warning_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -234,37 +199,70 @@
             ]
           },
           {
-            "@id": "violation_2",
+            "@id": "warning_1",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
+            "location": {
+              "@id": "warning_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "warning_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "warning_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 25,
+                  "line": 42
+                },
+                "start": {
+                  "@id": "warning_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 1
+                }
+              },
+              "uri": "file://./test/data/production/spectral/negative3.yaml"
+            },
             "resultMessage": "OpenAPI object info description must be present and non-empty string.\nExamples can contain Markdown so you can really go to town with them, implementing getting started information\nlike where to find authentication keys, and how to use them.\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "info-description",
             "trace": [
               {
-                "@id": "violation_2_0",
+                "@id": "warning_1_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_2_0_location",
+                  "@id": "warning_1_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_2_0_location_range",
+                    "@id": "warning_1_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_2_0_location_range_end",
+                      "@id": "warning_1_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -273,7 +271,7 @@
                       "line": 42
                     },
                     "start": {
-                      "@id": "violation_2_0_location_range_start",
+                      "@id": "warning_1_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -284,9 +282,9 @@
                   },
                   "uri": "file://./test/data/production/spectral/negative3.yaml"
                 },
-                "resultPath": "core.description",
+                "resultPath": "http://a.ml/vocabularies/core#description",
                 "traceValue": {
-                  "@id": "violation_2_0_traceValue",
+                  "@id": "warning_1_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -300,37 +298,70 @@
             ]
           },
           {
-            "@id": "violation_3",
+            "@id": "warning_2",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#2",
+            "location": {
+              "@id": "warning_2_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "warning_2_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "warning_2_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 25,
+                  "line": 42
+                },
+                "start": {
+                  "@id": "warning_2_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 1
+                }
+              },
+              "uri": "file://./test/data/production/spectral/negative3.yaml"
+            },
             "resultMessage": "The info object should have a license key.\nIt can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License\nto help give you an idea.\nHow useful this is in court is not entirely known, but having a license is better than not having a license.\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "info-license",
             "trace": [
               {
-                "@id": "violation_3_0",
+                "@id": "warning_2_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_3_0_location",
+                  "@id": "warning_2_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_3_0_location_range",
+                    "@id": "warning_2_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_3_0_location_range_end",
+                      "@id": "warning_2_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -339,7 +370,7 @@
                       "line": 42
                     },
                     "start": {
-                      "@id": "violation_3_0_location_range_start",
+                      "@id": "warning_2_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -350,9 +381,9 @@
                   },
                   "uri": "file://./test/data/production/spectral/negative3.yaml"
                 },
-                "resultPath": "core.license",
+                "resultPath": "http://a.ml/vocabularies/core#license",
                 "traceValue": {
-                  "@id": "violation_3_0_traceValue",
+                  "@id": "warning_2_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -366,37 +397,70 @@
             ]
           },
           {
-            "@id": "violation_4",
+            "@id": "warning_3",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#8",
+            "location": {
+              "@id": "warning_3_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "warning_3_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "warning_3_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 26
+                },
+                "start": {
+                  "@id": "warning_3_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 19
+                }
+              },
+              "uri": "file://./test/data/production/spectral/negative3.yaml"
+            },
             "resultMessage": "Operation should have non-empty tags array.",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
             "sourceShapeName": "operation-tags",
             "trace": [
               {
-                "@id": "violation_4_0",
+                "@id": "warning_3_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "violation_4_0_location",
+                  "@id": "warning_3_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "violation_4_0_location_range",
+                    "@id": "warning_3_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "violation_4_0_location_range_end",
+                      "@id": "warning_3_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -405,7 +469,7 @@
                       "line": 26
                     },
                     "start": {
-                      "@id": "violation_4_0_location_range_start",
+                      "@id": "warning_3_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -416,9 +480,9 @@
                   },
                   "uri": "file://./test/data/production/spectral/negative3.yaml"
                 },
-                "resultPath": "apiContract.tag",
+                "resultPath": "http://a.ml/vocabularies/apiContract#tag",
                 "traceValue": {
-                  "@id": "violation_4_0_traceValue",
+                  "@id": "warning_3_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"

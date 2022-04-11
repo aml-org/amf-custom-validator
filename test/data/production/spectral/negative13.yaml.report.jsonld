@@ -4,7 +4,6 @@
       "actual": {
         "@id": "http://a.ml/vocabularies/validation#actual"
       },
-      "apiContract": "http://a.ml/vocabularies/apiContract#",
       "argument": {
         "@id": "http://a.ml/vocabularies/validation#argument"
       },
@@ -20,8 +19,6 @@
       "conforms": {
         "@id": "http://www.w3.org/ns/shacl#conforms"
       },
-      "core": "http://a.ml/vocabularies/core#",
-      "data": "http://a.ml/vocabularies/data#",
       "doc": "http://a.ml/vocabularies/document#",
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
@@ -33,7 +30,7 @@
         "@id": "http://www.w3.org/ns/shacl#focusNode"
       },
       "lexical": "http://a.ml/vocabularies/lexical#",
-      "lexicalSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/lexical.yaml#/declarations/",
+      "lexicalSchema": "file:///dialects/lexical.yaml#/declarations/",
       "line": {
         "@id": "http://a.ml/vocabularies/lexical#line"
       },
@@ -44,12 +41,13 @@
       "negated": {
         "@id": "http://a.ml/vocabularies/validation#negated"
       },
+      "profileName": {
+        "@id": "http://a.ml/vocabularies/validation#profileName"
+      },
       "range": {
         "@id": "http://a.ml/vocabularies/lexical#range"
       },
-      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-      "rdfs": "http://www.w3.org/2000/01/rdf-schema",
-      "reportSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/",
+      "reportSchema": "file:///dialects/validation-report.yaml#/declarations/",
       "result": {
         "@id": "http://www.w3.org/ns/shacl#result"
       },
@@ -62,13 +60,10 @@
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#resultSeverity"
       },
-      "security": "http://a.ml/vocabularies/security#",
       "shacl": "http://www.w3.org/ns/shacl#",
-      "shapes": "http://a.ml/vocabularies/shapes#",
       "sourceShapeName": {
         "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
       },
-      "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
       "start": {
         "@id": "http://a.ml/vocabularies/lexical#start"
       },
@@ -84,8 +79,7 @@
       "uri": {
         "@id": "http://a.ml/vocabularies/lexical#uri"
       },
-      "validation": "http://a.ml/vocabularies/validation#",
-      "xsd": "http://www.w3.org/2001/XMLSchema#"
+      "validation": "http://a.ml/vocabularies/validation#"
     },
     "@id": "dialect-instance",
     "@type": [
@@ -103,6 +97,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "Spectral Base",
         "result": [
           {
             "@id": "violation_0",
@@ -110,10 +105,43 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#2",
-            "resultMessage": "Every operation must have a unique operationId.\n\nWhy? A lot of documentation systems use this as an identifier, some SDK generators convert them to a method name,\nall sorts of things like that.\n",
+            "focusNode": "amf://id#7",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 31
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 24
+                }
+              },
+              "uri": "file://./test/data/production/spectral/negative13.yaml"
+            },
+            "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-operationId-unique",
+            "sourceShapeName": "operation-operationId",
             "trace": [
               {
                 "@id": "violation_0_0",
@@ -121,7 +149,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "rego",
+                "component": "minCount",
                 "location": {
                   "@id": "violation_0_0_location",
                   "@type": [
@@ -140,8 +168,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 29,
-                      "line": 62
+                      "column": 0,
+                      "line": 31
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -149,19 +177,22 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 1
+                      "column": 4,
+                      "line": 24
                     }
                   },
                   "uri": "file://./test/data/production/spectral/negative13.yaml"
                 },
-                "resultPath": "",
+                "resultPath": "http://a.ml/vocabularies/apiContract#operationId",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
+                  "actual": 0,
+                  "condition": ">=",
+                  "expected": 1,
                   "negated": false
                 }
               }
@@ -173,7 +204,40 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#7",
+            "focusNode": "amf://id#14",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 47
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 39
+                }
+              },
+              "uri": "file://./test/data/production/spectral/negative13.yaml"
+            },
             "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operation-operationId",
@@ -184,7 +248,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "minCount",
+                "component": "pattern",
                 "location": {
                   "@id": "violation_1_0_location",
                   "@type": [
@@ -204,7 +268,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 31
+                      "line": 47
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -213,21 +277,19 @@
                         "lexical:Position"
                       ],
                       "column": 4,
-                      "line": 24
+                      "line": 39
                     }
                   },
                   "uri": "file://./test/data/production/spectral/negative13.yaml"
                 },
-                "resultPath": "apiContract.operationId",
+                "resultPath": "http://a.ml/vocabularies/apiContract#operationId",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
+                  "argument": "operation id",
                   "negated": false
                 }
               }
@@ -239,7 +301,40 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#14",
+            "focusNode": "amf://id#21",
+            "location": {
+              "@id": "violation_2_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_2_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_2_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 29,
+                  "line": 62
+                },
+                "start": {
+                  "@id": "violation_2_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 4,
+                  "line": 55
+                }
+              },
+              "uri": "file://./test/data/production/spectral/negative13.yaml"
+            },
             "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "operation-operationId",
@@ -269,75 +364,11 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 47
-                    },
-                    "start": {
-                      "@id": "violation_2_0_location_range_start",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 4,
-                      "line": 39
-                    }
-                  },
-                  "uri": "file://./test/data/production/spectral/negative13.yaml"
-                },
-                "resultPath": "apiContract.operationId",
-                "traceValue": {
-                  "@id": "violation_2_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "argument": "operation id",
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "violation_3",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "amf://id#21",
-            "resultMessage": "This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection\nto other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the\nURL in some documentation systems.\nMake the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP\nmessage. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?\n",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "operation-operationId",
-            "trace": [
-              {
-                "@id": "violation_3_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "pattern",
-                "location": {
-                  "@id": "violation_3_0_location",
-                  "@type": [
-                    "lexicalSchema:LocationNode",
-                    "lexical:Location"
-                  ],
-                  "range": {
-                    "@id": "violation_3_0_location_range",
-                    "@type": [
-                      "lexicalSchema:RangeNode",
-                      "lexical:Range"
-                    ],
-                    "end": {
-                      "@id": "violation_3_0_location_range_end",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
                       "column": 29,
                       "line": 62
                     },
                     "start": {
-                      "@id": "violation_3_0_location_range_start",
+                      "@id": "violation_2_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -348,9 +379,9 @@
                   },
                   "uri": "file://./test/data/production/spectral/negative13.yaml"
                 },
-                "resultPath": "apiContract.operationId",
+                "resultPath": "http://a.ml/vocabularies/apiContract#operationId",
                 "traceValue": {
-                  "@id": "violation_3_0_traceValue",
+                  "@id": "violation_2_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"

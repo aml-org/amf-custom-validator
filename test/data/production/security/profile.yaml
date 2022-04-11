@@ -303,34 +303,34 @@ validations:
     message: scopes in OAuth2 security scheme declarations must match application of the security scheme
     targetClass: security.SecurityRequirement
     rego: |
-      nested_nodes[schemesArray] with data.nodes as $node["security:schemes"]
+      nested_nodes[schemesArray] with data.nodes as $node["http://a.ml/vocabularies/security#schemes"]
       scheme = schemesArray[0]
 
       # compute set of declared scopes
-      nested_nodes[securitySchemesArray] with data.nodes as scheme["security:scheme"]
+      nested_nodes[securitySchemesArray] with data.nodes as scheme["http://a.ml/vocabularies/security#scheme"]
       securityScheme = securitySchemesArray[0]
-      secType = securityScheme["security:type"]
+      secType = securityScheme["http://a.ml/vocabularies/security#type"]
       secType == "OAuth 2.0"
-      nested_nodes[settingsArray] with data.nodes as securityScheme["security:settings"]
+      nested_nodes[settingsArray] with data.nodes as securityScheme["http://a.ml/vocabularies/security#settings"]
       settings = settingsArray[0]
-      nested_nodes[flowsArray] with data.nodes as settings["security:flows"]
+      nested_nodes[flowsArray] with data.nodes as settings["http://a.ml/vocabularies/security#flows"]
       flow = flowsArray[_]
-      flow["security:flow"] == "authorizationCode"
-      nested_nodes[scopesArray] with data.nodes as flow["security:scope"]
+      flow["http://a.ml/vocabularies/security#flow"] == "authorizationCode"
+      nested_nodes[scopesArray] with data.nodes as flow["http://a.ml/vocabularies/security#scope"]
       scopesSet = {name |
         scope = scopesArray[_]
-        name = scope["core:name"]
+        name = scope["http://a.ml/vocabularies/core#name"]
       }
 
       # compute of used scopes
-      nested_nodes[appliedSettingsArray] with data.nodes as scheme["security:settings"]
+      nested_nodes[appliedSettingsArray] with data.nodes as scheme["http://a.ml/vocabularies/security#settings"]
       appliedSettings = appliedSettingsArray[0]
-      nested_nodes[appliedSettingsFlowsArray] with data.nodes as appliedSettings["security:flows"]
+      nested_nodes[appliedSettingsFlowsArray] with data.nodes as appliedSettings["http://a.ml/vocabularies/security#flows"]
       appliedSettingsFlows = appliedSettingsFlowsArray[0]
-      nested_nodes[appliedScopesArray] with data.nodes as appliedSettingsFlows["security:scope"]
+      nested_nodes[appliedScopesArray] with data.nodes as appliedSettingsFlows["http://a.ml/vocabularies/security#scope"]
       appliedScopesSet = { name |
         settingsScope = appliedScopesArray[_]
-        name = settingsScope["core:name"]
+        name = settingsScope["http://a.ml/vocabularies/core#name"]
       }
 
       # check inclusion of sets

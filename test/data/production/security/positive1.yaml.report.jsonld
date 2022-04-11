@@ -6,7 +6,7 @@
       },
       "doc": "http://a.ml/vocabularies/document#",
       "meta": "http://a.ml/vocabularies/meta#",
-      "reportSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/",
+      "reportSchema": "file:///dialects/validation-report.yaml#/declarations/",
       "shacl": "http://www.w3.org/ns/shacl#"
     },
     "@id": "dialect-instance",
@@ -24,7 +24,8 @@
           "reportSchema:ReportNode",
           "shacl:ValidationReport"
         ],
-        "conforms": true
+        "conforms": true,
+        "profileName": "Anypoint Security Best Practices"
       }
     ],
     "doc:processingData": [

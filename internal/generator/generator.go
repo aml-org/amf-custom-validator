@@ -2,7 +2,10 @@ package generator
 
 import (
 	"fmt"
+	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/aml-org/amf-custom-validator/internal/types"
+	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
 	"regexp"
 	"strings"
 )
@@ -14,13 +17,25 @@ type RegoUnit struct {
 	Prefixes   profile.ProfileContext
 }
 
-// Main entry point generating a valid Rego unit from a parsed profile.
+func IriExpanderFrom(profile profile.Profile) *misc.IriExpander {
+	context := make(types.ObjectMap)
+	types.MergeObjectMap(&context, &contexts.DefaultAMFContext)
+	for n, p := range profile.Prefixes {
+		context[n] = p
+	}
+	return &misc.IriExpander{
+		Context: context,
+	}
+}
+
+// Generate Main entry point generating a valid Rego unit from a parsed profile.
 // It uses the encoded Rego preamble code to provide all the library
 // code to execute the profile.
 func Generate(profile profile.Profile) RegoUnit {
-	acc := []string{pkg(profile), preamble(profile)}
+	iriExpander := IriExpanderFrom(profile)
+	acc := []string{pkg(profile), profileName(profile), preamble(profile)}
 	for _, r := range ruleSet(profile) {
-		acc = append(acc, GenerateTopLevelExpression(r))
+		acc = append(acc, GenerateTopLevelExpression(r, iriExpander))
 	}
 	return RegoUnit{
 		Name:       packageName(profile),
@@ -56,6 +71,10 @@ func packageName(profile profile.Profile) string {
 	}
 	sanitizedName := reg.ReplaceAllString(strings.ToLower(profile.Name), "_")
 	return fmt.Sprintf("profile_%s", sanitizedName)
+}
+
+func profileName(profile profile.Profile) string {
+	return fmt.Sprintf("report[\"profile\"] = \"%s\"", profile.Name)
 }
 
 func entrypoint(profile profile.Profile) string {
@@ -113,6 +132,18 @@ nested_values[nested_values] {
   nested_values := {value | n = data.nodes[_]; value := n[data.property]}
 }
 
+# Fetches all the subject nodes that have certain predicate and object
+search_subjects[valid_subject] {
+  predicate = data.predicate
+  object = data.object
+  
+  node = input["@ids"][_]
+  node_predicate_values = nodes_array with data.nodes as object.get(node,predicate,[])
+  node_predicate_value = node_predicate_values[_]
+  node_predicate_value["@id"] == object["@id"]
+  valid_subject = node
+}
+
 # collection functions
 
 # collect next set of nodes
@@ -137,22 +168,22 @@ collect_values[r] {
 # helper to check datatype constraints
 
 check_datatype(x,dt) = true {
-  dt == "xsd:string"
+  dt == "http://www.w3.org/2001/XMLSchema#string"
   is_string(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:integer"
+  dt == "http://www.w3.org/2001/XMLSchema#integer"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:float"
+  dt == "http://www.w3.org/2001/XMLSchema#float"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:boolean"
+  dt == "http://www.w3.org/2001/XMLSchema#boolean"
   is_boolean(x)
 }
 
@@ -164,10 +195,10 @@ check_datatype(x,dt) = true {
 
 check_datatype(x,dt) = false {
   not is_object(x)
-  dt != "xsd:string"
-  dt != "xsd:integer"
-  dt != "xsd:float"
-  dt != "xsd:boolean"
+  dt != "http://www.w3.org/2001/XMLSchema#string"
+  dt != "http://www.w3.org/2001/XMLSchema#integer"
+  dt != "http://www.w3.org/2001/XMLSchema#float"
+  dt != "http://www.w3.org/2001/XMLSchema#boolean"
 }
 
 # Fetches all the nodes for a given RDF class
@@ -209,6 +240,28 @@ as_string(x) = json.marshal(x) {
 
 # Traces one evaluation of a constraint
 trace(constraint, resultPath, focusNode, traceValue) = t {
+  l := location(focusNode)  
+  t := {
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue,
+	"location": l
+  }
+}
+
+# Generates trace when lexical info is not available
+trace(constraint, resultPath, focusNode, traceValue) = t {
+  not location(focusNode)
+  t := {
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue
+  }
+}
+
+location(focusNode) = l {
   id := focusNode["@id"]
   location := input["@lexical"][id]
   raw_range := location["range"]
@@ -227,33 +280,31 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   	  "column": to_number(range_parts[3])
     }
   }
-  t := {
-	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
-    "component": constraint,
-    "resultPath": resultPath,
-    "traceValue": traceValue,
-	"location": {
-	  "@type": ["lexicalSchema:LocationNode", "lexical:Location"],
-      "uri": uri,
-      "range": range
-	}
-  }
-}
-
-trace(constraint, resultPath, focusNode, traceValue) = t {
-  id := focusNode["@id"]
-  not input["@lexical"][id]
-  t := {
-	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
-    "component": constraint,
-    "resultPath": resultPath,
-    "traceValue": traceValue
+  l := {
+  	"@type": ["lexicalSchema:LocationNode", "lexical:Location"],
+  	"uri": uri,
+  	"range": range
   }
 }
 
 # Builds an error message that can be returned to the calling client software
 error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
+  locationNode := location(focusNode)
+  e := {
+	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
+    "sourceShapeName": sourceShapeName,
+    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
+    "resultMessage": resultMessage,
+	"location": locationNode,	
+    "trace": traceLog
+  }
+}
+
+# Builds error message when lexical info is not available
+error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
+  id := focusNode["@id"]
+  not location(focusNode)
   e := {
 	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,

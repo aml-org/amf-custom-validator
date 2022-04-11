@@ -4,7 +4,6 @@
       "actual": {
         "@id": "http://a.ml/vocabularies/validation#actual"
       },
-      "apiContract": "http://a.ml/vocabularies/apiContract#",
       "argument": {
         "@id": "http://a.ml/vocabularies/validation#argument"
       },
@@ -20,13 +19,10 @@
       "conforms": {
         "@id": "http://www.w3.org/ns/shacl#conforms"
       },
-      "core": "http://a.ml/vocabularies/core#",
-      "data": "http://a.ml/vocabularies/data#",
       "doc": "http://a.ml/vocabularies/document#",
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
       },
-      "ex": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#",
       "expected": {
         "@id": "http://a.ml/vocabularies/validation#expected"
       },
@@ -34,7 +30,7 @@
         "@id": "http://www.w3.org/ns/shacl#focusNode"
       },
       "lexical": "http://a.ml/vocabularies/lexical#",
-      "lexicalSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/lexical.yaml#/declarations/",
+      "lexicalSchema": "file:///dialects/lexical.yaml#/declarations/",
       "line": {
         "@id": "http://a.ml/vocabularies/lexical#line"
       },
@@ -45,12 +41,13 @@
       "negated": {
         "@id": "http://a.ml/vocabularies/validation#negated"
       },
+      "profileName": {
+        "@id": "http://a.ml/vocabularies/validation#profileName"
+      },
       "range": {
         "@id": "http://a.ml/vocabularies/lexical#range"
       },
-      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-      "rdfs": "http://www.w3.org/2000/01/rdf-schema",
-      "reportSchema": "https://raw.githubusercontent.com/aml-org/models/master/src/main/dialects/validation-report.yaml#/declarations/",
+      "reportSchema": "file:///dialects/validation-report.yaml#/declarations/",
       "result": {
         "@id": "http://www.w3.org/ns/shacl#result"
       },
@@ -63,13 +60,10 @@
       "resultSeverity": {
         "@id": "http://www.w3.org/ns/shacl#resultSeverity"
       },
-      "security": "http://a.ml/vocabularies/security#",
       "shacl": "http://www.w3.org/ns/shacl#",
-      "shapes": "http://a.ml/vocabularies/shapes#",
       "sourceShapeName": {
         "@id": "http://a.ml/vocabularies/validation#sourceShapeName"
       },
-      "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
       "start": {
         "@id": "http://a.ml/vocabularies/lexical#start"
       },
@@ -85,8 +79,7 @@
       "uri": {
         "@id": "http://a.ml/vocabularies/lexical#uri"
       },
-      "validation": "http://a.ml/vocabularies/validation#",
-      "xsd": "http://www.w3.org/2001/XMLSchema#"
+      "validation": "http://a.ml/vocabularies/validation#"
     },
     "@id": "dialect-instance",
     "@type": [
@@ -104,6 +97,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "profileName": "test",
         "result": [
           {
             "@id": "violation_0",
@@ -111,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "ex:InvalidResource1",
+            "focusNode": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#InvalidResource1",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -123,7 +117,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "ex.isDog",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#isDog",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
@@ -142,7 +136,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "ex.quaksLikeDuck",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#quaksLikeDuck",
                 "traceValue": {
                   "@id": "violation_0_1_traceValue",
                   "@type": [
@@ -161,7 +155,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "ex.walksLikeDuck",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#walksLikeDuck",
                 "traceValue": {
                   "@id": "violation_0_2_traceValue",
                   "@type": [
@@ -181,7 +175,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "ex:InvalidResource2",
+            "focusNode": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#InvalidResource2",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -193,7 +187,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "ex.isDuck",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#isDuck",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [
@@ -212,7 +206,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "ex.quaksLikeDuck",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#quaksLikeDuck",
                 "traceValue": {
                   "@id": "violation_1_1_traceValue",
                   "@type": [
@@ -231,7 +225,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "ex.walksLikeDuck",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-and-then-and#walksLikeDuck",
                 "traceValue": {
                   "@id": "violation_1_2_traceValue",
                   "@type": [

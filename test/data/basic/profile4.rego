@@ -1,5 +1,6 @@
 package profile_test_4
 
+report["profile"] = "Test 4"
 
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {
@@ -33,6 +34,18 @@ nested_values[nested_values] {
   nested_values := {value | n = data.nodes[_]; value := n[data.property]}
 }
 
+# Fetches all the subject nodes that have certain predicate and object
+search_subjects[valid_subject] {
+  predicate = data.predicate
+  object = data.object
+  
+  node = input["@ids"][_]
+  node_predicate_values = nodes_array with data.nodes as object.get(node,predicate,[])
+  node_predicate_value = node_predicate_values[_]
+  node_predicate_value["@id"] == object["@id"]
+  valid_subject = node
+}
+
 # collection functions
 
 # collect next set of nodes
@@ -57,22 +70,22 @@ collect_values[r] {
 # helper to check datatype constraints
 
 check_datatype(x,dt) = true {
-  dt == "xsd:string"
+  dt == "http://www.w3.org/2001/XMLSchema#string"
   is_string(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:integer"
+  dt == "http://www.w3.org/2001/XMLSchema#integer"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:float"
+  dt == "http://www.w3.org/2001/XMLSchema#float"
   is_number(x)
 }
 
 check_datatype(x,dt) = true {
-  dt == "xsd:boolean"
+  dt == "http://www.w3.org/2001/XMLSchema#boolean"
   is_boolean(x)
 }
 
@@ -84,10 +97,10 @@ check_datatype(x,dt) = true {
 
 check_datatype(x,dt) = false {
   not is_object(x)
-  dt != "xsd:string"
-  dt != "xsd:integer"
-  dt != "xsd:float"
-  dt != "xsd:boolean"
+  dt != "http://www.w3.org/2001/XMLSchema#string"
+  dt != "http://www.w3.org/2001/XMLSchema#integer"
+  dt != "http://www.w3.org/2001/XMLSchema#float"
+  dt != "http://www.w3.org/2001/XMLSchema#boolean"
 }
 
 # Fetches all the nodes for a given RDF class
@@ -129,6 +142,28 @@ as_string(x) = json.marshal(x) {
 
 # Traces one evaluation of a constraint
 trace(constraint, resultPath, focusNode, traceValue) = t {
+  l := location(focusNode)  
+  t := {
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue,
+	"location": l
+  }
+}
+
+# Generates trace when lexical info is not available
+trace(constraint, resultPath, focusNode, traceValue) = t {
+  not location(focusNode)
+  t := {
+	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue
+  }
+}
+
+location(focusNode) = l {
   id := focusNode["@id"]
   location := input["@lexical"][id]
   raw_range := location["range"]
@@ -147,33 +182,31 @@ trace(constraint, resultPath, focusNode, traceValue) = t {
   	  "column": to_number(range_parts[3])
     }
   }
-  t := {
-	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
-    "component": constraint,
-    "resultPath": resultPath,
-    "traceValue": traceValue,
-	"location": {
-	  "@type": ["lexicalSchema:LocationNode", "lexical:Location"],
-      "uri": uri,
-      "range": range
-	}
-  }
-}
-
-trace(constraint, resultPath, focusNode, traceValue) = t {
-  id := focusNode["@id"]
-  not input["@lexical"][id]
-  t := {
-	"@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
-    "component": constraint,
-    "resultPath": resultPath,
-    "traceValue": traceValue
+  l := {
+  	"@type": ["lexicalSchema:LocationNode", "lexical:Location"],
+  	"uri": uri,
+  	"range": range
   }
 }
 
 # Builds an error message that can be returned to the calling client software
 error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
   id := focusNode["@id"]
+  locationNode := location(focusNode)
+  e := {
+	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
+    "sourceShapeName": sourceShapeName,
+    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
+    "resultMessage": resultMessage,
+	"location": locationNode,	
+    "trace": traceLog
+  }
+}
+
+# Builds error message when lexical info is not available
+error(sourceShapeName, focusNode, resultMessage, traceLog) = e {
+  id := focusNode["@id"]
+  not location(focusNode)
   e := {
 	"@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
@@ -213,66 +246,69 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_rule_2[nodes] {
-  init_x_0__maxCount_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__maxCount_,"raml-shapes:schema",[])
+gen_path_set_rule_2[nodes] {
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/shapes#schema",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
-gen_path_rule_4[nodes] {
-  init_x_0__minCount_ = data.sourceNode
-  nodes_tmp = object.get(init_x_0__minCount_,"raml-shapes:schema",[])
+gen_path_set_rule_4[nodes] {
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/shapes#schema",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
-gen_path_rule_5[nodes] {
-  init_x_0__nested_ = data.sourceNode
-  tmp_x = nested_nodes with data.nodes as init_x_0__nested_["raml-shapes:schema"]
-  x = tmp_x[_][_]
-  nodes = x
+gen_path_set_rule_5[nodes] {
+  init_x_0 = data.sourceNode
+  tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/shapes#schema"]
+  x_0 = tmp_x_0[_][_]
+  nodes = x_0
 }
 
-gen_path_rule_7[nodes] {
-  init_y_0__minCount_ = data.sourceNode
-  nodes_tmp = object.get(init_y_0__minCount_,"shacl:minLength",[])
+gen_path_set_rule_7[nodes] {
+  init_y_0 = data.sourceNode
+  nodes_tmp = object.get(init_y_0,"http://www.w3.org/ns/shacl#minLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  nodes = nodes_tmp2[_]
+  y_0 = nodes_tmp2[_]
+  nodes = y_0
 }
 
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Parameter"
+  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Parameter"
   #  querying path: raml-shapes.schema
-  gen_propValues_1 = gen_path_rule_2 with data.sourceNode as x
+  gen_propValues_1 = gen_path_set_rule_2 with data.sourceNode as x
   not count(gen_propValues_1) <= 3
-  _result_0 := trace("maxCount","raml-shapes.schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<=","actual": count(gen_propValues_1),"expected": 3})
+  _result_0 := trace("maxCount","http://a.ml/vocabularies/shapes#schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<=","actual": count(gen_propValues_1),"expected": 3})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Parameter"
+  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Parameter"
   #  querying path: raml-shapes.schema
-  gen_propValues_3 = gen_path_rule_4 with data.sourceNode as x
+  gen_propValues_3 = gen_path_set_rule_4 with data.sourceNode as x
   not count(gen_propValues_3) >= 1
-  _result_0 := trace("minCount","raml-shapes.schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_3),"expected": 1})
+  _result_0 := trace("minCount","http://a.ml/vocabularies/shapes#schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_3),"expected": 1})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }
 
 violation[matches] {
-  target_class[x] with data.class as "apiContract:Parameter"
+  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Parameter"
   #  querying path: raml-shapes.schema
-  ys = gen_path_rule_5 with data.sourceNode as x
+  ys = gen_path_set_rule_5 with data.sourceNode as x
   y_errorAcc0 = []
   ys_br_0 = [ ys_br_0_error|
     y = ys[_]
     #  querying path: shacl.minLength
-    gen_propValues_6 = gen_path_rule_7 with data.sourceNode as y
+    gen_propValues_6 = gen_path_set_rule_7 with data.sourceNode as y
     not count(gen_propValues_6) >= 1
-    _result_0 := trace("minCount","shacl.minLength",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
-    ys_br_0_inner_error := error("nested",y,"error in nested nodes under raml-shapes.schema",[_result_0])
+    _result_0 := trace("minCount","http://www.w3.org/ns/shacl#minLength",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
+    ys_br_0_inner_error := error("nested",y,"error in nested nodes under http://a.ml/vocabularies/shapes#schema",[_result_0])
     ys_br_0_error = [y["@id"],ys_br_0_inner_error]
   ]
   ys_br_0_errors = { nodeId | n = ys_br_0[_]; nodeId = n[0] }
@@ -282,6 +318,6 @@ violation[matches] {
   # let's accumulate results
   ys_error_node_variables_agg = ys_br_0_errors
   count(ys_error_node_variables_agg) > 0
-  _result_0 := trace("nested","raml-shapes.schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)),"subResult": y_errorAcc})
+  _result_0 := trace("nested","http://a.ml/vocabularies/shapes#schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)),"subResult": y_errorAcc})
   matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
 }

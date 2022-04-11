@@ -11,19 +11,34 @@ import (
 func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint *y.Yaml, varGenerator *VarGenerator) ([]Rule, error) {
 	var acc []Rule
 
-	min, err := constraint.Get("minCount").Int()
+	minCount, err := constraint.Get("minCount").Int()
 	if err == nil {
-		acc = append(acc, newMinCount(false, variable, path, min))
+		acc = append(acc, newMinCount(false, variable, path, minCount))
 	}
 
-	max, err := constraint.Get("maxCount").Int()
+	maxCount, err := constraint.Get("maxCount").Int()
 	if err == nil {
-		acc = append(acc, newMaxCount(false, variable, path, max))
+		acc = append(acc, newMaxCount(false, variable, path, maxCount))
 	}
 
-	exact, err := constraint.Get("exactCount").Int()
+	exactCount, err := constraint.Get("exactCount").Int()
 	if err == nil {
-		acc = append(acc, newExactCount(false, variable, path, exact))
+		acc = append(acc, newExactCount(false, variable, path, exactCount))
+	}
+
+	minLength, err := constraint.Get("minLength").Int()
+	if err == nil {
+		acc = append(acc, newMinLength(false, variable, path, minLength))
+	}
+
+	maxLength, err := constraint.Get("maxLength").Int()
+	if err == nil {
+		acc = append(acc, newMaxLength(false, variable, path, maxLength))
+	}
+
+	exactLength, err := constraint.Get("exactLength").Int()
+	if err == nil {
+		acc = append(acc, newExactLength(false, variable, path, exactLength))
 	}
 
 	pattern, err := constraint.Get("pattern").String()
@@ -38,6 +53,29 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 			return nil, err
 		}
 		acc = append(acc, newIn(false, variable, path, l))
+	}
+
+	unique, err := constraint.Get("uniqueValues").Bool()
+	if err == nil {
+		acc = append(acc, newUniqueValues(false, variable, path, unique))
+	}
+
+	containsAll, err := constraint.Get("containsAll").Array()
+	if err == nil {
+		l, err := scalarList(containsAll)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, newContainsAll(false, variable, path, l))
+	}
+
+	containsSome, err := constraint.Get("containsSome").Array()
+	if err == nil {
+		l, err := scalarList(containsSome)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, newContainsSome(false, variable, path, l))
 	}
 
 	otherProp, err := constraint.Get("lessThanProperty").String()
@@ -76,7 +114,7 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, newDisjoint(false, variable, path, compPath))
 	}
 
-	otherProp, err = constraint.Get("moreThanProperty").String()
+	otherProp, err = constraint.Get("moreThanProperty").String() // TODO: not defined in dialect or tested
 	if err == nil {
 		compPath, err := pathParser.ParsePath(otherProp)
 		if err != nil {
@@ -85,7 +123,7 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, newMoreThan(false, variable, path, compPath))
 	}
 
-	otherProp, err = constraint.Get("moreThanOrEqualsToProperty").String()
+	otherProp, err = constraint.Get("moreThanOrEqualsToProperty").String() // TODO: not defined in dialect or tested
 	if err == nil {
 		compPath, err := pathParser.ParsePath(otherProp)
 		if err != nil {
@@ -112,7 +150,7 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		acc = append(acc, rule)
 	}
 
-	exactly := constraint.Get("exactly")
+	exactly := constraint.Get("exactly") // TODO: not defined in dialect or tested
 	if exactly.IsFound() {
 		rule, err := parseQualifiedNestedExpression(exactly, false, variable, path, varGenerator, EQ)
 		if err != nil {
@@ -252,35 +290,41 @@ func parseQualifiedNestedExpression(qNested *y.Yaml, negated bool, variable Vari
 }
 
 // We are always stringifying the value to be able to compare it easily in Rego
+func stringifyNode(node *y.Yaml) (string, error) {
+	s, nok := node.String()
+	if nok == nil {
+		return s, nil
+	}
+
+	i, nok := node.Int()
+	if nok == nil {
+		return strconv.Itoa(i), nil
+	}
+
+	f, nok := node.Float()
+	if nok == nil {
+		return strconv.FormatFloat(f, 'f', 6, 64), nil
+	}
+
+	b, nok := node.Bool()
+	if nok == nil {
+		return strconv.FormatBool(b), nil
+	}
+
+	l, c := node.Pos()
+	return "", errors.New(fmt.Sprintf("expected scalars, found %v at [%d,%d]", node, l, c))
+}
+
 func scalarList(in []*y.Yaml) ([]string, error) {
 	var acc []string
 	for _, e := range in {
-		s, nok := e.String()
+		s, nok := stringifyNode(e)
 		if nok == nil {
 			acc = append(acc, s)
 			continue
+		} else {
+			return nil, nok
 		}
-
-		i, nok := e.Int()
-		if nok == nil {
-			acc = append(acc, strconv.Itoa(i))
-			continue
-		}
-
-		f, nok := e.Float()
-		if nok == nil {
-			acc = append(acc, strconv.FormatFloat(f, 'f', 6, 64))
-			continue
-		}
-
-		b, nok := e.Bool()
-		if nok == nil {
-			acc = append(acc, strconv.FormatBool(b))
-			continue
-		}
-
-		l, c := e.Pos()
-		return nil, errors.New(fmt.Sprintf("expected scalars in 'in' constraint, found %v at [%d,%d]", e, l, c))
 
 	}
 

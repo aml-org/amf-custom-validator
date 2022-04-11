@@ -50,7 +50,11 @@ func TestPathAlternative001(t *testing.T) {
 }
 
 func TestPathInverse001(t *testing.T) {
-	ignoreShaclCase("path/path-inverse-001", t)
+	testShaclCase("path/path-inverse-001", t)
+}
+
+func TestPathInverseNested(t *testing.T) {
+	testShaclCase("path/path-inverse-nested", t)
 }
 
 func TestPathSequence001(t *testing.T) {
@@ -110,7 +114,7 @@ func TestPropertyMaxInclusive001(t *testing.T) {
 }
 
 func TestPropertyMaxLength001(t *testing.T) {
-	ignoreShaclCase("property/maxLength-001", t)
+	testShaclCase("property/maxLength-001", t)
 }
 
 func TestPropertyMinCount001(t *testing.T) {
@@ -130,7 +134,7 @@ func TestPropertyMinExclusive002(t *testing.T) {
 }
 
 func TestPropertyMinLength001(t *testing.T) {
-	ignoreShaclCase("property/minLength-001", t)
+	testShaclCase("property/minLength-001", t)
 }
 
 func TestPropertyPattern001(t *testing.T) {

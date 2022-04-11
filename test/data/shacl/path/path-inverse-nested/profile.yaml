@@ -1,0 +1,19 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+validations:
+
+  validation1: # all persons have to be child of Maradona
+    targetClass: ex.Person
+    propertyConstraints:
+      ex.child^ / ex.surname:
+        in:
+          - "Maradona"
+
+
+prefixes:
+  ex: http://datashapes.org/sh/tests/core/path/path-inverse-nested.test#
+

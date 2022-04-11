@@ -34,6 +34,7 @@ func (y *Yaml) IsFound() bool {
 //
 // Example:
 //      y.Get("xx").Get("yy").Int()
+//		y.Get("notPresent").IsFound()
 func (y *Yaml) Get(key interface{}) *Yaml {
 	found := false
 	for _, n := range y.data.Content {
@@ -44,7 +45,7 @@ func (y *Yaml) Get(key interface{}) *Yaml {
 			found = true
 		}
 	}
-	return &Yaml{nil}
+	return &Yaml{nil} // always returns yaml node, if key not present yaml node with nil value is returned
 }
 
 // GetPath searches for the item as specified by the branch
