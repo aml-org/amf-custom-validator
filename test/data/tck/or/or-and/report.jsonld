@@ -156,7 +156,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-and#InvalidResource2",
+            "focusNode": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-and#InvalidResource1",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -187,7 +187,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-and#c",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-and#d",
                 "traceValue": {
                   "@id": "violation_1_1_traceValue",
                   "@type": [
@@ -270,7 +270,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-and#a",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-and#b",
                 "traceValue": {
                   "@id": "violation_3_0_traceValue",
                   "@type": [
@@ -309,7 +309,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-and#InvalidResource1",
+            "focusNode": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-and#InvalidResource2",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -321,7 +321,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-and#b",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-and#a",
                 "traceValue": {
                   "@id": "violation_4_0_traceValue",
                   "@type": [
@@ -340,7 +340,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-and#d",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/or/or-and#c",
                 "traceValue": {
                   "@id": "violation_4_1_traceValue",
                   "@type": [

@@ -105,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "http://datashapes.org/sh/tests/core/node/and-002.test#InvalidInstance2",
+            "focusNode": "http://datashapes.org/sh/tests/core/node/and-002.test#InvalidInstance1",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -116,7 +116,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "maxCount",
+                "component": "minCount",
                 "resultPath": "http://datashapes.org/sh/tests/core/node/and-002.test#property",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
@@ -124,8 +124,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": 2,
-                  "condition": "<=",
+                  "actual": 0,
+                  "condition": ">=",
                   "expected": 1,
                   "negated": false
                 }
@@ -138,7 +138,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "http://datashapes.org/sh/tests/core/node/and-002.test#InvalidInstance1",
+            "focusNode": "http://datashapes.org/sh/tests/core/node/and-002.test#InvalidInstance2",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -149,7 +149,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "minCount",
+                "component": "maxCount",
                 "resultPath": "http://datashapes.org/sh/tests/core/node/and-002.test#property",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
@@ -157,8 +157,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": 0,
-                  "condition": ">=",
+                  "actual": 2,
+                  "condition": "<=",
                   "expected": 1,
                   "negated": false
                 }

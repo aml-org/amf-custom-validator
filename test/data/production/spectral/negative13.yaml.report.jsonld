@@ -105,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#7",
+            "focusNode": "amf://id#14",
             "location": {
               "@id": "violation_0_location",
               "@type": [
@@ -125,7 +125,7 @@
                     "lexical:Position"
                   ],
                   "column": 0,
-                  "line": 31
+                  "line": 47
                 },
                 "start": {
                   "@id": "violation_0_location_range_start",
@@ -134,7 +134,7 @@
                     "lexical:Position"
                   ],
                   "column": 4,
-                  "line": 24
+                  "line": 39
                 }
               },
               "uri": "file://./test/data/production/spectral/negative13.yaml"
@@ -149,7 +149,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "minCount",
+                "component": "pattern",
                 "location": {
                   "@id": "violation_0_0_location",
                   "@type": [
@@ -169,7 +169,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 31
+                      "line": 47
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -178,7 +178,7 @@
                         "lexical:Position"
                       ],
                       "column": 4,
-                      "line": 24
+                      "line": 39
                     }
                   },
                   "uri": "file://./test/data/production/spectral/negative13.yaml"
@@ -190,9 +190,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
+                  "argument": "operation id",
                   "negated": false
                 }
               }
@@ -204,7 +202,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#14",
+            "focusNode": "amf://id#21",
             "location": {
               "@id": "violation_1_location",
               "@type": [
@@ -223,8 +221,8 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 0,
-                  "line": 47
+                  "column": 29,
+                  "line": 62
                 },
                 "start": {
                   "@id": "violation_1_location_range_start",
@@ -233,7 +231,7 @@
                     "lexical:Position"
                   ],
                   "column": 4,
-                  "line": 39
+                  "line": 55
                 }
               },
               "uri": "file://./test/data/production/spectral/negative13.yaml"
@@ -267,8 +265,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 47
+                      "column": 29,
+                      "line": 62
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -277,7 +275,7 @@
                         "lexical:Position"
                       ],
                       "column": 4,
-                      "line": 39
+                      "line": 55
                     }
                   },
                   "uri": "file://./test/data/production/spectral/negative13.yaml"
@@ -289,7 +287,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "operation id",
+                  "argument": "operationId",
                   "negated": false
                 }
               }
@@ -301,7 +299,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#21",
+            "focusNode": "amf://id#7",
             "location": {
               "@id": "violation_2_location",
               "@type": [
@@ -320,8 +318,8 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 29,
-                  "line": 62
+                  "column": 0,
+                  "line": 31
                 },
                 "start": {
                   "@id": "violation_2_location_range_start",
@@ -330,7 +328,7 @@
                     "lexical:Position"
                   ],
                   "column": 4,
-                  "line": 55
+                  "line": 24
                 }
               },
               "uri": "file://./test/data/production/spectral/negative13.yaml"
@@ -345,7 +343,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "pattern",
+                "component": "minCount",
                 "location": {
                   "@id": "violation_2_0_location",
                   "@type": [
@@ -364,8 +362,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 29,
-                      "line": 62
+                      "column": 0,
+                      "line": 31
                     },
                     "start": {
                       "@id": "violation_2_0_location_range_start",
@@ -374,7 +372,7 @@
                         "lexical:Position"
                       ],
                       "column": 4,
-                      "line": 55
+                      "line": 24
                     }
                   },
                   "uri": "file://./test/data/production/spectral/negative13.yaml"
@@ -386,7 +384,9 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "operationId",
+                  "actual": 0,
+                  "condition": ">=",
+                  "expected": 1,
                   "negated": false
                 }
               }

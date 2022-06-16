@@ -139,9 +139,9 @@
               },
               "uri": "file://./test/data/production/spectral/negative17.yaml"
             },
-            "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
+            "resultMessage": "Don't put query string items in the path, they belong in parameters with in: query.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "path-params",
+            "sourceShapeName": "path-not-include-query",
             "trace": [
               {
                 "@id": "violation_0_0",
@@ -149,7 +149,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "rego",
+                "component": "pattern",
                 "location": {
                   "@id": "violation_0_0_location",
                   "@type": [
@@ -183,14 +183,15 @@
                   },
                   "uri": "file://./test/data/production/spectral/negative17.yaml"
                 },
-                "resultPath": "",
+                "resultPath": "http://a.ml/vocabularies/apiContract#path",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "negated": false
+                  "argument": "/invoices/{id}/items?{test}",
+                  "negated": true
                 }
               }
             ]
@@ -235,9 +236,9 @@
               },
               "uri": "file://./test/data/production/spectral/negative17.yaml"
             },
-            "resultMessage": "Don't put query string items in the path, they belong in parameters with in: query.",
+            "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "path-not-include-query",
+            "sourceShapeName": "path-params",
             "trace": [
               {
                 "@id": "violation_1_0",
@@ -245,7 +246,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "pattern",
+                "component": "rego",
                 "location": {
                   "@id": "violation_1_0_location",
                   "@type": [
@@ -279,15 +280,14 @@
                   },
                   "uri": "file://./test/data/production/spectral/negative17.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/apiContract#path",
+                "resultPath": "",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "/invoices/{id}/items?{test}",
-                  "negated": true
+                  "negated": false
                 }
               }
             ]

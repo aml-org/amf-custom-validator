@@ -105,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#6",
+            "focusNode": "amf://id#13",
             "location": {
               "@id": "violation_0_location",
               "@type": [
@@ -124,8 +124,8 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 0,
-                  "line": 33
+                  "column": 29,
+                  "line": 48
                 },
                 "start": {
                   "@id": "violation_0_location_range_start",
@@ -134,14 +134,14 @@
                     "lexical:Position"
                   ],
                   "column": 2,
-                  "line": 16
+                  "line": 33
                 }
               },
               "uri": "file://./test/data/production/spectral/negative15.yaml"
             },
-            "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
+            "resultMessage": "Path parameter declarations cannot be empty, ex./given/{} is invalid.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "path-params",
+            "sourceShapeName": "path-declarations-must-exist",
             "trace": [
               {
                 "@id": "violation_0_0",
@@ -149,7 +149,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "rego",
+                "component": "pattern",
                 "location": {
                   "@id": "violation_0_0_location",
                   "@type": [
@@ -168,8 +168,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 33
+                      "column": 29,
+                      "line": 48
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -178,19 +178,20 @@
                         "lexical:Position"
                       ],
                       "column": 2,
-                      "line": 16
+                      "line": 33
                     }
                   },
                   "uri": "file://./test/data/production/spectral/negative15.yaml"
                 },
-                "resultPath": "",
+                "resultPath": "http://a.ml/vocabularies/apiContract#path",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "negated": false
+                  "argument": "/invoices/{id}/items/{}",
+                  "negated": true
                 }
               }
             ]
@@ -201,7 +202,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#13",
+            "focusNode": "amf://id#6",
             "location": {
               "@id": "violation_1_location",
               "@type": [
@@ -220,8 +221,8 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 29,
-                  "line": 48
+                  "column": 0,
+                  "line": 33
                 },
                 "start": {
                   "@id": "violation_1_location_range_start",
@@ -230,7 +231,7 @@
                     "lexical:Position"
                   ],
                   "column": 2,
-                  "line": 33
+                  "line": 16
                 }
               },
               "uri": "file://./test/data/production/spectral/negative15.yaml"
@@ -264,8 +265,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 29,
-                      "line": 48
+                      "column": 0,
+                      "line": 33
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -274,7 +275,7 @@
                         "lexical:Position"
                       ],
                       "column": 2,
-                      "line": 33
+                      "line": 16
                     }
                   },
                   "uri": "file://./test/data/production/spectral/negative15.yaml"
@@ -286,7 +287,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "/invoices/{id}/items/{}",
+                  "argument": "/invoices/{}/items",
                   "negated": true
                 }
               }
@@ -332,9 +333,9 @@
               },
               "uri": "file://./test/data/production/spectral/negative15.yaml"
             },
-            "resultMessage": "Path parameter declarations cannot be empty, ex./given/{} is invalid.",
+            "resultMessage": "Path parameters are correct and valid.\n  1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in\n     either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently\n     ignored.)\n  2. Every path.parameters and operation.parameters parameter must be used in the path string.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "path-declarations-must-exist",
+            "sourceShapeName": "path-params",
             "trace": [
               {
                 "@id": "violation_2_0",
@@ -342,7 +343,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "pattern",
+                "component": "rego",
                 "location": {
                   "@id": "violation_2_0_location",
                   "@type": [
@@ -376,15 +377,14 @@
                   },
                   "uri": "file://./test/data/production/spectral/negative15.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/apiContract#path",
+                "resultPath": "",
                 "traceValue": {
                   "@id": "violation_2_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "/invoices/{}/items",
-                  "negated": true
+                  "negated": false
                 }
               }
             ]

@@ -202,7 +202,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#8",
+            "focusNode": "amf://id#2",
             "location": {
               "@id": "warning_0_location",
               "@type": [
@@ -221,7 +221,7 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 36,
+                  "column": 27,
                   "line": 7
                 },
                 "start": {
@@ -230,15 +230,15 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 0,
-                  "line": 2
+                  "column": 2,
+                  "line": 4
                 }
               },
-              "uri": "file://./test/data/production/best-practices/negative1.raml"
+              "uri": "file://./test/data/production/best-practices/lib.raml"
             },
-            "resultMessage": "Provide the description for the API",
+            "resultMessage": "Provide description for data shapes",
             "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
-            "sourceShapeName": "api-must-have-description",
+            "sourceShapeName": "payload-shapes-must-have-descriptions",
             "trace": [
               {
                 "@id": "warning_0_0",
@@ -265,7 +265,7 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 36,
+                      "column": 27,
                       "line": 7
                     },
                     "start": {
@@ -274,11 +274,11 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 2
+                      "column": 2,
+                      "line": 4
                     }
                   },
-                  "uri": "file://./test/data/production/best-practices/negative1.raml"
+                  "uri": "file://./test/data/production/best-practices/lib.raml"
                 },
                 "resultPath": "http://a.ml/vocabularies/core#description",
                 "traceValue": {
@@ -301,7 +301,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#8",
+            "focusNode": "amf://id#6",
             "location": {
               "@id": "warning_1_location",
               "@type": [
@@ -320,7 +320,7 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 36,
+                  "column": 27,
                   "line": 7
                 },
                 "start": {
@@ -329,15 +329,15 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 0,
-                  "line": 2
+                  "column": 2,
+                  "line": 4
                 }
               },
-              "uri": "file://./test/data/production/best-practices/negative1.raml"
+              "uri": "file://./test/data/production/best-practices/lib.raml"
             },
-            "resultMessage": "Provide the documentation for the API",
+            "resultMessage": "Provide description for data shapes",
             "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
-            "sourceShapeName": "api-must-have-documentation",
+            "sourceShapeName": "payload-shapes-must-have-descriptions",
             "trace": [
               {
                 "@id": "warning_1_0",
@@ -364,7 +364,7 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 36,
+                      "column": 27,
                       "line": 7
                     },
                     "start": {
@@ -373,13 +373,13 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 2
+                      "column": 2,
+                      "line": 4
                     }
                   },
-                  "uri": "file://./test/data/production/best-practices/negative1.raml"
+                  "uri": "file://./test/data/production/best-practices/lib.raml"
                 },
-                "resultPath": "http://a.ml/vocabularies/core#documentation",
+                "resultPath": "http://a.ml/vocabularies/core#description",
                 "traceValue": {
                   "@id": "warning_1_0_traceValue",
                   "@type": [
@@ -400,7 +400,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#2",
+            "focusNode": "amf://id#8",
             "location": {
               "@id": "warning_2_location",
               "@type": [
@@ -419,7 +419,7 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 27,
+                  "column": 36,
                   "line": 7
                 },
                 "start": {
@@ -428,15 +428,15 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 2,
-                  "line": 4
+                  "column": 0,
+                  "line": 2
                 }
               },
-              "uri": "file://./test/data/production/best-practices/lib.raml"
+              "uri": "file://./test/data/production/best-practices/negative1.raml"
             },
-            "resultMessage": "Provide description for data shapes",
+            "resultMessage": "Provide the description for the API",
             "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
-            "sourceShapeName": "payload-shapes-must-have-descriptions",
+            "sourceShapeName": "api-must-have-description",
             "trace": [
               {
                 "@id": "warning_2_0",
@@ -463,7 +463,7 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 27,
+                      "column": 36,
                       "line": 7
                     },
                     "start": {
@@ -472,11 +472,11 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 2,
-                      "line": 4
+                      "column": 0,
+                      "line": 2
                     }
                   },
-                  "uri": "file://./test/data/production/best-practices/lib.raml"
+                  "uri": "file://./test/data/production/best-practices/negative1.raml"
                 },
                 "resultPath": "http://a.ml/vocabularies/core#description",
                 "traceValue": {
@@ -499,7 +499,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#6",
+            "focusNode": "amf://id#8",
             "location": {
               "@id": "warning_3_location",
               "@type": [
@@ -518,7 +518,7 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 27,
+                  "column": 36,
                   "line": 7
                 },
                 "start": {
@@ -527,15 +527,15 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 2,
-                  "line": 4
+                  "column": 0,
+                  "line": 2
                 }
               },
-              "uri": "file://./test/data/production/best-practices/lib.raml"
+              "uri": "file://./test/data/production/best-practices/negative1.raml"
             },
-            "resultMessage": "Provide description for data shapes",
+            "resultMessage": "Provide the documentation for the API",
             "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
-            "sourceShapeName": "payload-shapes-must-have-descriptions",
+            "sourceShapeName": "api-must-have-documentation",
             "trace": [
               {
                 "@id": "warning_3_0",
@@ -562,7 +562,7 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 27,
+                      "column": 36,
                       "line": 7
                     },
                     "start": {
@@ -571,13 +571,13 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 2,
-                      "line": 4
+                      "column": 0,
+                      "line": 2
                     }
                   },
-                  "uri": "file://./test/data/production/best-practices/lib.raml"
+                  "uri": "file://./test/data/production/best-practices/negative1.raml"
                 },
-                "resultPath": "http://a.ml/vocabularies/core#description",
+                "resultPath": "http://a.ml/vocabularies/core#documentation",
                 "traceValue": {
                   "@id": "warning_3_0_traceValue",
                   "@type": [

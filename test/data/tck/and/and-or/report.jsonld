@@ -156,7 +156,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#InvalidResource2",
+            "focusNode": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#InvalidResource1",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -168,7 +168,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#a",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#c",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [
@@ -187,7 +187,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#b",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#d",
                 "traceValue": {
                   "@id": "violation_1_1_traceValue",
                   "@type": [
@@ -207,7 +207,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#InvalidResource3",
+            "focusNode": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#InvalidResource2",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -258,7 +258,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#InvalidResource1",
+            "focusNode": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#InvalidResource3",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -270,7 +270,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#c",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#a",
                 "traceValue": {
                   "@id": "violation_3_0_traceValue",
                   "@type": [
@@ -289,7 +289,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "in",
-                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#d",
+                "resultPath": "https://github.com/aml-org/amf-custom-validator/test/data/tck/and/and-or#b",
                 "traceValue": {
                   "@id": "violation_3_1_traceValue",
                   "@type": [
