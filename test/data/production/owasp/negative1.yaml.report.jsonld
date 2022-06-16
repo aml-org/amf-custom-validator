@@ -105,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#16",
+            "focusNode": "amf://id#14",
             "location": {
               "@id": "violation_0_location",
               "@type": [
@@ -125,7 +125,7 @@
                     "lexical:Position"
                   ],
                   "column": 0,
-                  "line": 19
+                  "line": 26
                 },
                 "start": {
                   "@id": "violation_0_location_range_start",
@@ -134,14 +134,14 @@
                     "lexical:Position"
                   ],
                   "column": 8,
-                  "line": 12
+                  "line": 19
                 }
               },
               "uri": "file://./test/data/production/owasp/negative1.yaml"
             },
-            "resultMessage": "Prefer to use random and unpredictable values as GUIDs for records’ IDs.",
+            "resultMessage": "Define data types and strict patterns for all string parameters",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "broken-object-level-authorization-use-guids",
+            "sourceShapeName": "injection-pattern-on-string-parameters",
             "trace": [
               {
                 "@id": "violation_0_0",
@@ -169,7 +169,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 19
+                      "line": 26
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -178,21 +178,21 @@
                         "lexical:Position"
                       ],
                       "column": 8,
-                      "line": 12
+                      "line": 19
                     }
                   },
                   "uri": "file://./test/data/production/owasp/negative1.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#pattern",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#datatype",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "lala",
-                  "expected": "[\"(?im)^[{(]?[0-9A-F]{8}[-]?(?:[0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$\"]",
-                  "negated": false
+                  "actual": "http://www.w3.org/2001/XMLSchema#string",
+                  "expected": "[\"http://www.w3.org/2001/XMLSchema#string\"]",
+                  "negated": true
                 }
               },
               {
@@ -201,7 +201,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "pattern",
+                "component": "minCount",
                 "location": {
                   "@id": "violation_0_1_location",
                   "@type": [
@@ -221,7 +221,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 19
+                      "line": 26
                     },
                     "start": {
                       "@id": "violation_0_1_location_range_start",
@@ -230,20 +230,75 @@
                         "lexical:Position"
                       ],
                       "column": 8,
-                      "line": 12
+                      "line": 19
                     }
                   },
                   "uri": "file://./test/data/production/owasp/negative1.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/core#name",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#datatype",
                 "traceValue": {
                   "@id": "violation_0_1_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "id",
+                  "actual": 1,
+                  "condition": ">=",
+                  "expected": 1,
                   "negated": true
+                }
+              },
+              {
+                "@id": "violation_0_2",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "minCount",
+                "location": {
+                  "@id": "violation_0_2_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_2_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_2_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 26
+                    },
+                    "start": {
+                      "@id": "violation_0_2_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 8,
+                      "line": 19
+                    }
+                  },
+                  "uri": "file://./test/data/production/owasp/negative1.yaml"
+                },
+                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#pattern",
+                "traceValue": {
+                  "@id": "violation_0_2_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "actual": 0,
+                  "condition": ">=",
+                  "expected": 1,
+                  "negated": false
                 }
               }
             ]
@@ -254,7 +309,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#14",
+            "focusNode": "amf://id#16",
             "location": {
               "@id": "violation_1_location",
               "@type": [
@@ -274,7 +329,7 @@
                     "lexical:Position"
                   ],
                   "column": 0,
-                  "line": 26
+                  "line": 19
                 },
                 "start": {
                   "@id": "violation_1_location_range_start",
@@ -283,14 +338,14 @@
                     "lexical:Position"
                   ],
                   "column": 8,
-                  "line": 19
+                  "line": 12
                 }
               },
               "uri": "file://./test/data/production/owasp/negative1.yaml"
             },
-            "resultMessage": "Define data types and strict patterns for all string parameters",
+            "resultMessage": "Prefer to use random and unpredictable values as GUIDs for records’ IDs.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "injection-pattern-on-string-parameters",
+            "sourceShapeName": "broken-object-level-authorization-use-guids",
             "trace": [
               {
                 "@id": "violation_1_0",
@@ -318,7 +373,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 26
+                      "line": 19
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -327,21 +382,21 @@
                         "lexical:Position"
                       ],
                       "column": 8,
-                      "line": 19
+                      "line": 12
                     }
                   },
                   "uri": "file://./test/data/production/owasp/negative1.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#datatype",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#pattern",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "http://www.w3.org/2001/XMLSchema#string",
-                  "expected": "[\"http://www.w3.org/2001/XMLSchema#string\"]",
-                  "negated": true
+                  "actual": "lala",
+                  "expected": "[\"(?im)^[{(]?[0-9A-F]{8}[-]?(?:[0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$\"]",
+                  "negated": false
                 }
               },
               {
@@ -350,7 +405,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "minCount",
+                "component": "pattern",
                 "location": {
                   "@id": "violation_1_1_location",
                   "@type": [
@@ -370,7 +425,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 26
+                      "line": 19
                     },
                     "start": {
                       "@id": "violation_1_1_location_range_start",
@@ -379,75 +434,20 @@
                         "lexical:Position"
                       ],
                       "column": 8,
-                      "line": 19
+                      "line": 12
                     }
                   },
                   "uri": "file://./test/data/production/owasp/negative1.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#datatype",
+                "resultPath": "http://a.ml/vocabularies/core#name",
                 "traceValue": {
                   "@id": "violation_1_1_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": 1,
-                  "condition": ">=",
-                  "expected": 1,
+                  "argument": "id",
                   "negated": true
-                }
-              },
-              {
-                "@id": "violation_1_2",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
-                "location": {
-                  "@id": "violation_1_2_location",
-                  "@type": [
-                    "lexicalSchema:LocationNode",
-                    "lexical:Location"
-                  ],
-                  "range": {
-                    "@id": "violation_1_2_location_range",
-                    "@type": [
-                      "lexicalSchema:RangeNode",
-                      "lexical:Range"
-                    ],
-                    "end": {
-                      "@id": "violation_1_2_location_range_end",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 0,
-                      "line": 26
-                    },
-                    "start": {
-                      "@id": "violation_1_2_location_range_start",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 8,
-                      "line": 19
-                    }
-                  },
-                  "uri": "file://./test/data/production/owasp/negative1.yaml"
-                },
-                "resultPath": "http://a.ml/vocabularies/shapes#schema / http://www.w3.org/ns/shacl#pattern",
-                "traceValue": {
-                  "@id": "violation_1_2_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
                 }
               }
             ]

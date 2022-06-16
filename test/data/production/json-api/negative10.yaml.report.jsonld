@@ -200,7 +200,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#6",
+                      "focusNode": "amf://id#10",
                       "location": {
                         "@id": "violation_0_0_traceValue_0_location",
                         "@type": [
@@ -220,7 +220,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 23
+                            "line": 32
                           },
                           "start": {
                             "@id": "violation_0_0_traceValue_0_location_range_start",
@@ -229,7 +229,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 21
+                            "line": 25
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -263,7 +263,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 23
+                                "line": 32
                               },
                               "start": {
                                 "@id": "violation_0_0_traceValue_0_0_location_range_start",
@@ -272,7 +272,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 21
+                                "line": 25
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -284,7 +284,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "meta",
+                            "actual": "links",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -297,7 +297,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#6",
                       "location": {
                         "@id": "violation_0_0_traceValue_1_location",
                         "@type": [
@@ -317,7 +317,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 25
+                            "line": 23
                           },
                           "start": {
                             "@id": "violation_0_0_traceValue_1_location_range_start",
@@ -326,7 +326,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 23
+                            "line": 21
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -360,7 +360,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 25
+                                "line": 23
                               },
                               "start": {
                                 "@id": "violation_0_0_traceValue_1_0_location_range_start",
@@ -369,7 +369,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 23
+                                "line": 21
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -381,7 +381,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "included",
+                            "actual": "meta",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -394,7 +394,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#10",
+                      "focusNode": "amf://id#8",
                       "location": {
                         "@id": "violation_0_0_traceValue_2_location",
                         "@type": [
@@ -414,7 +414,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 32
+                            "line": 25
                           },
                           "start": {
                             "@id": "violation_0_0_traceValue_2_location_range_start",
@@ -423,7 +423,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 25
+                            "line": 23
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -457,7 +457,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 32
+                                "line": 25
                               },
                               "start": {
                                 "@id": "violation_0_0_traceValue_2_0_location_range_start",
@@ -466,7 +466,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 25
+                                "line": 23
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -478,7 +478,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "links",
+                            "actual": "included",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -491,7 +491,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#2",
+                      "focusNode": "amf://id#10",
                       "location": {
                         "@id": "violation_0_0_traceValue_3_location",
                         "@type": [
@@ -511,7 +511,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 21
+                            "line": 32
                           },
                           "start": {
                             "@id": "violation_0_0_traceValue_3_location_range_start",
@@ -520,7 +520,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 16
+                            "line": 25
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -554,7 +554,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 21
+                                "line": 32
                               },
                               "start": {
                                 "@id": "violation_0_0_traceValue_3_0_location_range_start",
@@ -563,7 +563,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 16
+                                "line": 25
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -584,7 +584,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "amf://id#3",
+                                "focusNode": "amf://id#11",
                                 "location": {
                                   "@id": "violation_0_0_traceValue_3_0_traceValue_0_location",
                                   "@type": [
@@ -604,7 +604,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 0,
-                                      "line": 21
+                                      "line": 32
                                     },
                                     "start": {
                                       "@id": "violation_0_0_traceValue_3_0_traceValue_0_location_range_start",
@@ -613,7 +613,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 8,
-                                      "line": 16
+                                      "line": 25
                                     }
                                   },
                                   "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -647,7 +647,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 0,
-                                          "line": 21
+                                          "line": 32
                                         },
                                         "start": {
                                           "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_location_range_start",
@@ -656,7 +656,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 8,
-                                          "line": 16
+                                          "line": 25
                                         }
                                       },
                                       "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -669,10 +669,205 @@
                                         "validation:TraceValue"
                                       ],
                                       "cardinality": 2,
-                                      "failedNodes": 0,
+                                      "failedNodes": 2,
                                       "negated": false,
-                                      "subResult": [],
-                                      "successfulNodes": 1
+                                      "subResult": [
+                                        {
+                                          "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_0",
+                                          "@type": [
+                                            "reportSchema:ValidationResultNode",
+                                            "shacl:ValidationResult"
+                                          ],
+                                          "focusNode": "amf://id#12",
+                                          "location": {
+                                            "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_0_location",
+                                            "@type": [
+                                              "lexicalSchema:LocationNode",
+                                              "lexical:Location"
+                                            ],
+                                            "range": {
+                                              "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_0_location_range",
+                                              "@type": [
+                                                "lexicalSchema:RangeNode",
+                                                "lexical:Range"
+                                              ],
+                                              "end": {
+                                                "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_0_location_range_end",
+                                                "@type": [
+                                                  "lexicalSchema:PositionNode",
+                                                  "lexical:Position"
+                                                ],
+                                                "column": 0,
+                                                "line": 30
+                                              },
+                                              "start": {
+                                                "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_0_location_range_start",
+                                                "@type": [
+                                                  "lexicalSchema:PositionNode",
+                                                  "lexical:Position"
+                                                ],
+                                                "column": 12,
+                                                "line": 28
+                                              }
+                                            },
+                                            "uri": "file://./test/data/production/json-api/negative10.yaml"
+                                          },
+                                          "resultMessage": "error in nested nodes under http://www.w3.org/ns/shacl#property",
+                                          "sourceShapeName": "nested",
+                                          "trace": [
+                                            {
+                                              "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_0_0",
+                                              "@type": [
+                                                "reportSchema:TraceMessageNode",
+                                                "validation:TraceMessage"
+                                              ],
+                                              "component": "in",
+                                              "location": {
+                                                "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_location",
+                                                "@type": [
+                                                  "lexicalSchema:LocationNode",
+                                                  "lexical:Location"
+                                                ],
+                                                "range": {
+                                                  "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_location_range",
+                                                  "@type": [
+                                                    "lexicalSchema:RangeNode",
+                                                    "lexical:Range"
+                                                  ],
+                                                  "end": {
+                                                    "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_location_range_end",
+                                                    "@type": [
+                                                      "lexicalSchema:PositionNode",
+                                                      "lexical:Position"
+                                                    ],
+                                                    "column": 0,
+                                                    "line": 30
+                                                  },
+                                                  "start": {
+                                                    "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_location_range_start",
+                                                    "@type": [
+                                                      "lexicalSchema:PositionNode",
+                                                      "lexical:Position"
+                                                    ],
+                                                    "column": 12,
+                                                    "line": 28
+                                                  }
+                                                },
+                                                "uri": "file://./test/data/production/json-api/negative10.yaml"
+                                              },
+                                              "resultPath": "http://www.w3.org/ns/shacl#name",
+                                              "traceValue": {
+                                                "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_traceValue",
+                                                "@type": [
+                                                  "reportSchema:TraceValueNode",
+                                                  "validation:TraceValue"
+                                                ],
+                                                "actual": "self",
+                                                "expected": "[\"id\",\"type\"]",
+                                                "negated": false
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_1",
+                                          "@type": [
+                                            "reportSchema:ValidationResultNode",
+                                            "shacl:ValidationResult"
+                                          ],
+                                          "focusNode": "amf://id#14",
+                                          "location": {
+                                            "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_1_location",
+                                            "@type": [
+                                              "lexicalSchema:LocationNode",
+                                              "lexical:Location"
+                                            ],
+                                            "range": {
+                                              "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_1_location_range",
+                                              "@type": [
+                                                "lexicalSchema:RangeNode",
+                                                "lexical:Range"
+                                              ],
+                                              "end": {
+                                                "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_1_location_range_end",
+                                                "@type": [
+                                                  "lexicalSchema:PositionNode",
+                                                  "lexical:Position"
+                                                ],
+                                                "column": 0,
+                                                "line": 32
+                                              },
+                                              "start": {
+                                                "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_1_location_range_start",
+                                                "@type": [
+                                                  "lexicalSchema:PositionNode",
+                                                  "lexical:Position"
+                                                ],
+                                                "column": 12,
+                                                "line": 30
+                                              }
+                                            },
+                                            "uri": "file://./test/data/production/json-api/negative10.yaml"
+                                          },
+                                          "resultMessage": "error in nested nodes under http://www.w3.org/ns/shacl#property",
+                                          "sourceShapeName": "nested",
+                                          "trace": [
+                                            {
+                                              "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_1_0",
+                                              "@type": [
+                                                "reportSchema:TraceMessageNode",
+                                                "validation:TraceMessage"
+                                              ],
+                                              "component": "in",
+                                              "location": {
+                                                "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_location",
+                                                "@type": [
+                                                  "lexicalSchema:LocationNode",
+                                                  "lexical:Location"
+                                                ],
+                                                "range": {
+                                                  "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_location_range",
+                                                  "@type": [
+                                                    "lexicalSchema:RangeNode",
+                                                    "lexical:Range"
+                                                  ],
+                                                  "end": {
+                                                    "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_location_range_end",
+                                                    "@type": [
+                                                      "lexicalSchema:PositionNode",
+                                                      "lexical:Position"
+                                                    ],
+                                                    "column": 0,
+                                                    "line": 32
+                                                  },
+                                                  "start": {
+                                                    "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_location_range_start",
+                                                    "@type": [
+                                                      "lexicalSchema:PositionNode",
+                                                      "lexical:Position"
+                                                    ],
+                                                    "column": 12,
+                                                    "line": 30
+                                                  }
+                                                },
+                                                "uri": "file://./test/data/production/json-api/negative10.yaml"
+                                              },
+                                              "resultPath": "http://www.w3.org/ns/shacl#name",
+                                              "traceValue": {
+                                                "@id": "violation_0_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_traceValue",
+                                                "@type": [
+                                                  "reportSchema:TraceValueNode",
+                                                  "validation:TraceValue"
+                                                ],
+                                                "actual": "related",
+                                                "expected": "[\"id\",\"type\"]",
+                                                "negated": false
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "successfulNodes": 0
                                     }
                                   }
                                 ]
@@ -689,7 +884,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#6",
+                      "focusNode": "amf://id#2",
                       "location": {
                         "@id": "violation_0_0_traceValue_4_location",
                         "@type": [
@@ -709,7 +904,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 23
+                            "line": 21
                           },
                           "start": {
                             "@id": "violation_0_0_traceValue_4_location_range_start",
@@ -718,7 +913,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 21
+                            "line": 16
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -752,7 +947,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 23
+                                "line": 21
                               },
                               "start": {
                                 "@id": "violation_0_0_traceValue_4_0_location_range_start",
@@ -761,7 +956,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 21
+                                "line": 16
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -782,7 +977,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "amf://id#7",
+                                "focusNode": "amf://id#3",
                                 "location": {
                                   "@id": "violation_0_0_traceValue_4_0_traceValue_0_location",
                                   "@type": [
@@ -802,7 +997,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 0,
-                                      "line": 23
+                                      "line": 21
                                     },
                                     "start": {
                                       "@id": "violation_0_0_traceValue_4_0_traceValue_0_location_range_start",
@@ -811,7 +1006,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 8,
-                                      "line": 21
+                                      "line": 16
                                     }
                                   },
                                   "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -845,7 +1040,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 0,
-                                          "line": 23
+                                          "line": 21
                                         },
                                         "start": {
                                           "@id": "violation_0_0_traceValue_4_0_traceValue_0_0_location_range_start",
@@ -854,7 +1049,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 8,
-                                          "line": 21
+                                          "line": 16
                                         }
                                       },
                                       "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -870,7 +1065,7 @@
                                       "failedNodes": 0,
                                       "negated": false,
                                       "subResult": [],
-                                      "successfulNodes": 0
+                                      "successfulNodes": 1
                                     }
                                   }
                                 ]
@@ -887,7 +1082,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#6",
                       "location": {
                         "@id": "violation_0_0_traceValue_5_location",
                         "@type": [
@@ -907,7 +1102,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 25
+                            "line": 23
                           },
                           "start": {
                             "@id": "violation_0_0_traceValue_5_location_range_start",
@@ -916,7 +1111,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 23
+                            "line": 21
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -950,7 +1145,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 25
+                                "line": 23
                               },
                               "start": {
                                 "@id": "violation_0_0_traceValue_5_0_location_range_start",
@@ -959,7 +1154,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 23
+                                "line": 21
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -980,7 +1175,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "amf://id#9",
+                                "focusNode": "amf://id#7",
                                 "location": {
                                   "@id": "violation_0_0_traceValue_5_0_traceValue_0_location",
                                   "@type": [
@@ -1000,7 +1195,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 0,
-                                      "line": 25
+                                      "line": 23
                                     },
                                     "start": {
                                       "@id": "violation_0_0_traceValue_5_0_traceValue_0_location_range_start",
@@ -1009,7 +1204,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 8,
-                                      "line": 23
+                                      "line": 21
                                     }
                                   },
                                   "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1043,7 +1238,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 0,
-                                          "line": 25
+                                          "line": 23
                                         },
                                         "start": {
                                           "@id": "violation_0_0_traceValue_5_0_traceValue_0_0_location_range_start",
@@ -1052,7 +1247,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 8,
-                                          "line": 23
+                                          "line": 21
                                         }
                                       },
                                       "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1085,7 +1280,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#10",
+                      "focusNode": "amf://id#8",
                       "location": {
                         "@id": "violation_0_0_traceValue_6_location",
                         "@type": [
@@ -1105,7 +1300,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 32
+                            "line": 25
                           },
                           "start": {
                             "@id": "violation_0_0_traceValue_6_location_range_start",
@@ -1114,7 +1309,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 25
+                            "line": 23
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1148,7 +1343,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 32
+                                "line": 25
                               },
                               "start": {
                                 "@id": "violation_0_0_traceValue_6_0_location_range_start",
@@ -1157,7 +1352,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 25
+                                "line": 23
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1178,7 +1373,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "amf://id#11",
+                                "focusNode": "amf://id#9",
                                 "location": {
                                   "@id": "violation_0_0_traceValue_6_0_traceValue_0_location",
                                   "@type": [
@@ -1198,7 +1393,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 0,
-                                      "line": 32
+                                      "line": 25
                                     },
                                     "start": {
                                       "@id": "violation_0_0_traceValue_6_0_traceValue_0_location_range_start",
@@ -1207,7 +1402,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 8,
-                                      "line": 25
+                                      "line": 23
                                     }
                                   },
                                   "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1241,7 +1436,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 0,
-                                          "line": 32
+                                          "line": 25
                                         },
                                         "start": {
                                           "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_location_range_start",
@@ -1250,7 +1445,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 8,
-                                          "line": 25
+                                          "line": 23
                                         }
                                       },
                                       "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1263,204 +1458,9 @@
                                         "validation:TraceValue"
                                       ],
                                       "cardinality": 2,
-                                      "failedNodes": 2,
+                                      "failedNodes": 0,
                                       "negated": false,
-                                      "subResult": [
-                                        {
-                                          "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_0",
-                                          "@type": [
-                                            "reportSchema:ValidationResultNode",
-                                            "shacl:ValidationResult"
-                                          ],
-                                          "focusNode": "amf://id#12",
-                                          "location": {
-                                            "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_0_location",
-                                            "@type": [
-                                              "lexicalSchema:LocationNode",
-                                              "lexical:Location"
-                                            ],
-                                            "range": {
-                                              "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_0_location_range",
-                                              "@type": [
-                                                "lexicalSchema:RangeNode",
-                                                "lexical:Range"
-                                              ],
-                                              "end": {
-                                                "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_0_location_range_end",
-                                                "@type": [
-                                                  "lexicalSchema:PositionNode",
-                                                  "lexical:Position"
-                                                ],
-                                                "column": 0,
-                                                "line": 30
-                                              },
-                                              "start": {
-                                                "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_0_location_range_start",
-                                                "@type": [
-                                                  "lexicalSchema:PositionNode",
-                                                  "lexical:Position"
-                                                ],
-                                                "column": 12,
-                                                "line": 28
-                                              }
-                                            },
-                                            "uri": "file://./test/data/production/json-api/negative10.yaml"
-                                          },
-                                          "resultMessage": "error in nested nodes under http://www.w3.org/ns/shacl#property",
-                                          "sourceShapeName": "nested",
-                                          "trace": [
-                                            {
-                                              "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_0_0",
-                                              "@type": [
-                                                "reportSchema:TraceMessageNode",
-                                                "validation:TraceMessage"
-                                              ],
-                                              "component": "in",
-                                              "location": {
-                                                "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_location",
-                                                "@type": [
-                                                  "lexicalSchema:LocationNode",
-                                                  "lexical:Location"
-                                                ],
-                                                "range": {
-                                                  "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_location_range",
-                                                  "@type": [
-                                                    "lexicalSchema:RangeNode",
-                                                    "lexical:Range"
-                                                  ],
-                                                  "end": {
-                                                    "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_location_range_end",
-                                                    "@type": [
-                                                      "lexicalSchema:PositionNode",
-                                                      "lexical:Position"
-                                                    ],
-                                                    "column": 0,
-                                                    "line": 30
-                                                  },
-                                                  "start": {
-                                                    "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_location_range_start",
-                                                    "@type": [
-                                                      "lexicalSchema:PositionNode",
-                                                      "lexical:Position"
-                                                    ],
-                                                    "column": 12,
-                                                    "line": 28
-                                                  }
-                                                },
-                                                "uri": "file://./test/data/production/json-api/negative10.yaml"
-                                              },
-                                              "resultPath": "http://www.w3.org/ns/shacl#name",
-                                              "traceValue": {
-                                                "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_traceValue",
-                                                "@type": [
-                                                  "reportSchema:TraceValueNode",
-                                                  "validation:TraceValue"
-                                                ],
-                                                "actual": "self",
-                                                "expected": "[\"id\",\"type\"]",
-                                                "negated": false
-                                              }
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_1",
-                                          "@type": [
-                                            "reportSchema:ValidationResultNode",
-                                            "shacl:ValidationResult"
-                                          ],
-                                          "focusNode": "amf://id#14",
-                                          "location": {
-                                            "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_1_location",
-                                            "@type": [
-                                              "lexicalSchema:LocationNode",
-                                              "lexical:Location"
-                                            ],
-                                            "range": {
-                                              "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_1_location_range",
-                                              "@type": [
-                                                "lexicalSchema:RangeNode",
-                                                "lexical:Range"
-                                              ],
-                                              "end": {
-                                                "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_1_location_range_end",
-                                                "@type": [
-                                                  "lexicalSchema:PositionNode",
-                                                  "lexical:Position"
-                                                ],
-                                                "column": 0,
-                                                "line": 32
-                                              },
-                                              "start": {
-                                                "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_1_location_range_start",
-                                                "@type": [
-                                                  "lexicalSchema:PositionNode",
-                                                  "lexical:Position"
-                                                ],
-                                                "column": 12,
-                                                "line": 30
-                                              }
-                                            },
-                                            "uri": "file://./test/data/production/json-api/negative10.yaml"
-                                          },
-                                          "resultMessage": "error in nested nodes under http://www.w3.org/ns/shacl#property",
-                                          "sourceShapeName": "nested",
-                                          "trace": [
-                                            {
-                                              "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_1_0",
-                                              "@type": [
-                                                "reportSchema:TraceMessageNode",
-                                                "validation:TraceMessage"
-                                              ],
-                                              "component": "in",
-                                              "location": {
-                                                "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_location",
-                                                "@type": [
-                                                  "lexicalSchema:LocationNode",
-                                                  "lexical:Location"
-                                                ],
-                                                "range": {
-                                                  "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_location_range",
-                                                  "@type": [
-                                                    "lexicalSchema:RangeNode",
-                                                    "lexical:Range"
-                                                  ],
-                                                  "end": {
-                                                    "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_location_range_end",
-                                                    "@type": [
-                                                      "lexicalSchema:PositionNode",
-                                                      "lexical:Position"
-                                                    ],
-                                                    "column": 0,
-                                                    "line": 32
-                                                  },
-                                                  "start": {
-                                                    "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_location_range_start",
-                                                    "@type": [
-                                                      "lexicalSchema:PositionNode",
-                                                      "lexical:Position"
-                                                    ],
-                                                    "column": 12,
-                                                    "line": 30
-                                                  }
-                                                },
-                                                "uri": "file://./test/data/production/json-api/negative10.yaml"
-                                              },
-                                              "resultPath": "http://www.w3.org/ns/shacl#name",
-                                              "traceValue": {
-                                                "@id": "violation_0_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_traceValue",
-                                                "@type": [
-                                                  "reportSchema:TraceValueNode",
-                                                  "validation:TraceValue"
-                                                ],
-                                                "actual": "related",
-                                                "expected": "[\"id\",\"type\"]",
-                                                "negated": false
-                                              }
-                                            }
-                                          ]
-                                        }
-                                      ],
+                                      "subResult": [],
                                       "successfulNodes": 0
                                     }
                                   }
@@ -1533,7 +1533,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#6",
+                      "focusNode": "amf://id#10",
                       "location": {
                         "@id": "violation_0_1_traceValue_0_location",
                         "@type": [
@@ -1553,7 +1553,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 23
+                            "line": 32
                           },
                           "start": {
                             "@id": "violation_0_1_traceValue_0_location_range_start",
@@ -1562,7 +1562,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 21
+                            "line": 25
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1596,7 +1596,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 23
+                                "line": 32
                               },
                               "start": {
                                 "@id": "violation_0_1_traceValue_0_0_location_range_start",
@@ -1605,7 +1605,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 21
+                                "line": 25
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1617,7 +1617,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "meta",
+                            "actual": "links",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -1630,7 +1630,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#6",
                       "location": {
                         "@id": "violation_0_1_traceValue_1_location",
                         "@type": [
@@ -1650,7 +1650,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 25
+                            "line": 23
                           },
                           "start": {
                             "@id": "violation_0_1_traceValue_1_location_range_start",
@@ -1659,7 +1659,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 23
+                            "line": 21
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1693,7 +1693,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 25
+                                "line": 23
                               },
                               "start": {
                                 "@id": "violation_0_1_traceValue_1_0_location_range_start",
@@ -1702,7 +1702,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 23
+                                "line": 21
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1714,7 +1714,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "included",
+                            "actual": "meta",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -1727,7 +1727,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#10",
+                      "focusNode": "amf://id#8",
                       "location": {
                         "@id": "violation_0_1_traceValue_2_location",
                         "@type": [
@@ -1747,7 +1747,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 32
+                            "line": 25
                           },
                           "start": {
                             "@id": "violation_0_1_traceValue_2_location_range_start",
@@ -1756,7 +1756,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 25
+                            "line": 23
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1790,7 +1790,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 32
+                                "line": 25
                               },
                               "start": {
                                 "@id": "violation_0_1_traceValue_2_0_location_range_start",
@@ -1799,7 +1799,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 25
+                                "line": 23
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1811,7 +1811,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "links",
+                            "actual": "included",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -1925,7 +1925,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#6",
+                      "focusNode": "amf://id#10",
                       "location": {
                         "@id": "violation_1_0_traceValue_0_location",
                         "@type": [
@@ -1945,7 +1945,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 23
+                            "line": 32
                           },
                           "start": {
                             "@id": "violation_1_0_traceValue_0_location_range_start",
@@ -1954,7 +1954,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 21
+                            "line": 25
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -1988,7 +1988,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 23
+                                "line": 32
                               },
                               "start": {
                                 "@id": "violation_1_0_traceValue_0_0_location_range_start",
@@ -1997,7 +1997,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 21
+                                "line": 25
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2009,7 +2009,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "meta",
+                            "actual": "links",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -2022,7 +2022,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#6",
                       "location": {
                         "@id": "violation_1_0_traceValue_1_location",
                         "@type": [
@@ -2042,7 +2042,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 25
+                            "line": 23
                           },
                           "start": {
                             "@id": "violation_1_0_traceValue_1_location_range_start",
@@ -2051,7 +2051,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 23
+                            "line": 21
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2085,7 +2085,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 25
+                                "line": 23
                               },
                               "start": {
                                 "@id": "violation_1_0_traceValue_1_0_location_range_start",
@@ -2094,7 +2094,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 23
+                                "line": 21
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2106,7 +2106,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "included",
+                            "actual": "meta",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -2119,7 +2119,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#10",
+                      "focusNode": "amf://id#8",
                       "location": {
                         "@id": "violation_1_0_traceValue_2_location",
                         "@type": [
@@ -2139,7 +2139,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 32
+                            "line": 25
                           },
                           "start": {
                             "@id": "violation_1_0_traceValue_2_location_range_start",
@@ -2148,7 +2148,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 25
+                            "line": 23
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2182,7 +2182,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 32
+                                "line": 25
                               },
                               "start": {
                                 "@id": "violation_1_0_traceValue_2_0_location_range_start",
@@ -2191,7 +2191,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 25
+                                "line": 23
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2203,7 +2203,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "links",
+                            "actual": "included",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -2216,7 +2216,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#2",
+                      "focusNode": "amf://id#10",
                       "location": {
                         "@id": "violation_1_0_traceValue_3_location",
                         "@type": [
@@ -2236,7 +2236,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 21
+                            "line": 32
                           },
                           "start": {
                             "@id": "violation_1_0_traceValue_3_location_range_start",
@@ -2245,7 +2245,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 16
+                            "line": 25
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2279,7 +2279,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 21
+                                "line": 32
                               },
                               "start": {
                                 "@id": "violation_1_0_traceValue_3_0_location_range_start",
@@ -2288,7 +2288,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 16
+                                "line": 25
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2309,7 +2309,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "amf://id#3",
+                                "focusNode": "amf://id#11",
                                 "location": {
                                   "@id": "violation_1_0_traceValue_3_0_traceValue_0_location",
                                   "@type": [
@@ -2329,7 +2329,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 0,
-                                      "line": 21
+                                      "line": 32
                                     },
                                     "start": {
                                       "@id": "violation_1_0_traceValue_3_0_traceValue_0_location_range_start",
@@ -2338,7 +2338,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 8,
-                                      "line": 16
+                                      "line": 25
                                     }
                                   },
                                   "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2372,7 +2372,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 0,
-                                          "line": 21
+                                          "line": 32
                                         },
                                         "start": {
                                           "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_location_range_start",
@@ -2381,7 +2381,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 8,
-                                          "line": 16
+                                          "line": 25
                                         }
                                       },
                                       "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2394,10 +2394,205 @@
                                         "validation:TraceValue"
                                       ],
                                       "cardinality": 2,
-                                      "failedNodes": 0,
+                                      "failedNodes": 2,
                                       "negated": false,
-                                      "subResult": [],
-                                      "successfulNodes": 1
+                                      "subResult": [
+                                        {
+                                          "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_0",
+                                          "@type": [
+                                            "reportSchema:ValidationResultNode",
+                                            "shacl:ValidationResult"
+                                          ],
+                                          "focusNode": "amf://id#12",
+                                          "location": {
+                                            "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_0_location",
+                                            "@type": [
+                                              "lexicalSchema:LocationNode",
+                                              "lexical:Location"
+                                            ],
+                                            "range": {
+                                              "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_0_location_range",
+                                              "@type": [
+                                                "lexicalSchema:RangeNode",
+                                                "lexical:Range"
+                                              ],
+                                              "end": {
+                                                "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_0_location_range_end",
+                                                "@type": [
+                                                  "lexicalSchema:PositionNode",
+                                                  "lexical:Position"
+                                                ],
+                                                "column": 0,
+                                                "line": 30
+                                              },
+                                              "start": {
+                                                "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_0_location_range_start",
+                                                "@type": [
+                                                  "lexicalSchema:PositionNode",
+                                                  "lexical:Position"
+                                                ],
+                                                "column": 12,
+                                                "line": 28
+                                              }
+                                            },
+                                            "uri": "file://./test/data/production/json-api/negative10.yaml"
+                                          },
+                                          "resultMessage": "error in nested nodes under http://www.w3.org/ns/shacl#property",
+                                          "sourceShapeName": "nested",
+                                          "trace": [
+                                            {
+                                              "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_0_0",
+                                              "@type": [
+                                                "reportSchema:TraceMessageNode",
+                                                "validation:TraceMessage"
+                                              ],
+                                              "component": "in",
+                                              "location": {
+                                                "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_location",
+                                                "@type": [
+                                                  "lexicalSchema:LocationNode",
+                                                  "lexical:Location"
+                                                ],
+                                                "range": {
+                                                  "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_location_range",
+                                                  "@type": [
+                                                    "lexicalSchema:RangeNode",
+                                                    "lexical:Range"
+                                                  ],
+                                                  "end": {
+                                                    "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_location_range_end",
+                                                    "@type": [
+                                                      "lexicalSchema:PositionNode",
+                                                      "lexical:Position"
+                                                    ],
+                                                    "column": 0,
+                                                    "line": 30
+                                                  },
+                                                  "start": {
+                                                    "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_location_range_start",
+                                                    "@type": [
+                                                      "lexicalSchema:PositionNode",
+                                                      "lexical:Position"
+                                                    ],
+                                                    "column": 12,
+                                                    "line": 28
+                                                  }
+                                                },
+                                                "uri": "file://./test/data/production/json-api/negative10.yaml"
+                                              },
+                                              "resultPath": "http://www.w3.org/ns/shacl#name",
+                                              "traceValue": {
+                                                "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_traceValue",
+                                                "@type": [
+                                                  "reportSchema:TraceValueNode",
+                                                  "validation:TraceValue"
+                                                ],
+                                                "actual": "self",
+                                                "expected": "[\"id\",\"type\"]",
+                                                "negated": false
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_1",
+                                          "@type": [
+                                            "reportSchema:ValidationResultNode",
+                                            "shacl:ValidationResult"
+                                          ],
+                                          "focusNode": "amf://id#14",
+                                          "location": {
+                                            "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_1_location",
+                                            "@type": [
+                                              "lexicalSchema:LocationNode",
+                                              "lexical:Location"
+                                            ],
+                                            "range": {
+                                              "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_1_location_range",
+                                              "@type": [
+                                                "lexicalSchema:RangeNode",
+                                                "lexical:Range"
+                                              ],
+                                              "end": {
+                                                "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_1_location_range_end",
+                                                "@type": [
+                                                  "lexicalSchema:PositionNode",
+                                                  "lexical:Position"
+                                                ],
+                                                "column": 0,
+                                                "line": 32
+                                              },
+                                              "start": {
+                                                "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_1_location_range_start",
+                                                "@type": [
+                                                  "lexicalSchema:PositionNode",
+                                                  "lexical:Position"
+                                                ],
+                                                "column": 12,
+                                                "line": 30
+                                              }
+                                            },
+                                            "uri": "file://./test/data/production/json-api/negative10.yaml"
+                                          },
+                                          "resultMessage": "error in nested nodes under http://www.w3.org/ns/shacl#property",
+                                          "sourceShapeName": "nested",
+                                          "trace": [
+                                            {
+                                              "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_1_0",
+                                              "@type": [
+                                                "reportSchema:TraceMessageNode",
+                                                "validation:TraceMessage"
+                                              ],
+                                              "component": "in",
+                                              "location": {
+                                                "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_location",
+                                                "@type": [
+                                                  "lexicalSchema:LocationNode",
+                                                  "lexical:Location"
+                                                ],
+                                                "range": {
+                                                  "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_location_range",
+                                                  "@type": [
+                                                    "lexicalSchema:RangeNode",
+                                                    "lexical:Range"
+                                                  ],
+                                                  "end": {
+                                                    "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_location_range_end",
+                                                    "@type": [
+                                                      "lexicalSchema:PositionNode",
+                                                      "lexical:Position"
+                                                    ],
+                                                    "column": 0,
+                                                    "line": 32
+                                                  },
+                                                  "start": {
+                                                    "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_location_range_start",
+                                                    "@type": [
+                                                      "lexicalSchema:PositionNode",
+                                                      "lexical:Position"
+                                                    ],
+                                                    "column": 12,
+                                                    "line": 30
+                                                  }
+                                                },
+                                                "uri": "file://./test/data/production/json-api/negative10.yaml"
+                                              },
+                                              "resultPath": "http://www.w3.org/ns/shacl#name",
+                                              "traceValue": {
+                                                "@id": "violation_1_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_traceValue",
+                                                "@type": [
+                                                  "reportSchema:TraceValueNode",
+                                                  "validation:TraceValue"
+                                                ],
+                                                "actual": "related",
+                                                "expected": "[\"id\",\"type\"]",
+                                                "negated": false
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "successfulNodes": 0
                                     }
                                   }
                                 ]
@@ -2414,7 +2609,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#6",
+                      "focusNode": "amf://id#2",
                       "location": {
                         "@id": "violation_1_0_traceValue_4_location",
                         "@type": [
@@ -2434,7 +2629,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 23
+                            "line": 21
                           },
                           "start": {
                             "@id": "violation_1_0_traceValue_4_location_range_start",
@@ -2443,7 +2638,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 21
+                            "line": 16
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2477,7 +2672,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 23
+                                "line": 21
                               },
                               "start": {
                                 "@id": "violation_1_0_traceValue_4_0_location_range_start",
@@ -2486,7 +2681,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 21
+                                "line": 16
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2507,7 +2702,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "amf://id#7",
+                                "focusNode": "amf://id#3",
                                 "location": {
                                   "@id": "violation_1_0_traceValue_4_0_traceValue_0_location",
                                   "@type": [
@@ -2527,7 +2722,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 0,
-                                      "line": 23
+                                      "line": 21
                                     },
                                     "start": {
                                       "@id": "violation_1_0_traceValue_4_0_traceValue_0_location_range_start",
@@ -2536,7 +2731,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 8,
-                                      "line": 21
+                                      "line": 16
                                     }
                                   },
                                   "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2570,7 +2765,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 0,
-                                          "line": 23
+                                          "line": 21
                                         },
                                         "start": {
                                           "@id": "violation_1_0_traceValue_4_0_traceValue_0_0_location_range_start",
@@ -2579,7 +2774,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 8,
-                                          "line": 21
+                                          "line": 16
                                         }
                                       },
                                       "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2595,7 +2790,7 @@
                                       "failedNodes": 0,
                                       "negated": false,
                                       "subResult": [],
-                                      "successfulNodes": 0
+                                      "successfulNodes": 1
                                     }
                                   }
                                 ]
@@ -2612,7 +2807,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#6",
                       "location": {
                         "@id": "violation_1_0_traceValue_5_location",
                         "@type": [
@@ -2632,7 +2827,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 25
+                            "line": 23
                           },
                           "start": {
                             "@id": "violation_1_0_traceValue_5_location_range_start",
@@ -2641,7 +2836,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 23
+                            "line": 21
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2675,7 +2870,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 25
+                                "line": 23
                               },
                               "start": {
                                 "@id": "violation_1_0_traceValue_5_0_location_range_start",
@@ -2684,7 +2879,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 23
+                                "line": 21
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2705,7 +2900,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "amf://id#9",
+                                "focusNode": "amf://id#7",
                                 "location": {
                                   "@id": "violation_1_0_traceValue_5_0_traceValue_0_location",
                                   "@type": [
@@ -2725,7 +2920,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 0,
-                                      "line": 25
+                                      "line": 23
                                     },
                                     "start": {
                                       "@id": "violation_1_0_traceValue_5_0_traceValue_0_location_range_start",
@@ -2734,7 +2929,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 8,
-                                      "line": 23
+                                      "line": 21
                                     }
                                   },
                                   "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2768,7 +2963,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 0,
-                                          "line": 25
+                                          "line": 23
                                         },
                                         "start": {
                                           "@id": "violation_1_0_traceValue_5_0_traceValue_0_0_location_range_start",
@@ -2777,7 +2972,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 8,
-                                          "line": 23
+                                          "line": 21
                                         }
                                       },
                                       "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2810,7 +3005,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#10",
+                      "focusNode": "amf://id#8",
                       "location": {
                         "@id": "violation_1_0_traceValue_6_location",
                         "@type": [
@@ -2830,7 +3025,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 32
+                            "line": 25
                           },
                           "start": {
                             "@id": "violation_1_0_traceValue_6_location_range_start",
@@ -2839,7 +3034,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 25
+                            "line": 23
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2873,7 +3068,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 32
+                                "line": 25
                               },
                               "start": {
                                 "@id": "violation_1_0_traceValue_6_0_location_range_start",
@@ -2882,7 +3077,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 25
+                                "line": 23
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2903,7 +3098,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "amf://id#11",
+                                "focusNode": "amf://id#9",
                                 "location": {
                                   "@id": "violation_1_0_traceValue_6_0_traceValue_0_location",
                                   "@type": [
@@ -2923,7 +3118,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 0,
-                                      "line": 32
+                                      "line": 25
                                     },
                                     "start": {
                                       "@id": "violation_1_0_traceValue_6_0_traceValue_0_location_range_start",
@@ -2932,7 +3127,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 8,
-                                      "line": 25
+                                      "line": 23
                                     }
                                   },
                                   "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2966,7 +3161,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 0,
-                                          "line": 32
+                                          "line": 25
                                         },
                                         "start": {
                                           "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_location_range_start",
@@ -2975,7 +3170,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 8,
-                                          "line": 25
+                                          "line": 23
                                         }
                                       },
                                       "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -2988,204 +3183,9 @@
                                         "validation:TraceValue"
                                       ],
                                       "cardinality": 2,
-                                      "failedNodes": 2,
+                                      "failedNodes": 0,
                                       "negated": false,
-                                      "subResult": [
-                                        {
-                                          "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_0",
-                                          "@type": [
-                                            "reportSchema:ValidationResultNode",
-                                            "shacl:ValidationResult"
-                                          ],
-                                          "focusNode": "amf://id#12",
-                                          "location": {
-                                            "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_0_location",
-                                            "@type": [
-                                              "lexicalSchema:LocationNode",
-                                              "lexical:Location"
-                                            ],
-                                            "range": {
-                                              "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_0_location_range",
-                                              "@type": [
-                                                "lexicalSchema:RangeNode",
-                                                "lexical:Range"
-                                              ],
-                                              "end": {
-                                                "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_0_location_range_end",
-                                                "@type": [
-                                                  "lexicalSchema:PositionNode",
-                                                  "lexical:Position"
-                                                ],
-                                                "column": 0,
-                                                "line": 30
-                                              },
-                                              "start": {
-                                                "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_0_location_range_start",
-                                                "@type": [
-                                                  "lexicalSchema:PositionNode",
-                                                  "lexical:Position"
-                                                ],
-                                                "column": 12,
-                                                "line": 28
-                                              }
-                                            },
-                                            "uri": "file://./test/data/production/json-api/negative10.yaml"
-                                          },
-                                          "resultMessage": "error in nested nodes under http://www.w3.org/ns/shacl#property",
-                                          "sourceShapeName": "nested",
-                                          "trace": [
-                                            {
-                                              "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_0_0",
-                                              "@type": [
-                                                "reportSchema:TraceMessageNode",
-                                                "validation:TraceMessage"
-                                              ],
-                                              "component": "in",
-                                              "location": {
-                                                "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_location",
-                                                "@type": [
-                                                  "lexicalSchema:LocationNode",
-                                                  "lexical:Location"
-                                                ],
-                                                "range": {
-                                                  "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_location_range",
-                                                  "@type": [
-                                                    "lexicalSchema:RangeNode",
-                                                    "lexical:Range"
-                                                  ],
-                                                  "end": {
-                                                    "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_location_range_end",
-                                                    "@type": [
-                                                      "lexicalSchema:PositionNode",
-                                                      "lexical:Position"
-                                                    ],
-                                                    "column": 0,
-                                                    "line": 30
-                                                  },
-                                                  "start": {
-                                                    "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_location_range_start",
-                                                    "@type": [
-                                                      "lexicalSchema:PositionNode",
-                                                      "lexical:Position"
-                                                    ],
-                                                    "column": 12,
-                                                    "line": 28
-                                                  }
-                                                },
-                                                "uri": "file://./test/data/production/json-api/negative10.yaml"
-                                              },
-                                              "resultPath": "http://www.w3.org/ns/shacl#name",
-                                              "traceValue": {
-                                                "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_traceValue",
-                                                "@type": [
-                                                  "reportSchema:TraceValueNode",
-                                                  "validation:TraceValue"
-                                                ],
-                                                "actual": "self",
-                                                "expected": "[\"id\",\"type\"]",
-                                                "negated": false
-                                              }
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_1",
-                                          "@type": [
-                                            "reportSchema:ValidationResultNode",
-                                            "shacl:ValidationResult"
-                                          ],
-                                          "focusNode": "amf://id#14",
-                                          "location": {
-                                            "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_1_location",
-                                            "@type": [
-                                              "lexicalSchema:LocationNode",
-                                              "lexical:Location"
-                                            ],
-                                            "range": {
-                                              "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_1_location_range",
-                                              "@type": [
-                                                "lexicalSchema:RangeNode",
-                                                "lexical:Range"
-                                              ],
-                                              "end": {
-                                                "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_1_location_range_end",
-                                                "@type": [
-                                                  "lexicalSchema:PositionNode",
-                                                  "lexical:Position"
-                                                ],
-                                                "column": 0,
-                                                "line": 32
-                                              },
-                                              "start": {
-                                                "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_1_location_range_start",
-                                                "@type": [
-                                                  "lexicalSchema:PositionNode",
-                                                  "lexical:Position"
-                                                ],
-                                                "column": 12,
-                                                "line": 30
-                                              }
-                                            },
-                                            "uri": "file://./test/data/production/json-api/negative10.yaml"
-                                          },
-                                          "resultMessage": "error in nested nodes under http://www.w3.org/ns/shacl#property",
-                                          "sourceShapeName": "nested",
-                                          "trace": [
-                                            {
-                                              "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_1_0",
-                                              "@type": [
-                                                "reportSchema:TraceMessageNode",
-                                                "validation:TraceMessage"
-                                              ],
-                                              "component": "in",
-                                              "location": {
-                                                "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_location",
-                                                "@type": [
-                                                  "lexicalSchema:LocationNode",
-                                                  "lexical:Location"
-                                                ],
-                                                "range": {
-                                                  "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_location_range",
-                                                  "@type": [
-                                                    "lexicalSchema:RangeNode",
-                                                    "lexical:Range"
-                                                  ],
-                                                  "end": {
-                                                    "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_location_range_end",
-                                                    "@type": [
-                                                      "lexicalSchema:PositionNode",
-                                                      "lexical:Position"
-                                                    ],
-                                                    "column": 0,
-                                                    "line": 32
-                                                  },
-                                                  "start": {
-                                                    "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_location_range_start",
-                                                    "@type": [
-                                                      "lexicalSchema:PositionNode",
-                                                      "lexical:Position"
-                                                    ],
-                                                    "column": 12,
-                                                    "line": 30
-                                                  }
-                                                },
-                                                "uri": "file://./test/data/production/json-api/negative10.yaml"
-                                              },
-                                              "resultPath": "http://www.w3.org/ns/shacl#name",
-                                              "traceValue": {
-                                                "@id": "violation_1_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_traceValue",
-                                                "@type": [
-                                                  "reportSchema:TraceValueNode",
-                                                  "validation:TraceValue"
-                                                ],
-                                                "actual": "related",
-                                                "expected": "[\"id\",\"type\"]",
-                                                "negated": false
-                                              }
-                                            }
-                                          ]
-                                        }
-                                      ],
+                                      "subResult": [],
                                       "successfulNodes": 0
                                     }
                                   }
@@ -3258,7 +3258,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#6",
+                      "focusNode": "amf://id#10",
                       "location": {
                         "@id": "violation_1_1_traceValue_0_location",
                         "@type": [
@@ -3278,7 +3278,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 23
+                            "line": 32
                           },
                           "start": {
                             "@id": "violation_1_1_traceValue_0_location_range_start",
@@ -3287,7 +3287,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 21
+                            "line": 25
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -3321,7 +3321,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 23
+                                "line": 32
                               },
                               "start": {
                                 "@id": "violation_1_1_traceValue_0_0_location_range_start",
@@ -3330,7 +3330,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 21
+                                "line": 25
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -3342,7 +3342,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "meta",
+                            "actual": "links",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -3355,7 +3355,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#6",
                       "location": {
                         "@id": "violation_1_1_traceValue_1_location",
                         "@type": [
@@ -3375,7 +3375,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 25
+                            "line": 23
                           },
                           "start": {
                             "@id": "violation_1_1_traceValue_1_location_range_start",
@@ -3384,7 +3384,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 23
+                            "line": 21
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -3418,7 +3418,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 25
+                                "line": 23
                               },
                               "start": {
                                 "@id": "violation_1_1_traceValue_1_0_location_range_start",
@@ -3427,7 +3427,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 23
+                                "line": 21
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -3439,7 +3439,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "included",
+                            "actual": "meta",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -3452,7 +3452,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#10",
+                      "focusNode": "amf://id#8",
                       "location": {
                         "@id": "violation_1_1_traceValue_2_location",
                         "@type": [
@@ -3472,7 +3472,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 32
+                            "line": 25
                           },
                           "start": {
                             "@id": "violation_1_1_traceValue_2_location_range_start",
@@ -3481,7 +3481,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 25
+                            "line": 23
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -3515,7 +3515,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 32
+                                "line": 25
                               },
                               "start": {
                                 "@id": "violation_1_1_traceValue_2_0_location_range_start",
@@ -3524,7 +3524,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 25
+                                "line": 23
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -3536,7 +3536,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "links",
+                            "actual": "included",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -3650,7 +3650,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#6",
+                      "focusNode": "amf://id#10",
                       "location": {
                         "@id": "violation_2_0_traceValue_0_location",
                         "@type": [
@@ -3670,7 +3670,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 23
+                            "line": 32
                           },
                           "start": {
                             "@id": "violation_2_0_traceValue_0_location_range_start",
@@ -3679,7 +3679,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 21
+                            "line": 25
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -3713,7 +3713,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 23
+                                "line": 32
                               },
                               "start": {
                                 "@id": "violation_2_0_traceValue_0_0_location_range_start",
@@ -3722,7 +3722,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 21
+                                "line": 25
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -3734,7 +3734,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "meta",
+                            "actual": "links",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -3747,7 +3747,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#6",
                       "location": {
                         "@id": "violation_2_0_traceValue_1_location",
                         "@type": [
@@ -3767,7 +3767,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 25
+                            "line": 23
                           },
                           "start": {
                             "@id": "violation_2_0_traceValue_1_location_range_start",
@@ -3776,7 +3776,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 23
+                            "line": 21
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -3810,7 +3810,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 25
+                                "line": 23
                               },
                               "start": {
                                 "@id": "violation_2_0_traceValue_1_0_location_range_start",
@@ -3819,7 +3819,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 23
+                                "line": 21
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -3831,7 +3831,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "included",
+                            "actual": "meta",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -3844,7 +3844,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#10",
+                      "focusNode": "amf://id#8",
                       "location": {
                         "@id": "violation_2_0_traceValue_2_location",
                         "@type": [
@@ -3864,7 +3864,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 32
+                            "line": 25
                           },
                           "start": {
                             "@id": "violation_2_0_traceValue_2_location_range_start",
@@ -3873,7 +3873,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 25
+                            "line": 23
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -3907,7 +3907,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 32
+                                "line": 25
                               },
                               "start": {
                                 "@id": "violation_2_0_traceValue_2_0_location_range_start",
@@ -3916,7 +3916,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 25
+                                "line": 23
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -3928,7 +3928,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "links",
+                            "actual": "included",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -3941,7 +3941,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#2",
+                      "focusNode": "amf://id#10",
                       "location": {
                         "@id": "violation_2_0_traceValue_3_location",
                         "@type": [
@@ -3961,7 +3961,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 21
+                            "line": 32
                           },
                           "start": {
                             "@id": "violation_2_0_traceValue_3_location_range_start",
@@ -3970,7 +3970,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 16
+                            "line": 25
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4004,7 +4004,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 21
+                                "line": 32
                               },
                               "start": {
                                 "@id": "violation_2_0_traceValue_3_0_location_range_start",
@@ -4013,7 +4013,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 16
+                                "line": 25
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4034,7 +4034,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "amf://id#3",
+                                "focusNode": "amf://id#11",
                                 "location": {
                                   "@id": "violation_2_0_traceValue_3_0_traceValue_0_location",
                                   "@type": [
@@ -4054,7 +4054,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 0,
-                                      "line": 21
+                                      "line": 32
                                     },
                                     "start": {
                                       "@id": "violation_2_0_traceValue_3_0_traceValue_0_location_range_start",
@@ -4063,7 +4063,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 8,
-                                      "line": 16
+                                      "line": 25
                                     }
                                   },
                                   "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4097,7 +4097,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 0,
-                                          "line": 21
+                                          "line": 32
                                         },
                                         "start": {
                                           "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_location_range_start",
@@ -4106,7 +4106,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 8,
-                                          "line": 16
+                                          "line": 25
                                         }
                                       },
                                       "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4119,10 +4119,205 @@
                                         "validation:TraceValue"
                                       ],
                                       "cardinality": 2,
-                                      "failedNodes": 0,
+                                      "failedNodes": 2,
                                       "negated": false,
-                                      "subResult": [],
-                                      "successfulNodes": 1
+                                      "subResult": [
+                                        {
+                                          "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_0",
+                                          "@type": [
+                                            "reportSchema:ValidationResultNode",
+                                            "shacl:ValidationResult"
+                                          ],
+                                          "focusNode": "amf://id#12",
+                                          "location": {
+                                            "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_0_location",
+                                            "@type": [
+                                              "lexicalSchema:LocationNode",
+                                              "lexical:Location"
+                                            ],
+                                            "range": {
+                                              "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_0_location_range",
+                                              "@type": [
+                                                "lexicalSchema:RangeNode",
+                                                "lexical:Range"
+                                              ],
+                                              "end": {
+                                                "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_0_location_range_end",
+                                                "@type": [
+                                                  "lexicalSchema:PositionNode",
+                                                  "lexical:Position"
+                                                ],
+                                                "column": 0,
+                                                "line": 30
+                                              },
+                                              "start": {
+                                                "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_0_location_range_start",
+                                                "@type": [
+                                                  "lexicalSchema:PositionNode",
+                                                  "lexical:Position"
+                                                ],
+                                                "column": 12,
+                                                "line": 28
+                                              }
+                                            },
+                                            "uri": "file://./test/data/production/json-api/negative10.yaml"
+                                          },
+                                          "resultMessage": "error in nested nodes under http://www.w3.org/ns/shacl#property",
+                                          "sourceShapeName": "nested",
+                                          "trace": [
+                                            {
+                                              "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_0_0",
+                                              "@type": [
+                                                "reportSchema:TraceMessageNode",
+                                                "validation:TraceMessage"
+                                              ],
+                                              "component": "in",
+                                              "location": {
+                                                "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_location",
+                                                "@type": [
+                                                  "lexicalSchema:LocationNode",
+                                                  "lexical:Location"
+                                                ],
+                                                "range": {
+                                                  "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_location_range",
+                                                  "@type": [
+                                                    "lexicalSchema:RangeNode",
+                                                    "lexical:Range"
+                                                  ],
+                                                  "end": {
+                                                    "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_location_range_end",
+                                                    "@type": [
+                                                      "lexicalSchema:PositionNode",
+                                                      "lexical:Position"
+                                                    ],
+                                                    "column": 0,
+                                                    "line": 30
+                                                  },
+                                                  "start": {
+                                                    "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_location_range_start",
+                                                    "@type": [
+                                                      "lexicalSchema:PositionNode",
+                                                      "lexical:Position"
+                                                    ],
+                                                    "column": 12,
+                                                    "line": 28
+                                                  }
+                                                },
+                                                "uri": "file://./test/data/production/json-api/negative10.yaml"
+                                              },
+                                              "resultPath": "http://www.w3.org/ns/shacl#name",
+                                              "traceValue": {
+                                                "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_0_0_traceValue",
+                                                "@type": [
+                                                  "reportSchema:TraceValueNode",
+                                                  "validation:TraceValue"
+                                                ],
+                                                "actual": "self",
+                                                "expected": "[\"id\",\"type\"]",
+                                                "negated": false
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_1",
+                                          "@type": [
+                                            "reportSchema:ValidationResultNode",
+                                            "shacl:ValidationResult"
+                                          ],
+                                          "focusNode": "amf://id#14",
+                                          "location": {
+                                            "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_1_location",
+                                            "@type": [
+                                              "lexicalSchema:LocationNode",
+                                              "lexical:Location"
+                                            ],
+                                            "range": {
+                                              "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_1_location_range",
+                                              "@type": [
+                                                "lexicalSchema:RangeNode",
+                                                "lexical:Range"
+                                              ],
+                                              "end": {
+                                                "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_1_location_range_end",
+                                                "@type": [
+                                                  "lexicalSchema:PositionNode",
+                                                  "lexical:Position"
+                                                ],
+                                                "column": 0,
+                                                "line": 32
+                                              },
+                                              "start": {
+                                                "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_1_location_range_start",
+                                                "@type": [
+                                                  "lexicalSchema:PositionNode",
+                                                  "lexical:Position"
+                                                ],
+                                                "column": 12,
+                                                "line": 30
+                                              }
+                                            },
+                                            "uri": "file://./test/data/production/json-api/negative10.yaml"
+                                          },
+                                          "resultMessage": "error in nested nodes under http://www.w3.org/ns/shacl#property",
+                                          "sourceShapeName": "nested",
+                                          "trace": [
+                                            {
+                                              "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_1_0",
+                                              "@type": [
+                                                "reportSchema:TraceMessageNode",
+                                                "validation:TraceMessage"
+                                              ],
+                                              "component": "in",
+                                              "location": {
+                                                "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_location",
+                                                "@type": [
+                                                  "lexicalSchema:LocationNode",
+                                                  "lexical:Location"
+                                                ],
+                                                "range": {
+                                                  "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_location_range",
+                                                  "@type": [
+                                                    "lexicalSchema:RangeNode",
+                                                    "lexical:Range"
+                                                  ],
+                                                  "end": {
+                                                    "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_location_range_end",
+                                                    "@type": [
+                                                      "lexicalSchema:PositionNode",
+                                                      "lexical:Position"
+                                                    ],
+                                                    "column": 0,
+                                                    "line": 32
+                                                  },
+                                                  "start": {
+                                                    "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_location_range_start",
+                                                    "@type": [
+                                                      "lexicalSchema:PositionNode",
+                                                      "lexical:Position"
+                                                    ],
+                                                    "column": 12,
+                                                    "line": 30
+                                                  }
+                                                },
+                                                "uri": "file://./test/data/production/json-api/negative10.yaml"
+                                              },
+                                              "resultPath": "http://www.w3.org/ns/shacl#name",
+                                              "traceValue": {
+                                                "@id": "violation_2_0_traceValue_3_0_traceValue_0_0_traceValue_1_0_traceValue",
+                                                "@type": [
+                                                  "reportSchema:TraceValueNode",
+                                                  "validation:TraceValue"
+                                                ],
+                                                "actual": "related",
+                                                "expected": "[\"id\",\"type\"]",
+                                                "negated": false
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "successfulNodes": 0
                                     }
                                   }
                                 ]
@@ -4139,7 +4334,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#6",
+                      "focusNode": "amf://id#2",
                       "location": {
                         "@id": "violation_2_0_traceValue_4_location",
                         "@type": [
@@ -4159,7 +4354,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 23
+                            "line": 21
                           },
                           "start": {
                             "@id": "violation_2_0_traceValue_4_location_range_start",
@@ -4168,7 +4363,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 21
+                            "line": 16
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4202,7 +4397,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 23
+                                "line": 21
                               },
                               "start": {
                                 "@id": "violation_2_0_traceValue_4_0_location_range_start",
@@ -4211,7 +4406,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 21
+                                "line": 16
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4232,7 +4427,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "amf://id#7",
+                                "focusNode": "amf://id#3",
                                 "location": {
                                   "@id": "violation_2_0_traceValue_4_0_traceValue_0_location",
                                   "@type": [
@@ -4252,7 +4447,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 0,
-                                      "line": 23
+                                      "line": 21
                                     },
                                     "start": {
                                       "@id": "violation_2_0_traceValue_4_0_traceValue_0_location_range_start",
@@ -4261,7 +4456,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 8,
-                                      "line": 21
+                                      "line": 16
                                     }
                                   },
                                   "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4295,7 +4490,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 0,
-                                          "line": 23
+                                          "line": 21
                                         },
                                         "start": {
                                           "@id": "violation_2_0_traceValue_4_0_traceValue_0_0_location_range_start",
@@ -4304,7 +4499,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 8,
-                                          "line": 21
+                                          "line": 16
                                         }
                                       },
                                       "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4320,7 +4515,7 @@
                                       "failedNodes": 0,
                                       "negated": false,
                                       "subResult": [],
-                                      "successfulNodes": 0
+                                      "successfulNodes": 1
                                     }
                                   }
                                 ]
@@ -4337,7 +4532,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#6",
                       "location": {
                         "@id": "violation_2_0_traceValue_5_location",
                         "@type": [
@@ -4357,7 +4552,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 25
+                            "line": 23
                           },
                           "start": {
                             "@id": "violation_2_0_traceValue_5_location_range_start",
@@ -4366,7 +4561,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 23
+                            "line": 21
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4400,7 +4595,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 25
+                                "line": 23
                               },
                               "start": {
                                 "@id": "violation_2_0_traceValue_5_0_location_range_start",
@@ -4409,7 +4604,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 23
+                                "line": 21
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4430,7 +4625,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "amf://id#9",
+                                "focusNode": "amf://id#7",
                                 "location": {
                                   "@id": "violation_2_0_traceValue_5_0_traceValue_0_location",
                                   "@type": [
@@ -4450,7 +4645,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 0,
-                                      "line": 25
+                                      "line": 23
                                     },
                                     "start": {
                                       "@id": "violation_2_0_traceValue_5_0_traceValue_0_location_range_start",
@@ -4459,7 +4654,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 8,
-                                      "line": 23
+                                      "line": 21
                                     }
                                   },
                                   "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4493,7 +4688,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 0,
-                                          "line": 25
+                                          "line": 23
                                         },
                                         "start": {
                                           "@id": "violation_2_0_traceValue_5_0_traceValue_0_0_location_range_start",
@@ -4502,7 +4697,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 8,
-                                          "line": 23
+                                          "line": 21
                                         }
                                       },
                                       "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4535,7 +4730,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#10",
+                      "focusNode": "amf://id#8",
                       "location": {
                         "@id": "violation_2_0_traceValue_6_location",
                         "@type": [
@@ -4555,7 +4750,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 32
+                            "line": 25
                           },
                           "start": {
                             "@id": "violation_2_0_traceValue_6_location_range_start",
@@ -4564,7 +4759,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 25
+                            "line": 23
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4598,7 +4793,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 32
+                                "line": 25
                               },
                               "start": {
                                 "@id": "violation_2_0_traceValue_6_0_location_range_start",
@@ -4607,7 +4802,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 25
+                                "line": 23
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4628,7 +4823,7 @@
                                   "reportSchema:ValidationResultNode",
                                   "shacl:ValidationResult"
                                 ],
-                                "focusNode": "amf://id#11",
+                                "focusNode": "amf://id#9",
                                 "location": {
                                   "@id": "violation_2_0_traceValue_6_0_traceValue_0_location",
                                   "@type": [
@@ -4648,7 +4843,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 0,
-                                      "line": 32
+                                      "line": 25
                                     },
                                     "start": {
                                       "@id": "violation_2_0_traceValue_6_0_traceValue_0_location_range_start",
@@ -4657,7 +4852,7 @@
                                         "lexical:Position"
                                       ],
                                       "column": 8,
-                                      "line": 25
+                                      "line": 23
                                     }
                                   },
                                   "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4691,7 +4886,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 0,
-                                          "line": 32
+                                          "line": 25
                                         },
                                         "start": {
                                           "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_location_range_start",
@@ -4700,7 +4895,7 @@
                                             "lexical:Position"
                                           ],
                                           "column": 8,
-                                          "line": 25
+                                          "line": 23
                                         }
                                       },
                                       "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -4713,204 +4908,9 @@
                                         "validation:TraceValue"
                                       ],
                                       "cardinality": 2,
-                                      "failedNodes": 2,
+                                      "failedNodes": 0,
                                       "negated": false,
-                                      "subResult": [
-                                        {
-                                          "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_0",
-                                          "@type": [
-                                            "reportSchema:ValidationResultNode",
-                                            "shacl:ValidationResult"
-                                          ],
-                                          "focusNode": "amf://id#12",
-                                          "location": {
-                                            "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_0_location",
-                                            "@type": [
-                                              "lexicalSchema:LocationNode",
-                                              "lexical:Location"
-                                            ],
-                                            "range": {
-                                              "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_0_location_range",
-                                              "@type": [
-                                                "lexicalSchema:RangeNode",
-                                                "lexical:Range"
-                                              ],
-                                              "end": {
-                                                "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_0_location_range_end",
-                                                "@type": [
-                                                  "lexicalSchema:PositionNode",
-                                                  "lexical:Position"
-                                                ],
-                                                "column": 0,
-                                                "line": 30
-                                              },
-                                              "start": {
-                                                "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_0_location_range_start",
-                                                "@type": [
-                                                  "lexicalSchema:PositionNode",
-                                                  "lexical:Position"
-                                                ],
-                                                "column": 12,
-                                                "line": 28
-                                              }
-                                            },
-                                            "uri": "file://./test/data/production/json-api/negative10.yaml"
-                                          },
-                                          "resultMessage": "error in nested nodes under http://www.w3.org/ns/shacl#property",
-                                          "sourceShapeName": "nested",
-                                          "trace": [
-                                            {
-                                              "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_0_0",
-                                              "@type": [
-                                                "reportSchema:TraceMessageNode",
-                                                "validation:TraceMessage"
-                                              ],
-                                              "component": "in",
-                                              "location": {
-                                                "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_location",
-                                                "@type": [
-                                                  "lexicalSchema:LocationNode",
-                                                  "lexical:Location"
-                                                ],
-                                                "range": {
-                                                  "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_location_range",
-                                                  "@type": [
-                                                    "lexicalSchema:RangeNode",
-                                                    "lexical:Range"
-                                                  ],
-                                                  "end": {
-                                                    "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_location_range_end",
-                                                    "@type": [
-                                                      "lexicalSchema:PositionNode",
-                                                      "lexical:Position"
-                                                    ],
-                                                    "column": 0,
-                                                    "line": 30
-                                                  },
-                                                  "start": {
-                                                    "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_location_range_start",
-                                                    "@type": [
-                                                      "lexicalSchema:PositionNode",
-                                                      "lexical:Position"
-                                                    ],
-                                                    "column": 12,
-                                                    "line": 28
-                                                  }
-                                                },
-                                                "uri": "file://./test/data/production/json-api/negative10.yaml"
-                                              },
-                                              "resultPath": "http://www.w3.org/ns/shacl#name",
-                                              "traceValue": {
-                                                "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_0_0_traceValue",
-                                                "@type": [
-                                                  "reportSchema:TraceValueNode",
-                                                  "validation:TraceValue"
-                                                ],
-                                                "actual": "self",
-                                                "expected": "[\"id\",\"type\"]",
-                                                "negated": false
-                                              }
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_1",
-                                          "@type": [
-                                            "reportSchema:ValidationResultNode",
-                                            "shacl:ValidationResult"
-                                          ],
-                                          "focusNode": "amf://id#14",
-                                          "location": {
-                                            "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_1_location",
-                                            "@type": [
-                                              "lexicalSchema:LocationNode",
-                                              "lexical:Location"
-                                            ],
-                                            "range": {
-                                              "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_1_location_range",
-                                              "@type": [
-                                                "lexicalSchema:RangeNode",
-                                                "lexical:Range"
-                                              ],
-                                              "end": {
-                                                "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_1_location_range_end",
-                                                "@type": [
-                                                  "lexicalSchema:PositionNode",
-                                                  "lexical:Position"
-                                                ],
-                                                "column": 0,
-                                                "line": 32
-                                              },
-                                              "start": {
-                                                "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_1_location_range_start",
-                                                "@type": [
-                                                  "lexicalSchema:PositionNode",
-                                                  "lexical:Position"
-                                                ],
-                                                "column": 12,
-                                                "line": 30
-                                              }
-                                            },
-                                            "uri": "file://./test/data/production/json-api/negative10.yaml"
-                                          },
-                                          "resultMessage": "error in nested nodes under http://www.w3.org/ns/shacl#property",
-                                          "sourceShapeName": "nested",
-                                          "trace": [
-                                            {
-                                              "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_1_0",
-                                              "@type": [
-                                                "reportSchema:TraceMessageNode",
-                                                "validation:TraceMessage"
-                                              ],
-                                              "component": "in",
-                                              "location": {
-                                                "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_location",
-                                                "@type": [
-                                                  "lexicalSchema:LocationNode",
-                                                  "lexical:Location"
-                                                ],
-                                                "range": {
-                                                  "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_location_range",
-                                                  "@type": [
-                                                    "lexicalSchema:RangeNode",
-                                                    "lexical:Range"
-                                                  ],
-                                                  "end": {
-                                                    "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_location_range_end",
-                                                    "@type": [
-                                                      "lexicalSchema:PositionNode",
-                                                      "lexical:Position"
-                                                    ],
-                                                    "column": 0,
-                                                    "line": 32
-                                                  },
-                                                  "start": {
-                                                    "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_location_range_start",
-                                                    "@type": [
-                                                      "lexicalSchema:PositionNode",
-                                                      "lexical:Position"
-                                                    ],
-                                                    "column": 12,
-                                                    "line": 30
-                                                  }
-                                                },
-                                                "uri": "file://./test/data/production/json-api/negative10.yaml"
-                                              },
-                                              "resultPath": "http://www.w3.org/ns/shacl#name",
-                                              "traceValue": {
-                                                "@id": "violation_2_0_traceValue_6_0_traceValue_0_0_traceValue_1_0_traceValue",
-                                                "@type": [
-                                                  "reportSchema:TraceValueNode",
-                                                  "validation:TraceValue"
-                                                ],
-                                                "actual": "related",
-                                                "expected": "[\"id\",\"type\"]",
-                                                "negated": false
-                                              }
-                                            }
-                                          ]
-                                        }
-                                      ],
+                                      "subResult": [],
                                       "successfulNodes": 0
                                     }
                                   }
@@ -4983,7 +4983,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#6",
+                      "focusNode": "amf://id#10",
                       "location": {
                         "@id": "violation_2_1_traceValue_0_location",
                         "@type": [
@@ -5003,7 +5003,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 23
+                            "line": 32
                           },
                           "start": {
                             "@id": "violation_2_1_traceValue_0_location_range_start",
@@ -5012,7 +5012,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 21
+                            "line": 25
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -5046,7 +5046,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 23
+                                "line": 32
                               },
                               "start": {
                                 "@id": "violation_2_1_traceValue_0_0_location_range_start",
@@ -5055,7 +5055,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 21
+                                "line": 25
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -5067,7 +5067,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "meta",
+                            "actual": "links",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -5080,7 +5080,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#8",
+                      "focusNode": "amf://id#6",
                       "location": {
                         "@id": "violation_2_1_traceValue_1_location",
                         "@type": [
@@ -5100,7 +5100,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 25
+                            "line": 23
                           },
                           "start": {
                             "@id": "violation_2_1_traceValue_1_location_range_start",
@@ -5109,7 +5109,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 23
+                            "line": 21
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -5143,7 +5143,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 25
+                                "line": 23
                               },
                               "start": {
                                 "@id": "violation_2_1_traceValue_1_0_location_range_start",
@@ -5152,7 +5152,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 23
+                                "line": 21
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -5164,7 +5164,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "included",
+                            "actual": "meta",
                             "expected": "[\"data\"]",
                             "negated": false
                           }
@@ -5177,7 +5177,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#10",
+                      "focusNode": "amf://id#8",
                       "location": {
                         "@id": "violation_2_1_traceValue_2_location",
                         "@type": [
@@ -5197,7 +5197,7 @@
                               "lexical:Position"
                             ],
                             "column": 0,
-                            "line": 32
+                            "line": 25
                           },
                           "start": {
                             "@id": "violation_2_1_traceValue_2_location_range_start",
@@ -5206,7 +5206,7 @@
                               "lexical:Position"
                             ],
                             "column": 8,
-                            "line": 25
+                            "line": 23
                           }
                         },
                         "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -5240,7 +5240,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 0,
-                                "line": 32
+                                "line": 25
                               },
                               "start": {
                                 "@id": "violation_2_1_traceValue_2_0_location_range_start",
@@ -5249,7 +5249,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 8,
-                                "line": 25
+                                "line": 23
                               }
                             },
                             "uri": "file://./test/data/production/json-api/negative10.yaml"
@@ -5261,7 +5261,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "links",
+                            "actual": "included",
                             "expected": "[\"data\"]",
                             "negated": false
                           }

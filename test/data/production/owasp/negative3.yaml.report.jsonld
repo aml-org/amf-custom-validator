@@ -105,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#5",
+            "focusNode": "amf://id#10",
             "location": {
               "@id": "violation_0_location",
               "@type": [
@@ -124,8 +124,8 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 0,
-                  "line": 23
+                  "column": 28,
+                  "line": 29
                 },
                 "start": {
                   "@id": "violation_0_location_range_start",
@@ -134,14 +134,14 @@
                     "lexical:Position"
                   ],
                   "column": 4,
-                  "line": 11
+                  "line": 23
                 }
               },
               "uri": "file://./test/data/production/owasp/negative3.yaml"
             },
-            "resultMessage": "Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n",
+            "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "lack-of-resources-and-rate-limiting-too-many-requests",
+            "sourceShapeName": "broken-user-authentication-authenticate-api",
             "trace": [
               {
                 "@id": "violation_0_0",
@@ -149,7 +149,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "atLeast",
+                "component": "minCount",
                 "location": {
                   "@id": "violation_0_0_location",
                   "@type": [
@@ -168,8 +168,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 23
+                      "column": 28,
+                      "line": 29
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -178,175 +178,22 @@
                         "lexical:Position"
                       ],
                       "column": 4,
-                      "line": 11
+                      "line": 23
                     }
                   },
                   "uri": "file://./test/data/production/owasp/negative3.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/apiContract#returns",
+                "resultPath": "http://a.ml/vocabularies/security#security",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "cardinality": 1,
-                  "failedNodes": 0,
-                  "negated": true,
-                  "subResult": [],
-                  "successfulNodes": 1
-                }
-              },
-              {
-                "@id": "violation_0_1",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "atLeast",
-                "location": {
-                  "@id": "violation_0_1_location",
-                  "@type": [
-                    "lexicalSchema:LocationNode",
-                    "lexical:Location"
-                  ],
-                  "range": {
-                    "@id": "violation_0_1_location_range",
-                    "@type": [
-                      "lexicalSchema:RangeNode",
-                      "lexical:Range"
-                    ],
-                    "end": {
-                      "@id": "violation_0_1_location_range_end",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 0,
-                      "line": 23
-                    },
-                    "start": {
-                      "@id": "violation_0_1_location_range_start",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 4,
-                      "line": 11
-                    }
-                  },
-                  "uri": "file://./test/data/production/owasp/negative3.yaml"
-                },
-                "resultPath": "http://a.ml/vocabularies/apiContract#returns",
-                "traceValue": {
-                  "@id": "violation_0_1_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "cardinality": 1,
-                  "failedNodes": 1,
-                  "negated": false,
-                  "subResult": [
-                    {
-                      "@id": "violation_0_1_traceValue_0",
-                      "@type": [
-                        "reportSchema:ValidationResultNode",
-                        "shacl:ValidationResult"
-                      ],
-                      "focusNode": "amf://id#7",
-                      "location": {
-                        "@id": "violation_0_1_traceValue_0_location",
-                        "@type": [
-                          "lexicalSchema:LocationNode",
-                          "lexical:Location"
-                        ],
-                        "range": {
-                          "@id": "violation_0_1_traceValue_0_location_range",
-                          "@type": [
-                            "lexicalSchema:RangeNode",
-                            "lexical:Range"
-                          ],
-                          "end": {
-                            "@id": "violation_0_1_traceValue_0_location_range_end",
-                            "@type": [
-                              "lexicalSchema:PositionNode",
-                              "lexical:Position"
-                            ],
-                            "column": 0,
-                            "line": 23
-                          },
-                          "start": {
-                            "@id": "violation_0_1_traceValue_0_location_range_start",
-                            "@type": [
-                              "lexicalSchema:PositionNode",
-                              "lexical:Position"
-                            ],
-                            "column": 8,
-                            "line": 17
-                          }
-                        },
-                        "uri": "file://./test/data/production/owasp/negative3.yaml"
-                      },
-                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns",
-                      "sourceShapeName": "nested",
-                      "trace": [
-                        {
-                          "@id": "violation_0_1_traceValue_0_0",
-                          "@type": [
-                            "reportSchema:TraceMessageNode",
-                            "validation:TraceMessage"
-                          ],
-                          "component": "in",
-                          "location": {
-                            "@id": "violation_0_1_traceValue_0_0_location",
-                            "@type": [
-                              "lexicalSchema:LocationNode",
-                              "lexical:Location"
-                            ],
-                            "range": {
-                              "@id": "violation_0_1_traceValue_0_0_location_range",
-                              "@type": [
-                                "lexicalSchema:RangeNode",
-                                "lexical:Range"
-                              ],
-                              "end": {
-                                "@id": "violation_0_1_traceValue_0_0_location_range_end",
-                                "@type": [
-                                  "lexicalSchema:PositionNode",
-                                  "lexical:Position"
-                                ],
-                                "column": 0,
-                                "line": 23
-                              },
-                              "start": {
-                                "@id": "violation_0_1_traceValue_0_0_location_range_start",
-                                "@type": [
-                                  "lexicalSchema:PositionNode",
-                                  "lexical:Position"
-                                ],
-                                "column": 8,
-                                "line": 17
-                              }
-                            },
-                            "uri": "file://./test/data/production/owasp/negative3.yaml"
-                          },
-                          "resultPath": "http://a.ml/vocabularies/apiContract#statusCode",
-                          "traceValue": {
-                            "@id": "violation_0_1_traceValue_0_0_traceValue",
-                            "@type": [
-                              "reportSchema:TraceValueNode",
-                              "validation:TraceValue"
-                            ],
-                            "actual": "200",
-                            "expected": "[\"429\"]",
-                            "negated": false
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "successfulNodes": 0
+                  "actual": 0,
+                  "condition": ">=",
+                  "expected": 1,
+                  "negated": false
                 }
               }
             ]
@@ -357,7 +204,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#10",
+            "focusNode": "amf://id#5",
             "location": {
               "@id": "violation_1_location",
               "@type": [
@@ -376,8 +223,8 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 28,
-                  "line": 29
+                  "column": 0,
+                  "line": 23
                 },
                 "start": {
                   "@id": "violation_1_location_range_start",
@@ -386,7 +233,7 @@
                     "lexical:Position"
                   ],
                   "column": 4,
-                  "line": 23
+                  "line": 11
                 }
               },
               "uri": "file://./test/data/production/owasp/negative3.yaml"
@@ -420,8 +267,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 28,
-                      "line": 29
+                      "column": 0,
+                      "line": 23
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -430,7 +277,7 @@
                         "lexical:Position"
                       ],
                       "column": 4,
-                      "line": 23
+                      "line": 11
                     }
                   },
                   "uri": "file://./test/data/production/owasp/negative3.yaml"
@@ -490,9 +337,9 @@
               },
               "uri": "file://./test/data/production/owasp/negative3.yaml"
             },
-            "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
+            "resultMessage": "Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "broken-user-authentication-authenticate-api",
+            "sourceShapeName": "lack-of-resources-and-rate-limiting-too-many-requests",
             "trace": [
               {
                 "@id": "violation_2_0",
@@ -500,7 +347,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "minCount",
+                "component": "atLeast",
                 "location": {
                   "@id": "violation_2_0_location",
                   "@type": [
@@ -534,17 +381,170 @@
                   },
                   "uri": "file://./test/data/production/owasp/negative3.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/security#security",
+                "resultPath": "http://a.ml/vocabularies/apiContract#returns",
                 "traceValue": {
                   "@id": "violation_2_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
+                  "cardinality": 1,
+                  "failedNodes": 0,
+                  "negated": true,
+                  "subResult": [],
+                  "successfulNodes": 1
+                }
+              },
+              {
+                "@id": "violation_2_1",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "atLeast",
+                "location": {
+                  "@id": "violation_2_1_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_2_1_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_2_1_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 23
+                    },
+                    "start": {
+                      "@id": "violation_2_1_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 11
+                    }
+                  },
+                  "uri": "file://./test/data/production/owasp/negative3.yaml"
+                },
+                "resultPath": "http://a.ml/vocabularies/apiContract#returns",
+                "traceValue": {
+                  "@id": "violation_2_1_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "cardinality": 1,
+                  "failedNodes": 1,
+                  "negated": false,
+                  "subResult": [
+                    {
+                      "@id": "violation_2_1_traceValue_0",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#7",
+                      "location": {
+                        "@id": "violation_2_1_traceValue_0_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_2_1_traceValue_0_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_2_1_traceValue_0_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 0,
+                            "line": 23
+                          },
+                          "start": {
+                            "@id": "violation_2_1_traceValue_0_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 8,
+                            "line": 17
+                          }
+                        },
+                        "uri": "file://./test/data/production/owasp/negative3.yaml"
+                      },
+                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_2_1_traceValue_0_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "in",
+                          "location": {
+                            "@id": "violation_2_1_traceValue_0_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_2_1_traceValue_0_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_2_1_traceValue_0_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 0,
+                                "line": 23
+                              },
+                              "start": {
+                                "@id": "violation_2_1_traceValue_0_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 8,
+                                "line": 17
+                              }
+                            },
+                            "uri": "file://./test/data/production/owasp/negative3.yaml"
+                          },
+                          "resultPath": "http://a.ml/vocabularies/apiContract#statusCode",
+                          "traceValue": {
+                            "@id": "violation_2_1_traceValue_0_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "200",
+                            "expected": "[\"429\"]",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "successfulNodes": 0
                 }
               }
             ]

@@ -537,9 +537,9 @@
               },
               "uri": "file://./test/data/production/datagraph/negative1.yaml"
             },
-            "resultMessage": "Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema.\n",
+            "resultMessage": "Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.\nConsider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.\nIf you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "missing-type-description",
+            "sourceShapeName": "open-schemas-ignored",
             "trace": [
               {
                 "@id": "violation_2_0",
@@ -547,7 +547,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "minCount",
+                "component": "in",
                 "location": {
                   "@id": "violation_2_0_location",
                   "@type": [
@@ -581,17 +581,16 @@
                   },
                   "uri": "file://./test/data/production/datagraph/negative1.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/core#description",
+                "resultPath": "http://www.w3.org/ns/shacl#closed",
                 "traceValue": {
                   "@id": "violation_2_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
+                  "actual": "false",
+                  "expected": "[\"false\"]",
+                  "negated": true
                 }
               }
             ]
@@ -636,9 +635,9 @@
               },
               "uri": "file://./test/data/production/datagraph/negative1.yaml"
             },
-            "resultMessage": "Open schemas with a set of variable properties cannot be pre-processed to generated the federated schema.\nConsider if possible to define a closed schema with a finite set of proeprties described statically in the API spec.\nIf you are working on OAS or AsyncAPI, object schemas are open by default and must be explicilty closed using `additionalProperties: false`.\n",
+            "resultMessage": "Providing a description of resource schemas is a good practice that makes it easier for consumers of your API to\nunderstand your API and it will be reused as type descriptions in the federated API GraphQL schema.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "open-schemas-ignored",
+            "sourceShapeName": "missing-type-description",
             "trace": [
               {
                 "@id": "violation_3_0",
@@ -646,7 +645,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "in",
+                "component": "minCount",
                 "location": {
                   "@id": "violation_3_0_location",
                   "@type": [
@@ -680,16 +679,17 @@
                   },
                   "uri": "file://./test/data/production/datagraph/negative1.yaml"
                 },
-                "resultPath": "http://www.w3.org/ns/shacl#closed",
+                "resultPath": "http://a.ml/vocabularies/core#description",
                 "traceValue": {
                   "@id": "violation_3_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "false",
-                  "expected": "[\"false\"]",
-                  "negated": true
+                  "actual": 0,
+                  "condition": ">=",
+                  "expected": 1,
+                  "negated": false
                 }
               }
             ]

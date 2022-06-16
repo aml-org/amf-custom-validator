@@ -254,7 +254,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#19",
+            "focusNode": "amf://id#14",
             "location": {
               "@id": "violation_1_location",
               "@type": [
@@ -274,7 +274,7 @@
                     "lexical:Position"
                   ],
                   "column": 0,
-                  "line": 24
+                  "line": 42
                 },
                 "start": {
                   "@id": "violation_1_location_range_start",
@@ -282,15 +282,15 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 8,
-                  "line": 22
+                  "column": 18,
+                  "line": 39
                 }
               },
               "uri": "file://./test/data/production/zalando/negative3.yaml"
             },
-            "resultMessage": "ID field with string type expected",
+            "resultMessage": "Created-at fields must be date-times",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "174-common-field-types-id",
+            "sourceShapeName": "174-common-field-types-created-at",
             "trace": [
               {
                 "@id": "violation_1_0",
@@ -318,7 +318,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 24
+                      "line": 42
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -326,8 +326,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 8,
-                      "line": 22
+                      "column": 18,
+                      "line": 39
                     }
                   },
                   "uri": "file://./test/data/production/zalando/negative3.yaml"
@@ -339,8 +339,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "http://a.ml/vocabularies/shapes#number",
-                  "expected": "[\"http://www.w3.org/2001/XMLSchema#string\"]",
+                  "actual": "http://www.w3.org/2001/XMLSchema#string",
+                  "expected": "[\"http://www.w3.org/2001/XMLSchema#dateTime\"]",
                   "negated": false
                 }
               },
@@ -350,7 +350,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "pattern",
+                "component": "in",
                 "location": {
                   "@id": "violation_1_1_location",
                   "@type": [
@@ -370,7 +370,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 24
+                      "line": 42
                     },
                     "start": {
                       "@id": "violation_1_1_location_range_start",
@@ -378,8 +378,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 8,
-                      "line": 22
+                      "column": 18,
+                      "line": 39
                     }
                   },
                   "uri": "file://./test/data/production/zalando/negative3.yaml"
@@ -391,7 +391,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "invoice_id",
+                  "actual": "created_at",
+                  "expected": "[\"created_at\"]",
                   "negated": true
                 }
               }
@@ -403,7 +404,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#14",
+            "focusNode": "amf://id#19",
             "location": {
               "@id": "violation_2_location",
               "@type": [
@@ -423,7 +424,7 @@
                     "lexical:Position"
                   ],
                   "column": 0,
-                  "line": 42
+                  "line": 24
                 },
                 "start": {
                   "@id": "violation_2_location_range_start",
@@ -431,15 +432,15 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 18,
-                  "line": 39
+                  "column": 8,
+                  "line": 22
                 }
               },
               "uri": "file://./test/data/production/zalando/negative3.yaml"
             },
-            "resultMessage": "Created-at fields must be date-times",
+            "resultMessage": "ID field with string type expected",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "174-common-field-types-created-at",
+            "sourceShapeName": "174-common-field-types-id",
             "trace": [
               {
                 "@id": "violation_2_0",
@@ -467,7 +468,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 42
+                      "line": 24
                     },
                     "start": {
                       "@id": "violation_2_0_location_range_start",
@@ -475,8 +476,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 18,
-                      "line": 39
+                      "column": 8,
+                      "line": 22
                     }
                   },
                   "uri": "file://./test/data/production/zalando/negative3.yaml"
@@ -488,8 +489,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "http://www.w3.org/2001/XMLSchema#string",
-                  "expected": "[\"http://www.w3.org/2001/XMLSchema#dateTime\"]",
+                  "actual": "http://a.ml/vocabularies/shapes#number",
+                  "expected": "[\"http://www.w3.org/2001/XMLSchema#string\"]",
                   "negated": false
                 }
               },
@@ -499,7 +500,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "in",
+                "component": "pattern",
                 "location": {
                   "@id": "violation_2_1_location",
                   "@type": [
@@ -519,7 +520,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 42
+                      "line": 24
                     },
                     "start": {
                       "@id": "violation_2_1_location_range_start",
@@ -527,8 +528,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 18,
-                      "line": 39
+                      "column": 8,
+                      "line": 22
                     }
                   },
                   "uri": "file://./test/data/production/zalando/negative3.yaml"
@@ -540,8 +541,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "created_at",
-                  "expected": "[\"created_at\"]",
+                  "argument": "invoice_id",
                   "negated": true
                 }
               }

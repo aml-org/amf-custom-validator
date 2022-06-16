@@ -1,4 +1,4 @@
-FROM golang:1.15 AS ci-go
+FROM golang:1.16 AS ci-go
 # Install make
 RUN apt-get update && apt-get install make
 

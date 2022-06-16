@@ -16,7 +16,7 @@ AMF Custom Validator is implemented in Go and can be consumed as:
 
 Requirements:
 
-* Go 1.15
+* Go 1.16
 * Make
 
 ## Using the CLI
