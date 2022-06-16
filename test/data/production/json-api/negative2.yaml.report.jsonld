@@ -139,9 +139,9 @@
               },
               "uri": "file://./test/data/production/json-api/negative2.yaml"
             },
-            "resultMessage": "JSON object MUST be at the root of every JSON:API request and response containing data. This object defines a document’s “top level”.\n",
+            "resultMessage": "A document MUST contain at least one of the following top-level members:\n\n    data: the document’s “primary data”\n    errors: an array of error objects\n    meta: a meta object that contains non-standard meta-information.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "json-object-top-level-request-response",
+            "sourceShapeName": "json-object-required-fields",
             "trace": [
               {
                 "@id": "violation_0_0",
@@ -149,7 +149,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "containsAll",
+                "component": "atLeast",
                 "location": {
                   "@id": "violation_0_0_location",
                   "@type": [
@@ -183,16 +183,118 @@
                   },
                   "uri": "file://./test/data/production/json-api/negative2.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/shapes#schema / @type",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "[\"http://a.ml/vocabularies/shapes#ScalarShape\", \"http://a.ml/vocabularies/shapes#AnyShape\", \"http://www.w3.org/ns/shacl#Shape\", \"http://a.ml/vocabularies/shapes#Shape\", \"http://a.ml/vocabularies/document#DomainElement\"]",
-                  "expected": "[\"http://www.w3.org/ns/shacl#NodeShape\"]",
-                  "negated": false
+                  "cardinality": 1,
+                  "failedNodes": 1,
+                  "negated": false,
+                  "subResult": [
+                    {
+                      "@id": "violation_0_0_traceValue_0",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#24",
+                      "location": {
+                        "@id": "violation_0_0_traceValue_0_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_0_0_traceValue_0_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_0_0_traceValue_0_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 28,
+                            "line": 54
+                          },
+                          "start": {
+                            "@id": "violation_0_0_traceValue_0_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 14,
+                            "line": 53
+                          }
+                        },
+                        "uri": "file://./test/data/production/json-api/negative2.yaml"
+                      },
+                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/shapes#schema",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_0_0_traceValue_0_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "atLeast",
+                          "location": {
+                            "@id": "violation_0_0_traceValue_0_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_0_0_traceValue_0_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_0_0_traceValue_0_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 28,
+                                "line": 54
+                              },
+                              "start": {
+                                "@id": "violation_0_0_traceValue_0_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 14,
+                                "line": 53
+                              }
+                            },
+                            "uri": "file://./test/data/production/json-api/negative2.yaml"
+                          },
+                          "resultPath": "http://www.w3.org/ns/shacl#property",
+                          "traceValue": {
+                            "@id": "violation_0_0_traceValue_0_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "cardinality": 1,
+                            "failedNodes": 0,
+                            "negated": false,
+                            "subResult": [],
+                            "successfulNodes": 0
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "successfulNodes": 0
                 }
               }
             ]
@@ -237,9 +339,9 @@
               },
               "uri": "file://./test/data/production/json-api/negative2.yaml"
             },
-            "resultMessage": "A document MUST contain at least one of the following top-level members:\n\n    data: the document’s “primary data”\n    errors: an array of error objects\n    meta: a meta object that contains non-standard meta-information.\n",
+            "resultMessage": "JSON object MUST be at the root of every JSON:API request and response containing data. This object defines a document’s “top level”.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "json-object-required-fields",
+            "sourceShapeName": "json-object-top-level-request-response",
             "trace": [
               {
                 "@id": "violation_1_0",
@@ -247,7 +349,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "atLeast",
+                "component": "containsAll",
                 "location": {
                   "@id": "violation_1_0_location",
                   "@type": [
@@ -281,118 +383,16 @@
                   },
                   "uri": "file://./test/data/production/json-api/negative2.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/shapes#schema",
+                "resultPath": "http://a.ml/vocabularies/shapes#schema / @type",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "cardinality": 1,
-                  "failedNodes": 1,
-                  "negated": false,
-                  "subResult": [
-                    {
-                      "@id": "violation_1_0_traceValue_0",
-                      "@type": [
-                        "reportSchema:ValidationResultNode",
-                        "shacl:ValidationResult"
-                      ],
-                      "focusNode": "amf://id#24",
-                      "location": {
-                        "@id": "violation_1_0_traceValue_0_location",
-                        "@type": [
-                          "lexicalSchema:LocationNode",
-                          "lexical:Location"
-                        ],
-                        "range": {
-                          "@id": "violation_1_0_traceValue_0_location_range",
-                          "@type": [
-                            "lexicalSchema:RangeNode",
-                            "lexical:Range"
-                          ],
-                          "end": {
-                            "@id": "violation_1_0_traceValue_0_location_range_end",
-                            "@type": [
-                              "lexicalSchema:PositionNode",
-                              "lexical:Position"
-                            ],
-                            "column": 28,
-                            "line": 54
-                          },
-                          "start": {
-                            "@id": "violation_1_0_traceValue_0_location_range_start",
-                            "@type": [
-                              "lexicalSchema:PositionNode",
-                              "lexical:Position"
-                            ],
-                            "column": 14,
-                            "line": 53
-                          }
-                        },
-                        "uri": "file://./test/data/production/json-api/negative2.yaml"
-                      },
-                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/shapes#schema",
-                      "sourceShapeName": "nested",
-                      "trace": [
-                        {
-                          "@id": "violation_1_0_traceValue_0_0",
-                          "@type": [
-                            "reportSchema:TraceMessageNode",
-                            "validation:TraceMessage"
-                          ],
-                          "component": "atLeast",
-                          "location": {
-                            "@id": "violation_1_0_traceValue_0_0_location",
-                            "@type": [
-                              "lexicalSchema:LocationNode",
-                              "lexical:Location"
-                            ],
-                            "range": {
-                              "@id": "violation_1_0_traceValue_0_0_location_range",
-                              "@type": [
-                                "lexicalSchema:RangeNode",
-                                "lexical:Range"
-                              ],
-                              "end": {
-                                "@id": "violation_1_0_traceValue_0_0_location_range_end",
-                                "@type": [
-                                  "lexicalSchema:PositionNode",
-                                  "lexical:Position"
-                                ],
-                                "column": 28,
-                                "line": 54
-                              },
-                              "start": {
-                                "@id": "violation_1_0_traceValue_0_0_location_range_start",
-                                "@type": [
-                                  "lexicalSchema:PositionNode",
-                                  "lexical:Position"
-                                ],
-                                "column": 14,
-                                "line": 53
-                              }
-                            },
-                            "uri": "file://./test/data/production/json-api/negative2.yaml"
-                          },
-                          "resultPath": "http://www.w3.org/ns/shacl#property",
-                          "traceValue": {
-                            "@id": "violation_1_0_traceValue_0_0_traceValue",
-                            "@type": [
-                              "reportSchema:TraceValueNode",
-                              "validation:TraceValue"
-                            ],
-                            "cardinality": 1,
-                            "failedNodes": 0,
-                            "negated": false,
-                            "subResult": [],
-                            "successfulNodes": 0
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "successfulNodes": 0
+                  "actual": "[\"http://a.ml/vocabularies/document#DomainElement\", \"http://a.ml/vocabularies/shapes#AnyShape\", \"http://a.ml/vocabularies/shapes#ScalarShape\", \"http://a.ml/vocabularies/shapes#Shape\", \"http://www.w3.org/ns/shacl#Shape\"]",
+                  "expected": "[\"http://www.w3.org/ns/shacl#NodeShape\"]",
+                  "negated": false
                 }
               }
             ]

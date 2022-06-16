@@ -105,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#7",
+            "focusNode": "amf://id#1",
             "location": {
               "@id": "violation_0_location",
               "@type": [
@@ -125,7 +125,7 @@
                     "lexical:Position"
                   ],
                   "column": 0,
-                  "line": 39
+                  "line": 30
                 },
                 "start": {
                   "@id": "violation_0_location_range_start",
@@ -134,7 +134,7 @@
                     "lexical:Position"
                   ],
                   "column": 4,
-                  "line": 30
+                  "line": 18
                 }
               },
               "uri": "file://./test/data/production/datagraph/negative7.yaml"
@@ -169,7 +169,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 39
+                      "line": 30
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -178,7 +178,7 @@
                         "lexical:Position"
                       ],
                       "column": 4,
-                      "line": 30
+                      "line": 18
                     }
                   },
                   "uri": "file://./test/data/production/datagraph/negative7.yaml"
@@ -190,7 +190,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "InvoiceRequest",
+                  "argument": "CustomerResponse",
                   "negated": true
                 }
               }
@@ -202,7 +202,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#1",
+            "focusNode": "amf://id#7",
             "location": {
               "@id": "violation_1_location",
               "@type": [
@@ -222,7 +222,7 @@
                     "lexical:Position"
                   ],
                   "column": 0,
-                  "line": 30
+                  "line": 39
                 },
                 "start": {
                   "@id": "violation_1_location_range_start",
@@ -231,7 +231,7 @@
                     "lexical:Position"
                   ],
                   "column": 4,
-                  "line": 18
+                  "line": 30
                 }
               },
               "uri": "file://./test/data/production/datagraph/negative7.yaml"
@@ -266,7 +266,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 30
+                      "line": 39
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -275,7 +275,7 @@
                         "lexical:Position"
                       ],
                       "column": 4,
-                      "line": 18
+                      "line": 30
                     }
                   },
                   "uri": "file://./test/data/production/datagraph/negative7.yaml"
@@ -287,7 +287,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "CustomerResponse",
+                  "argument": "InvoiceRequest",
                   "negated": true
                 }
               }

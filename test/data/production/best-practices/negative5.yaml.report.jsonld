@@ -105,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#9",
+            "focusNode": "amf://id#15",
             "location": {
               "@id": "violation_0_location",
               "@type": [
@@ -125,7 +125,7 @@
                     "lexical:Position"
                   ],
                   "column": 0,
-                  "line": 33
+                  "line": 44
                 },
                 "start": {
                   "@id": "violation_0_location_range_start",
@@ -133,15 +133,15 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 8,
-                  "line": 30
+                  "column": 12,
+                  "line": 40
                 }
               },
               "uri": "file://./test/data/production/best-practices/negative5.yaml"
             },
-            "resultMessage": "Use standard date formats: ISO8601\nUse UTC\n  2016-10-27T13:42:21+00:00    (+00:00 is the time zones hour offset)\n  2016-10-27T13:42:21Z     (Z is place holder for local time zone)\n",
+            "resultMessage": "Use standard date formats: ISO8601\nUse calendar date:\n  2016-10-27\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "date-time-representation",
+            "sourceShapeName": "date-only-representation",
             "trace": [
               {
                 "@id": "violation_0_0",
@@ -169,7 +169,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 33
+                      "line": 44
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -177,8 +177,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 8,
-                      "line": 30
+                      "column": 12,
+                      "line": 40
                     }
                   },
                   "uri": "file://./test/data/production/best-practices/negative5.yaml"
@@ -191,7 +191,7 @@
                     "validation:TraceValue"
                   ],
                   "actual": "http://www.w3.org/2001/XMLSchema#string",
-                  "expected": "[\"http://www.w3.org/2001/XMLSchema#dateTime\"]",
+                  "expected": "[\"http://www.w3.org/2001/XMLSchema#date\"]",
                   "negated": false
                 }
               },
@@ -221,7 +221,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 33
+                      "line": 44
                     },
                     "start": {
                       "@id": "violation_0_1_location_range_start",
@@ -229,8 +229,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 8,
-                      "line": 30
+                      "column": 12,
+                      "line": 40
                     }
                   },
                   "uri": "file://./test/data/production/best-practices/negative5.yaml"
@@ -242,7 +242,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "createdAt",
+                  "argument": "startDate",
                   "negated": true
                 }
               }
@@ -254,7 +254,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#15",
+            "focusNode": "amf://id#9",
             "location": {
               "@id": "violation_1_location",
               "@type": [
@@ -274,7 +274,7 @@
                     "lexical:Position"
                   ],
                   "column": 0,
-                  "line": 44
+                  "line": 33
                 },
                 "start": {
                   "@id": "violation_1_location_range_start",
@@ -282,15 +282,15 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 12,
-                  "line": 40
+                  "column": 8,
+                  "line": 30
                 }
               },
               "uri": "file://./test/data/production/best-practices/negative5.yaml"
             },
-            "resultMessage": "Use standard date formats: ISO8601\nUse calendar date:\n  2016-10-27\n",
+            "resultMessage": "Use standard date formats: ISO8601\nUse UTC\n  2016-10-27T13:42:21+00:00    (+00:00 is the time zones hour offset)\n  2016-10-27T13:42:21Z     (Z is place holder for local time zone)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "date-only-representation",
+            "sourceShapeName": "date-time-representation",
             "trace": [
               {
                 "@id": "violation_1_0",
@@ -318,7 +318,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 44
+                      "line": 33
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -326,8 +326,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 12,
-                      "line": 40
+                      "column": 8,
+                      "line": 30
                     }
                   },
                   "uri": "file://./test/data/production/best-practices/negative5.yaml"
@@ -340,7 +340,7 @@
                     "validation:TraceValue"
                   ],
                   "actual": "http://www.w3.org/2001/XMLSchema#string",
-                  "expected": "[\"http://www.w3.org/2001/XMLSchema#date\"]",
+                  "expected": "[\"http://www.w3.org/2001/XMLSchema#dateTime\"]",
                   "negated": false
                 }
               },
@@ -370,7 +370,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 44
+                      "line": 33
                     },
                     "start": {
                       "@id": "violation_1_1_location_range_start",
@@ -378,8 +378,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 12,
-                      "line": 40
+                      "column": 8,
+                      "line": 30
                     }
                   },
                   "uri": "file://./test/data/production/best-practices/negative5.yaml"
@@ -391,7 +391,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "startDate",
+                  "argument": "createdAt",
                   "negated": true
                 }
               }

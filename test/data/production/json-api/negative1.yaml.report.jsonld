@@ -585,7 +585,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "wadus",
+                  "actual": "other",
                   "expected": "[\"data\",\"errors\",\"meta\",\"jsonapi\",\"links\",\"included\"]",
                   "negated": false
                 }
@@ -683,7 +683,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": "other",
+                  "actual": "wadus",
                   "expected": "[\"data\",\"errors\",\"meta\",\"jsonapi\",\"links\",\"included\"]",
                   "negated": false
                 }

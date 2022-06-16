@@ -105,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#15",
+            "focusNode": "amf://id#12",
             "location": {
               "@id": "violation_0_location",
               "@type": [
@@ -124,8 +124,8 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 53,
-                  "line": 64
+                  "column": 0,
+                  "line": 10
                 },
                 "start": {
                   "@id": "violation_0_location_range_start",
@@ -134,14 +134,14 @@
                     "lexical:Position"
                   ],
                   "column": 4,
-                  "line": 53
+                  "line": 8
                 }
               },
               "uri": "file://./test/data/production/security/negative15.yaml"
             },
-            "resultMessage": "Your API accepts basic authentication credentials sent in cleartext over an unencrypted channel. Attackers can\neasily intercept API calls and retrieve the credentials. They can then use the credentials to make other API calls.\n",
+            "resultMessage": "The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all\nURLs in the API contract must be proper URLs in a valid format.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "insecure-basic-auth",
+            "sourceShapeName": "valid-server-urltemplate",
             "trace": [
               {
                 "@id": "violation_0_0",
@@ -168,8 +168,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 53,
-                      "line": 64
+                      "column": 0,
+                      "line": 10
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -178,73 +178,20 @@
                         "lexical:Position"
                       ],
                       "column": 4,
-                      "line": 53
+                      "line": 8
                     }
                   },
                   "uri": "file://./test/data/production/security/negative15.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/apiContract#server / http://a.ml/vocabularies/core#urlTemplate",
+                "resultPath": "http://a.ml/vocabularies/core#urlTemplate",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": ":::4**production.test.com/",
+                  "argument": "https://**production.test.com/",
                   "negated": false
-                }
-              },
-              {
-                "@id": "violation_0_1",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "nested",
-                "location": {
-                  "@id": "violation_0_1_location",
-                  "@type": [
-                    "lexicalSchema:LocationNode",
-                    "lexical:Location"
-                  ],
-                  "range": {
-                    "@id": "violation_0_1_location_range",
-                    "@type": [
-                      "lexicalSchema:RangeNode",
-                      "lexical:Range"
-                    ],
-                    "end": {
-                      "@id": "violation_0_1_location_range_end",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 53,
-                      "line": 64
-                    },
-                    "start": {
-                      "@id": "violation_0_1_location_range_start",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 4,
-                      "line": 53
-                    }
-                  },
-                  "uri": "file://./test/data/production/security/negative15.yaml"
-                },
-                "resultPath": "http://a.ml/vocabularies/security#security / http://a.ml/vocabularies/security#schemes / http://a.ml/vocabularies/security#scheme",
-                "traceValue": {
-                  "@id": "violation_0_1_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "failedNodes": 0,
-                  "negated": true,
-                  "subResult": [],
-                  "successfulNodes": 1
                 }
               }
             ]
@@ -255,7 +202,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#12",
+            "focusNode": "amf://id#13",
             "location": {
               "@id": "violation_1_location",
               "@type": [
@@ -275,7 +222,7 @@
                     "lexical:Position"
                   ],
                   "column": 0,
-                  "line": 10
+                  "line": 13
                 },
                 "start": {
                   "@id": "violation_1_location_range_start",
@@ -284,7 +231,7 @@
                     "lexical:Position"
                   ],
                   "column": 4,
-                  "line": 8
+                  "line": 10
                 }
               },
               "uri": "file://./test/data/production/security/negative15.yaml"
@@ -319,7 +266,7 @@
                         "lexical:Position"
                       ],
                       "column": 0,
-                      "line": 10
+                      "line": 13
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -328,7 +275,7 @@
                         "lexical:Position"
                       ],
                       "column": 4,
-                      "line": 8
+                      "line": 10
                     }
                   },
                   "uri": "file://./test/data/production/security/negative15.yaml"
@@ -340,7 +287,7 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "https://**production.test.com/",
+                  "argument": ":::4**production.test.com/",
                   "negated": false
                 }
               }
@@ -352,7 +299,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#13",
+            "focusNode": "amf://id#15",
             "location": {
               "@id": "violation_2_location",
               "@type": [
@@ -371,8 +318,8 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 0,
-                  "line": 13
+                  "column": 53,
+                  "line": 64
                 },
                 "start": {
                   "@id": "violation_2_location_range_start",
@@ -381,14 +328,14 @@
                     "lexical:Position"
                   ],
                   "column": 4,
-                  "line": 10
+                  "line": 53
                 }
               },
               "uri": "file://./test/data/production/security/negative15.yaml"
             },
-            "resultMessage": "The API accepts basic credentials transported over the network. The OpenAPI Specification (OAS) requires that all\nURLs in the API contract must be proper URLs in a valid format.\n",
+            "resultMessage": "Your API accepts basic authentication credentials sent in cleartext over an unencrypted channel. Attackers can\neasily intercept API calls and retrieve the credentials. They can then use the credentials to make other API calls.\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "valid-server-urltemplate",
+            "sourceShapeName": "insecure-basic-auth",
             "trace": [
               {
                 "@id": "violation_2_0",
@@ -415,8 +362,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 13
+                      "column": 53,
+                      "line": 64
                     },
                     "start": {
                       "@id": "violation_2_0_location_range_start",
@@ -425,12 +372,12 @@
                         "lexical:Position"
                       ],
                       "column": 4,
-                      "line": 10
+                      "line": 53
                     }
                   },
                   "uri": "file://./test/data/production/security/negative15.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/core#urlTemplate",
+                "resultPath": "http://a.ml/vocabularies/apiContract#server / http://a.ml/vocabularies/core#urlTemplate",
                 "traceValue": {
                   "@id": "violation_2_0_traceValue",
                   "@type": [
@@ -439,6 +386,59 @@
                   ],
                   "argument": ":::4**production.test.com/",
                   "negated": false
+                }
+              },
+              {
+                "@id": "violation_2_1",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "nested",
+                "location": {
+                  "@id": "violation_2_1_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_2_1_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_2_1_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 53,
+                      "line": 64
+                    },
+                    "start": {
+                      "@id": "violation_2_1_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 4,
+                      "line": 53
+                    }
+                  },
+                  "uri": "file://./test/data/production/security/negative15.yaml"
+                },
+                "resultPath": "http://a.ml/vocabularies/security#security / http://a.ml/vocabularies/security#schemes / http://a.ml/vocabularies/security#scheme",
+                "traceValue": {
+                  "@id": "violation_2_1_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "failedNodes": 0,
+                  "negated": true,
+                  "subResult": [],
+                  "successfulNodes": 1
                 }
               }
             ]

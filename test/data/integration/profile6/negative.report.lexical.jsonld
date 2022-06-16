@@ -191,107 +191,10 @@
                     "validation:TraceValue"
                   ],
                   "cardinality": 1,
-                  "failedNodes": 1,
-                  "negated": false,
-                  "subResult": [
-                    {
-                      "@id": "violation_0_0_traceValue_0",
-                      "@type": [
-                        "reportSchema:ValidationResultNode",
-                        "shacl:ValidationResult"
-                      ],
-                      "focusNode": "amf://id#11",
-                      "location": {
-                        "@id": "violation_0_0_traceValue_0_location",
-                        "@type": [
-                          "lexicalSchema:LocationNode",
-                          "lexical:Location"
-                        ],
-                        "range": {
-                          "@id": "violation_0_0_traceValue_0_location_range",
-                          "@type": [
-                            "lexicalSchema:RangeNode",
-                            "lexical:Range"
-                          ],
-                          "end": {
-                            "@id": "violation_0_0_traceValue_0_location_range_end",
-                            "@type": [
-                              "lexicalSchema:PositionNode",
-                              "lexical:Position"
-                            ],
-                            "column": 0,
-                            "line": 17
-                          },
-                          "start": {
-                            "@id": "violation_0_0_traceValue_0_location_range_start",
-                            "@type": [
-                              "lexicalSchema:PositionNode",
-                              "lexical:Position"
-                            ],
-                            "column": 6,
-                            "line": 15
-                          }
-                        },
-                        "uri": "file://./test/data/integration/profile6/negative.data.raml"
-                      },
-                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns",
-                      "sourceShapeName": "nested",
-                      "trace": [
-                        {
-                          "@id": "violation_0_0_traceValue_0_0",
-                          "@type": [
-                            "reportSchema:TraceMessageNode",
-                            "validation:TraceMessage"
-                          ],
-                          "component": "pattern",
-                          "location": {
-                            "@id": "violation_0_0_traceValue_0_0_location",
-                            "@type": [
-                              "lexicalSchema:LocationNode",
-                              "lexical:Location"
-                            ],
-                            "range": {
-                              "@id": "violation_0_0_traceValue_0_0_location_range",
-                              "@type": [
-                                "lexicalSchema:RangeNode",
-                                "lexical:Range"
-                              ],
-                              "end": {
-                                "@id": "violation_0_0_traceValue_0_0_location_range_end",
-                                "@type": [
-                                  "lexicalSchema:PositionNode",
-                                  "lexical:Position"
-                                ],
-                                "column": 0,
-                                "line": 17
-                              },
-                              "start": {
-                                "@id": "violation_0_0_traceValue_0_0_location_range_start",
-                                "@type": [
-                                  "lexicalSchema:PositionNode",
-                                  "lexical:Position"
-                                ],
-                                "column": 6,
-                                "line": 15
-                              }
-                            },
-                            "uri": "file://./test/data/integration/profile6/negative.data.raml"
-                          },
-                          "resultPath": "http://a.ml/vocabularies/apiContract#statusCode",
-                          "traceValue": {
-                            "@id": "violation_0_0_traceValue_0_0_traceValue",
-                            "@type": [
-                              "reportSchema:TraceValueNode",
-                              "validation:TraceValue"
-                            ],
-                            "argument": "201",
-                            "negated": false
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "successfulNodes": 0
+                  "failedNodes": 0,
+                  "negated": true,
+                  "subResult": [],
+                  "successfulNodes": 1
                 }
               },
               {
@@ -354,7 +257,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#13",
+            "focusNode": "amf://id#10",
             "location": {
               "@id": "violation_1_location",
               "@type": [
@@ -373,8 +276,8 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 10,
-                  "line": 20
+                  "column": 0,
+                  "line": 17
                 },
                 "start": {
                   "@id": "violation_1_location_range_start",
@@ -383,7 +286,7 @@
                     "lexical:Position"
                   ],
                   "column": 2,
-                  "line": 18
+                  "line": 13
                 }
               },
               "uri": "file://./test/data/integration/profile6/negative.data.raml"
@@ -417,8 +320,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 10,
-                      "line": 20
+                      "column": 0,
+                      "line": 17
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -427,7 +330,7 @@
                         "lexical:Position"
                       ],
                       "column": 2,
-                      "line": 18
+                      "line": 13
                     }
                   },
                   "uri": "file://./test/data/integration/profile6/negative.data.raml"
@@ -449,7 +352,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#14",
+                      "focusNode": "amf://id#11",
                       "location": {
                         "@id": "violation_1_0_traceValue_0_location",
                         "@type": [
@@ -468,8 +371,8 @@
                               "lexicalSchema:PositionNode",
                               "lexical:Position"
                             ],
-                            "column": 10,
-                            "line": 20
+                            "column": 0,
+                            "line": 17
                           },
                           "start": {
                             "@id": "violation_1_0_traceValue_0_location_range_start",
@@ -478,7 +381,7 @@
                               "lexical:Position"
                             ],
                             "column": 6,
-                            "line": 20
+                            "line": 15
                           }
                         },
                         "uri": "file://./test/data/integration/profile6/negative.data.raml"
@@ -511,8 +414,8 @@
                                   "lexicalSchema:PositionNode",
                                   "lexical:Position"
                                 ],
-                                "column": 10,
-                                "line": 20
+                                "column": 0,
+                                "line": 17
                               },
                               "start": {
                                 "@id": "violation_1_0_traceValue_0_0_location_range_start",
@@ -521,7 +424,7 @@
                                   "lexical:Position"
                                 ],
                                 "column": 6,
-                                "line": 20
+                                "line": 15
                               }
                             },
                             "uri": "file://./test/data/integration/profile6/negative.data.raml"
@@ -533,7 +436,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "argument": "200",
+                            "argument": "201",
                             "negated": false
                           }
                         }
@@ -568,8 +471,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 10,
-                      "line": 20
+                      "column": 0,
+                      "line": 17
                     },
                     "start": {
                       "@id": "violation_1_1_location_range_start",
@@ -578,7 +481,7 @@
                         "lexical:Position"
                       ],
                       "column": 2,
-                      "line": 18
+                      "line": 13
                     }
                   },
                   "uri": "file://./test/data/integration/profile6/negative.data.raml"
@@ -603,7 +506,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#10",
+            "focusNode": "amf://id#13",
             "location": {
               "@id": "violation_2_location",
               "@type": [
@@ -622,8 +525,8 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 0,
-                  "line": 17
+                  "column": 10,
+                  "line": 20
                 },
                 "start": {
                   "@id": "violation_2_location_range_start",
@@ -632,7 +535,7 @@
                     "lexical:Position"
                   ],
                   "column": 2,
-                  "line": 13
+                  "line": 18
                 }
               },
               "uri": "file://./test/data/integration/profile6/negative.data.raml"
@@ -666,8 +569,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 17
+                      "column": 10,
+                      "line": 20
                     },
                     "start": {
                       "@id": "violation_2_0_location_range_start",
@@ -676,7 +579,7 @@
                         "lexical:Position"
                       ],
                       "column": 2,
-                      "line": 13
+                      "line": 18
                     }
                   },
                   "uri": "file://./test/data/integration/profile6/negative.data.raml"
@@ -689,10 +592,107 @@
                     "validation:TraceValue"
                   ],
                   "cardinality": 1,
-                  "failedNodes": 0,
-                  "negated": true,
-                  "subResult": [],
-                  "successfulNodes": 1
+                  "failedNodes": 1,
+                  "negated": false,
+                  "subResult": [
+                    {
+                      "@id": "violation_2_0_traceValue_0",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#14",
+                      "location": {
+                        "@id": "violation_2_0_traceValue_0_location",
+                        "@type": [
+                          "lexicalSchema:LocationNode",
+                          "lexical:Location"
+                        ],
+                        "range": {
+                          "@id": "violation_2_0_traceValue_0_location_range",
+                          "@type": [
+                            "lexicalSchema:RangeNode",
+                            "lexical:Range"
+                          ],
+                          "end": {
+                            "@id": "violation_2_0_traceValue_0_location_range_end",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 10,
+                            "line": 20
+                          },
+                          "start": {
+                            "@id": "violation_2_0_traceValue_0_location_range_start",
+                            "@type": [
+                              "lexicalSchema:PositionNode",
+                              "lexical:Position"
+                            ],
+                            "column": 6,
+                            "line": 20
+                          }
+                        },
+                        "uri": "file://./test/data/integration/profile6/negative.data.raml"
+                      },
+                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_2_0_traceValue_0_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "pattern",
+                          "location": {
+                            "@id": "violation_2_0_traceValue_0_0_location",
+                            "@type": [
+                              "lexicalSchema:LocationNode",
+                              "lexical:Location"
+                            ],
+                            "range": {
+                              "@id": "violation_2_0_traceValue_0_0_location_range",
+                              "@type": [
+                                "lexicalSchema:RangeNode",
+                                "lexical:Range"
+                              ],
+                              "end": {
+                                "@id": "violation_2_0_traceValue_0_0_location_range_end",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 10,
+                                "line": 20
+                              },
+                              "start": {
+                                "@id": "violation_2_0_traceValue_0_0_location_range_start",
+                                "@type": [
+                                  "lexicalSchema:PositionNode",
+                                  "lexical:Position"
+                                ],
+                                "column": 6,
+                                "line": 20
+                              }
+                            },
+                            "uri": "file://./test/data/integration/profile6/negative.data.raml"
+                          },
+                          "resultPath": "http://a.ml/vocabularies/apiContract#statusCode",
+                          "traceValue": {
+                            "@id": "violation_2_0_traceValue_0_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "argument": "200",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "successfulNodes": 0
                 }
               },
               {
@@ -720,8 +720,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 17
+                      "column": 10,
+                      "line": 20
                     },
                     "start": {
                       "@id": "violation_2_1_location_range_start",
@@ -730,7 +730,7 @@
                         "lexical:Position"
                       ],
                       "column": 2,
-                      "line": 13
+                      "line": 18
                     }
                   },
                   "uri": "file://./test/data/integration/profile6/negative.data.raml"
