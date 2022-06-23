@@ -125,41 +125,10 @@
                     "validation:TraceValue"
                   ],
                   "cardinality": 1,
-                  "failedNodes": 1,
-                  "negated": false,
-                  "subResult": [
-                    {
-                      "@id": "violation_0_0_traceValue_0",
-                      "@type": [
-                        "reportSchema:ValidationResultNode",
-                        "shacl:ValidationResult"
-                      ],
-                      "focusNode": "amf://id#11",
-                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns",
-                      "sourceShapeName": "nested",
-                      "trace": [
-                        {
-                          "@id": "violation_0_0_traceValue_0_0",
-                          "@type": [
-                            "reportSchema:TraceMessageNode",
-                            "validation:TraceMessage"
-                          ],
-                          "component": "pattern",
-                          "resultPath": "http://a.ml/vocabularies/apiContract#statusCode",
-                          "traceValue": {
-                            "@id": "violation_0_0_traceValue_0_0_traceValue",
-                            "@type": [
-                              "reportSchema:TraceValueNode",
-                              "validation:TraceValue"
-                            ],
-                            "argument": "201",
-                            "negated": false
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "successfulNodes": 0
+                  "failedNodes": 0,
+                  "negated": true,
+                  "subResult": [],
+                  "successfulNodes": 1
                 }
               },
               {
@@ -189,7 +158,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#13",
+            "focusNode": "amf://id#10",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "and-or-not-rule",
@@ -218,7 +187,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#14",
+                      "focusNode": "amf://id#11",
                       "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -236,7 +205,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "argument": "200",
+                            "argument": "201",
                             "negated": false
                           }
                         }
@@ -273,7 +242,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#10",
+            "focusNode": "amf://id#13",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "and-or-not-rule",
@@ -293,10 +262,41 @@
                     "validation:TraceValue"
                   ],
                   "cardinality": 1,
-                  "failedNodes": 0,
-                  "negated": true,
-                  "subResult": [],
-                  "successfulNodes": 1
+                  "failedNodes": 1,
+                  "negated": false,
+                  "subResult": [
+                    {
+                      "@id": "violation_2_0_traceValue_0",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#14",
+                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_2_0_traceValue_0_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "pattern",
+                          "resultPath": "http://a.ml/vocabularies/apiContract#statusCode",
+                          "traceValue": {
+                            "@id": "violation_2_0_traceValue_0_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "argument": "200",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "successfulNodes": 0
                 }
               },
               {

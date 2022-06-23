@@ -105,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#6",
+            "focusNode": "amf://id#5",
             "location": {
               "@id": "violation_0_location",
               "@type": [
@@ -124,8 +124,8 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 0,
-                  "line": 16
+                  "column": 28,
+                  "line": 21
                 },
                 "start": {
                   "@id": "violation_0_location_range_start",
@@ -133,15 +133,15 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 8,
-                  "line": 14
+                  "column": 4,
+                  "line": 11
                 }
               },
               "uri": "file://./test/data/production/owasp/negative2.yaml"
             },
-            "resultMessage": "Implement a schema-based response validation mechanism as an extra layer of security. As part of this mechanism\ndefine and enforce data returned by all API methods, including errors\n",
+            "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "excessive-data-exposure-mandatory-schema",
+            "sourceShapeName": "broken-user-authentication-authenticate-api",
             "trace": [
               {
                 "@id": "violation_0_0",
@@ -168,8 +168,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 0,
-                      "line": 16
+                      "column": 28,
+                      "line": 21
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -177,13 +177,13 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 8,
-                      "line": 14
+                      "column": 4,
+                      "line": 11
                     }
                   },
                   "uri": "file://./test/data/production/owasp/negative2.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/shapes#schema",
+                "resultPath": "http://a.ml/vocabularies/security#security",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
@@ -204,7 +204,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#5",
+            "focusNode": "amf://id#6",
             "location": {
               "@id": "violation_1_location",
               "@type": [
@@ -223,8 +223,8 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 28,
-                  "line": 21
+                  "column": 0,
+                  "line": 16
                 },
                 "start": {
                   "@id": "violation_1_location_range_start",
@@ -232,15 +232,15 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 4,
-                  "line": 11
+                  "column": 8,
+                  "line": 14
                 }
               },
               "uri": "file://./test/data/production/owasp/negative2.yaml"
             },
-            "resultMessage": "Make sure you know all the possible flows to authenticate to the API (mobile/ web/deep links that implement\none-click authentication/etc.)\n",
+            "resultMessage": "Implement a schema-based response validation mechanism as an extra layer of security. As part of this mechanism\ndefine and enforce data returned by all API methods, including errors\n",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "broken-user-authentication-authenticate-api",
+            "sourceShapeName": "excessive-data-exposure-mandatory-schema",
             "trace": [
               {
                 "@id": "violation_1_0",
@@ -267,8 +267,8 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 28,
-                      "line": 21
+                      "column": 0,
+                      "line": 16
                     },
                     "start": {
                       "@id": "violation_1_0_location_range_start",
@@ -276,13 +276,13 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
-                      "column": 4,
-                      "line": 11
+                      "column": 8,
+                      "line": 14
                     }
                   },
                   "uri": "file://./test/data/production/owasp/negative2.yaml"
                 },
-                "resultPath": "http://a.ml/vocabularies/security#security",
+                "resultPath": "http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/shapes#schema",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [

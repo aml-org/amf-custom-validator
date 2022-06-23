@@ -630,7 +630,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "[\"http://a.ml/vocabularies/shapes#ScalarShape\", \"http://a.ml/vocabularies/shapes#AnyShape\", \"http://www.w3.org/ns/shacl#Shape\", \"http://a.ml/vocabularies/shapes#Shape\", \"http://a.ml/vocabularies/document#DomainElement\"]",
+                            "actual": "[\"http://a.ml/vocabularies/document#DomainElement\", \"http://a.ml/vocabularies/shapes#AnyShape\", \"http://a.ml/vocabularies/shapes#ScalarShape\", \"http://a.ml/vocabularies/shapes#Shape\", \"http://www.w3.org/ns/shacl#Shape\"]",
                             "expected": "[\"http://www.w3.org/ns/shacl#NodeShape\",\"http://a.ml/vocabularies/shapes#ArrayShape\",\"http://a.ml/vocabularies/shapes#NilShape\"]",
                             "negated": false
                           }
@@ -1465,7 +1465,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "[\"http://a.ml/vocabularies/shapes#ScalarShape\", \"http://a.ml/vocabularies/shapes#AnyShape\", \"http://www.w3.org/ns/shacl#Shape\", \"http://a.ml/vocabularies/shapes#Shape\", \"http://a.ml/vocabularies/document#DomainElement\"]",
+                            "actual": "[\"http://a.ml/vocabularies/document#DomainElement\", \"http://a.ml/vocabularies/shapes#AnyShape\", \"http://a.ml/vocabularies/shapes#ScalarShape\", \"http://a.ml/vocabularies/shapes#Shape\", \"http://www.w3.org/ns/shacl#Shape\"]",
                             "expected": "[\"http://www.w3.org/ns/shacl#NodeShape\",\"http://a.ml/vocabularies/shapes#ArrayShape\",\"http://a.ml/vocabularies/shapes#NilShape\"]",
                             "negated": false
                           }
@@ -2300,7 +2300,7 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "actual": "[\"http://a.ml/vocabularies/shapes#ScalarShape\", \"http://a.ml/vocabularies/shapes#AnyShape\", \"http://www.w3.org/ns/shacl#Shape\", \"http://a.ml/vocabularies/shapes#Shape\", \"http://a.ml/vocabularies/document#DomainElement\"]",
+                            "actual": "[\"http://a.ml/vocabularies/document#DomainElement\", \"http://a.ml/vocabularies/shapes#AnyShape\", \"http://a.ml/vocabularies/shapes#ScalarShape\", \"http://a.ml/vocabularies/shapes#Shape\", \"http://www.w3.org/ns/shacl#Shape\"]",
                             "expected": "[\"http://www.w3.org/ns/shacl#NodeShape\",\"http://a.ml/vocabularies/shapes#ArrayShape\",\"http://a.ml/vocabularies/shapes#NilShape\"]",
                             "negated": false
                           }

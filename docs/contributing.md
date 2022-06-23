@@ -2,7 +2,7 @@
 
 ## Development requirements
 
-* Go 1.15
+* Go 1.16
 * Java 8 (to validate validation profiles & reports only)
 * Node 12
 * Make

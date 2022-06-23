@@ -105,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "http://datashapes.org/sh/tests/core/node/and-001.test#InvalidRectangle2",
+            "focusNode": "http://datashapes.org/sh/tests/core/node/and-001.test#InvalidRectangle1",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -117,7 +117,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
-                "resultPath": "http://datashapes.org/sh/tests/core/node/and-001.test#height",
+                "resultPath": "http://datashapes.org/sh/tests/core/node/and-001.test#width",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
                   "@type": [
@@ -138,7 +138,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "http://datashapes.org/sh/tests/core/node/and-001.test#InvalidRectangle1",
+            "focusNode": "http://datashapes.org/sh/tests/core/node/and-001.test#InvalidRectangle2",
             "resultMessage": "Validation error",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "validation1",
@@ -150,7 +150,7 @@
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
-                "resultPath": "http://datashapes.org/sh/tests/core/node/and-001.test#width",
+                "resultPath": "http://datashapes.org/sh/tests/core/node/and-001.test#height",
                 "traceValue": {
                   "@id": "violation_1_0_traceValue",
                   "@type": [
