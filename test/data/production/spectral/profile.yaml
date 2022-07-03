@@ -3,28 +3,28 @@
 profile: Spectral Base
 
 violation:
-  - operation-2xx-response
+#  - operation-2xx-response
   - path-params
-  - no-eval-in-markdown
-  - no-script-tags-in-markdown
-  - operation-default-response
-  - operation-operationId
-  - path-declarations-must-exist
-  - path-keys-no-trailing-slash
-  - path-not-include-query
-  - duplicated-entry-in-enum
+#  - no-eval-in-markdown
+#  - no-script-tags-in-markdown
+#  - operation-default-response
+#  - operation-operationId
+#  - path-declarations-must-exist
+#  - path-keys-no-trailing-slash
+#  - path-not-include-query
+#  - duplicated-entry-in-enum
 
 warning:
-  - operation-singular-tag
-  - tag-description
-  - info-contact
-  - info-description
-  - info-license
-  - license-url
-  - openapi-tags
-  - operation-description
-  - operation-tags
-  - operation-tag-defined
+#  - operation-singular-tag
+#  - tag-description
+#  - info-contact
+#  - info-description
+#  - info-license
+#  - license-url
+#  - openapi-tags
+#  - operation-description
+#  - operation-tags
+#  - operation-tag-defined
 
 validations:
 
@@ -54,22 +54,28 @@ validations:
     rego: |
       path = $node["http://a.ml/vocabularies/apiContract#path"]
       pathVariables = {v | ms = regex.find_all_string_submatch_n("{([a-z0-9_]+)}", path, -1); m = ms[_]; v = m[1] }
-
-      nested_nodes[operations] with data.nodes as $node["http://a.ml/vocabularies/apiContract#supportedOperation"]
-      operation = operations[_]
-
-      nested_nodes[requests] with data.nodes as object.get(operation, "http://a.ml/vocabularies/apiContract#expects", [])
-      request = requests[_]
-
-      nested_nodes[parameters] with data.nodes as object.get(request, "http://a.ml/vocabularies/apiContract#uriParameter", [])
-
-      declaredPathVariables = { desc |
-        parameter = parameters[_]
+      nested_nodes[endpointParameters] with data.nodes as object.get($node, "http://a.ml/vocabularies/apiContract#parameter", [])
+      
+      endpointParameterNames = { desc |
+        parameter = endpointParameters[_]
         name = parameter["http://a.ml/vocabularies/core#name"]
         parameter["http://a.ml/vocabularies/apiContract#binding"] = "path"
         desc = name
       }
-      $result = (pathVariables == declaredPathVariables)
+      
+      nested_nodes[operations] with data.nodes as object.get($node, "http://a.ml/vocabularies/apiContract#supportedOperation", [])
+      operation = operations[_]
+      nested_nodes[requests] with data.nodes as object.get(operation, "http://a.ml/vocabularies/apiContract#expects", [])
+      request = requests[_]
+      nested_nodes[operationParameters] with data.nodes as object.get(request, "http://a.ml/vocabularies/apiContract#uriParameter", [])
+      operationParameterNames = { desc |
+        parameter = operationParameters[_]
+        name = parameter["http://a.ml/vocabularies/core#name"]
+        parameter["http://a.ml/vocabularies/apiContract#binding"] = "path"
+        desc = name
+      }
+      parameterNames := endpointParameterNames | operationParameterNames
+      $result = (pathVariables == parameterNames)
 
 
   info-contact:

@@ -1,6 +1,6 @@
 package config
 
-const(
-	Override = false
-	Debug = false
+const (
+	Override = true
+	Debug    = true
 )

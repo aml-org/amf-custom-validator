@@ -6,7 +6,7 @@ parse () {
 }
 
 
-for subdir in ./test/data/production/*
+for subdir in ./test/data/production/asyncapi
 do
   oas_30_files=$(grep -rw "$subdir" -e 'openapi: .*$' | cut -d ":" -f1 | grep .yaml | sed 's/.\/\///' | sed 's/$.\///')
   for file in $oas_30_files
