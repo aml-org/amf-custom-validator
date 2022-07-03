@@ -1,0 +1,286 @@
+#%Validation Profile 1.0
+
+profile: AsyncAPI Best Practices
+
+violation:
+  - asyncapi-channel-no-empty-parameter
+  - asyncapi-channel-no-query-nor-fragment
+  - asyncapi-channel-no-trailing-slash
+  - asyncapi-channel-parameters
+# TODO: BUG
+#  - asyncapi-channel-servers
+  - asyncapi-headers-schema-type-object
+  - asyncapi-info-contact
+  - asyncapi-info-contact-properties
+  - asyncapi-info-description
+  - asyncapi-info-license
+  - asyncapi-operation-description
+  - asyncapi-operation-operationId-uniqueness
+  - asyncapi-operation-operationId
+  - asyncapi-parameter-description
+  - asyncapi-payload-unsupported-schemaFormat
+  - asyncapi-server-no-empty-variable
+  - asyncapi-server-no-trailing-slash
+  - asyncapi-server-not-example-com
+  - asyncapi-servers
+  - asyncapi-tag-description
+  - asyncapi-tags-uniqueness
+  - asyncapi-tags
+
+validations:
+
+  asyncapi-channel-no-empty-parameter:
+    message: Channel parameter declarations cannot be empty, ex./given/{} is invalid.
+    targetClass: apiContract.EndPoint
+    not:
+      propertyConstraints:
+        apiContract.path:
+          pattern: "\\{\\}"
+
+  asyncapi-channel-no-query-nor-fragment:
+    message: Query parameters and fragments shouldn't be used in channel names. Instead, use bindings to define them.
+    targetClass: apiContract.EndPoint
+    not:
+      propertyConstraints:
+        apiContract.path:
+          pattern: "[?#]"
+
+  asyncapi-channel-no-trailing-slash:
+    message: |
+      Keep trailing slashes off of channel names, as it can cause some confusion. Most messaging protocols will treat 
+      example/foo and example/foo/ as different things. Keep in mind that tooling may replace slashes (/) with 
+      protocol-specific notation (e.g.: . for AMQP), therefore, a trailing slash may result in an invalid channel name 
+      in some protocols.
+    targetClass: apiContract.EndPoint
+    not:
+      propertyConstraints:
+        apiContract.path:
+          pattern: '\/$'
+
+  asyncapi-channel-parameters:
+    message: |
+      All channel parameters should be defined in the parameters object of the channel. They should also not contain 
+      redundant parameters that do not exist in the channel address.
+    targetClass: apiContract.EndPoint
+    rego: |
+      path := $node["http://a.ml/vocabularies/apiContract#path"]
+      
+      raw_params := regex.find_all_string_submatch_n("\\{([^{]+)\\}", path,-1)
+      params := {v| [_,v] := raw_params[_] }
+      
+      nested_nodes[raw_declared_params] with data.nodes as object.get(x, "http://a.ml/vocabularies/apiContract#parameter", [])
+      declared_params := {v|
+        p := raw_declared_params[_]
+        v := object.get(p,"http://a.ml/vocabularies/core#name", "")
+      }
+      $result = params == declared_params
+
+#  BUG: Server information missing at the channel level
+#  asyncapi-channel-servers:
+#    message: Channel servers must be defined in the servers object.
+#    targetClass: apiContract.AsyncAPI
+#    rego: |
+#      nested_nodes[top_level_servers] with data.nodes as object.get($node, "http://a.ml/vocabularies/apiContract#server", [])
+#      top_level_server_names := {v|
+#        s := top_level_servers[_]
+#        v = object.get(s, "", "http://a.ml/vocabularies/core#name")
+#      }
+
+  asyncapi-headers-schema-type-object:
+    message: The schema definition of the application headers must be of type “object” and have properties defined.
+    targetClass: apiContract.Message
+    if:
+      propertyConstraints:
+        apiContract.headerSchema:
+          minCount: 1
+    then:
+      propertyConstraints:
+        apiContract.headerSchema / shacl.property:
+          minCount: 1
+
+  asyncapi-info-contact:
+    message: |
+      Info object should contain contact object.
+      Hopefully your API description document is so good that nobody ever needs to contact you with questions, but that 
+      is rarely the case. The contact object has a few different options for contact details.
+    targetClass: apiContract.AsyncAPI
+    propertyConstraints:
+      core.provider:
+        minCount: 1
+
+  asyncapi-info-contact-properties:
+    message: |
+      The asyncapi-info-contact rule will ask you to put in a contact object, and this rule will make sure it's full of 
+      the most useful properties: name, url and email.
+      Putting in the name of the developer/team/department/company responsible for the API, along with the support email
+      and help-desk/GitHub Issues/whatever URL means people know where to go for help. This can mean more money in the 
+      bank, instead of developers just wandering off or complaining online.
+    targetClass: apiContract.AsyncAPI
+    propertyConstraints:
+      core.provider / core.name :
+        minCount: 1
+      core.provider / core.email :
+        minCount: 1
+      core.provider / core.url :
+        minCount: 1
+
+  asyncapi-info-description:
+    message: |
+      AsyncAPI object info description must be present and non-empty string.
+
+      Examples can contain Markdown so you can really go to town with them, implementing getting started information 
+      like where to find authentication keys, and how to use them.
+    targetClass: apiContract.AsyncAPI
+    propertyConstraints:
+      core.description:
+        minCount: 1
+        minLength: 1
+
+  asyncapi-info-license:
+    message: |
+      The info object should have a license key.
+      It can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License 
+      to help give you an idea.
+      How useful this is in court is not entirely known, but having a license is better than not having a license.
+    targetClass: apiContract.AsyncAPI
+    propertyConstraints:
+      core.license:
+        minCount: 1
+
+  asyncapi-operation-description:
+    message: Operation objects should have a description.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  asyncapi-operation-operationId:
+    message: |
+      This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection
+      to other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the
+      URL in some documentation systems.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.operationId:
+        minCount: 1
+
+  asyncapi-operation-operationId-uniqueness:
+    message: operationId must be unique across all the operations (except these one defined in the components).
+    targetClass: apiContract.AsyncAPI
+    rego: |
+      init_x_0 = $node
+      operationIds := [oid |
+        tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/apiContract#endpoint"]
+        x_0 = tmp_x_0[_][_]
+        tmp_x_2 = nested_nodes with data.nodes as x_0["http://a.ml/vocabularies/apiContract#supportedOperation"]
+        op = tmp_x_2[_][_]
+        oid := object.get(op, "http://a.ml/vocabularies/apiContract#operationId", "")
+      ]
+  
+      operationIdsSet = { oid |
+        oid = operationIds[_]
+      }
+  
+      $result = count(operationIds) == count(operationIdsSet)
+
+  asyncapi-parameter-description:
+    message: Parameter objects should have a description.
+    targetClass: apiContract.Parameter
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  asyncapi-payload-unsupported-schemaFormat:
+    message: |
+      AsyncAPI can support various schemaFormat values. When unspecified, one of the following will be assumed:
+      application/vnd.aai.asyncapi;version=2.0.0 application/vnd.aai.asyncapi+json;version=2.0.0 
+      application/vnd.aai.asyncapi+yaml;version=2.0.0
+    targetClass: apiContract.Payload
+    if:
+      propertyConstraints:
+        apiContract.schemaMediaType:
+          minCount: 1
+    then:
+      propertyConstraints:
+        apiContract.schemaMediaType:
+          in:
+            - "application/vnd.aai.asyncapi;version=2.0.0"
+            - "application/vnd.aai.asyncapi+json;version=2.0.0"
+            - "application/vnd.aai.asyncapi+yaml;version=2.0.0"
+            - "application/vnd.oai.openapi;version=3.0.0"
+            - "application/vnd.oai.openapi+json;version=3.0.0"
+            - "application/vnd.oai.openapi+yaml;version=3.0.0"
+            - "application/schema+json;version=draft-07"
+            - "application/schema+yaml;version=draft-07"
+            - "application/vnd.apache.avro;version=1.9.0"
+            - "application/vnd.apache.avro+json;version=1.9.0"
+            - "application/vnd.apache.avro+yaml;version=1.9.0"
+
+
+  asyncapi-server-no-empty-variable:
+    message: Server URL variable declarations cannot be empty, ex.gigantic-server.com/{} is invalid.
+    targetClass: apiContract.Server
+    not:
+      propertyConstraints:
+        core.urlTemplate:
+          pattern: "\\{\\}"
+
+  asyncapi-server-no-trailing-slash:
+    message: |
+      Server URL should not have a trailing slash.
+      Some tooling forgets to strip trailing slashes off when it's joining the servers.url with channels, and you can 
+      get awkward URLs like mqtt://example.com/broker//pets. Best to just strip them off yourself.
+    targetClass: apiContract.Server
+    not:
+      propertyConstraints:
+        core.urlTemplate:
+          pattern: '\/$'
+
+  asyncapi-server-not-example-com:
+    message: Server URL should not point at example.com.
+    targetClass: apiContract.Server
+    not:
+      propertyConstraints:
+        core.urlTemplate:
+          pattern: 'example\.com'
+
+
+  asyncapi-servers:
+    message: A non empty servers object is expected to be located at the root of the document.
+    targetClass: apiContract.AsyncAPI
+    propertyConstraints:
+      apiContract.server:
+        minCount: 1
+
+  asyncapi-tag-description:
+    message: |
+      Tags alone are not very descriptive. Give folks a bit more information to work with.
+      If your tags are business objects then you can use the term to explain them a bit. An 'Account' could be a user 
+      account, company information, bank account, potential sales lead, anything. What is clear to the folks writing the 
+      document is probably not as clear to others.
+    targetClass: apiContract.Tag
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  asyncapi-tags-uniqueness:
+    message: Tags must not have duplicate names (identifiers).
+    targetClass: apiContract.AsyncAPI
+    rego: |
+      nested_nodes[tag_nodes] with data.nodes as object.get($node, "http://a.ml/vocabularies/apiContract#tag", [])      
+      names := { n |
+        tag_node := tag_nodes[_]
+        n := object.get(tag_node,"http://a.ml/vocabularies/core#name", "")
+      }
+      $result = count(tag_nodes) == count(names)
+
+  asyncapi-tags:
+    message: |
+      AsyncAPI object should have non-empty tags array.
+      Why? Well, you can reference tags arbitrarily in operations, and definition is optional...
+      Defining tags allows you to add more information like a descriptio
+    targetClass: apiContract.AsyncAPI
+    propertyConstraints:
+      apiContract.tag:
+        minCount: 1
+
