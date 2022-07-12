@@ -5,7 +5,7 @@
       "@type": [
         "http://a.ml/vocabularies/document#APIContractProcessingData"
       ],
-      "http://a.ml/vocabularies/apiContract#modelVersion": "3.2.0",
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.5.0",
       "http://a.ml/vocabularies/document#transformed": true,
       "http://a.ml/vocabularies/document#sourceSpec": "RAML 1.0"
     },
@@ -45,7 +45,7 @@
       "@type": [
         "http://a.ml/vocabularies/document#BaseUnitSourceInformation"
       ],
-      "http://a.ml/vocabularies/document#rootLocation": "file:///Users/abettati/mulesoft/amf-custom-validator/test/data/production/best-practices/positive2.raml",
+      "http://a.ml/vocabularies/document#rootLocation": "file://./test/data/production/best-practices/positive2.raml",
       "http://a.ml/vocabularies/document#additionalLocations": [
         {
           "@id": "amf://id/BaseUnitSourceInformation/location_0"
@@ -126,7 +126,7 @@
       "@type": [
         "http://a.ml/vocabularies/document#LocationInformation"
       ],
-      "http://a.ml/vocabularies/document#location": "file:///Users/abettati/mulesoft/amf-custom-validator/test/data/production/best-practices/negative11.raml",
+      "http://a.ml/vocabularies/document#location": "file://./test/data/production/best-practices/negative11.raml",
       "http://a.ml/vocabularies/document#elements": [
         {
           "@id": "amf://id#10"
@@ -176,6 +176,7 @@
       "@id": "amf://id#14",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Operation",
+        "http://a.ml/vocabularies/core#Operation",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/apiContract#method": "get",
@@ -268,6 +269,7 @@
       "@id": "amf://id#15",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Request",
+        "http://a.ml/vocabularies/core#Request",
         "http://a.ml/vocabularies/apiContract#Message",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
@@ -294,6 +296,7 @@
       "@id": "amf://id#22",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Response",
+        "http://a.ml/vocabularies/core#Response",
         "http://a.ml/vocabularies/apiContract#Message",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
@@ -355,6 +358,7 @@
       "@id": "amf://id#16",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Parameter",
+        "http://a.ml/vocabularies/core#Parameter",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/core#name": "filter",
@@ -375,6 +379,7 @@
       "@id": "amf://id#18",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Parameter",
+        "http://a.ml/vocabularies/core#Parameter",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/core#name": "order",
@@ -395,6 +400,7 @@
       "@id": "amf://id#20",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Parameter",
+        "http://a.ml/vocabularies/core#Parameter",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/core#name": "callerId",
@@ -429,6 +435,7 @@
       "@id": "amf://id#25",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Payload",
+        "http://a.ml/vocabularies/core#Payload",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/core#mediaType": "application/json",
@@ -445,6 +452,7 @@
       "@id": "amf://id#23",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Parameter",
+        "http://a.ml/vocabularies/core#Parameter",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/core#name": "content-type",
@@ -1188,7 +1196,7 @@
         }
       ],
       "http://www.w3.org/ns/shacl#name": "IncorrectType",
-      "http://a.ml/vocabularies/core#description": "some description",
+      "http://a.ml/vocabularies/core#description": "type with incorrect camel-case property",
       "http://a.ml/vocabularies/document-source-maps#sources": [
         {
           "@id": "amf://id#8/source-map"

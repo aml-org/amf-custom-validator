@@ -137,7 +137,7 @@
                   "line": 9
                 }
               },
-              "uri": "file:///Users/abettati/mulesoft/amf-custom-validator/test/data/production/best-practices/negative11.raml"
+              "uri": "file://./test/data/production/best-practices/negative11.raml"
             },
             "resultMessage": "Use camelCase for all the names (fields), preferably don’t use underscores.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
@@ -181,7 +181,7 @@
                       "line": 9
                     }
                   },
-                  "uri": "file:///Users/abettati/mulesoft/amf-custom-validator/test/data/production/best-practices/negative11.raml"
+                  "uri": "file://./test/data/production/best-practices/negative11.raml"
                 },
                 "resultPath": "http://www.w3.org/ns/shacl#name",
                 "traceValue": {
