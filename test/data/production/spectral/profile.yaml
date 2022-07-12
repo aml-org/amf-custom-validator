@@ -3,28 +3,26 @@
 profile: Spectral Base
 
 violation:
-#  - operation-2xx-response
+  - operation-2xx-response
   - path-params
-#  - no-eval-in-markdown
-#  - no-script-tags-in-markdown
-#  - operation-default-response
-#  - operation-operationId
-#  - path-declarations-must-exist
-#  - path-keys-no-trailing-slash
-#  - path-not-include-query
-#  - duplicated-entry-in-enum
-
-warning:
-#  - operation-singular-tag
-#  - tag-description
-#  - info-contact
-#  - info-description
-#  - info-license
-#  - license-url
-#  - openapi-tags
-#  - operation-description
-#  - operation-tags
-#  - operation-tag-defined
+  - no-eval-in-markdown
+  - no-script-tags-in-markdown
+  - operation-default-response
+  - operation-operationId
+  - path-declarations-must-exist
+  - path-keys-no-trailing-slash
+  - path-not-include-query
+  - duplicated-entry-in-enum
+  - operation-singular-tag
+  - tag-description
+  - info-contact
+  - info-description
+  - info-license
+  - license-url
+  - openapi-tags
+  - operation-description
+  - operation-tags
+  - operation-tag-defined
 
 validations:
 

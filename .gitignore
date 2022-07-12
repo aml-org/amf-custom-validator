@@ -4,6 +4,11 @@
 *.dll
 *.so
 *.dylib
+*.fol
+*.yaml.normalized
+*.yaml.rego
+*.raml.normalized
+report.rego
 
 # Test binary, built with `go test -c`
 *.test

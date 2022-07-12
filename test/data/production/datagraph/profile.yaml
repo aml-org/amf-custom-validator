@@ -3,21 +3,21 @@
 profile: Anypoint Datagraph Best Practices
 
 violation:
-#  - not-anonymous-types
-#  - missing-return-type
+  - not-anonymous-types
+  - missing-return-type
   - not-json-response
-#  - no-2xx-response
-#  - only-http-basic-security-supported
-#  - potential-key-parameters
-#  - missing-type-description
-#  - missing-property-description
-#  - missing-parameter-description
-#  - request-response-antipattern
-#  - heterogeneous-union
-#  - nil-union-antipattern
-#  - unsupported-response-schema-shapes
-#  - non-scalar-url-parameters
-#  - open-schemas-ignored
+  - no-2xx-response
+  - only-http-basic-security-supported
+  - potential-key-parameters
+  - missing-type-description
+  - missing-property-description
+  - missing-parameter-description
+  - request-response-antipattern
+  - heterogeneous-union
+  - nil-union-antipattern
+  - unsupported-response-schema-shapes
+  - non-scalar-url-parameters
+  - open-schemas-ignored
 
 validations:
 

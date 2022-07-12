@@ -105,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#40",
+            "focusNode": "amf://id#39",
             "location": {
               "@id": "violation_0_location",
               "@type": [
