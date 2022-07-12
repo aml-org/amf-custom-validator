@@ -31,22 +31,10 @@ func GenerateRego(profileText string, debug bool, eventChan *chan e.Event) (*gen
 		return nil, err
 	}
 
-	if debug {
-		println("Logic translation")
-		println("-------------------------------")
-		println(parsed.String())
-	}
-
 	// Generate Rego code
 	dispatchEvent(e.NewEvent(e.RegoGenerationStart), eventChan)
 	module := generator.Generate(*parsed)
 	dispatchEvent(e.NewEvent(e.RegoGenerationDone), eventChan)
-
-	if debug {
-		println("Generated profile")
-		println("-------------------------------")
-		println(module.Code)
-	}
 
 	return &module, err
 }
