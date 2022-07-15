@@ -32,7 +32,9 @@ config.module.rules.push(
 
 config.entry = {
     simple: path.join(__dirname, 'src/simple.js'),
-    double: path.join(__dirname, 'src/double.js')
+    double: path.join(__dirname, 'src/double.js'),
+    generate: path.join(__dirname, 'src/generate.js'),
+    normalize: path.join(__dirname, 'src/normalize.js')
 }
 
 module.exports = config
