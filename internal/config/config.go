@@ -1,6 +1,6 @@
 package config
 
 const(
-	Override = true
+	Override = false
 	Debug = false
 )

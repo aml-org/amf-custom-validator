@@ -1,0 +1,41 @@
+[
+  {
+    "@context": {
+      "conforms": {
+        "@id": "http://www.w3.org/ns/shacl#conforms"
+      },
+      "doc": "http://a.ml/vocabularies/document#",
+      "meta": "http://a.ml/vocabularies/meta#",
+      "reportSchema": "file:///dialects/validation-report.yaml#/declarations/",
+      "shacl": "http://www.w3.org/ns/shacl#"
+    },
+    "@id": "dialect-instance",
+    "@type": [
+      "meta:DialectInstance",
+      "doc:Document",
+      "doc:Fragment",
+      "doc:Module",
+      "doc:Unit"
+    ],
+    "doc:encodes": [
+      {
+        "@id": "validation-report",
+        "@type": [
+          "reportSchema:ReportNode",
+          "shacl:ValidationReport"
+        ],
+        "conforms": true,
+        "profileName": "Anypoint Best Practices"
+      }
+    ],
+    "doc:processingData": [
+      {
+        "@id": "processing-data",
+        "@type": [
+          "doc:DialectInstanceProcessingData"
+        ],
+        "doc:sourceSpec": "Validation Report 1.0"
+      }
+    ]
+  }
+]

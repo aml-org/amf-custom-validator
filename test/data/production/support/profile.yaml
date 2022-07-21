@@ -1,0 +1,33 @@
+#%Validation Profile 1.0
+
+profile: Anypoint Best Practices
+
+description: |
+  This ruleset contains over 30 best practices for APIs to be used, maintained, and consumed across Anypoint Platform and beyond.
+
+tags:
+  - best-practices
+
+violation:
+
+  - provide-examples
+
+validations:
+  provide-examples:
+    message: Always include examples in requests and responses.
+    targetClass: apiContract.Payload
+    rego: |
+      schema = find with data.link as $node["http://a.ml/vocabularies/shapes#schema"]
+
+      nested_nodes[examples] with data.nodes as object.get(schema, "http://a.ml/vocabularies/apiContract#examples", [])
+
+      examples_from_this_payload = { element |
+        example = examples[_]
+        sourcemap = find with data.link as object.get(example, "http://a.ml/vocabularies/document-source-maps#sources", [])
+        tracked_element = find with data.link as object.get(sourcemap, "http://a.ml/vocabularies/document-source-maps#tracked-element", [])
+        values_contains(tracked_element["http://a.ml/vocabularies/document-source-maps#value"], $node["@id"])
+        element := example
+      }
+
+      $result := (count(examples_from_this_payload) > 0)
+
