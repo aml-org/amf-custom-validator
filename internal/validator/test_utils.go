@@ -74,6 +74,12 @@ func validateAndCompare(profile, data, expected string, t *testing.T) {
 		write(actualText, expected)
 	} else {
 		if !compare(actualText, expected) {
+			println("Expected")
+			println("==================")
+			println(expected)
+			println("\n\n\nActual")
+			println("==================")
+			println(actualText)
 			t.Errorf("Failed %s. Actual did not match expexted", data)
 		}
 	}

@@ -22,6 +22,12 @@ paths:
         schema:
           type: string
     get:
+      parameters:
+        - name: Accept
+          in: header
+          required: true
+          schema:
+            type: string
       description: op-description
       operationId: opid
       tags:
