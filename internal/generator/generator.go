@@ -238,6 +238,18 @@ as_string(x) = json.marshal(x) {
   not x["@id"]
 }
 
+#creates an array from a comma separated values str
+split_values[values] {
+   values := split(data.nodes, ",")
+}
+
+#check if a given target is present at the list serialized as comma separated values(chain)
+values_contains(chain, target) = matches {
+  split_values[values] with data.nodes as chain
+    values[_] = target
+    matches := true
+}
+
 # Traces one evaluation of a constraint
 trace(constraint, resultPath, focusNode, traceValue) = t {
   l := location(focusNode)  

@@ -1,0 +1,38 @@
+# test-for: asyncapi-server-no-empty-variable
+asyncapi: "2.0.0"
+info:
+  title: Awesome API
+  description: A very well defined API
+  version: "1.0"
+  license:
+    name: MIT
+  contact:
+    name: A-Team
+    email: a-team@goarmy.com
+    url: https://goarmy.com/apis/support
+servers:
+  production:
+    url: "stoplight.io/params/{}/empty"
+    protocol: "https"
+tags:
+  - name: "Aardvark"
+    description: Funny nosed pig-head racoon.
+  - name: "Badger"
+    description: Angry short-legged omnivores.
+channels:
+  hello:
+    publish:
+      operationId: op
+      description: op description
+      message:
+        headers:
+          type: object
+          properties:
+            correlationId:
+              description: Correlation ID set by application
+              type: string
+            applicationInstanceId:
+              description: Unique identifier for a given instance of the publishing application
+              type: string
+        payload:
+          type: object
