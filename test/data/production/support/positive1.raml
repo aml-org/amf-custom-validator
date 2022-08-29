@@ -1,0 +1,47 @@
+#%RAML 1.0
+title: pope-test4
+
+traits:
+  tr:
+    responses:
+      400:
+        headers:
+          Content-Type:
+            type: string
+        body:
+          application/json:
+            type: A
+            example: test
+
+types:
+  A:
+    type: string
+/myendpoint:
+  is:
+    - tr
+  get:
+    description: get operation
+    responses:
+      200:
+        headers:
+          Content-Type:
+            type: string
+        body:
+          application/json:
+            type: A
+            example: e1
+
+/secondendpoint:
+  is:
+    - tr
+  get:
+    description: get operation2
+    responses:
+      200:
+        headers:
+          Content-Type:
+            type: string
+        body:
+          application/json:
+            type: A
+            example: e1
