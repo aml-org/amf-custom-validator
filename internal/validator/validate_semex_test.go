@@ -24,9 +24,6 @@ func TestPaginationOas20(t *testing.T) {
 func TestPaginationOas30(t *testing.T) {
 	testSemexCase("semantic-extension-pagination", "api.oas30.yaml.jsonld", t)
 }
-func TestCaixaOas30(t *testing.T) {
-	testSemexCase("caixa", "api.oas30.yaml.jsonld", t)
-}
 func TestPaginationRaml10(t *testing.T) {
 	testSemexCase("semantic-extension-pagination", "api.raml.jsonld", t)
 }
