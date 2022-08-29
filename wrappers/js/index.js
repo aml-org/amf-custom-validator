@@ -23,6 +23,35 @@ const validateCustomProfile = function(profile, data, debug, cb) {
         cb(undefined,new Error("WASM/GO not initialized"))
     }
 }
+
+const runGenerateRego = function(profile) {
+    const res = __AMF__generateRego(profile);
+    return res;
+}
+
+const generateRego = function(profile, cb) {
+    if (initialized) {
+        let res = runGenerateRego(profile);
+        cb(res,undefined);
+    } else {
+        cb(undefined,new Error("WASM/GO not initialized"))
+    }
+}
+
+const runNormalizeInput = function(data) {
+    const res = __AMF__normalizeInput(data);
+    return res;
+}
+
+const normalizeInput = function(data, cb) {
+    if (initialized) {
+        let res = runNormalizeInput(data);
+        cb(res,undefined);
+    } else {
+        cb(undefined,new Error("WASM/GO not initialized"))
+    }
+}
+
 const initialize = function(cb) {
     if (initialized === true) {
         cb(undefined)
@@ -53,4 +82,6 @@ const exit = function() {
 
 module.exports.initialize = initialize;
 module.exports.validate = validateCustomProfile;
+module.exports.generateRego = generateRego;
+module.exports.normalizeInput = normalizeInput;
 module.exports.exit = exit;
