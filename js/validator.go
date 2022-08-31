@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"github.com/aml-org/amf-custom-validator/internal/validator"
 	"syscall/js"
 )
@@ -22,6 +24,44 @@ func validateWrapper() js.Func {
 	return jsonFunc
 }
 
+func genRegoWrapper() js.Func {
+	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		if len(args) != 1 {
+			return "Invalid no of arguments passed"
+		}
+		profileString := args[0].String()
+		res, err := validator.GenerateRego(profileString, false, nil)
+		if err != nil {
+			return err.Error()
+		}
+		return res.Code
+	})
+	return jsonFunc
+}
+
+func normalizeInputWrapper() js.Func {
+	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		if len(args) != 1 {
+			return "Invalid no of arguments passed"
+		}
+		dataString := args[0].String()
+		normalizedInput, err := validator.ProcessInput(dataString, false, nil)
+		if err != nil {
+			return err.Error()
+		}
+		var b bytes.Buffer
+		enc := json.NewEncoder(&b)
+		enc.SetIndent("", "  ")
+		err = enc.Encode(normalizedInput)
+		if err != nil {
+			return err.Error()
+		}
+
+		return b.String()
+	})
+	return jsonFunc
+}
+
 func exitWrapper(c chan bool) js.Func {
 	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 		c <- true
@@ -32,8 +72,16 @@ func exitWrapper(c chan bool) js.Func {
 
 func main() {
 	c := make(chan bool)
+	// validate
 	f := validateWrapper()
 	js.Global().Set("__AMF__validateCustomProfile", f)
+	// gen rego
+	f = genRegoWrapper()
+	js.Global().Set("__AMF__generateRego", f)
+	// normalizeInput
+	f = normalizeInputWrapper()
+	js.Global().Set("__AMF__normalizeInput", f)
+	// exit
 	f = exitWrapper(c)
 	js.Global().Set("__AMF__terminateValidator", f)
 	<-c

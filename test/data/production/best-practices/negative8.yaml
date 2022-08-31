@@ -1,3 +1,4 @@
+# test-for: preferred-media-type-representations
 openapi: "3.0.0"
 info:
   title: Awesome API

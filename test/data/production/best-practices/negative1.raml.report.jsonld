@@ -105,7 +105,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#3",
+            "focusNode": "amf://id#2",
             "location": {
               "@id": "violation_0_location",
               "@type": [
@@ -133,15 +133,15 @@
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
                   ],
-                  "column": 6,
-                  "line": 7
+                  "column": 2,
+                  "line": 4
                 }
               },
               "uri": "file://./test/data/production/best-practices/lib.raml"
             },
-            "resultMessage": "Use camelCase for all the names (fields), preferably don’t use underscores.",
+            "resultMessage": "Provide description for data shapes",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-            "sourceShapeName": "camel-case-fields",
+            "sourceShapeName": "payload-shapes-must-have-descriptions",
             "trace": [
               {
                 "@id": "violation_0_0",
@@ -149,7 +149,7 @@
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
-                "component": "pattern",
+                "component": "minCount",
                 "location": {
                   "@id": "violation_0_0_location",
                   "@type": [
@@ -177,6 +177,105 @@
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
                       ],
+                      "column": 2,
+                      "line": 4
+                    }
+                  },
+                  "uri": "file://./test/data/production/best-practices/lib.raml"
+                },
+                "resultPath": "http://a.ml/vocabularies/core#description",
+                "traceValue": {
+                  "@id": "violation_0_0_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "actual": 0,
+                  "condition": ">=",
+                  "expected": 1,
+                  "negated": false
+                }
+              }
+            ]
+          },
+          {
+            "@id": "violation_1",
+            "@type": [
+              "reportSchema:ValidationResultNode",
+              "shacl:ValidationResult"
+            ],
+            "focusNode": "amf://id#3",
+            "location": {
+              "@id": "violation_1_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_1_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_1_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 27,
+                  "line": 7
+                },
+                "start": {
+                  "@id": "violation_1_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 6,
+                  "line": 7
+                }
+              },
+              "uri": "file://./test/data/production/best-practices/lib.raml"
+            },
+            "resultMessage": "Use camelCase for all the names (fields), preferably don’t use underscores.",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "sourceShapeName": "camel-case-fields",
+            "trace": [
+              {
+                "@id": "violation_1_0",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "pattern",
+                "location": {
+                  "@id": "violation_1_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_1_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_1_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 27,
+                      "line": 7
+                    },
+                    "start": {
+                      "@id": "violation_1_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
                       "column": 6,
                       "line": 7
                     }
@@ -185,7 +284,7 @@
                 },
                 "resultPath": "http://www.w3.org/ns/shacl#name",
                 "traceValue": {
-                  "@id": "violation_0_0_traceValue",
+                  "@id": "violation_1_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -197,125 +296,26 @@
             ]
           },
           {
-            "@id": "warning_0",
-            "@type": [
-              "reportSchema:ValidationResultNode",
-              "shacl:ValidationResult"
-            ],
-            "focusNode": "amf://id#2",
-            "location": {
-              "@id": "warning_0_location",
-              "@type": [
-                "lexicalSchema:LocationNode",
-                "lexical:Location"
-              ],
-              "range": {
-                "@id": "warning_0_location_range",
-                "@type": [
-                  "lexicalSchema:RangeNode",
-                  "lexical:Range"
-                ],
-                "end": {
-                  "@id": "warning_0_location_range_end",
-                  "@type": [
-                    "lexicalSchema:PositionNode",
-                    "lexical:Position"
-                  ],
-                  "column": 27,
-                  "line": 7
-                },
-                "start": {
-                  "@id": "warning_0_location_range_start",
-                  "@type": [
-                    "lexicalSchema:PositionNode",
-                    "lexical:Position"
-                  ],
-                  "column": 2,
-                  "line": 4
-                }
-              },
-              "uri": "file://./test/data/production/best-practices/lib.raml"
-            },
-            "resultMessage": "Provide description for data shapes",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
-            "sourceShapeName": "payload-shapes-must-have-descriptions",
-            "trace": [
-              {
-                "@id": "warning_0_0",
-                "@type": [
-                  "reportSchema:TraceMessageNode",
-                  "validation:TraceMessage"
-                ],
-                "component": "minCount",
-                "location": {
-                  "@id": "warning_0_0_location",
-                  "@type": [
-                    "lexicalSchema:LocationNode",
-                    "lexical:Location"
-                  ],
-                  "range": {
-                    "@id": "warning_0_0_location_range",
-                    "@type": [
-                      "lexicalSchema:RangeNode",
-                      "lexical:Range"
-                    ],
-                    "end": {
-                      "@id": "warning_0_0_location_range_end",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 27,
-                      "line": 7
-                    },
-                    "start": {
-                      "@id": "warning_0_0_location_range_start",
-                      "@type": [
-                        "lexicalSchema:PositionNode",
-                        "lexical:Position"
-                      ],
-                      "column": 2,
-                      "line": 4
-                    }
-                  },
-                  "uri": "file://./test/data/production/best-practices/lib.raml"
-                },
-                "resultPath": "http://a.ml/vocabularies/core#description",
-                "traceValue": {
-                  "@id": "warning_0_0_traceValue",
-                  "@type": [
-                    "reportSchema:TraceValueNode",
-                    "validation:TraceValue"
-                  ],
-                  "actual": 0,
-                  "condition": ">=",
-                  "expected": 1,
-                  "negated": false
-                }
-              }
-            ]
-          },
-          {
-            "@id": "warning_1",
+            "@id": "violation_2",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#6",
             "location": {
-              "@id": "warning_1_location",
+              "@id": "violation_2_location",
               "@type": [
                 "lexicalSchema:LocationNode",
                 "lexical:Location"
               ],
               "range": {
-                "@id": "warning_1_location_range",
+                "@id": "violation_2_location_range",
                 "@type": [
                   "lexicalSchema:RangeNode",
                   "lexical:Range"
                 ],
                 "end": {
-                  "@id": "warning_1_location_range_end",
+                  "@id": "violation_2_location_range_end",
                   "@type": [
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
@@ -324,7 +324,7 @@
                   "line": 7
                 },
                 "start": {
-                  "@id": "warning_1_location_range_start",
+                  "@id": "violation_2_location_range_start",
                   "@type": [
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
@@ -336,30 +336,30 @@
               "uri": "file://./test/data/production/best-practices/lib.raml"
             },
             "resultMessage": "Provide description for data shapes",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "payload-shapes-must-have-descriptions",
             "trace": [
               {
-                "@id": "warning_1_0",
+                "@id": "violation_2_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "warning_1_0_location",
+                  "@id": "violation_2_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "warning_1_0_location_range",
+                    "@id": "violation_2_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "warning_1_0_location_range_end",
+                      "@id": "violation_2_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -368,7 +368,7 @@
                       "line": 7
                     },
                     "start": {
-                      "@id": "warning_1_0_location_range_start",
+                      "@id": "violation_2_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -381,7 +381,7 @@
                 },
                 "resultPath": "http://a.ml/vocabularies/core#description",
                 "traceValue": {
-                  "@id": "warning_1_0_traceValue",
+                  "@id": "violation_2_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -395,26 +395,26 @@
             ]
           },
           {
-            "@id": "warning_2",
+            "@id": "violation_3",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#8",
             "location": {
-              "@id": "warning_2_location",
+              "@id": "violation_3_location",
               "@type": [
                 "lexicalSchema:LocationNode",
                 "lexical:Location"
               ],
               "range": {
-                "@id": "warning_2_location_range",
+                "@id": "violation_3_location_range",
                 "@type": [
                   "lexicalSchema:RangeNode",
                   "lexical:Range"
                 ],
                 "end": {
-                  "@id": "warning_2_location_range_end",
+                  "@id": "violation_3_location_range_end",
                   "@type": [
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
@@ -423,7 +423,7 @@
                   "line": 7
                 },
                 "start": {
-                  "@id": "warning_2_location_range_start",
+                  "@id": "violation_3_location_range_start",
                   "@type": [
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
@@ -435,30 +435,30 @@
               "uri": "file://./test/data/production/best-practices/negative1.raml"
             },
             "resultMessage": "Provide the description for the API",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "api-must-have-description",
             "trace": [
               {
-                "@id": "warning_2_0",
+                "@id": "violation_3_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "warning_2_0_location",
+                  "@id": "violation_3_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "warning_2_0_location_range",
+                    "@id": "violation_3_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "warning_2_0_location_range_end",
+                      "@id": "violation_3_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -467,7 +467,7 @@
                       "line": 7
                     },
                     "start": {
-                      "@id": "warning_2_0_location_range_start",
+                      "@id": "violation_3_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -480,7 +480,7 @@
                 },
                 "resultPath": "http://a.ml/vocabularies/core#description",
                 "traceValue": {
-                  "@id": "warning_2_0_traceValue",
+                  "@id": "violation_3_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
@@ -494,26 +494,26 @@
             ]
           },
           {
-            "@id": "warning_3",
+            "@id": "violation_4",
             "@type": [
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#8",
             "location": {
-              "@id": "warning_3_location",
+              "@id": "violation_4_location",
               "@type": [
                 "lexicalSchema:LocationNode",
                 "lexical:Location"
               ],
               "range": {
-                "@id": "warning_3_location_range",
+                "@id": "violation_4_location_range",
                 "@type": [
                   "lexicalSchema:RangeNode",
                   "lexical:Range"
                 ],
                 "end": {
-                  "@id": "warning_3_location_range_end",
+                  "@id": "violation_4_location_range_end",
                   "@type": [
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
@@ -522,7 +522,7 @@
                   "line": 7
                 },
                 "start": {
-                  "@id": "warning_3_location_range_start",
+                  "@id": "violation_4_location_range_start",
                   "@type": [
                     "lexicalSchema:PositionNode",
                     "lexical:Position"
@@ -534,30 +534,30 @@
               "uri": "file://./test/data/production/best-practices/negative1.raml"
             },
             "resultMessage": "Provide the documentation for the API",
-            "resultSeverity": "http://www.w3.org/ns/shacl#Warning",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "api-must-have-documentation",
             "trace": [
               {
-                "@id": "warning_3_0",
+                "@id": "violation_4_0",
                 "@type": [
                   "reportSchema:TraceMessageNode",
                   "validation:TraceMessage"
                 ],
                 "component": "minCount",
                 "location": {
-                  "@id": "warning_3_0_location",
+                  "@id": "violation_4_0_location",
                   "@type": [
                     "lexicalSchema:LocationNode",
                     "lexical:Location"
                   ],
                   "range": {
-                    "@id": "warning_3_0_location_range",
+                    "@id": "violation_4_0_location_range",
                     "@type": [
                       "lexicalSchema:RangeNode",
                       "lexical:Range"
                     ],
                     "end": {
-                      "@id": "warning_3_0_location_range_end",
+                      "@id": "violation_4_0_location_range_end",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -566,7 +566,7 @@
                       "line": 7
                     },
                     "start": {
-                      "@id": "warning_3_0_location_range_start",
+                      "@id": "violation_4_0_location_range_start",
                       "@type": [
                         "lexicalSchema:PositionNode",
                         "lexical:Position"
@@ -579,7 +579,7 @@
                 },
                 "resultPath": "http://a.ml/vocabularies/core#documentation",
                 "traceValue": {
-                  "@id": "warning_3_0_traceValue",
+                  "@id": "violation_4_0_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"

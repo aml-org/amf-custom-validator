@@ -21,17 +21,5 @@ func ProcessInput(jsonldText string, debug bool, receiver *chan e.Event) (interf
 	normalizedInput := Index(Normalize(input))
 	dispatchEvent(e.NewEvent(e.InputDataNormalizationDone), receiver)
 
-	if debug {
-		println("Input data")
-		println("-------------------------------")
-		var b bytes.Buffer
-		enc := json.NewEncoder(&b)
-		enc.SetIndent("", "  ")
-		err := enc.Encode(normalizedInput)
-		if err != nil {
-			panic(err)
-		}
-		println(b.String())
-	}
 	return normalizedInput, nil
 }
