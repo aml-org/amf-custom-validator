@@ -1,6 +1,6 @@
-package profile_test_1
+package profile_test6
 
-report["profile"] = "Test 1"
+report["profile"] = "Test6"
 
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {
@@ -279,33 +279,35 @@ default warning = []
 default info = []
 # Path rules
 
+gen_path_set_rule_1[nodes] {
+  init_x_0 = data.sourceNode
+  tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/apiContract#endpoint"]
+  x_0 = tmp_x_0[_][_]
+  tmp_x_2 = gen_path_extension with data.custom_property_data as [x_0, "wadus"]
+  tmp2_x_2 = tmp_x_2[_][_]
+  x_2 = object.get(tmp2_x_2,"@id","")
+  nodes = x_2
+}
+
+gen_path_set_rule_2[nodes] {
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#maxLength",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
+}
+
 gen_path_set_rule_3[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#method",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0 = nodes_tmp2[_]
+  tmp_x_0 = gen_path_extension with data.custom_property_data as [init_x_0, "wadus"]
+  tmp2_x_0 = tmp_x_0[_][_]
+  x_0 = object.get(tmp2_x_0,"@id","")
   nodes = x_0
 }
 
-gen_path_set_rule_5[nodes] {
+gen_path_set_rule_4[nodes] {
   init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#name",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0 = nodes_tmp2[_]
-  nodes = x_0
-}
-
-gen_path_set_rule_7[nodes] {
-  init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#method",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_0 = nodes_tmp2[_]
-  nodes = x_0
-}
-
-gen_path_set_rule_8[nodes] {
-  init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#name",[])
+  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#maxLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -314,41 +316,27 @@ gen_path_set_rule_8[nodes] {
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
-  #  querying path: apiContract.method
-  gen_x_check_2_array = gen_path_set_rule_3 with data.sourceNode as x
-  gen_x_check_2_scalar = gen_x_check_2_array[_]
-  gen_x_check_2 = as_string(gen_x_check_2_scalar)
-  gen_inValues_1 = { "publish","subscribe","1","2"}
-  not gen_inValues_1[gen_x_check_2]
-  _result_0 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"publish\",\"subscribe\",\"1\",\"2\"]"})
-  matches := error("validation1",x,"This is the message",[_result_0])
+  target_class[x] with data.class as "http://a.ml/vocabularies/shapes#ScalarShape"
+  #  querying path: apiContract.endpoint / apiExt.wadus
+  gen_path_set_rule_1As = gen_path_set_rule_1 with data.sourceNode as x
+  #  querying path: shacl.maxLength
+  gen_path_set_rule_2Bs = gen_path_set_rule_2 with data.sourceNode as x
+  gen_path_set_rule_1A = gen_path_set_rule_1As[_]
+  gen_path_set_rule_2B = gen_path_set_rule_2Bs[_]
+  not gen_path_set_rule_1A < gen_path_set_rule_2B
+  _result_0 := trace("lessThan","http://a.ml/vocabularies/apiContract#endpoint / http://a.ml/vocabularies/api-extension#wadus",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "condition":"<","expected":gen_path_set_rule_1A, "actual":gen_path_set_rule_2B})
+  matches := error("test-min-length",x,"Min length must be less than max length must match in scalar",[_result_0])
 }
 
 violation[matches] {
-  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
-  #  querying path: shacl.name
-  gen_propValues_4 = gen_path_set_rule_5 with data.sourceNode as x
-  not count(gen_propValues_4) <= 1
-  _result_0 := trace("maxCount","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<=","actual": count(gen_propValues_4),"expected": 1})
-  matches := error("validation1",x,"This is the message",[_result_0])
-}
-
-violation[matches] {
-  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
-  #  querying path: apiContract.method
-  gen_propValues_6 = gen_path_set_rule_7 with data.sourceNode as x
-  not count(gen_propValues_6) >= 1
-  _result_0 := trace("minCount","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
-  matches := error("validation1",x,"This is the message",[_result_0])
-}
-
-violation[matches] {
-  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
-  #  querying path: shacl.name
-  gen_gen_path_set_rule_8_node_9_array = gen_path_set_rule_8 with data.sourceNode as x
-  gen_gen_path_set_rule_8_node_9 = gen_gen_path_set_rule_8_node_9_array[_]
-  not regex.match(`^put|post$`,gen_gen_path_set_rule_8_node_9)
-  _result_0 := trace("pattern","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_set_rule_8_node_9})
-  matches := error("validation1",x,"This is the message",[_result_0])
+  target_class[x] with data.class as "http://a.ml/vocabularies/shapes#ScalarShape"
+  #  querying path: apiExt.wadus
+  gen_path_set_rule_3As = gen_path_set_rule_3 with data.sourceNode as x
+  #  querying path: shacl.maxLength
+  gen_path_set_rule_4Bs = gen_path_set_rule_4 with data.sourceNode as x
+  gen_path_set_rule_3A = gen_path_set_rule_3As[_]
+  gen_path_set_rule_4B = gen_path_set_rule_4Bs[_]
+  not gen_path_set_rule_3A < gen_path_set_rule_4B
+  _result_0 := trace("lessThan","http://a.ml/vocabularies/api-extension#wadus",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "condition":"<","expected":gen_path_set_rule_3A, "actual":gen_path_set_rule_4B})
+  matches := error("test-min-length",x,"Min length must be less than max length must match in scalar",[_result_0])
 }
