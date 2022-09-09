@@ -1,7 +1,6 @@
 package generator
 
 import (
-	"errors"
 	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
@@ -279,7 +278,7 @@ func traverseCustomProperty(property path.Property, t traversal, fetchNodes bool
 	source := t.pathVariables[len(t.pathVariables)-1]
 
 	if property.Inverse {
-		panic(errors.New("Inverse custom properties not supported yet"))
+		t.rego = append(t.rego, fmt.Sprintf("search_custom_property_subjects[%s] with data.property_extension as \"%s\" with data.object as %s", binding, customPropertyName, source))
 	} else {
 		t.rego = append(t.rego, fmt.Sprintf("tmp_%s = gen_path_extension with data.custom_property_data as [%s, \"%s\"]", binding, source, customPropertyName))
 		// fetch resulting nodes (fetching each @id reference) or simply return the array values

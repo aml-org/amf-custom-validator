@@ -1,0 +1,13 @@
+#%Validation Profile 1.0
+
+profile: salesforce-aips/annotations
+violation:
+  - annotations
+validations:
+  annotations:
+    message: wadus is a mandatory extension
+    targetClass: data.Scalar
+    propertyConstraints:
+      apiExt.wadus^ / apiContract.method :
+        minCount: 1
+        pattern: "get"
