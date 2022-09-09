@@ -140,6 +140,27 @@ as_string(x) = json.marshal(x) {
   not x["@id"]
 }
 
+# Finds a nested custom domain property for a given node an custom domain property name
+gen_path_extension[nodes] {
+  sourceNode := data.custom_property_data[0]
+  extensionName := data.custom_property_data[1]
+  customPropertiesTarget := object.get(sourceNode, "http://a.ml/vocabularies/document#customDomainProperties", [])
+  customProperties = nodes_array with data.nodes as customPropertiesTarget
+  extensionFound = [found |
+    annotationLink = customProperties[_]
+    annotationLinkId = annotationLink["@id"]
+    annotation = object.get(sourceNode, annotationLinkId, {})
+    annotationNode = find with data.link as annotation
+  
+    name = annotationNode["http://a.ml/vocabularies/core#extensionName"]
+    name = extensionName
+  
+    found = annotationNode
+  ]
+  
+  nodes = extensionFound
+}
+
 #creates an array from a comma separated values str
 split_values[values] {
    values := split(data.nodes, ",")

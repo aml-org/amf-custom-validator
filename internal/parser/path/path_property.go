@@ -1,6 +1,11 @@
 package path
 
-import "github.com/aml-org/amf-custom-validator/internal/misc"
+import (
+	"errors"
+	"github.com/aml-org/amf-custom-validator/internal/misc"
+	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
+	"strings"
+)
 
 type Property struct {
 	BasePath
@@ -28,4 +33,21 @@ func (p Property) Expanded(iriExpander *misc.IriExpander) (string, error) {
 
 func (p Property) Source() string {
 	return p.source
+}
+
+func (p Property) IsCustom(iriExpander *misc.IriExpander) bool {
+	expanded, err := iriExpander.Expand(p.Iri)
+	if err != nil {
+		return false
+	}
+	return strings.Index(expanded, contexts.ApiExtensionUri) == 0
+}
+
+func (p Property) CustomName(iriExpander *misc.IriExpander) (string, error) {
+	expanded, err := iriExpander.Expand(p.Iri)
+	if err != nil {
+		return "", errors.New("Invalid custom property")
+	}
+
+	return strings.Split(expanded, "#")[1], nil
 }
