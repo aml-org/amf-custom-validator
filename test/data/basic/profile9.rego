@@ -46,6 +46,19 @@ search_subjects[valid_subject] {
   valid_subject = node
 }
 
+search_custom_property_subjects[valid_subject] {
+  extension = data.property_extension
+  object = data.object
+  
+  object["http://a.ml/vocabularies/core#extensionName"] = extension
+  object_id = object["@id"]
+  
+  node = input["@ids"][_]
+  
+  node[prop] = {"@id": object_id}
+  valid_subject = node
+}
+
 # collection functions
 
 # collect next set of nodes
