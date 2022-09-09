@@ -11,6 +11,7 @@ func testSemexCase(subDirectory relativePath, dataFileName string, t *testing.T)
 	profile := fmt.Sprintf("%s/%s/profile.yaml", semexPath, subDirectory)
 	dataPath := fmt.Sprintf("%s/%s/%s", semexPath, subDirectory, dataFileName)
 	expectedPath := fmt.Sprintf("%s/%s/%s.report.jsonld", semexPath, subDirectory, dataFileName)
+	fmt.Printf("Validation profile %s over %s", profile, dataPath)
 	validateAndCompare(profile, dataPath, expectedPath, t)
 }
 

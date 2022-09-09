@@ -14,8 +14,6 @@ violation:
   - provide-examples
   - api-must-have-title
   - operations-must-have-identifiers
-
-warning:
   - api-must-have-description
   - api-must-have-documentation
   - operations-must-have-descriptions

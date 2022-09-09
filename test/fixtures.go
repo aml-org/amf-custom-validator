@@ -125,6 +125,24 @@ func (f ProductionExample) Reportfile() string {
 	return strings.ReplaceAll(string(f.File), ".jsonld", ".report.jsonld")
 }
 
+func (f ProductionExample) Regofile() string {
+	parts := strings.Split(f.File, string(os.PathSeparator))
+	parts = parts[:len(parts)-1]
+	parts = append(parts, "profile.rego")
+	return strings.Join(parts, string(os.PathSeparator))
+}
+
+func (f ProductionExample) Folfile() string {
+	parts := strings.Split(f.File, string(os.PathSeparator))
+	parts = parts[:len(parts)-1]
+	parts = append(parts, "profile.fol")
+	return strings.Join(parts, string(os.PathSeparator))
+}
+
+func (f ProductionExample) Normalizedinputfile() string {
+	return strings.ReplaceAll(string(f.File), ".jsonld", ".normalized")
+}
+
 func (f ProductionFixture) Examples() []ProductionExample {
 	var acc []ProductionExample
 	filepath.Walk(string(f), func(path string, info os.FileInfo, err error) error {
