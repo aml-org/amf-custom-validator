@@ -1,0 +1,13 @@
+#%Validation Profile 1.0
+
+profile: salesforce-aips/annotations
+violation:
+  - annotations
+validations:
+  annotations:
+    message: wadus name should be 'valid'
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiExt.wadus / data.name / data.value:
+        minCount: 1
+        pattern: "valid"
