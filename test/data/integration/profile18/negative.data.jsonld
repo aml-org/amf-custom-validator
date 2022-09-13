@@ -1,0 +1,87 @@
+{
+  "@context": {
+    "@base": "amf://id#",
+    "data": "http://a.ml/vocabularies/data#",
+    "shacl": "http://www.w3.org/ns/shacl#",
+    "shapes": "http://a.ml/vocabularies/shapes#",
+    "doc": "http://a.ml/vocabularies/document#",
+    "meta": "http://a.ml/vocabularies/meta#",
+    "apiContract": "http://a.ml/vocabularies/apiContract#",
+    "core": "http://a.ml/vocabularies/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "security": "http://a.ml/vocabularies/security#",
+    "sourcemaps": "http://a.ml/vocabularies/document-source-maps#"
+  },
+  "@graph": [
+    {
+      "@id": "./",
+      "@type": [
+        "doc:Document",
+        "doc:Fragment",
+        "doc:Module",
+        "doc:Unit"
+      ],
+      "doc:declares": {
+        "@id": "#1",
+        "@type": [
+          "doc:DomainProperty",
+          "rdf:Property",
+          "doc:DomainElement"
+        ],
+        "core:name": "wadus2",
+        "shapes:schema": {
+          "@id": "#2",
+          "@type": [
+            "shapes:ScalarShape",
+            "shapes:AnyShape",
+            "shacl:Shape",
+            "shapes:Shape",
+            "doc:DomainElement"
+          ],
+          "shacl:datatype": {
+            "@id": "xsd:boolean"
+          },
+          "shacl:name": "schema"
+        }
+      },
+      "doc:encodes": {
+        "@id": "#4",
+        "@type": [
+          "apiContract:WebAPI",
+          "apiContract:API",
+          "doc:RootDomainElement",
+          "doc:DomainElement"
+        ],
+        "amf://id#1": {
+          "@id": "#6",
+          "@type": [
+            "data:Scalar",
+            "data:Node",
+            "doc:DomainElement"
+          ],
+          "core:extensionName": "wadus2",
+          "core:name": "scalar_1",
+          "data:value": "true",
+          "shacl:datatype": {
+            "@id": "xsd:boolean"
+          }
+        },
+        "core:name": "example api",
+        "core:version": "1.0.0",
+        "doc:customDomainProperties": {
+          "@id": "#1"
+        }
+      },
+      "doc:processingData": {
+        "@id": "#3",
+        "@type": "doc:APIContractProcessingData",
+        "apiContract:modelVersion": "3.6.0",
+        "doc:sourceSpec": "RAML 1.0",
+        "doc:transformed": true
+      },
+      "doc:root": true
+    }
+  ]
+}

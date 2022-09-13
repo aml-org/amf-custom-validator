@@ -46,6 +46,19 @@ search_subjects[valid_subject] {
   valid_subject = node
 }
 
+search_custom_property_subjects[valid_subject] {
+  extension = data.property_extension
+  object = data.object
+  
+  object["http://a.ml/vocabularies/core#extensionName"] = extension
+  object_id = object["@id"]
+  
+  node = input["@ids"][_]
+  
+  node[prop] = {"@id": object_id}
+  valid_subject = node
+}
+
 # collection functions
 
 # collect next set of nodes
@@ -138,6 +151,27 @@ as_string(x) = x["@id"] {
 as_string(x) = json.marshal(x) {
   is_object(x)
   not x["@id"]
+}
+
+# Finds a nested custom domain property for a given node an custom domain property name
+gen_path_extension[nodes] {
+  sourceNode := data.custom_property_data[0]
+  extensionName := data.custom_property_data[1]
+  customPropertiesTarget := object.get(sourceNode, "http://a.ml/vocabularies/document#customDomainProperties", [])
+  customProperties = nodes_array with data.nodes as customPropertiesTarget
+  extensionFound = [found |
+    annotationLink = customProperties[_]
+    annotationLinkId = annotationLink["@id"]
+    annotation = object.get(sourceNode, annotationLinkId, {})
+    annotationNode = find with data.link as annotation
+  
+    name = annotationNode["http://a.ml/vocabularies/core#extensionName"]
+    name = extensionName
+  
+    found = annotationNode
+  ]
+  
+  nodes = extensionFound
 }
 
 #creates an array from a comma separated values str

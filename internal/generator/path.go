@@ -199,9 +199,19 @@ func traverseAnd(and path.AndPath, t traversal, fetchNodes bool, iriExpander *mi
 	}
 }
 
+func traverseProperty(property path.Property, t traversal, fetchNodes bool, iriExpander *misc.IriExpander) []regoPathResultInternal {
+	if property.IsCustom(iriExpander) {
+		return traverseCustomProperty(property, t, fetchNodes, iriExpander)
+	} else {
+		return traverseRegularProperty(property, t, fetchNodes, iriExpander)
+	}
+}
+
 // Traverses the leaf components of the path expression, always a property.
 // TODO: We don't take into transitive paths yet.
-func traverseProperty(property path.Property, t traversal, fetchNodes bool, iriExpander *misc.IriExpander) []regoPathResultInternal {
+func traverseRegularProperty(property path.Property, t traversal, fetchNodes bool, iriExpander *misc.IriExpander) []regoPathResultInternal {
+
+	propertyIri, err := property.Expanded(iriExpander)
 
 	// We use IDX go generate a unique property for the Rego computation
 	idx := fmt.Sprintf("%d", len(t.pathVariables))
@@ -217,7 +227,7 @@ func traverseProperty(property path.Property, t traversal, fetchNodes bool, iriE
 		t.pathVariables = append(t.pathVariables, fmt.Sprintf("init_%s", binding)) // initial value
 	}
 	source := t.pathVariables[len(t.pathVariables)-1]
-	propertyIri, err := property.Expanded(iriExpander)
+
 	if err != nil {
 		panic(err)
 	}
@@ -233,6 +243,50 @@ func traverseProperty(property path.Property, t traversal, fetchNodes bool, iriE
 			t.rego = append(t.rego, fmt.Sprintf("nodes_tmp = object.get(%s,\"%s\",[])", source, propertyIri))
 			t.rego = append(t.rego, "nodes_tmp2 = nodes_array with data.nodes as nodes_tmp") // this returns and array
 			t.rego = append(t.rego, fmt.Sprintf("%s = nodes_tmp2[_]", binding))
+		}
+	}
+
+	r := regoPathResultInternal{
+		rego:          t.rego,
+		pathVariables: append(t.pathVariables, binding),
+		paths:         append(t.paths, property.Iri),
+		counter:       t.counter,
+		variable:      binding,
+	}
+
+	return []regoPathResultInternal{r}
+}
+
+func traverseCustomProperty(property path.Property, t traversal, fetchNodes bool, iriExpander *misc.IriExpander) []regoPathResultInternal {
+	customPropertyName, err := property.CustomName(iriExpander)
+	if err != nil {
+		panic(err)
+	}
+	// We use IDX go generate a unique property for the Rego computation
+	idx := fmt.Sprintf("%d", len(t.pathVariables))
+	if *t.counter > 0 {
+		idx = fmt.Sprintf("%s_%d", idx, t.counter)
+	}
+	binding := fmt.Sprintf("%s_%s", t.variable, idx)
+
+	if len(t.pathVariables) == 0 {
+		// If this is the first element in the path, we start computing the path from the previous variable passed
+		// to the path generator, usually a classTarget.
+		t.rego = append(t.rego, fmt.Sprintf("init_%s = data.sourceNode", binding)) // this is the connection to the variable past to the generator
+		t.pathVariables = append(t.pathVariables, fmt.Sprintf("init_%s", binding)) // initial value
+	}
+	source := t.pathVariables[len(t.pathVariables)-1]
+
+	if property.Inverse {
+		t.rego = append(t.rego, fmt.Sprintf("search_custom_property_subjects[%s] with data.property_extension as \"%s\" with data.object as %s", binding, customPropertyName, source))
+	} else {
+		t.rego = append(t.rego, fmt.Sprintf("tmp_%s = gen_path_extension with data.custom_property_data as [%s, \"%s\"]", binding, source, customPropertyName))
+		// fetch resulting nodes (fetching each @id reference) or simply return the array values
+		if fetchNodes {
+			t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))
+		} else {
+			t.rego = append(t.rego, fmt.Sprintf("tmp2_%s = tmp_%s[_][_]", binding, binding))
+			t.rego = append(t.rego, fmt.Sprintf("%s = object.get(tmp2_%s,\"@id\",\"\")", binding, binding))
 		}
 	}
 

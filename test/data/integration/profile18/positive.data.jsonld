@@ -1,0 +1,144 @@
+{
+  "@context": {
+    "@base": "amf://id#",
+    "data": "http://a.ml/vocabularies/data#",
+    "shacl": "http://www.w3.org/ns/shacl#",
+    "shapes": "http://a.ml/vocabularies/shapes#",
+    "doc": "http://a.ml/vocabularies/document#",
+    "meta": "http://a.ml/vocabularies/meta#",
+    "apiContract": "http://a.ml/vocabularies/apiContract#",
+    "core": "http://a.ml/vocabularies/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "security": "http://a.ml/vocabularies/security#",
+    "sourcemaps": "http://a.ml/vocabularies/document-source-maps#"
+  },
+  "@graph": [
+    {
+      "@id": "./",
+      "@type": [
+        "doc:Document",
+        "doc:Fragment",
+        "doc:Module",
+        "doc:Unit"
+      ],
+      "doc:encodes": {
+        "@id": "#2",
+        "@type": [
+          "apiContract:WebAPI",
+          "apiContract:API",
+          "doc:RootDomainElement",
+          "doc:DomainElement"
+        ],
+        "amf://id#10": {
+          "@id": "#4",
+          "@type": [
+            "data:Object",
+            "data:Node",
+            "doc:DomainElement"
+          ],
+          "core:extensionName": "wadus",
+          "core:name": "object_1",
+          "data:hola": {
+            "@id": "#5",
+            "@type": [
+              "data:Scalar",
+              "data:Node",
+              "doc:DomainElement"
+            ],
+            "core:name": "hola",
+            "data:value": "mundo",
+            "shacl:datatype": {
+              "@id": "xsd:string"
+            }
+          },
+          "data:things": {
+            "@id": "#6",
+            "@type": [
+              "data:Array",
+              "rdf:Seq",
+              "data:Node",
+              "doc:DomainElement"
+            ],
+            "core:name": "things",
+            "http://www.w3.org/2000/01/rdf-schema#member": [
+              {
+                "@id": "#7",
+                "@type": [
+                  "data:Scalar",
+                  "data:Node",
+                  "doc:DomainElement"
+                ],
+                "core:name": "scalar_4",
+                "data:value": "1",
+                "shacl:datatype": {
+                  "@id": "xsd:integer"
+                }
+              },
+              {
+                "@id": "#8",
+                "@type": [
+                  "data:Scalar",
+                  "data:Node",
+                  "doc:DomainElement"
+                ],
+                "core:name": "scalar_5",
+                "data:value": "2",
+                "shacl:datatype": {
+                  "@id": "xsd:integer"
+                }
+              },
+              {
+                "@id": "#9",
+                "@type": [
+                  "data:Scalar",
+                  "data:Node",
+                  "doc:DomainElement"
+                ],
+                "core:name": "scalar_6",
+                "data:value": "3",
+                "shacl:datatype": {
+                  "@id": "xsd:integer"
+                }
+              }
+            ]
+          }
+        },
+        "amf://id#13": {
+          "@id": "#12",
+          "@type": [
+            "data:Scalar",
+            "data:Node",
+            "doc:DomainElement"
+          ],
+          "core:extensionName": "scalar",
+          "core:name": "scalar_1",
+          "data:value": "true",
+          "shacl:datatype": {
+            "@id": "xsd:boolean"
+          }
+        },
+        "apiContract:endpoint": [],
+        "core:name": "example API",
+        "core:version": "1.0.0",
+        "doc:customDomainProperties": [
+          {
+            "@id": "#13"
+          },
+          {
+            "@id": "#10"
+          }
+        ]
+      },
+      "doc:processingData": {
+        "@id": "#1",
+        "@type": "doc:APIContractProcessingData",
+        "apiContract:modelVersion": "3.6.0",
+        "doc:sourceSpec": "OAS 3.0",
+        "doc:transformed": true
+      },
+      "doc:root": true
+    }
+  ]
+}

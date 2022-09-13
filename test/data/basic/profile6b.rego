@@ -1,6 +1,6 @@
-package profile_test13
+package profile_test6
 
-report["profile"] = "Test13"
+report["profile"] = "Test6"
 
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {
@@ -294,83 +294,62 @@ default info = []
 
 gen_path_set_rule_1[nodes] {
   init_x_0 = data.sourceNode
-  tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/apiContract#returns"]
+  tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/apiContract#endpoint"]
   x_0 = tmp_x_0[_][_]
+  tmp_x_2 = gen_path_extension with data.custom_property_data as [x_0, "wadus"]
+  tmp2_x_2 = tmp_x_2[_][_]
+  x_2 = object.get(tmp2_x_2,"@id","")
+  nodes = x_2
+}
+
+gen_path_set_rule_2[nodes] {
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#maxLength",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
+}
+
+gen_path_set_rule_3[nodes] {
+  init_x_0 = data.sourceNode
+  tmp_x_0 = gen_path_extension with data.custom_property_data as [init_x_0, "wadus"]
+  tmp2_x_0 = tmp_x_0[_][_]
+  x_0 = object.get(tmp2_x_0,"@id","")
   nodes = x_0
 }
 
 gen_path_set_rule_4[nodes] {
-  init_y_0 = data.sourceNode
-  nodes_tmp = object.get(init_y_0,"http://a.ml/vocabularies/apiContract#statusCode",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  y_0 = nodes_tmp2[_]
-  nodes = y_0
-}
-
-gen_path_set_rule_5[nodes] {
   init_x_0 = data.sourceNode
-  tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/apiContract#returns"]
-  x_0 = tmp_x_0[_][_]
-  nodes = x_0
-}
-
-gen_path_set_rule_8[nodes] {
-  init_z_0 = data.sourceNode
-  nodes_tmp = object.get(init_z_0,"http://a.ml/vocabularies/apiContract#statusCode",[])
+  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#maxLength",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  z_0 = nodes_tmp2[_]
-  nodes = z_0
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
 }
 
 # Constraint rules
 
 violation[matches] {
-  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#Operation"
-  #  querying path: apiContract.returns
-  ys = gen_path_set_rule_1 with data.sourceNode as x
-  y_errorAcc0 = []
-  ys_br_0 = [ ys_br_0_error|
-    y = ys[_]
-    #  querying path: apiContract.statusCode
-    gen_y_check_3_array = gen_path_set_rule_4 with data.sourceNode as y
-    gen_y_check_3_scalar = gen_y_check_3_array[_]
-    gen_y_check_3 = as_string(gen_y_check_3_scalar)
-    gen_inValues_2 = { "200"}
-    not gen_inValues_2[gen_y_check_3]
-    _result_0 := trace("in","http://a.ml/vocabularies/apiContract#statusCode",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_y_check_3,"expected": "[\"200\"]"})
-    ys_br_0_inner_error := error("nested",y,"error in nested nodes under http://a.ml/vocabularies/apiContract#returns",[_result_0])
-    ys_br_0_error = [y["@id"],ys_br_0_inner_error]
-  ]
-  ys_br_0_errors = { nodeId | n = ys_br_0[_]; nodeId = n[0] }
-  ys_br_0_errors_errors = [ node | n = ys_br_0[_]; node = n[1] ]
-  y_errorAcc1 = array.concat(y_errorAcc0,ys_br_0_errors_errors)
-  y_errorAcc = y_errorAcc1
-  # let's accumulate results
-  ys_error_node_variables_agg = ys_br_0_errors
-  not count(ys) - count(ys_error_node_variables_agg) >= 1
-  _result_0 := trace("atLeast","http://a.ml/vocabularies/apiContract#returns",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)), "cardinality":1, "subResult": y_errorAcc})
-  #  querying path: apiContract.returns
-  zs = gen_path_set_rule_5 with data.sourceNode as x
-  z_errorAcc0 = []
-  zs_br_0 = [ zs_br_0_error|
-    z = zs[_]
-    #  querying path: apiContract.statusCode
-    gen_z_check_7_array = gen_path_set_rule_8 with data.sourceNode as z
-    gen_z_check_7_scalar = gen_z_check_7_array[_]
-    gen_z_check_7 = as_string(gen_z_check_7_scalar)
-    gen_inValues_6 = { "429"}
-    not gen_inValues_6[gen_z_check_7]
-    _result_0 := trace("in","http://a.ml/vocabularies/apiContract#statusCode",z,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_z_check_7,"expected": "[\"429\"]"})
-    zs_br_0_inner_error := error("nested",z,"error in nested nodes under http://a.ml/vocabularies/apiContract#returns",[_result_0])
-    zs_br_0_error = [z["@id"],zs_br_0_inner_error]
-  ]
-  zs_br_0_errors = { nodeId | n = zs_br_0[_]; nodeId = n[0] }
-  zs_br_0_errors_errors = [ node | n = zs_br_0[_]; node = n[1] ]
-  z_errorAcc1 = array.concat(z_errorAcc0,zs_br_0_errors_errors)
-  z_errorAcc = z_errorAcc1
-  # let's accumulate results
-  zs_error_node_variables_agg = zs_br_0_errors
-  not count(zs) - count(zs_error_node_variables_agg) >= 1
-  _result_1 := trace("atLeast","http://a.ml/vocabularies/apiContract#returns",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(zs_error_node_variables_agg), "successfulNodes":(count(zs)-count(zs_error_node_variables_agg)), "cardinality":1, "subResult": z_errorAcc})
-  matches := error("lack-of-resources-and-rate-limiting-too-many-requests",x,"Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n",[_result_0,_result_1])
+  target_class[x] with data.class as "http://a.ml/vocabularies/shapes#ScalarShape"
+  #  querying path: apiContract.endpoint / apiExt.wadus
+  gen_path_set_rule_1As = gen_path_set_rule_1 with data.sourceNode as x
+  #  querying path: shacl.maxLength
+  gen_path_set_rule_2Bs = gen_path_set_rule_2 with data.sourceNode as x
+  gen_path_set_rule_1A = gen_path_set_rule_1As[_]
+  gen_path_set_rule_2B = gen_path_set_rule_2Bs[_]
+  not gen_path_set_rule_1A < gen_path_set_rule_2B
+  _result_0 := trace("lessThan","http://a.ml/vocabularies/apiContract#endpoint / http://a.ml/vocabularies/api-extension#wadus",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "condition":"<","expected":gen_path_set_rule_1A, "actual":gen_path_set_rule_2B})
+  matches := error("test-min-length",x,"Min length must be less than max length must match in scalar",[_result_0])
+}
+
+violation[matches] {
+  target_class[x] with data.class as "http://a.ml/vocabularies/shapes#ScalarShape"
+  #  querying path: apiExt.wadus
+  gen_path_set_rule_3As = gen_path_set_rule_3 with data.sourceNode as x
+  #  querying path: shacl.maxLength
+  gen_path_set_rule_4Bs = gen_path_set_rule_4 with data.sourceNode as x
+  gen_path_set_rule_3A = gen_path_set_rule_3As[_]
+  gen_path_set_rule_4B = gen_path_set_rule_4Bs[_]
+  not gen_path_set_rule_3A < gen_path_set_rule_4B
+  _result_0 := trace("lessThan","http://a.ml/vocabularies/api-extension#wadus",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "condition":"<","expected":gen_path_set_rule_3A, "actual":gen_path_set_rule_4B})
+  matches := error("test-min-length",x,"Min length must be less than max length must match in scalar",[_result_0])
 }

@@ -1,0 +1,6 @@
+test-min-length[violation] :=  ∀x[Class(raml-shapes.ScalarShape)] : 
+  (
+    (Property(x,'apiContract.endpoint / apiExt.wadus') < Property(x,'shacl.maxLength'))
+  ∧
+    (Property(x,'apiExt.wadus') < Property(x,'shacl.maxLength'))
+  )
