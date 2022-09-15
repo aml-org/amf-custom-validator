@@ -1,0 +1,12 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example16
+violation:
+  - example16
+validations:
+  example16:
+    message: wadus is a mandatory extension
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiExt.wadus:
+        minCount: 1

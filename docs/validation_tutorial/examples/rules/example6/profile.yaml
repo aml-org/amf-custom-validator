@@ -1,0 +1,14 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example6
+
+violation:
+  - example6
+
+validations:
+
+  example6:
+    targetClass: apiContract.EndPoint
+    propertyConstraints:
+      apiContract.supportedOperation / apiContract.method:
+        containsAll: [ get, post ]

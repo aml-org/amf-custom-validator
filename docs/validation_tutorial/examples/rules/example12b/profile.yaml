@@ -1,0 +1,17 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example12b
+violation:
+  - example12b
+validations:
+  example12b:
+    message: Endpoints must be read-only
+    targetClass: apiContract.EndPoint
+    propertyConstraints:
+      apiContract.supportedOperation:
+        atMost:
+          count: 0
+          validation:
+            propertyConstraints:
+              apiContract.method:
+                in: [ post, put, patch, delete ]

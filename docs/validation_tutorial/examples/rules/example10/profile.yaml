@@ -1,0 +1,15 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example10
+violation:
+  - example10
+validations:
+  example10:
+    targetClass: apiContract.Operation
+    message: Scalars in parameters must have minLength defined
+    propertyConstraints:
+      apiContract.expects / ( apiContract.parameter / shapes.schema ) | ( apiContract.payload / shapes.schema / shacl.property / shapes.range ):
+        nested:
+          propertyConstraints:
+            shacl.maxLength:
+              minCount: 1
