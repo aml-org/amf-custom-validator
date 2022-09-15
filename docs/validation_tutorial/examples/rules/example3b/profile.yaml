@@ -1,0 +1,15 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example3b
+
+violation:
+  - example3b
+
+validations:
+
+  example3b:
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiContract.scheme:
+        pattern: ^http|https$
+        maxCount: 1

@@ -1,0 +1,17 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example12
+violation:
+  - example12
+validations:
+  example12:
+    message: Endpoints must have a POST method
+    targetClass: apiContract.EndPoint
+    propertyConstraints:
+      apiContract.supportedOperation:
+        atLeast:
+          count: 1
+          validation:
+            propertyConstraints:
+              apiContract.method:
+                in: [ post ]

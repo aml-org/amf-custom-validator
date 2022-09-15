@@ -1,0 +1,14 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example3
+
+violation:
+  - example3
+
+validations:
+
+  example3:
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      core.name:
+        minCount: 1

@@ -1,0 +1,11 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example11
+violation:
+  - example11
+validations:
+  example11:
+    targetClass: apiContract.Parameter
+    propertyConstraints:
+      apiContract.parameter^ / apiContract.expects^ / apiContract.method:
+        pattern: get

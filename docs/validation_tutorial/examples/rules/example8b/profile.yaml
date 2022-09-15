@@ -1,0 +1,12 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example8b
+violation:
+  - example8b
+validations:
+  example8b:
+    targetClass: shapes.ScalarShape
+    message: Min and max length must not match in scalar
+    propertyConstraints:
+      shacl.maxLength:
+        disjointWithProperty: shacl.minLength

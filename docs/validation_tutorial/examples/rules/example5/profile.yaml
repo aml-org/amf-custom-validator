@@ -1,0 +1,14 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example5
+
+violation:
+  - example5
+
+validations:
+
+  example5:
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiContract.scheme:
+        in: [ http, https ]

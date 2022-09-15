@@ -1,0 +1,12 @@
+{
+  "main": "profile.yaml",
+  "name": "ruleset_tutorial",
+  "organizationId": "",
+  "groupId": "",
+  "assetId": "ruleset_tutorial",
+  "version": "1.0.0",
+  "classifier": "ruleset",
+  "dependencies": [],
+  "tags": [],
+  "descriptorVersion": "1.0.0"
+}
