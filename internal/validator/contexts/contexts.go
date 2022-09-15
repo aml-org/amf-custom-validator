@@ -2,6 +2,7 @@ package contexts
 
 import "github.com/aml-org/amf-custom-validator/internal/types"
 
+var ApiExtensionUri = "http://a.ml/vocabularies/api-extension#"
 var DefaultAMFContext = types.ObjectMap{
 	"data":        "http://a.ml/vocabularies/data#",
 	"shacl":       "http://www.w3.org/ns/shacl#",
@@ -16,6 +17,7 @@ var DefaultAMFContext = types.ObjectMap{
 	"rdf":         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
 	"security":    "http://a.ml/vocabularies/security#",
 	"sourcemaps":  "http://a.ml/vocabularies/document-source-maps#",
+	"apiExt":      ApiExtensionUri,
 }
 
 var DefaultValidationContext = types.ObjectMap{

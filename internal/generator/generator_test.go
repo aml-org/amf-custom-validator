@@ -23,6 +23,7 @@ func TestGenerated(t *testing.T) {
 		generated := Generate(*prof)
 		success, err := validateRegoUnit(generated)
 		if !success {
+			println(generated.Code)
 			t.Error(err)
 		}
 		if config.Override {

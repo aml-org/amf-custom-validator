@@ -13,15 +13,12 @@ require (
 	github.com/klauspost/compress v1.15.6 // indirect
 	github.com/mattn/go-runewidth v0.0.13 // indirect
 	github.com/moby/term v0.0.0-20210619224110-3f7ff695adc6 // indirect
-	github.com/open-policy-agent/opa v0.41.0
+	github.com/open-policy-agent/opa v0.44.0
 	github.com/peterh/liner v1.2.2 // indirect
 	github.com/piprate/json-gold v0.4.0
-	github.com/prometheus/client_golang v1.12.2 // indirect
-	github.com/prometheus/common v0.34.0 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/vektah/gqlparser/v2 v2.4.5 // indirect
 	golang.org/x/net v0.0.0-20220615171555-694bf12d69de // indirect
-	golang.org/x/sys v0.0.0-20220615213510-4f61da869c0c // indirect
 	golang.org/x/time v0.0.0-20220609170525-579cf78fd858 // indirect
 	google.golang.org/genproto v0.0.0-20220616135557-88e70c0c3a90 // indirect
 	gopkg.in/yaml.v3 v3.0.1

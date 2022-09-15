@@ -959,10 +959,128 @@ another one for the body.
 Inverse paths traverse the graph in the opposite direction from target node to parent node instead of from target node
 to nested node.
 
+### 4.3 Custom properties
+
+Different API specifications provide mechanisms to extend the kind of information that can be expressed in the specification.
+Annotations in RAML, vendor extensions in OAS, directives in GraphQL and custom options in gRPC protobuffers are examples
+of these extensions mechanisms.
+
+Consider the following examples:
+
+```raml
+#%RAML 1.0
+title: example api
+version: 1.0.0
+
+annotationTypes:
+  ext:
+    type: string
+
+(wadus): "value"
+```
+
+```yaml
+openapi: "3.0.0"
+info:
+  title: example API
+  version: "1.0.0"
+paths: {}
+x-wadus: "value"
+```
+
+```graphql
+directive @wadus(message: String) on SCHEMA
+
+schema @wadus(message: "value") {
+  query: Query
+}
+
+type Query {
+  field: String
+}
+```
+
+```protobuf
+syntax = "proto3";
+
+package example;
+
+
+import "options.proto";
+
+option (wadus) = "value";
+
+service GRPCMinimal {
+  rpc one_to_one (Request) returns (Reply) {}
+  rpc one_to_many (Request) returns (stream Reply) {}
+  rpc many_to_one (stream Request) returns (Reply) {}
+  rpc many_to_many (stream Request) returns (stream Reply) {}
+}
+
+message Request {
+  string message = 1;
+}
+
+message Reply {
+  string message = 1;
+}
+```
+
+with `options.proto` being:
+
+```protobuf
+syntax = "proto2";
+
+package example;
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.FileOptions {
+    optional string wadus = 50000;
+}
+```
+
+All these examples define (if possible) and apply a custom property called `wadus` that extend the kind of information
+that can be defined at the top-level object of the API.
+
+Note that the syntax for the actual extension can be different, for example in OAS, the prefix `x-` must be used while in 
+GraphQL the extensions require using a directive prefixed by `@` and parameter name for the value.
+
+When AMF parses all these specs it generates the same element in the JSON-LD model. a `data:Object` connected by custom
+`doc:DomainProperty` with a name matching the name of the extension.
+
+In order to refer to the values connected via custom properties in the API model, we can use a special prefix `apiExt`
+to mix standard and custom properties in the `propertyConstraints` paths of a rule.
+
+For example if we would like to specify a rule that checks that the `wadus` custom property is applied at the top-level
+element of the API model we could write the following profile:
+
+```yaml
+#%Validation Profile 1.0
+
+profile: extensions-example
+violation:
+  - wadus-is-mandatory
+validations:
+ wadus-is-mandatory:
+    message: wadus is a mandatory extension
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiExt.wadus:
+        minCount: 1
+```
+
+As we can see here, the property `apiExt.wadus` instructs the validator to look for custom domain property with name
+`wadus` from the target node, in this case the `apiContract.WebAPI.
+
+Custom domain properties, specified via the prefix `apiExt` can be mixed with regular properties in any property path,
+including inverse navigation statements.
+
 ## 5. Qualified constraints
 
 Qualified constraints make it possible to express validation rules that match only a minimum or maximum number of the target
 nodes selected by a particular constraint.
+
 
 These are the qualified constraints supported:
 
