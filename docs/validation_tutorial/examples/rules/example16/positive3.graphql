@@ -1,0 +1,9 @@
+directive @wadus(message: String) on SCHEMA
+
+schema @wadus(message: "value") {
+  query: Query
+}
+
+type Query {
+  field: String
+}

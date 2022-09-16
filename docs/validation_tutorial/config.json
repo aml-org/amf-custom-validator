@@ -1,0 +1,7 @@
+{
+  "main": "profile.yaml",
+  "name": "ruleset-validation-tutorial",
+  "version": "1.0.0",
+  "classifier": "ruleset",
+  "tags": []
+}

@@ -1,0 +1,99 @@
+{
+  "@context": {
+    "@base": "amf://id#",
+    "data": "http://a.ml/vocabularies/data#",
+    "shacl": "http://www.w3.org/ns/shacl#",
+    "shapes": "http://a.ml/vocabularies/shapes#",
+    "doc": "http://a.ml/vocabularies/document#",
+    "meta": "http://a.ml/vocabularies/meta#",
+    "apiContract": "http://a.ml/vocabularies/apiContract#",
+    "core": "http://a.ml/vocabularies/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "security": "http://a.ml/vocabularies/security#",
+    "sourcemaps": "http://a.ml/vocabularies/document-source-maps#"
+  },
+  "@graph": [
+    {
+      "@id": "./",
+      "@type": [
+        "doc:Document",
+        "doc:Fragment",
+        "doc:Module",
+        "doc:Unit"
+      ],
+      "doc:encodes": {
+        "@id": "#2",
+        "@type": [
+          "apiContract:WebAPI",
+          "apiContract:API",
+          "doc:RootDomainElement",
+          "doc:DomainElement"
+        ],
+        "apiContract:endpoint": {
+          "@id": "#3",
+          "@type": [
+            "apiContract:EndPoint",
+            "doc:DomainElement"
+          ],
+          "apiContract:path": "/endpoint1",
+          "apiContract:supportedOperation": {
+            "@id": "#4",
+            "@type": [
+              "apiContract:Operation",
+              "core:Operation",
+              "doc:DomainElement"
+            ],
+            "apiContract:expects": {
+              "@id": "#5",
+              "@type": [
+                "apiContract:Request",
+                "core:Request",
+                "apiContract:Message",
+                "doc:DomainElement"
+              ],
+              "apiContract:parameter": {
+                "@id": "#6",
+                "@type": [
+                  "apiContract:Parameter",
+                  "core:Parameter",
+                  "doc:DomainElement"
+                ],
+                "apiContract:binding": "query",
+                "apiContract:paramName": "a",
+                "apiContract:required": true,
+                "core:name": "a",
+                "shapes:schema": {
+                  "@id": "#7",
+                  "@type": [
+                    "shapes:ScalarShape",
+                    "shapes:AnyShape",
+                    "shacl:Shape",
+                    "shapes:Shape",
+                    "doc:DomainElement"
+                  ],
+                  "shacl:datatype": {
+                    "@id": "xsd:string"
+                  },
+                  "shacl:maxLength": 20,
+                  "shacl:name": "schema"
+                }
+              }
+            },
+            "apiContract:method": "get"
+          }
+        },
+        "core:name": "Test API"
+      },
+      "doc:processingData": {
+        "@id": "#1",
+        "@type": "doc:APIContractProcessingData",
+        "apiContract:modelVersion": "3.6.0",
+        "doc:sourceSpec": "RAML 1.0",
+        "doc:transformed": true
+      },
+      "doc:root": true
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+openapi: "3.0.0"
+info:
+  title: example API
+  version: "1.0.0"
+tags:
+  - name: a
+  - name: b
+paths:
+  /endpoint1:
+    get:
+      tags:
+        - a
+      responses:
+        "200":
+          description: 
+  /endpoint2:
+    post:
+      tags:
+        - c
+      responses:
+        "200":
+          description: 

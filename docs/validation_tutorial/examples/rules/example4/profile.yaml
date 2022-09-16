@@ -1,0 +1,15 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example4
+
+violation:
+  - example4
+
+validations:
+
+  example4:
+    targetClass: shapes.ArrayShape
+    propertyConstraints:
+      shacl.minCount:
+        minInclusive: 25
+        maxExclusive: 50

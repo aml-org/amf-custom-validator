@@ -1,0 +1,18 @@
+openapi: "3.0.0"
+info:
+  title: example API
+  version: "1.0.0"
+paths:
+  /endpoint1:
+    get:
+      responses:
+        "200":
+          description:
+        "201":
+          description:
+        "300":
+          description:
+        "400":
+          description:
+        "401":
+          description: 

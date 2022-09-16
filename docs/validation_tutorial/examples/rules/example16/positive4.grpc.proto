@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package example;
+
+
+import "options.proto";
+
+option (wadus) = "value";
+
+service GRPCMinimal {
+  rpc one_to_one (Request) returns (Reply) {}
+  rpc one_to_many (Request) returns (stream Reply) {}
+  rpc many_to_one (stream Request) returns (Reply) {}
+  rpc many_to_many (stream Request) returns (stream Reply) {}
+}
+
+message Request {
+  string message = 1;
+}
+
+message Reply {
+  string message = 1;
+}
