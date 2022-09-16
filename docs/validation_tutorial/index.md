@@ -21,7 +21,7 @@ $ npm install -g @aml-org/ruleset-development-cli
 $ ruleset-development-cli new ruleset_tutorial
 ```
 
-This command will create a new project with a `rules` directory and a project configuraiton file `exchange.json`.
+This command will create a new project with a `rules` directory and a project configuration file `configuration.json`.
 It will also create a default rule under `rules/sample-rule`.
 
 We can test that the validator is installed and working by running the `test` CLI command that will validate the sample
