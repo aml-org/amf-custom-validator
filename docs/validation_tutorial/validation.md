@@ -1,6 +1,6 @@
-# AMF Rule-sets
+# AMF Rulesets
 
-This tutorial tells how to use the AMF Rule-sets format and the AMF Custom Validator tooling that enables you to 
+This tutorial tells how to use the AMF Rulesets format and the AMF Custom Validator tooling that enables you to 
 define, group, document, reuse and execute common validation rules over any JSON-LD model. 
 By making use of AMF parsing capabilities, you can define rules for RAML, OAS, 
 AsyncAPI, GraphQL ans AsyncAPI specifications that AMF then can translate into a common JSON-LD model.
@@ -47,7 +47,7 @@ At this point we are ready to start writing some rules.
 
 The AMF custom validation mechanism requires that you define a set of validation rules known as **"Validation Profiles"**.
 
-A validation profile defines the name of the rule-set, documentation, a set of rules and the severity
+A validation profile defines the name of the Ruleset, documentation, a set of rules and the severity
 levels associated with each rule.
 
 Profiles are encoded into YAML documents.
@@ -140,7 +140,7 @@ As we can see all the examples validate correctly.
 
 The CLI has also generated a validation report for each teste example, in the case of the positive example, the report
 is located at `rules/example1/positive1.oas.yaml.report.jsonld`. The `conforms` property marks if the input data was 
-compliant with the tested rule-set.
+compliant with the tested Ruleset.
 
 File: *.examples/rules/example1/positive1.oas.yaml.report.jsonld*
 ```json
@@ -291,10 +291,10 @@ for the API.
 
 As we will see, is not always possible to normalize the input API specification into exactly the same common model
 (especially in GraphQL and gRPC cases), so it is important to always check the rules with different examples in 
-different formats if we are trying to write rule-sets valid for different types of APIs.
+different formats if we are trying to write Rulesets valid for different types of APIs.
 
 Now that we understand the basics of how to validate API specifications and the role that the common JSON-LD model
-plays in it, we are ready to learn more about the kind of rules that can be expressed using the AML Rule-set language.
+plays in it, we are ready to learn more about the kind of rules that can be expressed using the AML Ruleset language.
 
 ## 2. Basic scalar validations
 
