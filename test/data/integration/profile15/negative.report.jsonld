@@ -152,7 +152,8 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "argument": "201",
+                            "actual": "201",
+                            "expected": "200",
                             "negated": false
                           }
                         }

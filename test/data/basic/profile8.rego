@@ -349,7 +349,7 @@ violation[matches] {
   gen_gen_path_set_rule_6_node_7_array = gen_path_set_rule_6 with data.sourceNode as x
   gen_gen_path_set_rule_6_node_7 = gen_gen_path_set_rule_6_node_7_array[_]
   not regex.match(`^put|post$`,gen_gen_path_set_rule_6_node_7)
-  _result_0 := trace("pattern","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_set_rule_6_node_7})
+  _result_0 := trace("pattern","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"expected": "^put|post$","actual": gen_gen_path_set_rule_6_node_7})
   matches := error("validation1",x,"This is the message",[_result_0])
 }
 # Path rules

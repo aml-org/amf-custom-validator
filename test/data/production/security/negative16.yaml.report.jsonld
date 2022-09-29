@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "http://**example.com/oauth/authorize",
+                  "actual": "http://**example.com/oauth/authorize",
+                  "expected": "^(https?:\\\\/\\\\/)?[-A-Za-z0-9+&@#\\\\/%?=~_|!:,.;]+[-A-Za-z0-9+&@#\\\\/%=~_|]$",
                   "negated": false
                 }
               }

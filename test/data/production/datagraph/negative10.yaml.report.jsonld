@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "get",
+                  "actual": "get",
+                  "expected": "get",
                   "negated": true
                 }
               },
@@ -335,7 +336,8 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "argument": "500",
+                            "actual": "500",
+                            "expected": "2.+",
                             "negated": false
                           }
                         }

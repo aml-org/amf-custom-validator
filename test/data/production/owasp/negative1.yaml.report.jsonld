@@ -446,7 +446,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "id",
+                  "actual": "id",
+                  "expected": ".*id$",
                   "negated": true
                 }
               }

@@ -124,7 +124,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "Maria",
+                  "actual": "Maria",
+                  "expected": "Joh",
                   "negated": false
                 }
               }
@@ -155,7 +156,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "john",
+                  "actual": "john",
+                  "expected": "Joh",
                   "negated": false
                 }
               }

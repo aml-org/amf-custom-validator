@@ -385,7 +385,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "no-camel-case",
+                  "actual": "no-camel-case",
+                  "expected": "^[a-z]+([A-Z][a-z]+)*$",
                   "negated": false
                 }
               }
@@ -677,7 +678,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "no-camel-case",
+                  "actual": "no-camel-case",
+                  "expected": "^[a-z]+([A-Z][a-z]+)*$",
                   "negated": false
                 }
               }

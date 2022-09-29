@@ -397,7 +397,7 @@ violation[matches] {
     gen_gen_path_set_rule_2_node_3_array = gen_path_set_rule_2 with data.sourceNode as p
     gen_gen_path_set_rule_2_node_3 = gen_gen_path_set_rule_2_node_3_array[_]
     not regex.match(`^4[0-9]{2}$`,gen_gen_path_set_rule_2_node_3)
-    _result_0 := trace("pattern","http://a.ml/vocabularies/apiContract#statusCode",p,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_set_rule_2_node_3})
+    _result_0 := trace("pattern","http://a.ml/vocabularies/apiContract#statusCode",p,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"expected": "^4[0-9]{2}$","actual": gen_gen_path_set_rule_2_node_3})
     ps_br_0_inner_error := error("nested",p,"error in nested nodes under http://a.ml/vocabularies/apiContract#returns",[_result_0])
     ps_br_0_error = [p["@id"],ps_br_0_inner_error]
   ]
@@ -430,7 +430,7 @@ violation[matches] {
     gen_gen_path_set_rule_5_node_6_array = gen_path_set_rule_5 with data.sourceNode as q
     gen_gen_path_set_rule_5_node_6 = gen_gen_path_set_rule_5_node_6_array[_]
     not regex.match(`^5[0-9]{2}$`,gen_gen_path_set_rule_5_node_6)
-    _result_0 := trace("pattern","http://a.ml/vocabularies/apiContract#statusCode",q,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_set_rule_5_node_6})
+    _result_0 := trace("pattern","http://a.ml/vocabularies/apiContract#statusCode",q,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"expected": "^5[0-9]{2}$","actual": gen_gen_path_set_rule_5_node_6})
     qs_br_0_inner_error := error("nested",q,"error in nested nodes under http://a.ml/vocabularies/apiContract#returns",[_result_0])
     qs_br_0_error = [q["@id"],qs_br_0_inner_error]
   ]
@@ -463,7 +463,7 @@ violation[matches] {
     gen_gen_path_set_rule_8_node_9_array = gen_path_set_rule_8 with data.sourceNode as y
     gen_gen_path_set_rule_8_node_9 = gen_gen_path_set_rule_8_node_9_array[_]
     not regex.match(`^201$`,gen_gen_path_set_rule_8_node_9)
-    _result_0 := trace("pattern","http://a.ml/vocabularies/apiContract#statusCode",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_set_rule_8_node_9})
+    _result_0 := trace("pattern","http://a.ml/vocabularies/apiContract#statusCode",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"expected": "^201$","actual": gen_gen_path_set_rule_8_node_9})
     ys_br_0_inner_error := error("nested",y,"error in nested nodes under http://a.ml/vocabularies/apiContract#returns",[_result_0])
     ys_br_0_error = [y["@id"],ys_br_0_inner_error]
   ]
@@ -496,7 +496,7 @@ violation[matches] {
     gen_gen_path_set_rule_11_node_12_array = gen_path_set_rule_11 with data.sourceNode as z
     gen_gen_path_set_rule_11_node_12 = gen_gen_path_set_rule_11_node_12_array[_]
     not regex.match(`^2[0-9]{2}$`,gen_gen_path_set_rule_11_node_12)
-    _result_0 := trace("pattern","http://a.ml/vocabularies/apiContract#statusCode",z,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"argument": gen_gen_path_set_rule_11_node_12})
+    _result_0 := trace("pattern","http://a.ml/vocabularies/apiContract#statusCode",z,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"expected": "^2[0-9]{2}$","actual": gen_gen_path_set_rule_11_node_12})
     zs_br_0_inner_error := error("nested",z,"error in nested nodes under http://a.ml/vocabularies/apiContract#returns",[_result_0])
     zs_br_0_error = [z["@id"],zs_br_0_inner_error]
   ]

@@ -284,7 +284,8 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "argument": "http://production.test.com/",
+                            "actual": "http://production.test.com/",
+                            "expected": "^https://",
                             "negated": false
                           }
                         }
@@ -380,7 +381,8 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "argument": "http://test.test.com/",
+                            "actual": "http://test.test.com/",
+                            "expected": "^https://",
                             "negated": false
                           }
                         }

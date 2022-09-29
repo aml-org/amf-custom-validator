@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "a eval(somthing) description",
+                  "actual": "a eval(somthing) description",
+                  "expected": "eval\\(",
                   "negated": true
                 }
               }

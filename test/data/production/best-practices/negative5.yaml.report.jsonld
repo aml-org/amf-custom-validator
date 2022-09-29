@@ -242,7 +242,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "startDate",
+                  "actual": "startDate",
+                  "expected": "^.*[dD]ate.*$",
                   "negated": true
                 }
               }
@@ -391,7 +392,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "createdAt",
+                  "actual": "createdAt",
+                  "expected": "createdAt",
                   "negated": true
                 }
               }

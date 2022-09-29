@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "negotiateAuth",
+                  "actual": "negotiateAuth",
+                  "expected": "negotiateAuth",
                   "negated": true
                 }
               }

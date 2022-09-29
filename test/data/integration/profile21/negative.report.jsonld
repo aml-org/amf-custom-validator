@@ -124,7 +124,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "asdf",
+                  "actual": "asdf",
+                  "expected": "valid",
                   "negated": false
                 }
               }

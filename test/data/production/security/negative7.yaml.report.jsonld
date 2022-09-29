@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "cookie",
+                  "actual": "cookie",
+                  "expected": "cookie",
                   "negated": true
                 }
               }
@@ -287,7 +288,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "query",
+                  "actual": "query",
+                  "expected": "query",
                   "negated": true
                 }
               }
@@ -384,7 +386,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "header",
+                  "actual": "header",
+                  "expected": "header",
                   "negated": true
                 }
               }
