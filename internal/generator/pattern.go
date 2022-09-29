@@ -1,6 +1,7 @@
 package generator
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
@@ -25,6 +26,13 @@ func GeneratePattern(pattern profile.PatternRule, iriExpander *misc.IriExpander)
 	if err != nil {
 		panic(err)
 	}
+
+	escapedArgumentStringByes, err := json.Marshal(pattern.Argument)
+	if err != nil {
+		escapedArgumentStringByes = []byte{}
+	}
+	escapedArgumentString := string(escapedArgumentStringByes)
+
 	r := SimpleRegoResult{
 		Constraint: "pattern",
 		Rego:       rego,
@@ -32,7 +40,7 @@ func GeneratePattern(pattern profile.PatternRule, iriExpander *misc.IriExpander)
 		Path:       tracePath,
 		TraceNode:  pattern.Variable.Name,
 		TraceValue: BuildTraceValueNode(
-			fmt.Sprintf("\"negated\":%t,\"argument\": %s", pattern.Negated, checkVariable)),
+			fmt.Sprintf("\"negated\":%t,\"expected\": %s,\"actual\": %s", pattern.Negated, escapedArgumentString, checkVariable)),
 		Variable: checkVariable,
 	}
 	return []SimpleRegoResult{r}
