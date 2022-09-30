@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "nested-prop",
+                  "actual": "nested-prop",
+                  "expected": "^[a-z]+([A-Z][a-z]+)*$",
                   "negated": false
                 }
               }

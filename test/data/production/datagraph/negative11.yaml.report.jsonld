@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "http://a.ml/vocabularies/shapes#MatrixShape",
+                  "actual": "http://a.ml/vocabularies/shapes#MatrixShape",
+                  "expected": ".*MatrixShape",
                   "negated": true
                 }
               }

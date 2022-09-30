@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "http://production.test.com/",
+                  "actual": "http://production.test.com/",
+                  "expected": "^https:.*$",
                   "negated": false
                 }
               },

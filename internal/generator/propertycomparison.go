@@ -42,7 +42,7 @@ func GeneratePropertyComparison(comparison profile.PropertyComparisonRule, iriEx
 		Variable:   comparison.Variable.Name,
 		TraceNode:  comparison.Variable.Name,
 		TraceValue: BuildTraceValueNode(
-			fmt.Sprintf("\"negated\":%t, \"condition\":\"%s\",\"expected\":%s, \"actual\":%s", comparison.Negated, comparison.Operator.String(), propVariable, altPropVariable)),
+			fmt.Sprintf("\"negated\":%t, \"condition\":\"%s\",\"expected\":%s, \"actual\":%s, \"altPath\": \"%s\"", comparison.Negated, comparison.Operator.String(), altPropVariable, propVariable, altPath.Source())),
 	}
 	return []SimpleRegoResult{r}
 }

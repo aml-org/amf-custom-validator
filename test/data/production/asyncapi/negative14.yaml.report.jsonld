@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "example.com/params",
+                  "actual": "example.com/params",
+                  "expected": "example\\.com",
                   "negated": true
                 }
               }

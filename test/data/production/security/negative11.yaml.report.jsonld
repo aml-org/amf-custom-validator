@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "oauth",
+                  "actual": "oauth",
+                  "expected": "oauth",
                   "negated": true
                 }
               }

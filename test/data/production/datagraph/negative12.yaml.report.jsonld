@@ -296,7 +296,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "query",
+                  "actual": "query",
+                  "expected": "query",
                   "negated": true
                 }
               }

@@ -205,7 +205,8 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "argument": "201",
+                            "actual": "201",
+                            "expected": "^4[0-9]{2}$",
                             "negated": false
                           }
                         }
@@ -242,7 +243,7 @@
               "reportSchema:ValidationResultNode",
               "shacl:ValidationResult"
             ],
-            "focusNode": "amf://id#13",
+            "focusNode": "amf://id#10",
             "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "and-or-not-rule",
@@ -271,7 +272,7 @@
                         "reportSchema:ValidationResultNode",
                         "shacl:ValidationResult"
                       ],
-                      "focusNode": "amf://id#14",
+                      "focusNode": "amf://id#11",
                       "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns",
                       "sourceShapeName": "nested",
                       "trace": [
@@ -289,7 +290,8 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "argument": "200",
+                            "actual": "201",
+                            "expected": "^5[0-9]{2}$",
                             "negated": false
                           }
                         }
@@ -309,6 +311,176 @@
                 "resultPath": "http://a.ml/vocabularies/apiContract#method",
                 "traceValue": {
                   "@id": "violation_2_1_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "actual": "get",
+                  "expected": "[\"get\"]",
+                  "negated": true
+                }
+              }
+            ]
+          },
+          {
+            "@id": "violation_3",
+            "@type": [
+              "reportSchema:ValidationResultNode",
+              "shacl:ValidationResult"
+            ],
+            "focusNode": "amf://id#13",
+            "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "sourceShapeName": "and-or-not-rule",
+            "trace": [
+              {
+                "@id": "violation_3_0",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "atLeast",
+                "resultPath": "http://a.ml/vocabularies/apiContract#returns",
+                "traceValue": {
+                  "@id": "violation_3_0_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "cardinality": 1,
+                  "failedNodes": 1,
+                  "negated": false,
+                  "subResult": [
+                    {
+                      "@id": "violation_3_0_traceValue_0",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#14",
+                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_3_0_traceValue_0_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "pattern",
+                          "resultPath": "http://a.ml/vocabularies/apiContract#statusCode",
+                          "traceValue": {
+                            "@id": "violation_3_0_traceValue_0_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "200",
+                            "expected": "^4[0-9]{2}$",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "successfulNodes": 0
+                }
+              },
+              {
+                "@id": "violation_3_1",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "in",
+                "resultPath": "http://a.ml/vocabularies/apiContract#method",
+                "traceValue": {
+                  "@id": "violation_3_1_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "actual": "get",
+                  "expected": "[\"get\"]",
+                  "negated": true
+                }
+              }
+            ]
+          },
+          {
+            "@id": "violation_4",
+            "@type": [
+              "reportSchema:ValidationResultNode",
+              "shacl:ValidationResult"
+            ],
+            "focusNode": "amf://id#13",
+            "resultMessage": "GET operations must have 2xx, 4xx and 5xx status codes but no 201",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "sourceShapeName": "and-or-not-rule",
+            "trace": [
+              {
+                "@id": "violation_4_0",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "atLeast",
+                "resultPath": "http://a.ml/vocabularies/apiContract#returns",
+                "traceValue": {
+                  "@id": "violation_4_0_traceValue",
+                  "@type": [
+                    "reportSchema:TraceValueNode",
+                    "validation:TraceValue"
+                  ],
+                  "cardinality": 1,
+                  "failedNodes": 1,
+                  "negated": false,
+                  "subResult": [
+                    {
+                      "@id": "violation_4_0_traceValue_0",
+                      "@type": [
+                        "reportSchema:ValidationResultNode",
+                        "shacl:ValidationResult"
+                      ],
+                      "focusNode": "amf://id#14",
+                      "resultMessage": "error in nested nodes under http://a.ml/vocabularies/apiContract#returns",
+                      "sourceShapeName": "nested",
+                      "trace": [
+                        {
+                          "@id": "violation_4_0_traceValue_0_0",
+                          "@type": [
+                            "reportSchema:TraceMessageNode",
+                            "validation:TraceMessage"
+                          ],
+                          "component": "pattern",
+                          "resultPath": "http://a.ml/vocabularies/apiContract#statusCode",
+                          "traceValue": {
+                            "@id": "violation_4_0_traceValue_0_0_traceValue",
+                            "@type": [
+                              "reportSchema:TraceValueNode",
+                              "validation:TraceValue"
+                            ],
+                            "actual": "200",
+                            "expected": "^5[0-9]{2}$",
+                            "negated": false
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "successfulNodes": 0
+                }
+              },
+              {
+                "@id": "violation_4_1",
+                "@type": [
+                  "reportSchema:TraceMessageNode",
+                  "validation:TraceMessage"
+                ],
+                "component": "in",
+                "resultPath": "http://a.ml/vocabularies/apiContract#method",
+                "traceValue": {
+                  "@id": "violation_4_1_traceValue",
                   "@type": [
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"

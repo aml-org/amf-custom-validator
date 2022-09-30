@@ -242,7 +242,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "id",
+                  "actual": "id",
+                  "expected": "(.+_)*id",
                   "negated": true
                 }
               }
@@ -541,7 +542,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "invoice_id",
+                  "actual": "invoice_id",
+                  "expected": "(.+_)*id",
                   "negated": true
                 }
               }
