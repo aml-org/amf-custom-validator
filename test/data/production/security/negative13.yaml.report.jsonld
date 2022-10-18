@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "http://example.com/oauth/token",
+                  "actual": "http://example.com/oauth/token",
+                  "expected": "^https:.*$",
                   "negated": false
                 }
               }

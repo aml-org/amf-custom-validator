@@ -1,0 +1,9 @@
+#%RAML 1.0
+title: example api
+version: 1.0.0
+
+annotationTypes:
+  ext:
+    type: string
+
+(wadus): "value"

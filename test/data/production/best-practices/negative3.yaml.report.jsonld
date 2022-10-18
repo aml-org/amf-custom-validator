@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "https://production.test.com",
+                  "actual": "https://production.test.com",
+                  "expected": "/api/[0-9].[0.9]",
                   "negated": false
                 }
               },
@@ -241,7 +242,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "https://production.test.com",
+                  "actual": "https://production.test.com",
+                  "expected": "/api/v[0-9]+",
                   "negated": false
                 }
               }

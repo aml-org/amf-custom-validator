@@ -124,7 +124,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "false",
+                  "actual": "false",
+                  "expected": "true",
                   "negated": false
                 }
               }

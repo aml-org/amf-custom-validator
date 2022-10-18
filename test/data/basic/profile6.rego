@@ -319,6 +319,6 @@ violation[matches] {
   gen_path_set_rule_1A = gen_path_set_rule_1As[_]
   gen_path_set_rule_2B = gen_path_set_rule_2Bs[_]
   not gen_path_set_rule_1A < gen_path_set_rule_2B
-  _result_0 := trace("lessThan","http://www.w3.org/ns/shacl#minLength",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "condition":"<","expected":gen_path_set_rule_1A, "actual":gen_path_set_rule_2B})
+  _result_0 := trace("lessThan","http://www.w3.org/ns/shacl#minLength",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "condition":"<","expected":gen_path_set_rule_2B, "actual":gen_path_set_rule_1A, "altPath": "shacl.maxLength"})
   matches := error("test-min-length",x,"Min length must be less than max length must match in scalar",[_result_0])
 }

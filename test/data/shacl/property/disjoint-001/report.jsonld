@@ -125,6 +125,7 @@
                     "validation:TraceValue"
                   ],
                   "actual": "A",
+                  "altPath": "ex.property2",
                   "condition": "!=",
                   "expected": "A",
                   "negated": false
@@ -158,6 +159,7 @@
                     "validation:TraceValue"
                   ],
                   "actual": "A",
+                  "altPath": "ex.property2",
                   "condition": "!=",
                   "expected": "A",
                   "negated": false

@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "https://**production.test.com/",
+                  "actual": "https://**production.test.com/",
+                  "expected": "^(https?:\\\\/\\\\/)?[-A-Za-z0-9+&@#\\\\/%?=~_|!:,.;\\\\{\\\\}]+[-A-Za-z0-9+&@#\\\\/%=~_|\\\\{\\\\}]$",
                   "negated": false
                 }
               }
@@ -287,7 +288,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": ":::4**production.test.com/",
+                  "actual": ":::4**production.test.com/",
+                  "expected": "^(https?:\\\\/\\\\/)?[-A-Za-z0-9+&@#\\\\/%?=~_|!:,.;\\\\{\\\\}]+[-A-Za-z0-9+&@#\\\\/%=~_|\\\\{\\\\}]$",
                   "negated": false
                 }
               }
@@ -384,7 +386,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": ":::4**production.test.com/",
+                  "actual": ":::4**production.test.com/",
+                  "expected": "^https:.*$",
                   "negated": false
                 }
               },

@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "/invoices/{id}/items/",
+                  "actual": "/invoices/{id}/items/",
+                  "expected": "\\/$",
                   "negated": true
                 }
               }

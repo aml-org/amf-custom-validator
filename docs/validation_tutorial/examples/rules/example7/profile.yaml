@@ -1,0 +1,14 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example7
+
+violation:
+  - example7
+
+validations:
+  example7:
+    targetClass: shapes.ScalarShape
+    message: Min length must be less than max length
+    propertyConstraints:
+      shacl.minLength:
+        lessThanProperty: shacl.maxLength

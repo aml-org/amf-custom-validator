@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "a <script>alert(somthing)</script> description",
+                  "actual": "a <script>alert(somthing)</script> description",
+                  "expected": "<script>",
                   "negated": true
                 }
               }

@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "/Users/{id}",
+                  "actual": "/Users/{id}",
+                  "expected": "^[a-z\\\\/\\\\{\\\\}-]+$",
                   "negated": false
                 }
               }

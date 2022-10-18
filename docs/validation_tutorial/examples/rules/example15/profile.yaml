@@ -1,0 +1,20 @@
+#%Validation Profile 1.0
+
+profile: ruleset_tutorial/example15
+violation:
+  - example15
+validations:
+  example15:
+    message: Operation tags should be defined in global tags.
+    targetClass: apiContract.WebAPI
+    rego: |
+      o1 = collect with data.nodes as [$node] with data.property as "http://a.ml/vocabularies/apiContract#tag"
+      top_level_tags = collect_values with data.nodes as o1 with data.property as "http://a.ml/vocabularies/core#name"
+
+      p1 = collect with data.nodes as [$node] with data.property as "http://a.ml/vocabularies/apiContract#endpoint"
+      p2 = collect with data.nodes as p1 with data.property as  "http://a.ml/vocabularies/apiContract#supportedOperation"
+      p3 = collect with data.nodes as p2 with data.property as "http://a.ml/vocabularies/apiContract#tag"
+      operation_tags = collect_values with data.nodes as p3 with data.property as "http://a.ml/vocabularies/core#name"
+
+      common_tags = operation_tags & top_level_tags
+      $result = (count(common_tags) == count(top_level_tags))

@@ -336,7 +336,8 @@
                               "reportSchema:TraceValueNode",
                               "validation:TraceValue"
                             ],
-                            "argument": "application/json",
+                            "actual": "application/json",
+                            "expected": "application/json",
                             "negated": true
                           }
                         }

@@ -190,7 +190,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "CustomerResponse",
+                  "actual": "CustomerResponse",
+                  "expected": ".*(r|R)esponse.*",
                   "negated": true
                 }
               }
@@ -287,7 +288,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "InvoiceRequest",
+                  "actual": "InvoiceRequest",
+                  "expected": ".*(r|R)equest.*",
                   "negated": true
                 }
               }

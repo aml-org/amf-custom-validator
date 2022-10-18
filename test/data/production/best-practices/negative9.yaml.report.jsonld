@@ -242,7 +242,8 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "argument": "get",
+                  "actual": "get",
+                  "expected": "get",
                   "negated": true
                 }
               }

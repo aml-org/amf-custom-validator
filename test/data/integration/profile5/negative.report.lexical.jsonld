@@ -190,9 +190,10 @@
                     "reportSchema:TraceValueNode",
                     "validation:TraceValue"
                   ],
-                  "actual": 100,
+                  "actual": 500,
+                  "altPath": "shacl.maxLength",
                   "condition": "<",
-                  "expected": 500,
+                  "expected": 100,
                   "negated": false
                 }
               }
