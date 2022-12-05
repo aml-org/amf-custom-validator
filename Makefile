@@ -50,7 +50,7 @@ ci-go: test-go build-native build-js
 ci-js: test-js
 
 ci-browser:
-	cd ./wrappers/js-web && npm i && npm run build:dist && npm run build:test && cypress run
+	./scripts/ci-browser.sh
 
 ci-java:
 	./scripts/download-amf-cli.sh
