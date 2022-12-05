@@ -1,4 +1,4 @@
-FROM golang:1.16 AS ci-go
+FROM golang:1.19 AS ci-go
 # Install make
 RUN apt-get update && apt-get install make
 
@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install make
 # Install
 RUN make ci-java
 
-FROM node:12 AS ci-js
+FROM node:19 AS ci-js
 
 # First copy dependencies to enable Docker caching them
 COPY . ./src

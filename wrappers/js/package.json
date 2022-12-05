@@ -8,6 +8,9 @@
   },
   "author": "Antonio Garrote",
   "license": "ISC",
+  "engines": {
+    "node": ">=19.2.0"
+  },
   "devDependencies": {
     "mocha": "^8.4.0"
   },
