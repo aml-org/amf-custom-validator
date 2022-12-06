@@ -1,4 +1,4 @@
-require(__dirname + "/lib/wasm_exec");
+require(__dirname + "/lib/wasm_exec_node");
 const fs = require("fs");
 const pako = require("pako");
 let wasm_gz
