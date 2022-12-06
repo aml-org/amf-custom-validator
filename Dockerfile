@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install make
 # Install
 RUN make ci-java
 
-FROM node:19 AS ci-js
+FROM node:16 AS ci-js
 
 # First copy dependencies to enable Docker caching them
 COPY . ./src
@@ -63,6 +63,5 @@ FROM ci-js AS publish-snapshot
 
 COPY . .
 RUN chmod -R 777 ./
-ENV NODE_OPTIONS="--openssl-legacy-provider"
 RUN npm install -g npm-snapshot
 RUN make bundle-web-js
