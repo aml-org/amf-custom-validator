@@ -1,144 +1,169 @@
 {
-  "@context": {
-    "@base": "amf://id#",
-    "data": "http://a.ml/vocabularies/data#",
-    "shacl": "http://www.w3.org/ns/shacl#",
-    "shapes": "http://a.ml/vocabularies/shapes#",
-    "doc": "http://a.ml/vocabularies/document#",
-    "meta": "http://a.ml/vocabularies/meta#",
-    "apiContract": "http://a.ml/vocabularies/apiContract#",
-    "core": "http://a.ml/vocabularies/core#",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "security": "http://a.ml/vocabularies/security#",
-    "sourcemaps": "http://a.ml/vocabularies/document-source-maps#"
-  },
   "@graph": [
     {
-      "@id": "./",
+      "@id": "amf://id#1",
       "@type": [
-        "doc:Document",
-        "doc:Fragment",
-        "doc:Module",
-        "doc:Unit"
+        "http://a.ml/vocabularies/document#APIContractProcessingData"
       ],
-      "doc:encodes": {
-        "@id": "#2",
-        "@type": [
-          "apiContract:WebAPI",
-          "apiContract:API",
-          "doc:RootDomainElement",
-          "doc:DomainElement"
-        ],
-        "amf://id#10": {
-          "@id": "#4",
-          "@type": [
-            "data:Object",
-            "data:Node",
-            "doc:DomainElement"
-          ],
-          "core:extensionName": "wadus",
-          "core:name": "object_1",
-          "data:hola": {
-            "@id": "#5",
-            "@type": [
-              "data:Scalar",
-              "data:Node",
-              "doc:DomainElement"
-            ],
-            "core:name": "hola",
-            "data:value": "mundo",
-            "shacl:datatype": {
-              "@id": "xsd:string"
-            }
-          },
-          "data:things": {
-            "@id": "#6",
-            "@type": [
-              "data:Array",
-              "rdf:Seq",
-              "data:Node",
-              "doc:DomainElement"
-            ],
-            "core:name": "things",
-            "http://www.w3.org/2000/01/rdf-schema#member": [
-              {
-                "@id": "#7",
-                "@type": [
-                  "data:Scalar",
-                  "data:Node",
-                  "doc:DomainElement"
-                ],
-                "core:name": "scalar_4",
-                "data:value": "1",
-                "shacl:datatype": {
-                  "@id": "xsd:integer"
-                }
-              },
-              {
-                "@id": "#8",
-                "@type": [
-                  "data:Scalar",
-                  "data:Node",
-                  "doc:DomainElement"
-                ],
-                "core:name": "scalar_5",
-                "data:value": "2",
-                "shacl:datatype": {
-                  "@id": "xsd:integer"
-                }
-              },
-              {
-                "@id": "#9",
-                "@type": [
-                  "data:Scalar",
-                  "data:Node",
-                  "doc:DomainElement"
-                ],
-                "core:name": "scalar_6",
-                "data:value": "3",
-                "shacl:datatype": {
-                  "@id": "xsd:integer"
-                }
-              }
-            ]
-          }
-        },
-        "amf://id#13": {
-          "@id": "#12",
-          "@type": [
-            "data:Scalar",
-            "data:Node",
-            "doc:DomainElement"
-          ],
-          "core:extensionName": "scalar",
-          "core:name": "scalar_1",
-          "data:value": "true",
-          "shacl:datatype": {
-            "@id": "xsd:boolean"
-          }
-        },
-        "apiContract:endpoint": [],
-        "core:name": "example API",
-        "core:version": "1.0.0",
-        "doc:customDomainProperties": [
-          {
-            "@id": "#13"
-          },
-          {
-            "@id": "#10"
-          }
-        ]
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.8.1",
+      "http://a.ml/vocabularies/document#transformed": true,
+      "http://a.ml/vocabularies/document#sourceSpec": "OAS 3.0"
+    },
+    {
+      "@id": "amf://id#2",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "http://a.ml/vocabularies/apiContract#API",
+        "http://a.ml/vocabularies/document#RootDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "example API",
+      "http://a.ml/vocabularies/core#version": "1.0.0",
+      "http://a.ml/vocabularies/apiContract#endpoint": [],
+      "amf://id#13": {
+        "@id": "amf://id#12"
       },
-      "doc:processingData": {
-        "@id": "#1",
-        "@type": "doc:APIContractProcessingData",
-        "apiContract:modelVersion": "3.6.0",
-        "doc:sourceSpec": "OAS 3.0",
-        "doc:transformed": true
+      "amf://id#10": {
+        "@id": "amf://id#4"
       },
-      "doc:root": true
+      "http://a.ml/vocabularies/document#customDomainProperties": [
+        {
+          "@id": "amf://id#13"
+        },
+        {
+          "@id": "amf://id#10"
+        }
+      ]
+    },
+    {
+      "http://a.ml/vocabularies/core#extensionName": "scalar",
+      "@id": "amf://id#12",
+      "@type": [
+        "http://a.ml/vocabularies/data#Scalar",
+        "http://a.ml/vocabularies/data#Node",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/data#value": "true",
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#boolean"
+        }
+      ],
+      "http://a.ml/vocabularies/core#name": "scalar_1"
+    },
+    {
+      "http://a.ml/vocabularies/core#extensionName": "wadus",
+      "@id": "amf://id#4",
+      "@type": [
+        "http://a.ml/vocabularies/data#Object",
+        "http://a.ml/vocabularies/data#Node",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/data#hola": {
+        "@id": "amf://id#5"
+      },
+      "http://a.ml/vocabularies/data#things": {
+        "@id": "amf://id#6"
+      },
+      "http://a.ml/vocabularies/core#name": "object_1"
+    },
+    {
+      "@id": "amf://id#5",
+      "@type": [
+        "http://a.ml/vocabularies/data#Scalar",
+        "http://a.ml/vocabularies/data#Node",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/data#value": "mundo",
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://a.ml/vocabularies/core#name": "hola"
+    },
+    {
+      "@id": "amf://id#6",
+      "@type": [
+        "http://a.ml/vocabularies/data#Array",
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq",
+        "http://a.ml/vocabularies/data#Node",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#member": [
+        {
+          "@id": "amf://id#7"
+        },
+        {
+          "@id": "amf://id#8"
+        },
+        {
+          "@id": "amf://id#9"
+        }
+      ],
+      "http://a.ml/vocabularies/core#name": "things"
+    },
+    {
+      "@id": "amf://id#7",
+      "@type": [
+        "http://a.ml/vocabularies/data#Scalar",
+        "http://a.ml/vocabularies/data#Node",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/data#value": "1",
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#integer"
+        }
+      ],
+      "http://a.ml/vocabularies/core#name": "scalar_4"
+    },
+    {
+      "@id": "amf://id#8",
+      "@type": [
+        "http://a.ml/vocabularies/data#Scalar",
+        "http://a.ml/vocabularies/data#Node",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/data#value": "2",
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#integer"
+        }
+      ],
+      "http://a.ml/vocabularies/core#name": "scalar_5"
+    },
+    {
+      "@id": "amf://id#9",
+      "@type": [
+        "http://a.ml/vocabularies/data#Scalar",
+        "http://a.ml/vocabularies/data#Node",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/data#value": "3",
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#integer"
+        }
+      ],
+      "http://a.ml/vocabularies/core#name": "scalar_6"
+    },
+    {
+      "@id": "amf://id",
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "amf://id#2"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "amf://id#1"
+      }
     }
   ]
 }
+
