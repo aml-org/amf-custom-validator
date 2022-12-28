@@ -10,6 +10,8 @@ func main() {
 	switch command {
 	case "validate":
 		commands.Validate()
+	case "validateOptimized":
+		commands.ValidateOptimized()
 	case "generate":
 		commands.Generate()
 	case "normalize":

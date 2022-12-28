@@ -12,7 +12,7 @@ func Normalize() {
 
 	data := helpers.ReadOrPanic(os.Args[2])
 
-	res, err := validator.ProcessInput(string(data), false, nil)
+	res, err := validator.ProcessInput(string(data), false, nil, nil)
 	if err != nil {
 		panic(err)
 	}

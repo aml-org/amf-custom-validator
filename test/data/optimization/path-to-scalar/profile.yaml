@@ -1,0 +1,16 @@
+#%Validation Profile 1.0
+
+profile: Test
+
+violation:
+  - test-validation
+
+
+validations:
+
+  test-validation:
+    message: Some message
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.version:
+        minCount: 1

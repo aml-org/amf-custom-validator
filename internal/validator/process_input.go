@@ -1,21 +1,18 @@
 package validator
 
 import (
-	"bytes"
-	"encoding/json"
 	e "github.com/aml-org/amf-custom-validator/pkg/events"
 )
 
-func ProcessInput(jsonldText string, debug bool, receiver *chan e.Event) (interface{}, error) {
+func ProcessInput(jsonldText string, debug bool, receiver *chan e.Event, optimizer *Optimizer) (interface{}, error) {
 	dispatchEvent(e.NewEvent(e.InputDataParsingStart), receiver)
-	decoder := json.NewDecoder(bytes.NewBuffer([]byte(jsonldText)))
-	decoder.UseNumber()
-
-	var input interface{}
-	if err := decoder.Decode(&input); err != nil {
-		return "", nil
-	}
+	input := ParseJson(jsonldText)
 	dispatchEvent(e.NewEvent(e.InputDataParsingDone), receiver)
+
+	// TODO add events here
+	if optimizer != nil {
+		optimizer.Optimize(&input)
+	}
 
 	dispatchEvent(e.NewEvent(e.InputDataNormalizationStart), receiver)
 	normalizedInput := Index(Normalize(input))

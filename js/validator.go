@@ -45,7 +45,7 @@ func normalizeInputWrapper() js.Func {
 			return "Invalid no of arguments passed"
 		}
 		dataString := args[0].String()
-		normalizedInput, err := validator.ProcessInput(dataString, false, nil)
+		normalizedInput, err := validator.ProcessInput(dataString, false, nil, nil)
 		if err != nil {
 			return err.Error()
 		}

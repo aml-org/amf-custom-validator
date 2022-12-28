@@ -59,7 +59,7 @@ func generateDebugOutput(profile string, example test.ProductionExample) {
 		test.ForceWrite(example.Regofile(), compiledRego.Code)
 	}
 
-	normalizedInput, err := ProcessInput(example.Text, config.Debug, nil)
+	normalizedInput, err := ProcessInput(example.Text, config.Debug, nil, nil)
 	if err == nil {
 		var b bytes.Buffer
 		enc := json.NewEncoder(&b)

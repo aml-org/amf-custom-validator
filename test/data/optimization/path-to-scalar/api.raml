@@ -1,0 +1,65 @@
+#%RAML 1.0
+title: API
+version: 1.0.0
+
+types:
+  Person:
+    description: Person type
+    properties:
+      id:
+        type: string
+        description: Unique identifier for each record
+      name:
+        type: string
+        description: Name of a person
+      lastName:
+        type: string
+        description: Last name of a person
+      address:
+        type: Address
+        description: Address of a person
+  Address:
+    description: Address type
+    properties:
+      street:
+        type: string
+        description: Street of the address
+      number:
+        type: integer
+        description: Street number
+      zip:
+        type: integer
+        description: Zip code
+
+/people:
+  get:
+    description: Returns all people
+    responses:
+      200:
+        description: Success
+        body:
+          application/json:
+            type: Person[]
+  post:
+    description: Creates a new person record
+    body:
+      application/json:
+        type: Person
+    responses:
+      201:
+        description: Created
+/people/{id}:
+  uriParameters:
+    id:
+      type: string
+      description: This is the id the target person
+  get:
+    description: Returns person for specified id
+    responses:
+      200:
+        description: Success
+        body:
+          application/json:
+            type: Person
+      404:
+        description: Person for id does not exists

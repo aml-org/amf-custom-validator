@@ -1,9 +1,22 @@
 package validator
 
 import (
+	"bytes"
+	"encoding/json"
 	"github.com/aml-org/amf-custom-validator/internal/types"
 	"github.com/piprate/json-gold/ld"
 )
+
+func ParseJson(text string) interface{} {
+	decoder := json.NewDecoder(bytes.NewBuffer([]byte(text)))
+	decoder.UseNumber()
+
+	var input interface{}
+	if err := decoder.Decode(&input); err != nil {
+		return ""
+	}
+	return input
+}
 
 func Normalize(json interface{}) interface{} {
 	proc := ld.NewJsonLdProcessor()
