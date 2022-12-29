@@ -374,7 +374,8 @@ violation[matches] {
   gen_inValues_6 = { "subscribe"}
   not gen_inValues_6[gen_x_check_7]
   _result_1 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_7,"expected": "[\"subscribe\"]"})
-  matches := error("validation1",x,"This is the message",[_result_0,_result_1])
+  message := "This is the message"
+  matches := error("validation1",x, message ,[_result_0,_result_1])
 }
 
 violation[matches] {
@@ -390,7 +391,8 @@ violation[matches] {
   gen_inValues_6 = { "subscribe"}
   not gen_inValues_6[gen_x_check_7]
   _result_1 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_7,"expected": "[\"subscribe\"]"})
-  matches := error("validation1",x,"This is the message",[_result_0,_result_1])
+  message := "This is the message"
+  matches := error("validation1",x, message ,[_result_0,_result_1])
 }
 
 violation[matches] {
@@ -406,7 +408,8 @@ violation[matches] {
   gen_propValues_9 = gen_path_set_rule_10 with data.sourceNode as x
   not count(gen_propValues_9) >= 1
   _result_1 := trace("minCount","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_9),"expected": 1})
-  matches := error("validation1",x,"This is the message",[_result_0,_result_1])
+  message := "This is the message"
+  matches := error("validation1",x, message ,[_result_0,_result_1])
 }
 
 violation[matches] {
@@ -419,5 +422,6 @@ violation[matches] {
   gen_propValues_9 = gen_path_set_rule_10 with data.sourceNode as x
   not count(gen_propValues_9) >= 1
   _result_1 := trace("minCount","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_9),"expected": 1})
-  matches := error("validation1",x,"This is the message",[_result_0,_result_1])
+  message := "This is the message"
+  matches := error("validation1",x, message ,[_result_0,_result_1])
 }

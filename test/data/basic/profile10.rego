@@ -317,7 +317,8 @@ violation[matches] {
   gen_numeric_comparison_2 = gen_numeric_comparison_2_elem[_]
   not gen_numeric_comparison_2 < 50.450000
   _result_0 := trace("maximumExclusive","http://www.w3.org/ns/shacl#minCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<","expected":50.450000,"actual":gen_numeric_comparison_2})
-  matches := error("array-limits",x,"Validation error",[_result_0])
+  message := "Validation error"
+  matches := error("array-limits",x, message ,[_result_0])
 }
 
 violation[matches] {
@@ -327,5 +328,6 @@ violation[matches] {
   gen_numeric_comparison_4 = gen_numeric_comparison_4_elem[_]
   not gen_numeric_comparison_4 >= 25
   _result_0 := trace("minimumInclusive","http://www.w3.org/ns/shacl#minCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","expected":25,"actual":gen_numeric_comparison_4})
-  matches := error("array-limits",x,"Validation error",[_result_0])
+  message := "Validation error"
+  matches := error("array-limits",x, message ,[_result_0])
 }

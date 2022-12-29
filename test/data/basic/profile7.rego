@@ -398,7 +398,8 @@ violation[matches] {
     gen_gen_path_set_rule_2_node_3 = gen_gen_path_set_rule_2_node_3_array[_]
     not regex.match(`^4[0-9]{2}$`,gen_gen_path_set_rule_2_node_3)
     _result_0 := trace("pattern","http://a.ml/vocabularies/apiContract#statusCode",p,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"expected": "^4[0-9]{2}$","actual": gen_gen_path_set_rule_2_node_3})
-    ps_br_0_inner_error := error("nested",p,"error in nested nodes under http://a.ml/vocabularies/apiContract#returns",[_result_0])
+    message := "error in nested nodes under http://a.ml/vocabularies/apiContract#returns"
+    ps_br_0_inner_error := error("nested",p, message ,[_result_0])
     ps_br_0_error = [p["@id"],ps_br_0_inner_error]
   ]
   ps_br_0_errors = { nodeId | n = ps_br_0[_]; nodeId = n[0] }
@@ -416,7 +417,8 @@ violation[matches] {
   gen_inValues_13 = { "get"}
   gen_inValues_13[gen_x_check_14]
   _result_1 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"actual": gen_x_check_14,"expected": "[\"get\"]"})
-  matches := error("and-or-not-rule",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0,_result_1])
+  message := "GET operations must have 2xx, 4xx and 5xx status codes but no 201"
+  matches := error("and-or-not-rule",x, message ,[_result_0,_result_1])
 }
 
 violation[matches] {
@@ -431,7 +433,8 @@ violation[matches] {
     gen_gen_path_set_rule_5_node_6 = gen_gen_path_set_rule_5_node_6_array[_]
     not regex.match(`^5[0-9]{2}$`,gen_gen_path_set_rule_5_node_6)
     _result_0 := trace("pattern","http://a.ml/vocabularies/apiContract#statusCode",q,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"expected": "^5[0-9]{2}$","actual": gen_gen_path_set_rule_5_node_6})
-    qs_br_0_inner_error := error("nested",q,"error in nested nodes under http://a.ml/vocabularies/apiContract#returns",[_result_0])
+    message := "error in nested nodes under http://a.ml/vocabularies/apiContract#returns"
+    qs_br_0_inner_error := error("nested",q, message ,[_result_0])
     qs_br_0_error = [q["@id"],qs_br_0_inner_error]
   ]
   qs_br_0_errors = { nodeId | n = qs_br_0[_]; nodeId = n[0] }
@@ -449,7 +452,8 @@ violation[matches] {
   gen_inValues_13 = { "get"}
   gen_inValues_13[gen_x_check_14]
   _result_1 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"actual": gen_x_check_14,"expected": "[\"get\"]"})
-  matches := error("and-or-not-rule",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0,_result_1])
+  message := "GET operations must have 2xx, 4xx and 5xx status codes but no 201"
+  matches := error("and-or-not-rule",x, message ,[_result_0,_result_1])
 }
 
 violation[matches] {
@@ -464,7 +468,8 @@ violation[matches] {
     gen_gen_path_set_rule_8_node_9 = gen_gen_path_set_rule_8_node_9_array[_]
     not regex.match(`^201$`,gen_gen_path_set_rule_8_node_9)
     _result_0 := trace("pattern","http://a.ml/vocabularies/apiContract#statusCode",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"expected": "^201$","actual": gen_gen_path_set_rule_8_node_9})
-    ys_br_0_inner_error := error("nested",y,"error in nested nodes under http://a.ml/vocabularies/apiContract#returns",[_result_0])
+    message := "error in nested nodes under http://a.ml/vocabularies/apiContract#returns"
+    ys_br_0_inner_error := error("nested",y, message ,[_result_0])
     ys_br_0_error = [y["@id"],ys_br_0_inner_error]
   ]
   ys_br_0_errors = { nodeId | n = ys_br_0[_]; nodeId = n[0] }
@@ -482,7 +487,8 @@ violation[matches] {
   gen_inValues_13 = { "get"}
   gen_inValues_13[gen_x_check_14]
   _result_1 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"actual": gen_x_check_14,"expected": "[\"get\"]"})
-  matches := error("and-or-not-rule",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0,_result_1])
+  message := "GET operations must have 2xx, 4xx and 5xx status codes but no 201"
+  matches := error("and-or-not-rule",x, message ,[_result_0,_result_1])
 }
 
 violation[matches] {
@@ -497,7 +503,8 @@ violation[matches] {
     gen_gen_path_set_rule_11_node_12 = gen_gen_path_set_rule_11_node_12_array[_]
     not regex.match(`^2[0-9]{2}$`,gen_gen_path_set_rule_11_node_12)
     _result_0 := trace("pattern","http://a.ml/vocabularies/apiContract#statusCode",z,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"expected": "^2[0-9]{2}$","actual": gen_gen_path_set_rule_11_node_12})
-    zs_br_0_inner_error := error("nested",z,"error in nested nodes under http://a.ml/vocabularies/apiContract#returns",[_result_0])
+    message := "error in nested nodes under http://a.ml/vocabularies/apiContract#returns"
+    zs_br_0_inner_error := error("nested",z, message ,[_result_0])
     zs_br_0_error = [z["@id"],zs_br_0_inner_error]
   ]
   zs_br_0_errors = { nodeId | n = zs_br_0[_]; nodeId = n[0] }
@@ -515,5 +522,6 @@ violation[matches] {
   gen_inValues_13 = { "get"}
   gen_inValues_13[gen_x_check_14]
   _result_1 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"actual": gen_x_check_14,"expected": "[\"get\"]"})
-  matches := error("and-or-not-rule",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0,_result_1])
+  message := "GET operations must have 2xx, 4xx and 5xx status codes but no 201"
+  matches := error("and-or-not-rule",x, message ,[_result_0,_result_1])
 }

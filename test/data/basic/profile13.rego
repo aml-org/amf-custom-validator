@@ -326,5 +326,6 @@ violation[matches] {
   gen_inValues_4 = { "string"}
   gen_inValues_4[gen_x_check_5]
   _result_1 := trace("in","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"actual": gen_x_check_5,"expected": "[\"string\"]"})
-  matches := error("174-common-field-types-type",x,"Type fields must be strings",[_result_0,_result_1])
+  message := "Type fields must be strings"
+  matches := error("174-common-field-types-type",x, message ,[_result_0,_result_1])
 }

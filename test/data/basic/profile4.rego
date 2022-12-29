@@ -331,7 +331,8 @@ violation[matches] {
   gen_propValues_1 = gen_path_set_rule_2 with data.sourceNode as x
   not count(gen_propValues_1) <= 3
   _result_0 := trace("maxCount","http://a.ml/vocabularies/shapes#schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<=","actual": count(gen_propValues_1),"expected": 3})
-  matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
+  message := "Scalars in parameters must have minLength defined"
+  matches := error("validation1",x, message ,[_result_0])
 }
 
 violation[matches] {
@@ -340,7 +341,8 @@ violation[matches] {
   gen_propValues_3 = gen_path_set_rule_4 with data.sourceNode as x
   not count(gen_propValues_3) >= 1
   _result_0 := trace("minCount","http://a.ml/vocabularies/shapes#schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_3),"expected": 1})
-  matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
+  message := "Scalars in parameters must have minLength defined"
+  matches := error("validation1",x, message ,[_result_0])
 }
 
 violation[matches] {
@@ -354,7 +356,8 @@ violation[matches] {
     gen_propValues_6 = gen_path_set_rule_7 with data.sourceNode as y
     not count(gen_propValues_6) >= 1
     _result_0 := trace("minCount","http://www.w3.org/ns/shacl#minLength",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
-    ys_br_0_inner_error := error("nested",y,"error in nested nodes under http://a.ml/vocabularies/shapes#schema",[_result_0])
+    message := "error in nested nodes under http://a.ml/vocabularies/shapes#schema"
+    ys_br_0_inner_error := error("nested",y, message ,[_result_0])
     ys_br_0_error = [y["@id"],ys_br_0_inner_error]
   ]
   ys_br_0_errors = { nodeId | n = ys_br_0[_]; nodeId = n[0] }
@@ -365,5 +368,6 @@ violation[matches] {
   ys_error_node_variables_agg = ys_br_0_errors
   count(ys_error_node_variables_agg) > 0
   _result_0 := trace("nested","http://a.ml/vocabularies/shapes#schema",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)),"subResult": y_errorAcc})
-  matches := error("validation1",x,"Scalars in parameters must have minLength defined",[_result_0])
+  message := "Scalars in parameters must have minLength defined"
+  matches := error("validation1",x, message ,[_result_0])
 }

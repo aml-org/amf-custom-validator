@@ -1,0 +1,22 @@
+#%Validation Profile 1.0
+
+profile: test
+violation:
+  - array-property
+  - object-property
+
+validations:
+  
+  array-property:
+    message: API '{{ apiContract.endpoint }}' must have version
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.version:
+        minCount: 1
+
+  object-property:
+    message: Shape '{{ shacl.defaultValue }}' must not have name
+    targetClass: shapes.ScalarShape
+    propertyConstraints:
+      shacl.name:
+        maxCount: 0 # make it fail

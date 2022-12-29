@@ -335,7 +335,8 @@ violation[matches] {
   gen_inValues_1 = { "publish","subscribe","1","2"}
   not gen_inValues_1[gen_x_check_2]
   _result_0 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"publish\",\"subscribe\",\"1\",\"2\"]"})
-  matches := error("validation1",x,"This is the message",[_result_0])
+  message := "This is the message"
+  matches := error("validation1",x, message ,[_result_0])
 }
 
 violation[matches] {
@@ -344,7 +345,8 @@ violation[matches] {
   gen_propValues_4 = gen_path_set_rule_5 with data.sourceNode as x
   not count(gen_propValues_4) <= 1
   _result_0 := trace("maxCount","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":"<=","actual": count(gen_propValues_4),"expected": 1})
-  matches := error("validation1",x,"This is the message",[_result_0])
+  message := "This is the message"
+  matches := error("validation1",x, message ,[_result_0])
 }
 
 violation[matches] {
@@ -353,7 +355,8 @@ violation[matches] {
   gen_propValues_6 = gen_path_set_rule_7 with data.sourceNode as x
   not count(gen_propValues_6) >= 1
   _result_0 := trace("minCount","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_6),"expected": 1})
-  matches := error("validation1",x,"This is the message",[_result_0])
+  message := "This is the message"
+  matches := error("validation1",x, message ,[_result_0])
 }
 
 violation[matches] {
@@ -363,5 +366,6 @@ violation[matches] {
   gen_gen_path_set_rule_8_node_9 = gen_gen_path_set_rule_8_node_9_array[_]
   not regex.match(`^put|post$`,gen_gen_path_set_rule_8_node_9)
   _result_0 := trace("pattern","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"expected": "^put|post$","actual": gen_gen_path_set_rule_8_node_9})
-  matches := error("validation1",x,"This is the message",[_result_0])
+  message := "This is the message"
+  matches := error("validation1",x, message ,[_result_0])
 }

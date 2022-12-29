@@ -6,15 +6,15 @@ import (
 
 type TopLevelExpression struct {
 	Expression
-	Message        string
+	Message        Message
 	Level          string
 	ClassGenerator string
 }
 
-func newTopLevelExpression(negated bool, name string, message string, level string, targetClass string, varGenerator *VarGenerator) TopLevelExpression {
+func newTopLevelExpression(negated bool, name string, messageExpression string, level string, targetClass string, varGenerator *VarGenerator) TopLevelExpression {
 	exp := TopLevelExpression{
 		Expression:     newExpression(negated, name, varGenerator),
-		Message:        message,
+		Message:        ParseMessageExpression(messageExpression),
 		Level:          level,
 		ClassGenerator: targetClass,
 	}
