@@ -153,7 +153,7 @@
                               "lexicalSchema:PositionNode",
                               "lexical:Position"
                             ],
-                            "column": 36,
+                            "column": 35,
                             "line": 6
                           },
                           "start": {
@@ -196,7 +196,7 @@
                                   "lexicalSchema:PositionNode",
                                   "lexical:Position"
                                 ],
-                                "column": 36,
+                                "column": 35,
                                 "line": 6
                               },
                               "start": {

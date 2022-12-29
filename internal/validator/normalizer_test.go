@@ -18,11 +18,11 @@ func TestNormalize(t *testing.T) {
 	}
 }
 
-func decode(text string) interface{} {
+func decode(text string) any {
 	decoder := json.NewDecoder(bytes.NewBuffer([]byte(text)))
 	decoder.UseNumber()
 
-	var input interface{}
+	var input any
 	if err := decoder.Decode(&input); err != nil {
 		panic(err)
 	}
@@ -30,7 +30,7 @@ func decode(text string) interface{} {
 	return input
 }
 
-func encodeJson(data interface{}) string {
+func encodeJson(data any) string {
 	s := ""
 	bs := bytes.NewBufferString(s)
 	encoder := json.NewEncoder(bs)

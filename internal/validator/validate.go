@@ -53,7 +53,7 @@ func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string
 	return report, err
 }
 
-func executeValidation(eventChan *chan e.Event, err error, compiledRego rego.PreparedEvalQuery, normalizedInput interface{}) (*rego.ResultSet, error) {
+func executeValidation(eventChan *chan e.Event, err error, compiledRego rego.PreparedEvalQuery, normalizedInput any) (*rego.ResultSet, error) {
 	dispatchEvent(e.NewEvent(e.OpaValidationStart), eventChan)
 	validationResult, err := compiledRego.Eval(context.Background(), rego.EvalInput(normalizedInput))
 	dispatchEvent(e.NewEvent(e.OpaValidationDone), eventChan)
