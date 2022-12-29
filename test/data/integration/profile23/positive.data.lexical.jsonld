@@ -29,7 +29,7 @@
       "@type": [
         "http://a.ml/vocabularies/document#BaseUnitSourceInformation"
       ],
-      "http://a.ml/vocabularies/document#rootLocation": "file://./test/data/integration/profile22/positive.data.raml"
+      "http://a.ml/vocabularies/document#rootLocation": "file://./test/data/integration/profile23/positive.data.raml"
     },
     {
       "@id": "amf://id#5/source-map",

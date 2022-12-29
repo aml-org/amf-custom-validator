@@ -153,8 +153,8 @@
                               "lexicalSchema:PositionNode",
                               "lexical:Position"
                             ],
-                            "column": 36,
-                            "line": 6
+                            "column": 0,
+                            "line": 7
                           },
                           "start": {
                             "@id": "violation_0_0_traceValue_0_location_range_start",
@@ -166,7 +166,7 @@
                             "line": 5
                           }
                         },
-                        "uri": "file://./test/data/integration/profile22/negative.data.raml"
+                        "uri": "file://./test/data/integration/profile23/negative.data.raml"
                       },
                       "resultMessage": "error in nested nodes under http://a.ml/vocabularies/document#declares",
                       "sourceShapeName": "nested",
@@ -196,8 +196,8 @@
                                   "lexicalSchema:PositionNode",
                                   "lexical:Position"
                                 ],
-                                "column": 36,
-                                "line": 6
+                                "column": 0,
+                                "line": 7
                               },
                               "start": {
                                 "@id": "violation_0_0_traceValue_0_0_location_range_start",
@@ -209,7 +209,7 @@
                                 "line": 5
                               }
                             },
-                            "uri": "file://./test/data/integration/profile22/negative.data.raml"
+                            "uri": "file://./test/data/integration/profile23/negative.data.raml"
                           },
                           "resultPath": "@type",
                           "traceValue": {
