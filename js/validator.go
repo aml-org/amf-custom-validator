@@ -8,7 +8,7 @@ import (
 )
 
 func validateWrapper() js.Func {
-	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) any {
 		if len(args) != 3 {
 			return "Invalid no of arguments passed"
 		}
@@ -25,7 +25,7 @@ func validateWrapper() js.Func {
 }
 
 func genRegoWrapper() js.Func {
-	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) any {
 		if len(args) != 1 {
 			return "Invalid no of arguments passed"
 		}
@@ -40,7 +40,7 @@ func genRegoWrapper() js.Func {
 }
 
 func normalizeInputWrapper() js.Func {
-	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) any {
 		if len(args) != 1 {
 			return "Invalid no of arguments passed"
 		}
@@ -63,7 +63,7 @@ func normalizeInputWrapper() js.Func {
 }
 
 func exitWrapper(c chan bool) js.Func {
-	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) any {
 		c <- true
 		return nil
 	})

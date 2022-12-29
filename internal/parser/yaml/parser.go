@@ -33,9 +33,10 @@ func (y *Yaml) IsFound() bool {
 // Get returns a pointer to a new `Yaml` object for `key` in its `map` representation
 //
 // Example:
-//      y.Get("xx").Get("yy").Int()
-//		y.Get("notPresent").IsFound()
-func (y *Yaml) Get(key interface{}) *Yaml {
+//
+//	     y.Get("xx").Get("yy").Int()
+//			y.Get("notPresent").IsFound()
+func (y *Yaml) Get(key any) *Yaml {
 	found := false
 	for _, n := range y.data.Content {
 		if found {
@@ -51,8 +52,9 @@ func (y *Yaml) Get(key interface{}) *Yaml {
 // GetPath searches for the item as specified by the branch
 //
 // Example:
-//      y.GetPath("bb", "cc").Int()
-func (y *Yaml) GetPath(branch ...interface{}) *Yaml {
+//
+//	y.GetPath("bb", "cc").Int()
+func (y *Yaml) GetPath(branch ...any) *Yaml {
 	yin := y
 	for _, p := range branch {
 		yin = yin.Get(p)
@@ -91,7 +93,8 @@ func (y *Yaml) GetArraySize() (int, error) {
 // for `index` in its `array` representation
 //
 // Example:
-//      y.Get("xx").GetIndex(1).String()
+//
+//	y.Get("xx").GetIndex(1).String()
 func (y *Yaml) GetIndex(index int) *Yaml {
 	a, err := y.Array()
 	if err == nil {
