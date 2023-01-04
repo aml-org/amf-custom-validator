@@ -1,13 +1,13 @@
 const fs = require("fs");
 var assert = require('assert');
 
+function invalidReport(report) {
+    return report[0]["doc:encodes"][0]["conforms"] === false
+}
+
 describe('validator', () => {
 
     describe('validate', () => {
-
-        function invalidReport(report) {
-            return report[0]["doc:encodes"][0]["conforms"] === false
-        }
 
         it("should load the WASM code, validate a profile, exit", (done) => {
             const profile = fs.readFileSync(__dirname + "/../../../test/data/integration/profile10/profile.yaml").toString()
@@ -71,5 +71,26 @@ describe('validator', () => {
             })
         })
 
+    })
+
+    describe('validate with message expressions', () => {
+
+        it("validate and compute message expression value", (done) => {
+            const profile = fs.readFileSync(__dirname + "/../../../test/data/integration/profile26/profile.yaml").toString()
+            const data = fs.readFileSync(__dirname + "/../../../test/data/integration/profile26/negative.data.jsonld").toString()
+            const validator = require(__dirname + "/../index")
+            validator.initialize(() => {
+                validator.validate(profile, data, false, (r, err) => {
+                    if (err) {
+                        done(err);
+                    } else {
+                        let report = JSON.parse(r)
+                        assert.ok(report[0]["doc:encodes"][0]["result"][0]["resultMessage"] === "Movie 'Disaster Movie' has a rating of 1.9 but it does not have at least 10 reviews (actual reviews: 5) to support that rating")
+                        validator.exit();
+                        done();
+                    }
+                });
+            })
+        });
     })
 })

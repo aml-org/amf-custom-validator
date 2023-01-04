@@ -338,7 +338,8 @@ violation[matches] {
     gen_inValues_2 = { "200"}
     not gen_inValues_2[gen_y_check_3]
     _result_0 := trace("in","http://a.ml/vocabularies/apiContract#statusCode",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_y_check_3,"expected": "[\"200\"]"})
-    ys_br_0_inner_error := error("nested",y,"error in nested nodes under http://a.ml/vocabularies/apiContract#returns",[_result_0])
+    message := "error in nested nodes under http://a.ml/vocabularies/apiContract#returns"
+    ys_br_0_inner_error := error("nested",y, message ,[_result_0])
     ys_br_0_error = [y["@id"],ys_br_0_inner_error]
   ]
   ys_br_0_errors = { nodeId | n = ys_br_0[_]; nodeId = n[0] }
@@ -361,7 +362,8 @@ violation[matches] {
     gen_inValues_6 = { "429"}
     not gen_inValues_6[gen_z_check_7]
     _result_0 := trace("in","http://a.ml/vocabularies/apiContract#statusCode",z,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_z_check_7,"expected": "[\"429\"]"})
-    zs_br_0_inner_error := error("nested",z,"error in nested nodes under http://a.ml/vocabularies/apiContract#returns",[_result_0])
+    message := "error in nested nodes under http://a.ml/vocabularies/apiContract#returns"
+    zs_br_0_inner_error := error("nested",z, message ,[_result_0])
     zs_br_0_error = [z["@id"],zs_br_0_inner_error]
   ]
   zs_br_0_errors = { nodeId | n = zs_br_0[_]; nodeId = n[0] }
@@ -372,5 +374,6 @@ violation[matches] {
   zs_error_node_variables_agg = zs_br_0_errors
   not count(zs) - count(zs_error_node_variables_agg) >= 1
   _result_1 := trace("atLeast","http://a.ml/vocabularies/apiContract#returns",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(zs_error_node_variables_agg), "successfulNodes":(count(zs)-count(zs_error_node_variables_agg)), "cardinality":1, "subResult": z_errorAcc})
-  matches := error("lack-of-resources-and-rate-limiting-too-many-requests",x,"Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n",[_result_0,_result_1])
+  message := "Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will\nbe reset.\n"
+  matches := error("lack-of-resources-and-rate-limiting-too-many-requests",x, message ,[_result_0,_result_1])
 }

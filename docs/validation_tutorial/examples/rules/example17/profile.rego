@@ -1,6 +1,6 @@
-package profile_test_1
+package profile_test
 
-report["profile"] = "Test 1"
+report["profile"] = "test"
 
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {
@@ -292,29 +292,9 @@ default warning = []
 default info = []
 # Path rules
 
-gen_path_set_rule_3[nodes] {
+gen_path_set_rule_2[nodes] {
   init_x_0 = data.sourceNode
-  tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/apiContract#supportedOperation"]
-  x_0 = tmp_x_0[_][_]
-  nodes_tmp = object.get(x_0,"http://a.ml/vocabularies/apiContract#method",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_2 = nodes_tmp2[_]
-  nodes = x_2
-}
-
-gen_path_set_rule_5[nodes] {
-  init_x_0 = data.sourceNode
-  tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/apiContract#supportedOperation"]
-  x_0 = tmp_x_0[_][_]
-  nodes_tmp = object.get(x_0,"http://a.ml/vocabularies/apiContract#method",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_2 = nodes_tmp2[_]
-  nodes = x_2
-}
-
-gen_path_set_rule_6[nodes] {
-  init_x_0 = data.sourceNode
-  nodes_tmp = object.get(init_x_0,"http://www.w3.org/ns/shacl#name",[])
+  nodes_tmp = object.get(init_x_0,"http://a.ml/vocabularies/apiContract#supportedOperation",[])
   nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
   x_0 = nodes_tmp2[_]
   nodes = x_0
@@ -324,73 +304,12 @@ gen_path_set_rule_6[nodes] {
 
 violation[matches] {
   target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#EndPoint"
-  #  querying path: apiContract.supportedOperation / apiContract.method
-  gen_x_check_2_array = gen_path_set_rule_3 with data.sourceNode as x
-  gen_x_check_2_scalar = gen_x_check_2_array[_]
-  gen_x_check_2 = as_string(gen_x_check_2_scalar)
-  gen_inValues_1 = { "publish","subscribe"}
-  not gen_inValues_1[gen_x_check_2]
-  _result_0 := trace("in","http://a.ml/vocabularies/apiContract#supportedOperation / http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"publish\",\"subscribe\"]"})
-  message := "This is the message"
-  matches := error("validation1",x, message ,[_result_0])
-}
-
-violation[matches] {
-  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#EndPoint"
-  #  querying path: apiContract.supportedOperation / apiContract.method
-  gen_propValues_4 = gen_path_set_rule_5 with data.sourceNode as x
-  not count(gen_propValues_4) >= 1
-  _result_0 := trace("minCount","http://a.ml/vocabularies/apiContract#supportedOperation / http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_4),"expected": 1})
-  message := "This is the message"
-  matches := error("validation1",x, message ,[_result_0])
-}
-
-violation[matches] {
-  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#EndPoint"
-  #  querying path: shacl.name
-  gen_gen_path_set_rule_6_node_7_array = gen_path_set_rule_6 with data.sourceNode as x
-  gen_gen_path_set_rule_6_node_7 = gen_gen_path_set_rule_6_node_7_array[_]
-  not regex.match(`^put|post$`,gen_gen_path_set_rule_6_node_7)
-  _result_0 := trace("pattern","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"expected": "^put|post$","actual": gen_gen_path_set_rule_6_node_7})
-  message := "This is the message"
-  matches := error("validation1",x, message ,[_result_0])
-}
-# Path rules
-
-gen_path_set_rule_9[nodes] {
-  init_x_0 = data.sourceNode
-  tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/apiContract#expects"]
-  x_0 = tmp_x_0[_][_]
-  tmp_x_2 = nested_nodes with data.nodes as x_0["http://a.ml/vocabularies/apiContract#parameter"]
-  x_2 = tmp_x_2[_][_]
-  tmp_x_3 = nested_nodes with data.nodes as x_2["http://a.ml/vocabularies/shapes#schema"]
-  x_3 = tmp_x_3[_][_]
-  nodes_tmp = object.get(x_3,"http://www.w3.org/ns/shacl#name",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_4 = nodes_tmp2[_]
-  nodes = x_4
-} {
-  init_x_0 = data.sourceNode
-  tmp_x_0 = nested_nodes with data.nodes as init_x_0["http://a.ml/vocabularies/apiContract#expects"]
-  x_0 = tmp_x_0[_][_]
-  tmp_x_2 = nested_nodes with data.nodes as x_0["http://a.ml/vocabularies/apiContract#payload"]
-  x_2 = tmp_x_2[_][_]
-  tmp_x_3 = nested_nodes with data.nodes as x_2["http://a.ml/vocabularies/shapes#schema"]
-  x_3 = tmp_x_3[_][_]
-  nodes_tmp = object.get(x_3,"http://www.w3.org/ns/shacl#name",[])
-  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
-  x_4 = nodes_tmp2[_]
-  nodes = x_4
-}
-
-# Constraint rules
-
-violation[matches] {
-  target_class[x] with data.class as "http://a.ml/vocabularies/apiContract#EndPoint"
-  #  querying path: apiContract.expects / (apiContract.parameter / shapes.schema) | (apiContract.payload / shapes.schema) / shacl.name
-  gen_propValues_8 = gen_path_set_rule_9 with data.sourceNode as x
-  not count(gen_propValues_8) >= 1
-  _result_0 := trace("minCount","http://a.ml/vocabularies/apiContract#expects / ((http://a.ml/vocabularies/apiContract#parameter / http://a.ml/vocabularies/shapes#schema) | (http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/shapes#schema)) / http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_8),"expected": 1})
-  message := "orPath test"
-  matches := error("validation2",x, message ,[_result_0])
+  #  querying path: apiContract.supportedOperation
+  gen_propValues_1 = gen_path_set_rule_2 with data.sourceNode as x
+  not count(gen_propValues_1) >= 1
+  _result_0 := trace("minCount","http://a.ml/vocabularies/apiContract#supportedOperation",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_1),"expected": 1})
+  msg_var_0 := object.get(x, "http://a.ml/vocabularies/apiContract#path", "null")
+  message_vars := [msg_var_0]
+  message := sprintf("Endpoint '%v' must have at least one operation", message_vars)
+  matches := error("endpoints-must-have-operations",x, message ,[_result_0])
 }

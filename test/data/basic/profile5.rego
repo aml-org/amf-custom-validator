@@ -323,7 +323,8 @@ violation[matches] {
     gen_inValues_2 = { "post"}
     not gen_inValues_2[gen_y_check_3]
     _result_0 := trace("in","http://a.ml/vocabularies/apiContract#method",y,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_y_check_3,"expected": "[\"post\"]"})
-    ys_br_0_inner_error := error("nested",y,"error in nested nodes under http://a.ml/vocabularies/apiContract#supportedOperation",[_result_0])
+    message := "error in nested nodes under http://a.ml/vocabularies/apiContract#supportedOperation"
+    ys_br_0_inner_error := error("nested",y, message ,[_result_0])
     ys_br_0_error = [y["@id"],ys_br_0_inner_error]
   ]
   ys_br_0_errors = { nodeId | n = ys_br_0[_]; nodeId = n[0] }
@@ -334,5 +335,6 @@ violation[matches] {
   ys_error_node_variables_agg = ys_br_0_errors
   not count(ys) - count(ys_error_node_variables_agg) >= 1
   _result_0 := trace("atLeast","http://a.ml/vocabularies/apiContract#supportedOperation",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false, "failedNodes":count(ys_error_node_variables_agg), "successfulNodes":(count(ys)-count(ys_error_node_variables_agg)), "cardinality":1, "subResult": y_errorAcc})
-  matches := error("validation1",x,"Endpoints must have a POST method",[_result_0])
+  message := "Endpoints must have a POST method"
+  matches := error("validation1",x, message ,[_result_0])
 }

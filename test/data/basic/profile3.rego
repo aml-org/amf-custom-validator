@@ -326,5 +326,6 @@ violation[matches] {
   gen_inValues_4 = { "subscribe"}
   not gen_inValues_4[gen_x_check_5]
   _result_1 := trace("in","http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_5,"expected": "[\"subscribe\"]"})
-  matches := error("validation1",x,"This is the message",[_result_0,_result_1])
+  message := "This is the message"
+  matches := error("validation1",x, message ,[_result_0,_result_1])
 }

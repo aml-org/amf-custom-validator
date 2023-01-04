@@ -143,7 +143,8 @@ func wrapNestedRegoResult(variable string, i int, errorAcc string, nodeVariable 
 	rego = append(rego, fmt.Sprintf("%s = [ %s|", branchResultVariable, errorVariable))          // report errors using this variable
 	rego = append(rego, fmt.Sprintf("  %s = %s[_]", nodeVariable, sharedGeneratorRego.Variable)) // the underlying rules expect the quantified variable that was passed on profile parsing
 	// note we are passing innerErrorVariable here
-	for _, l := range wrapBranch("nested", fmt.Sprintf("error in nested nodes under %s", sharedGeneratorRego.Path), branchRego, innerErrorVariable, nodeVariable, iriExpander) {
+	message := profile.Message{Expression: fmt.Sprintf("error in nested nodes under %s", sharedGeneratorRego.Path), Variables: make([]string, 0)}
+	for _, l := range wrapBranch("nested", message, branchRego, innerErrorVariable, nodeVariable, iriExpander) {
 		rego = append(rego, l)
 	}
 	rego = append(rego, fmt.Sprintf("  %s = [%s[\"@id\"],%s]", errorVariable, nodeVariable, innerErrorVariable))
@@ -202,7 +203,7 @@ func wrapTopLevelRegoResult(e profile.TopLevelExpression, results []GeneratedReg
 	return strings.Join(total, "\n\n")
 }
 
-func wrapBranch(name string, message string, branch BranchRegoResult, matchesVariable string, mappingVariable string, iriExpander *misc.IriExpander) []string {
+func wrapBranch(name string, message profile.Message, branch BranchRegoResult, matchesVariable string, mappingVariable string, iriExpander *misc.IriExpander) []string {
 	var acc []string
 	resultBindings := make([]string, 0)
 
@@ -220,7 +221,24 @@ func wrapBranch(name string, message string, branch BranchRegoResult, matchesVar
 		acc = append(acc, matchesLine)
 	}
 
-	acc = append(acc, fmt.Sprintf("  %s := error(\"%s\",%s,\"%s\",[%s])", matchesVariable, name, mappingVariable, sanitizedMessage(message), strings.Join(resultBindings, ",")))
+	// Generate message
+	vars := make([]string, 0)
+	for varIdx, compactPath := range message.Variables {
+		expandedPath, _ := iriExpander.Expand(compactPath)
+
+		// set variable
+		varName := fmt.Sprintf("msg_var_%d", varIdx)
+		acc = append(acc, fmt.Sprintf("  %s := object.get(%s, \"%s\", \"null\")", varName, mappingVariable, expandedPath))
+		vars = append(vars, varName)
+	}
+	if len(vars) > 0 {
+		acc = append(acc, fmt.Sprintf("  message_vars := [%s]", strings.Join(vars, ",")))
+		acc = append(acc, fmt.Sprintf("  message := sprintf(\"%s\", message_vars)", sanitizedMessage(message.Expression)))
+	} else {
+		acc = append(acc, fmt.Sprintf("  message := \"%s\"", sanitizedMessage(message.Expression)))
+	}
+
+	acc = append(acc, fmt.Sprintf("  %s := error(\"%s\",%s, message ,[%s])", matchesVariable, name, mappingVariable, strings.Join(resultBindings, ",")))
 	return acc
 }
 
