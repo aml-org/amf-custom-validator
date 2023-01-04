@@ -1,0 +1,21 @@
+#%Validation Profile 1.0
+
+profile: test
+violation:
+  - existing-property
+  - non-existing-property
+
+validations:
+  existing-property:
+    message: Endpoint '{{ apiContract.path }}' must have at least one operation
+    targetClass: apiContract.EndPoint
+    propertyConstraints:
+      apiContract.supportedOperation:
+        minCount: 1
+
+  non-existing-property:
+    message: Endpoint '{{ apiContract.name }}' must have at least one operation
+    targetClass: apiContract.EndPoint
+    propertyConstraints:
+      apiContract.supportedOperation:
+        minCount: 1

@@ -331,7 +331,8 @@ violation[matches] {
   gen_inValues_1 = { "publish","subscribe"}
   not gen_inValues_1[gen_x_check_2]
   _result_0 := trace("in","http://a.ml/vocabularies/apiContract#supportedOperation / http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"publish\",\"subscribe\"]"})
-  matches := error("validation1",x,"This is the message",[_result_0])
+  message := "This is the message"
+  matches := error("validation1",x, message ,[_result_0])
 }
 
 violation[matches] {
@@ -340,7 +341,8 @@ violation[matches] {
   gen_propValues_4 = gen_path_set_rule_5 with data.sourceNode as x
   not count(gen_propValues_4) >= 1
   _result_0 := trace("minCount","http://a.ml/vocabularies/apiContract#supportedOperation / http://a.ml/vocabularies/apiContract#method",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_4),"expected": 1})
-  matches := error("validation1",x,"This is the message",[_result_0])
+  message := "This is the message"
+  matches := error("validation1",x, message ,[_result_0])
 }
 
 violation[matches] {
@@ -350,7 +352,8 @@ violation[matches] {
   gen_gen_path_set_rule_6_node_7 = gen_gen_path_set_rule_6_node_7_array[_]
   not regex.match(`^put|post$`,gen_gen_path_set_rule_6_node_7)
   _result_0 := trace("pattern","http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"expected": "^put|post$","actual": gen_gen_path_set_rule_6_node_7})
-  matches := error("validation1",x,"This is the message",[_result_0])
+  message := "This is the message"
+  matches := error("validation1",x, message ,[_result_0])
 }
 # Path rules
 
@@ -388,5 +391,6 @@ violation[matches] {
   gen_propValues_8 = gen_path_set_rule_9 with data.sourceNode as x
   not count(gen_propValues_8) >= 1
   _result_0 := trace("minCount","http://a.ml/vocabularies/apiContract#expects / ((http://a.ml/vocabularies/apiContract#parameter / http://a.ml/vocabularies/shapes#schema) | (http://a.ml/vocabularies/apiContract#payload / http://a.ml/vocabularies/shapes#schema)) / http://www.w3.org/ns/shacl#name",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">=","actual": count(gen_propValues_8),"expected": 1})
-  matches := error("validation2",x,"orPath test",[_result_0])
+  message := "orPath test"
+  matches := error("validation2",x, message ,[_result_0])
 }

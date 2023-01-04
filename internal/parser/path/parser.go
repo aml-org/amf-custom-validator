@@ -4,7 +4,7 @@ import (
 	"errors"
 )
 
-func build(source string, parsed interface{}) PropertyPath {
+func build(source string, parsed any) PropertyPath {
 	switch v := parsed.(type) {
 	case IRI:
 		return Property{

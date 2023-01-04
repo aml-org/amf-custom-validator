@@ -340,7 +340,8 @@ violation[matches] {
   gen_numeric_comparison_5 = gen_numeric_comparison_5_elem[_]
   gen_numeric_comparison_5 > 0
   _result_1 := trace("minimumExclusive","https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"condition":">","expected":0,"actual":gen_numeric_comparison_5})
-  matches := error("validation1",x,"Validation error",[_result_0,_result_1])
+  message := "Validation error"
+  matches := error("validation1",x, message ,[_result_0,_result_1])
 }
 
 violation[matches] {
@@ -357,5 +358,6 @@ violation[matches] {
   gen_numeric_comparison_10 = gen_numeric_comparison_10_elem[_]
   not gen_numeric_comparison_10 > 0
   _result_1 := trace("minimumExclusive","https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">","expected":0,"actual":gen_numeric_comparison_10})
-  matches := error("validation1",x,"Validation error",[_result_0,_result_1])
+  message := "Validation error"
+  matches := error("validation1",x, message ,[_result_0,_result_1])
 }

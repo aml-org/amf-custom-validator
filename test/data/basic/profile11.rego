@@ -309,5 +309,6 @@ violation[matches] {
   gen_datatype_check_2 = gen_datatype_check_2_elem[_]
   not check_datatype(gen_datatype_check_2,"http://www.w3.org/2001/XMLSchema#string")
   _result_0 := trace("datatype","http://a.ml/vocabularies/apiContract#scheme",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_datatype_check_2,"expected": "http://www.w3.org/2001/XMLSchema#string"})
-  matches := error("allowed-protocols",x,"Validation error",[_result_0])
+  message := "Validation error"
+  matches := error("allowed-protocols",x, message ,[_result_0])
 }

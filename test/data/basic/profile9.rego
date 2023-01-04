@@ -304,7 +304,8 @@ violation[matches] {
   
   gen_rego_result_2 == true
   _result_0 := trace("rego","",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true})
-  matches := error("simple-rego",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0])
+  message := "GET operations must have 2xx, 4xx and 5xx status codes but no 201"
+  matches := error("simple-rego",x, message ,[_result_0])
 }
 # Path rules
 
@@ -320,7 +321,8 @@ violation[matches] {
   
   gen_rego_result_4 != true
   _result_0 := trace("rego","",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false})
-  matches := error("simple-rego2",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0])
+  message := "GET operations must have 2xx, 4xx and 5xx status codes but no 201"
+  matches := error("simple-rego2",x, message ,[_result_0])
 }
 # Path rules
 
@@ -342,5 +344,6 @@ violation[matches] {
   gen_rego_result_7 = (gen_gen_path_set_rule_5_node_6 != null) # custom 3
   gen_rego_result_7 != true
   _result_0 := trace("rego","http://a.ml/vocabularies/apiContract#version",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false})
-  matches := error("simple-rego3",x,"GET operations must have 2xx, 4xx and 5xx status codes but no 201",[_result_0])
+  message := "GET operations must have 2xx, 4xx and 5xx status codes but no 201"
+  matches := error("simple-rego3",x, message ,[_result_0])
 }

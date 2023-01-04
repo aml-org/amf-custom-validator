@@ -5,7 +5,7 @@
       "@type": [
         "http://a.ml/vocabularies/document#APIContractProcessingData"
       ],
-      "http://a.ml/vocabularies/apiContract#modelVersion": "3.5.0",
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.8.1",
       "http://a.ml/vocabularies/document#transformed": true,
       "http://a.ml/vocabularies/document#sourceSpec": "RAML 1.0"
     },
@@ -130,7 +130,7 @@
       "@type": [
         "http://a.ml/vocabularies/document#LocationInformation"
       ],
-      "http://a.ml/vocabularies/document#location": "file://./test/data/production/best-practices/lib-with-extensions.raml",
+      "http://a.ml/vocabularies/document#location": "file://./test/data/production/best-practices/lib-with-extensions.ignore.raml",
       "http://a.ml/vocabularies/document#elements": [
         {
           "@id": "amf://id#57"
@@ -3279,13 +3279,18 @@
       "@type": [
         "http://a.ml/vocabularies/document#APIContractProcessingData"
       ],
-      "http://a.ml/vocabularies/apiContract#modelVersion": "3.5.0",
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.8.1",
       "http://a.ml/vocabularies/document#sourceSpec": "RAML 1.0"
     },
     {
       "@id": "amf://id#1/source-map",
       "@type": [
         "http://a.ml/vocabularies/document-source-maps#SourceMap"
+      ],
+      "http://a.ml/vocabularies/document-source-maps#virtual-element": [
+        {
+          "@id": "amf://id#1/source-map/virtual-element/element_0"
+        }
       ],
       "http://a.ml/vocabularies/document-source-maps#lexical": [
         {
@@ -3296,7 +3301,12 @@
     {
       "@id": "amf://id#/source-map/aliases-array/element_0",
       "http://a.ml/vocabularies/document-source-maps#element": "amf://id",
-      "http://a.ml/vocabularies/document-source-maps#value": "lib->amf://id#1::file://./test/data/production/best-practices/lib-with-extensions.raml::lib-with-extensions.raml"
+      "http://a.ml/vocabularies/document-source-maps#value": "lib->amf://id#1::file://./test/data/production/best-practices/lib-with-extensions.ignore.raml::lib-with-extensions.ignore.raml"
+    },
+    {
+      "@id": "amf://id#1/source-map/virtual-element/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/document#declares",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
     },
     {
       "@id": "amf://id#1/source-map/lexical/element_0",

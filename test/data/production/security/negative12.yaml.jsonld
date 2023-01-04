@@ -5,7 +5,7 @@
       "@type": [
         "http://a.ml/vocabularies/document#APIContractProcessingData"
       ],
-      "http://a.ml/vocabularies/apiContract#modelVersion": "3.5.0",
+      "http://a.ml/vocabularies/apiContract#modelVersion": "3.8.1",
       "http://a.ml/vocabularies/document#transformed": true,
       "http://a.ml/vocabularies/document#sourceSpec": "OAS 3.0"
     },
@@ -1336,6 +1336,11 @@
         {
           "@id": "amf://id#23/source-map/lexical/element_0"
         }
+      ],
+      "http://a.ml/vocabularies/document-source-maps#virtual-element": [
+        {
+          "@id": "amf://id#23/source-map/virtual-element/element_0"
+        }
       ]
     },
     {
@@ -1514,6 +1519,11 @@
       "@id": "amf://id#23/source-map/lexical/element_0",
       "http://a.ml/vocabularies/document-source-maps#element": "http://a.ml/vocabularies/security#scope",
       "http://a.ml/vocabularies/document-source-maps#value": "[(57,10)-(60,0)]"
+    },
+    {
+      "@id": "amf://id#23/source-map/virtual-element/element_0",
+      "http://a.ml/vocabularies/document-source-maps#element": "amf://id#23",
+      "http://a.ml/vocabularies/document-source-maps#value": "true"
     },
     {
       "@id": "amf://id#3/source-map/type-property-lexical-info/element_0",

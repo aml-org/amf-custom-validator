@@ -137,7 +137,7 @@
                   "line": 4
                 }
               },
-              "uri": "file://./test/data/production/best-practices/lib.raml"
+              "uri": "file://./test/data/production/best-practices/lib.ignore.raml"
             },
             "resultMessage": "Provide description for data shapes",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
@@ -181,7 +181,7 @@
                       "line": 4
                     }
                   },
-                  "uri": "file://./test/data/production/best-practices/lib.raml"
+                  "uri": "file://./test/data/production/best-practices/lib.ignore.raml"
                 },
                 "resultPath": "http://a.ml/vocabularies/core#description",
                 "traceValue": {
@@ -236,7 +236,7 @@
                   "line": 7
                 }
               },
-              "uri": "file://./test/data/production/best-practices/lib.raml"
+              "uri": "file://./test/data/production/best-practices/lib.ignore.raml"
             },
             "resultMessage": "Use camelCase for all the names (fields), preferably don’t use underscores.",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
@@ -280,7 +280,7 @@
                       "line": 7
                     }
                   },
-                  "uri": "file://./test/data/production/best-practices/lib.raml"
+                  "uri": "file://./test/data/production/best-practices/lib.ignore.raml"
                 },
                 "resultPath": "http://www.w3.org/ns/shacl#name",
                 "traceValue": {
@@ -334,7 +334,7 @@
                   "line": 4
                 }
               },
-              "uri": "file://./test/data/production/best-practices/lib.raml"
+              "uri": "file://./test/data/production/best-practices/lib.ignore.raml"
             },
             "resultMessage": "Provide description for data shapes",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
@@ -378,7 +378,7 @@
                       "line": 4
                     }
                   },
-                  "uri": "file://./test/data/production/best-practices/lib.raml"
+                  "uri": "file://./test/data/production/best-practices/lib.ignore.raml"
                 },
                 "resultPath": "http://a.ml/vocabularies/core#description",
                 "traceValue": {

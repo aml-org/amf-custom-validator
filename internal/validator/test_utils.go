@@ -10,7 +10,7 @@ import (
 	"testing"
 )
 
-func printMilestones(profile interface{}, data string, milestonesChan *chan milestones.Milestone) {
+func printMilestones(profile any, data string, milestonesChan *chan milestones.Milestone) {
 	for m := range *milestonesChan {
 		fmt.Printf("%s,%s,%s,%d\n", profile, data, m.Operation, m.Duration.Microseconds())
 	}

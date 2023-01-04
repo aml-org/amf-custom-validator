@@ -1,0 +1,18 @@
+#%Validation Profile 1.0
+
+profile: test
+violation:
+  - jwt-trait
+validations:
+  jwt-trait:
+    message: "Must have at least one trait"
+    targetClass: doc.Unit
+    propertyConstraints:
+      doc.declares:
+        atLeast:
+          count: 1
+          validation:
+            propertyConstraints:
+              '@type':
+                 containsAll:
+                   - http://a.ml/vocabularies/apiContract#Trait

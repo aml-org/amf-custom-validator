@@ -1,0 +1,13 @@
+#%Validation Profile 1.0
+
+profile: test
+violation:
+  - endpoints-must-have-operations
+
+validations:
+  endpoints-must-have-operations:
+    message: Endpoint '{{ apiContract.path }}' must have at least one operation
+    targetClass: apiContract.EndPoint
+    propertyConstraints:
+      apiContract.supportedOperation:
+        minCount: 1

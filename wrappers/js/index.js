@@ -1,4 +1,4 @@
-require(__dirname + "/lib/wasm_exec");
+require(__dirname + "/lib/wasm_exec_node");
 const fs = require("fs");
 const pako = require("pako");
 let wasm_gz
@@ -66,7 +66,7 @@ const initialize = function(cb) {
             go.run(result.instance);
             initialized = true;
             cb(undefined);
-        });
+        }).catch(rejection => console.log(rejection));
     } else {
         cb(new Error("WebAssembly is not supported in your JS environment"));
     }

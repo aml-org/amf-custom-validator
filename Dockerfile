@@ -1,4 +1,4 @@
-FROM golang:1.16 AS ci-go
+FROM golang:1.19 AS ci-go
 # Install make
 RUN apt-get update && apt-get install make
 
@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install make
 # Install
 RUN make ci-java
 
-FROM node:12 AS ci-js
+FROM node:16 AS ci-js
 
 # First copy dependencies to enable Docker caching them
 COPY . ./src
@@ -41,10 +41,10 @@ COPY --from=ci-go /go/src/wrappers/js/lib/main.wasm.gz ./lib
 WORKDIR ../../
 RUN make ci-js
 
-FROM cypress/included:3.4.0 as ci-browser
+FROM cypress/included:11.2.0 as ci-browser
 COPY --from=ci-js /src ./src
 WORKDIR ./src
-RUN make ci-browser
+RUN ./scripts/ci-browser.sh
 
 FROM ci-go AS go-coverage
 RUN make go-coverage

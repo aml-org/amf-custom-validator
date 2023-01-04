@@ -32,7 +32,8 @@ config.module.rules.push(
 
 config.entry = {
     simple: path.join(__dirname, 'src/simple.js'),
-    double: path.join(__dirname, 'src/double.js')
+    double: path.join(__dirname, 'src/double.js'),
+    messageExpression: path.join(__dirname, 'src/messageExpression.js')
 }
 
 module.exports = config

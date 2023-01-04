@@ -125,7 +125,7 @@
                     "lexical:Position"
                   ],
                   "column": 25,
-                  "line": 136
+                  "line": 137
                 },
                 "start": {
                   "@id": "violation_0_location_range_start",
@@ -134,7 +134,7 @@
                     "lexical:Position"
                   ],
                   "column": 12,
-                  "line": 130
+                  "line": 131
                 }
               },
               "uri": "file://./test/data/production/best-practices/negative8.yaml"
@@ -169,7 +169,7 @@
                         "lexical:Position"
                       ],
                       "column": 25,
-                      "line": 136
+                      "line": 137
                     },
                     "start": {
                       "@id": "violation_0_0_location_range_start",
@@ -178,7 +178,7 @@
                         "lexical:Position"
                       ],
                       "column": 12,
-                      "line": 130
+                      "line": 131
                     }
                   },
                   "uri": "file://./test/data/production/best-practices/negative8.yaml"

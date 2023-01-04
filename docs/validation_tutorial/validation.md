@@ -2105,3 +2105,136 @@ In general, Rego rules should be considered a last-resort option if the check ca
 declarative syntax. They are harder to write, maintain and they are a blackbox for reporting.
 As the Ruleset syntax expands and grows, you can expect and expanded catalog of declarative rules that will make less
 necessary the use of Rego.
+
+## 8. Message expressions
+
+It is possible to include extra information about the failing nodes on a validation message. To do so you can
+use handlebars templates to include property values from the failing node (only from the failing node). Such handlebars
+template have the form ``{{ prefix.property }}`` where `prefix` can be a default prefix or a prefix declared in the 
+`prefixes` property in the ruleset.
+
+Take a look at the following examples:
+
+__Example with default prefixes__
+
+File: *./examples/rules/example17/profile.yaml*
+```yaml
+#%Validation Profile 1.0
+
+profile: test
+violation:
+ - endpoints-must-have-operations
+
+validations:
+ endpoints-must-have-operations:
+  message: Endpoint '{{ apiContract.path }}' must have at least one operation
+  targetClass: apiContract.EndPoint
+  propertyConstraints:
+   apiContract.supportedOperation:
+    minCount: 1
+```
+
+This ruleset checks that endpoints have at least one operation. We include the endpoint's path `apiContract.path` as part 
+of the validation message to make more explicit that a particular endpoint is failing.
+
+Therefore, for the following API:
+
+File: *./examples/rules/example17/negative.data.raml*
+```yaml
+#%RAML 1.0
+title: API
+
+/my-endpoint:
+```
+
+we obtain the following violation in the report (check the _resultMessage_):
+```json
+{
+  "@id": "violation_0",
+  "@type": [
+    "reportSchema:ValidationResultNode",
+    "shacl:ValidationResult"
+  ],
+  "focusNode": "amf://id#3",
+  "resultMessage": "Endpoint '/my-endpoint' must have at least one operation",
+  "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+  "sourceShapeName": "endpoints-must-have-operations",
+  "trace": "..."
+}
+```
+Note: _trace_ was skipped for brevity 
+
+To run this example you can use:
+```sh-session
+% ruleset-development-cli test -f example17 --debug
+* Processing rule directory: rules/example17
+    - (debug) generating OPA Rego profile code at rules/example17/profile.rego
+  ✓ rules/example17/positive.data.raml
+    - (debug) OPA input data: rules/example17/positive.data.raml.input
+  ✓ rules/example17/negative.data.raml
+    - (debug) OPA input data: rules/example17/negative.data.raml.input
+All examples validate
+```
+
+__Example with custom prefixes__
+
+File: *../../test/data/integration/profile26/profile.yaml*
+```yaml
+#%Validation Profile 1.0
+profile: Movie ratings
+prefixes:
+ movie: http://anypoint.com/vocabs/movie#
+violation:
+ - not-enough-reviews
+validations:
+ not-enough-reviews:
+  targetClass: movie.Movie
+  message: "Movie '{{ movie.title }}' has a rating of {{ movie.rating }} but it does not have at least 10 reviews (actual reviews: {{ movie.reviewsAmount }}) to support that rating"
+  if:
+   propertyConstraints:
+    movie.rating:
+     minExclusive: 0
+  then:
+   propertyConstraints:
+    movie.reviewsAmount:
+     minInclusive: 10
+```
+
+This ruleset checks that a movie must have at least 10 reviews to be given a rating.
+
+Therefore, for the following graph (relevant part):
+
+File: *../../test/data/integration/profile26/negative.data.jsonld*
+```json
+{
+  "@id": "http://0.0.0.0:8080/v1/movie/Lionsgate/Disaster+Movie#/",
+  "@type": [
+    "http://0.0.0.0:8080/v1/schema/Movie/1.0#/declarations/MovieNode",
+    "http://a.ml/vocabularies/meta#DialectDomainElement",
+    "http://anypoint.com/vocabs/movie#Movie",
+    "http://a.ml/vocabularies/document#DomainElement"
+  ],
+  "http://anypoint.com/vocabs/movie#rating": 1.9,
+  "http://anypoint.com/vocabs/movie#reviewsAmount": 5,
+  "http://anypoint.com/vocabs/movie#title": "Disaster Movie"
+}
+```
+
+we obtain the following violation in the report (check the _resultMessage_):
+```json
+{
+   "@id": "violation_0",
+   "@type": [
+     "reportSchema:ValidationResultNode",
+     "shacl:ValidationResult"
+   ],
+   "focusNode": "http://0.0.0.0:8080/v1/movie/Lionsgate/Disaster+Movie#/",
+   "resultMessage": "Movie 'Disaster Movie' has a rating of 1.9 but it does not have at least 10 reviews (actual reviews: 5) to support that rating",
+   "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+   "sourceShapeName": "not-enough-reviews",
+   "trace": "..."
+ }
+```
+Note: _trace_ was skipped for brevity
+
+To run this example, you can run the following test suite: `../../internal/validator/validate_integration_test.go`
