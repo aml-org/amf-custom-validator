@@ -136,6 +136,9 @@ pipeline {
                           IS_SNAPSHOT=true
                       fi
 
+                      # Add safe directory exception
+                      git config --global --add safe.directory /src
+
                       # Login
                       echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} >> ~/.npmrc
                       echo @aml-org:registry=https://registry.npmjs.org/ >> ~/.npmrc
