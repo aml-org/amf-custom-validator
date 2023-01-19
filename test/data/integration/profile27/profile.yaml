@@ -1,0 +1,23 @@
+#%Validation Profile 1.0
+profile: Movie ratings
+prefixes:
+  movie: http://anypoint.com/vocabs/movie#
+violation:
+  - not-enough-reviews
+validations:
+  not-enough-reviews:
+    targetClass: movie.Movie
+    message: "Movie '{{ movie.title }}' has a rating of {{ movie.rating }} but it does not have at least 10 reviews (actual reviews: {{ movie.reviewsAmount }}) to support that rating"
+    if:
+      propertyConstraints:
+        movie.rating:
+          minExclusive: 0
+    then:
+      propertyConstraints:
+        movie.reviewsAmount:
+          minInclusive: 10
+    examples:
+      valid: |
+        a: a
+        b: b
+      invalid: this is an invalid example

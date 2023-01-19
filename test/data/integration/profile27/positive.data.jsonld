@@ -1,0 +1,45 @@
+{
+  "@context": {
+    "definedBy": {
+      "@id": "http://a.ml/vocabularies/meta#definedBy",
+      "@type": "@id"
+    },
+    "version": "http://a.ml/vocabularies/document#version",
+    "root": {
+      "@id": "http://a.ml/vocabularies/document#root",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "encodes": {
+      "@id": "http://a.ml/vocabularies/document#encodes",
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "http://0.0.0.0:8080/v1/movie/Lionsgate/Disaster+Movie",
+      "@type": [
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/meta#DialectInstance",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "encodes": "http://0.0.0.0:8080/v1/movie/Lionsgate/Disaster+Movie#/",
+      "http://a.ml/vocabularies/document#root": true,
+      "version": "2.0.1",
+      "definedBy": "http://0.0.0.0:8080/v1/schema/Movie/1.0"
+    },
+    {
+      "@id": "http://0.0.0.0:8080/v1/movie/Lionsgate/Disaster+Movie#/",
+      "@type": [
+        "http://0.0.0.0:8080/v1/schema/Movie/1.0#/declarations/MovieNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://anypoint.com/vocabs/movie#Movie",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://anypoint.com/vocabs/movie#rating": 1.9,
+      "http://anypoint.com/vocabs/movie#reviewsAmount": 500,
+      "http://anypoint.com/vocabs/movie#title": "Disaster Movie"
+    }
+  ]
+}
