@@ -12,12 +12,11 @@ func Compile() {
 
 	profile := helpers.ReadOrPanic(os.Args[2])
 
-	compiledProfile, err := validator.ProcessProfile(string(profile), true, nil)
+	_, err := validator.ProcessProfile(string(profile), true, nil)
 
 	if err != nil {
-		_ = fmt.Errorf(err.Error())
-		os.Exit(1)
+		panic(err)
 	}
-	fmt.Println(compiledProfile)
+	fmt.Println("Compile Success!")
 	os.Exit(0)
 }
