@@ -14,6 +14,8 @@ func main() {
 		commands.Generate()
 	case "normalize":
 		commands.Normalize()
+	case "compile":
+		commands.Compile()
 	case "help":
 		commands.Help()
 	default:
