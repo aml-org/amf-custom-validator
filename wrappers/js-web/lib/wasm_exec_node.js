@@ -13,16 +13,26 @@
  * Removed the CLI behavior stuff and left only the polyfill provision
  */
 
-globalThis.require = require;
-globalThis.fs = require("fs");
-globalThis.TextEncoder = require("util").TextEncoder;
-globalThis.TextDecoder = require("util").TextDecoder;
+if (!globalThis.require) {
+    globalThis.require = require;
+}
 
-if (!globalThis.performance || !globalThis.performance.now) {
+if (!globalThis.require) {
+    globalThis.require = require;
+}
+
+if (!globalThis.TextEncoder) {
+    globalThis.TextEncoder = require("util").TextEncoder;
+}
+
+if (!globalThis.TextDecoder) {
+    globalThis.TextDecoder = require("util").TextDecoder;
+}
+
+if (!globalThis.performance) {
     globalThis.performance = {
         now() {
-            const [sec, nsec] = process.hrtime();
-            return sec * 1000 + nsec / 1000000; // time in milliseconds
+            return Date.now();
         },
     };
 }

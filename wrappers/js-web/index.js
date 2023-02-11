@@ -1,4 +1,4 @@
-require("../js/lib/wasm_exec");
+require("/lib/wasm_exec_node");
 let wasm_gz = require("../js/lib/main.wasm.gz")
 const pako = require("pako");
 const Buffer = require("buffer").Buffer;
