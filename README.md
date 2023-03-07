@@ -118,6 +118,12 @@ Rego code generation
 acv generate PROFILE
 ```
 
+Compile profile
+
+```shell
+acv compile PROFILE
+```
+
 # Relation with AMF
 
 AMF is a framework capable of producing semantic graphs in JSON-LD syntax from API specification documents or arbitrary
