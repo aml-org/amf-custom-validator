@@ -25,3 +25,5 @@ require (
 	github.com/yashtewari/glob-intersection v0.1.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
+
+replace github.com/containerd/containerd => github.com/containerd/containerd v0.0.0
