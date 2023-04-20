@@ -26,9 +26,9 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
-replace github.com/opencontainers/runc => github.com/opencontainers/runc v1.1.5
+replace github.com/opencontainers/runc => github.com/opencontainers/runc v1.1.6
 
-replace github.com/coreos/etcd => go.etcd.io/etcd/v3 v3.4.10
+replace github.com/coreos/etcd => go.etcd.io/etcd/v3 v3.5.8
 
 // replace github.com/dgrijalva/jwt-go => github.com/dgrijalva/jwt-go/v4 v4.0.0-preview1
 
