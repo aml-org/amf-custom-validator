@@ -30,20 +30,14 @@ replace github.com/opencontainers/runc => github.com/opencontainers/runc v1.1.5
 
 replace github.com/coreos/etcd => go.etcd.io/etcd/v3 v3.4.10
 
-replace github.com/dgrijalva/jwt-go => github.com/dgrijalva/jwt-go/v4 v4.0.0-preview1
+// replace github.com/dgrijalva/jwt-go => github.com/dgrijalva/jwt-go/v4 v4.0.0-preview1
 
-replace github.com/mattn/go-sqlite3 => github.com/mattn/go-sqlite3 v1.14.15
+// replace github.com/mattn/go-sqlite3 => github.com/mattn/go-sqlite3 v1.14.15
 
-replace github.com/pkg/sftp => github.com/pkg/sftp v1.11.0
+// replace github.com/pkg/sftp => github.com/pkg/sftp v1.11.0
 
-replace golang.org/x/image@0.5.0 => golang.org/x/image v0.5.0
+// replace golang.org/x/image@0.5.0 => golang.org/x/image v0.5.0
 
-replace github.com/docker/cli => github.com/docker/cli v24.0.0-beta.2+incompatible
+// replace github.com/gogo/protobuf => github.com/gogo/protobuf v1.3.2
 
-replace github.com/gogo/protobuf => github.com/gogo/protobuf v1.3.2
-
-replace github.com/docker/distribution => github.com/docker/distribution v2.8.1+incompatible
-
-replace github.com/opencontainers/image-spec => github.com/opencontainers/image-spec v1.0.2
-
-exclude github.com/docker/docker v1.13.1
+// exclude github.com/docker/docker v1.13.1
