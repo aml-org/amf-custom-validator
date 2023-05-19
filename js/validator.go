@@ -39,6 +39,21 @@ func genRegoWrapper() js.Func {
 	return jsonFunc
 }
 
+func genRegoWASMWrapper() js.Func {
+	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) any {
+		if len(args) != 1 {
+			return "Invalid no of arguments passed"
+		}
+		profileString := args[0].String()
+		wasm, err := validator.ProcessProfileWASM(profileString, false, nil)
+		if err != nil {
+			return err.Error()
+		}
+		return wasm
+	})
+	return jsonFunc
+}
+
 func normalizeInputWrapper() js.Func {
 	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) any {
 		if len(args) != 1 {
@@ -78,6 +93,9 @@ func main() {
 	// gen rego
 	f = genRegoWrapper()
 	js.Global().Set("__AMF__generateRego", f)
+	// gen rego WASM
+	f = genRegoWASMWrapper()
+	js.Global().Set("__AMF__generateRegoWASM", f)
 	// normalizeInput
 	f = normalizeInputWrapper()
 	js.Global().Set("__AMF__normalizeInput", f)

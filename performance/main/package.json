@@ -1,0 +1,16 @@
+{
+  "name": "performance",
+  "version": "1.0.0",
+  "description": "test validator performance in JS",
+  "main": "performance.js",
+  "scripts": {
+    "start": "node performance.js",
+    "start:pre-compiled": "node performance.js --pre-compiled",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@open-policy-agent/opa-wasm": "^1.8.0"
+  }
+}

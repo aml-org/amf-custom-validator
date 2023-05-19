@@ -59,3 +59,41 @@ func executeValidation(eventChan *chan e.Event, err error, compiledRego rego.Pre
 	dispatchEvent(e.NewEvent(e.OpaValidationDone), eventChan)
 	return &validationResult, err
 }
+
+//func ValidateCompiledWASM(compiledRegoWASMPointer *[]byte, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
+//	compiledRegoWASM := *compiledRegoWASMPointer
+//
+//	// Normalize input
+//	normalizedInput, err := ProcessInput(jsonldText, debug, eventChan)
+//
+//	if err != nil {
+//		CloseEventChan(eventChan)
+//		return "", err
+//	}
+//
+//	// Execute validation
+//	validationResult, err := executeValidationWASM(eventChan, err, compiledRegoWASM, normalizedInput)
+//
+//	if err != nil {
+//		CloseEventChan(eventChan)
+//		return "", err
+//	}
+//
+//	// Build report
+//	report, err := processResult(validationResult, eventChan)
+//
+//	if err != nil {
+//		CloseEventChan(eventChan)
+//		return "", err
+//	}
+//
+//	CloseEventChan(eventChan)
+//	return report, err
+//}
+//
+//func executeValidationWASM(eventChan *chan e.Event, err error, compiledRegoWASM []byte, normalizedInput any) (*rego.ResultSet, error) {
+//	dispatchEvent(e.NewEvent(e.OpaValidationStart), eventChan)
+//	validationResult, err := compiledRegoWASM.Eval(context.Background(), rego.EvalInput(normalizedInput)) // TODO: how to use REGO as wasm? OPA has interfaces?
+//	dispatchEvent(e.NewEvent(e.OpaValidationDone), eventChan)
+//	return &validationResult, err
+//}

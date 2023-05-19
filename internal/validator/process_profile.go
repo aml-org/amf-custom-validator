@@ -9,6 +9,19 @@ import (
 	"github.com/open-policy-agent/opa/rego"
 )
 
+func ProcessProfileWASM(profileText string, debug bool, eventChan *chan e.Event) (string, error) {
+	// Generate Rego code
+	regoUnit, err := GenerateRego(profileText, debug, eventChan)
+
+	if err != nil {
+		return "", err
+	}
+
+	result, err := CompileRegoWASM(regoUnit, eventChan)
+	// Compile Rego code
+	return result, err
+}
+
 func ProcessProfile(profileText string, debug bool, eventChan *chan e.Event) (*rego.PreparedEvalQuery, error) {
 	// Generate Rego code
 	regoUnit, err := GenerateRego(profileText, debug, eventChan)
@@ -55,4 +68,21 @@ func CompileRego(regoUnit *generator.RegoUnit, eventChan *chan e.Event) (*rego.P
 	preparedEvalQuery, err := rego.New(query, module, unsafeBuiltins).PrepareForEval(context.Background())
 	dispatchEvent(e.NewEvent(e.RegoCompilationDone), eventChan)
 	return &preparedEvalQuery, err
+}
+
+func CompileRegoWASM(regoUnit *generator.RegoUnit, eventChan *chan e.Event) (string, error) {
+	dispatchEvent(e.NewEvent(e.RegoCompilationStart), eventChan)
+
+	// create Rego
+	query := rego.Query("data." + regoUnit.Name + "." + regoUnit.Entrypoint)
+	module := rego.Module(regoUnit.Name+".rego", regoUnit.Code)
+	unsafeBuiltins := rego.UnsafeBuiltins(unsafeBuiltinsMap)
+	validator := rego.New(query, module, unsafeBuiltins)
+
+	// create wasm
+	ctx := context.Background()
+	compileResult, err := validator.Compile(ctx)
+	dispatchEvent(e.NewEvent(e.RegoCompilationDone), eventChan)
+	result := string(compileResult.Bytes)
+	return result, err
 }
