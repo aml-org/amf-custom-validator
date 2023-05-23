@@ -142,7 +142,7 @@ To integrate with AMF, download an AMF CLI JAR with the following script:
 
 ## Obtaining semantic data from API specs with AMF
 
-To parse API specification files with the CLI using Java (Java 8 required):
+To parse API specification files with the CLI using Java (Java 17 required):
 
 ```shell
 # Simple parse

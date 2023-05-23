@@ -3,7 +3,7 @@
 ## Development requirements
 
 * Go 1.19
-* Java 8 (to validate validation profiles & reports only)
+* Java 17 (to validate validation profiles & reports only)
 * Node 16
 * Make
 
@@ -24,7 +24,7 @@ make test-js
 ```
 
 When writing new validation profiles or modifying validation reports you will need to validate both are correct. This 
-requires Java 8 and an AMF CLI that can be downloaded with `./scripts/download-amf-cli.sh`
+requires Java 17 and an AMF CLI that can be downloaded with `./scripts/download-amf-cli.sh`
 
 To find and validate all validation profiles and reports in the project run:
 
