@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"encoding/hex"
 	"encoding/json"
 	"github.com/aml-org/amf-custom-validator/internal/validator"
 	"syscall/js"
@@ -49,7 +50,8 @@ func genRegoWASMWrapper() js.Func {
 		if err != nil {
 			return err.Error()
 		}
-		return wasm
+		wasm_string := hex.EncodeToString(wasm)
+		return wasm_string
 	})
 	return jsonFunc
 }

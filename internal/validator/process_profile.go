@@ -9,12 +9,12 @@ import (
 	"github.com/open-policy-agent/opa/rego"
 )
 
-func ProcessProfileWASM(profileText string, debug bool, eventChan *chan e.Event) (string, error) {
+func ProcessProfileWASM(profileText string, debug bool, eventChan *chan e.Event) ([]byte, error) {
 	// Generate Rego code
 	regoUnit, err := GenerateRego(profileText, debug, eventChan)
 
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
 	result, err := CompileRegoWASM(regoUnit, eventChan)
@@ -70,7 +70,7 @@ func CompileRego(regoUnit *generator.RegoUnit, eventChan *chan e.Event) (*rego.P
 	return &preparedEvalQuery, err
 }
 
-func CompileRegoWASM(regoUnit *generator.RegoUnit, eventChan *chan e.Event) (string, error) {
+func CompileRegoWASM(regoUnit *generator.RegoUnit, eventChan *chan e.Event) ([]byte, error) {
 	dispatchEvent(e.NewEvent(e.RegoCompilationStart), eventChan)
 
 	// create Rego
@@ -83,6 +83,39 @@ func CompileRegoWASM(regoUnit *generator.RegoUnit, eventChan *chan e.Event) (str
 	ctx := context.Background()
 	compileResult, err := validator.Compile(ctx)
 	dispatchEvent(e.NewEvent(e.RegoCompilationDone), eventChan)
-	result := string(compileResult.Bytes)
+	result := compileResult.Bytes
 	return result, err
 }
+
+//func CompileRegoWASM2(regoUnit *generator.RegoUnit) ([]byte, error) {
+//	buf := bytes.NewBuffer(nil)
+//
+//	fs := memoryfs.New()
+//	fs.WriteFile("profile.rego", []byte(regoUnit.Code), 0o700)
+//
+//	capabilities := &ast.Capabilities{}
+//	for key, _ := range unsafeBuiltinsMap {
+//		f := &ast.Builtin{
+//			Name: key,
+//		}
+//		capabilities.Builtins = append(capabilities.Builtins, f)
+//	}
+//
+//	compiler := compile.New().
+//		WithPaths("profile.rego").
+//		WithTarget(compile.TargetWasm).
+//		WithOutput(buf).
+//		WithEntrypoints(regoUnit.Name + "/" + regoUnit.Entrypoint).
+//		WithFS(fs).
+//		WithRegoAnnotationEntrypoints(true)
+//	//WithCapabilities(capabilities)
+//
+//	ctx := context.Background()
+//	err := compiler.Build(ctx)
+//	if err != nil {
+//		return nil, err
+//	}
+//
+//	result := compiler.Bundle().WasmModules[0].Raw
+//	return result, nil
+//}
