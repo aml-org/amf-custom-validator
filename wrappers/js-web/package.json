@@ -11,21 +11,20 @@
   "author": "Antonio Garrote",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^11.2.0",
-    "express": "^4.17.1",
-    "forever": "^4.0.1",
-    "mocha": "^8.4.0",
-    "nodemon": "^2.0.15",
+    "cypress": "^12.13.0",
+    "express": "^4.18.2",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.22",
     "npm-run-all": "^4.1.5",
-    "webpack": "^5.53.0",
-    "webpack-cli": "^4.8.0"
+    "webpack": "^5.85.0",
+    "webpack-cli": "^5.1.1"
   },
   "dependencies": {
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
     "os-browserify": "^0.3.0",
-    "pako": "^2.0.4",
+    "pako": "^2.1.0",
     "stream-browserify": "^3.0.0",
-    "util": "^0.12.4"
+    "util": "^0.12.5"
   }
 }
