@@ -8,18 +8,18 @@ const validator = require('../../wrappers/js/index')
 
 
 const ITERATIONS = 1;
-const PROFILE = "/Users/tfernandez/mulesoft/amf-custom-validator/apis/anypoint-best-practices.yaml";
-const DATA = "cri-api.jsonld";
+const PROFILE = __dirname + '/../../test/data/production/best-practices/profile.yaml';
+const DATA = __dirname + '/../../test/data/production/best-practices/negative1.raml.jsonld';
 const WASM = __dirname + '../js-main/policy.wasm';
 
 function hexStringToByteArray(hexString) {
     // if (hexString.length % 2 !== 0) {
     //     throw "Must have an even number of hex digits to convert to bytes";
     // }/* w w w.  jav  a2 s .  c o  m*/
-    var numBytes = hexString.length / 2;
-    var byteArray = new Uint8Array(numBytes);
-    for (var i=0; i<numBytes; i++) {
-        byteArray[i] = parseInt(hexString.substr(i*2, 2), 16);
+    let numBytes = hexString.length / 2;
+    let byteArray = new Uint8Array(numBytes);
+    for (let i = 0; i < numBytes; i++) {
+        byteArray[i] = parseInt(hexString.substr(i * 2, 2), 16);
     }
     return byteArray;
 }
@@ -37,9 +37,8 @@ async function main() {
 }
 
 function fromBundle() {
-    const inputBuffer = fs.readFileSync("api.normalized.jsonld", {encoding: "utf-8"});
-
-    const policyWasm = fs.readFileSync(WASM);
+    const inputBuffer = read(DATA);
+    const policyWasm = read(WASM);
 
     (async () => {
         try {
@@ -105,15 +104,12 @@ function precompiled() {
             }
         });
     })
-
-
-    // // Read the policy wasm file
-    // const policyWasm = fs.readFileSync("policy.wasm");
 }
 
 function read(path) {
     return fs.readFileSync(path, {encoding: "utf-8"});
 }
+
 (async () => {
     await main()
 })();
