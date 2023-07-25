@@ -1,126 +1,24 @@
-package generator
+package profile_test
 
-import (
-	"fmt"
-	"github.com/aml-org/amf-custom-validator/internal/misc"
-	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
-	"github.com/aml-org/amf-custom-validator/internal/types"
-	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
-	"regexp"
-	"strings"
-)
+report["profile"] = "test"
+# Custom rego extensions
 
-type RegoUnit struct {
-	Name       string
-	Entrypoint string
-	Code       string
-	Prefixes   profile.ProfileContext
+import future.keywords.in
+import future.keywords.every
+import future.keywords.if
+import future.keywords.contains
+sites := []
+containers := []
+instances contains instance if {
+  server := sites[_].servers[_]
+  instance := {"address": server.hostname, "name": server.name}
+}
+instances contains instance if {
+  container := containers[_]
+  instance := {"address": container.ipaddress, "name": container.name}
 }
 
-func IriExpanderFrom(profile profile.Profile) *misc.IriExpander {
-	context := make(types.ObjectMap)
-	types.MergeObjectMap(&context, &contexts.DefaultAMFContext)
-	for n, p := range profile.Prefixes {
-		context[n] = p
-	}
-	return &misc.IriExpander{
-		Context: context,
-	}
-}
 
-// Generate Main entry point generating a valid Rego unit from a parsed profile.
-// It uses the encoded Rego preamble code to provide all the library
-// code to execute the profile.
-func Generate(profile profile.Profile) RegoUnit {
-	iriExpander := IriExpanderFrom(profile)
-	acc := []string{pkg(profile), profileName(profile), customRego(profile), preamble(profile)}
-
-	for _, r := range ruleSet(profile) {
-		acc = append(acc, GenerateTopLevelExpression(r, iriExpander))
-	}
-
-	n := 0
-	for _, val := range acc {
-		if val != "" {
-			acc[n] = val
-			n++
-		}
-	}
-	acc = acc[:n]
-
-	return RegoUnit{
-		Name:       packageName(profile),
-		Entrypoint: entrypoint(profile),
-		Code:       strings.Join(acc, "\n"),
-		Prefixes:   profile.Prefixes,
-	}
-}
-
-func ruleSet(prof profile.Profile) []profile.Rule {
-	acc := make([]profile.Rule, 0)
-	for _, r := range prof.Violation {
-		acc = append(acc, r)
-	}
-	for _, r := range prof.Warning {
-		acc = append(acc, r)
-	}
-	for _, r := range prof.Info {
-		acc = append(acc, r)
-	}
-
-	return acc
-}
-
-func pkg(profile profile.Profile) string {
-	return fmt.Sprintf("package %s\n", packageName(profile))
-}
-
-func packageName(profile profile.Profile) string {
-	reg, err := regexp.Compile("[^a-zA-Z0-9]+")
-	if err != nil {
-		panic(err)
-	}
-	sanitizedName := reg.ReplaceAllString(strings.ToLower(profile.Name), "_")
-	return fmt.Sprintf("profile_%s", sanitizedName)
-}
-
-func profileName(profile profile.Profile) string {
-	return fmt.Sprintf("report[\"profile\"] = \"%s\"", profile.Name)
-}
-
-func entrypoint(profile profile.Profile) string {
-	return "report"
-}
-
-func customRego(profile profile.Profile) string {
-	acc := make([]string, 0)
-	if profile.CustomRego != nil {
-		acc = append(acc, "# Custom rego extensions")
-		acc = append(acc, *profile.CustomRego)
-	}
-
-	return strings.Join(acc, "\n\n")
-}
-
-func preamble(profile profile.Profile) string {
-	acc := make([]string, 0)
-	acc = append(acc, preambleRaw)
-	// If empty, we provide a default implementation so we can always generate a value report.
-	// Same for other levels
-	if len(profile.Violation) == 0 {
-		acc = append(acc, "default violation = []")
-	}
-	if len(profile.Warning) == 0 {
-		acc = append(acc, "default warning = []")
-	}
-	if len(profile.Info) == 0 {
-		acc = append(acc, "default info = []")
-	}
-
-	return strings.Join(acc, "\n\n")
-}
-
-const preambleRaw = `
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {
   id := data.link["@id"]
@@ -404,4 +302,79 @@ report[level] = matches {
   level := "warning"
   matches := vs
 }
-`
+
+
+default warning = []
+
+default info = []
+# Path rules
+
+gen_path_set_rule_3[nodes] {
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#someProp",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
+}
+
+gen_path_set_rule_4[nodes] {
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
+}
+
+gen_path_set_rule_8[nodes] {
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#otherProp",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
+}
+
+gen_path_set_rule_9[nodes] {
+  init_x_0 = data.sourceNode
+  nodes_tmp = object.get(init_x_0,"https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount",[])
+  nodes_tmp2 = nodes_array with data.nodes as nodes_tmp
+  x_0 = nodes_tmp2[_]
+  nodes = x_0
+}
+
+# Constraint rules
+
+violation[matches] {
+  target_class[x] with data.class as "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#Test"
+  #  querying path: ex.someProp
+  gen_x_check_2_array = gen_path_set_rule_3 with data.sourceNode as x
+  gen_x_check_2_scalar = gen_x_check_2_array[_]
+  gen_x_check_2 = as_string(gen_x_check_2_scalar)
+  gen_inValues_1 = { "false"}
+  not gen_inValues_1[gen_x_check_2]
+  _result_0 := trace("in","https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#someProp",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_2,"expected": "[\"false\"]"})
+  #  querying path: ex.errorCount
+  gen_numeric_comparison_5_elem = gen_path_set_rule_4 with data.sourceNode as x
+  gen_numeric_comparison_5 = gen_numeric_comparison_5_elem[_]
+  gen_numeric_comparison_5 > 0
+  _result_1 := trace("minimumExclusive","https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":true,"condition":">","expected":0,"actual":gen_numeric_comparison_5})
+  message := "Validation error"
+  matches := error("validation1",x, message ,[_result_0,_result_1])
+}
+
+violation[matches] {
+  target_class[x] with data.class as "https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#Test"
+  #  querying path: ex.otherProp
+  gen_x_check_7_array = gen_path_set_rule_8 with data.sourceNode as x
+  gen_x_check_7_scalar = gen_x_check_7_array[_]
+  gen_x_check_7 = as_string(gen_x_check_7_scalar)
+  gen_inValues_6 = { "true"}
+  not gen_inValues_6[gen_x_check_7]
+  _result_0 := trace("in","https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#otherProp",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"actual": gen_x_check_7,"expected": "[\"true\"]"})
+  #  querying path: ex.errorCount
+  gen_numeric_comparison_10_elem = gen_path_set_rule_9 with data.sourceNode as x
+  gen_numeric_comparison_10 = gen_numeric_comparison_10_elem[_]
+  not gen_numeric_comparison_10 > 0
+  _result_1 := trace("minimumExclusive","https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#errorCount",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false,"condition":">","expected":0,"actual":gen_numeric_comparison_10})
+  message := "Validation error"
+  matches := error("validation1",x, message ,[_result_0,_result_1])
+}

@@ -22,7 +22,7 @@ func TestParsed(t *testing.T) {
 		}
 
 		if actual != expected {
-			t.Errorf("%s> Actual did not match expected", fix.Profile)
+			t.Errorf("%s> Actual did not match expected %s", fix.Profile, fix.Parsed)
 		}
 	}
 }

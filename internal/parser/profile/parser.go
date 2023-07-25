@@ -20,6 +20,11 @@ func Parse(doc *y.Yaml) (Profile, error) {
 			profile.Description = &description
 		}
 
+		customRego, err := doc.Get("rego_extensions").String()
+		if err == nil {
+			profile.CustomRego = &customRego
+		}
+
 		prefixes := doc.Get("prefixes")
 		if prefixes.IsFound() {
 			context, err := ParsePrefixes(prefixes)
