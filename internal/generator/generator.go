@@ -33,10 +33,21 @@ func IriExpanderFrom(profile profile.Profile) *misc.IriExpander {
 // code to execute the profile.
 func Generate(profile profile.Profile) RegoUnit {
 	iriExpander := IriExpanderFrom(profile)
-	acc := []string{pkg(profile), profileName(profile), preamble(profile)}
+	acc := []string{pkg(profile), profileName(profile), customRego(profile), preamble(profile)}
+
 	for _, r := range ruleSet(profile) {
 		acc = append(acc, GenerateTopLevelExpression(r, iriExpander))
 	}
+
+	n := 0
+	for _, val := range acc {
+		if val != "" {
+			acc[n] = val
+			n++
+		}
+	}
+	acc = acc[:n]
+
 	return RegoUnit{
 		Name:       packageName(profile),
 		Entrypoint: entrypoint(profile),
@@ -81,6 +92,16 @@ func entrypoint(profile profile.Profile) string {
 	return "report"
 }
 
+func customRego(profile profile.Profile) string {
+	acc := make([]string, 0)
+	if profile.CustomRego != nil {
+		acc = append(acc, "# Custom rego extensions")
+		acc = append(acc, *profile.CustomRego)
+	}
+
+	return strings.Join(acc, "\n\n")
+}
+
 func preamble(profile profile.Profile) string {
 	acc := make([]string, 0)
 	acc = append(acc, preambleRaw)
@@ -100,6 +121,12 @@ func preamble(profile profile.Profile) string {
 }
 
 const preambleRaw = `
+# Import future keywords
+import future.keywords.in
+import future.keywords.every
+import future.keywords.if
+import future.keywords.contains
+
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {
   id := data.link["@id"]

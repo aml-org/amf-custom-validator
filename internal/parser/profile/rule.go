@@ -43,6 +43,7 @@ type AtomicStatement struct {
 type Profile struct {
 	Name        string
 	Description *string
+	CustomRego  *string
 	Prefixes    ProfileContext
 	Violation   []Rule
 	Warning     []Rule

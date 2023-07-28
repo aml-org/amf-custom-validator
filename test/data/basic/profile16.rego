@@ -1,6 +1,23 @@
 package profile_test
 
 report["profile"] = "test"
+# Custom rego extensions
+
+import future.keywords.in
+import future.keywords.every
+import future.keywords.if
+import future.keywords.contains
+sites := []
+containers := []
+instances contains instance if {
+  server := sites[_].servers[_]
+  instance := {"address": server.hostname, "name": server.name}
+}
+instances contains instance if {
+  container := containers[_]
+  instance := {"address": container.ipaddress, "name": container.name}
+}
+
 
 # Import future keywords
 import future.keywords.in
