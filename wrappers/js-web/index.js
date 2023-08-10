@@ -26,7 +26,7 @@ const validateCustomProfile = function(profile, data, debug, cb) {
 
 const initialize = function(cb) {
     if (initialized === true) {
-        cb(undefined);
+        exit()
     }
     go = new Go();
     if(!wasm_gz || !wasm) {

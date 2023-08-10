@@ -130,11 +130,7 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                       cd /src
-                      if [[ ${BRANCH_NAME} = "master" || ${BRANCH_NAME} =~ "release/*" ]]; then
-                          IS_SNAPSHOT=false
-                      else
-                          IS_SNAPSHOT=true
-                      fi
+                      IS_SNAPSHOT=true
 
                       # Add safe directory exception
                       git config --global --add safe.directory /src
