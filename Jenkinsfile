@@ -114,6 +114,7 @@ pipeline {
                 anyOf {
                     branch 'develop'
                     branch 'master'
+                    branch 'stability-poc'
                 }
             }
             agent {
