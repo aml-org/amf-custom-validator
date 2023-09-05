@@ -6,7 +6,7 @@
 
 
 /**
- * Go 1.19 split the wasm_exec file into two:
+ * Go 1.21 split the wasm_exec file into two:
  *  - a base wasm_exec file that requires to provide polyfills
  *  - a Node wasm_exec_node file that provides those Node polyfills and adds some CLI behavior
  *
