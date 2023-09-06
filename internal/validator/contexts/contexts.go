@@ -18,6 +18,8 @@ var DefaultAMFContext = types.ObjectMap{
 	"security":    "http://a.ml/vocabularies/security#",
 	"sourcemaps":  "http://a.ml/vocabularies/document-source-maps#",
 	"apiExt":      ApiExtensionUri,
+	"gcl":         "http://anypoint.com/vocabs/gcl#",
+	"management":  "http://anypoint.com/vocabs/management#",
 }
 
 var DefaultValidationContext = types.ObjectMap{
