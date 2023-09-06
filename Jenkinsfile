@@ -114,7 +114,7 @@ pipeline {
                 anyOf {
                     branch 'develop'
                     branch 'master'
-                    branch 'bump-go'
+                    branch 'revert-go'
                 }
             }
             agent {
