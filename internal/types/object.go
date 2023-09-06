@@ -1,6 +1,6 @@
 package types
 
-type Object = any
+type Object = interface{}
 type ObjectMap = map[string]Object
 type StringMap = map[string]string
 

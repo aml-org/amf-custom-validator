@@ -13,7 +13,7 @@ func DialectInstance(report *types.ObjectMap, context *types.ObjectMap) []types.
 	return []types.ObjectMap{dialectInstance}
 }
 
-func ValidationReportNode(profileName string, results []any, conforms bool) types.ObjectMap {
+func ValidationReportNode(profileName string, results []interface{}, conforms bool) types.ObjectMap {
 	reportTypes := []string{"reportSchema:ReportNode", "shacl:ValidationReport"}
 	report := types.ObjectMap{
 		"@id":         "validation-report",

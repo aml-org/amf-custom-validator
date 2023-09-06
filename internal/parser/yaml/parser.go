@@ -36,7 +36,7 @@ func (y *Yaml) IsFound() bool {
 //
 //	     y.Get("xx").Get("yy").Int()
 //			y.Get("notPresent").IsFound()
-func (y *Yaml) Get(key any) *Yaml {
+func (y *Yaml) Get(key interface{}) *Yaml {
 	found := false
 	for _, n := range y.data.Content {
 		if found {
@@ -54,7 +54,7 @@ func (y *Yaml) Get(key any) *Yaml {
 // Example:
 //
 //	y.GetPath("bb", "cc").Int()
-func (y *Yaml) GetPath(branch ...any) *Yaml {
+func (y *Yaml) GetPath(branch ...interface{}) *Yaml {
 	yin := y
 	for _, p := range branch {
 		yin = yin.Get(p)
