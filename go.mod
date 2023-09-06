@@ -15,7 +15,6 @@ require (
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/google/flatbuffers v2.0.6+incompatible // indirect
 	github.com/klauspost/compress v1.15.6 // indirect
-	github.com/kr/pretty v0.1.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pquerna/cachecontrol v0.0.0-20180517163645-1555304b9b35 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
