@@ -7,7 +7,9 @@ const profile = fs.readFileSync(process.cwd() + "/" + args[0]).toString();
 const data = fs.readFileSync(process.cwd() + "/" + args[1]).toString();
 const debug = args[2] === 'true';
 
-validator.validate(profile, data, debug, (result, other) => {
-    console.log(result);
-    validator.exit();
-});
+validator.initialize((any) => validator.validate(profile, data, debug, (result, other) => {
+        console.log(result);
+        validator.exit();
+    })
+)
+
