@@ -44,7 +44,7 @@ RUN make ci-js
 FROM cypress/included:3.4.0 as ci-browser
 COPY --from=ci-js /src ./src
 WORKDIR ./src
-RUN ./scripts/ci-browser.sh
+RUN make ci-browser
 
 FROM ci-go AS go-coverage
 RUN make go-coverage

@@ -1,0 +1,8 @@
+{
+  "fixturesFolder": false,
+  "pluginsFile": false,
+  "supportFile": false,
+  "downloadsFolder": "cypress/downloads",
+  "video": false,
+  "screenshotOnRunFailure": false
+}
