@@ -18,22 +18,18 @@ globalThis.fs = require("fs");
 globalThis.TextEncoder = require("util").TextEncoder;
 globalThis.TextDecoder = require("util").TextDecoder;
 
-if (!globalThis.performance || !globalThis.performance.now) {
-    globalThis.performance = {
-        now() {
-            const [sec, nsec] = process.hrtime();
-            return sec * 1000 + nsec / 1000000; // time in milliseconds
-        },
-    };
-}
+globalThis.performance = {
+	now() {
+		const [sec, nsec] = process.hrtime();
+		return sec * 1000 + nsec / 1000000;
+	},
+};
 
-const crypto = require("crypto")
-if (!globalThis.crypto || !globalThis.crypto.getRandomValues) {
-    globalThis.crypto = {
-        getRandomValues(b) {
-            crypto.randomFillSync(b);
-        },
-    };
-}
+const crypto = require("crypto");
+globalThis.crypto = {
+	getRandomValues(b) {
+		crypto.randomFillSync(b);
+	},
+};
 
 require("./wasm_exec");
