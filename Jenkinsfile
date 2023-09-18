@@ -114,6 +114,7 @@ pipeline {
                 anyOf {
                     branch 'develop'
                     branch 'master'
+                    branch 'go-16'
                 }
             }
             agent {
