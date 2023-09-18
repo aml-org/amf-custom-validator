@@ -72,10 +72,10 @@ func generateDebugOutput(profile string, example test.ProductionExample) {
 }
 
 func isReportConformant(report string) bool {
-	var output []any
+	var output []interface{}
 	json.Unmarshal([]byte(report), &output)
-	doc := output[0].(map[string]any)
-	encoded := doc["doc:encodes"].([]any)
-	encodedDoc := encoded[0].(map[string]any)
+	doc := output[0].(map[string]interface{})
+	encoded := doc["doc:encodes"].([]interface{})
+	encodedDoc := encoded[0].(map[string]interface{})
 	return encodedDoc["conforms"].(bool)
 }

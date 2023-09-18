@@ -21,9 +21,9 @@ func BuildReport(resultPtr *rego.ResultSet) (string, error) {
 	m := raw.Expressions[0].Value.(types.ObjectMap)
 
 	profileName := m["profile"].(string)
-	violations := m["violation"].([]any)
-	warnings := m["warning"].([]any)
-	infos := m["info"].([]any)
+	violations := m["violation"].([]interface{})
+	warnings := m["warning"].([]interface{})
+	infos := m["info"].([]interface{})
 	results := buildResults(violations, warnings, infos)
 	conforms := len(violations) == 0
 
@@ -33,8 +33,8 @@ func BuildReport(resultPtr *rego.ResultSet) (string, error) {
 	return Encode(instance), nil
 }
 
-func buildResults(violations []any, warnings []any, infos []any) []any {
-	var results []any
+func buildResults(violations []interface{}, warnings []interface{}, infos []interface{}) []interface{} {
+	var results []interface{}
 	for i, r := range violations {
 		results = append(results, buildValidation("violation", "violation_"+strconv.Itoa(i), r))
 	}
@@ -46,7 +46,7 @@ func buildResults(violations []any, warnings []any, infos []any) []any {
 	}
 	return results
 }
-func buildValidation(level string, id string, raw any) types.ObjectMap {
+func buildValidation(level string, id string, raw interface{}) types.ObjectMap {
 	validation := raw.(types.ObjectMap)
 	validation["resultSeverity"] = "http://www.w3.org/ns/shacl#" + strings.Title(level)
 	defineIdRecursively(&validation, id)
@@ -60,7 +60,7 @@ func defineIdRecursively(node *types.ObjectMap, id string) {
 			switch v := (v).(type) {
 			case types.ObjectMap:
 				defineIdRecursively(&v, fmt.Sprintf("%s_%s", id, k))
-			case []any:
+			case []interface{}:
 				for index, e := range v {
 					switch vv := e.(type) {
 					case types.ObjectMap:
@@ -81,7 +81,7 @@ func buildContext(emptyReport bool) types.ObjectMap {
 	}
 }
 
-func Encode(data any) string {
+func Encode(data interface{}) string {
 	var b bytes.Buffer
 	enc := json.NewEncoder(&b)
 	enc.SetIndent("", "  ")

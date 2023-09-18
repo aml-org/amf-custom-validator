@@ -5,7 +5,7 @@ import (
 	"github.com/piprate/json-gold/ld"
 )
 
-func Normalize(json any) any {
+func Normalize(json interface{}) interface{} {
 	proc := ld.NewJsonLdProcessor()
 	options := ld.NewJsonLdOptions("")
 	context := make(types.ObjectMap)
@@ -17,12 +17,12 @@ func Normalize(json any) any {
 	return flattened
 }
 
-func Index(json any) any {
+func Index(json interface{}) interface{} {
 	classIndex := make(map[string][]string)
 	nodeIndex := make(types.ObjectMap)
 
 	g := json.(types.ObjectMap)["@graph"]
-	nodes := g.([]any)
+	nodes := g.([]interface{})
 
 	for _, nn := range nodes {
 		n := nn.(types.ObjectMap)
@@ -37,8 +37,8 @@ func Index(json any) any {
 			}
 			acc = append(acc, id)
 			classIndex[cc] = acc
-		case []any:
-			for _, cc := range classes.([]any) {
+		case []interface{}:
+			for _, cc := range classes.([]interface{}) {
 				c := cc.(string)
 				acc, ok := classIndex[c]
 				if !ok {
@@ -115,11 +115,11 @@ func addElementsOfLoc(node *types.ObjectMap, nodeIndex *types.ObjectMap, idToLoc
 	})
 }
 
-func handleSingleOrMultipleNodes(node *any, operation func(*types.ObjectMap)) {
+func handleSingleOrMultipleNodes(node *interface{}, operation func(*types.ObjectMap)) {
 	switch v := (*node).(type) {
 	case types.ObjectMap: // single node
 		operation(&v)
-	case []any: // array with multiple nodes
+	case []interface{}: // array with multiple nodes
 		for _, e := range v {
 			switch vv := e.(type) {
 			case types.ObjectMap:
