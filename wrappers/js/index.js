@@ -66,7 +66,7 @@ const initialize = function(cb) {
             go.run(result.instance);
             initialized = true;
             cb(undefined);
-        }).catch(rejection => console.log(rejection));
+        });
     } else {
         cb(new Error("WebAssembly is not supported in your JS environment"));
     }

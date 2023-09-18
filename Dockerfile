@@ -1,4 +1,4 @@
-FROM golang:1.19 AS ci-go
+FROM golang:1.16 AS ci-go
 # Install make
 RUN apt-get update && apt-get install make
 
@@ -41,7 +41,7 @@ COPY --from=ci-go /go/src/wrappers/js/lib/main.wasm.gz ./lib
 WORKDIR ../../
 RUN make ci-js
 
-FROM cypress/included:11.2.0 as ci-browser
+FROM cypress/included:3.4.0 as ci-browser
 COPY --from=ci-js /src ./src
 WORKDIR ./src
 RUN ./scripts/ci-browser.sh
