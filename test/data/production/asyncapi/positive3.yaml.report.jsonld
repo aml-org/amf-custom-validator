@@ -25,6 +25,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": true,
+        "dateCreated": "2000-11-28T00:00:00Z",
         "profileName": "AsyncAPI Best Practices"
       }
     ],

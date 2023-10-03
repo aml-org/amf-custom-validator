@@ -11,6 +11,14 @@ import (
 // directly to `internal.Validate` rather than `pkg.Validate`
 
 func Validate(profileText string, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
+	return ValidateWithConfiguration(profileText, jsonldText, debug, eventChan, DefaultConfiguration{})
+}
+
+func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
+	return ValidateCompiledWithConfiguration(compiledRegoPtr, jsonldText, debug, eventChan, DefaultConfiguration{})
+}
+
+func ValidateWithConfiguration(profileText string, jsonldText string, debug bool, eventChan *chan e.Event, configuration ValidationConfiguration) (string, error) {
 	// Generate and compile Rego code
 	compiledRego, err := ProcessProfile(profileText, debug, eventChan)
 
@@ -19,10 +27,10 @@ func Validate(profileText string, jsonldText string, debug bool, eventChan *chan
 		return "", err
 	}
 
-	return ValidateCompiled(compiledRego, jsonldText, debug, eventChan)
+	return ValidateCompiledWithConfiguration(compiledRego, jsonldText, debug, eventChan, configuration)
 }
 
-func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
+func ValidateCompiledWithConfiguration(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event, configuration ValidationConfiguration) (string, error) {
 	compiledRego := *compiledRegoPtr
 
 	// Normalize input
@@ -42,7 +50,7 @@ func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string
 	}
 
 	// Build report
-	report, err := processResult(validationResult, eventChan)
+	report, err := processResult(validationResult, eventChan, configuration)
 
 	if err != nil {
 		CloseEventChan(eventChan)

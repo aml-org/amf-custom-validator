@@ -80,6 +80,9 @@ var DefaultValidationContext = types.ObjectMap{
 	"conforms": types.StringMap{
 		"@id": "http://www.w3.org/ns/shacl#conforms",
 	},
+	"dateCreated": types.StringMap{
+		"@id": "http://a.ml/vocabularies/core##dateCreated",
+	},
 	"profileName": types.StringMap{
 		"@id": "http://a.ml/vocabularies/validation#profileName",
 	},
