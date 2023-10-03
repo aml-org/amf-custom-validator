@@ -28,7 +28,7 @@ func validate(profile relativePath, data relativePath) string {
 	p.GenReset()
 	profileText := read(profile)
 	dataText := read(data)
-	report, err := Validate(profileText, dataText, config.Debug, nil)
+	report, err := ValidateWithConfiguration(profileText, dataText, config.Debug, nil, TestConfiguration{})
 	if err != nil {
 		panic(err)
 	}
@@ -47,7 +47,8 @@ func write(content string, path relativePath) {
 	}
 }
 
-/**
+/*
+*
 Directory file naming convention
 Profile -> profile.yaml
 Data -> data.jsonld

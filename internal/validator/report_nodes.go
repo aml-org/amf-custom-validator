@@ -1,6 +1,9 @@
 package validator
 
-import "github.com/aml-org/amf-custom-validator/internal/types"
+import (
+	"github.com/aml-org/amf-custom-validator/internal/types"
+	"time"
+)
 
 func DialectInstance(report *types.ObjectMap, context *types.ObjectMap) []types.ObjectMap {
 	dialectInstance := types.ObjectMap{
@@ -13,13 +16,14 @@ func DialectInstance(report *types.ObjectMap, context *types.ObjectMap) []types.
 	return []types.ObjectMap{dialectInstance}
 }
 
-func ValidationReportNode(profileName string, results []any, conforms bool) types.ObjectMap {
+func ValidationReportNode(profileName string, results []any, conforms bool, dateCreated time.Time) types.ObjectMap {
 	reportTypes := []string{"reportSchema:ReportNode", "shacl:ValidationReport"}
 	report := types.ObjectMap{
 		"@id":         "validation-report",
 		"@type":       reportTypes,
 		"profileName": profileName,
 		"conforms":    conforms,
+		"dateCreated": dateCreated.Format(time.RFC3339),
 	}
 	if len(results) != 0 {
 		report["result"] = results

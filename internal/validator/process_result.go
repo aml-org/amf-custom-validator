@@ -5,9 +5,9 @@ import (
 	"github.com/open-policy-agent/opa/rego"
 )
 
-func processResult(result *rego.ResultSet, eventChan *chan e.Event) (string, error) {
+func processResult(result *rego.ResultSet, eventChan *chan e.Event, configuration ValidationConfiguration) (string, error) {
 	dispatchEvent(e.NewEvent(e.BuildReportStart), eventChan)
-	report, err := BuildReport(result)
+	report, err := BuildReport(result, configuration)
 	dispatchEvent(e.NewEvent(e.BuildReportDone), eventChan)
 	return report, err
 }
