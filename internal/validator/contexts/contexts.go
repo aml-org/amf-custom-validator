@@ -20,6 +20,8 @@ var DefaultAMFContext = types.ObjectMap{
 	"apiExt":      ApiExtensionUri,
 	"gcl":         "http://anypoint.com/vocabs/gcl#",
 	"management":  "http://anypoint.com/vocabs/management#",
+	"api":         "http://anypoint.com/vocabs/api#",
+	"catalog":     "http://anypoint.com/vocabs/digital-repository#",
 }
 
 var DefaultValidationContext = types.ObjectMap{
