@@ -19,6 +19,9 @@
       "conforms": {
         "@id": "http://www.w3.org/ns/shacl#conforms"
       },
+      "dateCreated": {
+        "@id": "http://a.ml/vocabularies/core##dateCreated"
+      },
       "doc": "http://a.ml/vocabularies/document#",
       "end": {
         "@id": "http://a.ml/vocabularies/lexical#end"
@@ -97,6 +100,7 @@
           "shacl:ValidationReport"
         ],
         "conforms": false,
+        "dateCreated": "2000-11-28T00:00:00Z",
         "profileName": "Zalando",
         "result": [
           {

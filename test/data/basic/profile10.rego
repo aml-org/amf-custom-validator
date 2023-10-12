@@ -2,6 +2,12 @@ package profile_test10
 
 report["profile"] = "Test10"
 
+# Import future keywords
+import future.keywords.in
+import future.keywords.every
+import future.keywords.if
+import future.keywords.contains
+
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {
   id := data.link["@id"]

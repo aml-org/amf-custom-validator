@@ -2,6 +2,12 @@ package profile_name_with_3_non_alphanumeric_characters_like_
 
 report["profile"] = "name with 3 non-alphanumeric characters like %, ^ & *"
 
+# Import future keywords
+import future.keywords.in
+import future.keywords.every
+import future.keywords.if
+import future.keywords.contains
+
 # Finds a node in the graph, following a link in the flatten JSON-LD node
 find = node {
   id := data.link["@id"]

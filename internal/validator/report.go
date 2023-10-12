@@ -12,7 +12,7 @@ import (
 	"strings"
 )
 
-func BuildReport(resultPtr *rego.ResultSet) (string, error) {
+func BuildReport(resultPtr *rego.ResultSet, configuration ValidationConfiguration) (string, error) {
 	result := *resultPtr
 	if len(result) == 0 {
 		return "", errors.New("empty result from evaluation")
@@ -26,9 +26,10 @@ func BuildReport(resultPtr *rego.ResultSet) (string, error) {
 	infos := m["info"].([]any)
 	results := buildResults(violations, warnings, infos)
 	conforms := len(violations) == 0
+	dateCreated := configuration.CurrentTime()
 
 	context := buildContext(len(results) == 0)
-	reportNode := ValidationReportNode(profileName, results, conforms)
+	reportNode := ValidationReportNode(profileName, results, conforms, dateCreated)
 	instance := DialectInstance(&reportNode, &context)
 	return Encode(instance), nil
 }

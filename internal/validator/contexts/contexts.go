@@ -18,6 +18,10 @@ var DefaultAMFContext = types.ObjectMap{
 	"security":    "http://a.ml/vocabularies/security#",
 	"sourcemaps":  "http://a.ml/vocabularies/document-source-maps#",
 	"apiExt":      ApiExtensionUri,
+	"gcl":         "http://anypoint.com/vocabs/gcl#",
+	"management":  "http://anypoint.com/vocabs/management#",
+	"api":         "http://anypoint.com/vocabs/api#",
+	"catalog":     "http://anypoint.com/vocabs/digital-repository#",
 }
 
 var DefaultValidationContext = types.ObjectMap{
@@ -77,6 +81,9 @@ var DefaultValidationContext = types.ObjectMap{
 	},
 	"conforms": types.StringMap{
 		"@id": "http://www.w3.org/ns/shacl#conforms",
+	},
+	"dateCreated": types.StringMap{
+		"@id": "http://a.ml/vocabularies/core##dateCreated",
 	},
 	"profileName": types.StringMap{
 		"@id": "http://a.ml/vocabularies/validation#profileName",

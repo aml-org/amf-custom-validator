@@ -1,0 +1,42 @@
+#%Validation Profile 1.0
+profile: test
+
+violation:
+  - validation1
+
+rego_extensions: |
+  import future.keywords.in
+  import future.keywords.every
+  import future.keywords.if
+  import future.keywords.contains
+  sites := []
+  containers := []
+  instances contains instance if {
+    server := sites[_].servers[_]
+    instance := {"address": server.hostname, "name": server.name}
+  }
+  instances contains instance if {
+    container := containers[_]
+    instance := {"address": container.ipaddress, "name": container.name}
+  }
+
+validations:
+
+  validation1:
+    targetClass: ex.Test
+    if:
+      propertyConstraints:
+        ex.errorCount:
+          minExclusive: 0
+    then:
+      propertyConstraints:
+        ex.someProp:
+          in: [false]
+    else:
+      propertyConstraints:
+        ex.otherProp:
+          in: [true]
+
+prefixes:
+  ex: https://github.com/aml-org/amf-custom-validator/test/data/tck/conditionals/if-then-else#
+

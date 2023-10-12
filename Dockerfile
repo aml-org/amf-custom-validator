@@ -10,8 +10,8 @@ RUN go mod tidy
 COPY . .
 RUN make ci-go
 
-FROM openjdk:8u292-jre AS ci-java
-#FROM openjdk/8u292-jdk AS ci-java
+FROM eclipse-temurin:17-focal AS ci-java
+
 # Copy content
 COPY . ./src
 WORKDIR ./src

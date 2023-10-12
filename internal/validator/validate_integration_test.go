@@ -13,7 +13,7 @@ func TestIntegrationPositiveData(t *testing.T) {
 	for _, fixture := range test.IntegrationFixtures("../../test/data/integration", &filter) {
 		prof := fixture.ReadProfile()
 		profile.GenReset()
-		report, err := Validate(prof, fixture.ReadFixturePositiveData(), config.Debug, nil)
+		report, err := ValidateWithConfiguration(prof, fixture.ReadFixturePositiveData(), config.Debug, nil, TestConfiguration{})
 
 		if err != nil {
 			t.Errorf("%s > Positive case > Failed with error %v", fixture, err)
@@ -35,7 +35,7 @@ func TestIntegrationNegativeData(t *testing.T) {
 	for _, fixture := range test.IntegrationFixtures("../../test/data/integration", &filter) {
 		prof := fixture.ReadProfile()
 		profile.GenReset()
-		report, err := Validate(prof, fixture.ReadFixtureNegativeData(), config.Debug, nil)
+		report, err := ValidateWithConfiguration(prof, fixture.ReadFixtureNegativeData(), config.Debug, nil, TestConfiguration{})
 		if err != nil {
 			t.Errorf("%s > Negative case > Failed with error %v", fixture, err)
 		}
@@ -59,7 +59,7 @@ func TestIntegrationNegativeDataWithLexical(t *testing.T) {
 
 		lexicalFixture, fixtureError := fixture.ReadFixtureNegativeDataWithLexical()
 		if fixtureError == nil {
-			report, err := Validate(prof, lexicalFixture, config.Debug, nil)
+			report, err := ValidateWithConfiguration(prof, lexicalFixture, config.Debug, nil, TestConfiguration{})
 			if err != nil {
 				t.Errorf("%s > Negative case with lexical > Failed with error %v", fixture, err)
 			}
