@@ -1,0 +1,2 @@
+custom-message[violation] :=  ∀x[Class(apiContract.WebAPI)] : 
+  rego(x,'','Violation in native Rego constraint')
