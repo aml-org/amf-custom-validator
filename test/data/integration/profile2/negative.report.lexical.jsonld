@@ -110,6 +110,39 @@
               "shacl:ValidationResult"
             ],
             "focusNode": "amf://id#5",
+            "location": {
+              "@id": "violation_0_location",
+              "@type": [
+                "lexicalSchema:LocationNode",
+                "lexical:Location"
+              ],
+              "range": {
+                "@id": "violation_0_location_range",
+                "@type": [
+                  "lexicalSchema:RangeNode",
+                  "lexical:Range"
+                ],
+                "end": {
+                  "@id": "violation_0_location_range_end",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 12,
+                  "line": 12
+                },
+                "start": {
+                  "@id": "violation_0_location_range_start",
+                  "@type": [
+                    "lexicalSchema:PositionNode",
+                    "lexical:Position"
+                  ],
+                  "column": 0,
+                  "line": 8
+                }
+              },
+              "uri": "file://./test/data/integration/profile2/negative.data.raml"
+            },
             "resultMessage": "Scalars in parameters must have minLength defined",
             "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
             "sourceShapeName": "scalar-parameters",
@@ -121,6 +154,39 @@
                   "validation:TraceMessage"
                 ],
                 "component": "nested",
+                "location": {
+                  "@id": "violation_0_0_location",
+                  "@type": [
+                    "lexicalSchema:LocationNode",
+                    "lexical:Location"
+                  ],
+                  "range": {
+                    "@id": "violation_0_0_location_range",
+                    "@type": [
+                      "lexicalSchema:RangeNode",
+                      "lexical:Range"
+                    ],
+                    "end": {
+                      "@id": "violation_0_0_location_range_end",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 12,
+                      "line": 12
+                    },
+                    "start": {
+                      "@id": "violation_0_0_location_range_start",
+                      "@type": [
+                        "lexicalSchema:PositionNode",
+                        "lexical:Position"
+                      ],
+                      "column": 0,
+                      "line": 8
+                    }
+                  },
+                  "uri": "file://./test/data/integration/profile2/negative.data.raml"
+                },
                 "resultPath": "http://a.ml/vocabularies/apiContract#parameter",
                 "traceValue": {
                   "@id": "violation_0_0_traceValue",
