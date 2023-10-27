@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install make
 # Install
 RUN make ci-java
 
-FROM node:16 AS ci-js
+FROM node:18 AS ci-js
 
 # First copy dependencies to enable Docker caching them
 COPY . ./src
