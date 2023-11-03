@@ -1,8 +1,11 @@
+//go:build js && wasm
+
 package main
 
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/validator"
 	"syscall/js"
 )
@@ -85,4 +88,5 @@ func main() {
 	f = exitWrapper(c)
 	js.Global().Set("__AMF__terminateValidator", f)
 	<-c
+	fmt.Println("EXITING MAIN")
 }
