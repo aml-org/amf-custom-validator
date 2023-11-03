@@ -2013,6 +2013,8 @@ in the `$result` variable.
 
 The code must contain a validation that holds true for all nodes in the spec being selected by the validation containing the Rego rule.
 
+Optionally, the validation message can also be set in Rego code assigning a string (or a function that resolves to a string) to the `$message` variable.
+
 The following profile writes a simple rule to check that the tags defined in an OAS API are being used in all the
 operations in the API:
 
@@ -2025,7 +2027,6 @@ violation:
   - example15
 validations:
   example15:
-    message: Operation tags should be defined in global tags.
     targetClass: apiContract.WebAPI
     rego: |
       o1 = collect with data.nodes as [$node] with data.property as "http://a.ml/vocabularies/apiContract#tag"
@@ -2036,6 +2037,7 @@ validations:
       p3 = collect with data.nodes as p2 with data.property as "http://a.ml/vocabularies/apiContract#tag"
       operation_tags = collect_values with data.nodes as p3 with data.property as "http://a.ml/vocabularies/core#name"
 
+      $message = "Operation tags should be defined in global tags."
       common_tags = operation_tags & top_level_tags
       $result = (count(common_tags) == count(top_level_tags))
 ```
