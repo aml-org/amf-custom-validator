@@ -1,8 +1,8 @@
 package main
 
-// #include <stdlib.h>
-import "C"
 import (
+	"fmt"
+	"strings"
 	"unsafe"
 )
 
@@ -17,17 +17,36 @@ func stringToPtr(s string) (uint32, uint32) {
 	return uint32(uintptr(ptr)), uint32(len(s))
 }
 
-func stringToLeakedPtr(s string) (uint32, uint32) {
-	size := C.ulong(len(s))
-	ptr := unsafe.Pointer(C.malloc(size))
-	copy(unsafe.Slice((*byte)(ptr), size), s)
-	return uint32(uintptr(ptr)), uint32(size)
+func ptrToString(ptr uint32, size uint32) string {
+	return unsafe.String((*byte)(unsafe.Pointer(uintptr(ptr))), size)
 }
 
-//export greet
-func greet(name string) {
-	message := "ASD FROM GO"
+func greetImpl(name string) {
+	message := fmt.Sprintf("Hello %s", name)
 	ptr, size := stringToPtr(message)
 	//runtime.KeepAlive(message)
 	_assignResult(ptr, size)
+}
+
+func ptrToString2(subject *uint32, size int) string {
+	var subjectStr strings.Builder
+	pointer := uintptr(unsafe.Pointer(subject))
+	for i := 0; i < size; i++ {
+		s := *(*int32)(unsafe.Pointer(pointer + uintptr(i)))
+		subjectStr.WriteByte(byte(s))
+	}
+
+	return subjectStr.String()
+}
+
+//export greet
+func greet(subject *uint32, size int) {
+	name := ptrToString2(subject, size)
+	greetImpl(name)
+}
+
+//export alloc
+func alloc(size uint32) *byte {
+	buf := make([]byte, size)
+	return &buf[0]
 }
