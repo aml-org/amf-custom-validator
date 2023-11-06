@@ -7,35 +7,61 @@ const go = new Go()
 let wasmModule, wasmInst
 
 
-async function run() {
+async function run(ruleset, data) {
     const source = fs.readFileSync("./lib/main.wasm")
 
-    let result
+    let report
 
-    function assignResult(ptr, len) {
-        console.log(`Assigning result: {ptr: ${ptr}, len: ${len}}`)
+    function assignReport(ptr, len) {
+        console.log(`Assigning report: {ptr: ${ptr}, len: ${len}}`)
         const buf = new Uint8Array(wasmInst.exports.memory.buffer, ptr, len)
-        result = new TextDecoder('utf8').decode(buf);
+        report = new TextDecoder('utf8').decode(buf);
     }
 
 
-    const env = {assignResult}
+    const env = {assignReport}
     wasmModule = await WebAssembly.compile(source)
     go.importObject.env = Object.assign(go.importObject.env, env)
     wasmInst = await WebAssembly.instantiate(wasmModule, go.importObject)
     go.run(wasmInst)
 
-    const stringParameter = "Nico";
-    const bytes = new TextEncoder("utf8").encode(stringParameter);
-    const ptr = wasmInst.exports.alloc(bytes.length);
-    const mem = new Uint8Array(
-        wasmInst.exports.memory.buffer, ptr, bytes.length
-    );
-    mem.set(new Uint8Array(bytes));
 
-    wasmInst.exports.greet(ptr, bytes.length)
-    console.log("Result")
-    console.log(result)
+    const memory = new Memory(wasmInst.exports.memory.buffer, wasmInst.exports.alloc)
+
+    const rulesetMemorySegment = memory.write(ruleset);
+    const dataMemorySegment = memory.write(ruleset);
+
+
+    wasmInst.exports.validate(rulesetMemorySegment.pointer, rulesetMemorySegment.size, dataMemorySegment.pointer, dataMemorySegment.size)
+
+    console.log(report)
+}
+
+class Memory {
+    constructor(buffer, allocate) {
+        this.buffer = buffer;
+        this.allocate = allocate;
+    }
+
+    write(string) {
+        const bytes = new TextEncoder("utf8").encode(string);
+        const size = bytes.length;
+        const startPointer = this.allocate(size);
+        const allocatedMemory = new Uint8Array(this.buffer, startPointer, size);
+        allocatedMemory.set(new Uint8Array(bytes));
+        return new MemorySegment(startPointer, size);
+    }
+}
+
+class MemorySegment {
+    /**
+     * @param pointer to the start of the memory segment
+     * @param size of the memory segment
+     */
+    constructor(pointer, size) {
+        this.pointer = pointer;
+        this.size = size;
+    }
 }
 
 

@@ -1,31 +1,28 @@
 package main
 
 import (
-	"fmt"
+	"github.com/aml-org/amf-custom-validator/internal/validator"
 	"strings"
 	"unsafe"
 )
 
 // main is required for TinyGo to compile to Wasm.
-func main() {}
+func main() {
 
-//go:wasmimport env assignResult
-func _assignResult(ptr, size uint32)
+}
+
+//go:wasmimport env assignReport
+func _assignReport(ptr, size uint32)
 
 func stringToPtr(s string) (uint32, uint32) {
 	ptr := unsafe.Pointer(unsafe.StringData(s))
 	return uint32(uintptr(ptr)), uint32(len(s))
 }
 
-func ptrToString(ptr uint32, size uint32) string {
-	return unsafe.String((*byte)(unsafe.Pointer(uintptr(ptr))), size)
-}
-
-func greetImpl(name string) {
-	message := fmt.Sprintf("Hello %s", name)
-	ptr, size := stringToPtr(message)
-	//runtime.KeepAlive(message)
-	_assignResult(ptr, size)
+func validateImpl(ruleset, data string) {
+	report, _ := validator.Validate(ruleset, data, false, nil)
+	ptr, size := stringToPtr(report)
+	_assignReport(ptr, size)
 }
 
 func ptrToString2(subject *uint32, size int) string {
@@ -39,10 +36,11 @@ func ptrToString2(subject *uint32, size int) string {
 	return subjectStr.String()
 }
 
-//export greet
-func greet(subject *uint32, size int) {
-	name := ptrToString2(subject, size)
-	greetImpl(name)
+//export validate
+func validate(rulesetPtr *uint32, rulesetSize int, dataPtr *uint32, dataSize int) {
+	ruleset := ptrToString2(rulesetPtr, rulesetSize)
+	data := ptrToString2(dataPtr, dataSize)
+	validateImpl(ruleset, data)
 }
 
 //export alloc

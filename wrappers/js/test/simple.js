@@ -16,7 +16,7 @@ describe('validator', () => {
             // const res = validator.validate(profile, data);
 
             try {
-                const run = await validator.run()
+                const run = await validator.run(profile, data)
             } catch (exception) {
                 console.error(exception)
             }
