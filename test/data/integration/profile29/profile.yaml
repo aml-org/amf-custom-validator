@@ -1,0 +1,12 @@
+#%Validation Profile 1.0
+profile: APIInstance label
+
+violation:
+  - instance-must-have-instance-label
+validations:
+  instance-must-have-instance-label:
+    message: Instance must have label
+    targetClass: management.APIInstance
+    propertyConstraints:
+      management.metadata / management.labels / management.mulesoft.com\/apiinstance-id:
+        minCount: 1

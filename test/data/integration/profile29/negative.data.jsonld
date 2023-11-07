@@ -1,0 +1,530 @@
+{
+  "@graph": [
+    {
+      "@id": "./BaseUnitProcessingData",
+      "@type": [
+        "doc:BaseUnitProcessingData"
+      ],
+      "doc:transformed": false
+    },
+    {
+      "@id": "http://project.aml#",
+      "@type": [
+        "api:Project",
+        "doc:DomainElement"
+      ],
+      "core:name": "An OAS 3.0",
+      "api:contract": {
+        "@id": "file://api.yaml#/document"
+      },
+      "api:instance": [
+        {
+          "@id": "file://instances/gcl.yaml#"
+        }
+      ],
+      "catalog:classifier": "oas",
+      "catalog:groupId": "org.mulesoft.apb.tests",
+      "catalog:assetId": "oas-module-ref",
+      "catalog:semverVersion": "1.0.0",
+      "anypoint:organizationId": "org.mulesoft.apb.tests",
+      "catalog:dependency": [
+        {
+          "@id": "./dependencies/dependencies/0"
+        },
+        {
+          "@id": "./dependencies/dependencies/1"
+        }
+      ],
+      "catalog:tags": [],
+      "api:apiVersion": "v1",
+      "api:apiId": "apiRamlId",
+      "data:projectType": "asset",
+      "catalog:contactName": "Juan Roman",
+      "catalog:contactEMail": "riquelme@salesforce.com"
+    },
+    {
+      "@id": "file://api.yaml#/document",
+      "@type": [
+        "doc:Document",
+        "doc:Fragment",
+        "doc:Module",
+        "doc:Unit"
+      ],
+      "doc:encodes": {
+        "@id": "file://api.yaml#"
+      },
+      "doc:references": [],
+      "doc:root": true,
+      "doc:processingData": {
+        "@id": "file://api.yaml#/BaseUnitProcessingData"
+      }
+    },
+    {
+      "@id": "file://instances/gcl.yaml#",
+      "@type": [
+        "management:APIInstance",
+        "doc:JsonLDObject"
+      ],
+      "management:apiVersion": "v1",
+      "management:kind": "ApiInstance",
+      "management:metadata": {
+        "@id": "file://instances/gcl.yaml#/metadata"
+      },
+      "management:spec": {
+        "@id": "file://instances/gcl.yaml#/spec"
+      }
+    },
+    {
+      "@id": "./dependencies/dependencies/0",
+      "@type": [
+        "catalog:Version",
+        "core:dependencies",
+        "data:dependencies",
+        "doc:JsonLDObject"
+      ],
+      "anypoint:scope": "design",
+      "catalog:groupId": "org.mulesoft.apb.tests",
+      "catalog:assetId": "library",
+      "catalog:semverVersion": "1.0.0"
+    },
+    {
+      "@id": "./dependencies/dependencies/1",
+      "@type": [
+        "catalog:Version",
+        "core:dependencies",
+        "data:dependencies",
+        "doc:JsonLDObject"
+      ],
+      "anypoint:scope": "management",
+      "catalog:groupId": "org.mulesoft.apb.tests",
+      "catalog:assetId": "rate-limit",
+      "catalog:semverVersion": "1.0.0"
+    },
+    {
+      "@id": "file://api.yaml#",
+      "@type": [
+        "apiContract:WebAPI",
+        "apiContract:API",
+        "doc:RootDomainElement",
+        "doc:DomainElement"
+      ],
+      "core:name": "test",
+      "core:version": "1.0",
+      "apiContract:endpoint": [
+        {
+          "@id": "file://api.yaml#/endpoint/%2Ftest"
+        }
+      ]
+    },
+    {
+      "@id": "file://api.yaml#/BaseUnitProcessingData",
+      "@type": [
+        "doc:APIContractProcessingData"
+      ],
+      "apiContract:modelVersion": "3.8.2",
+      "doc:transformed": true,
+      "doc:sourceSpec": "OAS 3.0"
+    },
+    {
+      "@id": "file://instances/gcl.yaml#/metadata",
+      "@type": [
+        "management:metadata",
+        "doc:JsonLDObject"
+      ],
+      "core:name": "products-users-api",
+      "management:labels": {
+        "@id": "file://instances/gcl.yaml#/metadata/labels"
+      },
+      "management:annotations": {
+        "@id": "file://instances/gcl.yaml#/metadata/annotations"
+      }
+    },
+    {
+      "@id": "file://instances/gcl.yaml#/spec",
+      "@type": [
+        "management:spec",
+        "doc:JsonLDObject"
+      ],
+      "management:address": "proxyUri",
+      "management:services": {
+        "@id": "file://instances/gcl.yaml#/spec/services"
+      },
+      "management:policies": [
+        {
+          "@id": "file://instances/gcl/PolicyBinding.yaml#"
+        }
+      ]
+    },
+    {
+      "@id": "file://api.yaml#/endpoint/%2Ftest",
+      "@type": [
+        "apiContract:EndPoint",
+        "doc:DomainElement"
+      ],
+      "apiContract:path": "/test",
+      "apiContract:supportedOperation": [
+        {
+          "@id": "file://api.yaml#/endpoint/%2Ftest/supportedOperation/get"
+        }
+      ]
+    },
+    {
+      "@id": "file://instances/gcl.yaml#/metadata/labels",
+      "@type": [
+        "management:labels",
+        "doc:JsonLDObject"
+      ],
+      "management:mulesoft.com/apiinstance-label": "v3",
+      "management:mulesoft.com/apiinstance-name": "assetId",
+      "management:mulesoft.com/environment-id": "ad067f80-69ee-4abb-9d05-bec98ece1e20",
+      "management:mulesoft.com/organization-id": "11111111",
+      "management:mulesoft.com/apiinstance-group-id": "1caa0b9b-4f4d-43c4-a1b6-f925a8c77baa",
+      "management:mulesoft.com/apiinstance-asset-id": "assetId",
+      "management:mulesoft.com/apiinstance-asset-name": "This is the asset name",
+      "management:mulesoft.com/apiinstance-version": "1.0.0"
+    },
+    {
+      "@id": "file://instances/gcl.yaml#/metadata/annotations",
+      "@type": [
+        "management:annotations",
+        "doc:JsonLDObject"
+      ],
+      "management:mulesoft.com/apiinstance-deprecated": false,
+      "management:mulesoft.com/apiinstance-deployment-target": "CH",
+      "management:mulesoft.com/apiinstance-deployment-runtime-version": "4.4.0",
+      "management:mulesoft.com/apiinstance-deployment-technology": "flexGateway"
+    },
+    {
+      "@id": "file://instances/gcl.yaml#/spec/services",
+      "@type": [
+        "management:services",
+        "doc:JsonLDObject"
+      ],
+      "management:products": {
+        "@id": "file://instances/gcl.yaml#/spec/services/products"
+      }
+    },
+    {
+      "@id": "file://instances/gcl/PolicyBinding.yaml#",
+      "@type": [
+        "management:PolicyBinding",
+        "doc:JsonLDObject"
+      ],
+      "management:apiVersion": "v1",
+      "management:kind": "PolicyBinding",
+      "management:metadata": {
+        "@id": "file://instances/gcl/PolicyBinding.yaml#/metadata"
+      },
+      "management:spec": {
+        "@id": "file://instances/gcl/PolicyBinding.yaml#/spec"
+      }
+    },
+    {
+      "@id": "file://api.yaml#/endpoint/%2Ftest/supportedOperation/get",
+      "@type": [
+        "apiContract:Operation",
+        "core:Operation",
+        "doc:DomainElement"
+      ],
+      "apiContract:method": "get",
+      "core:description": "Some endpoint description",
+      "apiContract:returns": []
+    },
+    {
+      "@id": "file://instances/gcl.yaml#/spec/services/products",
+      "@type": [
+        "management:products",
+        "doc:JsonLDObject"
+      ],
+      "management:address": "implementationUri",
+      "management:routes": [
+        {
+          "@id": "file://instances/gcl.yaml#/spec/services/products/routes/0"
+        }
+      ]
+    },
+    {
+      "@id": "file://instances/gcl/PolicyBinding.yaml#/metadata",
+      "@type": [
+        "management:metadata",
+        "doc:JsonLDObject"
+      ],
+      "core:name": "definitionAssetId-definition-groupId-definitionAssetVersion-applicationTimestamp",
+      "management:namespace": "organizationId",
+      "management:annotations": {
+        "@id": "file://instances/gcl/PolicyBinding.yaml#/metadata/annotations"
+      }
+    },
+    {
+      "@id": "file://instances/gcl/PolicyBinding.yaml#/spec",
+      "@type": [
+        "management:spec",
+        "doc:JsonLDObject"
+      ],
+      "management:config": {
+        "@id": "file://instances/gcl/PolicyBinding.yaml#/spec/config"
+      },
+      "management:definition": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/"
+      },
+      "management:order": 0
+    },
+    {
+      "@id": "file://instances/gcl.yaml#/spec/services/products/routes/0",
+      "@type": [
+        "management:routes",
+        "doc:JsonLDObject"
+      ],
+      "management:rules": [
+        {
+          "@id": "file://instances/gcl.yaml#/spec/services/products/routes/0/rules/0"
+        }
+      ],
+      "management:config": {
+        "@id": "file://instances/gcl.yaml#/spec/services/products/routes/0/config"
+      }
+    },
+    {
+      "@id": "file://instances/gcl/PolicyBinding.yaml#/metadata/annotations",
+      "@type": [
+        "management:annotations",
+        "doc:JsonLDObject"
+      ],
+      "management:mulesoft.com/definition-groupId": "1caa0b9b-4f4d-43c4-a1b6-f925a8c77baa",
+      "management:mulesoft.com/definition-assetId": "rate-limiting",
+      "management:mulesoft.com/definition-version": "1.0.0",
+      "management:mulesoft.com/implementation-groupId": "1caa0b9b-4f4d-43c4-a1b6-f925a8c77baa",
+      "management:mulesoft.com/implementation-assetId": "rate-limiting-implementation",
+      "management:mulesoft.com/implementation-version": "1.0.0"
+    },
+    {
+      "@id": "file://instances/gcl/PolicyBinding.yaml#/spec/config",
+      "@type": [
+        "management:config",
+        "doc:JsonLDObject"
+      ],
+      "management:some": "value1",
+      "management:custom": "value2",
+      "management:props": "value3"
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/",
+      "@type": [
+        "management:Extension",
+        "doc:JsonLDObject"
+      ],
+      "management:apiVersion": "gateway.mulesoft.com/v1alpha1",
+      "management:kind": "Extension",
+      "management:metadata": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/metadata"
+      },
+      "management:spec": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec"
+      }
+    },
+    {
+      "@id": "file://instances/gcl.yaml#/spec/services/products/routes/0/rules/0",
+      "@type": [
+        "management:rules",
+        "doc:JsonLDObject"
+      ],
+      "management:path": ".*"
+    },
+    {
+      "@id": "file://instances/gcl.yaml#/spec/services/products/routes/0/config",
+      "@type": [
+        "management:config",
+        "doc:JsonLDObject"
+      ],
+      "management:destinationPath": "/api"
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/metadata",
+      "@type": [
+        "management:metadata",
+        "doc:JsonLDObject"
+      ],
+      "management:labels": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/metadata/labels"
+      },
+      "core:name": "rate-limit-V1.0"
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec",
+      "@type": [
+        "management:PolicySchema",
+        "doc:JsonLDObject"
+      ],
+      "management:extends": [
+        {
+          "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/extends/0"
+        }
+      ],
+      "management:properties": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties"
+      },
+      "management:required": [
+        "rateLimits",
+        "exposeHeaders",
+        "clusterizable"
+      ]
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/metadata/labels",
+      "@type": [
+        "management:labels",
+        "doc:JsonLDObject"
+      ],
+      "core:name": "rate-limit",
+      "management:mulesoft.com/groupId": "org.mulesoft.apb.tests",
+      "management:mulesoft.com/assetId": "rate-limit",
+      "management:mulesoft.com/version": "1.0.0"
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/extends/0",
+      "@type": [
+        "management:extends",
+        "doc:JsonLDObject"
+      ],
+      "core:name": "extension-definition"
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties",
+      "@type": [
+        "management:properties",
+        "doc:JsonLDObject"
+      ],
+      "management:keySelector": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/keySelector"
+      },
+      "management:rateLimits": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/rateLimits"
+      },
+      "management:exposeHeaders": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/exposeHeaders"
+      },
+      "management:clusterizable": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/clusterizable"
+      }
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/keySelector",
+      "@type": [
+        "management:keySelector",
+        "doc:JsonLDObject"
+      ],
+      "management:type": "string",
+      "management:format": "dataweave"
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/rateLimits",
+      "@type": [
+        "management:rateLimits",
+        "doc:JsonLDObject"
+      ],
+      "management:type": "array",
+      "management:items": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/rateLimits/items"
+      }
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/exposeHeaders",
+      "@type": [
+        "management:exposeHeaders",
+        "doc:JsonLDObject"
+      ],
+      "management:type": "boolean",
+      "management:default": false
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/clusterizable",
+      "@type": [
+        "management:clusterizable",
+        "doc:JsonLDObject"
+      ],
+      "management:type": "boolean",
+      "management:default": true
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/rateLimits/items",
+      "@type": [
+        "management:items",
+        "doc:JsonLDObject"
+      ],
+      "management:type": "object",
+      "management:properties": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/rateLimits/items/properties"
+      },
+      "management:required": [
+        "timePeriodInMilliseconds",
+        "maximumRequests"
+      ]
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/rateLimits/items/properties",
+      "@type": [
+        "management:properties",
+        "doc:JsonLDObject"
+      ],
+      "management:timePeriodInMilliseconds": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/rateLimits/items/properties/timePeriodInMilliseconds"
+      },
+      "management:maximumRequests": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/rateLimits/items/properties/maximumRequests"
+      },
+      "management:unit": {
+        "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/rateLimits/items/properties/unit"
+      }
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/rateLimits/items/properties/timePeriodInMilliseconds",
+      "@type": [
+        "management:timePeriodInMilliseconds",
+        "doc:JsonLDObject"
+      ],
+      "management:type": "number"
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/rateLimits/items/properties/maximumRequests",
+      "@type": [
+        "management:maximumRequests",
+        "doc:JsonLDObject"
+      ],
+      "management:type": "number"
+    },
+    {
+      "@id": "file://gcl-instance/0.yaml/org.mulesoft.apb.tests/rate-limit/1.0.0/#/encodes/spec/properties/rateLimits/items/properties/unit",
+      "@type": [
+        "management:unit",
+        "doc:JsonLDObject"
+      ],
+      "management:type": "string"
+    },
+    {
+      "@id": "",
+      "@type": [
+        "doc:ProjectDocument",
+        "doc:Fragment",
+        "doc:Unit"
+      ],
+      "doc:encodes": {
+        "@id": "http://project.aml#"
+      },
+      "doc:root": false,
+      "doc:processingData": {
+        "@id": "./BaseUnitProcessingData"
+      }
+    }
+  ],
+  "@context": {
+    "@base": "http://project.aml#/document",
+    "management": "http://anypoint.com/vocabs/management#",
+    "data": "http://a.ml/vocabularies/data#",
+    "doc": "http://a.ml/vocabularies/document#",
+    "apiContract": "http://a.ml/vocabularies/apiContract#",
+    "core": "http://a.ml/vocabularies/core#",
+    "anypoint": "http://anypoint.com/vocabs/anypoint#",
+    "api": "http://anypoint.com/vocabs/api#",
+    "catalog": "http://anypoint.com/vocabs/digital-repository#"
+  }
+}
