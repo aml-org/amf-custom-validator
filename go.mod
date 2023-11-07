@@ -27,3 +27,5 @@ require (
 )
 
 replace github.com/rcrowley/go-metrics => ./build/replacements/github.com/rcrowley/go-metrics
+
+replace github.com/open-policy-agent/opa => ../opa-fork
