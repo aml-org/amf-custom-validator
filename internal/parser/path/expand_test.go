@@ -45,6 +45,25 @@ func TestANDExpanded(t *testing.T) {
 	testExpandedPath(source, expected, t)
 }
 
+func TestManagementExpanded(t *testing.T) {
+	source := "management.labels"
+	expected := "http://anypoint.com/vocabs/management#labels"
+	testExpandedPath(source, expected, t)
+}
+
+
+func TestDOTExpanded(t *testing.T) {
+	source := "management.mulesoft.com"
+	expected := "http://anypoint.com/vocabs/management#mulesoft.com"
+	testExpandedPath(source, expected, t)
+}
+
+func TestSlashExpanded(t *testing.T) {
+	source := "management.mulesoft.com\\/apiinstance-id"
+	expected := "http://anypoint.com/vocabs/management#mulesoft.com/apiinstance-id"
+	testExpandedPath(source, expected, t)
+}
+
 func TestORExpanded(t *testing.T) {
 	source := "shacl.schema | core.name"
 	expected := "http://www.w3.org/ns/shacl#schema | http://a.ml/vocabularies/core#name"

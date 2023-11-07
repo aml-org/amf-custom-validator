@@ -15,7 +15,7 @@ type IriExpander struct {
 
 func (i *IriExpander) Expand(iri string) (string, error) {
 	isReservedKeyword := strings.HasPrefix(iri, "@")
-	compactForm := regexp.MustCompile("^[a-zA-Z-0-9\\-]+\\.[a-zA-Z-0-9\\-]+$")
+	compactForm := regexp.MustCompile("^[a-zA-Z-0-9\\-]+\\.[\\.(\\\\/)a-zA-Z-0-9\\-]+$")
 	isCompact := compactForm.MatchString(iri)
 
 	if isCompact {
@@ -28,10 +28,9 @@ func (i *IriExpander) Expand(iri string) (string, error) {
 }
 
 func (i *IriExpander) expandCompactIri(iri string) (string, error) {
-	split := strings.Split(iri, ".")
+	split := strings.SplitN(iri, ".", 2)
 	prefix := split[0]
-	suffix := split[1]
-
+	suffix := strings.ReplaceAll(split[1], "\\/", "/")
 	switch e := i.Context[prefix].(type) {
 	case string:
 		return e + suffix, nil
