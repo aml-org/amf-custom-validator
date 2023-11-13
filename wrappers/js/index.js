@@ -6,7 +6,9 @@ require("./lib/wasm_exec");
 const go = new Go()
 let wasmModule, wasmInst
 
-
+function removeWhiteSpace(string) {
+    return string.replace(/[ \n\t]/g,'')
+}
 async function run(ruleset, data) {
     const source = fs.readFileSync("./lib/main.wasm")
 
@@ -29,8 +31,7 @@ async function run(ruleset, data) {
     const memory = new Memory(wasmInst.exports.memory.buffer, wasmInst.exports.alloc)
 
     const rulesetMemorySegment = memory.write(ruleset);
-    const dataMemorySegment = memory.write(ruleset);
-
+    const dataMemorySegment = memory.write(removeWhiteSpace(data));
 
     wasmInst.exports.validate(rulesetMemorySegment.pointer, rulesetMemorySegment.size, dataMemorySegment.pointer, dataMemorySegment.size)
 
