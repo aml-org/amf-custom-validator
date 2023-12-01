@@ -1,0 +1,16 @@
+#%Validation Profile 1.0
+
+profile: Test28
+
+violation:
+  - custom-message
+
+validations:
+  custom-message:
+    message: should have version, message in yaml
+    targetClass: apiContract.WebAPI
+    rego: |
+      # custom message in rego code
+      version = object.get($node, "http://a.ml/vocabularies/core#version", null)
+      $message = "should have version, message in custom rego code"
+      $result = (version != null)
