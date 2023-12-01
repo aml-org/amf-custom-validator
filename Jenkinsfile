@@ -114,6 +114,7 @@ pipeline {
                 anyOf {
                     branch 'develop'
                     branch 'master'
+                    branch 'merge-from-master'
                 }
             }
             agent {
@@ -130,11 +131,7 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                       cd /src
-                      if [[ ${BRANCH_NAME} = "master" || ${BRANCH_NAME} =~ "release/*" ]]; then
-                          IS_SNAPSHOT=false
-                      else
-                          IS_SNAPSHOT=true
-                      fi
+                      IS_SNAPSHOT=false
 
                       # Add safe directory exception
                       git config --global --add safe.directory /src
@@ -151,13 +148,13 @@ pipeline {
                           npm-snapshot $BUILD_NUMBER
                       fi
                       VERSION=$(node -pe "require('./package.json').version")
-                      npm publish --access public
+                      npm publish --access public --tag test
 
                       cd ../js-web
                       if [ "$IS_SNAPSHOT" = true ]; then
                           npm-snapshot $BUILD_NUMBER
                       fi
-                      npm publish --access public
+                      npm publish --access public --tag test
 
                       if [ "$IS_SNAPSHOT" = true ]; then
                           npm dist-tag add @aml-org/amf-custom-validator-web@${VERSION} snapshot
