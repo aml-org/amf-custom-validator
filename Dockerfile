@@ -41,7 +41,7 @@ COPY --from=ci-go /go/src/wrappers/js/lib/main.wasm.gz ./lib
 WORKDIR ../../
 RUN make ci-js
 
-FROM cypress/included:11.2.0 as ci-browser
+FROM cypress/included:13.6.1 as ci-browser
 COPY --from=ci-js /src ./src
 WORKDIR ./src
 RUN ./scripts/ci-browser.sh

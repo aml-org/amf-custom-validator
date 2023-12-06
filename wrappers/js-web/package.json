@@ -11,7 +11,7 @@
   "author": "Antonio Garrote",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.13.0",
+    "cypress": "^13.6.1",
     "express": "^4.18.2",
     "mocha": "^10.2.0",
     "nodemon": "^2.0.22",
