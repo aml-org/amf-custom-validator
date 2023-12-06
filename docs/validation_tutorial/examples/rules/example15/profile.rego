@@ -262,8 +262,9 @@ violation[matches] {
   
   common_tags = operation_tags & top_level_tags
   gen_rego_result_2 = (count(common_tags) == count(top_level_tags))
-  
+
+  message = "Operation tags should be defined in global tags."
   gen_rego_result_2 != true
   _result_0 := trace("rego","",x,{"@type": ["reportSchema:TraceValueNode", "validation:TraceValue"], "negated":false})
-  matches := error("example15",x,"Operation tags should be defined in global tags.",[_result_0])
+  matches := error("example15",x,message,[_result_0])
 }
