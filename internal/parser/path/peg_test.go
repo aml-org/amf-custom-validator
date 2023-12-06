@@ -5,20 +5,50 @@ import (
 )
 
 func TestPEGProperty(t *testing.T) {
-	parsed, err := Parse("property", []byte("core.name"))
+	parsed, err := Parse("property", []byte("core.mulesoft.com"))
 	if err != nil {
 		t.Errorf("Exception parsing %s", err)
 	}
 	switch v := parsed.(type) {
 	case IRI:
-		if v.Value != "core.name" {
-			t.Errorf("expected IRI 'core.name' got %s", v.Value)
+		if v.Value != "core.mulesoft.com" {
+			t.Errorf("expected IRI 'core.mulesoft.com' got %s", v.Value)
 		}
 		if v.Transitive {
 			t.Errorf("expected non-transitive IRI")
 		}
 		if v.Inverse {
 			t.Errorf("expected non-inverse IRI")
+		}
+	default:
+		t.Errorf("expected IRI got %v", v)
+	}
+}
+
+func TestPEGPropertyWithSlash(t *testing.T) {
+	parsed, err := Parse("property", []byte("core.mulesoft\\/a"))
+	if err != nil {
+		t.Errorf("Exception parsing %s", err)
+	}
+	switch v := parsed.(type) {
+	case IRI:
+		if v.Value != "core.mulesoft\\/a" {
+			t.Errorf("expected IRI 'core.mulesoft/a' got %s", v.Value)
+		}
+	default:
+		t.Errorf("expected IRI got %v", v)
+	}
+}
+
+func TestPEGPropertyWithSlashAndDot(t *testing.T) {
+	parsed, err := Parse("property", []byte("core.mulesoft.com\\/label"))
+	if err != nil {
+		t.Errorf("Exception parsing %s", err)
+	}
+	switch v := parsed.(type) {
+	case IRI:
+		if v.Value != "core.mulesoft.com\\/label" {
+			t.Errorf("expected IRI 'core.mulesoft/a' got %s", v.Value)
 		}
 	default:
 		t.Errorf("expected IRI got %v", v)
@@ -117,6 +147,22 @@ func TestPEGPropertyComplex(t *testing.T) {
 	switch v := parsed.(type) {
 	case AND:
 		// correct
+	default:
+		t.Errorf("expected OR got %v", v)
+	}
+}
+
+func TestANDWithSlash(t *testing.T) {
+	parsed, err := Parse("property", []byte("apiContract.expects / apiContract.operation\\/get"))
+	if err != nil {
+		t.Errorf("Exception parsing %s", err)
+	}
+	switch v := parsed.(type) {
+	case AND:
+		if len(v.body) != 2 {
+			t.Errorf("expected 2 arguments in OR, got %d", len(v.body))
+		}
+
 	default:
 		t.Errorf("expected OR got %v", v)
 	}

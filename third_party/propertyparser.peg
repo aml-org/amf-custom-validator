@@ -92,7 +92,7 @@ Factor
     return res,nil
   }
 
-Iri "iri" <- ns:[a-zA-Z0-9_-]+ "." prop:[a-zA-Z0-9_-]+ _ mod:["^","*"]? {
+Iri "iri" <- ns:[a-zA-Z0-9_-]+ "." prop:[.\\/a-zA-Z0-9_-]+ _ mod:["^","*"]? {
 
    iri := eval(ns) + "." + eval(prop)
    res := IRI{
