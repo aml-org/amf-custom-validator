@@ -83,7 +83,7 @@ var DefaultValidationContext = types.ObjectMap{
 		"@id": "http://www.w3.org/ns/shacl#conforms",
 	},
 	"dateCreated": types.StringMap{
-		"@id": "http://a.ml/vocabularies/core##dateCreated",
+		"@id": "http://a.ml/vocabularies/core#dateCreated",
 	},
 	"profileName": types.StringMap{
 		"@id": "http://a.ml/vocabularies/validation#profileName",
@@ -120,4 +120,10 @@ var ConformsContext = types.ObjectMap{
 	"doc":          "http://a.ml/vocabularies/document#",
 	"reportSchema": reportPath,
 	"meta":         "http://a.ml/vocabularies/meta#",
+	"dateCreated": types.StringMap{
+		"@id": "http://a.ml/vocabularies/core#dateCreated",
+	},
+	"profileName": types.StringMap{
+		"@id": "http://a.ml/vocabularies/validation#profileName",
+	},
 }
