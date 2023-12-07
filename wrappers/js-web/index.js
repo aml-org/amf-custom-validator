@@ -1,4 +1,5 @@
-require("/lib/wasm_exec_node");
+require("/lib/polyfills");
+require("../js/lib/wasm_exec");
 let wasm_gz = require("../js/lib/main.wasm.gz")
 const pako = require("pako");
 const Buffer = require("buffer").Buffer;
@@ -6,6 +7,13 @@ const Buffer = require("buffer").Buffer;
 let initialized = false
 let go = undefined;
 let wasm;
+
+const clearTimeouts = function() {
+    go._scheduledTimeouts.forEach((value, key, map) => {
+        clearTimeout(value);
+        go._scheduledTimeouts.delete(key);
+    })
+}
 
 const run = function(profile, data, debug) {
     let before = new Date()
@@ -46,6 +54,7 @@ const initialize = function(cb) {
 
 const exit = function() {
     if(initialized) {
+        clearTimeouts()
         __AMF__terminateValidator()
         go.exit(0)
         initialized = false;

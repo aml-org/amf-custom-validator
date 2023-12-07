@@ -1,4 +1,5 @@
-require(__dirname + "/lib/wasm_exec_node");
+require(__dirname + "/lib/polyfills");
+require(__dirname + "/lib/wasm_exec");
 const fs = require("fs");
 const pako = require("pako");
 let wasm_gz
@@ -6,6 +7,13 @@ let wasm
 
 let initialized = false
 let go = undefined;
+
+const clearTimeouts = function() {
+    go._scheduledTimeouts.forEach((value, key, map) => {
+        clearTimeout(value);
+        go._scheduledTimeouts.delete(key);
+    })
+}
 
 const run = function(profile, data, debug) {
     let before = new Date()
@@ -74,6 +82,7 @@ const initialize = function(cb) {
 
 const exit = function() {
     if(initialized) {
+        clearTimeouts() // need to add this because some timeouts are triggered after Go program finished
         __AMF__terminateValidator()
         go.exit(0)
         initialized = false;
