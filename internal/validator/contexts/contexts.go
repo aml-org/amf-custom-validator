@@ -123,4 +123,7 @@ var ConformsContext = types.ObjectMap{
 	"dateCreated": types.StringMap{
 		"@id": "http://a.ml/vocabularies/core#dateCreated",
 	},
+	"profileName": types.StringMap{
+		"@id": "http://a.ml/vocabularies/validation#profileName",
+	},
 }

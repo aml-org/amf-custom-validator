@@ -9,6 +9,9 @@
       },
       "doc": "http://a.ml/vocabularies/document#",
       "meta": "http://a.ml/vocabularies/meta#",
+      "profileName": {
+        "@id": "http://a.ml/vocabularies/validation#profileName"
+      },
       "reportSchema": "file:///dialects/validation-report.yaml#/declarations/",
       "shacl": "http://www.w3.org/ns/shacl#"
     },
