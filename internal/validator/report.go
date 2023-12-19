@@ -6,13 +6,14 @@ import (
 	"errors"
 	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/types"
+	"github.com/aml-org/amf-custom-validator/internal/validator/config"
 	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
 	"github.com/open-policy-agent/opa/rego"
 	"strconv"
 	"strings"
 )
 
-func BuildReport(resultPtr *rego.ResultSet, validationConfig ValidationConfiguration, reportConfig ReportConfiguration) (string, error) {
+func BuildReport(resultPtr *rego.ResultSet, validationConfig config.ValidationConfiguration, reportConfig config.ReportConfiguration) (string, error) {
 	result := *resultPtr
 	if len(result) == 0 {
 		return "", errors.New("empty result from evaluation")

@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"github.com/aml-org/amf-custom-validator/internal/validator"
+	"github.com/aml-org/amf-custom-validator/internal/validator/config"
 	"syscall/js"
 )
 
@@ -38,7 +39,7 @@ func validateWithConfigurationWrapper() js.Func {
 			return "ValidationConfiguration not yet supported, please set this parameter as 'undefined'. ValidationConfiguration needs to import functions from JS which is not supported by Go 1.19"
 		}
 		reportConfig := buildReportConfiguration(args[4])
-		res, err := validator.ValidateWithConfiguration(profileString, dataString, debug, nil, validator.DefaultValidationConfiguration{}, reportConfig)
+		res, err := validator.ValidateWithConfiguration(profileString, dataString, debug, nil, config.DefaultValidationConfiguration{}, reportConfig)
 		if err != nil {
 			return err.Error()
 		}
@@ -47,9 +48,9 @@ func validateWithConfigurationWrapper() js.Func {
 	return jsonFunc
 }
 
-func buildReportConfiguration(value js.Value) validator.ReportConfiguration {
+func buildReportConfiguration(value js.Value) config.ReportConfiguration {
 	includeReportCreationTime := value.Get("IncludeReportCreationTime").Bool()
-	return validator.ReportConfiguration{
+	return config.ReportConfiguration{
 		IncludeReportCreationTime: includeReportCreationTime,
 	}
 }

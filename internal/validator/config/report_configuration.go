@@ -1,4 +1,4 @@
-package validator
+package config
 
 type ReportConfiguration struct {
 	IncludeReportCreationTime bool
