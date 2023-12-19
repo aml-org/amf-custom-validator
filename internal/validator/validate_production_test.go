@@ -18,7 +18,7 @@ func TestProduction(t *testing.T) {
 		for _, example := range fixture.Examples() {
 			filter := "" // put the number of the text to filter here
 			if strings.Index(example.File, filter) > -1 {
-				report, err := ValidateWithConfiguration(profile, example.Text, config.Debug, nil, TestValidationConfiguration{})
+				report, err := ValidateWithConfiguration(profile, example.Text, config.Debug, nil, TestValidationConfiguration{}, DefaultReportConfiguration())
 				if config.Debug {
 					generateDebugOutput(profile, example)
 				}
