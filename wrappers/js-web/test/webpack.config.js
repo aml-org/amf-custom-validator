@@ -33,6 +33,7 @@ config.module.rules.push(
 config.entry = {
     simple: path.join(__dirname, 'src/simple.js'),
     double: path.join(__dirname, 'src/double.js'),
+    withConfiguration: path.join(__dirname, 'src/withConfiguration.js'),
     messageExpression: path.join(__dirname, 'src/messageExpression.js')
 }
 

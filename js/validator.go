@@ -1,3 +1,5 @@
+//go:build js && wasm
+
 package main
 
 import (
@@ -22,6 +24,34 @@ func validateWrapper() js.Func {
 		return res
 	})
 	return jsonFunc
+}
+
+func validateWithConfigurationWrapper() js.Func {
+	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) any {
+		if len(args) != 5 {
+			return "Invalid no of arguments passed"
+		}
+		profileString := args[0].String()
+		dataString := args[1].String()
+		debug := args[2].Bool()
+		if !args[3].IsUndefined() {
+			return "ValidationConfiguration not yet supported, please set this parameter as 'undefined'. ValidationConfiguration needs to import functions from JS which is not supported by Go 1.19"
+		}
+		reportConfig := buildReportConfiguration(args[4])
+		res, err := validator.ValidateWithConfiguration(profileString, dataString, debug, nil, validator.DefaultValidationConfiguration{}, reportConfig)
+		if err != nil {
+			return err.Error()
+		}
+		return res
+	})
+	return jsonFunc
+}
+
+func buildReportConfiguration(value js.Value) validator.ReportConfiguration {
+	includeReportCreationTime := value.Get("IncludeReportCreationTime").Bool()
+	return validator.ReportConfiguration{
+		IncludeReportCreationTime: includeReportCreationTime,
+	}
 }
 
 func genRegoWrapper() js.Func {
@@ -75,6 +105,9 @@ func main() {
 	// validate
 	f := validateWrapper()
 	js.Global().Set("__AMF__validateCustomProfile", f)
+	// validate with configuration
+	f = validateWithConfigurationWrapper()
+	js.Global().Set("__AMF__validateCustomProfileWithConfiguration", f)
 	// gen rego
 	f = genRegoWrapper()
 	js.Global().Set("__AMF__generateRego", f)

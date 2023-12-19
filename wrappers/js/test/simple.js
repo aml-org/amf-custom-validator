@@ -93,4 +93,28 @@ describe('validator', () => {
             })
         });
     })
+
+    describe('validate with configuration', () => {
+
+        it("must match expected report output", (done) => {
+            const profile = fs.readFileSync(__dirname + "/../../../test/data/integration/profile26/profile.yaml").toString()
+            const data = fs.readFileSync(__dirname + "/../../../test/data/integration/profile26/negative.data.jsonld").toString()
+            const validator = require(__dirname + "/../index")
+            validator.initialize(() => {
+                const reportConfig = {
+                    "IncludeReportCreationTime": false
+                }
+                validator.validateWithReportConfiguration(profile, data, false, reportConfig, (r, err) => {
+                    if (err) {
+                        done(err);
+                    } else {
+                        let report = JSON.parse(r)
+                        assert.ok(report[0]["doc:encodes"][0]["dateCreated"] === undefined)
+                        validator.exit();
+                        done();
+                    }
+                });
+            })
+        });
+    })
 })
