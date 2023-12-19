@@ -11,14 +11,14 @@ import (
 // directly to `internal.Validate` rather than `pkg.Validate`
 
 func Validate(profileText string, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
-	return ValidateWithConfiguration(profileText, jsonldText, debug, eventChan, DefaultConfiguration{})
+	return ValidateWithConfiguration(profileText, jsonldText, debug, eventChan, DefaultValidationConfiguration{})
 }
 
 func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
-	return ValidateCompiledWithConfiguration(compiledRegoPtr, jsonldText, debug, eventChan, DefaultConfiguration{})
+	return ValidateCompiledWithConfiguration(compiledRegoPtr, jsonldText, debug, eventChan, DefaultValidationConfiguration{})
 }
 
-func ValidateWithConfiguration(profileText string, jsonldText string, debug bool, eventChan *chan e.Event, configuration ValidationConfiguration) (string, error) {
+func ValidateWithConfiguration(profileText string, jsonldText string, debug bool, eventChan *chan e.Event, validationConfig ValidationConfiguration) (string, error) {
 	// Generate and compile Rego code
 	compiledRego, err := ProcessProfile(profileText, debug, eventChan)
 
@@ -27,10 +27,10 @@ func ValidateWithConfiguration(profileText string, jsonldText string, debug bool
 		return "", err
 	}
 
-	return ValidateCompiledWithConfiguration(compiledRego, jsonldText, debug, eventChan, configuration)
+	return ValidateCompiledWithConfiguration(compiledRego, jsonldText, debug, eventChan, validationConfig)
 }
 
-func ValidateCompiledWithConfiguration(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event, configuration ValidationConfiguration) (string, error) {
+func ValidateCompiledWithConfiguration(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event, validationConfig ValidationConfiguration) (string, error) {
 	compiledRego := *compiledRegoPtr
 
 	// Normalize input
@@ -50,7 +50,7 @@ func ValidateCompiledWithConfiguration(compiledRegoPtr *rego.PreparedEvalQuery, 
 	}
 
 	// Build report
-	report, err := processResult(validationResult, eventChan, configuration)
+	report, err := processResult(validationResult, eventChan, validationConfig)
 
 	if err != nil {
 		CloseEventChan(eventChan)

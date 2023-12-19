@@ -28,7 +28,7 @@ func validate(profile relativePath, data relativePath) string {
 	p.GenReset()
 	profileText := read(profile)
 	dataText := read(data)
-	report, err := ValidateWithConfiguration(profileText, dataText, config.Debug, nil, TestConfiguration{})
+	report, err := ValidateWithConfiguration(profileText, dataText, config.Debug, nil, TestValidationConfiguration{})
 	if err != nil {
 		panic(err)
 	}

@@ -3,17 +3,17 @@ package validator
 import "time"
 
 type ValidationConfiguration interface {
-	CurrentTime() time.Time
+	ReportCreationTime() time.Time
 }
 
-type DefaultConfiguration struct{}
+type DefaultValidationConfiguration struct{}
 
-func (d DefaultConfiguration) CurrentTime() time.Time {
+func (d DefaultValidationConfiguration) ReportCreationTime() time.Time {
 	return time.Now()
 }
 
-type TestConfiguration struct{}
+type TestValidationConfiguration struct{}
 
-func (d TestConfiguration) CurrentTime() time.Time {
+func (d TestValidationConfiguration) ReportCreationTime() time.Time {
 	return time.Date(2000, time.November, 28, 0, 0, 0, 0, time.UTC)
 }
