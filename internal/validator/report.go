@@ -28,7 +28,7 @@ func BuildReport(resultPtr *rego.ResultSet, validationConfig config.ValidationCo
 	results := buildResults(violations, warnings, infos)
 	conforms := len(violations) == 0
 
-	context := buildContext(len(results) == 0)
+	context := buildContext(len(results) == 0, reportConfig)
 	reportNode := ValidationReportNode(profileName, results, conforms, validationConfig, reportConfig)
 	instance := DialectInstance(&reportNode, &context)
 	return Encode(instance), nil
@@ -74,11 +74,11 @@ func defineIdRecursively(node *types.ObjectMap, id string) {
 	}
 }
 
-func buildContext(emptyReport bool) types.ObjectMap {
+func buildContext(emptyReport bool, reportConfig config.ReportConfiguration) types.ObjectMap {
 	if emptyReport {
-		return contexts.ConformsContext
+		return contexts.ConformsContext(reportConfig)
 	} else {
-		return contexts.DefaultValidationContext
+		return contexts.DefaultValidationContext(reportConfig)
 	}
 }
 

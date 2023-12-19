@@ -7,7 +7,9 @@ const validator = require("../../dist/main")
 function run() {
     validator.initialize(() => {
         const reportConfig = {
-            "IncludeReportCreationTime": false
+            "IncludeReportCreationTime": false,
+            "ReportSchemaIri": "http://a.ml/report",
+            "LexicalSchemaIri": "http://a.ml/lexical"
         }
         validator.validateWithReportConfiguration(profile, data.toString(), false, reportConfig, (r, err) => {
             if (err) {
@@ -16,11 +18,17 @@ function run() {
                 let element = document.getElementById('report');
                 let report = JSON.parse(r)
                 let dateCreated = element.textContent = report[0]['doc:encodes'][0]['dateCreated']
+                let reportSchema = report[0]["@context"]["reportSchema"]
+                let lexicalSchema = report[0]["@context"]["lexicalSchema"]
+
+                let dateText
                 if (dateCreated) {
-                    element.textContent = 'has date'
+                    dateText = 'has date'
                 } else {
-                    element.textContent = 'does not have date'
+                    dateText = 'does not have date'
                 }
+
+                element.textContent = `${dateText}, ${reportSchema}, ${lexicalSchema}`
                 element.report = report
             }
         });

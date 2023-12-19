@@ -50,8 +50,12 @@ func validateWithConfigurationWrapper() js.Func {
 
 func buildReportConfiguration(value js.Value) config.ReportConfiguration {
 	includeReportCreationTime := value.Get("IncludeReportCreationTime").Bool()
+	reportSchemaIri := value.Get("ReportSchemaIri").String()
+	lexicalSchemaIri := value.Get("LexicalSchemaIri").String()
 	return config.ReportConfiguration{
 		IncludeReportCreationTime: includeReportCreationTime,
+		ReportSchemaIri:           reportSchemaIri,
+		LexicalSchemaIri:          lexicalSchemaIri,
 	}
 }
 
