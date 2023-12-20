@@ -7,7 +7,7 @@ let initialized = false
 let go = undefined;
 let wasm;
 
-const run = function(profile, data, debug) {
+const validateKernel = function(profile, data, debug) {
     let before = new Date()
     const res = __AMF__validateCustomProfile(profile,data, debug);
     let after = new Date();
@@ -15,12 +15,29 @@ const run = function(profile, data, debug) {
     return res;
 }
 
+const validateWithReportConfigurationKernel = function(profile, data, debug, reportConfig) {
+    let before = new Date()
+    const res = __AMF__validateCustomProfileWithConfiguration(profile,data, debug, undefined, reportConfig);
+    let after = new Date();
+    if (debug) console.log("Elapsed : " + (after - before))
+    return res;
+}
+
 const validateCustomProfile = function(profile, data, debug, cb) {
     if (initialized) {
-        let res = run(profile, data, debug);
+        let res = validateKernel(profile, data, debug);
         cb(res, undefined);
     } else {
         cb(undefined, new Error("WASM/GO not initialized"))
+    }
+}
+
+const validateCustomProfileWithReportConfiguration = function(profile, data, debug, reportConfig, cb) {
+    if (initialized) {
+        let res = validateWithReportConfigurationKernel(profile, data, debug, reportConfig);
+        cb(res,undefined);
+    } else {
+        cb(undefined,new Error("WASM/GO not initialized"))
     }
 }
 
@@ -54,4 +71,5 @@ const exit = function() {
 
 module.exports.initialize = initialize;
 module.exports.validate = validateCustomProfile;
+module.exports.validateWithReportConfiguration = validateCustomProfileWithReportConfiguration;
 module.exports.exit = exit;

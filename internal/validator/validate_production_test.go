@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/config"
 	"github.com/aml-org/amf-custom-validator/internal/parser"
+	config2 "github.com/aml-org/amf-custom-validator/internal/validator/config"
 	"github.com/aml-org/amf-custom-validator/test"
 	"strings"
 	"testing"
@@ -18,7 +19,7 @@ func TestProduction(t *testing.T) {
 		for _, example := range fixture.Examples() {
 			filter := "" // put the number of the text to filter here
 			if strings.Index(example.File, filter) > -1 {
-				report, err := ValidateWithConfiguration(profile, example.Text, config.Debug, nil, TestConfiguration{})
+				report, err := ValidateWithConfiguration(profile, example.Text, config.Debug, nil, config2.TestValidationConfiguration{}, config2.DefaultReportConfiguration())
 				if config.Debug {
 					generateDebugOutput(profile, example)
 				}
