@@ -35,5 +35,9 @@ wrappers/js-web/test/out
 amf.jar
 acv
 
+wrappers/rollup/src/wasm/main.wasm.gz
+wrappers/rollup/dist
+wrappers/rollup/node_modules
+
 dialects
 vocabularies
