@@ -1,22 +1,20 @@
 import {ungzip} from 'pako'
 import {Buffer} from 'buffer'
 
-require("../js/lib/wasm_exec");
-
 export default class AmfCustomValidator {
     // constants ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    VERSION: string = '__version'
-    private WASM_GZ: string = '__wasm_gz'
+    VERSION = '__version'
+    WASM_GZ = '__wasm_gz'
 
     // variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    private initialized: boolean = false
-    private debug: boolean = false
+    initialized = false
+    debug = false
 
     // constructors ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     constructor() {}
 
     // public methods ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    validate(profile: string, data: string): Promise<string> {
+    async validate(profile, data) {
         if (this.initialized) {
             // @ts-ignore
             return __AMF__validateCustomProfile(profile, data, this.debug);
@@ -25,9 +23,9 @@ export default class AmfCustomValidator {
         }
     }
 
-    async initialize(): Promise<void> {
+    async initialize() {
         const wasm = ungzip(Buffer.from(this.WASM_GZ, 'base64'))
-        const go = new globalThis.Go()
+        const go = new Go()
         let result = await WebAssembly
             .instantiate(wasm, go.importObject);
         go.run(result.instance);

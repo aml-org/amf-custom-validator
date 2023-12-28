@@ -1,4 +1,3 @@
 {
-  "loader": "ts-node/esm",
-  "spec": "test/main.spec.ts"
+  "spec": "test/main.spec.js"
 }
