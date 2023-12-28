@@ -5,6 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "test": "cypress run",
+    "pretest": "npm run build:test",
     "build:dist": "webpack --config ./webpack.config.js",
     "build:test": "webpack --config ./test/webpack.config.js"
   },
