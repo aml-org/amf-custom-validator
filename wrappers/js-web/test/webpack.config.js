@@ -2,7 +2,6 @@
 const path = require('path');
 // Use the top level config
 const config = require('../webpack.config')
-config.mode = 'none'
 config.output = {
     path: path.join(__dirname, 'out'),
     filename: '[name].js',

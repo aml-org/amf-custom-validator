@@ -6,8 +6,8 @@
   "scripts": {
     "test": "cypress run",
     "pretest": "npm run build:test",
-    "build:dist": "webpack --config ./webpack.config.js",
-    "build:test": "webpack --config ./test/webpack.config.js"
+    "build:dist": "webpack --config ./webpack.config.js --mode=production",
+    "build:test": "webpack --config ./test/webpack.config.js --mode=development"
   },
   "author": "Antonio Garrote",
   "license": "ISC",
