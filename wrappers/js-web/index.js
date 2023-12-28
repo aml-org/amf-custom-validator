@@ -1,7 +1,6 @@
-require("./lib/wasm_exec");
-let wasm_gz = require("../js/lib/main.wasm.gz")
-const pako = require("pako");
-const Buffer = require("buffer").Buffer;
+require('./lib/wasm_exec');
+const wasm_gz = require('../js/lib/main.wasm.gz')
+const pako = require('pako');
 
 let initialized = false
 let go = undefined;
@@ -11,7 +10,7 @@ const validateKernel = function(profile, data, debug) {
     let before = new Date()
     const res = __AMF__validateCustomProfile(profile,data, debug);
     let after = new Date();
-    if (debug) console.log("Elapsed : " + (after - before))
+    if (debug) console.log('Elapsed : ' + (after - before))
     return res;
 }
 
@@ -19,7 +18,7 @@ const validateWithReportConfigurationKernel = function(profile, data, debug, rep
     let before = new Date()
     const res = __AMF__validateCustomProfileWithConfiguration(profile,data, debug, undefined, reportConfig);
     let after = new Date();
-    if (debug) console.log("Elapsed : " + (after - before))
+    if (debug) console.log('Elapsed : ' + (after - before))
     return res;
 }
 
@@ -28,7 +27,7 @@ const validateCustomProfile = function(profile, data, debug, cb) {
         let res = validateKernel(profile, data, debug);
         cb(res, undefined);
     } else {
-        cb(undefined, new Error("WASM/GO not initialized"))
+        cb(undefined, new Error('WASM/GO not initialized'))
     }
 }
 
@@ -37,7 +36,7 @@ const validateCustomProfileWithReportConfiguration = function(profile, data, deb
         let res = validateWithReportConfigurationKernel(profile, data, debug, reportConfig);
         cb(res,undefined);
     } else {
-        cb(undefined,new Error("WASM/GO not initialized"))
+        cb(undefined,new Error('WASM/GO not initialized'))
     }
 }
 
@@ -56,7 +55,7 @@ const initialize = function(cb) {
             cb(undefined);
         });
     } else {
-        cb(new Error("WebAssembly is not supported in your JS environment"));
+        cb(new Error('WebAssembly is not supported in your JS environment'));
     }
 
 }
