@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-cd wrappers/js-web
+cd wrappers/js
 npm install
 npm run build:dist

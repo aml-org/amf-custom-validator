@@ -1,4 +1,4 @@
-cd ../wrappers/js-web
+cd ../wrappers/js
 #npm i
 npm run build:dist
 npm run build:test
