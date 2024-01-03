@@ -1,3 +1,5 @@
+// Manual polyfills, other polyfills are set by the node-polyfill-webpack-plugin
+require('./polyfills/crypto')
 
 // Go glue code
 require('./lib/wasm_exec');

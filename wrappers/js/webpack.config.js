@@ -7,7 +7,9 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'main.js',
+        library: 'amf-custom-validator',
         libraryTarget: 'umd',
+        globalObject: 'this'
     },
     module: {
       rules: [
@@ -23,7 +25,9 @@ module.exports = {
       ]
     },
     plugins: [
-        new NodePolyfillPlugin()
+        new NodePolyfillPlugin({
+            includeAliases: ['stream', 'Buffer']
+        })
     ],
     optimization: {
       minimize: true,

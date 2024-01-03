@@ -25,13 +25,10 @@ vendor/
 # Don't store the wasm code
 wrappers/js/lib/main.wasm
 wrappers/js/lib/main.wasm.gz
-wrappers/js-web/lib/main.wasm.gz
-wrappers/js-web/dist/**
-
-# Don't store node moudles
+wrappers/js/dist
 wrappers/js/node_modules
-wrappers/js-web/node_modules
-wrappers/js-web/test/out
+wrappers/js/test/browser/out
+
 amf.jar
 acv
 

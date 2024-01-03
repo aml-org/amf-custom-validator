@@ -4,10 +4,14 @@
   "description": "AMF validator backed by OPA Rego",
   "main": "dist/main.js",
   "scripts": {
-    "test": "cypress run",
-    "pretest": "npm run build:test",
-    "build:dist": "webpack --config ./webpack.config.js --mode=production",
-    "build:test": "webpack --config ./test/webpack.config.js --mode=development"
+    "build": "npm run build:production",
+    "build:prod": "webpack --config ./webpack.config.js --mode=production",
+    "build:dev": "webpack --config ./webpack.config.js --mode=development",
+    "build:tests": "webpack --config test/browser/webpack.config.js",
+    "pretest": "npm run build:dev && npm run build:tests",
+    "test": "npm run test:browser && npm run test:node",
+    "test:browser": "cypress run",
+    "test:node": "mocha -t 10000 ./test/node"
   },
   "author": "Antonio Garrote",
   "license": "ISC",
