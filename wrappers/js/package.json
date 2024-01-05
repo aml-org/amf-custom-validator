@@ -2,17 +2,27 @@
   "name": "@aml-org/amf-custom-validator",
   "version": "1.7.0-SNAPSHOT",
   "description": "AMF validator backed by OPA Rego",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "test": "mocha -t 10000"
+    "build": "npm run build:production",
+    "build:prod": "webpack --config ./webpack.config.js --mode=production",
+    "build:dev": "webpack --config ./webpack.config.js --mode=development",
+    "build:tests": "webpack --config test/browser/webpack.config.js",
+    "pretest": "npm run build:dev && npm run build:tests",
+    "test": "npm run test:browser && npm run test:node",
+    "test:browser": "cypress run",
+    "test:node": "mocha -t 10000 ./test/node"
   },
   "author": "Antonio Garrote",
   "license": "ISC",
-  "engines": {
-    "node": ">=16.0.0"
-  },
   "devDependencies": {
-    "mocha": "^10.2.0"
+    "cypress": "^13.6.2",
+    "express": "^4.18.2",
+    "mocha": "^10.2.0",
+    "node-polyfill-webpack-plugin": "^3.0.0",
+    "terser-webpack-plugin": "^5.3.10",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "pako": "^2.1.0"

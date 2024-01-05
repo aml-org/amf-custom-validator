@@ -42,18 +42,6 @@ pipeline {
                 echo "Success" // Tests are actually run when building the agent in the Dockerfile
             }
         }
-        stage('Test generated WASM (JS Browser)') {
-            agent {
-                dockerfile {
-                    filename 'Dockerfile'
-                    additionalBuildArgs  '--target ci-browser'
-                    registryCredentialsId 'dockerhub-pro-credentials'
-                }
-            }
-            steps {
-                echo "Success" // Tests are actually run when building the agent in the Dockerfile
-            }
-        }
         stage('Coverage') {
             agent {
                 dockerfile {
@@ -151,19 +139,13 @@ pipeline {
                           npm-snapshot $BUILD_NUMBER
                       fi
                       VERSION=$(node -pe "require('./package.json').version")
-                      npm publish --access public
-
-                      cd ../js-web
-                      if [ "$IS_SNAPSHOT" = true ]; then
-                          npm-snapshot $BUILD_NUMBER
-                      fi
+                      npm install
+                      npm run build
                       npm publish --access public
 
                       if [ "$IS_SNAPSHOT" = true ]; then
-                          npm dist-tag add @aml-org/amf-custom-validator-web@${VERSION} snapshot
                           npm dist-tag add @aml-org/amf-custom-validator@${VERSION} snapshot
                       else
-                          npm dist-tag add @aml-org/amf-custom-validator-web@${VERSION} release
                           npm dist-tag add @aml-org/amf-custom-validator@${VERSION} release
                       fi
 

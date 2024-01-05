@@ -13,7 +13,7 @@ go-coverage:
 
 # must run build-js first
 test-js:
-	cd ./wrappers/js && npm install && npm test
+	cd ./wrappers/js && npm install && npm run build && npm test
 
 # must have a downloaded AMF CLI
 test-profiles:
@@ -36,21 +36,17 @@ build-native:
 	go build -o acv ./cmd/main.go
 
 build-js:
-	./scripts/gen_js_package.sh
+	GOOS=js GOARCH=wasm go build -o wrappers/js/lib/main.wasm -ldflags "-s -w" js/validator.go &&\
+	gzip -9 -v -c wrappers/js/lib/main.wasm > wrappers/js/lib/main.wasm.gz &&\
+    rm wrappers/js/lib/main.wasm
 
 build-js-web: build-js bundle-web-js
-
-bundle-web-js:
-	./scripts/bundle_js_web_package.sh
 
 ## CI =====================================================================================
 
 ci-go: test-go build-native build-js
 
 ci-js: test-js
-
-ci-browser:
-	./scripts/ci-browser.sh
 
 ci-java:
 	./scripts/download-amf-cli.sh
