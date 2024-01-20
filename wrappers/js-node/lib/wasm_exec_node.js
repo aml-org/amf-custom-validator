@@ -36,4 +36,4 @@ if (!globalThis.crypto || !globalThis.crypto.getRandomValues) {
     };
 }
 
-require("./wasm_exec");
+require("../../js/lib/platform/common/polyfills/wasm_exec");

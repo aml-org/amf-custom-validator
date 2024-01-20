@@ -2,10 +2,9 @@
   "name": "@aml-org/amf-custom-validator",
   "version": "1.7.0-SNAPSHOT",
   "description": "AMF validator backed by OPA Rego",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha -t 10000",
-    "build": "rollup --config"
+    "test": "mocha -t 10000"
   },
   "author": "Antonio Garrote",
   "license": "ISC",
@@ -13,7 +12,8 @@
     "node": ">=16.0.0"
   },
   "devDependencies": {
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "rollup": "^4.9.5"
   },
   "dependencies": {
     "pako": "^2.1.0"
