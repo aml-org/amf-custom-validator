@@ -7,7 +7,8 @@
     "test:web": "npm run build:test:web && npm run test:web:only",
     "test:web:only": "cypress run --config-file ./test/browser/cypress.config.js",
     "test:node": "mocha -t 10000 --recursive './test/node/simple.js'",
-    "test": "npm run test:node && npm run test:web",
+    "test": "npm run build:dist && npm run test:node && npm run test:web",
+    "test:only": "npm run test:node && npm run test:web",
     "build:test:web": "webpack --config ./test/browser/webpack.config.js",
     "build:dist": "rollup --config"
   },

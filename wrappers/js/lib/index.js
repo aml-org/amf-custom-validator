@@ -6,43 +6,41 @@ import {loadPolyfills as loadNodePolyfills} from "./platform/node/polyfills/inde
 import { Buffer } from "buffer";
 
 
-let wasm_gz
-let wasm
-
 class WebAssemblySingleton {
 
     static initialized = false;
     static go = undefined;
+    static wasm = undefined;
+    static wasm_gz = undefined;
 
     static async initialize() {
         if (this.isInitialized()) {
-            return Promise.resolve()
+            return
         }
         WebAssemblySingleton.loadPolyfills(globalThis)
         WebAssemblySingleton.go = new Go();
-        if(!wasm_gz || !wasm) {
-            wasm_gz = Buffer.from(compressedWasm.split(",")[1], 'base64')
-            wasm = pako.ungzip(wasm_gz)
+        if(this.hasToLoadWasm()) {
+            this.wasm_gz = Buffer.from(compressedWasm.split(",")[1], 'base64')
+            this.wasm = pako.ungzip(this.wasm_gz)
         }
 
         if (WebAssembly) {
+            const initRuntime = this.initializeWebAssemblyRuntime()
             const waitForInit = waitForWasmInitialization(globalThis)
 
-            const initWa = WebAssembly.instantiate(wasm, WebAssemblySingleton.go.importObject)
-                .then((result) => {
-                    WebAssemblySingleton.go.run(result.instance, globalThis);
-                }).catch(rejection => console.error(rejection));
-
-            return Promise.all([initWa, waitForInit]).then(() => {
-                WebAssemblySingleton.initialized = true;
-            })
+            await Promise.all([initRuntime, waitForInit])
+            this.initialized = true;
         } else {
-            return Promise.reject("WebAssembly is not supported in your JS environment")
+            throw Error("WebAssembly is not supported in your JS environment")
         }
     }
 
+    static hasToLoadWasm() {
+        return !this.wasm_gz || !this.wasm
+    }
+
     static isInitialized() {
-        return WebAssemblySingleton.initialized
+        return this.initialized
     }
 
     static loadPolyfills(global) {
@@ -51,6 +49,12 @@ class WebAssemblySingleton {
         } else {
             loadNodePolyfills(global)
         }
+    }
+
+    static async initializeWebAssemblyRuntime() {
+        const webAssembly = await WebAssembly.instantiate(this.wasm, this.go.importObject)
+        this.go.run(webAssembly.instance, globalThis) // we don't await this on purpose
+        return Promise.resolve()
     }
 }
 
