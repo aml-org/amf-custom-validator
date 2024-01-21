@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "browser-or-node": "^3.0.0-pre.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-url": "^8.0.2",
+    "rollup-plugin-polyfill-node": "^0.13.0"
+  }
+}

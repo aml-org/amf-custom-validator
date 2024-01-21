@@ -1,16 +1,16 @@
 // Imports
 const profile = require("../../../../test/data/integration/profile10/profile.yaml")
 const data = require("../../../../test/data/integration/profile10/negative.data.jsonld")
-const validator = require("../../dist/main") // Use dist rather than src
+const validator = require("../../../js/dist/bundle") // Use dist rather than src
 
 // Test
 function run() {
     validator.initialize(() => {
-        validator.validate(profile, data.toString(), false, (r, err) => {
+        validator.validateCustomProfile(profile, data.toString(), false, (r, err) => {
             if (err) {
                 console.log(err);
             } else {
-                validator.validate(profile, data.toString(), false, (r, err) => {
+                validator.validateCustomProfile(profile, data.toString(), false, (r, err) => {
                     if (err) {
                         console.log(err);
                     } else {

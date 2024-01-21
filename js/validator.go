@@ -5,8 +5,10 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/validator"
 	"github.com/aml-org/amf-custom-validator/internal/validator/config"
+	"log"
 	"syscall/js"
 )
 
@@ -108,8 +110,11 @@ func exitWrapper(c chan bool) js.Func {
 func main() {
 	c := make(chan bool)
 	// validate
+	fmt.Println("Something really cool is going on here...")
 	f := validateWrapper()
 	js.Global().Set("__AMF__validateCustomProfile", f)
+	log.Println("assigned validateCustomProfile")
+	log.Println(js.Global())
 	// validate with configuration
 	f = validateWithConfigurationWrapper()
 	js.Global().Set("__AMF__validateCustomProfileWithConfiguration", f)

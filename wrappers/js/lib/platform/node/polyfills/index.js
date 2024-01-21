@@ -1,7 +1,8 @@
-import {loadPolyfills as loadGoPolyfills} from "../../common/polyfills";
+import {loadPolyfills as loadCommonGoPolyfills} from "../../common/polyfills/index";
+import {loadGoPolyfills} from "./wasm_exec_node";
 
 
-export function loadPolyfills() {
-    require("wrappers/js/lib/platform/node/polyfills/wasm_exec_node");
-    loadGoPolyfills()
+export function loadPolyfills(global) {
+    loadGoPolyfills(global)
+    loadCommonGoPolyfills(global)
 }

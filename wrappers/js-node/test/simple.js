@@ -5,6 +5,10 @@ function invalidReport(report) {
     return report[0]["doc:encodes"][0]["conforms"] === false
 }
 
+function requireValidator() {
+    return require(__dirname + "/../../js/dist/bundle.js")
+}
+
 describe('validator', () => {
 
     describe('validate', () => {
@@ -12,15 +16,15 @@ describe('validator', () => {
         it("should load the WASM code, validate a profile, exit", (done) => {
             const profile = fs.readFileSync(__dirname + "/../../../test/data/integration/profile10/profile.yaml").toString()
             const data = fs.readFileSync(__dirname + "/../../../test/data/integration/profile10/negative.data.jsonld").toString()
-            const validator = require(__dirname + "/../index")
+            const validator = requireValidator()
             validator.initialize(() => {
-                validator.validate(profile, data, false, (r, err) => {
+                validator.validateCustomProfile(profile, data, false, (r, err) => {
                     if (err) {
                         done(err);
                     } else {
                         let report = JSON.parse(r)
                         assert.ok(invalidReport(report))
-                        validator.validate(profile, data, false, (r, err) => {
+                        validator.validateCustomProfile(profile, data, false, (r, err) => {
                             if (err) {
                                 done(err)
                             } else {
@@ -38,7 +42,7 @@ describe('validator', () => {
         it ("should generate the Rego code for a profile and exit", (done) => {
             const profile = fs.readFileSync(__dirname + "/../../../test/data/integration/profile10/profile.yaml").toString()
 
-            const validator = require(__dirname + "/../index")
+            const validator = requireValidator()
 
             validator.initialize(() => {
                 validator.generateRego(profile, (r, err) => {
@@ -56,7 +60,7 @@ describe('validator', () => {
         it ("should normalize input data", (done) => {
             const data = fs.readFileSync(__dirname + "/../../../test/data/integration/profile10/negative.data.jsonld").toString()
 
-            const validator = require(__dirname + "/../index")
+            const validator = requireValidator()
 
             validator.initialize(() => {
                 validator.normalizeInput(data, (r, err) => {
@@ -78,9 +82,9 @@ describe('validator', () => {
         it("validate and compute message expression value", (done) => {
             const profile = fs.readFileSync(__dirname + "/../../../test/data/integration/profile26/profile.yaml").toString()
             const data = fs.readFileSync(__dirname + "/../../../test/data/integration/profile26/negative.data.jsonld").toString()
-            const validator = require(__dirname + "/../index")
+            const validator = requireValidator()
             validator.initialize(() => {
-                validator.validate(profile, data, false, (r, err) => {
+                validator.validateCustomProfile(profile, data, false, (r, err) => {
                     if (err) {
                         done(err);
                     } else {
@@ -99,7 +103,7 @@ describe('validator', () => {
         it("must match expected report output", (done) => {
             const profile = fs.readFileSync(__dirname + "/../../../test/data/integration/profile26/profile.yaml").toString()
             const data = fs.readFileSync(__dirname + "/../../../test/data/integration/profile26/negative.data.jsonld").toString()
-            const validator = require(__dirname + "/../index")
+            const validator = requireValidator()
             validator.initialize(() => {
                 const reportConfig = {
                     "IncludeReportCreationTime": false,

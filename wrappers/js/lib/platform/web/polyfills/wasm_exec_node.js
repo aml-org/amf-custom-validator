@@ -12,36 +12,37 @@
  *
  * Removed the CLI behavior stuff and left only the polyfill provision
  */
+export const loadGoPolyfills = (global) => {
+    if (!global.require) {
+        global.require = require;
+    }
 
-if (!globalThis.require) {
-    globalThis.require = require;
-}
+    if (!global.require) {
+        global.require = require;
+    }
 
-if (!globalThis.require) {
-    globalThis.require = require;
-}
+    if (!global.TextEncoder) {
+        global.TextEncoder = require("util").TextEncoder;
+    }
 
-if (!globalThis.TextEncoder) {
-    globalThis.TextEncoder = require("util").TextEncoder;
-}
+    if (!global.TextDecoder) {
+        global.TextDecoder = require("util").TextDecoder;
+    }
 
-if (!globalThis.TextDecoder) {
-    globalThis.TextDecoder = require("util").TextDecoder;
-}
+    if (!global.performance) {
+        global.performance = {
+            now() {
+                return Date.now();
+            },
+        };
+    }
 
-if (!globalThis.performance) {
-    globalThis.performance = {
-        now() {
-            return Date.now();
-        },
-    };
-}
-
-const crypto = require("crypto")
-if (!globalThis.crypto || !globalThis.crypto.getRandomValues) {
-    globalThis.crypto = {
-        getRandomValues(b) {
-            crypto.randomFillSync(b);
-        },
-    };
+    const crypto = require("crypto")
+    if (!global.crypto || !global.crypto.getRandomValues) {
+        global.crypto = {
+            getRandomValues(b) {
+                crypto.randomFillSync(b);
+            },
+        };
+    }
 }

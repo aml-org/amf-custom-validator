@@ -5,6 +5,8 @@
 "use strict";
 
 
+import crypto from "crypto";
+
 /**
  * Go 1.19 split the wasm_exec file into two:
  *  - a base wasm_exec file that requires to provide polyfills
@@ -13,25 +15,27 @@
  * Removed the CLI behavior stuff and left only the polyfill provision
  */
 
-globalThis.require = require;
-globalThis.fs = require("fs");
-globalThis.TextEncoder = require("util").TextEncoder;
-globalThis.TextDecoder = require("util").TextDecoder;
+export const loadGoPolyfills = (global) => {
+    global.require = require;
+    global.fs = require("fs");
+    global.TextEncoder = require("util").TextEncoder;
+    global.TextDecoder = require("util").TextDecoder;
 
-if (!globalThis.performance || !globalThis.performance.now) {
-    globalThis.performance = {
-        now() {
-            const [sec, nsec] = process.hrtime();
-            return sec * 1000 + nsec / 1000000; // time in milliseconds
-        },
-    };
-}
+    if (!global.performance || !global.performance.now) {
+        global.performance = {
+            now() {
+                const [sec, nsec] = process.hrtime();
+                return sec * 1000 + nsec / 1000000; // time in milliseconds
+            },
+        };
+    }
 
-const crypto = require("crypto")
-if (!globalThis.crypto || !globalThis.crypto.getRandomValues) {
-    globalThis.crypto = {
-        getRandomValues(b) {
-            crypto.randomFillSync(b);
-        },
-    };
+    const crypto = require("crypto")
+    if (!global.crypto || !global.crypto.getRandomValues) {
+        global.crypto = {
+            getRandomValues(b) {
+                crypto.randomFillSync(b);
+            },
+        };
+    }
 }

@@ -1,7 +1,7 @@
 // Imports
 const profile = require("../../../../test/data/integration/profile10/profile.yaml")
 const data = require("../../../../test/data/integration/profile10/negative.data.jsonld")
-const validator = require("../../dist/main")
+const validator = require("../../../js/dist/bundle") // Use dist rather than src
 
 // Test
 function run() {

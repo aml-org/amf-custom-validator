@@ -1,13 +1,24 @@
-import fs from "fs";
-
 import pako from "pako";
+import {isBrowser} from "browser-or-node";
+import compressedWasm from "../assets/main.wasm.gz";
+import {loadPolyfills as loadWebPolyfills} from "./platform/web/polyfills/index";
+import {loadPolyfills as loadNodePolyfills} from "./platform/node/polyfills/index";
+import { Buffer } from "buffer";
 
-require(__dirname + "/lib/wasm_exec_node");
+
 let wasm_gz
 let wasm
 
 let initialized = false
 let go = undefined;
+
+const loadPolyfills = (global) => {
+    if (isBrowser) {
+        loadWebPolyfills(global)
+    } else {
+        loadNodePolyfills(global)
+    }
+}
 
 export const validateKernel = function(profile, data, debug) {
     let before = new Date()
@@ -34,7 +45,7 @@ export const validateCustomProfile = function(profile, data, debug, cb) {
     }
 }
 
-export const validateCustomProfileWithReportConfiguration = function(profile, data, debug, reportConfig, cb) {
+export const validateWithReportConfiguration = function(profile, data, debug, reportConfig, cb) {
     if (initialized) {
         let res = validateWithReportConfigurationKernel(profile, data, debug, reportConfig);
         cb(res,undefined);
@@ -75,16 +86,19 @@ export const initialize = function(cb) {
     if (initialized === true) {
         cb(undefined)
     }
+    loadPolyfills(globalThis)
     go = new Go();
     if(!wasm_gz || !wasm) {
-        wasm_gz = fs.readFileSync(__dirname + "/lib/main.wasm.gz")
+        wasm_gz = Buffer.from(compressedWasm.split(",")[1], 'base64')
         wasm = pako.ungzip(wasm_gz)
     }
     if (WebAssembly) {
         WebAssembly.instantiate(wasm, go.importObject).then((result) => {
-            go.run(result.instance);
-            initialized = true;
-            cb(undefined);
+            go.run(result.instance, globalThis);
+            setTimeout(function() {
+                initialized = true;
+                cb(undefined);
+            }, 1000); // still need to fix this
         }).catch(rejection => console.log(rejection));
     } else {
         cb(new Error("WebAssembly is not supported in your JS environment"));
