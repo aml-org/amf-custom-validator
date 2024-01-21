@@ -1,5 +1,0 @@
-{
-  "devDependencies": {
-    "rollup-plugin-polyfill-node": "^0.13.0"
-  }
-}

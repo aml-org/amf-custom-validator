@@ -7,7 +7,6 @@ import (
 	"encoding/json"
 	"github.com/aml-org/amf-custom-validator/internal/validator"
 	"github.com/aml-org/amf-custom-validator/internal/validator/config"
-	"log"
 	"syscall/js"
 )
 
@@ -98,21 +97,19 @@ func normalizeInputWrapper() js.Func {
 	return jsonFunc
 }
 
-func exitWrapper(c chan bool) js.Func {
+func exitWrapper(done chan bool) js.Func {
 	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) any {
-		c <- true
+		done <- true
 		return nil
 	})
 	return jsonFunc
 }
 
 func main() {
-	c := make(chan bool)
+	done := make(chan bool)
 	// validate
 	f := validateWrapper()
 	js.Global().Set("__AMF__validateCustomProfile", f)
-	log.Println("assigned validateCustomProfile")
-	log.Println(js.Global())
 	// validate with configuration
 	f = validateWithConfigurationWrapper()
 	js.Global().Set("__AMF__validateCustomProfileWithConfiguration", f)
@@ -123,8 +120,8 @@ func main() {
 	f = normalizeInputWrapper()
 	js.Global().Set("__AMF__normalizeInput", f)
 	// exit
-	f = exitWrapper(c)
+	f = exitWrapper(done)
 	js.Global().Set("__AMF__terminateValidator", f)
 	js.Global().Get("onWasmInitialized").Invoke()
-	<-c
+	<-done
 }
