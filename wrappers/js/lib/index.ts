@@ -1,17 +1,18 @@
 import pako from "pako";
 import {isBrowser} from "browser-or-node";
+// @ts-ignore
 import compressedWasm from "../assets/main.wasm.gz";
 import {loadPolyfills as loadWebPolyfills} from "./platform/web/polyfills/index";
 import {loadPolyfills as loadNodePolyfills} from "./platform/node/polyfills/index";
-import { Buffer } from "buffer";
+import {Buffer} from "buffer";
 
 
 class WebAssemblySingleton {
 
-    static initialized = false;
-    static go = undefined;
-    static wasm = undefined;
-    static wasm_gz = undefined;
+    static initialized: boolean = false;
+    static go: Go | undefined = undefined;
+    static wasm: BufferSource | undefined = undefined;
+    static wasm_gz: Buffer | undefined = undefined;
 
     static async initialize() {
         if (this.isInitialized()) {
@@ -26,7 +27,7 @@ class WebAssemblySingleton {
         }
 
         if (WebAssembly) {
-            const initRuntime = this.initializeWebAssemblyRuntime()
+            const initRuntime = this.initializeWebAssemblyRuntime(this.wasm!, this.go)
             const waitForInit = waitForWasmInitialization(globalThis)
 
             await Promise.all([initRuntime, waitForInit])
@@ -36,15 +37,15 @@ class WebAssemblySingleton {
         }
     }
 
-    static hasToLoadWasm() {
+    static hasToLoadWasm(): boolean {
         return !this.wasm_gz || !this.wasm
     }
 
-    static isInitialized() {
+    static isInitialized(): boolean {
         return this.initialized
     }
 
-    static loadPolyfills(global) {
+    static loadPolyfills(global: any) {
         if (isBrowser) {
             loadWebPolyfills(global)
         } else {
@@ -52,9 +53,9 @@ class WebAssemblySingleton {
         }
     }
 
-    static async initializeWebAssemblyRuntime() {
-        const webAssembly = await WebAssembly.instantiate(this.wasm, this.go.importObject)
-        this.go.run(webAssembly.instance, globalThis) // we don't await this on purpose
+    static async initializeWebAssemblyRuntime(wasm: BufferSource, go: Go): Promise<void> {
+        const webAssembly = await WebAssembly.instantiate(wasm, go.importObject)
+        this.go?.run(webAssembly.instance, globalThis) // we don't await this on purpose
         return Promise.resolve()
     }
 }
@@ -67,52 +68,50 @@ export class CustomValidatorFactory {
 }
 
 export class CustomValidatorSingleton {
-    validateCustomProfile(profile, data, debug) {
+    validateCustomProfile(profile: string, data: string, debug: boolean) {
         return validateKernel(profile, data, debug)
     }
-    validateWithReportConfiguration(profile, data, debug, reportConfig) {
+    validateWithReportConfiguration(profile: string, data: string, debug: boolean, reportConfig: any) {
         return validateWithReportConfigurationKernel(profile, data, debug, reportConfig);
     }
-    generateRego(profile) {
+    generateRego(profile: string) {
         return runGenerateRego(profile)
     }
-    normalizeInput(data) {
+    normalizeInput(data: string) {
         return runNormalizeInput(data)
     }
     exit() {
         __AMF__terminateValidator()
-        WebAssemblySingleton.go.exit(0)
+        WebAssemblySingleton.go?.exit(0)
         WebAssemblySingleton.initialized = false;
     }
 }
 
-const validateKernel = function(profile, data, debug) {
+const validateKernel = function(profile: string, data: string, debug: boolean) {
     let before = new Date()
     const res = __AMF__validateCustomProfile(profile,data, debug);
     let after = new Date();
-    if (debug) console.log("Elapsed : " + (after - before))
+    if (debug) console.log("Elapsed : " + (after.getTime() - before.getTime()))
     return res;
 }
 
-const validateWithReportConfigurationKernel = function(profile, data, debug, reportConfig) {
+const validateWithReportConfigurationKernel = function(profile: string, data: string, debug: boolean, reportConfig: any) {
     let before = new Date()
     const res = __AMF__validateCustomProfileWithConfiguration(profile,data, debug, undefined, reportConfig);
     let after = new Date();
-    if (debug) console.log("Elapsed : " + (after - before))
+    if (debug) console.log("Elapsed : " + (after.getTime() - before.getTime()))
     return res;
 }
 
-const runGenerateRego = function(profile) {
-    const res = __AMF__generateRego(profile);
-    return res;
+const runGenerateRego = function(profile: string) {
+    return __AMF__generateRego(profile);
 }
 
 
-const runNormalizeInput = function(data) {
-    const res = __AMF__normalizeInput(data);
-    return res;
+const runNormalizeInput = function(data: string) {
+    return __AMF__normalizeInput(data);
 }
 
-const waitForWasmInitialization = (container) => new Promise((resolve) => {
+const waitForWasmInitialization = (container: any) => new Promise((resolve) => {
     container.onWasmInitialized = resolve;
 });

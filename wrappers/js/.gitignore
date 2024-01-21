@@ -2,3 +2,5 @@ dist
 node_modules
 test/browser/out
 assets
+tsconfig.tsbuildinfo
+.rollup.cache
