@@ -82,6 +82,10 @@ export const normalizeInput = function(data, cb) {
     }
 }
 
+const waitForWasmInitialization = (container) => new Promise((resolve) => {
+    container.onWasmInitialized = resolve;
+});
+
 export const initialize = function(cb) {
     if (initialized === true) {
         cb(undefined)
@@ -92,14 +96,20 @@ export const initialize = function(cb) {
         wasm_gz = Buffer.from(compressedWasm.split(",")[1], 'base64')
         wasm = pako.ungzip(wasm_gz)
     }
+
     if (WebAssembly) {
-        WebAssembly.instantiate(wasm, go.importObject).then((result) => {
+        const waitForInit = waitForWasmInitialization(globalThis)
+
+        const initWa = WebAssembly.instantiate(wasm, go.importObject)
+            .then((result) => {
             go.run(result.instance, globalThis);
-            setTimeout(function() {
+        }).catch(rejection => console.error(rejection));
+
+        Promise.all([initWa, waitForInit])
+            .then(() => {
                 initialized = true;
                 cb(undefined);
-            }, 1000); // still need to fix this
-        }).catch(rejection => console.log(rejection));
+            })
     } else {
         cb(new Error("WebAssembly is not supported in your JS environment"));
     }

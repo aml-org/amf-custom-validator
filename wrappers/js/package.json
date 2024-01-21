@@ -22,6 +22,7 @@
     "node": ">=16.0.0"
   },
   "devDependencies": {
+    "@rollup/plugin-url": "^8.0.2",
     "buffer": "^6.0.3",
     "cypress": "^13.6.3",
     "mocha": "^10.2.0",
