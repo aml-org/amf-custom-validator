@@ -17,8 +17,9 @@ class WebAssemblySingleton {
         if (this.isInitialized()) {
             return
         }
-        WebAssemblySingleton.loadPolyfills(globalThis)
-        WebAssemblySingleton.go = new Go();
+        this.loadPolyfills(globalThis)
+        this.go = new Go();
+
         if(this.hasToLoadWasm()) {
             this.wasm_gz = Buffer.from(compressedWasm.split(",")[1], 'base64')
             this.wasm = pako.ungzip(this.wasm_gz)
