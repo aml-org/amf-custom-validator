@@ -20,7 +20,7 @@
         "@id": "http://www.w3.org/ns/shacl#conforms"
       },
       "dateCreated": {
-        "@id": "http://a.ml/vocabularies/core##dateCreated"
+        "@id": "http://a.ml/vocabularies/core#dateCreated"
       },
       "doc": "http://a.ml/vocabularies/document#",
       "end": {

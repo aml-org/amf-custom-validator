@@ -93,4 +93,32 @@ describe('validator', () => {
             })
         });
     })
+
+    describe('validate with configuration', () => {
+
+        it("must match expected report output", (done) => {
+            const profile = fs.readFileSync(__dirname + "/../../../test/data/integration/profile26/profile.yaml").toString()
+            const data = fs.readFileSync(__dirname + "/../../../test/data/integration/profile26/negative.data.jsonld").toString()
+            const validator = require(__dirname + "/../index")
+            validator.initialize(() => {
+                const reportConfig = {
+                    "IncludeReportCreationTime": false,
+                    "ReportSchemaIri": "http://a.ml/report",
+                    "LexicalSchemaIri": "http://a.ml/lexical"
+                }
+                validator.validateWithReportConfiguration(profile, data, false, reportConfig, (r, err) => {
+                    if (err) {
+                        done(err);
+                    } else {
+                        let report = JSON.parse(r)
+                        assert.ok(report[0]["doc:encodes"][0]["dateCreated"] === undefined)
+                        assert.strictEqual(report[0]["@context"]["reportSchema"], "http://a.ml/report#/declarations/")
+                        assert.strictEqual(report[0]["@context"]["lexicalSchema"], "http://a.ml/lexical#/declarations/")
+                        validator.exit();
+                        done();
+                    }
+                });
+            })
+        });
+    })
 })

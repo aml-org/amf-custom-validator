@@ -1,6 +1,6 @@
 {
   "name": "@aml-org/amf-custom-validator",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "AMF validator backed by OPA Rego",
   "main": "index.js",
   "scripts": {

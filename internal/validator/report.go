@@ -6,13 +6,14 @@ import (
 	"errors"
 	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/types"
+	"github.com/aml-org/amf-custom-validator/internal/validator/config"
 	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
 	"github.com/open-policy-agent/opa/rego"
 	"strconv"
 	"strings"
 )
 
-func BuildReport(resultPtr *rego.ResultSet, configuration ValidationConfiguration) (string, error) {
+func BuildReport(resultPtr *rego.ResultSet, validationConfig config.ValidationConfiguration, reportConfig config.ReportConfiguration) (string, error) {
 	result := *resultPtr
 	if len(result) == 0 {
 		return "", errors.New("empty result from evaluation")
@@ -26,10 +27,9 @@ func BuildReport(resultPtr *rego.ResultSet, configuration ValidationConfiguratio
 	infos := m["info"].([]any)
 	results := buildResults(violations, warnings, infos)
 	conforms := len(violations) == 0
-	dateCreated := configuration.CurrentTime()
 
-	context := buildContext(len(results) == 0)
-	reportNode := ValidationReportNode(profileName, results, conforms, dateCreated)
+	context := buildContext(len(results) == 0, reportConfig)
+	reportNode := ValidationReportNode(profileName, results, conforms, validationConfig, reportConfig)
 	instance := DialectInstance(&reportNode, &context)
 	return Encode(instance), nil
 }
@@ -74,11 +74,11 @@ func defineIdRecursively(node *types.ObjectMap, id string) {
 	}
 }
 
-func buildContext(emptyReport bool) types.ObjectMap {
+func buildContext(emptyReport bool, reportConfig config.ReportConfiguration) types.ObjectMap {
 	if emptyReport {
-		return contexts.ConformsContext
+		return contexts.ConformsContext(reportConfig)
 	} else {
-		return contexts.DefaultValidationContext
+		return contexts.DefaultValidationContext(reportConfig)
 	}
 }
 

@@ -114,7 +114,6 @@ pipeline {
                 anyOf {
                     branch 'develop'
                     branch 'master'
-                    branch 'release/*'
                 }
             }
             agent {
