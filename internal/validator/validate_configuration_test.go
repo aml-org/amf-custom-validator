@@ -3,20 +3,20 @@ package validator
 import (
 	"encoding/json"
 	"github.com/aml-org/amf-custom-validator/internal/config"
-	config2 "github.com/aml-org/amf-custom-validator/internal/validator/config"
 	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
+	config3 "github.com/aml-org/amf-custom-validator/pkg/config"
 	"testing"
 )
 
 func TestNoDateCreated(t *testing.T) {
-	reportConfig := config2.ReportConfiguration{
+	reportConfig := config3.ReportConfiguration{
 		IncludeReportCreationTime: false,
 	}
 
 	profile := read("../../test/data/integration/profile1/profile.yaml")
 	data := read("../../test/data/integration/profile1/negative.data.jsonld")
 
-	report, err := ValidateWithConfiguration(profile, data, config.Debug, nil, config2.TestValidationConfiguration{}, reportConfig)
+	report, err := ValidateWithConfiguration(profile, data, config.Debug, nil, config3.TestValidationConfiguration{}, reportConfig)
 
 	if err != nil {
 		t.Errorf("Error during validation\n")
@@ -42,7 +42,7 @@ func TestAlternativeSchemas(t *testing.T) {
 	reportSchemaIri := "http://a.ml/report"
 	lexicalSchemaIri := "http://a.ml/lexical"
 
-	reportConfig := config2.ReportConfiguration{
+	reportConfig := config3.ReportConfiguration{
 		ReportSchemaIri:  reportSchemaIri,
 		LexicalSchemaIri: lexicalSchemaIri,
 	}
@@ -50,7 +50,7 @@ func TestAlternativeSchemas(t *testing.T) {
 	profile := read("../../test/data/integration/profile1/profile.yaml")
 	data := read("../../test/data/integration/profile1/negative.data.jsonld")
 
-	report, err := ValidateWithConfiguration(profile, data, config.Debug, nil, config2.TestValidationConfiguration{}, reportConfig)
+	report, err := ValidateWithConfiguration(profile, data, config.Debug, nil, config3.TestValidationConfiguration{}, reportConfig)
 
 	if err != nil {
 		t.Errorf("Error during validation\n")

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/config"
 	p "github.com/aml-org/amf-custom-validator/internal/parser/profile"
-	config2 "github.com/aml-org/amf-custom-validator/internal/validator/config"
+	config3 "github.com/aml-org/amf-custom-validator/pkg/config"
 	"github.com/aml-org/amf-custom-validator/pkg/milestones"
 	"io/ioutil"
 	"strings"
@@ -29,7 +29,7 @@ func validate(profile relativePath, data relativePath) string {
 	p.GenReset()
 	profileText := read(profile)
 	dataText := read(data)
-	report, err := ValidateWithConfiguration(profileText, dataText, config.Debug, nil, config2.TestValidationConfiguration{}, config2.DefaultReportConfiguration())
+	report, err := ValidateWithConfiguration(profileText, dataText, config.Debug, nil, config3.TestValidationConfiguration{}, config3.DefaultReportConfiguration())
 	if err != nil {
 		panic(err)
 	}

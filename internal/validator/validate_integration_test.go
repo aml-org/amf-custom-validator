@@ -3,7 +3,7 @@ package validator
 import (
 	"github.com/aml-org/amf-custom-validator/internal/config"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
-	config2 "github.com/aml-org/amf-custom-validator/internal/validator/config"
+	config3 "github.com/aml-org/amf-custom-validator/pkg/config"
 	"github.com/aml-org/amf-custom-validator/test"
 	"strings"
 	"testing"
@@ -14,7 +14,7 @@ func TestIntegrationPositiveData(t *testing.T) {
 	for _, fixture := range test.IntegrationFixtures("../../test/data/integration", &filter) {
 		prof := fixture.ReadProfile()
 		profile.GenReset()
-		report, err := ValidateWithConfiguration(prof, fixture.ReadFixturePositiveData(), config.Debug, nil, config2.TestValidationConfiguration{}, config2.DefaultReportConfiguration())
+		report, err := ValidateWithConfiguration(prof, fixture.ReadFixturePositiveData(), config.Debug, nil, config3.TestValidationConfiguration{}, config3.DefaultReportConfiguration())
 
 		if err != nil {
 			t.Errorf("%s > Positive case > Failed with error %v", fixture, err)
@@ -36,7 +36,7 @@ func TestIntegrationNegativeData(t *testing.T) {
 	for _, fixture := range test.IntegrationFixtures("../../test/data/integration", &filter) {
 		prof := fixture.ReadProfile()
 		profile.GenReset()
-		report, err := ValidateWithConfiguration(prof, fixture.ReadFixtureNegativeData(), config.Debug, nil, config2.TestValidationConfiguration{}, config2.DefaultReportConfiguration())
+		report, err := ValidateWithConfiguration(prof, fixture.ReadFixtureNegativeData(), config.Debug, nil, config3.TestValidationConfiguration{}, config3.DefaultReportConfiguration())
 		if err != nil {
 			t.Errorf("%s > Negative case > Failed with error %v", fixture, err)
 		}
@@ -60,7 +60,7 @@ func TestIntegrationNegativeDataWithLexical(t *testing.T) {
 
 		lexicalFixture, fixtureError := fixture.ReadFixtureNegativeDataWithLexical()
 		if fixtureError == nil {
-			report, err := ValidateWithConfiguration(prof, lexicalFixture, config.Debug, nil, config2.TestValidationConfiguration{}, config2.DefaultReportConfiguration())
+			report, err := ValidateWithConfiguration(prof, lexicalFixture, config.Debug, nil, config3.TestValidationConfiguration{}, config3.DefaultReportConfiguration())
 			if err != nil {
 				t.Errorf("%s > Negative case with lexical > Failed with error %v", fixture, err)
 			}

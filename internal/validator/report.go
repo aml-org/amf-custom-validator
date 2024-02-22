@@ -6,14 +6,14 @@ import (
 	"errors"
 	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/types"
-	"github.com/aml-org/amf-custom-validator/internal/validator/config"
 	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
+	config2 "github.com/aml-org/amf-custom-validator/pkg/config"
 	"github.com/open-policy-agent/opa/rego"
 	"strconv"
 	"strings"
 )
 
-func BuildReport(resultPtr *rego.ResultSet, validationConfig config.ValidationConfiguration, reportConfig config.ReportConfiguration) (string, error) {
+func BuildReport(resultPtr *rego.ResultSet, validationConfig config2.ValidationConfiguration, reportConfig config2.ReportConfiguration) (string, error) {
 	result := *resultPtr
 	if len(result) == 0 {
 		return "", errors.New("empty result from evaluation")
@@ -74,7 +74,7 @@ func defineIdRecursively(node *types.ObjectMap, id string) {
 	}
 }
 
-func buildContext(emptyReport bool, reportConfig config.ReportConfiguration) types.ObjectMap {
+func buildContext(emptyReport bool, reportConfig config2.ReportConfiguration) types.ObjectMap {
 	if emptyReport {
 		return contexts.ConformsContext(reportConfig)
 	} else {
