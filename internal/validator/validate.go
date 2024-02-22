@@ -2,7 +2,7 @@ package validator
 
 import (
 	"context"
-	"github.com/aml-org/amf-custom-validator/internal/validator/config"
+	config2 "github.com/aml-org/amf-custom-validator/pkg/config"
 	e "github.com/aml-org/amf-custom-validator/pkg/events"
 	"github.com/open-policy-agent/opa/rego"
 )
@@ -12,14 +12,14 @@ import (
 // directly to `internal.Validate` rather than `pkg.Validate`
 
 func Validate(profileText string, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
-	return ValidateWithConfiguration(profileText, jsonldText, debug, eventChan, config.DefaultValidationConfiguration{}, config.DefaultReportConfiguration())
+	return ValidateWithConfiguration(profileText, jsonldText, debug, eventChan, config2.DefaultValidationConfiguration{}, config2.DefaultReportConfiguration())
 }
 
 func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
-	return ValidateCompiledWithConfiguration(compiledRegoPtr, jsonldText, debug, eventChan, config.DefaultValidationConfiguration{}, config.DefaultReportConfiguration())
+	return ValidateCompiledWithConfiguration(compiledRegoPtr, jsonldText, debug, eventChan, config2.DefaultValidationConfiguration{}, config2.DefaultReportConfiguration())
 }
 
-func ValidateWithConfiguration(profileText string, jsonldText string, debug bool, eventChan *chan e.Event, validationConfig config.ValidationConfiguration, reportConfig config.ReportConfiguration) (string, error) {
+func ValidateWithConfiguration(profileText string, jsonldText string, debug bool, eventChan *chan e.Event, validationConfig config2.ValidationConfiguration, reportConfig config2.ReportConfiguration) (string, error) {
 	// Generate and compile Rego code
 	compiledRego, err := ProcessProfile(profileText, debug, eventChan)
 
@@ -31,7 +31,7 @@ func ValidateWithConfiguration(profileText string, jsonldText string, debug bool
 	return ValidateCompiledWithConfiguration(compiledRego, jsonldText, debug, eventChan, validationConfig, reportConfig)
 }
 
-func ValidateCompiledWithConfiguration(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event, validationConfig config.ValidationConfiguration, reportConfig config.ReportConfiguration) (string, error) {
+func ValidateCompiledWithConfiguration(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event, validationConfig config2.ValidationConfiguration, reportConfig config2.ReportConfiguration) (string, error) {
 	compiledRego := *compiledRegoPtr
 
 	// Normalize input
