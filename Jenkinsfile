@@ -173,6 +173,64 @@ pipeline {
                 '''
             }
         }
+        stage('Publish binaries') {
+            when {
+                branch 'master'
+            }
+            agent {
+                dockerfile {
+                    filename 'Dockerfile'
+                    additionalBuildArgs  '--target ci-go'
+                    registryCredentialsId 'dockerhub-pro-credentials'
+                }
+            }
+            steps {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'nexus', usernameVariable: 'NEXUS_USR', passwordVariable: 'NEXUS_PSW']]) {
+                    script {
+                        def platforms = [ "windows/amd64", "linux/amd64", "darwin/amd64", "darwin/arm64" ]
+                        def packageVersion = sh (
+                            script: 'grep version ./wrappers/js/package.json | sed \'s/.*"version": "\\(.*\\)".*/\\1/\'',
+                            returnStdout: true
+                        ).trim()
+                        sh (script: 'mkdir -p /tmp/.cache')
+                        platforms.each {item ->
+                            def nexusRepository = "nexus.build.msap.io/nexus"
+                            def repositoryName = "releases"
+                            def groupId = "aml-org.amf-custom-validator"
+                            def packageName = "acv"
+
+                            def i = item.indexOf("/")
+                            def goOs = item.substring(0, i)
+                            def goArch = item.substring(i + 1, item.length())
+                            def artifactId = "acv" + '-' + goOs + '-' + goArch
+                            def fileName = packageName + '-' + goOs + '-' + goArch
+                            sh (script: "env GOOS=${goOs} GOARCH=${goArch} GOCACHE=/tmp/.cache go build -o ${fileName} ./cmd/main.go", returnStdout: true)
+
+                            println 'nexusRepository=' + nexusRepository
+                            println 'repositoryName=' + repositoryName
+                            println 'groupId=' + groupId
+                            println 'packageVersion=' + packageVersion
+                            println 'artifactId=' + artifactId
+                            println 'fileName=' + fileName
+                            nexusArtifactUploader(
+                                nexusUrl: "${nexusRepository}",
+                                protocol: 'https',
+                                credentialsId: 'nexus',
+                                nexusVersion: 'nexus2',
+                                repository: "${repositoryName}",
+                                groupId: "${groupId}",
+                                version: "${packageVersion}",
+                                artifacts: [[
+                                    artifactId: "${artifactId}",
+                                    file: "${fileName}",
+                                    classifier: ''
+                                ]]
+                            )
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
