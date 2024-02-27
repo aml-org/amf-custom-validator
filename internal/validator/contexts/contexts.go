@@ -3,7 +3,7 @@ package contexts
 import (
 	"fmt"
 	"github.com/aml-org/amf-custom-validator/internal/types"
-	"github.com/aml-org/amf-custom-validator/internal/validator/config"
+	"github.com/aml-org/amf-custom-validator/pkg/config"
 )
 
 var ApiExtensionUri = "http://a.ml/vocabularies/api-extension#"
