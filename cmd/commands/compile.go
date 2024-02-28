@@ -8,7 +8,7 @@ import (
 )
 
 func Compile() {
-	helpers.ValidateNArgs(3, "acv compile PROFILE")
+	helpers.ValidateNArgs(3, "acv compile <PROFILE>")
 
 	profile := helpers.ReadOrPanic(os.Args[2])
 
