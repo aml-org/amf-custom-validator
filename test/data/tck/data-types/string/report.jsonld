@@ -1,6 +1,7 @@
 [
   {
     "@context": {
+      "@base": "http://a.ml/vocabularies/validation/report#",
       "conforms": {
         "@id": "http://www.w3.org/ns/shacl#conforms"
       },
