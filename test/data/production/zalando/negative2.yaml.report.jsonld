@@ -1,6 +1,7 @@
 [
   {
     "@context": {
+      "@base": "http://a.ml/vocabularies/validation#",
       "actual": {
         "@id": "http://a.ml/vocabularies/validation#actual"
       },

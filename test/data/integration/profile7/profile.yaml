@@ -23,7 +23,7 @@ validations:
     targetClass: apiContract.Operation
     message: Scalars in parameters must have minLength defined
     propertyConstraints:
-      apiContract.expects / (apiContract.parameter / shapes.schema | apiContract.payload / shapes.schema / shacl.property / shapes.range) :
+      apiContract.expects / (apiContract.parameter / shapes.schema | apiContract.payload / shapes.schema / shacl.property / shapes.range):
         nested:
           propertyConstraints:
             shacl.minLength:

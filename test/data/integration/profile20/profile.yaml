@@ -8,6 +8,6 @@ validations:
     message: wadus is a mandatory extension
     targetClass: data.Scalar
     propertyConstraints:
-      apiExt.wadus^ / apiContract.method :
+      apiExt.wadus^ / apiContract.method:
         minCount: 1
         pattern: "get"
