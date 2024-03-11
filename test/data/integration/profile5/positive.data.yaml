@@ -10,4 +10,4 @@ components:
       minLength: 100
       maxLength: 500
 
-paths: {}
+paths: { }

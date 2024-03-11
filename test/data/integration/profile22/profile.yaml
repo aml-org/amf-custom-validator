@@ -14,5 +14,5 @@ validations:
           validation:
             propertyConstraints:
               '@type':
-                 containsAll:
-                   - http://a.ml/vocabularies/apiContract#Trait
+                containsAll:
+                  - http://a.ml/vocabularies/apiContract#Trait

@@ -78,3 +78,35 @@ func TestAlternativeSchemas(t *testing.T) {
 		t.Errorf("Actual '%s' does not match expected '%s'", actual, expected)
 	}
 }
+
+func TestAlernativeBaseIri(t *testing.T) {
+	baseIri := "http://a.ml/my-really-cool-custom-iri"
+
+	reportConfig := c.ReportConfiguration{
+		BaseIri: baseIri,
+	}
+
+	profile := read("../../test/data/integration/profile1/profile.yaml")
+	data := read("../../test/data/integration/profile1/negative.data.jsonld")
+
+	report, err := ValidateWithConfiguration(profile, data, config.Debug, nil, c.TestValidationConfiguration{}, reportConfig)
+
+	if err != nil {
+		t.Errorf("Error during validation\n")
+	}
+
+	var output []any
+	err = json.Unmarshal([]byte(report), &output)
+	if err != nil {
+		t.Errorf("Error during report JSON unmarshling\n")
+	}
+	doc := output[0].(map[string]any)
+	context := doc["@context"].(map[string]any)
+
+	actual := context["@base"].(string)
+	expected := baseIri
+
+	if actual != expected {
+		t.Errorf("Actual '%s' does not match expected '%s'", actual, expected)
+	}
+}

@@ -2,7 +2,7 @@ openapi: "3.0.0"
 info:
   title: example API
   version: "1.0.0"
-paths: {}
+paths: { }
 x-wadus:
   hola: mundo
   things:
