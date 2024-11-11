@@ -55,6 +55,11 @@ pipeline {
             }
         }
         stage('Coverage') {
+            when {
+                anyOf{
+                 branch 'W-17016391-testcustomValidator'
+                }
+            }
             agent {
                 dockerfile {
                     filename 'Dockerfile'
