@@ -12,6 +12,7 @@ RUN make ci-go
 
 FROM eclipse-temurin:17-focal AS ci-java
 
+USER root
 # Copy certificates to container
 COPY certs/ /usr/local/share/ca-certificates/
 
@@ -22,6 +23,7 @@ RUN keytool -import -trustcacerts -alias salesforce_internal_root_ca_1 -file /us
 
 # Update CA certificates for general system use
 RUN update-ca-certificates
+
 
 # Copy content
 COPY . ./src
@@ -34,6 +36,8 @@ RUN apt-get update && apt-get install make
 RUN make ci-java
 
 FROM node:16 AS ci-js
+
+RUN update-ca-certificates
 
 # First copy dependencies to enable Docker caching them
 COPY . ./src
@@ -53,6 +57,7 @@ WORKDIR ../../
 RUN make ci-js
 
 FROM cypress/included:11.2.0 as ci-browser
+RUN update-ca-certificates
 COPY --from=ci-js /src ./src
 WORKDIR ./src
 RUN ./scripts/ci-browser.sh
