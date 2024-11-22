@@ -57,6 +57,12 @@ COPY --from=go-coverage /go/src/coverage.out .
 
 USER root
 
+# Install necessary tools and certificates
+RUN yum update -y && yum install -y \
+    ca-certificates \
+    java-17-amazon-corretto \
+    curl && \
+    yum clean all
 # Copy certificates to container
 COPY certs/ /etc/pki/ca-trust/source/anchors/
 
@@ -66,7 +72,7 @@ RUN keytool -import -trustcacerts -alias salesforce_internal_root_ca_1 -file /et
     keytool -import -trustcacerts -alias salesforce_internal_root_ca_3 -file /etc/pki/ca-trust/source/anchors/Salesforce_Internal_Root_CA_3.pem -cacerts -storepass changeit -noprompt
 
 # Update CA certificates for general system use
-RUN update-ca-trust
+RUN update-ca-trust extract
 
 USER scanner-cli
 
