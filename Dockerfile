@@ -55,6 +55,18 @@ RUN make go-coverage
 FROM sonarsource/sonar-scanner-cli as coverage
 COPY --from=go-coverage /go/src/coverage.out .
 
+USER root
+
+# Install necessary tools and certificates
+RUN yum update -y && yum install -y \
+    ca-certificates \
+    java-17-amazon-corretto \
+    curl && \
+    yum clean all
+
+# Update CA certificates for general system use
+RUN update-ca-certificates
+
 # Copy certificates to container
 COPY certs/ /usr/local/share/ca-certificates/
 
@@ -63,8 +75,9 @@ RUN keytool -import -trustcacerts -alias salesforce_internal_root_ca_1 -file /us
     keytool -import -trustcacerts -alias salesforce_internal_root_ca_4 -file /usr/local/share/ca-certificates/Salesforce_Internal_Root_CA_4.pem -cacerts -storepass changeit -noprompt && \
     keytool -import -trustcacerts -alias salesforce_internal_root_ca_3 -file /usr/local/share/ca-certificates/Salesforce_Internal_Root_CA_3.pem -cacerts -storepass changeit -noprompt
 
-# Update CA certificates for general system use
-RUN update-ca-certificates
+
+
+USER scanner-cli
 
 FROM ci-go AS go-nexus-scan
 RUN make generate-list-file
