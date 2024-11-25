@@ -63,7 +63,7 @@ pipeline {
                 }
             }
             steps {
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'sonarqube-official', passwordVariable: 'SONAR_SERVER_TOKEN', usernameVariable: 'SONAR_SERVER_URL']]) {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'sf-sonarqube-official', passwordVariable: 'SONAR_SERVER_TOKEN', usernameVariable: 'SONAR_SERVER_URL']]) {
                     sh '''  #!/bin/bash
                             cp /usr/src/coverage.out ./
                             echo sonar.host.url=${SONAR_SERVER_URL} >> sonar-project.properties

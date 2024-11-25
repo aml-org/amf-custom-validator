@@ -42,6 +42,7 @@ WORKDIR ../../
 RUN make ci-js
 
 FROM cypress/included:11.2.0 as ci-browser
+
 COPY --from=ci-js /src ./src
 WORKDIR ./src
 RUN ./scripts/ci-browser.sh
@@ -51,6 +52,21 @@ RUN make go-coverage
 
 FROM sonarsource/sonar-scanner-cli as coverage
 COPY --from=go-coverage /go/src/coverage.out .
+
+USER root
+
+# Copy certificates to container
+COPY certs/ /etc/pki/ca-trust/source/anchors/
+
+# Import certificates into the Java keystore
+RUN keytool -import -trustcacerts -alias salesforce_internal_root_ca_1 -file /etc/pki/ca-trust/source/anchors/Salesforce_Internal_GIA_Root_CA_1.pem -cacerts -storepass changeit -noprompt && \
+    keytool -import -trustcacerts -alias salesforce_internal_root_ca_4 -file /etc/pki/ca-trust/source/anchors/Salesforce_Internal_Root_CA_4.pem -cacerts -storepass changeit -noprompt && \
+    keytool -import -trustcacerts -alias salesforce_internal_root_ca_3 -file /etc/pki/ca-trust/source/anchors/Salesforce_Internal_Root_CA_3.pem -cacerts -storepass changeit -noprompt
+
+# Update CA certificates for general system use
+RUN update-ca-trust extract
+
+USER scanner-cli
 
 FROM ci-go AS go-nexus-scan
 RUN make generate-list-file
