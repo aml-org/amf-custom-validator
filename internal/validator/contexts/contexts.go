@@ -30,6 +30,7 @@ var DefaultAMFContext = types.ObjectMap{
 
 func DefaultValidationContext(reportConfig config.ReportConfiguration) types.ObjectMap {
 	return types.ObjectMap{
+		"@base": reportConfig.BaseIri,
 		"actual": types.StringMap{
 			"@id": "http://a.ml/vocabularies/validation#actual",
 		},
@@ -117,6 +118,7 @@ func DefaultValidationContext(reportConfig config.ReportConfiguration) types.Obj
 
 func ConformsContext(reportConfig config.ReportConfiguration) types.ObjectMap {
 	return types.ObjectMap{
+		"@base": reportConfig.BaseIri,
 		"conforms": types.StringMap{
 			"@id": "http://www.w3.org/ns/shacl#conforms",
 		},

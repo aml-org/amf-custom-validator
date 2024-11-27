@@ -19,7 +19,7 @@ components:
         name:
           description: a property
           type: string
-      required: ["id"]
+      required: [ "id" ]
 
 paths:
   /users:
