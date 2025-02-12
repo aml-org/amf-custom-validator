@@ -8,7 +8,7 @@ import (
 )
 
 func Normalize() {
-	helpers.ValidateNArgs(3, "acv normalize DATA")
+	helpers.ValidateNArgs(3, "acv normalize <DATA>")
 
 	data := helpers.ReadOrPanic(os.Args[2])
 
