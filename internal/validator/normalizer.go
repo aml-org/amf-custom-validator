@@ -1,20 +1,62 @@
 package validator
 
 import (
+	"encoding/json"
 	"github.com/aml-org/amf-custom-validator/internal/types"
 	"github.com/piprate/json-gold/ld"
+	"strings"
 )
 
 func Normalize(json any) any {
 	proc := ld.NewJsonLdProcessor()
 	options := ld.NewJsonLdOptions("")
 	context := make(types.ObjectMap)
+
+	json = NormalizeBaseUri(json)
+
 	flattened, err := proc.Flatten(json, context, options)
 	if err != nil {
 		panic(err)
 	}
 
 	return flattened
+}
+
+// NormalizeBaseUri is a workaround that replaces @base URIs to URLs in the jsonld before flattening it (W-17395811)
+func NormalizeBaseUri(json any) any {
+	// Check if the input has an @context with @base
+	if jsonMap, ok := json.(types.ObjectMap); ok {
+		if ctx, ok := jsonMap["@context"].(types.ObjectMap); ok {
+			if base, ok := ctx["@base"].(string); ok {
+				// if we have a governance URI, replace it with a safe URL
+				if strings.HasPrefix(base, "urn:") {
+					json = replaceBaseUriInJson(json, base, "a://b")
+				}
+			}
+		}
+	}
+	return json
+}
+
+// Helper function to recursively replace URI patterns in the JSON
+func replaceBaseUriInJson(data any, findPattern string, replaceWith string) any {
+	// Convert the data to JSON string
+	jsonBytes, err := json.Marshal(data)
+	if err != nil {
+		panic(err)
+	}
+	jsonStr := string(jsonBytes)
+
+	// Replace the pattern in the string
+	replacedStr := strings.Replace(jsonStr, findPattern, replaceWith, -1)
+
+	// Parse back to JSON
+	var result any
+	err = json.Unmarshal([]byte(replacedStr), &result)
+	if err != nil {
+		panic(err)
+	}
+	return result
 }
 
 func Index(json any) any {
