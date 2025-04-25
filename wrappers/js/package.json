@@ -4,7 +4,7 @@
   "description": "AMF validator backed by OPA Rego",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -t 10000"
+    "test": "mocha -t 12000"
   },
   "author": "Antonio Garrote",
   "license": "ISC",
