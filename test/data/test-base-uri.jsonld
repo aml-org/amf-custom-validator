@@ -1,0 +1,40 @@
+{
+  "@graph": [
+    {
+      "@id": "#/declares/scheme/clientIdEnforcement/source-map/declared-element/element_0",
+      "sourcemaps:element": "urn:ms:d2270dec-7e27-4494-806c-23228cf84dce:asset::d2270dec-7e27-4494-806c-23228cf84dce/required-examples-w-17395811/1.0.0#/declares/scheme/clientIdEnforcement",
+      "sourcemaps:value": ""
+    },
+    {
+      "@id": "#/declares/scheme/clientIdEnforcement/header/parameter/header/client_id/scalar/schema/examples/example/default-example/source-map/tracked-element/element_0",
+      "sourcemaps:element": "urn:ms:d2270dec-7e27-4494-806c-23228cf84dce:asset::d2270dec-7e27-4494-806c-23228cf84dce/required-examples-w-17395811/1.0.0#/declares/scheme/clientIdEnforcement/header/parameter/header/client_id/scalar/schema/examples/example/default-example",
+      "sourcemaps:value": "urn:ms:d2270dec-7e27-4494-806c-23228cf84dce:asset::d2270dec-7e27-4494-806c-23228cf84dce/required-examples-w-17395811/1.0.0#/declares/scheme/clientIdEnforcement/header/parameter/header/client_id"
+    },
+    {
+      "@id": "#/declares/scheme/clientIdEnforcement/header/parameter/header/client_secret/scalar/schema/examples/example/default-example/source-map/tracked-element/element_0",
+      "sourcemaps:element": "urn:ms:d2270dec-7e27-4494-806c-23228cf84dce:asset::d2270dec-7e27-4494-806c-23228cf84dce/required-examples-w-17395811/1.0.0#/declares/scheme/clientIdEnforcement/header/parameter/header/client_secret/scalar/schema/examples/example/default-example",
+      "sourcemaps:value": "urn:ms:d2270dec-7e27-4494-806c-23228cf84dce:asset::d2270dec-7e27-4494-806c-23228cf84dce/required-examples-w-17395811/1.0.0#/declares/scheme/clientIdEnforcement/header/parameter/header/client_secret"
+    },
+    {
+      "@id": "#/declares/scheme/clientIdEnforcement/response/resp/401/payload/application%2Fjson/shape/schema/examples/example/default-example/source-map/tracked-element/element_0",
+      "sourcemaps:element": "urn:ms:d2270dec-7e27-4494-806c-23228cf84dce:asset::d2270dec-7e27-4494-806c-23228cf84dce/required-examples-w-17395811/1.0.0#/declares/scheme/clientIdEnforcement/response/resp/401/payload/application%2Fjson/shape/schema/examples/example/default-example",
+      "sourcemaps:value": "urn:ms:d2270dec-7e27-4494-806c-23228cf84dce:asset::d2270dec-7e27-4494-806c-23228cf84dce/required-examples-w-17395811/1.0.0#/declares/scheme/clientIdEnforcement/response/resp/401/payload/application%2Fjson"
+    },
+    {
+      "@id": "#/declares/scheme/clientIdEnforcement/response/resp/401/header/parameter/header/Content-Type/scalar/schema/examples/example/default-example/source-map/tracked-element/element_0",
+      "sourcemaps:element": "urn:ms:d2270dec-7e27-4494-806c-23228cf84dce:asset::d2270dec-7e27-4494-806c-23228cf84dce/required-examples-w-17395811/1.0.0#/declares/scheme/clientIdEnforcement/response/resp/401/header/parameter/header/Content-Type/scalar/schema/examples/example/default-example",
+      "sourcemaps:value": "urn:ms:d2270dec-7e27-4494-806c-23228cf84dce:asset::d2270dec-7e27-4494-806c-23228cf84dce/required-examples-w-17395811/1.0.0#/declares/scheme/clientIdEnforcement/response/resp/401/header/parameter/header/Content-Type"
+    }
+  ],
+  "@context": {
+    "@base": "urn:ms:d2270dec-7e27-4494-806c-23228cf84dce:asset::d2270dec-7e27-4494-806c-23228cf84dce/required-examples-w-17395811/1.0.0",
+    "raml-shapes": "http://a.ml/vocabularies/shapes#",
+    "security": "http://a.ml/vocabularies/security#",
+    "data": "http://a.ml/vocabularies/data#",
+    "doc": "http://a.ml/vocabularies/document#",
+    "apiContract": "http://a.ml/vocabularies/apiContract#",
+    "core": "http://a.ml/vocabularies/core#",
+    "sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
+    "sh": "http://www.w3.org/ns/shacl#"
+  }
+}
