@@ -195,7 +195,7 @@ pipeline {
                         sh (script: 'mkdir -p /tmp/.cache')
                         platforms.each {item ->
                             def nexusRepository = "nexus.build.msap.io/nexus"
-                            def repositoryName = "releases"
+                            def repositoryName = "artifacts"
                             def groupId = "aml-org.amf-custom-validator"
                             def packageName = "acv"
 
