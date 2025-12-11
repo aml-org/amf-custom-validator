@@ -3,16 +3,18 @@ package validator
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/aml-org/amf-custom-validator/test"
 	"testing"
+
+	data2 "github.com/aml-org/amf-custom-validator/internal/data"
+	"github.com/aml-org/amf-custom-validator/test"
 )
 
 func TestNormalize(t *testing.T) {
 	for _, fixture := range test.IntegrationFixtures("../../test/data/integration", nil) {
 		data := fixture.ReadFixturePositiveData()
 		jsonData := decode(data)
-		normalized := Normalize(jsonData)
-		indexed := Index(normalized)
+		normalized := data2.Normalize(jsonData)
+		indexed := data2.Index(normalized)
 		encodeJson(indexed)
 		//println(res)
 	}

@@ -5,9 +5,11 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"syscall/js"
+
+	"github.com/aml-org/amf-custom-validator/internal/data"
 	"github.com/aml-org/amf-custom-validator/internal/validator"
 	c "github.com/aml-org/amf-custom-validator/pkg/config"
-	"syscall/js"
 )
 
 func validateWrapper() js.Func {
@@ -80,7 +82,7 @@ func normalizeInputWrapper() js.Func {
 			return "Invalid no of arguments passed"
 		}
 		dataString := args[0].String()
-		normalizedInput, err := validator.ProcessInput(dataString, false, nil)
+		normalizedInput, err := data.ProcessInput(dataString, false, nil)
 		if err != nil {
 			return err.Error()
 		}

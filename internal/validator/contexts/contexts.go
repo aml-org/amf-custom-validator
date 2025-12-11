@@ -2,12 +2,15 @@ package contexts
 
 import (
 	"fmt"
+
 	"github.com/aml-org/amf-custom-validator/internal/types"
 	"github.com/aml-org/amf-custom-validator/pkg/config"
 )
 
 var ApiExtensionUri = "http://a.ml/vocabularies/api-extension#"
 var DefaultAMFContext = types.ObjectMap{
+	"sfdc":        "https://salesforce.com/agentforce/schema/",
+	"dcterms":     "http://purl.org/dc/terms/",
 	"data":        "http://a.ml/vocabularies/data#",
 	"shacl":       "http://www.w3.org/ns/shacl#",
 	"shapes":      "http://a.ml/vocabularies/shapes#",

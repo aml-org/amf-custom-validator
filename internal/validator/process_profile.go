@@ -2,19 +2,22 @@ package validator
 
 import (
 	"context"
+
 	"github.com/aml-org/amf-custom-validator/internal/generator"
+	"github.com/aml-org/amf-custom-validator/internal/notifications"
 	"github.com/aml-org/amf-custom-validator/internal/parser"
+	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	e "github.com/aml-org/amf-custom-validator/pkg/events"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/rego"
 )
 
-func ProcessProfile(profileText string, debug bool, eventChan *chan e.Event) (*rego.PreparedEvalQuery, error) {
+func ProcessProfile(profileText string, debug bool, eventChan *chan e.Event) (*rego.PreparedEvalQuery, []profile.LlmMetric, error) {
 	// Generate Rego code
 	regoUnit, err := GenerateRego(profileText, debug, eventChan)
 
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	// Compile Rego code
@@ -23,18 +26,18 @@ func ProcessProfile(profileText string, debug bool, eventChan *chan e.Event) (*r
 
 func GenerateRego(profileText string, debug bool, eventChan *chan e.Event) (*generator.RegoUnit, error) {
 	// Parse profile
-	dispatchEvent(e.NewEvent(e.ProfileParsingStart), eventChan)
+	notifications.DispatchEvent(e.NewEvent(e.ProfileParsingStart), eventChan)
 	parsed, err := parser.Parse(profileText)
-	dispatchEvent(e.NewEvent(e.ProfileParsingDone), eventChan)
+	notifications.DispatchEvent(e.NewEvent(e.ProfileParsingDone), eventChan)
 
 	if err != nil {
 		return nil, err
 	}
 
 	// Generate Rego code
-	dispatchEvent(e.NewEvent(e.RegoGenerationStart), eventChan)
-	module := generator.Generate(*parsed)
-	dispatchEvent(e.NewEvent(e.RegoGenerationDone), eventChan)
+	notifications.DispatchEvent(e.NewEvent(e.RegoGenerationStart), eventChan)
+	module := generator.Generate(*parsed) // TODO: do something with the LLM metrics
+	notifications.DispatchEvent(e.NewEvent(e.RegoGenerationDone), eventChan)
 
 	return &module, err
 }
@@ -47,12 +50,12 @@ var unsafeBuiltinsMap = map[string]struct{}{
 	ast.RegoParseModule.Name: {},
 }
 
-func CompileRego(regoUnit *generator.RegoUnit, eventChan *chan e.Event) (*rego.PreparedEvalQuery, error) {
-	dispatchEvent(e.NewEvent(e.RegoCompilationStart), eventChan)
+func CompileRego(regoUnit *generator.RegoUnit, eventChan *chan e.Event) (*rego.PreparedEvalQuery, []profile.LlmMetric, error) {
+	notifications.DispatchEvent(e.NewEvent(e.RegoCompilationStart), eventChan)
 	query := rego.Query("data." + regoUnit.Name + "." + regoUnit.Entrypoint)
 	module := rego.Module(regoUnit.Name+".rego", regoUnit.Code)
 	unsafeBuiltins := rego.UnsafeBuiltins(unsafeBuiltinsMap)
 	preparedEvalQuery, err := rego.New(query, module, unsafeBuiltins).PrepareForEval(context.Background())
-	dispatchEvent(e.NewEvent(e.RegoCompilationDone), eventChan)
-	return &preparedEvalQuery, err
+	notifications.DispatchEvent(e.NewEvent(e.RegoCompilationDone), eventChan)
+	return &preparedEvalQuery, regoUnit.LlmMetrics, err
 }

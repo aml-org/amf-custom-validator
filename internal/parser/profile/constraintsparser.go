@@ -3,9 +3,11 @@ package profile
 import (
 	"errors"
 	"fmt"
+	"strconv"
+	"strings"
+
 	pathParser "github.com/aml-org/amf-custom-validator/internal/parser/path"
 	y "github.com/aml-org/amf-custom-validator/internal/parser/yaml"
-	"strconv"
 )
 
 func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint *y.Yaml, varGenerator *VarGenerator) ([]Rule, error) {
@@ -230,8 +232,81 @@ func ParseConstraint(path pathParser.PropertyPath, variable Variable, constraint
 		}
 		acc = append(acc, rule)
 	}
+
+	llmMetric := constraint.Get("llmCoherence")
+	if llmMetric.IsFound() {
+		rule, err := ParseLlmMetric("coherence", llmMetric, false, variable, path)
+		if err != nil {
+			return nil, err
+		}
+		acc = append(acc, rule)
+	}
+
 	return acc, nil
 
+}
+
+// metricDescriptions maps metric names to their detailed descriptions for LLM evaluation
+var metricDescriptions = map[string]string{
+	"coherence":    "Coherence. A generated answer is coherent if, when read by itself, it’s easy to understand and free of grammar errors.\\\\nA generated answer is not coherent if it’s difficult to understand what the answer is trying to say.\\\\nGenerally, it’s more important that the response is understandable than it being free of grammar errors.",
+	"concis":       "Assess how clear and understandable the content is. Consider if the language is precise, if concepts are well-explained, and if the content is easy to comprehend.",
+	"completeness": "Determine how complete and comprehensive the content is. Consider if all necessary information is present, if there are missing details, and if the content fully addresses its intended purpose.",
+	"accuracy":     "Evaluate the factual correctness and precision of the content. Consider if the information is accurate, if claims are supported, and if there are any factual errors.",
+	"relevance":    "Assess how relevant and appropriate the content is for its intended context. Consider if the information is pertinent, if it addresses the right topics, and if it's suitable for the target audience.",
+	"consistency":  "Evaluate how consistent the content is in terms of style, terminology, and approach. Consider if naming conventions are uniform, if the tone is consistent, and if similar concepts are treated similarly.",
+}
+
+// llmPromptTemplate defines the structure for LLM evaluation prompts
+const llmPromptTemplate = `You are an expert evaluator tasked with assessing content quality.
+
+Metric: %s
+Description: %s
+
+Please evaluate the following value based on the metric above:
+Value: {{value}}
+
+Provide your evaluation as a single number between 0.0 and 1.0, where:
+- 0.0 = Poor/Completely fails the metric
+- 0.5 = Average/Partially meets the metric  
+- 1.0 = Excellent/Fully meets the metric
+
+Return only the numeric score (e.g., 0.7) without any additional text or explanation.`
+
+// generateLlmPrompt creates a standardized prompt for LLM evaluation
+func generateLlmPrompt(metricName string) string {
+	description, exists := metricDescriptions[metricName]
+	if !exists {
+		// Fallback description for unknown metrics
+		description = fmt.Sprintf("Evaluate the content based on the '%s' metric. Consider the quality, appropriateness, and effectiveness of the content in relation to this metric.", metricName)
+	}
+
+	return fmt.Sprintf(llmPromptTemplate, strings.Title(metricName), description)
+}
+
+func ParseLlmMetric(metricName string, llmMetric *y.Yaml, negated bool, variable Variable, path pathParser.PropertyPath) (Rule, error) {
+	if llmMetric.IsMap() {
+		threshold, err := llmMetric.Get("threshold").Float()
+		if err != nil {
+			return nil, err
+		}
+
+		// Generate standardized prompt or use custom prompt if provided
+		var prompt string
+		if llmMetric.Get("prompt").IsFound() {
+			// Use custom prompt if provided
+			prompt, err = llmMetric.Get("prompt").String()
+			if err != nil {
+				return nil, err
+			}
+		} else {
+			// Generate standardized prompt based on metric name
+			prompt = generateLlmPrompt(metricName)
+		}
+
+		return newLlmMetric(negated, variable, path, metricName, prompt, threshold), nil
+	} else {
+		return nil, errors.New("llm metric rule must be a map")
+	}
 }
 
 func ParseRego(code *y.Yaml, negated bool, variable Variable, path pathParser.PropertyPath) (Rule, error) {

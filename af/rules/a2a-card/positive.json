@@ -1,0 +1,92 @@
+{
+  "@context": {
+    "@vocab": "https://salesforce.com/agentforce/schema/",
+    "agent": "https://salesforce.com/agentforce/schema/Agent",
+    "broker": "https://salesforce.com/agentforce/schema/Broker",
+    "a2a": "https://salesforce.com/agentforce/schema/A2A",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/"
+  },
+  "@type": [
+    "Agent",
+    "A2A"
+  ],
+  "@id": "urn:salesforce:agent:16jxx0000004DRgAAM",
+  "id": "16jxx0000004DRgAAM",
+  "name": "check_prime_agent",
+  "developerName": "check_prime_agent",
+  "description": "An agent specialized in checking whether numbers are prime. It can efficiently determine the primality of individual numbers or lists of numbers.",
+  "plannerType": "Atlas__ConcurrentMultiAgentOrchestration",
+  "isActive": true,
+  "dcterms:created": "2025-10-16T04:41:26.336195378",
+  "planner": {
+    "@type": "Planner",
+    "@id": "urn:salesforce:planner:16jxx0000004DRgAAM",
+    "type": "Atlas__ConcurrentMultiAgentOrchestration",
+    "a2aCard": {
+      "@type": "A2ACard",
+      "@id": "urn:salesforce:a2acard:1760589686336",
+      "protocolVersion": "0.3.0",
+      "name": "check_prime_agent",
+      "description": "An agent specialized in checking whether numbers are prime. It can efficiently determine the primality of individual numbers or lists of numbers.",
+      "version": "1.0.0",
+      "url": "http://localhost:8001/a2a/check_prime_agent",
+      "capabilities": {
+        "@type": "A2ACapability",
+        "streaming": true,
+        "pushNotifications": true,
+        "stateTransitionHistory": true
+      },
+      "defaultInputModes": [
+        "text/plain"
+      ],
+      "defaultOutputModes": [
+        "application/json"
+      ],
+      "skills": [
+        {
+          "@type": "A2ASkill",
+          "id": "prime_checking",
+          "@id": "urn:salesforce:a2askill:prime_checking",
+          "name": "Prime Number Checking",
+          "description": "Check if numbers in a list are prime using efficient mathematical algorithms",
+          "tags": [
+            "mathematical",
+            "computation",
+            "prime",
+            "numbers"
+          ]
+        }
+      ]
+    }
+  },
+  "copilot": {
+    "@type": "Copilot",
+    "@id": "urn:salesforce:copilot:0Xxxx00000001IfCAI",
+    "id": "0Xxxx00000001IfCAI",
+    "versions": [
+      {
+        "@type": "CopilotVersion",
+        "@id": "urn:salesforce:copilot:version:0X9xx00000001IfCAI",
+        "id": "0X9xx00000001IfCAI",
+        "status": "Active",
+        "versionNumber": 1,
+        "role": "general_a2a_broker",
+        "company": "Unknown",
+        "plannerId": "16jxx0000004DRgAAM"
+      }
+    ]
+  },
+  "testing": {
+    "@type": "TestingMetadata",
+    "@id": "urn:salesforce:testing:16jxx0000004DRgAAM",
+    "hasTestSuites": true,
+    "totalTestSuites": 1,
+    "totalTestCases": 4,
+    "totalPassedTests": 4,
+    "totalFailedTests": 0,
+    "overallPassRate": 100,
+    "testCoverage": 40,
+    "lastTestRun": "2025-10-15T23:03:45.903678638"
+  }
+}

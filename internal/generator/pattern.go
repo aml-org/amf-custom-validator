@@ -3,6 +3,7 @@ package generator
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 )

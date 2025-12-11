@@ -3,15 +3,16 @@ package generator
 import (
 	"errors"
 	"fmt"
+	"strings"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
-	"strings"
 )
 
-func GenerateTopLevelExpression(exp profile.Rule, iriExpander *misc.IriExpander) string {
+func GenerateTopLevelExpression(exp profile.Rule, iriExpander *misc.IriExpander, llmMetrics *[]profile.LlmMetric) string {
 	switch e := exp.(type) {
 	case profile.TopLevelExpression:
-		return generateTopLevel(e, iriExpander)
+		return generateTopLevel(e, iriExpander, llmMetrics)
 	case profile.NestedExpression:
 		panic(errors.New("nested expressions cannot be generated as a top level expression"))
 	default:
@@ -19,27 +20,35 @@ func GenerateTopLevelExpression(exp profile.Rule, iriExpander *misc.IriExpander)
 	}
 }
 
-func GenerateNestedExpression(exp profile.Rule, iriExpander *misc.IriExpander) []GeneratedRegoResult {
+func GenerateNestedExpression(exp profile.Rule, iriExpander *misc.IriExpander, llmMetrics *[]profile.LlmMetric) []GeneratedRegoResult {
 	switch e := exp.(type) {
 	case profile.TopLevelExpression:
 		panic(errors.New("nested expressions not supported yet"))
 	case profile.NestedExpression:
-		return generateNested(e, iriExpander)
+		return generateNested(e, iriExpander, llmMetrics)
 	default:
 		panic(errors.New(fmt.Sprintf("expected expression or top-level expression, got %v", exp)))
 	}
 }
 
-func generateTopLevel(exp profile.TopLevelExpression, iriExpander *misc.IriExpander) string {
+func generateTopLevel(exp profile.TopLevelExpression, iriExpander *misc.IriExpander, llmMetrics *[]profile.LlmMetric) string {
 	v := exp.Value
 	if exp.Negated {
 		v = exp.Value.Negate()
 	}
-	results := Dispatch(v, iriExpander)
+	results := Dispatch(v, iriExpander, llmMetrics)
+
+	// Hack to inject the class generator
+	for _, llmMetric := range *llmMetrics {
+		if llmMetric.TargetClass == "" {
+			llmMetric.TargetClass = exp.ClassGenerator
+		}
+	}
+
 	return wrapTopLevelRegoResult(exp, results, iriExpander)
 }
 
-func generateNested(exp profile.NestedExpression, iriExpander *misc.IriExpander) []GeneratedRegoResult {
+func generateNested(exp profile.NestedExpression, iriExpander *misc.IriExpander, llmMetrics *[]profile.LlmMetric) []GeneratedRegoResult {
 	v := exp.Value
 
 	var rego []string
@@ -55,7 +64,7 @@ func generateNested(exp profile.NestedExpression, iriExpander *misc.IriExpander)
 		pathRules = append(pathRules, pr)
 	}
 
-	results := Dispatch(v, iriExpander)
+	results := Dispatch(v, iriExpander, llmMetrics)
 	var branchErrors []string
 	var errorAcc = fmt.Sprintf("%s_errorAcc", exp.Child.Name)
 	rego = append(rego, fmt.Sprintf("%s0 = []", errorAcc))

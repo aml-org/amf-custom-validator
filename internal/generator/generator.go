@@ -2,12 +2,13 @@ package generator
 
 import (
 	"fmt"
+	"regexp"
+	"strings"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"github.com/aml-org/amf-custom-validator/internal/types"
 	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
-	"regexp"
-	"strings"
 )
 
 type RegoUnit struct {
@@ -15,6 +16,7 @@ type RegoUnit struct {
 	Entrypoint string
 	Code       string
 	Prefixes   profile.ProfileContext
+	LlmMetrics []profile.LlmMetric
 }
 
 func IriExpanderFrom(profile profile.Profile) *misc.IriExpander {
@@ -30,13 +32,16 @@ func IriExpanderFrom(profile profile.Profile) *misc.IriExpander {
 
 // Generate Main entry point generating a valid Rego unit from a parsed profile.
 // It uses the encoded Rego preamble code to provide all the library
-// code to execute the profile.
-func Generate(profile profile.Profile) RegoUnit {
-	iriExpander := IriExpanderFrom(profile)
-	acc := []string{pkg(profile), profileName(profile), customRego(profile), preamble(profile)}
+// code to execute the profile. Also returns collected LLM metrics.
+func Generate(p profile.Profile) RegoUnit {
+	iriExpander := IriExpanderFrom(p)
+	acc := []string{pkg(p), profileName(p), customRego(p), preamble(p)}
 
-	for _, r := range ruleSet(profile) {
-		acc = append(acc, GenerateTopLevelExpression(r, iriExpander))
+	// Collect LLM metrics during generation
+	var llmMetrics []profile.LlmMetric
+
+	for _, r := range ruleSet(p) {
+		acc = append(acc, GenerateTopLevelExpression(r, iriExpander, &llmMetrics))
 	}
 
 	n := 0
@@ -48,12 +53,15 @@ func Generate(profile profile.Profile) RegoUnit {
 	}
 	acc = acc[:n]
 
-	return RegoUnit{
-		Name:       packageName(profile),
-		Entrypoint: entrypoint(profile),
+	regoUnit := RegoUnit{
+		Name:       packageName(p),
+		Entrypoint: entrypoint(p),
 		Code:       strings.Join(acc, "\n"),
-		Prefixes:   profile.Prefixes,
+		Prefixes:   p.Prefixes,
+		LlmMetrics: llmMetrics,
 	}
+
+	return regoUnit
 }
 
 func ruleSet(prof profile.Profile) []profile.Rule {

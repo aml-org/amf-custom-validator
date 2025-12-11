@@ -1,0 +1,13 @@
+#%Validation Profile 1.0
+profile: MuleSoft Agent Fabric Validation
+warning:
+  - no-test-suites
+validations:
+  no-test-suites:
+    message: |
+      Agent has no test-suites associated
+    targetClass: sfdc.Agent
+    propertyConstraints:
+      sfdc.testing / sfdc.hasTestSuites:
+        in:
+          - true

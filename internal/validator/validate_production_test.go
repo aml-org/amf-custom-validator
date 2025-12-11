@@ -4,12 +4,14 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"strings"
+	"testing"
+
 	"github.com/aml-org/amf-custom-validator/internal/config"
+	"github.com/aml-org/amf-custom-validator/internal/data"
 	"github.com/aml-org/amf-custom-validator/internal/parser"
 	c "github.com/aml-org/amf-custom-validator/pkg/config"
 	"github.com/aml-org/amf-custom-validator/test"
-	"strings"
-	"testing"
 )
 
 func TestProduction(t *testing.T) {
@@ -60,7 +62,7 @@ func generateDebugOutput(profile string, example test.ProductionExample) {
 		test.ForceWrite(example.Regofile(), compiledRego.Code)
 	}
 
-	normalizedInput, err := ProcessInput(example.Text, config.Debug, nil)
+	normalizedInput, err := data.ProcessInput(example.Text, config.Debug, nil)
 	if err == nil {
 		var b bytes.Buffer
 		enc := json.NewEncoder(&b)

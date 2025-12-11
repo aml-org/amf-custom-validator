@@ -1,0 +1,14 @@
+#%Validation Profile 1.0
+profile: MuleSoft Agent Fabric Validation
+warning:
+  - test-suites-never-passed
+validations:
+  test-suites-never-passed:
+    message: |
+      Agent associated test suites must have been runned at least once
+    targetClass: sfdc.Agent
+    not:
+      propertyConstraints:
+        sfdc.testing / sfdc.lastTestRun:
+          in:
+            - Never

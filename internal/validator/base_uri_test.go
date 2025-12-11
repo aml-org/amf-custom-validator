@@ -6,6 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/aml-org/amf-custom-validator/internal/data"
 )
 
 func TestNormalizeBaseUri(t *testing.T) {
@@ -30,7 +32,7 @@ func TestNormalizeBaseUri(t *testing.T) {
 	}
 
 	// Now pass the parsed JSON object to Normalize
-	normalizedJson := Normalize(jsonData)
+	normalizedJson := data.Normalize(jsonData)
 
 	// Convert normalized JSON to pretty-printed string
 	normalizedBytes, err := json.MarshalIndent(normalizedJson, "", "  ")

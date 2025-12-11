@@ -1,10 +1,11 @@
-package validator
+package data
 
 import (
 	"encoding/json"
+	"strings"
+
 	"github.com/aml-org/amf-custom-validator/internal/types"
 	"github.com/piprate/json-gold/ld"
-	"strings"
 )
 
 func Normalize(json any) any {
