@@ -3,15 +3,14 @@ package generator
 import (
 	"errors"
 	"fmt"
-
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 )
 
-func Dispatch(r profile.Rule, iriExpander *misc.IriExpander, llmMetrics *[]profile.LlmMetric) []GeneratedRegoResult {
+func Dispatch(r profile.Rule, iriExpander *misc.IriExpander) []GeneratedRegoResult {
 	switch e := r.(type) {
 	case profile.NestedExpression:
-		return GenerateNestedExpression(e, iriExpander, llmMetrics)
+		return GenerateNestedExpression(e, iriExpander)
 	case profile.CountRule:
 		return simpleAsGeneratedRegoResult(GenerateCount(e, iriExpander))
 	case profile.ScalarSetRule:
@@ -29,19 +28,17 @@ func Dispatch(r profile.Rule, iriExpander *misc.IriExpander, llmMetrics *[]profi
 	case profile.PropertyComparisonRule:
 		return simpleAsGeneratedRegoResult(GeneratePropertyComparison(e, iriExpander))
 	case profile.AndRule:
-		return branchAsGeneratedRegoResult(GenerateAnd(e, iriExpander, llmMetrics))
+		return branchAsGeneratedRegoResult(GenerateAnd(e, iriExpander))
 	case profile.OrRule:
-		return branchAsGeneratedRegoResult(GenerateOr(e, iriExpander, llmMetrics))
+		return branchAsGeneratedRegoResult(GenerateOr(e, iriExpander))
 	case profile.ConditionalRule:
-		return branchAsGeneratedRegoResult(GenerateConditional(e, iriExpander, llmMetrics))
+		return branchAsGeneratedRegoResult(GenerateConditional(e, iriExpander))
 	case profile.RegoRule:
 		return simpleAsGeneratedRegoResult(GenerateRegoRule(e, iriExpander))
 	case profile.NumericRule:
 		return simpleAsGeneratedRegoResult(GenerateNumericComparison(e, iriExpander))
 	case profile.DatatypeRule:
 		return simpleAsGeneratedRegoResult(GenerateDatatype(e, iriExpander))
-	case profile.LlmMetric:
-		return simpleAsGeneratedRegoResult(GenerateLlmMetric(e, iriExpander, llmMetrics))
 	default:
 		panic(errors.New(fmt.Sprintf("unknown rule type %v", r)))
 	}

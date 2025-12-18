@@ -2,10 +2,9 @@ package commands
 
 import (
 	"fmt"
-	"os"
-
 	"github.com/aml-org/amf-custom-validator/cmd/commands/helpers"
 	"github.com/aml-org/amf-custom-validator/internal/validator"
+	"os"
 )
 
 func Compile() {
@@ -13,7 +12,7 @@ func Compile() {
 
 	profile := helpers.ReadOrPanic(os.Args[2])
 
-	_, _, err := validator.ProcessProfile(string(profile), true, nil)
+	_, err := validator.ProcessProfile(string(profile), true, nil)
 
 	if err != nil {
 		panic(err)

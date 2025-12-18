@@ -4,9 +4,8 @@
 
 "use strict";
 
-
 /**
- * Go 1.19 split the wasm_exec file into two:
+ * Go 1.19+ split the wasm_exec file into two:
  *  - a base wasm_exec file that requires to provide polyfills
  *  - a Node wasm_exec_node file that provides those Node polyfills and adds some CLI behavior
  *
@@ -27,7 +26,7 @@ if (!globalThis.performance || !globalThis.performance.now) {
     };
 }
 
-const crypto = require("crypto")
+const crypto = require("crypto");
 if (!globalThis.crypto || !globalThis.crypto.getRandomValues) {
     globalThis.crypto = {
         getRandomValues(b) {

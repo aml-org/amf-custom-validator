@@ -2,11 +2,9 @@ package commands
 
 import (
 	"fmt"
-	"os"
-
 	"github.com/aml-org/amf-custom-validator/cmd/commands/helpers"
-	"github.com/aml-org/amf-custom-validator/internal/data"
 	"github.com/aml-org/amf-custom-validator/internal/validator"
+	"os"
 )
 
 func Normalize() {
@@ -14,7 +12,7 @@ func Normalize() {
 
 	data := helpers.ReadOrPanic(os.Args[2])
 
-	res, err := data.ProcessInput(string(data), false, nil)
+	res, err := validator.ProcessInput(string(data), false, nil)
 	if err != nil {
 		panic(err)
 	}

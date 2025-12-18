@@ -2,10 +2,6 @@ package validator
 
 import (
 	"context"
-
-	"github.com/aml-org/amf-custom-validator/internal/data"
-	"github.com/aml-org/amf-custom-validator/internal/llm"
-	"github.com/aml-org/amf-custom-validator/internal/notifications"
 	c "github.com/aml-org/amf-custom-validator/pkg/config"
 	e "github.com/aml-org/amf-custom-validator/pkg/events"
 	"github.com/open-policy-agent/opa/rego"
@@ -25,19 +21,11 @@ func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string
 
 func ValidateWithConfiguration(profileText string, jsonldText string, debug bool, eventChan *chan e.Event, validationConfig c.ValidationConfiguration, reportConfig c.ReportConfiguration) (string, error) {
 	// Generate and compile Rego code
-	compiledRego, llmMetrics, err := ProcessProfile(profileText, debug, eventChan)
+	compiledRego, err := ProcessProfile(profileText, debug, eventChan)
 
 	if err != nil {
-		notifications.CloseEventChan(eventChan)
+		CloseEventChan(eventChan)
 		return "", err
-	}
-
-	var llmEvaluationResults map[string]bool
-	if len(llmMetrics) > 0 {
-		// This will evaluate the metrics and add them to the input JSONLD
-		llmEvaluationResults = llm.EnrichDataWithLlmMetrics(llmMetrics, jsonldText, debug, eventChan)
-	} else {
-		llmEvaluationResults = make(map[string]bool)
 	}
 
 	return ValidateCompiledWithConfiguration(compiledRego, jsonldText, debug, eventChan, validationConfig, reportConfig)
@@ -47,10 +35,10 @@ func ValidateCompiledWithConfiguration(compiledRegoPtr *rego.PreparedEvalQuery, 
 	compiledRego := *compiledRegoPtr
 
 	// Normalize input
-	normalizedInput, err := data.ProcessInput(jsonldText, debug, eventChan)
+	normalizedInput, err := ProcessInput(jsonldText, debug, eventChan)
 
 	if err != nil {
-		notifications.CloseEventChan(eventChan)
+		CloseEventChan(eventChan)
 		return "", err
 	}
 
@@ -58,7 +46,7 @@ func ValidateCompiledWithConfiguration(compiledRegoPtr *rego.PreparedEvalQuery, 
 	validationResult, err := executeValidation(eventChan, err, compiledRego, normalizedInput)
 
 	if err != nil {
-		notifications.CloseEventChan(eventChan)
+		CloseEventChan(eventChan)
 		return "", err
 	}
 
@@ -66,17 +54,17 @@ func ValidateCompiledWithConfiguration(compiledRegoPtr *rego.PreparedEvalQuery, 
 	report, err := processResult(validationResult, eventChan, validationConfig, reportConfig)
 
 	if err != nil {
-		notifications.CloseEventChan(eventChan)
+		CloseEventChan(eventChan)
 		return "", err
 	}
 
-	notifications.CloseEventChan(eventChan)
+	CloseEventChan(eventChan)
 	return report, err
 }
 
 func executeValidation(eventChan *chan e.Event, err error, compiledRego rego.PreparedEvalQuery, normalizedInput any) (*rego.ResultSet, error) {
-	notifications.DispatchEvent(e.NewEvent(e.OpaValidationStart), eventChan)
+	dispatchEvent(e.NewEvent(e.OpaValidationStart), eventChan)
 	validationResult, err := compiledRego.Eval(context.Background(), rego.EvalInput(normalizedInput))
-	notifications.DispatchEvent(e.NewEvent(e.OpaValidationDone), eventChan)
+	dispatchEvent(e.NewEvent(e.OpaValidationDone), eventChan)
 	return &validationResult, err
 }

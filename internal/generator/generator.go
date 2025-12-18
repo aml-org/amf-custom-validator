@@ -5,6 +5,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/aml-org/amf-custom-validator/internal/config"
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"github.com/aml-org/amf-custom-validator/internal/types"
@@ -16,7 +17,6 @@ type RegoUnit struct {
 	Entrypoint string
 	Code       string
 	Prefixes   profile.ProfileContext
-	LlmMetrics []profile.LlmMetric
 }
 
 func IriExpanderFrom(profile profile.Profile) *misc.IriExpander {
@@ -32,16 +32,13 @@ func IriExpanderFrom(profile profile.Profile) *misc.IriExpander {
 
 // Generate Main entry point generating a valid Rego unit from a parsed profile.
 // It uses the encoded Rego preamble code to provide all the library
-// code to execute the profile. Also returns collected LLM metrics.
-func Generate(p profile.Profile) RegoUnit {
-	iriExpander := IriExpanderFrom(p)
-	acc := []string{pkg(p), profileName(p), customRego(p), preamble(p)}
+// code to execute the profile.
+func Generate(profile profile.Profile) RegoUnit {
+	iriExpander := IriExpanderFrom(profile)
+	acc := []string{pkg(profile), profileName(profile), customRego(profile), preamble(profile)}
 
-	// Collect LLM metrics during generation
-	var llmMetrics []profile.LlmMetric
-
-	for _, r := range ruleSet(p) {
-		acc = append(acc, GenerateTopLevelExpression(r, iriExpander, &llmMetrics))
+	for _, r := range ruleSet(profile) {
+		acc = append(acc, GenerateTopLevelExpression(r, iriExpander))
 	}
 
 	n := 0
@@ -53,15 +50,12 @@ func Generate(p profile.Profile) RegoUnit {
 	}
 	acc = acc[:n]
 
-	regoUnit := RegoUnit{
-		Name:       packageName(p),
-		Entrypoint: entrypoint(p),
+	return RegoUnit{
+		Name:       packageName(profile),
+		Entrypoint: entrypoint(profile),
 		Code:       strings.Join(acc, "\n"),
-		Prefixes:   p.Prefixes,
-		LlmMetrics: llmMetrics,
+		Prefixes:   profile.Prefixes,
 	}
-
-	return regoUnit
 }
 
 func ruleSet(prof profile.Profile) []profile.Rule {
@@ -112,7 +106,12 @@ func customRego(profile profile.Profile) string {
 
 func preamble(profile profile.Profile) string {
 	acc := make([]string, 0)
-	acc = append(acc, preambleRaw)
+	if config.IsRegoV0() {
+		acc = append(acc, preambleRawV0)
+	} else {
+		acc = append(acc, preambleRawV1)
+	}
+
 	// If empty, we provide a default implementation so we can always generate a value report.
 	// Same for other levels
 	if len(profile.Violation) == 0 {
@@ -124,11 +123,10 @@ func preamble(profile profile.Profile) string {
 	if len(profile.Info) == 0 {
 		acc = append(acc, "default info = []")
 	}
-
 	return strings.Join(acc, "\n\n")
 }
 
-const preambleRaw = `
+const preambleRawV0 = `
 # Import future keywords
 import future.keywords.in
 import future.keywords.every
@@ -415,6 +413,276 @@ report[level] = matches {
 # default value must be added dynamically
 report[level] = matches {
   vs = warning
+  level := "warning"
+  matches := vs
+}
+`
+
+const preambleRawV1 = `
+# Rego v1
+import rego.v1
+
+# Finds a node in the graph, following a link in the flatten JSON-LD node
+find := node if {
+  id := data.link["@id"]
+  node := input["@ids"][id]
+}
+
+# Makes sure that value is wrapped in an array even if it is a single object property
+nodes_array := data.nodes if {
+  is_array(data.nodes)
+} else := [data.nodes]
+
+# Navigates an object property for a given node
+nested contains nested_node if {
+  nested_links := nodes_array with data.nodes as data.nodes
+  link := nested_links[_]
+  nested_node := find with data.link as link
+}
+
+# Fetches all the nodes for an object link
+nested_nodes := result if {
+  nested_links := nodes_array with data.nodes as data.nodes
+  result := [nested_node |
+    link := nested_links[_]
+    nested_node := find with data.link as link
+  ]
+}
+
+# Fetches all the scalars for a scalar link
+nested_values := result if {
+  result := {value |
+    n := data.nodes[_]
+    value := n[data.property]
+  }
+}
+
+# Fetches all the subject nodes that have certain predicate and object
+search_subjects contains valid_subject if {
+  predicate := data.predicate
+  object := data.object
+
+  node := input["@ids"][_]
+  node_predicate_values := nodes_array with data.nodes as object.get(node, predicate, [])
+  node_predicate_value := node_predicate_values[_]
+
+  node_predicate_value["@id"] == object["@id"]
+  valid_subject := node
+}
+
+search_custom_property_subjects contains valid_subject if {
+  extension := data.property_extension
+  object := data.object
+
+  object["http://a.ml/vocabularies/core#extensionName"] == extension
+  object_id := object["@id"]
+
+  node := input["@ids"][_]
+  node[prop] == {"@id": object_id}
+
+  valid_subject := node
+}
+
+# collection functions
+
+# collect next set of nodes
+collect contains r if {
+  nodes := data.nodes
+  n := nodes[_]
+  rs := object.get(n, data.property, [])
+  rss := nodes_array with data.nodes as rs
+  rsss := nested with data.nodes as rss
+  r := rsss[_]
+}
+
+# collect terminal values
+collect_values contains r if {
+  nodes := data.nodes
+  n := nodes[_]
+  rs := object.get(n, data.property, [])
+  rss := nodes_array with data.nodes as rs
+  r := rss[_]
+}
+
+# helper to check datatype constraints
+check_datatype(x, dt) := true if {
+  dt == "http://www.w3.org/2001/XMLSchema#string"
+  is_string(x)
+} else := true if {
+  dt == "http://www.w3.org/2001/XMLSchema#integer"
+  is_number(x)
+} else := true if {
+  dt == "http://www.w3.org/2001/XMLSchema#float"
+  is_number(x)
+} else := true if {
+  dt == "http://www.w3.org/2001/XMLSchema#boolean"
+  is_boolean(x)
+} else := true if {
+  is_object(x)
+  t := object.get(x, "@type", "")
+  t == dt
+} else := false if {
+  not is_object(x)
+  dt != "http://www.w3.org/2001/XMLSchema#string"
+  dt != "http://www.w3.org/2001/XMLSchema#integer"
+  dt != "http://www.w3.org/2001/XMLSchema#float"
+  dt != "http://www.w3.org/2001/XMLSchema#boolean"
+}
+
+# Fetches all the nodes for a given RDF class
+target_class contains node if {
+  class := data.class
+  id := input["@types"][class][_]
+  node := input["@ids"][id]
+}
+
+# Transform scalars to string, useful for 'in' constraints
+as_string(x) := x if {
+  is_string(x)
+} else := "false" if {
+  is_boolean(x)
+  x == false
+} else := "true" if {
+  is_boolean(x)
+  x == true
+} else := format_int(x, 10) if {
+  is_number(x)
+} else := x["@id"] if {
+  is_object(x)
+  x["@id"]
+} else := json.marshal(x) if {
+  is_object(x)
+  not x["@id"]
+}
+
+# Finds a nested custom domain property for a given node and custom domain property name
+gen_path_extension := nodes if {
+  sourceNode := data.custom_property_data[0]
+  extensionName := data.custom_property_data[1]
+
+  customPropertiesTarget := object.get(
+    sourceNode,
+    "http://a.ml/vocabularies/document#customDomainProperties",
+    []
+  )
+  customProperties := nodes_array with data.nodes as customPropertiesTarget
+
+  extensionFound := [found |
+    annotationLink := customProperties[_]
+    annotationLinkId := annotationLink["@id"]
+    annotation := object.get(sourceNode, annotationLinkId, {})
+    annotationNode := find with data.link as annotation
+
+    annotationNode["http://a.ml/vocabularies/core#extensionName"] == extensionName
+    found := annotationNode
+  ]
+
+  nodes := extensionFound
+}
+
+# creates an array from a comma separated values str
+split_values := values if {
+  values := split(data.nodes, ",")
+}
+
+# check if a given target is present at the list serialized as comma separated values(chain)
+values_contains(chain, target) := true if {
+  values := split_values with data.nodes as chain
+  values[_] == target
+} else := false
+
+# Traces one evaluation of a constraint
+trace(constraint, resultPath, focusNode, traceValue) := t if {
+  l := location(focusNode)
+  t := {
+    "@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue,
+    "location": l,
+  }
+} else := t if {
+  not location(focusNode)
+  t := {
+    "@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
+    "component": constraint,
+    "resultPath": resultPath,
+    "traceValue": traceValue,
+  }
+}
+
+location(focusNode) := l if {
+  id := focusNode["@id"]
+  loc := input["@lexical"][id]
+  raw_range := loc["range"]
+  uri := loc["uri"]
+
+  range_parts := regex.find_n("\\d+", raw_range, 4)
+  range := {
+    "@type": ["lexicalSchema:RangeNode", "lexical:Range"],
+    "start": {
+      "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
+      "line": to_number(range_parts[0]),
+      "column": to_number(range_parts[1]),
+    },
+    "end": {
+      "@type": ["lexicalSchema:PositionNode", "lexical:Position"],
+      "line": to_number(range_parts[2]),
+      "column": to_number(range_parts[3]),
+    },
+  }
+
+  l := {
+    "@type": ["lexicalSchema:LocationNode", "lexical:Location"],
+    "uri": uri,
+    "range": range,
+  }
+}
+
+# Builds an error message that can be returned to the calling client software
+error(sourceShapeName, focusNode, resultMessage, traceLog) := e if {
+  id := focusNode["@id"]
+  locationNode := location(focusNode)
+  e := {
+    "@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
+    "sourceShapeName": sourceShapeName,
+    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
+    "resultMessage": resultMessage,
+    "location": locationNode,
+    "trace": traceLog,
+  }
+} else := e if {
+  id := focusNode["@id"]
+  not location(focusNode)
+  e := {
+    "@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
+    "sourceShapeName": sourceShapeName,
+    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
+    "resultMessage": resultMessage,
+    "trace": traceLog,
+  }
+}
+
+# generate the report for violation level
+# default value must be added dynamically
+report[level] := matches if {
+  vs := violation
+  level := "violation"
+  matches := vs
+}
+
+# generate the report for the info level
+# default value must be added dynamically
+report[level] := matches if {
+  vs := info
+  level := "info"
+  matches := vs
+}
+
+# generate the report for the warning level
+# default value must be added dynamically
+report[level] := matches if {
+  vs := warning
   level := "warning"
   matches := vs
 }

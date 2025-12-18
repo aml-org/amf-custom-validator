@@ -7,19 +7,19 @@ import (
 	"sort"
 )
 
-func GenerateOr(or profile.OrRule, iriExpander *misc.IriExpander, llmMetrics *[]profile.LlmMetric) []BranchRegoResult {
+func GenerateOr(or profile.OrRule, iriExpander *misc.IriExpander) []BranchRegoResult {
 	if or.Negated {
 		negated := or.Negate()
 		switch andRule := negated.(type) {
 		case profile.AndRule:
-			return GenerateAnd(andRule, iriExpander, llmMetrics)
+			return GenerateAnd(andRule, iriExpander)
 		default:
 			panic(fmt.Sprintf("ony AND can be the result of a naged OR, got %v", andRule))
 		}
 
 	} else {
 		sort.Sort(or.Body)
-		rego := collectAllResults(or, iriExpander, llmMetrics)
+		rego := collectAllResults(or, iriExpander)
 		regoBranches := filterBranchesResult(rego)
 		regoResults := filterSimpleResults(rego)
 		return expandBranches(regoResults, regoBranches)
@@ -97,10 +97,10 @@ func filterBranchesResult(rego [][]GeneratedRegoResult) [][]BranchRegoResult {
 	return acc
 }
 
-func collectAllResults(or profile.OrRule, iriExpander *misc.IriExpander, llmMetrics *[]profile.LlmMetric) [][]GeneratedRegoResult {
+func collectAllResults(or profile.OrRule, iriExpander *misc.IriExpander) [][]GeneratedRegoResult {
 	acc := make([][]GeneratedRegoResult, len(or.Body))
 	for i, r := range or.Body {
-		acc[i] = Dispatch(r, iriExpander, llmMetrics)
+		acc[i] = Dispatch(r, iriExpander)
 	}
 	return acc
 }

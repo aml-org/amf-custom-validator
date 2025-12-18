@@ -3,15 +3,12 @@ package validator
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
-	"strings"
-	"testing"
-
 	"github.com/aml-org/amf-custom-validator/internal/config"
-	"github.com/aml-org/amf-custom-validator/internal/data"
 	"github.com/aml-org/amf-custom-validator/internal/parser"
 	c "github.com/aml-org/amf-custom-validator/pkg/config"
 	"github.com/aml-org/amf-custom-validator/test"
+	"strings"
+	"testing"
 )
 
 func TestProduction(t *testing.T) {
@@ -40,7 +37,7 @@ func TestProduction(t *testing.T) {
 							expected := example.ReadReport()
 							actual := report
 							if expected != actual {
-								t.Errorf(fmt.Sprintf("Not matching report for %s", example.File))
+								t.Errorf("Not matching report for %s", example.File)
 							}
 						}
 					} else {
@@ -62,7 +59,7 @@ func generateDebugOutput(profile string, example test.ProductionExample) {
 		test.ForceWrite(example.Regofile(), compiledRego.Code)
 	}
 
-	normalizedInput, err := data.ProcessInput(example.Text, config.Debug, nil)
+	normalizedInput, err := ProcessInput(example.Text, config.Debug, nil)
 	if err == nil {
 		var b bytes.Buffer
 		enc := json.NewEncoder(&b)

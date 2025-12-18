@@ -2,6 +2,8 @@ package generator
 
 import (
 	"fmt"
+
+	"github.com/aml-org/amf-custom-validator/internal/config"
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
@@ -109,7 +111,12 @@ func aggregateResultsIntoSet(paths []regoPathResultInternal) RegoPathResult {
 	ruleName := profile.Genvar("path_set_rule")
 	for i, p := range paths {
 		if i == 0 {
-			rego = append(rego, fmt.Sprintf("%s[nodes] {", ruleName)) // header of the rule
+			if config.IsRegoV0() {
+				rego = append(rego, fmt.Sprintf("%s[nodes] {", ruleName)) // header of the rule
+			} else {
+				rego = append(rego, fmt.Sprintf("%s[nodes] if {", ruleName)) // header of the rule
+			}
+
 		} else {
 			rego = append(rego, "} {") // add another clause to the rule
 		}
