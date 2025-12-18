@@ -9,8 +9,6 @@ import (
 
 var ApiExtensionUri = "http://a.ml/vocabularies/api-extension#"
 var DefaultAMFContext = types.ObjectMap{
-	"sfdc":        "https://salesforce.com/agentforce/schema/",
-	"dcterms":     "http://purl.org/dc/terms/",
 	"data":        "http://a.ml/vocabularies/data#",
 	"shacl":       "http://www.w3.org/ns/shacl#",
 	"shapes":      "http://a.ml/vocabularies/shapes#",
@@ -29,6 +27,8 @@ var DefaultAMFContext = types.ObjectMap{
 	"management":  "http://anypoint.com/vocabs/management#",
 	"api":         "http://anypoint.com/vocabs/api#",
 	"catalog":     "http://anypoint.com/vocabs/digital-repository#",
+	"sfdc":        "http://soap.sforce.com/2006/04/metadata#",
+	"oas":         "https://openapis.org/vocab/spec#",
 }
 
 func DefaultValidationContext(reportConfig config.ReportConfiguration) types.ObjectMap {
