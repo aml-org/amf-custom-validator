@@ -1,0 +1,267 @@
+#%Validation Profile 1.0
+
+profile: Spectral Base
+
+violation:
+  - operation-2xx-response
+  - path-params
+  - no-eval-in-markdown
+  - no-script-tags-in-markdown
+  - operation-default-response
+  - operation-operationId
+  - path-declarations-must-exist
+  - path-keys-no-trailing-slash
+  - path-not-include-query
+  - duplicated-entry-in-enum
+  - operation-singular-tag
+  - tag-description
+  - info-contact
+  - info-description
+  - info-license
+  - license-url
+  - openapi-tags
+  - operation-description
+  - operation-tags
+  - operation-tag-defined
+
+validations:
+
+  operation-2xx-response:
+    message: |
+      Operation must have at least one 2xx response. Any API operation (endpoint) can fail but presumably it is also
+      meant to do something constructive at some point. If you forget to write out a success case for this API, then
+      this rule will let you know.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.returns:
+        atLeast:
+          count: 1
+          validation:
+            propertyConstraints:
+              apiContract.statusCode:
+                pattern: "2[0-9][0-9]"
+
+  path-params:
+    message: |
+      Path parameters are correct and valid.
+        1. For every parameters referenced in the path string (i.e: /users/{userId}), the parameter must be defined in
+           either path.parameters, or operation.parameters objects (Non standard HTTP operations will be silently
+           ignored.)
+        2. Every path.parameters and operation.parameters parameter must be used in the path string.
+    targetClass: apiContract.EndPoint
+    rego: |
+      path = $node["http://a.ml/vocabularies/apiContract#path"]
+      pathVariables = {v | ms = regex.find_all_string_submatch_n("{([a-z0-9_]+)}", path, -1); m = ms[_]; v = m[1] }
+      endpointParameters = nested_nodes(object.get($node, "http://a.ml/vocabularies/apiContract#parameter", []))[_]
+      
+      endpointParameterNames = { desc |
+        parameter = endpointParameters[_]
+        name = parameter["http://a.ml/vocabularies/core#name"]
+        parameter["http://a.ml/vocabularies/apiContract#binding"] = "path"
+        desc = name
+      }
+      
+      operations = nested_nodes(object.get($node, "http://a.ml/vocabularies/apiContract#supportedOperation", []))[_]
+      operation = operations[_]
+      requests = nested_nodes(object.get(operation, "http://a.ml/vocabularies/apiContract#expects", []))[_]
+      request = requests[_]
+      operationParameters = nested_nodes(object.get(request, "http://a.ml/vocabularies/apiContract#uriParameter", []))[_]
+      operationParameterNames = { desc |
+        parameter = operationParameters[_]
+        name = parameter["http://a.ml/vocabularies/core#name"]
+        parameter["http://a.ml/vocabularies/apiContract#binding"] = "path"
+        desc = name
+      }
+      parameterNames := endpointParameterNames | operationParameterNames
+      $result = (pathVariables == parameterNames)
+
+
+  info-contact:
+    message: |
+      Info object should contain contact object.
+
+      Hopefully your API description document is so good that nobody ever needs to contact you with questions, but that
+      is rarely the case. The contact object has a few different options for contact details.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.provider:
+        minCount: 1
+
+  info-description:
+    message: |
+      OpenAPI object info description must be present and non-empty string.
+      Examples can contain Markdown so you can really go to town with them, implementing getting started information
+      like where to find authentication keys, and how to use them.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  info-license:
+    message: |
+      The info object should have a license key.
+      It can be hard to pick a license, so if you don't have a lawyer around you can use TLDRLegal and Choose a License
+      to help give you an idea.
+      How useful this is in court is not entirely known, but having a license is better than not having a license.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      core.license:
+        minCount: 1
+
+  license-url:
+    message: |
+      Mentioning a license is only useful if people know what the license means, so add a link to the full text for
+      those who need it.
+    targetClass: core.License
+    propertyConstraints:
+      core.url:
+        minCount: 1
+
+  no-eval-in-markdown:
+    message: |
+      This rule protects against an edge case, for anyone bringing in description documents from third parties and using
+      the parsed content rendered in HTML/JS. If one of those third parties does something shady like inject eval()
+      JavaScript statements, it could lead to an XSS attack.
+    targetClass: apiContract.WebAPI
+    not:
+      propertyConstraints:
+        core.description:
+          pattern: 'eval\('
+
+  no-script-tags-in-markdown:
+    message: |
+      This rule protects against a potential hack, for anyone bringing in description documents from third parties then
+      generating HTML documentation. If one of those third parties does something shady like inject <script> tags, they
+      could easily execute arbitrary code on your domain, which if it's the same as your main application could be all
+      sorts of terrible.
+    targetClass: apiContract.WebAPI
+    not:
+      propertyConstraints:
+        core.description:
+          pattern: "<script>"
+
+  openapi-tags:
+    message: |
+      OpenAPI object should have non-empty tags array.
+      Why? Well, you can reference tags arbitrarily in operations, and definition is optional...
+      Defining tags allows you to add more information like a description.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiContract.tag:
+        minCount: 1
+
+  operation-default-response:
+    message: Don't use default responses, provide a valid status code
+    targetClass: apiContract.Response
+    not:
+      propertyConstraints:
+        apiContract.statusCode:
+          pattern: "default"
+
+  operation-description:
+    message: Operation must have a description explaining the operation functionality
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      core.description:
+        minCount: 1
+
+  operation-operationId:
+    message: |
+      This operation ID is essentially a reference for the operation, which can be used to visually suggest a connection
+      to other operations. This is like some theoretical static HATEOAS-style referencing, but it's also used for the
+      URL in some documentation systems.
+      Make the value lower-hyphen-case, and try and think of a name for the action which does not relate to the HTTP
+      message. Base it off the actual action being performed. create-polygon? search-by-polygon? filter-companies?
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.operationId:
+        minCount: 1
+        pattern: "^[a-z0-9\\\\-]+$"
+
+  operation-singular-tag:
+    message: |
+      Use just one tag for an operation, which is helpful for some documentation systems which use tags to avoid
+      duplicate content.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.tag:
+        maxCount: 1
+
+  operation-tags:
+    message: Operation should have non-empty tags array.
+    targetClass: apiContract.Operation
+    propertyConstraints:
+      apiContract.tag:
+        minCount: 1
+
+  operation-tag-defined:
+    message: Operation tags should be defined in global tags.
+    targetClass: apiContract.WebAPI
+    rego: |
+      o1 = collect([$node],"http://a.ml/vocabularies/apiContract#tag")
+      top_level_tag_names = collect_values(o1, "http://a.ml/vocabularies/core#name")
+
+      p1 = collect([$node],"http://a.ml/vocabularies/apiContract#endpoint")
+      p2 = collect(p1,"http://a.ml/vocabularies/apiContract#supportedOperation")
+      op_tags = collect(p2,"http://a.ml/vocabularies/apiContract#tag")
+      operation_tag_names = collect_values(op_tags, "http://a.ml/vocabularies/core#name")
+
+      invalid_tag_names = operation_tag_names - top_level_tag_names
+
+      invalid_tag_name = invalid_tag_names[_]
+      invalid_tag = [op_tag | op_tag := op_tags[_]; object.get(op_tag,"http://a.ml/vocabularies/core#name","") == invalid_tag_name][_]
+      $result = false
+      $traceNode = invalid_tag
+
+  path-declarations-must-exist:
+    message: Path parameter declarations cannot be empty, ex./given/{} is invalid.
+    targetClass: apiContract.EndPoint
+    not:
+      propertyConstraints:
+        apiContract.path:
+          pattern: "{}"
+
+  path-keys-no-trailing-slash:
+    message: |
+      Keep trailing slashes off of paths, as it can cause some confusion. Some web tooling (like mock servers, real
+      servers, code generators, application frameworks, etc.) will treat example.com/foo and example.com/foo/ as the
+      same thing, but other tooling will not. Avoid any confusion by just documenting them without the slash, and maybe
+      some tooling will let people shove a / on there when they're using it or maybe not, but at least the docs are
+      suggesting how it should be done properly.
+    targetClass: apiContract.EndPoint
+    not:
+      propertyConstraints:
+        apiContract.path:
+          pattern: '\/$'
+
+  path-not-include-query:
+    message: "Don't put query string items in the path, they belong in parameters with in: query."
+    targetClass: apiContract.EndPoint
+    not:
+      propertyConstraints:
+        apiContract.path:
+          pattern: '.*\?.*'
+
+  tag-description:
+    message: |
+      Tags alone are not very descriptive. Give folks a bit more information to work with.
+      If your tags are business objects then you can use the term to explain them a bit. An 'Account' could be a user
+      account, company information, bank account, potential sales lead, anything. What is clear to the folks writing
+      the document is probably not as clear to others.
+    targetClass: apiContract.WebAPI
+    propertyConstraints:
+      apiContract.tag:
+        nested:
+          propertyConstraints:
+            core.description:
+              minCount: 1
+
+  duplicated-entry-in-enum:
+    message: Each value of an enum must be different from one another.
+    targetClass: shapes.ScalarShape
+    rego: |
+      enum = object.get($node, "http://www.w3.org/ns/shacl#in",[])
+      enumValues = find(enum)
+      props = [r | d = enumValues[_]; is_object(d); n=find(d); r=n["http://a.ml/vocabularies/data#value"] ]
+      propsSet = {r | v = props[_]; r=v}
+      $result = (count(props) == count(propsSet))

@@ -2,16 +2,18 @@ package generator
 
 import (
 	"fmt"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/open-policy-agent/opa/ast"
 )
 
-func GenerateUniqueValues(uniqueValues profile.UniqueValuesRule, iriExpander *misc.IriExpander) []SimpleRegoResult {
+func GenerateUniqueValues(uniqueValues profile.UniqueValuesRule, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []SimpleRegoResult {
 	// Fetch variable
 	path := uniqueValues.Path
 	var rego []string
 	rego = append(rego, "#  querying path: "+path.Source())
-	arrayRule := GeneratePropertyArray(path, uniqueValues.Variable.Name, iriExpander)
+	arrayRule := GeneratePropertyArray(path, uniqueValues.Variable.Name, iriExpander, regoVersion)
 
 	// Set variable values
 	arrayVariable := profile.Genvar("array_values")

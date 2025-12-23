@@ -2,8 +2,10 @@ package validator
 
 import (
 	"context"
+
 	c "github.com/aml-org/amf-custom-validator/pkg/config"
 	e "github.com/aml-org/amf-custom-validator/pkg/events"
+	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/rego"
 )
 
@@ -11,17 +13,17 @@ import (
 // These should not even be closed here, but in the `pkg` module. Closing here because we have internal function calls
 // directly to `internal.Validate` rather than `pkg.Validate`
 
-func Validate(profileText string, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
-	return ValidateWithConfiguration(profileText, jsonldText, debug, eventChan, c.DefaultValidationConfiguration{}, c.DefaultReportConfiguration())
+func Validate(profileText string, jsonldText string, debug bool, regoVersion ast.RegoVersion, eventChan *chan e.Event) (string, error) {
+	return ValidateWithConfiguration(profileText, jsonldText, debug, regoVersion, eventChan, c.DefaultValidationConfiguration{}, c.DefaultReportConfiguration())
 }
 
 func ValidateCompiled(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
 	return ValidateCompiledWithConfiguration(compiledRegoPtr, jsonldText, debug, eventChan, c.DefaultValidationConfiguration{}, c.DefaultReportConfiguration())
 }
 
-func ValidateWithConfiguration(profileText string, jsonldText string, debug bool, eventChan *chan e.Event, validationConfig c.ValidationConfiguration, reportConfig c.ReportConfiguration) (string, error) {
+func ValidateWithConfiguration(profileText string, jsonldText string, debug bool, regoVersion ast.RegoVersion, eventChan *chan e.Event, validationConfig c.ValidationConfiguration, reportConfig c.ReportConfiguration) (string, error) {
 	// Generate and compile Rego code
-	compiledRego, err := ProcessProfile(profileText, debug, eventChan)
+	compiledRego, err := ProcessProfile(profileText, debug, eventChan, regoVersion)
 
 	if err != nil {
 		CloseEventChan(eventChan)
@@ -29,6 +31,12 @@ func ValidateWithConfiguration(profileText string, jsonldText string, debug bool
 	}
 
 	return ValidateCompiledWithConfiguration(compiledRego, jsonldText, debug, eventChan, validationConfig, reportConfig)
+}
+func ValidateWithConfigurationV0(profileText string, jsonldText string, debug bool, eventChan *chan e.Event, validationConfig c.ValidationConfiguration, reportConfig c.ReportConfiguration) (string, error) {
+	return ValidateWithConfiguration(profileText, jsonldText, debug, ast.RegoV0, eventChan, validationConfig, reportConfig)
+}
+func ValidateWithConfigurationV1(profileText string, jsonldText string, debug bool, eventChan *chan e.Event, validationConfig c.ValidationConfiguration, reportConfig c.ReportConfiguration) (string, error) {
+	return ValidateWithConfiguration(profileText, jsonldText, debug, ast.RegoV1, eventChan, validationConfig, reportConfig)
 }
 
 func ValidateCompiledWithConfiguration(compiledRegoPtr *rego.PreparedEvalQuery, jsonldText string, debug bool, eventChan *chan e.Event, validationConfig c.ValidationConfiguration, reportConfig c.ReportConfiguration) (string, error) {
@@ -60,6 +68,14 @@ func ValidateCompiledWithConfiguration(compiledRegoPtr *rego.PreparedEvalQuery, 
 
 	CloseEventChan(eventChan)
 	return report, err
+}
+
+func ValidateRegoV0(profileText string, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
+	return ValidateWithConfiguration(profileText, jsonldText, debug, ast.RegoV0, eventChan, c.DefaultValidationConfiguration{}, c.DefaultReportConfiguration())
+}
+
+func ValidateRegoV1(profileText string, jsonldText string, debug bool, eventChan *chan e.Event) (string, error) {
+	return ValidateWithConfiguration(profileText, jsonldText, debug, ast.RegoV1, eventChan, c.DefaultValidationConfiguration{}, c.DefaultReportConfiguration())
 }
 
 func executeValidation(eventChan *chan e.Event, err error, compiledRego rego.PreparedEvalQuery, normalizedInput any) (*rego.ResultSet, error) {

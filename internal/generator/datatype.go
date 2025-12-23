@@ -2,17 +2,19 @@ package generator
 
 import (
 	"fmt"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/open-policy-agent/opa/ast"
 )
 
-func GenerateDatatype(datatype profile.DatatypeRule, iriExpander *misc.IriExpander) []SimpleRegoResult {
+func GenerateDatatype(datatype profile.DatatypeRule, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []SimpleRegoResult {
 	path := datatype.Path
 	var rego []string
 
 	// Let's get the path computed and stored in the inValuesVariable
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertySet(path, datatype.Variable.Name, iriExpander)
+	pathResult := GeneratePropertySet(path, datatype.Variable.Name, iriExpander, regoVersion)
 	valueVariable := profile.Genvar("datatype_check")
 	rego = append(rego, fmt.Sprintf("%s_elem = %s with data.sourceNode as %s", valueVariable, pathResult.rule, datatype.Variable.Name))
 	rego = append(rego, fmt.Sprintf("%s = %s_elem[_]", valueVariable, valueVariable))

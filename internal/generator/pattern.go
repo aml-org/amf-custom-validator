@@ -3,23 +3,33 @@ package generator
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/open-policy-agent/opa/ast"
 )
 
-func GeneratePattern(pattern profile.PatternRule, iriExpander *misc.IriExpander) []SimpleRegoResult {
+func GeneratePattern(pattern profile.PatternRule, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []SimpleRegoResult {
 	path := pattern.Path
 	var rego []string
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertySet(path, pattern.Variable.Name, iriExpander)
+	pathResult := GeneratePropertySet(path, pattern.Variable.Name, iriExpander, regoVersion)
 	checkVariable := profile.Genvar(fmt.Sprintf("%s_node", pathResult.rule))
 	rego = append(rego, fmt.Sprintf("%s_array = %s with data.sourceNode as %s", checkVariable, pathResult.rule, pattern.Variable.Name))
 	rego = append(rego, fmt.Sprintf("%s = %s_array[_]", checkVariable, checkVariable))
 	// Add the validation
-	if pattern.Negated {
-		rego = append(rego, fmt.Sprintf("regex.match(`%s`,%s)", pattern.Argument, checkVariable))
+	if IsV0(regoVersion) {
+		if pattern.Negated {
+			rego = append(rego, fmt.Sprintf("regex.match(`%s`,%s)", pattern.Argument, checkVariable))
+		} else {
+			rego = append(rego, fmt.Sprintf("not regex.match(`%s`,%s)", pattern.Argument, checkVariable))
+		}
 	} else {
-		rego = append(rego, fmt.Sprintf("not regex.match(`%s`,%s)", pattern.Argument, checkVariable))
+		if pattern.Negated {
+			rego = append(rego, fmt.Sprintf("regex.match(`%s`,as_string(%s))", pattern.Argument, checkVariable))
+		} else {
+			rego = append(rego, fmt.Sprintf("not regex.match(`%s`,as_string(%s))", pattern.Argument, checkVariable))
+		}
 	}
 
 	tracePath, err := pattern.Path.Trace(iriExpander)

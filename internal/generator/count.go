@@ -2,13 +2,15 @@ package generator
 
 import (
 	"fmt"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/open-policy-agent/opa/ast"
 )
 
 // GenerateCount Generates the Rego code snippet for the rule, supports minCount/maxCount and minLength/maxLength
-func GenerateCount(count profile.CountRule, iriExpander *misc.IriExpander) []SimpleRegoResult {
-	return generateCountRule(count, obtainCondition(count.Qualifier), iriExpander)
+func GenerateCount(count profile.CountRule, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []SimpleRegoResult {
+	return generateCountRule(count, obtainCondition(count.Qualifier), iriExpander, regoVersion)
 }
 
 func obtainCondition(qualifier profile.CountQualifier) string {
@@ -23,7 +25,7 @@ func obtainCondition(qualifier profile.CountQualifier) string {
 }
 
 // Generates the rule using the 'count'  property from Rego
-func generateCountRule(count profile.CountRule, condition string, iriExpander *misc.IriExpander) []SimpleRegoResult {
+func generateCountRule(count profile.CountRule, condition string, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []SimpleRegoResult {
 	path := count.Path
 	rule := count.Name
 	var rego []string
@@ -33,7 +35,7 @@ func generateCountRule(count profile.CountRule, condition string, iriExpander *m
 	singleValueVariable := fmt.Sprintf("%s_elem", arrayVariable)
 
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertySet(path, count.Variable.Name, iriExpander)
+	pathResult := GeneratePropertySet(path, count.Variable.Name, iriExpander, regoVersion)
 	rego = append(rego, fmt.Sprintf("%s = %s with data.sourceNode as %s", arrayVariable, pathResult.rule, count.Variable.Name))
 
 	var targetValueVariable string

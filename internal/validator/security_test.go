@@ -2,51 +2,55 @@ package validator
 
 import (
 	"fmt"
-	"github.com/open-policy-agent/opa/ast"
 	"testing"
+
+	"github.com/open-policy-agent/opa/ast"
 )
 
 const securityPath relativePath = "../../test/data/security"
 
-func tryCompileProfileIn(directory relativePath) (ast.Errors, bool) {
+func tryCompileProfileIn(directory relativePath, regoVersion ast.RegoVersion) (ast.Errors, bool) {
 	resolvedDirectory := fmt.Sprintf("%s", directory)
 	profile := fmt.Sprintf("%s/profile.yaml", resolvedDirectory)
 
-	_, err := ProcessProfile(read(profile), false, nil)
+	_, err := ProcessProfile(read(profile), false, nil, regoVersion)
 
 	errors, ok := err.(ast.Errors)
 	return errors, ok
 }
 
 func assertUnsafeBuiltInDoesNotCompile(directory relativePath, unsafeBuiltInName string, t *testing.T) {
-	errors, ok := tryCompileProfileIn(directory)
+	regoVersions := []ast.RegoVersion{ast.RegoV0, ast.RegoV1}
+	for _, regoVersion := range regoVersions {
+		errors, ok := tryCompileProfileIn(directory, regoVersion)
 
-	if !ok {
-		t.Errorf("Expected ast.Errors to be returned")
-		return
-	}
-
-	if len(errors) == 0 {
-		t.Errorf("OPA compilation errors is empty")
-		return
-	}
-
-	success := false
-
-	expectedMsg := fmt.Sprintf("unsafe built-in function calls in expression: %s", unsafeBuiltInName)
-
-	for _, e := range errors {
-		isTypeError := e.Code == ast.TypeErr
-		messageMatchesExpected := e.Message == expectedMsg
-		if isTypeError && messageMatchesExpected {
-			success = true
-			break
+		if !ok {
+			t.Errorf("Expected ast.Errors to be returned")
+			return
 		}
-	}
 
-	if !success {
-		t.Errorf("Failed %s. OPA compilation did not produce 'unsafe built-in' errors for %s", directory, unsafeBuiltInName)
-		return
+		if len(errors) == 0 {
+			t.Errorf("OPA compilation errors is empty")
+			return
+		}
+
+		success := false
+
+		expectedMsg := fmt.Sprintf("unsafe built-in function calls in expression: %s", unsafeBuiltInName)
+
+		for _, e := range errors {
+			isTypeError := e.Code == ast.TypeErr
+			messageMatchesExpected := e.Message == expectedMsg
+			if isTypeError && messageMatchesExpected {
+				success = true
+				break
+			}
+		}
+
+		if !success {
+			t.Errorf("Failed %s. OPA compilation did not produce 'unsafe built-in' errors for %s", directory, unsafeBuiltInName)
+			return
+		}
 	}
 }
 

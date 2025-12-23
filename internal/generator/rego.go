@@ -2,12 +2,14 @@ package generator
 
 import (
 	"fmt"
+	"strings"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
-	"strings"
+	"github.com/open-policy-agent/opa/ast"
 )
 
-func GenerateRegoRule(rule profile.RegoRule, iriExpander *misc.IriExpander) []SimpleRegoResult {
+func GenerateRegoRule(rule profile.RegoRule, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []SimpleRegoResult {
 	path := rule.Path
 	var rego []string
 
@@ -16,7 +18,7 @@ func GenerateRegoRule(rule profile.RegoRule, iriExpander *misc.IriExpander) []Si
 
 	// let's try generate the path rule for the constraint.
 	// This can be a null path if is an inline-rego block at the top-level of a validation
-	pathResult := GeneratePropertySet(path, rule.Variable.Name, iriExpander)
+	pathResult := GeneratePropertySet(path, rule.Variable.Name, iriExpander, regoVersion)
 
 	// If this is not a top-level rego rule (the path generates code), we use the bind the check variable for the path computation result
 	if len(pathResult.rego) > 0 {

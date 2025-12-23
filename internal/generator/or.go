@@ -2,24 +2,26 @@ package generator
 
 import (
 	"fmt"
+	"sort"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
-	"sort"
+	"github.com/open-policy-agent/opa/ast"
 )
 
-func GenerateOr(or profile.OrRule, iriExpander *misc.IriExpander) []BranchRegoResult {
+func GenerateOr(or profile.OrRule, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []BranchRegoResult {
 	if or.Negated {
 		negated := or.Negate()
 		switch andRule := negated.(type) {
 		case profile.AndRule:
-			return GenerateAnd(andRule, iriExpander)
+			return GenerateAnd(andRule, iriExpander, regoVersion)
 		default:
 			panic(fmt.Sprintf("ony AND can be the result of a naged OR, got %v", andRule))
 		}
 
 	} else {
 		sort.Sort(or.Body)
-		rego := collectAllResults(or, iriExpander)
+		rego := collectAllResults(or, iriExpander, regoVersion)
 		regoBranches := filterBranchesResult(rego)
 		regoResults := filterSimpleResults(rego)
 		return expandBranches(regoResults, regoBranches)
@@ -97,10 +99,10 @@ func filterBranchesResult(rego [][]GeneratedRegoResult) [][]BranchRegoResult {
 	return acc
 }
 
-func collectAllResults(or profile.OrRule, iriExpander *misc.IriExpander) [][]GeneratedRegoResult {
+func collectAllResults(or profile.OrRule, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) [][]GeneratedRegoResult {
 	acc := make([][]GeneratedRegoResult, len(or.Body))
 	for i, r := range or.Body {
-		acc[i] = Dispatch(r, iriExpander)
+		acc[i] = Dispatch(r, iriExpander, regoVersion)
 	}
 	return acc
 }

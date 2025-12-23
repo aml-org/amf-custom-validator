@@ -8,9 +8,10 @@ import (
 )
 
 type Fixture struct {
-	Profile   string
-	Parsed    string
-	Generated string
+	Profile     string
+	Parsed      string
+	Generated   string
+	GeneratedV1 string
 }
 
 type IntegrationFixture string
@@ -28,10 +29,12 @@ func Fixtures(root string) []Fixture {
 		if strings.Index(path, ".yaml") > -1 /*&& strings.Index(path, "profile5") > -1*/ {
 			parsed := strings.ReplaceAll(path, ".yaml", ".parsed")
 			generated := strings.ReplaceAll(path, ".yaml", ".rego")
+			generatedv1 := strings.ReplaceAll(path, ".yaml", ".v1.rego")
 			fixture := Fixture{
-				Profile:   path,
-				Parsed:    parsed,
-				Generated: generated,
+				Profile:     path,
+				Parsed:      parsed,
+				Generated:   generated,
+				GeneratedV1: generatedv1,
 			}
 			fixtures = append(fixtures, fixture)
 		}
@@ -225,6 +228,14 @@ func (f ProductionFixture) Profile() string {
 	return string(bytes)
 }
 
+func (f ProductionFixture) ProfileV1() string {
+	bytes, err := ioutil.ReadFile(string(f) + "/profile.v1.yaml")
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
 func (f IntegrationFixture) ReadProfile() string {
 	bytes, err := ioutil.ReadFile(string(f) + "/profile.yaml")
 	if err != nil {
@@ -296,6 +307,14 @@ func (f Fixture) ReadParsed() string {
 
 func (f Fixture) ReadGenerated() string {
 	bytes, err := ioutil.ReadFile(f.Generated)
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
+}
+
+func (f Fixture) ReadGeneratedV1() string {
+	bytes, err := ioutil.ReadFile(f.GeneratedV1)
 	if err != nil {
 		panic(err)
 	}

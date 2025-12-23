@@ -2,12 +2,14 @@ package generator
 
 import (
 	"fmt"
+	"strings"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
-	"strings"
+	"github.com/open-policy-agent/opa/ast"
 )
 
-func GenerateScalarIntersectSetRule(containsSome profile.ScalarSetRule, iriExpander *misc.IriExpander) []SimpleRegoResult {
+func GenerateScalarIntersectSetRule(containsSome profile.ScalarSetRule, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []SimpleRegoResult {
 
 	path := containsSome.Path
 	var rego []string
@@ -17,7 +19,7 @@ func GenerateScalarIntersectSetRule(containsSome profile.ScalarSetRule, iriExpan
 	containsSomeVariable := profile.Genvar("containsSome")
 
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertySet(path, containsSome.Variable.Name, iriExpander)
+	pathResult := GeneratePropertySet(path, containsSome.Variable.Name, iriExpander, regoVersion)
 	rego = append(rego, fmt.Sprintf("%s_array = %s with data.sourceNode as %s", actualValuesVariable, pathResult.rule, containsSome.Variable.Name))
 	rego = append(rego, fmt.Sprintf("count(%s_array) != 0 # validation applies if property was defined", actualValuesVariable))
 	rego_convert_to_string_set := "%s_string_set = { mapped |\n" +

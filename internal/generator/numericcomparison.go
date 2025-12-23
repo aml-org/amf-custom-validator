@@ -2,32 +2,34 @@ package generator
 
 import (
 	"fmt"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/open-policy-agent/opa/ast"
 )
 
-func GenerateNumericComparison(num profile.NumericRule, iriExpander *misc.IriExpander) []SimpleRegoResult {
+func GenerateNumericComparison(num profile.NumericRule, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []SimpleRegoResult {
 	switch num.Operation {
 	case profile.GTEQ:
-		return generateNumericRule(num, "minimumInclusive", ">=", iriExpander)
+		return generateNumericRule(num, "minimumInclusive", ">=", iriExpander, regoVersion)
 	case profile.GT:
-		return generateNumericRule(num, "minimumExclusive", ">", iriExpander)
+		return generateNumericRule(num, "minimumExclusive", ">", iriExpander, regoVersion)
 	case profile.LT:
-		return generateNumericRule(num, "maximumExclusive", "<", iriExpander)
+		return generateNumericRule(num, "maximumExclusive", "<", iriExpander, regoVersion)
 	case profile.LTEQ:
-		return generateNumericRule(num, "maximumInclusive", "<=", iriExpander)
+		return generateNumericRule(num, "maximumInclusive", "<=", iriExpander, regoVersion)
 	default:
 		panic(fmt.Sprintf("cannot generate unknown numeric constraint: %v", num))
 	}
 }
 
-func generateNumericRule(num profile.NumericRule, rule string, op string, iriExpander *misc.IriExpander) []SimpleRegoResult {
+func generateNumericRule(num profile.NumericRule, rule string, op string, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []SimpleRegoResult {
 	path := num.Path
 	var rego []string
 
 	// Let's get the path computed and stored in the inValuesVariable
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertySet(path, num.Variable.Name, iriExpander)
+	pathResult := GeneratePropertySet(path, num.Variable.Name, iriExpander, regoVersion)
 	valueVariable := profile.Genvar("numeric_comparison")
 	rego = append(rego, fmt.Sprintf("%s_elem = %s with data.sourceNode as %s", valueVariable, pathResult.rule, num.Variable.Name))
 	rego = append(rego, fmt.Sprintf("%s = %s_elem[_]", valueVariable, valueVariable))

@@ -5,12 +5,17 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/aml-org/amf-custom-validator/internal/config"
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
 	"github.com/aml-org/amf-custom-validator/internal/types"
 	"github.com/aml-org/amf-custom-validator/internal/validator/contexts"
+	"github.com/open-policy-agent/opa/ast"
 )
+
+// IsV0 returns true if the Rego version is v0
+func IsV0(version ast.RegoVersion) bool {
+	return version == ast.RegoV0
+}
 
 type RegoUnit struct {
 	Name       string
@@ -33,12 +38,16 @@ func IriExpanderFrom(profile profile.Profile) *misc.IriExpander {
 // Generate Main entry point generating a valid Rego unit from a parsed profile.
 // It uses the encoded Rego preamble code to provide all the library
 // code to execute the profile.
-func Generate(profile profile.Profile) RegoUnit {
+func Generate(profile profile.Profile, regoVersion ast.RegoVersion) RegoUnit {
 	iriExpander := IriExpanderFrom(profile)
-	acc := []string{pkg(profile), profileName(profile), customRego(profile), preamble(profile)}
+	acc := []string{
+		pkg(profile, regoVersion),
+		profileName(profile, regoVersion),
+		customRego(profile, regoVersion),
+		preamble(profile, regoVersion)}
 
 	for _, r := range ruleSet(profile) {
-		acc = append(acc, GenerateTopLevelExpression(r, iriExpander))
+		acc = append(acc, GenerateTopLevelExpression(r, iriExpander, regoVersion))
 	}
 
 	n := 0
@@ -73,7 +82,7 @@ func ruleSet(prof profile.Profile) []profile.Rule {
 	return acc
 }
 
-func pkg(profile profile.Profile) string {
+func pkg(profile profile.Profile, _ ast.RegoVersion) string {
 	return fmt.Sprintf("package %s\n", packageName(profile))
 }
 
@@ -86,7 +95,7 @@ func packageName(profile profile.Profile) string {
 	return fmt.Sprintf("profile_%s", sanitizedName)
 }
 
-func profileName(profile profile.Profile) string {
+func profileName(profile profile.Profile, _ ast.RegoVersion) string {
 	return fmt.Sprintf("report[\"profile\"] = \"%s\"", profile.Name)
 }
 
@@ -94,7 +103,7 @@ func entrypoint(profile profile.Profile) string {
 	return "report"
 }
 
-func customRego(profile profile.Profile) string {
+func customRego(profile profile.Profile, _ ast.RegoVersion) string {
 	acc := make([]string, 0)
 	if profile.CustomRego != nil {
 		acc = append(acc, "# Custom rego extensions")
@@ -104,9 +113,9 @@ func customRego(profile profile.Profile) string {
 	return strings.Join(acc, "\n\n")
 }
 
-func preamble(profile profile.Profile) string {
+func preamble(profile profile.Profile, regoVersion ast.RegoVersion) string {
 	acc := make([]string, 0)
-	if config.IsRegoV0() {
+	if IsV0(regoVersion) {
 		acc = append(acc, preambleRawV0)
 	} else {
 		acc = append(acc, preambleRawV1)
@@ -422,89 +431,112 @@ const preambleRawV1 = `
 # Rego v1
 import rego.v1
 
-# Finds a node in the graph, following a link in the flatten JSON-LD node
-find := node if {
-  id := data.link["@id"]
+############################
+# Core helpers (functions)
+############################
+
+# Finds a node in the graph, following a link in the flattened JSON-LD node.
+# Expects link to be an object with an "@id" key.
+find(link) := node if {
+  id := link["@id"]
   node := input["@ids"][id]
 }
 
-# Makes sure that value is wrapped in an array even if it is a single object property
-nodes_array := data.nodes if {
-  is_array(data.nodes)
-} else := [data.nodes]
+# Wraps a value in an array if it isn't already one.
+nodes_array(x) := x if {
+  is_array(x)
+} else := arr if {
+  is_set(x)
+  arr := [v | v := x[_]]
+} else := [x]
 
-# Navigates an object property for a given node
-nested contains nested_node if {
-  nested_links := nodes_array with data.nodes as data.nodes
-  link := nested_links[_]
-  nested_node := find with data.link as link
-}
-
-# Fetches all the nodes for an object link
-nested_nodes := result if {
-  nested_links := nodes_array with data.nodes as data.nodes
-  result := [nested_node |
-    link := nested_links[_]
-    nested_node := find with data.link as link
-  ]
-}
-
-# Fetches all the scalars for a scalar link
-nested_values := result if {
-  result := {value |
-    n := data.nodes[_]
-    value := n[data.property]
+# Navigates an object property for a given node/link list: returns a SET of nested nodes.
+nested(links) := out if {
+  out := {n |
+    link := nodes_array(links)[_]
+    n := find(link)
   }
 }
 
-# Fetches all the subject nodes that have certain predicate and object
-search_subjects contains valid_subject if {
-  predicate := data.predicate
-  object := data.object
-
-  node := input["@ids"][_]
-  node_predicate_values := nodes_array with data.nodes as object.get(node, predicate, [])
-  node_predicate_value := node_predicate_values[_]
-
-  node_predicate_value["@id"] == object["@id"]
-  valid_subject := node
+# Fetches all the nodes for an object link: returns an ARRAY of nested nodes.
+nested_nodes(links) := result if {
+  result_internal := [n |
+    link := nodes_array(links)[_]
+    n := find(link)
+  ]
+  # we need to wrap it again for backwards compatiblity
+  result = [ result_internal ]
 }
 
-search_custom_property_subjects contains valid_subject if {
-  extension := data.property_extension
-  object := data.object
-
-  object["http://a.ml/vocabularies/core#extensionName"] == extension
-  object_id := object["@id"]
-
-  node := input["@ids"][_]
-  node[prop] == {"@id": object_id}
-
-  valid_subject := node
+# Fetches all the scalars for a scalar link: returns a SET of values for property from each node in nodes.
+nested_values(nodes, property) := result if {
+  result := {value |
+    n := nodes_array(nodes)[_]
+    value := n[property]
+  }
 }
 
-# collection functions
+# Extracts in a type-safe way the @id of a node object.
+node_id(y) := id if {
+  is_object(y)
+  id := object.get(y, "@id", "")
+} else := ""
 
-# collect next set of nodes
-collect contains r if {
-  nodes := data.nodes
-  n := nodes[_]
-  rs := object.get(n, data.property, [])
-  rss := nodes_array with data.nodes as rs
-  rsss := nested with data.nodes as rss
-  r := rsss[_]
+############################
+# Subject search helpers
+############################
+
+# Fetches all the subject nodes that have certain predicate and object.
+# Returns a SET of node objects.
+search_subjects(predicate, data_obj) := result if {
+  result := {node |
+    node := input["@ids"][_]
+    vals := nodes_array(object.get(node, predicate, []))
+    v := vals[_]
+    v["@id"] == data_obj["@id"]
+  }
 }
 
-# collect terminal values
-collect_values contains r if {
-  nodes := data.nodes
-  n := nodes[_]
-  rs := object.get(n, data.property, [])
-  rss := nodes_array with data.nodes as rs
-  r := rss[_]
+# Fetches all the subject nodes where a given custom property extension matches.
+search_custom_property_subjects(property_extension, data_obj) := result if {
+  data_obj["http://a.ml/vocabularies/core#extensionName"] == property_extension
+  object_id := data_obj["@id"]
+
+  result := {node |
+    node := input["@ids"][_]
+    some prop
+    node[prop] == {"@id": object_id}
+  } 
 }
 
-# helper to check datatype constraints
+############################
+# Collection helpers
+############################
+
+# Collect next set of nodes: from nodes, follow property links, then resolve to node objects.
+# Returns a SET of node objects.
+collect(nodes, property) := result if {
+  result := {r |
+    n := nodes[_]
+    rs := object.get(n, property, [])
+    r := nested(rs)[_]
+  }
+}
+
+# Collect terminal values: from nodes, fetch property values and flatten to an array.
+# Returns a SET of values.
+collect_values(nodes, property) := result if {
+  result := {r |
+    n := nodes_array(nodes)[_]
+    rs := object.get(n, property, [])
+    r := nodes_array(rs)[_]
+  }
+}
+
+############################
+# Datatype / string helpers
+############################
+
 check_datatype(x, dt) := true if {
   dt == "http://www.w3.org/2001/XMLSchema#string"
   is_string(x)
@@ -529,14 +561,16 @@ check_datatype(x, dt) := true if {
   dt != "http://www.w3.org/2001/XMLSchema#boolean"
 }
 
-# Fetches all the nodes for a given RDF class
-target_class contains node if {
-  class := data.class
-  id := input["@types"][class][_]
-  node := input["@ids"][id]
+# Fetches all the nodes for a given RDF class.
+# Returns a SET of node objects.
+target_class(class) := result if {
+  result := {node |
+    id := input["@types"][class][_]
+    node := input["@ids"][id]
+  }
 }
 
-# Transform scalars to string, useful for 'in' constraints
+# Transform scalars to string, useful for 'in' constraints.
 as_string(x) := x if {
   is_string(x)
 } else := "false" if {
@@ -555,44 +589,51 @@ as_string(x) := x if {
   not x["@id"]
 }
 
-# Finds a nested custom domain property for a given node and custom domain property name
-gen_path_extension := nodes if {
-  sourceNode := data.custom_property_data[0]
-  extensionName := data.custom_property_data[1]
+############################
+# Custom-domain-property helpers
+############################
 
+# Finds a nested custom domain property for a given node and custom domain property name.
+# Returns an ARRAY of matching annotation nodes.
+gen_path_extension(sourceNode, extensionName) := nodes if {
   customPropertiesTarget := object.get(
     sourceNode,
     "http://a.ml/vocabularies/document#customDomainProperties",
     []
   )
-  customProperties := nodes_array with data.nodes as customPropertiesTarget
+  customProperties := nodes_array(customPropertiesTarget)
 
-  extensionFound := [found |
+  nodes_internal := [found |
     annotationLink := customProperties[_]
     annotationLinkId := annotationLink["@id"]
     annotation := object.get(sourceNode, annotationLinkId, {})
-    annotationNode := find with data.link as annotation
+    annotationNode := find(annotation)
 
     annotationNode["http://a.ml/vocabularies/core#extensionName"] == extensionName
     found := annotationNode
   ]
-
-  nodes := extensionFound
+  # we need to wrap it again for backwards compatibility
+  nodes = [ nodes_internal ]
 }
 
-# creates an array from a comma separated values str
-split_values := values if {
-  values := split(data.nodes, ",")
+############################
+# CSV helpers
+############################
+
+split_values(s) := values if {
+  values := split(s, ",")
 }
 
-# check if a given target is present at the list serialized as comma separated values(chain)
 values_contains(chain, target) := true if {
-  values := split_values with data.nodes as chain
+  values := split_values(chain)
   values[_] == target
 } else := false
 
-# Traces one evaluation of a constraint
-trace(constraint, resultPath, focusNode, traceValue) := t if {
+############################
+# Tracing + error helpers
+############################
+
+traceRuleExecution(constraint, resultPath, focusNode, traceValue) := t if {
   l := location(focusNode)
   t := {
     "@type": ["reportSchema:TraceMessageNode", "validation:TraceMessage"],
@@ -639,14 +680,13 @@ location(focusNode) := l if {
   }
 }
 
-# Builds an error message that can be returned to the calling client software
 error(sourceShapeName, focusNode, resultMessage, traceLog) := e if {
   id := focusNode["@id"]
   locationNode := location(focusNode)
   e := {
     "@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
-    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
+    "focusNode": id,
     "resultMessage": resultMessage,
     "location": locationNode,
     "trace": traceLog,
@@ -657,7 +697,7 @@ error(sourceShapeName, focusNode, resultMessage, traceLog) := e if {
   e := {
     "@type": ["reportSchema:ValidationResultNode", "shacl:ValidationResult"],
     "sourceShapeName": sourceShapeName,
-    "focusNode": id, # can potentially be wrapped in @id obj if report dialect is adjusted
+    "focusNode": id,
     "resultMessage": resultMessage,
     "trace": traceLog,
   }

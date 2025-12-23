@@ -2,15 +2,17 @@ package generator
 
 import (
 	"fmt"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/open-policy-agent/opa/ast"
 )
 
-func GenerateNested(nested profile.NestedExpression, iriExpander *misc.IriExpander) SimpleRegoResult {
+func GenerateNested(nested profile.NestedExpression, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) SimpleRegoResult {
 	path := nested.Path
 	var rego []string
 
-	pathResult := GenerateNodeSet(nested.Path, nested.Parent.Name, iriExpander)
+	pathResult := GenerateNodeSet(nested.Path, nested.Parent.Name, iriExpander, regoVersion)
 	pluralName := fmt.Sprintf("%ss", nested.Child.Name)
 
 	rego = append(rego, "#  querying path: "+path.Source())

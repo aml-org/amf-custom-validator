@@ -5,9 +5,10 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"syscall/js"
+
 	"github.com/aml-org/amf-custom-validator/internal/validator"
 	c "github.com/aml-org/amf-custom-validator/pkg/config"
-	"syscall/js"
 )
 
 func validateWrapper() js.Func {
@@ -18,11 +19,32 @@ func validateWrapper() js.Func {
 		profileString := args[0].String()
 		dataString := args[1].String()
 		debug := args[2].Bool()
-		res, err := validator.Validate(profileString, dataString, debug, nil)
+
+		res, err := validator.ValidateRegoV1(profileString, dataString, debug, nil)
 		if err != nil {
 			return err.Error()
 		}
 		return res
+
+	})
+	return jsonFunc
+}
+
+func validateWrapperV0() js.Func {
+	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) any {
+		if len(args) != 3 {
+			return "Invalid no of arguments passed"
+		}
+		profileString := args[0].String()
+		dataString := args[1].String()
+		debug := args[2].Bool()
+
+		res, err := validator.ValidateRegoV0(profileString, dataString, debug, nil)
+		if err != nil {
+			return err.Error()
+		}
+		return res
+
 	})
 	return jsonFunc
 }
@@ -39,7 +61,28 @@ func validateWithConfigurationWrapper() js.Func {
 			return "ValidationConfiguration not yet supported, please set this parameter as 'undefined'. ValidationConfiguration needs to import functions from JS which is not supported by Go 1.19"
 		}
 		reportConfig := buildReportConfiguration(args[4])
-		res, err := validator.ValidateWithConfiguration(profileString, dataString, debug, nil, c.DefaultValidationConfiguration{}, reportConfig)
+		res, err := validator.ValidateWithConfigurationV1(profileString, dataString, debug, nil, c.DefaultValidationConfiguration{}, reportConfig)
+		if err != nil {
+			return err.Error()
+		}
+		return res
+	})
+	return jsonFunc
+}
+
+func validateWithConfigurationWrapperV0() js.Func {
+	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) any {
+		if len(args) != 5 {
+			return "Invalid no of arguments passed"
+		}
+		profileString := args[0].String()
+		dataString := args[1].String()
+		debug := args[2].Bool()
+		if !args[3].IsUndefined() {
+			return "ValidationConfiguration not yet supported, please set this parameter as 'undefined'. ValidationConfiguration needs to import functions from JS which is not supported by Go 1.19"
+		}
+		reportConfig := buildReportConfiguration(args[4])
+		res, err := validator.ValidateWithConfigurationV0(profileString, dataString, debug, nil, c.DefaultValidationConfiguration{}, reportConfig)
 		if err != nil {
 			return err.Error()
 		}
@@ -65,7 +108,22 @@ func genRegoWrapper() js.Func {
 			return "Invalid no of arguments passed"
 		}
 		profileString := args[0].String()
-		res, err := validator.GenerateRego(profileString, false, nil)
+		res, err := validator.GenerateRegoV1(profileString, false, nil)
+		if err != nil {
+			return err.Error()
+		}
+		return res.Code
+	})
+	return jsonFunc
+}
+
+func genRegoWrapperV0() js.Func {
+	jsonFunc := js.FuncOf(func(this js.Value, args []js.Value) any {
+		if len(args) != 1 {
+			return "Invalid no of arguments passed"
+		}
+		profileString := args[0].String()
+		res, err := validator.GenerateRegoV0(profileString, false, nil)
 		if err != nil {
 			return err.Error()
 		}
@@ -119,6 +177,17 @@ func main() {
 	// normalizeInput
 	f = normalizeInputWrapper()
 	js.Global().Set("__AMF__normalizeInput", f)
+
+	// validate legacy
+	f = validateWrapperV0()
+	js.Global().Set("__AMF__validateCustomProfileV0", f)
+	// validate with configuration legacy
+	f = validateWithConfigurationWrapperV0()
+	js.Global().Set("__AMF__validateCustomProfileWithConfigurationV0", f)
+	// gen rego legacy
+	f = genRegoWrapperV0()
+	js.Global().Set("__AMF__generateRegoV0", f)
+
 	// exit
 	f = exitWrapper(c)
 	js.Global().Set("__AMF__terminateValidator", f)

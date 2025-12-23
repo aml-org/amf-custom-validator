@@ -2,9 +2,11 @@ package commands
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/aml-org/amf-custom-validator/cmd/commands/helpers"
 	"github.com/aml-org/amf-custom-validator/internal/validator"
-	"os"
+	"github.com/open-policy-agent/opa/ast"
 )
 
 func Compile() {
@@ -12,7 +14,12 @@ func Compile() {
 
 	profile := helpers.ReadOrPanic(os.Args[2])
 
-	_, err := validator.ProcessProfile(string(profile), true, nil)
+	regoVersion := ast.RegoV1 // default to v1
+	if v := os.Getenv("REGO_VERSION"); v == "v0" {
+		regoVersion = ast.RegoV0
+	}
+
+	_, err := validator.ProcessProfile(string(profile), true, nil, regoVersion)
 
 	if err != nil {
 		panic(err)

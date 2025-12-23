@@ -2,21 +2,23 @@ package generator
 
 import (
 	"fmt"
+
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/open-policy-agent/opa/ast"
 )
 
-func GeneratePropertyComparison(comparison profile.PropertyComparisonRule, iriExpander *misc.IriExpander) []SimpleRegoResult {
+func GeneratePropertyComparison(comparison profile.PropertyComparisonRule, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []SimpleRegoResult {
 	var rego []string
 	path := comparison.Path
 	altPath := comparison.Argument
 
 	rego = append(rego, "#  querying path: "+path.Source())
-	pathResult := GeneratePropertySet(path, comparison.Variable.Name, iriExpander)
+	pathResult := GeneratePropertySet(path, comparison.Variable.Name, iriExpander, regoVersion)
 	propVariable := fmt.Sprintf("%sA", pathResult.rule)
 	rego = append(rego, fmt.Sprintf("%ss = %s with data.sourceNode as %s", propVariable, pathResult.rule, comparison.Variable.Name))
 	rego = append(rego, "#  querying path: "+altPath.Source())
-	altPathResult := GeneratePropertySet(altPath, comparison.Variable.Name, iriExpander)
+	altPathResult := GeneratePropertySet(altPath, comparison.Variable.Name, iriExpander, regoVersion)
 	altPropVariable := fmt.Sprintf("%sB", altPathResult.rule)
 	rego = append(rego, fmt.Sprintf("%ss = %s with data.sourceNode as %s", altPropVariable, altPathResult.rule, comparison.Variable.Name))
 

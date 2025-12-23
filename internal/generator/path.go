@@ -3,10 +3,10 @@ package generator
 import (
 	"fmt"
 
-	"github.com/aml-org/amf-custom-validator/internal/config"
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
+	"github.com/open-policy-agent/opa/ast"
 )
 
 type RegoPathResult struct {
@@ -54,33 +54,37 @@ func internalResultToTraversal(p traversal, r regoPathResultInternal) traversal 
 }
 
 // GeneratePropertySet Traversed the path, starting at the provided variable and returns a set of reached values
-func GeneratePropertySet(path path.PropertyPath, variable string, iriExpander *misc.IriExpander) RegoPathResult {
-	return generateResult(path, variable, false, iriExpander, aggregateResultsIntoSet)
+func GeneratePropertySet(path path.PropertyPath, variable string, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) RegoPathResult {
+	return generateResult(path, variable, false, iriExpander, regoVersion, func(paths []regoPathResultInternal) RegoPathResult {
+		return aggregateResultsIntoSet(paths, regoVersion)
+	})
 }
 
 // GenerateNodeSet Traverses the path but just returns a generator of nodes instead of a set of values
-func GenerateNodeSet(path path.PropertyPath, variable string, iriExpander *misc.IriExpander) RegoPathResult {
-	return generateResult(path, variable, true, iriExpander, aggregateResultsIntoSet)
+func GenerateNodeSet(path path.PropertyPath, variable string, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) RegoPathResult {
+	return generateResult(path, variable, true, iriExpander, regoVersion, func(paths []regoPathResultInternal) RegoPathResult {
+		return aggregateResultsIntoSet(paths, regoVersion)
+	})
 }
 
 // GeneratePropertyArray Traversed the path, starting at the provided variable and returns an array of reached values (allows duplicate values)
-func GeneratePropertyArray(path path.PropertyPath, variable string, iriExpander *misc.IriExpander) RegoPathResult {
-	return generateResult(path, variable, false, iriExpander, aggregateResultsIntoArray)
+func GeneratePropertyArray(path path.PropertyPath, variable string, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) RegoPathResult {
+	return generateResult(path, variable, false, iriExpander, regoVersion, aggregateResultsIntoArray)
 }
 
 // GenerateNodeArray Traverses the path but just returns a generator of nodes instead of an array of values (allows duplicate values)
-func GenerateNodeArray(path path.PropertyPath, variable string, iriExpander *misc.IriExpander) RegoPathResult {
-	return generateResult(path, variable, false, iriExpander, aggregateResultsIntoArray)
+func GenerateNodeArray(path path.PropertyPath, variable string, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) RegoPathResult {
+	return generateResult(path, variable, false, iriExpander, regoVersion, aggregateResultsIntoArray)
 }
 
 // fetchNodes defines if the path result will fetch resulting nodes (fetching each @id reference) or simple return the values.
-func generateResult(path path.PropertyPath, variable string, fetchNodes bool, iriExpander *misc.IriExpander, resultAggregator func([]regoPathResultInternal) RegoPathResult) RegoPathResult {
+func generateResult(path path.PropertyPath, variable string, fetchNodes bool, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion, resultAggregator func([]regoPathResultInternal) RegoPathResult) RegoPathResult {
 	source, err := path.Expanded(iriExpander)
 	if err != nil {
 		panic(err)
 	}
 
-	acc := traversePath(path, variable, fetchNodes, iriExpander)
+	acc := traversePath(path, variable, fetchNodes, iriExpander, regoVersion)
 	regoResult := resultAggregator(acc)
 
 	regoResult.source = source
@@ -89,10 +93,10 @@ func generateResult(path path.PropertyPath, variable string, fetchNodes bool, ir
 	return regoResult
 }
 
-func traversePath(path path.PropertyPath, variable string, fetchNodes bool, iriExpander *misc.IriExpander) []regoPathResultInternal {
+func traversePath(path path.PropertyPath, variable string, fetchNodes bool, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []regoPathResultInternal {
 	t := newTraversal(variable)
 	var acc []regoPathResultInternal
-	for _, tr := range traverse(path, t, fetchNodes, iriExpander) {
+	for _, tr := range traverse(path, t, fetchNodes, iriExpander, regoVersion) {
 		effectiveRego := tr.rego
 		effectiveRego = append(effectiveRego, fmt.Sprintf("nodes = %s", tr.variable))
 		tr.rego = effectiveRego
@@ -103,7 +107,7 @@ func traversePath(path path.PropertyPath, variable string, fetchNodes bool, iriE
 
 // Since there are many alternative paths to reach the nodes, we need to provide a single
 // collection of nodes of the rest of the checks.
-func aggregateResultsIntoSet(paths []regoPathResultInternal) RegoPathResult {
+func aggregateResultsIntoSet(paths []regoPathResultInternal, regoVersion ast.RegoVersion) RegoPathResult {
 	// Let's generate a rule that will return the flat list of nodes in the path
 	// If there are more than one path (because of ORs) a rule with multiple clauses
 	// will be generated and the final list of nodes will be the UNION of all the clauses
@@ -111,10 +115,10 @@ func aggregateResultsIntoSet(paths []regoPathResultInternal) RegoPathResult {
 	ruleName := profile.Genvar("path_set_rule")
 	for i, p := range paths {
 		if i == 0 {
-			if config.IsRegoV0() {
+			if IsV0(regoVersion) {
 				rego = append(rego, fmt.Sprintf("%s[nodes] {", ruleName)) // header of the rule
 			} else {
-				rego = append(rego, fmt.Sprintf("%s[nodes] if {", ruleName)) // header of the rule
+				rego = append(rego, fmt.Sprintf("%s contains nodes if {", ruleName)) // header of the rule
 			}
 
 		} else {
@@ -158,24 +162,24 @@ func aggregateResultsIntoArray(paths []regoPathResultInternal) RegoPathResult {
 }
 
 // Different traversals based on the type of path element
-func traverse(propPath path.PropertyPath, traversed traversal, fetchNodes bool, iriExpander *misc.IriExpander) []regoPathResultInternal {
+func traverse(propPath path.PropertyPath, traversed traversal, fetchNodes bool, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []regoPathResultInternal {
 	switch p := propPath.(type) {
 	case path.Property:
-		return traverseProperty(p, traversed, fetchNodes, iriExpander)
+		return traverseProperty(p, traversed, fetchNodes, iriExpander, regoVersion)
 	case path.AndPath:
-		return traverseAnd(p, traversed, fetchNodes, iriExpander)
+		return traverseAnd(p, traversed, fetchNodes, iriExpander, regoVersion)
 	case path.OrPath:
-		return traverseOr(p, traversed, fetchNodes, iriExpander)
+		return traverseOr(p, traversed, fetchNodes, iriExpander, regoVersion)
 	default:
 		return make([]regoPathResultInternal, 0)
 	}
 }
 
 // Traverses in parallel each of the elements in the OR path, creating new branches for each one
-func traverseOr(or path.OrPath, t traversal, fetchNodes bool, iriExpander *misc.IriExpander) []regoPathResultInternal {
+func traverseOr(or path.OrPath, t traversal, fetchNodes bool, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []regoPathResultInternal {
 	acc := make([]regoPathResultInternal, 0)
 	for _, p := range or.Or {
-		traversed := traverse(p, t, fetchNodes, iriExpander)
+		traversed := traverse(p, t, fetchNodes, iriExpander, regoVersion)
 		for _, tr := range traversed {
 			acc = append(acc, tr)
 		}
@@ -186,37 +190,37 @@ func traverseOr(or path.OrPath, t traversal, fetchNodes bool, iriExpander *misc.
 // Traverses an AND branch in the property path.
 // it sequentially traverses the path until all the elements of the AND
 // has been traversed and the variables accumulated.
-func traverseAnd(and path.AndPath, t traversal, fetchNodes bool, iriExpander *misc.IriExpander) []regoPathResultInternal {
+func traverseAnd(and path.AndPath, t traversal, fetchNodes bool, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []regoPathResultInternal {
 	first := and.And[0]
 	if len(and.And) > 1 {
-		firstTraversed := traverse(first, t, true, iriExpander)
+		firstTraversed := traverse(first, t, true, iriExpander, regoVersion)
 		remaining := and.And[1:len(and.And)]
 		acc := make([]regoPathResultInternal, 0)
 		for _, tr := range firstTraversed {
 			next := path.AndPath{
 				And: remaining,
 			}
-			for _, ntr := range traverse(next, internalResultToTraversal(t, tr), fetchNodes, iriExpander) {
+			for _, ntr := range traverse(next, internalResultToTraversal(t, tr), fetchNodes, iriExpander, regoVersion) {
 				acc = append(acc, ntr)
 			}
 		}
 		return acc
 	} else {
-		return traverse(first, t, fetchNodes, iriExpander)
+		return traverse(first, t, fetchNodes, iriExpander, regoVersion)
 	}
 }
 
-func traverseProperty(property path.Property, t traversal, fetchNodes bool, iriExpander *misc.IriExpander) []regoPathResultInternal {
+func traverseProperty(property path.Property, t traversal, fetchNodes bool, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []regoPathResultInternal {
 	if property.IsCustom(iriExpander) {
-		return traverseCustomProperty(property, t, fetchNodes, iriExpander)
+		return traverseCustomProperty(property, t, fetchNodes, iriExpander, regoVersion)
 	} else {
-		return traverseRegularProperty(property, t, fetchNodes, iriExpander)
+		return traverseRegularProperty(property, t, fetchNodes, iriExpander, regoVersion)
 	}
 }
 
 // Traverses the leaf components of the path expression, always a property.
 // TODO: We don't take into transitive paths yet.
-func traverseRegularProperty(property path.Property, t traversal, fetchNodes bool, iriExpander *misc.IriExpander) []regoPathResultInternal {
+func traverseRegularProperty(property path.Property, t traversal, fetchNodes bool, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []regoPathResultInternal {
 
 	propertyIri, err := property.Expanded(iriExpander)
 
@@ -240,15 +244,28 @@ func traverseRegularProperty(property path.Property, t traversal, fetchNodes boo
 	}
 
 	if property.Inverse {
-		t.rego = append(t.rego, fmt.Sprintf("search_subjects[%s] with data.predicate as \"%s\" with data.object as %s", binding, propertyIri, source))
+		if IsV0(regoVersion) {
+			t.rego = append(t.rego, fmt.Sprintf("search_subjects[%s] with data.predicate as \"%s\" with data.object as %s", binding, propertyIri, source))
+		} else {
+			t.rego = append(t.rego, fmt.Sprintf("%s = search_subjects(\"%s\",%s)", binding, propertyIri, source))
+		}
 	} else {
 		// fetch resulting nodes (fetching each @id reference) or simply return the array values
 		if fetchNodes {
-			t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as %s[\"%s\"]", binding, source, propertyIri))
+			if IsV0(regoVersion) {
+				t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as %s[\"%s\"]", binding, source, propertyIri))
+			} else {
+				t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes(%s[\"%s\"])", binding, source, propertyIri))
+			}
 			t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))
 		} else {
 			t.rego = append(t.rego, fmt.Sprintf("nodes_tmp = object.get(%s,\"%s\",[])", source, propertyIri))
-			t.rego = append(t.rego, "nodes_tmp2 = nodes_array with data.nodes as nodes_tmp") // this returns and array
+			if IsV0(regoVersion) {
+				t.rego = append(t.rego, "nodes_tmp2 = nodes_array with data.nodes as nodes_tmp") // this returns and array
+			} else {
+				t.rego = append(t.rego, "nodes_tmp2 = nodes_array(nodes_tmp)") // this returns and array
+			}
+
 			t.rego = append(t.rego, fmt.Sprintf("%s = nodes_tmp2[_]", binding))
 		}
 	}
@@ -264,7 +281,7 @@ func traverseRegularProperty(property path.Property, t traversal, fetchNodes boo
 	return []regoPathResultInternal{r}
 }
 
-func traverseCustomProperty(property path.Property, t traversal, fetchNodes bool, iriExpander *misc.IriExpander) []regoPathResultInternal {
+func traverseCustomProperty(property path.Property, t traversal, fetchNodes bool, iriExpander *misc.IriExpander, regoVersion ast.RegoVersion) []regoPathResultInternal {
 	customPropertyName, err := property.CustomName(iriExpander)
 	if err != nil {
 		panic(err)
@@ -285,9 +302,20 @@ func traverseCustomProperty(property path.Property, t traversal, fetchNodes bool
 	source := t.pathVariables[len(t.pathVariables)-1]
 
 	if property.Inverse {
-		t.rego = append(t.rego, fmt.Sprintf("search_custom_property_subjects[%s] with data.property_extension as \"%s\" with data.object as %s", binding, customPropertyName, source))
+		if IsV0(regoVersion) {
+			t.rego = append(t.rego, fmt.Sprintf("search_custom_property_subjects[%s] with data.property_extension as \"%s\" with data.object as %s", binding, customPropertyName, source))
+		} else {
+			t.rego = append(t.rego, fmt.Sprintf("%s_subjs = search_custom_property_subjects(\"%s\",%s)", binding, customPropertyName, source))
+			t.rego = append(t.rego, fmt.Sprintf("%s = %s_subjs[_]", binding, binding))
+		}
+
 	} else {
-		t.rego = append(t.rego, fmt.Sprintf("tmp_%s = gen_path_extension with data.custom_property_data as [%s, \"%s\"]", binding, source, customPropertyName))
+		if IsV0(regoVersion) {
+			t.rego = append(t.rego, fmt.Sprintf("tmp_%s = gen_path_extension with data.custom_property_data as [%s, \"%s\"]", binding, source, customPropertyName))
+		} else {
+			t.rego = append(t.rego, fmt.Sprintf("tmp_%s = gen_path_extension(%s, \"%s\")", binding, source, customPropertyName))
+		}
+
 		// fetch resulting nodes (fetching each @id reference) or simply return the array values
 		if fetchNodes {
 			t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))
