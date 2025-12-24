@@ -10,7 +10,7 @@ import (
 )
 
 func Generate() {
-	helpers.ValidateNArgs(3, "acv generate <PROFILE>")
+	helpers.ValidateNArgs(3, "[REGO_VERSION=<v0|v1>] acv generate <PROFILE>")
 
 	profile := helpers.ReadOrPanic(os.Args[2])
 

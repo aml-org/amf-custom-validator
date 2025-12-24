@@ -142,7 +142,7 @@ validations:
       examples = nested_nodes(object.get(schema, "http://a.ml/vocabularies/apiContract#examples", []))
 
       examples_from_this_payload = { element |
-        example = examples[_][_]
+        example = examples[_]
         sourcemap = find(object.get(example, "http://a.ml/vocabularies/document-source-maps#sources", []))
         tracked_element = find(object.get(sourcemap, "http://a.ml/vocabularies/document-source-maps#tracked-element", []))
         values_contains(tracked_element["http://a.ml/vocabularies/document-source-maps#value"], $node["@id"])

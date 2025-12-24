@@ -19,6 +19,9 @@ find(link) := node if {
 # Wraps a value in an array if it isn't already one.
 nodes_array(x) := x if {
   is_array(x)
+} else := arr if {
+  is_set(x)
+  arr := [v | v := x[_]]
 } else := [x]
 
 # Navigates an object property for a given node/link list: returns a SET of nested nodes.
@@ -67,14 +70,15 @@ search_subjects(predicate, data_obj) := result if {
 }
 
 # Fetches all the subject nodes where a given custom property extension matches.
-search_custom_property_subjects(property_extension, data_obj, prop) := result if {
-  result := {node |
-    data_obj["http://a.ml/vocabularies/core#extensionName"] == property_extension
-    object_id := data_obj["@id"]
+search_custom_property_subjects(property_extension, data_obj) := result if {
+  data_obj["http://a.ml/vocabularies/core#extensionName"] == property_extension
+  object_id := data_obj["@id"]
 
+  result := {node |
     node := input["@ids"][_]
+    some prop
     node[prop] == {"@id": object_id}
-  }
+  } 
 }
 
 ############################
@@ -85,7 +89,7 @@ search_custom_property_subjects(property_extension, data_obj, prop) := result if
 # Returns a SET of node objects.
 collect(nodes, property) := result if {
   result := {r |
-    n := nodes_array(nodes)[_]
+    n := nodes[_]
     rs := object.get(n, property, [])
     r := nested(rs)[_]
   }
@@ -171,7 +175,7 @@ gen_path_extension(sourceNode, extensionName) := nodes if {
   )
   customProperties := nodes_array(customPropertiesTarget)
 
-  nodes := [found |
+  nodes_internal := [found |
     annotationLink := customProperties[_]
     annotationLinkId := annotationLink["@id"]
     annotation := object.get(sourceNode, annotationLinkId, {})
@@ -180,6 +184,8 @@ gen_path_extension(sourceNode, extensionName) := nodes if {
     annotationNode["http://a.ml/vocabularies/core#extensionName"] == extensionName
     found := annotationNode
   ]
+  # we need to wrap it again for backwards compatibility
+  nodes = [ nodes_internal ]
 }
 
 ############################
@@ -302,7 +308,7 @@ default info = []
 gen_path_set_rule_3 contains nodes if {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes(init_x_0["http://a.ml/vocabularies/apiContract#supportedOperation"])
-  x_0 = tmp_x_0[_][_]
+  x_0 = tmp_x_0[_]
   nodes_tmp = object.get(x_0,"http://a.ml/vocabularies/apiContract#method",[])
   nodes_tmp2 = nodes_array(nodes_tmp)
   x_2 = nodes_tmp2[_]
@@ -312,7 +318,7 @@ gen_path_set_rule_3 contains nodes if {
 gen_path_set_rule_5 contains nodes if {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes(init_x_0["http://a.ml/vocabularies/apiContract#supportedOperation"])
-  x_0 = tmp_x_0[_][_]
+  x_0 = tmp_x_0[_]
   nodes_tmp = object.get(x_0,"http://a.ml/vocabularies/apiContract#method",[])
   nodes_tmp2 = nodes_array(nodes_tmp)
   x_2 = nodes_tmp2[_]
@@ -367,11 +373,11 @@ violation contains matches if {
 gen_path_set_rule_9 contains nodes if {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes(init_x_0["http://a.ml/vocabularies/apiContract#expects"])
-  x_0 = tmp_x_0[_][_]
+  x_0 = tmp_x_0[_]
   tmp_x_2 = nested_nodes(x_0["http://a.ml/vocabularies/apiContract#parameter"])
-  x_2 = tmp_x_2[_][_]
+  x_2 = tmp_x_2[_]
   tmp_x_3 = nested_nodes(x_2["http://a.ml/vocabularies/shapes#schema"])
-  x_3 = tmp_x_3[_][_]
+  x_3 = tmp_x_3[_]
   nodes_tmp = object.get(x_3,"http://www.w3.org/ns/shacl#name",[])
   nodes_tmp2 = nodes_array(nodes_tmp)
   x_4 = nodes_tmp2[_]
@@ -379,11 +385,11 @@ gen_path_set_rule_9 contains nodes if {
 } {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes(init_x_0["http://a.ml/vocabularies/apiContract#expects"])
-  x_0 = tmp_x_0[_][_]
+  x_0 = tmp_x_0[_]
   tmp_x_2 = nested_nodes(x_0["http://a.ml/vocabularies/apiContract#payload"])
-  x_2 = tmp_x_2[_][_]
+  x_2 = tmp_x_2[_]
   tmp_x_3 = nested_nodes(x_2["http://a.ml/vocabularies/shapes#schema"])
-  x_3 = tmp_x_3[_][_]
+  x_3 = tmp_x_3[_]
   nodes_tmp = object.get(x_3,"http://www.w3.org/ns/shacl#name",[])
   nodes_tmp2 = nodes_array(nodes_tmp)
   x_4 = nodes_tmp2[_]

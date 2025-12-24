@@ -52,7 +52,7 @@ validations:
     rego: |
       path = $node["http://a.ml/vocabularies/apiContract#path"]
       pathVariables = {v | ms = regex.find_all_string_submatch_n("{([a-z0-9_]+)}", path, -1); m = ms[_]; v = m[1] }
-      endpointParameters = nested_nodes(object.get($node, "http://a.ml/vocabularies/apiContract#parameter", []))[_]
+      endpointParameters = nested_nodes(object.get($node, "http://a.ml/vocabularies/apiContract#parameter", []))
       
       endpointParameterNames = { desc |
         parameter = endpointParameters[_]
@@ -61,11 +61,11 @@ validations:
         desc = name
       }
       
-      operations = nested_nodes(object.get($node, "http://a.ml/vocabularies/apiContract#supportedOperation", []))[_]
+      operations = nested_nodes(object.get($node, "http://a.ml/vocabularies/apiContract#supportedOperation", []))
       operation = operations[_]
-      requests = nested_nodes(object.get(operation, "http://a.ml/vocabularies/apiContract#expects", []))[_]
+      requests = nested_nodes(object.get(operation, "http://a.ml/vocabularies/apiContract#expects", []))
       request = requests[_]
-      operationParameters = nested_nodes(object.get(request, "http://a.ml/vocabularies/apiContract#uriParameter", []))[_]
+      operationParameters = nested_nodes(object.get(request, "http://a.ml/vocabularies/apiContract#uriParameter", []))
       operationParameterNames = { desc |
         parameter = operationParameters[_]
         name = parameter["http://a.ml/vocabularies/core#name"]

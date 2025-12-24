@@ -18,7 +18,7 @@ func TestProduction(t *testing.T) {
 		for _, fixture := range test.ProductionFixtures("../../test/data/production", &filter) {
 			profile := fixture.Profile()
 			if regoVersion == config.RegoVersion1 {
-				profile = fixture.ProfileV1()
+				profile = fixture.ProfileV1OrDefault()
 			}
 			for _, example := range fixture.Examples() {
 				filter := "" // put the number of the text to filter here

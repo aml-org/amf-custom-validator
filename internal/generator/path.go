@@ -2,7 +2,6 @@ package generator
 
 import (
 	"fmt"
-
 	"github.com/aml-org/amf-custom-validator/internal/misc"
 	"github.com/aml-org/amf-custom-validator/internal/parser/path"
 	"github.com/aml-org/amf-custom-validator/internal/parser/profile"
@@ -247,17 +246,18 @@ func traverseRegularProperty(property path.Property, t traversal, fetchNodes boo
 		if IsV0(regoVersion) {
 			t.rego = append(t.rego, fmt.Sprintf("search_subjects[%s] with data.predicate as \"%s\" with data.object as %s", binding, propertyIri, source))
 		} else {
-			t.rego = append(t.rego, fmt.Sprintf("%s = search_subjects(\"%s\",%s)", binding, propertyIri, source))
+			t.rego = append(t.rego, fmt.Sprintf("%s = search_subjects(\"%s\",%s)[_]", binding, propertyIri, source))
 		}
 	} else {
 		// fetch resulting nodes (fetching each @id reference) or simply return the array values
 		if fetchNodes {
 			if IsV0(regoVersion) {
 				t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes with data.nodes as %s[\"%s\"]", binding, source, propertyIri))
+				t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))
 			} else {
 				t.rego = append(t.rego, fmt.Sprintf("tmp_%s = nested_nodes(%s[\"%s\"])", binding, source, propertyIri))
+				t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_]", binding, binding))
 			}
-			t.rego = append(t.rego, fmt.Sprintf("%s = tmp_%s[_][_]", binding, binding))
 		} else {
 			t.rego = append(t.rego, fmt.Sprintf("nodes_tmp = object.get(%s,\"%s\",[])", source, propertyIri))
 			if IsV0(regoVersion) {

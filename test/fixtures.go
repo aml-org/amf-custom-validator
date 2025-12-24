@@ -228,12 +228,22 @@ func (f ProductionFixture) Profile() string {
 	return string(bytes)
 }
 
-func (f ProductionFixture) ProfileV1() string {
-	bytes, err := ioutil.ReadFile(string(f) + "/profile.v1.yaml")
-	if err != nil {
-		panic(err)
+func fileExists(path string) bool {
+	_, err := os.Stat(path)
+	return err == nil || !os.IsNotExist(err)
+}
+
+func (f ProductionFixture) ProfileV1OrDefault() string {
+	profilePath := string(f) + "/profile.v1.yaml"
+	if fileExists(profilePath) {
+		bytes, err := ioutil.ReadFile(profilePath)
+		if err != nil {
+			panic(err)
+		}
+		return string(bytes)
+	} else {
+		return f.Profile()
 	}
-	return string(bytes)
 }
 
 func (f IntegrationFixture) ReadProfile() string {

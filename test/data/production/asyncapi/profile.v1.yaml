@@ -68,7 +68,7 @@ validations:
       raw_params := regex.find_all_string_submatch_n("\\{([^{]+)\\}", path,-1)
       params := {v| [_,v] := raw_params[_] }
       
-      raw_declared_params = nested_nodes(object.get(x, "http://a.ml/vocabularies/apiContract#parameter", []))[_]
+      raw_declared_params = nested_nodes(object.get(x, "http://a.ml/vocabularies/apiContract#parameter", []))
       declared_params := {v|
         p := raw_declared_params[_]
         v := object.get(p,"http://a.ml/vocabularies/core#name", "")
@@ -171,9 +171,9 @@ validations:
       init_x_0 = $node
       operationIds := [oid |
         tmp_x_0 = nested_nodes(init_x_0["http://a.ml/vocabularies/apiContract#endpoint"])
-        x_0 = tmp_x_0[_][_]
+        x_0 = tmp_x_0[_]
         tmp_x_2 = nested_nodes(x_0["http://a.ml/vocabularies/apiContract#supportedOperation"])
-        op = tmp_x_2[_][_]
+        op = tmp_x_2[_]
         oid := object.get(op, "http://a.ml/vocabularies/apiContract#operationId", "")
       ]
   
@@ -267,7 +267,7 @@ validations:
     message: Tags must not have duplicate names (identifiers).
     targetClass: apiContract.AsyncAPI
     rego: |
-      tag_nodes = nested_nodes(object.get($node, "http://a.ml/vocabularies/apiContract#tag", []))[_]      
+      tag_nodes = nested_nodes(object.get($node, "http://a.ml/vocabularies/apiContract#tag", []))     
       names := { n |
         tag_node := tag_nodes[_]
         n := object.get(tag_node,"http://a.ml/vocabularies/core#name", "")

@@ -460,12 +460,10 @@ nested(links) := out if {
 
 # Fetches all the nodes for an object link: returns an ARRAY of nested nodes.
 nested_nodes(links) := result if {
-  result_internal := [n |
+  result := [n |
     link := nodes_array(links)[_]
     n := find(link)
   ]
-  # we need to wrap it again for backwards compatiblity
-  result = [ result_internal ]
 }
 
 # Fetches all the scalars for a scalar link: returns a SET of values for property from each node in nodes.

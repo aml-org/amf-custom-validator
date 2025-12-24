@@ -55,9 +55,9 @@ func TestGenerateAndPropertyArray(t *testing.T) {
 	expected = `gen_path_set_rule_1 contains nodes if {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes(init_x_0["http://x.org#a"])
-  x_0 = tmp_x_0[_][_]
+  x_0 = tmp_x_0[_]
   tmp_x_2 = nested_nodes(x_0["http://x.org#b"])
-  x_2 = tmp_x_2[_][_]
+  x_2 = tmp_x_2[_]
   nodes_tmp = object.get(x_2,"http://x.org#c",[])
   nodes_tmp2 = nodes_array(nodes_tmp)
   x_3 = nodes_tmp2[_]
@@ -125,7 +125,7 @@ func TestGenerateAndOrParenthesisPropertyArray(t *testing.T) {
 	expected = `gen_path_set_rule_1 contains nodes if {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes(init_x_0["http://x.org#a"])
-  x_0 = tmp_x_0[_][_]
+  x_0 = tmp_x_0[_]
   nodes_tmp = object.get(x_0,"http://x.org#b",[])
   nodes_tmp2 = nodes_array(nodes_tmp)
   x_2 = nodes_tmp2[_]
@@ -133,7 +133,7 @@ func TestGenerateAndOrParenthesisPropertyArray(t *testing.T) {
 } {
   init_x_0 = data.sourceNode
   tmp_x_0 = nested_nodes(init_x_0["http://x.org#c"])
-  x_0 = tmp_x_0[_][_]
+  x_0 = tmp_x_0[_]
   nodes_tmp = object.get(x_0,"http://x.org#d",[])
   nodes_tmp2 = nodes_array(nodes_tmp)
   x_2 = nodes_tmp2[_]
@@ -154,7 +154,7 @@ func TestGenerateInversePathPropertyArray(t *testing.T) {
 
 	expected = `gen_path_set_rule_1 contains nodes if {
   init_x_0 = data.sourceNode
-  x_0 = search_subjects("http://a.ml/vocabularies/core#name",init_x_0)
+  x_0 = search_subjects("http://a.ml/vocabularies/core#name",init_x_0)[_]
   nodes = x_0
 }`
 	testGeneratePropertyArray("core.name^", expected, &expander, t, ast.RegoV1)
@@ -198,11 +198,11 @@ func TestGenerateOrInversePathPropertyArray(t *testing.T) {
 
 	expected = `gen_path_set_rule_1 contains nodes if {
   init_x_0 = data.sourceNode
-  x_0 = search_subjects("http://x.org#a",init_x_0)
+  x_0 = search_subjects("http://x.org#a",init_x_0)[_]
   nodes = x_0
 } {
   init_x_0 = data.sourceNode
-  x_0 = search_subjects("http://x.org#b",init_x_0)
+  x_0 = search_subjects("http://x.org#b",init_x_0)[_]
   nodes = x_0
 }`
 	testGeneratePropertyArray("x.a^ | x.b^", expected, &expander, t, ast.RegoV1)

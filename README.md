@@ -123,6 +123,18 @@ Compile profile
 ```shell
 acv compile PROFILE
 ```
+To make the validator or the generation step specifically backwards compatible with Rego V0 you can use the `REGO_VERSION`
+environment variable:
+
+```shell
+REGO_VERSION=v0 acv validate PROFILE DATA
+```
+or
+
+```shell
+REGO_VERSION=v0 acv generate PROFILE
+```
+By default the validator generates and expect custom rules following Rego V1 syntax.
 
 # Relation with AMF
 

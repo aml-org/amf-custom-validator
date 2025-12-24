@@ -11,7 +11,7 @@ import (
 
 func Validate() {
 
-	h.ValidateNsArgs([]int{4, 5}, "acv validate <PROFILE> <DATA> [OUTPUT_FILE]")
+	h.ValidateNsArgs([]int{4, 5}, "[REGO_VERSION=<v0|v1>] acv validate <PROFILE> <DATA> [OUTPUT_FILE]")
 
 	profile := h.ReadOrPanic(os.Args[2])
 	data := h.ReadOrPanic(os.Args[3])

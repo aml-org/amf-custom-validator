@@ -124,11 +124,11 @@ validations:
       so they can be used as a key for the type
     targetClass: apiContract.Operation
     rego: |
-      requests = nested_nodes($node["http://a.ml/vocabularies/apiContract#expects"])[_]
+      requests = nested_nodes($node["http://a.ml/vocabularies/apiContract#expects"])
       request = requests[_]
 
       # extract mandatory parameters
-      parameters = nested_nodes(object.get(request, "http://a.ml/vocabularies/apiContract#parameter", []))[_]
+      parameters = nested_nodes(object.get(request, "http://a.ml/vocabularies/apiContract#parameter", []))
       mandatory_params = { mandatory_param |
         parameter = parameters[_]
         parameter["http://a.ml/vocabularies/apiContract#required"] == true
@@ -136,7 +136,7 @@ validations:
         mandatory_param = parameter["http://a.ml/vocabularies/core#name"]
       }
 
-      uri_parameters = nested_nodes(object.get(request, "http://a.ml/vocabularies/apiContract#uriParameter", []))[_]
+      uri_parameters = nested_nodes(object.get(request, "http://a.ml/vocabularies/apiContract#uriParameter", []))
       mandatory_uri_params = { mandatory_uri_param |
         uri_parameter = uri_parameters[_]
         uri_parameter["http://a.ml/vocabularies/apiContract#required"] == true
@@ -147,16 +147,16 @@ validations:
       all_mandatory_params := mandatory_params | mandatory_uri_params
 
       # navigate to the potential return schema
-      resps = nested_nodes(object.get($node, "http://a.ml/vocabularies/apiContract#returns", []))[_]
+      resps = nested_nodes(object.get($node, "http://a.ml/vocabularies/apiContract#returns", []))
       resp = resps[_]
-      payloads = nested_nodes(object.get(resp, "http://a.ml/vocabularies/apiContract#payload", []))[_]
+      payloads = nested_nodes(object.get(resp, "http://a.ml/vocabularies/apiContract#payload", []))
       payload = payloads[_]
       payload["http://a.ml/vocabularies/core#mediaType"] == "application/json"
-      schemas = nested_nodes(object.get(payload, "http://a.ml/vocabularies/shapes#schema", []))[_]
+      schemas = nested_nodes(object.get(payload, "http://a.ml/vocabularies/shapes#schema", []))
       schema = schemas[_]
 
       # check for node shape properties
-      props = nested_nodes(object.get(schema, "http://www.w3.org/ns/shacl#property",[]))[_]
+      props = nested_nodes(object.get(schema, "http://www.w3.org/ns/shacl#property",[]))
       mandatory_props = { mandatory_prop |
         prop = props[_]
         prop["http://www.w3.org/ns/shacl#minCount"] > 0
@@ -212,9 +212,9 @@ validations:
       shapes with scalar flags/properties can be used as an alternative
     targetClass: shapes.AnyShape
     rego: |
-      members_xone = nested_nodes(object.get($node,"http://www.w3.org/ns/shacl#xone",[]))[_]
-      members_or = nested_nodes(object.get($node,"http://www.w3.org/ns/shacl#or",[]))[_]
-      members_anyof = nested_nodes(object.get($node,"http://a.ml/vocabularies/shapes#anyOf",[]))[_]
+      members_xone = nested_nodes(object.get($node,"http://www.w3.org/ns/shacl#xone",[]))
+      members_or = nested_nodes(object.get($node,"http://www.w3.org/ns/shacl#or",[]))
+      members_anyof = nested_nodes(object.get($node,"http://a.ml/vocabularies/shapes#anyOf",[]))
       members = array.concat(members_xone, array.concat(members_or, members_anyof))
       types := { type |
         member := members[_]
@@ -235,9 +235,9 @@ validations:
       properties should be used instead.
     targetClass: shapes.AnyShape
     rego: |
-      members_xone = nested_nodes(object.get($node,"http://www.w3.org/ns/shacl#xone",[]))[_]
-      members_or = nested_nodes(object.get($node,"http://www.w3.org/ns/shacl#or",[]))[_]
-      members_anyof = nested_nodes(object.get($node,"http://a.ml/vocabularies/shapes#anyOf",[]))[_]
+      members_xone = nested_nodes(object.get($node,"http://www.w3.org/ns/shacl#xone",[]))
+      members_or = nested_nodes(object.get($node,"http://www.w3.org/ns/shacl#or",[]))
+      members_anyof = nested_nodes(object.get($node,"http://a.ml/vocabularies/shapes#anyOf",[]))
       members = array.concat(members_xone, array.concat(members_or, members_anyof))
       count(members) == 2
       types := { type |
