@@ -32,31 +32,10 @@ None specified in the regular AMF release line
 ### Jenkinsfile Updates
 - **For Release**: Ensure `"release/*"` is in branch list in `Publish artifacts` stage
 
-## Release Steps
-
-### Publishing Release (x.y.z)
-**No RC version is published.**
-
-1. Create release branch from develop: `git checkout develop && git pull && git checkout -b release/x.y.z`
-2. Edit version files:
-   - Update `wrappers/js-web/package.json` version to `x.y.z`
-   - Update `wrappers/js/package.json` version to `x.y.z`
-3. Ensure Jenkinsfile has `"release/*"` in `Publish artifacts` stage branches
-4. Commit: `git commit -m "Publish x.y.z"`
-5. Push: `git push -u origin release/x.y.z`
-6. Follow the steps to merge into master:
-   - Create temporary branch `publish-x.y.z` from `release/x.y.z`
-   - Merge master into it: `git merge origin/master`
-   - Create PR to master and merge
-   - **Go artifact is published via tag**: `git tag x.y.z origin/master && git push origin x.y.z`
-7. Merge back to develop with next version if needed
-
-### Publishing Hotfix (x.y.z-n)
-1. Checkout/create `support/x.y.z` branch from tag
-2. Cherry-pick required commits
-3. Update version in both package.json files to `x.y.z-n`
-4. Ensure Jenkinsfile has `support/*` in `Publish artifacts` stage (for first HF only)
-5. Push and create PR to merge into `support/x.y.z`
+## Special Instructions
+- **No RC version is published** for this repository
+- Go artifact is published via git tag after merging to master
+- JS artifacts (web and node) are published to NPM via Jenkins
 
 ## Dependencies Impact
 After releasing amf-custom-validator, update the version in:
