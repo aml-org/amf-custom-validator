@@ -2,8 +2,9 @@ package validator
 
 import (
 	"fmt"
-	"github.com/open-policy-agent/opa/ast"
 	"testing"
+
+	"github.com/open-policy-agent/opa/ast"
 )
 
 const securityPath relativePath = "../../test/data/security"
@@ -63,10 +64,9 @@ func TestHttpSend(t *testing.T) {
 	testSecurityCase("http.send", "http.send", t)
 }
 
-// Uncomment when bumping OPA version
-//func TestNetLookup_ip_addr(t *testing.T) {
-//	testSecurityCase("net.lookup_ip_addr", "net.lookup_ip_addr", t)
-//}
+func TestNetLookup_ip_addr(t *testing.T) {
+	testSecurityCase("net.lookup_ip_addr", "net.lookup_ip_addr", t)
+}
 
 func TestOpaRuntime(t *testing.T) {
 	testSecurityCase("opa.runtime", "opa.runtime", t)
