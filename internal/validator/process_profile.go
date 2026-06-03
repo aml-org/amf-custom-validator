@@ -2,6 +2,7 @@ package validator
 
 import (
 	"context"
+
 	"github.com/aml-org/amf-custom-validator/internal/generator"
 	"github.com/aml-org/amf-custom-validator/internal/parser"
 	e "github.com/aml-org/amf-custom-validator/pkg/events"
@@ -39,12 +40,12 @@ func GenerateRego(profileText string, debug bool, eventChan *chan e.Event) (*gen
 	return &module, err
 }
 
-// unsafeBuiltinsMap When updating to 0.35 ast.NetLookupIPAddr will be available and needs to be added and blocked too
 var unsafeBuiltinsMap = map[string]struct{}{
 	ast.HTTPSend.Name:        {},
 	ast.WalkBuiltin.Name:     {},
 	ast.OPARuntime.Name:      {},
 	ast.RegoParseModule.Name: {},
+	ast.NetLookupIPAddr.Name: {},
 }
 
 func CompileRego(regoUnit *generator.RegoUnit, eventChan *chan e.Event) (*rego.PreparedEvalQuery, error) {
