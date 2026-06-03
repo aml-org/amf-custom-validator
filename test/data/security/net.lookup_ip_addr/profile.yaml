@@ -13,6 +13,5 @@ validations:
     targetClass: apiContract.WebAPI
     not:
       rego: |
-        # When updating to 0.35 ast.NetLookupIPAddr will be available and needs to be added and blocked too
         net.lookup_ip_addr("https://www.google.com")
         $result = (null == null)
